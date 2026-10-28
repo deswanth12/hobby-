@@ -5,7 +5,7 @@ import { FIRM_DATA } from '../data/firmData';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-brand-deep text-gray-200 border-t-2 border-gold pt-14 pb-8 transition-colors">
+    <footer className="bg-[#0A2F24] text-gray-200 border-t-2 border-gold pt-14 pb-8 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-emerald-900/60">
           {/* Column 1: Firm Overview */}

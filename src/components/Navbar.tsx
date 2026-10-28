@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
   return (
     <header className="sticky top-0 z-50 bg-brand-warm/95 backdrop-blur-md border-b border-border shadow-subtle transition-all">
       {/* Top Utility Bar */}
-      <div className="bg-brand-deep text-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-emerald-950/20">
+      <div className="bg-[#0A2F24] text-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-emerald-950/20">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-4 flex-wrap">
             <span className="flex items-center gap-1.5 text-emerald-100/90 font-medium tracking-normal">

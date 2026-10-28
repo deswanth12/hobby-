@@ -32,6 +32,21 @@
   }
 }
 
+@layer utilities {
+  .bg-brand-deep {
+    background-color: #0A2F24;
+  }
+  .bg-brand-primary {
+    background-color: #0F3E2E;
+  }
+  .bg-brand-warm {
+    background-color: #FCFCFA;
+  }
+  .text-brand-primary {
+    color: #0F3E2E;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

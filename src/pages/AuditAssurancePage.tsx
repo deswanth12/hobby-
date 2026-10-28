@@ -54,7 +54,7 @@ export const AuditAssurancePage: React.FC = () => {
   return (
     <div className="bg-brand-warm">
       {/* Header Banner */}
-      <section className="bg-gradient-to-b from-brand-primary to-brand-deep text-white py-16 sm:py-20 border-b-2 border-gold">
+      <section className="bg-[#0F3E2E] bg-gradient-to-b from-[#0F3E2E] to-[#0A2F24] text-white py-16 sm:py-20 border-b-2 border-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-gold text-xs font-bold uppercase tracking-wider mb-4 border border-gold/30">

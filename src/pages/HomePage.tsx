@@ -148,7 +148,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Column: Hero Visual Feature Box */}
             <div className="lg:col-span-5">
-              <div className="bg-gradient-to-br from-brand-primary to-brand-deep text-white rounded-xl shadow-elevated p-6 sm:p-8 relative overflow-hidden border border-gold/40">
+              <div className="bg-[#0F3E2E] bg-gradient-to-br from-[#0F3E2E] to-[#0A2F24] text-white rounded-xl shadow-elevated p-6 sm:p-8 relative overflow-hidden border border-gold/40">
                 {/* Decorative Subtle Accent */}
                 <div className="absolute top-0 right-0 w-36 h-36 bg-gold/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -400,7 +400,7 @@ export const HomePage: React.FC = () => {
             ))}
 
             {/* Regulatory Ethics Callout Card */}
-            <div className="bg-brand-primary text-white rounded-xl p-6 border border-gold/40 shadow-subtle flex flex-col justify-between">
+            <div className="bg-[#0F3E2E] text-white rounded-xl p-6 border border-gold/40 shadow-subtle flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-lg bg-white/10 text-gold flex items-center justify-center font-serif font-bold text-sm mb-4 border border-gold/40">
                   <Shield className="w-5 h-5" />

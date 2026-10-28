@@ -29,7 +29,7 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-5">
-              <div className="bg-gradient-to-br from-brand-primary to-brand-deep rounded-xl p-8 text-white border border-gold/40 shadow-card relative overflow-hidden">
+              <div className="bg-[#0F3E2E] bg-gradient-to-br from-[#0F3E2E] to-[#0A2F24] rounded-xl p-8 text-white border border-gold/40 shadow-card relative overflow-hidden">
                 <div className="w-14 h-14 rounded-xl bg-white/10 border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold mb-6">
                   CA
                 </div>
