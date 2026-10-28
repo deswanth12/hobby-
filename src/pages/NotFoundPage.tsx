@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Phone } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <div className="min-h-[70vh] flex items-center justify-center bg-brand-warm px-4 py-16">
+      <SEOHead
+        title="404 - Page Not Found"
+        description="The requested page could not be found. Return to Kavitha & Associates homepage or contact our practice chambers."
+      />
       <div className="max-w-md w-full text-center space-y-6">
         <div className="w-16 h-16 rounded-xl bg-brand-pale text-brand-primary flex items-center justify-center mx-auto border border-emerald-200 shadow-subtle">
           <span className="font-serif text-2xl font-bold text-brand-primary">404</span>

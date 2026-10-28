@@ -2,10 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Building, Globe, ShieldAlert } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
+import { SEOHead } from '../components/SEOHead';
 
 export const LocationsPage: React.FC = () => {
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Service Footprint & Regional Presence | Tirupati & South India"
+        description="Principal practice chambers located in Tirupati, Andhra Pradesh, with active regional client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore."
+        canonicalPath="/locations"
+      />
       {/* Header Banner */}
       <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

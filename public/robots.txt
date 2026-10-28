@@ -1,0 +1,8 @@
+# Robots.txt for Kavitha & Associates (Chartered Accountants)
+# Production Domain: https://kavithaassociates.com
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://kavithaassociates.com/sitemap.xml

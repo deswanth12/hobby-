@@ -6,10 +6,16 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
+import { SEOHead } from '../components/SEOHead';
 
 export const ServicesPage: React.FC = () => {
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Comprehensive Accounting, Audit & Tax Services"
+        description="Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications."
+        canonicalPath="/services"
+      />
       {/* Header Banner */}
       <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

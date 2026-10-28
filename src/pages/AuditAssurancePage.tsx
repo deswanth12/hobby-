@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, ArrowRight, FileCheck, Search, Scale } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
 
 export const AuditAssurancePage: React.FC = () => {
   const auditDetails = [
@@ -53,6 +54,11 @@ export const AuditAssurancePage: React.FC = () => {
 
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Audit & Assurance Practice | Statutory, Tax & Internal Audits"
+        description="Dedicated Audit & Assurance practice: Statutory Audits under Companies Act, Tax Audits under Sec 44AB, Internal Audits, Concurrent Audits, and Due Diligence."
+        canonicalPath="/services/audit-assurance"
+      />
       {/* Header Banner */}
       <section className="bg-[#0F3E2E] bg-gradient-to-b from-[#0F3E2E] to-[#0A2F24] text-white py-16 sm:py-20 border-b-2 border-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

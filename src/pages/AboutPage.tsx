@@ -2,10 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShieldCheck, Target, Eye, ArrowRight } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
+import { SEOHead } from '../components/SEOHead';
 
 export const AboutPage: React.FC = () => {
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="About CA KavithaVijay SRJ & Practice Credentials"
+        description="Learn about Kavitha & Associates, founded by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional audit, direct taxation, GST, and corporate governance practice."
+        canonicalPath="/about"
+      />
       {/* Header Banner */}
       <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

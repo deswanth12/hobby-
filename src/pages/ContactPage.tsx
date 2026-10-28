@@ -2,10 +2,16 @@ import React from 'react';
 import { Phone, Mail, MapPin, MessageSquare, ShieldCheck } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { ContactForm } from '../components/ContactForm';
+import { SEOHead } from '../components/SEOHead';
 
 export const ContactPage: React.FC = () => {
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Contact CA KavithaVijay SRJ | Tirupati Practice Chambers"
+        description="Schedule a consultation with CA KavithaVijay SRJ. Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries."
+        canonicalPath="/contact"
+      />
       {/* Header Banner */}
       <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

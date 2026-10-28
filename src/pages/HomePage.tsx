@@ -25,6 +25,7 @@ import {
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { ContactForm } from '../components/ContactForm';
+import { SEOHead } from '../components/SEOHead';
 
 export const HomePage: React.FC = () => {
   // Contextual icon map for the 10 industry sectors
@@ -57,6 +58,11 @@ export const HomePage: React.FC = () => {
 
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Chartered Accountants & Cost Accountants | Tirupati & Pan India"
+        description="Independent Chartered Accountancy practice led by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional support across Statutory Audit, Income Tax, GST, Corporate Compliance, and Strategic Advisory."
+        canonicalPath="/"
+      />
       {/* =========================================================================
           1. HERO SECTION (Clean, Solid, Dignified Architecture)
           ========================================================================= */}

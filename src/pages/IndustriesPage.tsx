@@ -13,6 +13,7 @@ import {
   HeartHandshake, 
   ArrowRight
 } from 'lucide-react';
+import { SEOHead } from '../components/SEOHead';
 
 export const IndustriesPage: React.FC = () => {
   const industryProfiles = [
@@ -70,6 +71,11 @@ export const IndustriesPage: React.FC = () => {
 
   return (
     <div className="bg-brand-warm">
+      <SEOHead
+        title="Industry Expertise | Startups, MSMEs, Manufacturing, Healthcare"
+        description="Sector-specific Chartered Accountancy expertise across 10 commercial sectors: Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, Education, and NGOs."
+        canonicalPath="/industries"
+      />
       {/* Header Banner */}
       <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
