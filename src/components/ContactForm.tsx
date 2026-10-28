@@ -95,7 +95,7 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-all">
+    <div className="bg-white rounded-2xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-all">
       {submitted ? (
         <div className="text-center py-8 space-y-5 animate-fadeIn">
           <div className="w-16 h-16 bg-brand-pale text-brand-primary rounded-full flex items-center justify-center mx-auto border border-emerald-200">
@@ -331,14 +331,16 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-sm hover:shadow-subtle transition-all focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all duration-300 focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50 active:scale-[0.985]"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>
               ) : (
                 <>
-                  <Send className="w-4 h-4 text-gold" />
                   <span>Prepare WhatsApp Inquiry</span>
+                  <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300">
+                    <Send className="w-3.5 h-3.5" />
+                  </span>
                 </>
               )}
             </button>

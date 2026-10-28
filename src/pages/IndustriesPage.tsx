@@ -142,13 +142,15 @@ export const IndustriesPage: React.FC = () => {
           <p className="mt-3 text-sm text-charcoal-muted">
             We adapt auditing programs and compliance calendars to match your unique operational risks and statutory framework.
           </p>
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
             >
               <span>Connect with Our Practice</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
           </div>
         </div>

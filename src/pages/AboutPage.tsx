@@ -134,17 +134,19 @@ export const AboutPage: React.FC = () => {
           <p className="mt-3 text-sm text-charcoal-muted">
             Connect directly with CA KavithaVijay SRJ to discuss audit, direct taxation, GST, or corporate advisory.
           </p>
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
             >
               <span>Contact the Practice</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-brand-primary text-brand-primary text-sm font-semibold hover:bg-brand-pale transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-all active:scale-[0.985]"
             >
               <span>View Services</span>
             </Link>

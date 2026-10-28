@@ -51,10 +51,12 @@ export const ServicesPage: React.FC = () => {
 
             <Link
               to="/services/audit-assurance"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shrink-0 shadow-sm"
+              className="group inline-flex items-center gap-2.5 pl-5 pr-2 py-1.5 rounded-full bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shrink-0 shadow-card hover:shadow-card-hover active:scale-[0.985]"
             >
               <span>View Audit Spotlight</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
           </div>
         </div>
@@ -128,13 +130,15 @@ export const ServicesPage: React.FC = () => {
           <p className="mt-3 text-sm text-charcoal-muted">
             We provide tailored compliance calendars, virtual CFO retainers, and cross-border advisory.
           </p>
-          <div className="mt-6 flex justify-center gap-4">
+          <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
             >
               <span>Schedule a Discussion</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
           </div>
         </div>

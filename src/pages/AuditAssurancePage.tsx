@@ -176,10 +176,12 @@ export const AuditAssurancePage: React.FC = () => {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
+              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
             >
               <span>Schedule Audit Consultation</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
+                <ArrowRight className="w-4 h-4" />
+              </span>
             </Link>
           </div>
         </div>
