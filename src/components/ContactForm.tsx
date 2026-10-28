@@ -72,7 +72,7 @@ export const ContactForm: React.FC = () => {
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 700);
+    }, 600);
   };
 
   const generateWhatsAppUrl = () => {
@@ -95,11 +95,11 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-card border border-emerald-950/10 p-6 sm:p-8 lg:p-10">
+    <div className="bg-white rounded-xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-all">
       {submitted ? (
         <div className="text-center py-8 space-y-5 animate-fadeIn">
-          <div className="w-16 h-16 bg-emerald-100 text-emerald-800 rounded-full flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-10 h-10 text-emerald-700" />
+          <div className="w-16 h-16 bg-brand-pale text-brand-primary rounded-full flex items-center justify-center mx-auto border border-emerald-200">
+            <CheckCircle2 className="w-9 h-9 text-brand-interactive" />
           </div>
 
           <div className="space-y-2">
@@ -108,15 +108,15 @@ export const ContactForm: React.FC = () => {
             </h3>
             <p className="text-sm text-charcoal-muted max-w-md mx-auto">
               Thank you, <strong>{formData.fullName}</strong>. Your inquiry for{' '}
-              <strong>{formData.serviceCategory}</strong> has been formatted.
+              <strong>{formData.serviceCategory}</strong> has been structured.
             </p>
           </div>
 
-          <div className="bg-brand-pale border border-emerald-200 rounded-xl p-4 max-w-lg mx-auto text-left text-xs text-brand-primary space-y-2">
-            <div className="font-semibold text-emerald-900 flex items-center gap-1.5">
+          <div className="bg-brand-pale border border-emerald-200/80 rounded-xl p-4 max-w-lg mx-auto text-left text-xs text-brand-primary space-y-2">
+            <div className="font-semibold text-brand-deep flex items-center gap-1.5">
               <span>Direct Communication Step</span>
             </div>
-            <p className="text-emerald-800">
+            <p className="text-emerald-900 leading-relaxed">
               This demo formats your message so you can transmit it directly to CA KavithaVijay SRJ via WhatsApp or direct phone call. Web entries are not stored on an external database.
             </p>
           </div>
@@ -128,13 +128,13 @@ export const ContactForm: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition-colors shadow-sm"
             >
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare className="w-4 h-4 text-gold-light" />
               <span>Send via WhatsApp</span>
             </a>
             <button
               type="button"
               onClick={handleReset}
-              className="px-6 py-3 rounded-lg border border-gray-300 text-charcoal hover:bg-gray-50 text-sm font-medium transition-colors"
+              className="px-6 py-3 rounded-lg border border-border text-charcoal hover:bg-brand-pale text-sm font-medium transition-colors"
             >
               Reset / Edit Details
             </button>
@@ -142,7 +142,10 @@ export const ContactForm: React.FC = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
-          <div className="border-b border-gray-100 pb-4">
+          <div className="border-b border-border pb-4">
+            <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-1">
+              Direct Enquiry
+            </span>
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">
               Request a Professional Consultation
             </h3>
@@ -154,7 +157,7 @@ export const ContactForm: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
             <div>
-              <label htmlFor="fullName" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+              <label htmlFor="fullName" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -164,7 +167,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.fullName ? 'border-red-400 bg-red-50/30' : 'border-gray-200 bg-gray-50/50 hover:bg-white'
+                  errors.fullName ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="e.g. S. Ramanathan"
                 aria-required="true"
@@ -180,8 +183,8 @@ export const ContactForm: React.FC = () => {
 
             {/* Organization / Entity */}
             <div>
-              <label htmlFor="organization" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
-                Company / Organization <span className="text-xs font-normal text-gray-500">(Optional)</span>
+              <label htmlFor="organization" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+                Company / Organization <span className="text-xs font-normal text-charcoal-light">(Optional)</span>
               </label>
               <input
                 type="text"
@@ -189,14 +192,14 @@ export const ContactForm: React.FC = () => {
                 name="organization"
                 value={formData.organization}
                 onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
                 placeholder="e.g. Enterprise / LLP / Individual"
               />
             </div>
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+              <label htmlFor="phone" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -206,7 +209,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.phone ? 'border-red-400 bg-red-50/30' : 'border-gray-200 bg-gray-50/50 hover:bg-white'
+                  errors.phone ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="+91 98765 43210"
                 aria-required="true"
@@ -222,7 +225,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+              <label htmlFor="email" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -232,7 +235,7 @@ export const ContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.email ? 'border-red-400 bg-red-50/30' : 'border-gray-200 bg-gray-50/50 hover:bg-white'
+                  errors.email ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="client@domain.com"
                 aria-required="true"
@@ -248,7 +251,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Service Category */}
             <div>
-              <label htmlFor="serviceCategory" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+              <label htmlFor="serviceCategory" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
                 Service Category <span className="text-red-500">*</span>
               </label>
               <select
@@ -256,7 +259,7 @@ export const ContactForm: React.FC = () => {
                 name="serviceCategory"
                 value={formData.serviceCategory}
                 onChange={(e) => setFormData({ ...formData, serviceCategory: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Audit & Assurance Services">Audit & Assurance (Statutory, Internal, Tax Audit)</option>
                 <option value="Income Tax Services">Income Tax (Filing, Planning, Scrutiny, Appeals)</option>
@@ -270,7 +273,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Client Location */}
             <div>
-              <label htmlFor="city" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+              <label htmlFor="city" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
                 Your Location
               </label>
               <select
@@ -278,7 +281,7 @@ export const ContactForm: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 bg-gray-50/50 hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Tirupati">Tirupati</option>
                 <option value="Chennai">Chennai</option>
@@ -292,7 +295,7 @@ export const ContactForm: React.FC = () => {
 
           {/* Message / Requirement */}
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1">
+            <label htmlFor="message" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
               Enquiry Summary <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -302,7 +305,7 @@ export const ContactForm: React.FC = () => {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                errors.message ? 'border-red-400 bg-red-50/30' : 'border-gray-200 bg-gray-50/50 hover:bg-white'
+                errors.message ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
               }`}
               placeholder="Please describe your specific requirements (e.g., upcoming statutory audit deadline, GST dispute notice, company incorporation, or tax advisory)..."
               aria-required="true"
@@ -317,9 +320,9 @@ export const ContactForm: React.FC = () => {
           </div>
 
           {/* Direct Communication & Privacy Notice */}
-          <div className="text-[11px] text-charcoal-muted leading-relaxed bg-brand-surface p-3.5 rounded-lg border border-emerald-950/10">
+          <div className="text-xs text-charcoal-muted leading-relaxed bg-brand-surface p-4 rounded-xl border border-border">
             <p>
-              <strong>Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA KavithaVijay SRJ via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this demo website.
+              <strong className="text-brand-primary">Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA KavithaVijay SRJ via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this demo website.
             </p>
           </div>
 
@@ -328,7 +331,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-secondary shadow-md hover:shadow-lg transition-all focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-sm hover:shadow-subtle transition-all focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>
@@ -344,7 +347,7 @@ export const ContactForm: React.FC = () => {
               Direct consultation line:{' '}
               <a
                 href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                className="font-semibold text-brand-primary hover:text-brand-secondary underline"
+                className="font-semibold text-brand-primary hover:text-brand-deep underline"
               >
                 {FIRM_DATA.contact.primaryPhone}
               </a>

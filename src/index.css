@@ -5,14 +5,30 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #22252a;
-    background-color: #ffffff;
+    color: #24342F;
+    background-color: #FCFCFA;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Accessible focus indicators */
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #24342F;
+    background-color: #FCFCFA;
+    overflow-x: hidden;
+  }
+
+  /* Accessible focus indicators with high contrast */
   :focus-visible {
-    outline: 2px solid #0f3e2e;
+    outline: 2px solid #0F3E2E;
     outline-offset: 3px;
+  }
+
+  /* Elegant heading styles */
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.015em;
   }
 }
 
@@ -33,14 +49,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f3;
+  background: #F0F7F3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbdcd3;
+  background: #CBDCD3;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9abfb0;
+  background: #9ABFB0;
 }

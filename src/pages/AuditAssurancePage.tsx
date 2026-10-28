@@ -52,12 +52,12 @@ export const AuditAssurancePage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-brand-warm">
       {/* Header Banner */}
-      <section className="bg-gradient-to-b from-brand-primary to-brand-secondary text-white py-16 sm:py-20 border-b-4 border-gold">
+      <section className="bg-gradient-to-b from-brand-primary to-brand-deep text-white py-16 sm:py-20 border-b-2 border-gold">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-gold text-xs font-bold uppercase tracking-widest mb-4 border border-gold/30">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-gold text-xs font-bold uppercase tracking-wider mb-4 border border-gold/30">
               <ShieldCheck className="w-4 h-4 text-gold" />
               <span>Audit Spotlight Practice</span>
             </div>
@@ -72,34 +72,34 @@ export const AuditAssurancePage: React.FC = () => {
       </section>
 
       {/* Core Principle Strip */}
-      <section className="py-6 bg-brand-surface border-b border-emerald-950/10">
+      <section className="py-6 bg-brand-surface border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-charcoal">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-brand-pale text-brand-primary flex items-center justify-center shrink-0">
-                <FileCheck className="w-4 h-4 text-emerald-700" />
+              <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center shrink-0 border border-emerald-100">
+                <FileCheck className="w-4 h-4 text-emerald-800" />
               </div>
               <div>
-                <strong>ICAI Auditing Standards</strong>
-                <p className="text-charcoal-muted">Strict adherence to Standards on Auditing (SAs).</p>
+                <strong className="text-brand-primary">ICAI Auditing Standards</strong>
+                <p className="text-charcoal-muted mt-0.5">Strict adherence to Standards on Auditing (SAs).</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-brand-pale text-brand-primary flex items-center justify-center shrink-0">
-                <Search className="w-4 h-4 text-emerald-700" />
+              <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center shrink-0 border border-emerald-100">
+                <Search className="w-4 h-4 text-emerald-800" />
               </div>
               <div>
-                <strong>Evidence-Based Assurance</strong>
-                <p className="text-charcoal-muted">Substantive verification and analytical review procedures.</p>
+                <strong className="text-brand-primary">Evidence-Based Assurance</strong>
+                <p className="text-charcoal-muted mt-0.5">Substantive verification and analytical review procedures.</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-brand-pale text-brand-primary flex items-center justify-center shrink-0">
-                <Scale className="w-4 h-4 text-emerald-700" />
+              <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center shrink-0 border border-emerald-100">
+                <Scale className="w-4 h-4 text-emerald-800" />
               </div>
               <div>
-                <strong>Partner-Level Review</strong>
-                <p className="text-charcoal-muted">Direct oversight by CA KavithaVijay SRJ (FCA, CMA).</p>
+                <strong className="text-brand-primary">Partner-Level Review</strong>
+                <p className="text-charcoal-muted mt-0.5">Direct oversight by CA KavithaVijay SRJ (FCA, CMA).</p>
               </div>
             </div>
           </div>
@@ -125,14 +125,14 @@ export const AuditAssurancePage: React.FC = () => {
             {auditDetails.map((audit, idx) => (
               <div
                 key={audit.title}
-                className="bg-white rounded-xl p-6 border border-gray-200 shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider bg-brand-pale px-2.5 py-1 rounded">
+                    <span className="text-xs font-bold text-gold-dark uppercase tracking-wider bg-brand-pale px-2.5 py-1 rounded border border-emerald-100">
                       {audit.category}
                     </span>
-                    <span className="text-xs font-serif font-bold text-gray-400">
+                    <span className="text-xs font-serif font-bold text-charcoal-light">
                       0{idx + 1}
                     </span>
                   </div>
@@ -146,14 +146,14 @@ export const AuditAssurancePage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
+                <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs">
+                  <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     Source-Backed Practice
                   </span>
                   <Link
                     to="/contact"
-                    className="text-brand-primary font-semibold hover:text-brand-secondary"
+                    className="text-brand-primary font-semibold hover:text-brand-deep"
                   >
                     Enquire
                   </Link>
@@ -165,7 +165,7 @@ export const AuditAssurancePage: React.FC = () => {
       </section>
 
       {/* CTA Box */}
-      <section className="py-16 bg-brand-surface border-t border-emerald-950/10">
+      <section className="py-16 bg-brand-surface border-t border-border">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-5">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
             Plan Your Upcoming Audit Cycle
@@ -176,7 +176,7 @@ export const AuditAssurancePage: React.FC = () => {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-secondary shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
             >
               <span>Schedule Audit Consultation</span>
               <ArrowRight className="w-4 h-4 text-gold" />

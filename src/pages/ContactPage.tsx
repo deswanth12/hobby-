@@ -5,9 +5,9 @@ import { ContactForm } from '../components/ContactForm';
 
 export const ContactPage: React.FC = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-brand-warm">
       {/* Header Banner */}
-      <section className="bg-brand-surface py-14 sm:py-18 border-b border-emerald-950/10">
+      <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -42,70 +42,70 @@ export const ContactPage: React.FC = () => {
               {/* Cards */}
               <div className="space-y-4">
                 {/* Telephone */}
-                <div className="p-5 rounded-xl border border-gray-200 bg-brand-surface space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
                   <div className="flex items-center gap-3 text-brand-primary">
-                    <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Phone className="w-5 h-5 text-emerald-800" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider block">
+                      <span className="text-xs font-bold text-gold-dark uppercase tracking-wider block">
                         Telephone Enquiries
                       </span>
                       <span className="text-xs text-charcoal-muted">Click to call directly</span>
                     </div>
                   </div>
-                  <div className="pt-2 pl-12 space-y-1 text-sm font-semibold text-brand-primary">
+                  <div className="pt-2 pl-13 space-y-1 text-sm font-semibold text-brand-primary">
                     <div>
-                      <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-secondary hover:underline">
+                      <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-deep hover:underline">
                         {FIRM_DATA.contact.primaryPhone}
                       </a>
-                      <span className="text-xs font-normal text-gray-500 ml-2">(Primary Desk)</span>
+                      <span className="text-xs font-normal text-charcoal-light ml-2">(Primary Desk)</span>
                     </div>
                     <div>
-                      <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-secondary hover:underline">
+                      <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-deep hover:underline">
                         {FIRM_DATA.contact.secondaryPhone}
                       </a>
-                      <span className="text-xs font-normal text-gray-500 ml-2">(Alternative Line)</span>
+                      <span className="text-xs font-normal text-charcoal-light ml-2">(Alternative Line)</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="p-5 rounded-xl border border-gray-200 bg-brand-surface space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
                   <div className="flex items-center gap-3 text-brand-primary">
-                    <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Mail className="w-5 h-5 text-emerald-800" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider block">
+                      <span className="text-xs font-bold text-gold-dark uppercase tracking-wider block">
                         Written Enquiries
                       </span>
                       <span className="text-xs text-charcoal-muted">For proposals and documentation</span>
                     </div>
                   </div>
-                  <div className="pt-2 pl-12 text-sm font-semibold text-brand-primary">
-                    <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-secondary hover:underline break-all">
+                  <div className="pt-2 pl-13 text-sm font-semibold text-brand-primary">
+                    <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-deep hover:underline break-all">
                       {FIRM_DATA.contact.email}
                     </a>
                   </div>
                 </div>
 
                 {/* WhatsApp */}
-                <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/50 space-y-2">
+                <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-subtle space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center">
                         <MessageSquare className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[11px] font-bold text-emerald-900 uppercase tracking-wider block">
+                        <span className="text-xs font-bold text-emerald-900 uppercase tracking-wider block">
                           Instant Messaging
                         </span>
                         <span className="text-xs text-emerald-700">Official WhatsApp Business Desk</span>
                       </div>
                     </div>
                   </div>
-                  <div className="pt-2 pl-12">
+                  <div className="pt-2 pl-13">
                     <a
                       href={FIRM_DATA.contact.whatsappLink}
                       target="_blank"
@@ -118,20 +118,20 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Office Location */}
-                <div className="p-5 rounded-xl border border-gray-200 bg-brand-surface space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
                   <div className="flex items-center gap-3 text-brand-primary">
-                    <div className="w-9 h-9 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <MapPin className="w-5 h-5 text-emerald-800" />
                     </div>
                     <div>
-                      <span className="text-[11px] font-bold text-gold-dark uppercase tracking-wider block">
+                      <span className="text-xs font-bold text-gold-dark uppercase tracking-wider block">
                         Principal Location
                       </span>
                       <span className="text-xs text-charcoal-muted">Practice Chambers</span>
                     </div>
                   </div>
-                  <div className="pt-1 pl-12 text-xs text-charcoal leading-relaxed">
-                    <strong>Tirupati, Andhra Pradesh, India</strong>
+                  <div className="pt-1 pl-13 text-xs text-charcoal leading-relaxed">
+                    <strong className="text-brand-primary text-sm">Tirupati, Andhra Pradesh, India</strong>
                     <p className="text-charcoal-muted mt-0.5">
                       Consultation visits in Chennai, Bengaluru, Hyderabad, and Coimbatore arranged on client mandate.
                     </p>
@@ -140,9 +140,9 @@ export const ContactPage: React.FC = () => {
               </div>
 
               {/* ICAI Compliance note */}
-              <div className="p-4 rounded-xl bg-brand-pale border border-emerald-200 text-xs text-brand-primary flex items-start gap-2.5">
+              <div className="p-4 rounded-xl bg-brand-pale border border-emerald-200/80 text-xs text-brand-primary flex items-start gap-2.5">
                 <ShieldCheck className="w-5 h-5 text-gold-dark shrink-0 mt-0.5" />
-                <p>
+                <p className="leading-relaxed">
                   All initial inquiries are held in strict professional confidence under the ethical standards established by the Institute of Chartered Accountants of India.
                 </p>
               </div>

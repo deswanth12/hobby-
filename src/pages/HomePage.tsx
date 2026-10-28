@@ -12,24 +12,60 @@ import {
   Phone, 
   Mail, 
   Briefcase, 
-  Award,
   ChevronRight,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Rocket,
+  Factory,
+  Home,
+  ShoppingCart,
+  Stethoscope,
+  GraduationCap,
+  Globe,
+  UserCheck,
+  HeartHandshake
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { ContactForm } from '../components/ContactForm';
 
 export const HomePage: React.FC = () => {
+  // Dedicated icon map for all 10 industries
+  const getIndustryIcon = (industryName: string) => {
+    switch (industryName) {
+      case 'Startups':
+        return Rocket;
+      case 'MSMEs':
+        return Building2;
+      case 'Manufacturing':
+        return Factory;
+      case 'Real Estate & Construction':
+        return Home;
+      case 'Retail & Trading':
+        return ShoppingCart;
+      case 'Healthcare':
+        return Stethoscope;
+      case 'Education':
+        return GraduationCap;
+      case 'E-Commerce':
+        return Globe;
+      case 'Professionals & Consultants':
+        return UserCheck;
+      case 'NGOs & Trusts':
+        return HeartHandshake;
+      default:
+        return Building2;
+    }
+  };
+
   return (
-    <div className="bg-white">
+    <div className="bg-brand-warm">
       {/* =========================================================================
           1. HERO SECTION
           ========================================================================= */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-brand-surface via-white to-white pt-10 sm:pt-16 pb-16 lg:pb-24 border-b border-gray-100">
-        {/* Subtle geometric background accents inspired by the visiting card */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-pale/40 to-transparent pointer-events-none -z-0" />
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-emerald-100/30 blur-3xl pointer-events-none -z-0" />
+      <section className="relative overflow-hidden bg-gradient-to-b from-brand-surface via-brand-warm to-brand-warm pt-12 sm:pt-16 pb-16 lg:pb-24 border-b border-border">
+        {/* Subtle background gradient glow */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-brand-pale/50 to-transparent pointer-events-none -z-0" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-emerald-100/40 blur-3xl pointer-events-none -z-0" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -37,7 +73,7 @@ export const HomePage: React.FC = () => {
             {/* Left Column: Headlines & Core Value Proposition */}
             <div className="lg:col-span-7 space-y-6">
               
-              {/* Partner Badge */}
+              {/* Partner Credentials Eyebrow */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-pale border border-emerald-200/80 shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-gold" />
                 <span className="text-xs font-semibold text-brand-primary tracking-wide uppercase">
@@ -46,7 +82,7 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold text-brand-primary tracking-tight leading-[1.18]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-bold text-brand-primary tracking-tight leading-[1.16]">
                 Trusted Financial, Tax and Compliance Support
               </h1>
 
@@ -55,30 +91,30 @@ export const HomePage: React.FC = () => {
                 Professional support across audit, income tax, GST, corporate compliance, and business advisory. Dependable, compliant, and growth-oriented counsel rooted in extensive technical expertise and partner-level accountability.
               </p>
 
-              {/* Partner Credentials Card (Inspired by the Visiting Card) */}
-              <div className="bg-white rounded-xl border-l-4 border-l-gold border-y border-r border-gray-200 p-4 sm:p-5 shadow-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              {/* Partner Credentials Card (Inspired by Visiting Card) */}
+              <div className="bg-white rounded-xl border-l-4 border-l-gold border-y border-r border-border p-5 shadow-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <span className="text-[11px] font-semibold text-gold-dark uppercase tracking-widest block">
+                  <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
                     Practicing Chartered Accountant
                   </span>
-                  <h3 className="font-serif text-xl font-bold text-brand-primary">
+                  <h3 className="font-serif text-2xl font-bold text-brand-primary mt-0.5">
                     {FIRM_DATA.partner.name}
                   </h3>
-                  <p className="text-xs text-charcoal-muted font-medium mt-0.5">
+                  <p className="text-xs text-charcoal-muted font-medium mt-1">
                     {FIRM_DATA.partner.qualifications} • Headquartered in Tirupati
                   </p>
                 </div>
-                <div className="sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-gray-100">
-                  <span className="text-[11px] text-gray-500 uppercase tracking-wider block">Service Footprint</span>
+                <div className="sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-border">
+                  <span className="text-xs text-charcoal-light uppercase tracking-wider block">Service Footprint</span>
                   <span className="text-xs font-semibold text-brand-primary">Tirupati & Pan-India</span>
                 </div>
               </div>
 
               {/* Primary Call to Actions */}
-              <div className="flex flex-wrap items-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <a
                   href="#contact-section"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-secondary shadow-md hover:shadow-lg transition-all focus:ring-2 focus:ring-brand-primary"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm hover:shadow-subtle transition-all focus:ring-2 focus:ring-brand-primary"
                 >
                   <span>Contact Us</span>
                   <ArrowRight className="w-4 h-4 text-gold" />
@@ -93,7 +129,7 @@ export const HomePage: React.FC = () => {
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-secondary py-2.5 px-3 rounded-md hover:bg-gray-50 transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-deep py-2.5 px-3 rounded-lg hover:bg-brand-pale transition-colors"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
                   <span>Call {FIRM_DATA.contact.primaryPhone}</span>
@@ -101,27 +137,27 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Trust Tagline (Directly from Card) */}
-              <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-charcoal-light font-medium tracking-wider uppercase">
+              <div className="pt-2 flex flex-wrap items-center gap-2 sm:gap-3 text-xs text-charcoal-muted font-semibold tracking-wider uppercase">
                 <span className="text-brand-primary font-bold">TRUST</span>
-                <span>|</span>
+                <span>•</span>
                 <span className="text-brand-primary font-bold">EXPERTISE</span>
-                <span>|</span>
+                <span>•</span>
                 <span className="text-brand-primary font-bold">YOUR GROWTH PARTNER</span>
               </div>
             </div>
 
             {/* Right Column: Hero Visual Feature Box */}
             <div className="lg:col-span-5">
-              <div className="bg-gradient-to-br from-brand-primary to-brand-secondary text-white rounded-2xl shadow-xl p-6 sm:p-8 relative overflow-hidden border-2 border-gold/40">
-                {/* Decorative Pattern Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="bg-gradient-to-br from-brand-primary to-brand-deep text-white rounded-xl shadow-elevated p-6 sm:p-8 relative overflow-hidden border border-gold/40">
+                {/* Decorative Subtle Accent */}
+                <div className="absolute top-0 right-0 w-36 h-36 bg-gold/10 rounded-full blur-2xl pointer-events-none" />
 
                 <div className="flex items-center justify-between border-b border-emerald-800/80 pb-5 mb-6">
                   <div>
                     <span className="text-xs font-semibold uppercase tracking-wider text-gold">
                       Practice Snapshot
                     </span>
-                    <h3 className="font-serif text-xl font-bold text-white">
+                    <h3 className="font-serif text-2xl font-bold text-white">
                       Kavitha & Associates
                     </h3>
                   </div>
@@ -132,44 +168,44 @@ export const HomePage: React.FC = () => {
 
                 {/* 100% Source-Backed Core Metrics */}
                 <div className="grid grid-cols-2 gap-3.5 mb-6">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3.5 border border-white/10">
-                    <span className="block font-serif text-xl sm:text-2xl font-bold text-gold">FCA & CMA</span>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+                    <span className="block font-serif text-2xl font-bold text-gold">FCA & CMA</span>
                     <span className="text-xs text-emerald-100 font-medium">Dual Qualifications</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3.5 border border-white/10">
-                    <span className="block font-serif text-xl sm:text-2xl font-bold text-gold">5 Cities</span>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+                    <span className="block font-serif text-2xl font-bold text-gold">5 Cities</span>
                     <span className="text-xs text-emerald-100 font-medium">Regional Reach</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3.5 border border-white/10">
-                    <span className="block font-serif text-xl sm:text-2xl font-bold text-gold">PAN India</span>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+                    <span className="block font-serif text-2xl font-bold text-gold">PAN India</span>
                     <span className="text-xs text-emerald-100 font-medium">Client Coverage</span>
                   </div>
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-3.5 border border-white/10">
-                    <span className="block font-serif text-xl sm:text-2xl font-bold text-gold">Partner</span>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+                    <span className="block font-serif text-2xl font-bold text-gold">Partner</span>
                     <span className="text-xs text-emerald-100 font-medium">Direct Attention</span>
                   </div>
                 </div>
 
-                <div className="space-y-2.5 text-xs text-emerald-100/90 border-t border-emerald-800/80 pt-5">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-3 text-xs text-emerald-100/90 border-t border-emerald-800/80 pt-5">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span>Statutory, Internal & Tax Audit Rigor</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span>Direct Tax Assessment & Scrutiny Representation</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span>GST Returns, Audit & ITC Optimization</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle className="w-4 h-4 text-gold shrink-0" />
                     <span>RERA & MCA Company Law Compliance</span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-emerald-800/60 text-[11px] text-emerald-200/80 flex items-center justify-between">
+                <div className="mt-6 pt-4 border-t border-emerald-800/60 text-xs text-emerald-200/80 flex items-center justify-between">
                   <span>Practice Location: Tirupati, AP</span>
                   <span className="text-gold font-medium">Professional Practice</span>
                 </div>
@@ -183,14 +219,14 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           2. AUDIT SPOTLIGHT (Featured in PDF Page 1)
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-brand-pale/70 border-b border-emerald-950/10">
+      <section className="py-16 sm:py-20 bg-brand-pale/60 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-brand-primary text-gold text-xs font-bold uppercase tracking-widest mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-primary text-gold text-xs font-bold uppercase tracking-wider mb-3">
               <ShieldCheck className="w-3.5 h-3.5 text-gold" />
               <span>{FIRM_DATA.auditSpotlight.subtitle}</span>
             </div>
-            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary tracking-tight">
               {FIRM_DATA.auditSpotlight.title}
             </h2>
             <p className="mt-3 text-base text-charcoal-muted leading-relaxed">
@@ -203,19 +239,19 @@ export const HomePage: React.FC = () => {
             {FIRM_DATA.auditSpotlight.services.map((service, index) => (
               <div
                 key={service.name}
-                className="bg-white rounded-xl p-5 border border-emerald-950/10 shadow-subtle hover:shadow-card hover:border-gold/50 transition-all group flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-subtle hover:shadow-card hover:border-gold/60 transition-all group flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-bold text-gold-dark uppercase tracking-wider bg-brand-pale px-2 py-0.5 rounded border border-emerald-100">
+                  <div className="flex items-center justify-between mb-3.5">
+                    <span className="text-xs font-bold text-gold-dark uppercase tracking-wider bg-brand-pale px-2.5 py-1 rounded border border-emerald-100">
                       {service.statute}
                     </span>
-                    <span className="text-xs font-serif font-bold text-gray-400">
+                    <span className="text-xs font-serif font-bold text-charcoal-light">
                       0{index + 1}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-base font-bold text-brand-primary group-hover:text-brand-secondary transition-colors">
+                  <h3 className="font-serif text-lg font-bold text-brand-primary group-hover:text-brand-deep transition-colors">
                     {service.name}
                   </h3>
 
@@ -224,21 +260,21 @@ export const HomePage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-gray-100 text-[11px] text-emerald-700 font-medium flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <div className="mt-5 pt-3.5 border-t border-border/60 text-xs text-emerald-800 font-medium flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
                   <span>Partner-Supervised</span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-emerald-200/60">
+          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border">
             <Link
               to="/services/audit-assurance"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:text-brand-secondary underline underline-offset-4"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:text-brand-deep underline underline-offset-4"
             >
               <span>Explore Dedicated Audit & Assurance Practice</span>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4 text-gold-dark" />
             </Link>
 
             <a
@@ -254,7 +290,7 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           3. FULL SERVICE SPECTRUM (From PDF Page 2)
           ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white" id="services-overview">
+      <section className="py-16 sm:py-24 bg-brand-warm" id="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -273,7 +309,7 @@ export const HomePage: React.FC = () => {
               <div
                 key={category.id}
                 id={category.id}
-                className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-7 shadow-subtle hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between"
+                className="scroll-mt-24 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-subtle hover:shadow-card hover:border-emerald-300 transition-all flex flex-col justify-between"
               >
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-primary flex items-center justify-center mb-5 border border-emerald-100">
@@ -291,19 +327,19 @@ export const HomePage: React.FC = () => {
                     {category.shortDescription}
                   </p>
 
-                  <div className="border-t border-gray-100 pt-4">
-                    <span className="text-[11px] font-semibold text-gold-dark uppercase tracking-wider block mb-2">
+                  <div className="border-t border-border/60 pt-4">
+                    <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block mb-2.5">
                       Key Engagements:
                     </span>
-                    <ul className="space-y-1.5">
+                    <ul className="space-y-2">
                       {category.services.slice(0, 5).map((srv) => (
                         <li key={srv} className="text-xs text-charcoal flex items-start gap-2">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5" />
                           <span>{srv}</span>
                         </li>
                       ))}
                       {category.services.length > 5 && (
-                        <li className="text-[11px] text-brand-primary font-medium pl-5 pt-1">
+                        <li className="text-xs text-brand-primary font-medium pl-5 pt-1">
                           + {category.services.length - 5} additional specialized services
                         </li>
                       )}
@@ -311,10 +347,10 @@ export const HomePage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-gray-100">
+                <div className="pt-6 mt-6 border-t border-border">
                   <Link
                     to={`/services#${category.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-secondary"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-primary hover:text-brand-deep"
                   >
                     <span>View all {category.title}</span>
                     <ChevronRight className="w-3.5 h-3.5 text-gold-dark" />
@@ -329,7 +365,7 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           4. WHY WORK WITH KAVITHA & ASSOCIATES (Pillars from PDF)
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-brand-surface border-y border-emerald-950/10">
+      <section className="py-16 sm:py-20 bg-brand-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -347,7 +383,7 @@ export const HomePage: React.FC = () => {
             {FIRM_DATA.pillars.map((pillar, idx) => (
               <div
                 key={pillar.title}
-                className="bg-white rounded-xl p-6 border border-emerald-950/10 shadow-subtle flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-subtle flex flex-col justify-between"
               >
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center font-serif font-bold text-sm mb-4 border border-emerald-200">
@@ -364,7 +400,7 @@ export const HomePage: React.FC = () => {
             ))}
 
             {/* Regulatory Ethics Callout Card */}
-            <div className="bg-brand-primary text-white rounded-xl p-6 border-2 border-gold/40 shadow-subtle flex flex-col justify-between">
+            <div className="bg-brand-primary text-white rounded-xl p-6 border border-gold/40 shadow-subtle flex flex-col justify-between">
               <div>
                 <div className="w-10 h-10 rounded-lg bg-white/10 text-gold flex items-center justify-center font-serif font-bold text-sm mb-4 border border-gold/40">
                   <Shield className="w-5 h-5" />
@@ -376,7 +412,7 @@ export const HomePage: React.FC = () => {
                   Every engagement strictly complies with the standards of independence, statutory integrity, and data confidentiality established by the Institute of Chartered Accountants of India.
                 </p>
               </div>
-              <div className="pt-4 text-[11px] text-gold font-medium">
+              <div className="pt-4 text-xs text-gold font-medium">
                 Ethical & Transparent Standards
               </div>
             </div>
@@ -385,9 +421,9 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          5. INDUSTRIES WE SERVE
+          5. INDUSTRIES WE SERVE (With Distinct Icons)
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-white">
+      <section className="py-16 sm:py-20 bg-brand-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
@@ -403,20 +439,23 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
-            {FIRM_DATA.industries.map((ind) => (
-              <div
-                key={ind}
-                className="bg-brand-pale/50 hover:bg-brand-pale rounded-xl p-4 text-center border border-emerald-950/10 hover:border-gold/60 transition-all group"
-              >
-                <div className="w-8 h-8 rounded-full bg-white text-brand-primary flex items-center justify-center mx-auto mb-2.5 shadow-xs border border-emerald-100 group-hover:scale-105 transition-transform">
-                  <Award className="w-4 h-4 text-gold-dark" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            {FIRM_DATA.industries.map((ind) => {
+              const IconComp = getIndustryIcon(ind);
+              return (
+                <div
+                  key={ind}
+                  className="bg-white hover:bg-brand-pale rounded-xl p-4 text-center border border-border hover:border-gold/60 shadow-subtle hover:shadow-card transition-all group"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center mx-auto mb-3 shadow-xs border border-emerald-100 group-hover:bg-white group-hover:scale-105 transition-all">
+                    <IconComp className="w-5 h-5 text-brand-primary group-hover:text-brand-deep" />
+                  </div>
+                  <span className="text-xs font-semibold text-brand-primary block leading-tight">
+                    {ind}
+                  </span>
                 </div>
-                <span className="text-xs font-semibold text-brand-primary block">
-                  {ind}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -424,7 +463,7 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           6. SERVICE LOCATIONS & REACH (Source-backed)
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-brand-pale/40 border-t border-emerald-950/10">
+      <section className="py-16 sm:py-20 bg-brand-pale/50 border-t border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -445,19 +484,19 @@ export const HomePage: React.FC = () => {
                 className={`rounded-xl p-5 border text-center transition-all ${
                   loc.type === 'Primary Chambers'
                     ? 'bg-white border-2 border-brand-primary shadow-card'
-                    : 'bg-white border-gray-200 shadow-subtle'
+                    : 'bg-white border-border shadow-subtle hover:border-emerald-300'
                 }`}
               >
-                <div className="w-10 h-10 rounded-full bg-brand-pale text-brand-primary flex items-center justify-center mx-auto mb-3">
+                <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center mx-auto mb-3">
                   <MapPin className="w-5 h-5 text-emerald-800" />
                 </div>
                 <h3 className="font-serif text-lg font-bold text-brand-primary">{loc.city}</h3>
                 <span className="text-xs text-charcoal-muted block">{loc.state}</span>
                 <span
-                  className={`inline-block mt-3 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider ${
+                  className={`inline-block mt-3 px-2 py-0.5 rounded text-xs font-semibold uppercase tracking-wider ${
                     loc.type === 'Primary Chambers'
                       ? 'bg-brand-primary text-white'
-                      : 'bg-gray-100 text-charcoal'
+                      : 'bg-brand-pale text-brand-primary border border-emerald-100'
                   }`}
                 >
                   {loc.type}
@@ -477,7 +516,7 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           7. CONTACT & CONSULTATION SECTION
           ========================================================================= */}
-      <section className="py-16 sm:py-24 bg-white" id="contact-section">
+      <section className="py-16 sm:py-24 bg-brand-warm" id="contact-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
@@ -499,16 +538,16 @@ export const HomePage: React.FC = () => {
               <div className="space-y-4 pt-2">
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="flex items-start gap-4 p-4 rounded-xl border border-gray-200 bg-brand-surface hover:border-brand-primary transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white hover:border-brand-primary transition-all group shadow-subtle"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:bg-brand-deep transition-colors">
                     <Phone className="w-5 h-5 text-gold" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
                       Direct Telephone Line
                     </span>
-                    <span className="text-sm font-bold text-brand-primary group-hover:text-brand-secondary">
+                    <span className="text-sm font-bold text-brand-primary group-hover:text-brand-deep">
                       {FIRM_DATA.contact.primaryPhone}
                     </span>
                     <span className="block text-xs text-charcoal-muted">
@@ -519,16 +558,16 @@ export const HomePage: React.FC = () => {
 
                 <a
                   href={`mailto:${FIRM_DATA.contact.email}`}
-                  className="flex items-start gap-4 p-4 rounded-xl border border-gray-200 bg-brand-surface hover:border-brand-primary transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white hover:border-brand-primary transition-all group shadow-subtle"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:bg-brand-deep transition-colors">
                     <Mail className="w-5 h-5 text-gold" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
                       Official Practice Email
                     </span>
-                    <span className="text-sm font-bold text-brand-primary group-hover:text-brand-secondary break-all">
+                    <span className="text-sm font-bold text-brand-primary group-hover:text-brand-deep break-all">
                       {FIRM_DATA.contact.email}
                     </span>
                     <span className="block text-xs text-charcoal-muted">
@@ -537,12 +576,12 @@ export const HomePage: React.FC = () => {
                   </div>
                 </a>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl border border-gray-200 bg-brand-surface">
+                <div className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white shadow-subtle">
                   <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0">
                     <MapPin className="w-5 h-5 text-gold" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
                       Principal Practice Chambers
                     </span>
                     <span className="text-sm font-bold text-brand-primary">

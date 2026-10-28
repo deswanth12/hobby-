@@ -70,9 +70,9 @@ export const IndustriesPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-brand-warm">
       {/* Header Banner */}
-      <section className="bg-brand-surface py-14 sm:py-18 border-b border-emerald-950/10">
+      <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -97,12 +97,12 @@ export const IndustriesPage: React.FC = () => {
               return (
                 <div
                   key={ind.name}
-                  className="bg-white rounded-xl p-6 sm:p-7 border border-gray-200 shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
+                  className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center gap-3.5 mb-4">
                       <div className="w-11 h-11 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center shrink-0 border border-emerald-200">
-                        <IconComponent className="w-6 h-6 text-brand-primary" />
+                        <IconComponent className="w-5 h-5 text-brand-primary" />
                       </div>
                       <h3 className="font-serif text-lg font-bold text-brand-primary">
                         {ind.name}
@@ -114,14 +114,14 @@ export const IndustriesPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
+                  <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+                    <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5" />
                       Tailored Compliance Scope
                     </span>
                     <Link
                       to="/contact"
-                      className="text-xs font-semibold text-brand-primary hover:text-brand-secondary"
+                      className="text-xs font-semibold text-brand-primary hover:text-brand-deep"
                     >
                       Consult Practice →
                     </Link>
@@ -134,7 +134,7 @@ export const IndustriesPage: React.FC = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 bg-brand-surface border-t border-emerald-950/10 text-center">
+      <section className="py-16 bg-brand-surface border-t border-border text-center">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
             Operating in a Specialized Niche?
@@ -145,7 +145,7 @@ export const IndustriesPage: React.FC = () => {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-secondary shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
             >
               <span>Connect with Our Practice</span>
               <ArrowRight className="w-4 h-4 text-gold" />

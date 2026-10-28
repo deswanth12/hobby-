@@ -5,9 +5,9 @@ import { FIRM_DATA } from '../data/firmData';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-brand-warm">
       {/* Header Banner */}
-      <section className="bg-brand-surface py-14 sm:py-18 border-b border-emerald-950/10">
+      <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
@@ -29,11 +29,11 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div className="lg:col-span-5">
-              <div className="bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl p-8 text-white border-2 border-gold/40 shadow-xl relative overflow-hidden">
-                <div className="w-16 h-16 rounded-2xl bg-white/10 border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold mb-6">
+              <div className="bg-gradient-to-br from-brand-primary to-brand-deep rounded-xl p-8 text-white border border-gold/40 shadow-card relative overflow-hidden">
+                <div className="w-14 h-14 rounded-xl bg-white/10 border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold mb-6">
                   CA
                 </div>
-                <span className="text-xs uppercase tracking-widest text-gold font-semibold block">
+                <span className="text-xs uppercase tracking-wider text-gold font-semibold block">
                   Practicing Chartered Accountant
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">
@@ -44,21 +44,21 @@ export const AboutPage: React.FC = () => {
                 </p>
 
                 <div className="mt-6 pt-6 border-t border-emerald-800/80 space-y-3 text-xs text-emerald-100">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
                     <span>Member of Institute of Chartered Accountants of India (ICAI)</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
                     <span>Cost and Management Accountant (CMA) Credentials</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="w-4 h-4 text-gold shrink-0" />
                     <span>Principal Operating Practice: Tirupati, Andhra Pradesh</span>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-emerald-800/60 text-[11px] text-emerald-300">
+                <div className="mt-6 pt-4 border-t border-emerald-800/60 text-xs text-emerald-200/90 leading-relaxed">
                   Direct engagement on complex audits, scrutiny assessments, and corporate structuring.
                 </div>
               </div>
@@ -84,10 +84,10 @@ export const AboutPage: React.FC = () => {
               <div className="bg-brand-pale rounded-xl p-5 border border-emerald-200/80 flex items-center gap-4">
                 <ShieldCheck className="w-8 h-8 text-brand-primary shrink-0" />
                 <div>
-                  <span className="text-xs font-semibold text-gold-dark uppercase tracking-widest block">
+                  <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
                     Core Firm Creed
                   </span>
-                  <p className="font-serif text-base font-bold text-brand-primary">
+                  <p className="font-serif text-lg font-bold text-brand-primary">
                     Trust • Expertise • Your Growth Partner
                   </p>
                 </div>
@@ -99,25 +99,25 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Vision & Mission / Commitment */}
-      <section className="py-16 bg-brand-surface border-y border-emerald-950/10">
+      <section className="py-16 bg-brand-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-subtle space-y-3">
+            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3">
               <div className="w-12 h-12 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
                 <Target className="w-6 h-6 text-brand-primary" />
               </div>
               <h3 className="font-serif text-xl font-bold text-brand-primary">Our Professional Mission</h3>
-              <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
+              <p className="text-sm text-charcoal-muted leading-relaxed">
                 To deliver uncompromising audit quality, strategic tax advisory, and transparent compliance guidance that empowers enterprises to operate with regulatory confidence and sustainable fiscal discipline.
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl border border-gray-200 shadow-subtle space-y-3">
+            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3">
               <div className="w-12 h-12 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
                 <Eye className="w-6 h-6 text-brand-primary" />
               </div>
               <h3 className="font-serif text-xl font-bold text-brand-primary">Our Operating Vision</h3>
-              <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
+              <p className="text-sm text-charcoal-muted leading-relaxed">
                 To stand as the most dependable and accessible growth partner for emerging businesses, established corporations, and builders across India, driven by continuous learning and ethical practice.
               </p>
             </div>
@@ -126,7 +126,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Call to action */}
-      <section className="py-16 text-center">
+      <section className="py-16 text-center bg-brand-warm">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
             Explore How We Can Support Your Compliance Needs
@@ -137,7 +137,7 @@ export const AboutPage: React.FC = () => {
           <div className="mt-6 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-secondary shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-all"
             >
               <span>Contact the Practice</span>
               <ArrowRight className="w-4 h-4 text-gold" />
