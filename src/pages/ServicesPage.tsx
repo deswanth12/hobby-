@@ -10,7 +10,7 @@ import { SEOHead } from '../components/SEOHead';
 
 export const ServicesPage: React.FC = () => {
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Comprehensive Accounting, Audit & Tax Services"
         description="Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications."
@@ -56,7 +56,7 @@ export const ServicesPage: React.FC = () => {
 
             <Link
               to="/services/audit-assurance"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0 shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0 shadow-sm btn-tactile"
             >
               <span>View Audit Spotlight</span>
               <ArrowRight className="w-4 h-4 text-gold" />
@@ -72,7 +72,7 @@ export const ServicesPage: React.FC = () => {
             <div
               key={category.id}
               id={category.id}
-              className="scroll-mt-24 p-6 sm:p-8 lg:p-10 rounded-xl border border-border bg-white hover:border-emerald-300 shadow-subtle hover:shadow-card transition-all"
+              className="scroll-mt-24 p-6 sm:p-8 lg:p-10 rounded-xl border border-border bg-white shadow-subtle card-tactile"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 

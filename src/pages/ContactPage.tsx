@@ -6,7 +6,7 @@ import { SEOHead } from '../components/SEOHead';
 
 export const ContactPage: React.FC = () => {
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Contact CA KavithaVijay SRJ | Tirupati Practice Chambers"
         description="Schedule a consultation with CA KavithaVijay SRJ. Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries."
@@ -48,7 +48,7 @@ export const ContactPage: React.FC = () => {
               {/* Cards */}
               <div className="space-y-4">
                 {/* Telephone */}
-                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2 card-tactile">
                   <div className="flex items-center gap-3 text-brand-primary">
                     <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Phone className="w-5 h-5 text-emerald-800" />
@@ -62,13 +62,13 @@ export const ContactPage: React.FC = () => {
                   </div>
                   <div className="pt-2 pl-13 space-y-1 text-sm font-semibold text-brand-primary">
                     <div>
-                      <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-deep hover:underline">
+                      <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-deep hover:underline btn-tactile inline-block">
                         {FIRM_DATA.contact.primaryPhone}
                       </a>
                       <span className="text-xs font-normal text-charcoal-light ml-2">(Primary Desk)</span>
                     </div>
                     <div>
-                      <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-deep hover:underline">
+                      <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-deep hover:underline btn-tactile inline-block">
                         {FIRM_DATA.contact.secondaryPhone}
                       </a>
                       <span className="text-xs font-normal text-charcoal-light ml-2">(Alternative Line)</span>
@@ -77,7 +77,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Email */}
-                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2 card-tactile">
                   <div className="flex items-center gap-3 text-brand-primary">
                     <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Mail className="w-5 h-5 text-emerald-800" />
@@ -90,14 +90,14 @@ export const ContactPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="pt-2 pl-13 text-sm font-semibold text-brand-primary">
-                    <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-deep hover:underline break-all">
+                    <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-deep hover:underline break-all btn-tactile inline-block">
                       {FIRM_DATA.contact.email}
                     </a>
                   </div>
                 </div>
 
                 {/* WhatsApp */}
-                <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-subtle space-y-2">
+                <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-subtle space-y-2 card-tactile">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center">
@@ -116,7 +116,7 @@ export const ContactPage: React.FC = () => {
                       href={FIRM_DATA.contact.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 transition-colors shadow-xs"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-emerald-700 text-white text-xs font-semibold hover:bg-emerald-800 transition-colors shadow-xs btn-tactile"
                     >
                       <span>Start WhatsApp Conversation</span>
                     </a>
@@ -124,7 +124,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Office Location */}
-                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2">
+                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2 card-tactile">
                   <div className="flex items-center gap-3 text-brand-primary">
                     <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <MapPin className="w-5 h-5 text-emerald-800" />

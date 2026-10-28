@@ -53,7 +53,7 @@ export const AuditAssurancePage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Audit & Assurance Practice | Statutory, Tax & Internal Audits"
         description="Dedicated Audit & Assurance practice: Statutory Audits under Companies Act, Tax Audits under Sec 44AB, Internal Audits, Concurrent Audits, and Due Diligence."
@@ -131,7 +131,7 @@ export const AuditAssurancePage: React.FC = () => {
             {auditDetails.map((audit, idx) => (
               <div
                 key={audit.title}
-                className="bg-white rounded-xl p-6 border border-border shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-subtle card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -181,7 +181,7 @@ export const AuditAssurancePage: React.FC = () => {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
             >
               <span>Schedule Audit Consultation</span>
               <ArrowRight className="w-4 h-4 text-gold" />

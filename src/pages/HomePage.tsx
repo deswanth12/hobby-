@@ -57,7 +57,7 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Chartered Accountants & Cost Accountants | Tirupati & Pan India"
         description="Independent Chartered Accountancy practice led by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional support across Statutory Audit, Income Tax, GST, Corporate Compliance, and Strategic Advisory."
@@ -114,7 +114,7 @@ export const HomePage: React.FC = () => {
               <div className="flex flex-wrap items-center gap-3.5 pt-1">
                 <a
                   href="#contact-section"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary btn-tactile"
                 >
                   <span>Request Consultation</span>
                   <ArrowRight className="w-4 h-4 text-gold" />
@@ -122,14 +122,14 @@ export const HomePage: React.FC = () => {
 
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors focus:ring-2 focus:ring-brand-primary"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors focus:ring-2 focus:ring-brand-primary btn-tactile"
                 >
                   <span>Explore Services</span>
                 </Link>
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-deep py-2 px-3 rounded-lg hover:bg-brand-pale transition-colors"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-deep py-2 px-3 rounded-lg hover:bg-brand-pale transition-colors btn-tactile"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
                   <span>Call {FIRM_DATA.contact.primaryPhone}</span>
@@ -237,7 +237,7 @@ export const HomePage: React.FC = () => {
             {FIRM_DATA.auditSpotlight.services.map((service, index) => (
               <div
                 key={service.name}
-                className="bg-white rounded-xl p-6 border border-border shadow-card hover:border-gold/60 transition-colors flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-card card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -306,7 +306,7 @@ export const HomePage: React.FC = () => {
               <div
                 key={category.id}
                 id={category.id}
-                className="scroll-mt-24 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-card hover:border-emerald-300 transition-colors flex flex-col justify-between"
+                className="scroll-mt-24 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-card card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-primary flex items-center justify-center mb-5 border border-emerald-100">
@@ -439,7 +439,7 @@ export const HomePage: React.FC = () => {
               return (
                 <div
                   key={ind}
-                  className="bg-white hover:bg-brand-pale rounded-xl p-4 text-center border border-border hover:border-gold/60 shadow-subtle hover:shadow-card transition-colors group"
+                  className="bg-white rounded-xl p-4 text-center border border-border shadow-subtle card-tactile group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center mx-auto mb-2.5 border border-emerald-100 group-hover:bg-white transition-colors">
                     <IconComp className="w-5 h-5 text-brand-primary" />
@@ -475,10 +475,10 @@ export const HomePage: React.FC = () => {
             {FIRM_DATA.serviceFootprint.map((loc) => (
               <div
                 key={loc.city}
-                className={`rounded-xl p-5 border text-center transition-colors ${
+                className={`rounded-xl p-5 border text-center card-tactile ${
                   loc.type === 'Primary Chambers'
                     ? 'bg-white border-2 border-brand-primary shadow-card'
-                    : 'bg-white border-border shadow-subtle hover:border-emerald-300'
+                    : 'bg-white border-border shadow-subtle'
                 }`}
               >
                 <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center mx-auto mb-3 border border-emerald-100">
@@ -532,7 +532,7 @@ export const HomePage: React.FC = () => {
               <div className="space-y-4 pt-1">
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white hover:border-brand-primary transition-colors group shadow-subtle hover:shadow-card"
+                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white group shadow-subtle card-tactile btn-tactile"
                 >
                   <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:bg-brand-deep transition-colors">
                     <Phone className="w-5 h-5 text-gold" />
@@ -552,7 +552,7 @@ export const HomePage: React.FC = () => {
 
                 <a
                   href={`mailto:${FIRM_DATA.contact.email}`}
-                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white hover:border-brand-primary transition-colors group shadow-subtle hover:shadow-card"
+                  className="flex items-start gap-4 p-4 rounded-xl border border-border bg-white group shadow-subtle card-tactile btn-tactile"
                 >
                   <div className="w-10 h-10 rounded-lg bg-brand-primary text-white flex items-center justify-center shrink-0 group-hover:bg-brand-deep transition-colors">
                     <Mail className="w-5 h-5 text-gold" />

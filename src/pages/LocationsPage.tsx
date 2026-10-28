@@ -6,7 +6,7 @@ import { SEOHead } from '../components/SEOHead';
 
 export const LocationsPage: React.FC = () => {
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Service Footprint & Regional Presence | Tirupati & South India"
         description="Principal practice chambers located in Tirupati, Andhra Pradesh, with active regional client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore."
@@ -57,12 +57,12 @@ export const LocationsPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="lg:col-span-4 bg-brand-surface p-6 rounded-xl border border-border text-center space-y-2">
+              <div className="lg:col-span-4 bg-brand-surface p-6 rounded-xl border border-border text-center space-y-2 card-tactile">
                 <span className="text-xs text-gold-dark uppercase tracking-wider font-semibold block">In-Person Consultations</span>
                 <p className="text-xs text-charcoal-muted">Available by prior appointment for founders, directors, and taxpayers.</p>
                 <Link
                   to="/contact"
-                  className="inline-block mt-3 px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shadow-sm"
+                  className="inline-block mt-3 px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shadow-sm btn-tactile"
                 >
                   Schedule Appointment
                 </Link>
@@ -87,7 +87,7 @@ export const LocationsPage: React.FC = () => {
             {FIRM_DATA.serviceFootprint.filter(f => f.city !== 'Tirupati').map((hub) => (
               <div
                 key={hub.city}
-                className="bg-white rounded-xl p-6 border border-border shadow-subtle hover:border-brand-primary transition-all flex flex-col justify-between"
+                className="bg-white rounded-xl p-6 border border-border shadow-subtle card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center mb-4 border border-emerald-100">
@@ -127,7 +127,7 @@ export const LocationsPage: React.FC = () => {
 
             <Link
               to="/contact"
-              className="px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0"
+              className="px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0 btn-tactile"
             >
               Consult Remotely
             </Link>

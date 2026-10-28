@@ -87,7 +87,7 @@ export const Navbar: React.FC = () => {
       {/* Main Navbar */}
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between" aria-label="Main Navigation">
         {/* Logo and Brand Title */}
-        <Link to="/" className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-brand-primary rounded-lg p-1 transition-all">
+        <Link to="/" className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-brand-primary rounded-lg p-1 btn-tactile">
           {/* Refined Badge inspired by CA seal & corporate card */}
           <div className="w-11 h-11 rounded-lg bg-brand-primary flex items-center justify-center text-white border border-gold/60 shadow-sm group-hover:border-gold group-hover:shadow-subtle transition-all">
             <span className="font-serif font-bold text-xl tracking-wider text-gold-light">KA</span>
@@ -215,14 +215,14 @@ export const Navbar: React.FC = () => {
             href={FIRM_DATA.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 border border-emerald-200 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 border border-emerald-200 transition-colors btn-tactile"
             title="Chat directly via WhatsApp"
           >
             <span>WhatsApp</span>
           </a>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-brand-primary"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-brand-primary btn-tactile"
           >
             Schedule Consultation
           </Link>
@@ -232,17 +232,17 @@ export const Navbar: React.FC = () => {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-brand-primary hover:bg-brand-pale focus:outline-none focus:ring-2 focus:ring-brand-primary"
+          className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-brand-primary hover:bg-brand-pale focus:outline-none focus:ring-2 focus:ring-brand-primary btn-tactile"
           aria-expanded={isOpen}
           aria-label="Toggle navigation menu"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isOpen ? <X className="w-6 h-6 transition-transform rotate-90" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {/* Mobile Drawer with Accordion for Services */}
       {isOpen && (
-        <div className="lg:hidden border-t border-border bg-brand-warm px-4 pt-3 pb-6 shadow-card space-y-3">
+        <div className="lg:hidden border-t border-border bg-brand-warm px-4 pt-3 pb-6 shadow-card space-y-3 animate-fadeIn">
           <div className="space-y-1">
             <Link
               to="/"

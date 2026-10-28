@@ -5,7 +5,7 @@ import { SEOHead } from '../components/SEOHead';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="min-h-[70vh] flex items-center justify-center bg-brand-warm px-4 py-16">
+    <div className="min-h-[70vh] flex items-center justify-center bg-brand-warm px-4 py-16 page-reveal">
       <SEOHead
         title="404 - Page Not Found"
         description="The requested page could not be found. Return to Kavitha & Associates homepage or contact our practice chambers."
@@ -27,7 +27,7 @@ export const NotFoundPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
             to="/"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shadow-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shadow-sm btn-tactile"
           >
             <Home className="w-4 h-4 text-gold" />
             <span>Return to Home</span>
@@ -35,7 +35,7 @@ export const NotFoundPage: React.FC = () => {
 
           <Link
             to="/contact"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-border text-charcoal text-xs font-semibold hover:bg-white transition-all shadow-subtle"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg border border-border text-charcoal text-xs font-semibold hover:bg-white transition-all shadow-subtle btn-tactile"
           >
             <Phone className="w-4 h-4 text-brand-primary" />
             <span>Contact Office</span>

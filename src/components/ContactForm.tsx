@@ -126,7 +126,7 @@ export const ContactForm: React.FC = () => {
               href={generateWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition-colors shadow-sm"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition-colors shadow-sm btn-tactile"
             >
               <MessageSquare className="w-4 h-4 text-gold-light" />
               <span>Send via WhatsApp</span>
@@ -134,7 +134,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="button"
               onClick={handleReset}
-              className="px-6 py-3 rounded-lg border border-border text-charcoal hover:bg-brand-pale text-sm font-medium transition-colors"
+              className="px-6 py-3 rounded-lg border border-border text-charcoal hover:bg-brand-pale text-sm font-medium transition-colors btn-tactile"
             >
               Reset / Edit Details
             </button>
@@ -331,7 +331,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50 btn-tactile"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>

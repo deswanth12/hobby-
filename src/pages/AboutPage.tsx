@@ -6,7 +6,7 @@ import { SEOHead } from '../components/SEOHead';
 
 export const AboutPage: React.FC = () => {
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="About CA KavithaVijay SRJ & Practice Credentials"
         description="Learn about Kavitha & Associates, founded by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional audit, direct taxation, GST, and corporate governance practice."
@@ -108,7 +108,7 @@ export const AboutPage: React.FC = () => {
       <section className="py-16 bg-brand-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3">
+            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3 card-tactile">
               <div className="w-12 h-12 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
                 <Target className="w-6 h-6 text-brand-primary" />
               </div>
@@ -118,7 +118,7 @@ export const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3">
+            <div className="bg-white p-8 rounded-xl border border-border shadow-subtle space-y-3 card-tactile">
               <div className="w-12 h-12 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center">
                 <Eye className="w-6 h-6 text-brand-primary" />
               </div>
@@ -143,14 +143,14 @@ export const AboutPage: React.FC = () => {
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
             >
               <span>Contact the Practice</span>
               <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
             <Link
               to="/services"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors btn-tactile"
             >
               <span>View Services</span>
             </Link>

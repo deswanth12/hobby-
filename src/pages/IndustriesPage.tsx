@@ -70,7 +70,7 @@ export const IndustriesPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-brand-warm">
+    <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Industry Expertise | Startups, MSMEs, Manufacturing, Healthcare"
         description="Sector-specific Chartered Accountancy expertise across 10 commercial sectors: Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, Education, and NGOs."
@@ -102,7 +102,7 @@ export const IndustriesPage: React.FC = () => {
               return (
                 <div
                   key={ind.name}
-                  className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-subtle hover:border-brand-primary hover:shadow-card transition-all flex flex-col justify-between"
+                  className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-subtle card-tactile flex flex-col justify-between"
                 >
                   <div>
                     <div className="flex items-center gap-3.5 mb-4">
@@ -149,7 +149,7 @@ export const IndustriesPage: React.FC = () => {
           <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
             >
               <span>Connect with Our Practice</span>
               <ArrowRight className="w-4 h-4 text-gold" />
