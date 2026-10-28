@@ -131,9 +131,9 @@ export const LocationsPage: React.FC = () => {
           <div className="mt-10 p-4 rounded-lg bg-amber-50/70 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
             <ShieldAlert className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
             <div>
-              <strong>Disclosure Regarding Practice Locations:</strong>
+              <strong>Practice Locations Notice (For Discussion):</strong>
               <p className="mt-0.5 text-amber-800">
-                In strict adherence to ICAI website guidelines, Kavitha & Associates notes that Tirupati serves as our registered operating practice. Chennai, Bengaluru, Hyderabad, and Coimbatore reflect cities where we actively manage client mandates and field audits, not standalone physical branch establishments.
+                This presentation reflects Tirupati as the principal practice location and Chennai, Bengaluru, Hyderabad, and Coimbatore as active regional client coverage corridors. The exact classification and branch disclosure will be confirmed with the firm before production launch.
               </p>
             </div>
           </div>

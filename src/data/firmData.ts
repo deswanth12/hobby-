@@ -90,7 +90,7 @@ export const FIRM_DATA: FirmProfile = {
       city: "Tirupati", 
       state: "Andhra Pradesh", 
       type: "Primary Chambers",
-      description: "Principal operating practice and registered chambers of CA KavithaVijay SRJ."
+      description: "Principal operating practice of CA KavithaVijay SRJ."
     },
     { 
       city: "Chennai", 
@@ -286,6 +286,6 @@ export const FIRM_DATA: FirmProfile = {
   ],
   verificationNotes: {
     experienceNote: "Pending Client Clarification: The supplied profile states 'more than ten years of robust corporate experience'. As per project guidelines, this claim is set aside from marketing headlines until CA KavithaVijay SRJ confirms the exact wording, dates, and regulatory scope.",
-    branchesNote: "Verified: Tirupati is the registered primary practice. The 4 additional cities (Chennai, Bengaluru, Hyderabad, Coimbatore) are presented strictly as active client service coverage corridors, not brick-and-mortar branch offices."
+    branchesNote: "Locations to confirm: Tirupati is presented as the primary practice base; Chennai, Bengaluru, Hyderabad, and Coimbatore are presented as regional client coverage areas. Confirm operational wording with the client."
   }
 };

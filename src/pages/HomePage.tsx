@@ -170,8 +170,8 @@ export const HomePage: React.FC = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-emerald-800/60 text-[11px] text-emerald-200/80 flex items-center justify-between">
-                  <span>Registered: Tirupati, AP</span>
-                  <span className="text-gold font-semibold">ICAI Compliant</span>
+                  <span>Practice Location: Tirupati, AP</span>
+                  <span className="text-gold font-medium">Professional Practice</span>
                 </div>
               </div>
             </div>
@@ -468,7 +468,7 @@ export const HomePage: React.FC = () => {
 
           <div className="mt-8 text-center text-xs text-charcoal-muted max-w-2xl mx-auto">
             <p>
-              * Source-Backed Note: Tirupati serves as the registered practice. Client consultations and field audits in Chennai, Bengaluru, Hyderabad, and Coimbatore are arranged on scheduled mandate requirements.
+              * Operational Note (For Discussion): Proposed representation listing Tirupati as the primary practice location with scheduled client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore. Subject to client confirmation.
             </p>
           </div>
         </div>

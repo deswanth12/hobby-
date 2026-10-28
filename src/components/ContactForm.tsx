@@ -104,20 +104,20 @@ export const ContactForm: React.FC = () => {
 
           <div className="space-y-2">
             <h3 className="font-serif text-2xl font-bold text-brand-primary">
-              Enquiry Form Verified
+              Consultation Inquiry Prepared
             </h3>
             <p className="text-sm text-charcoal-muted max-w-md mx-auto">
-              Thank you, <strong>{formData.fullName}</strong>. Your consultation details for{' '}
-              <strong>{formData.serviceCategory}</strong> have been validated.
+              Thank you, <strong>{formData.fullName}</strong>. Your inquiry for{' '}
+              <strong>{formData.serviceCategory}</strong> has been formatted.
             </p>
           </div>
 
           <div className="bg-brand-pale border border-emerald-200 rounded-xl p-4 max-w-lg mx-auto text-left text-xs text-brand-primary space-y-2">
             <div className="font-semibold text-emerald-900 flex items-center gap-1.5">
-              <span>Demo Presentation Notice</span>
+              <span>Direct Communication Step</span>
             </div>
             <p className="text-emerald-800">
-              For this client evaluation demo, entries are held locally without transmitting to an external database. You can instantly transmit these details directly to CA KavithaVijay SRJ via WhatsApp or direct phone.
+              This demo formats your message so you can transmit it directly to CA KavithaVijay SRJ via WhatsApp or direct phone call. Web entries are not stored on an external database.
             </p>
           </div>
 
@@ -129,14 +129,14 @@ export const ContactForm: React.FC = () => {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm transition-colors shadow-sm"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Forward via WhatsApp</span>
+              <span>Send via WhatsApp</span>
             </a>
             <button
               type="button"
               onClick={handleReset}
               className="px-6 py-3 rounded-lg border border-gray-300 text-charcoal hover:bg-gray-50 text-sm font-medium transition-colors"
             >
-              Submit Another Enquiry
+              Reset / Edit Details
             </button>
           </div>
         </div>
@@ -316,10 +316,10 @@ export const ContactForm: React.FC = () => {
             )}
           </div>
 
-          {/* Privacy & Professional Standard Note */}
-          <div className="text-[11px] text-charcoal-muted leading-relaxed bg-brand-surface p-3 rounded-lg border border-emerald-950/5">
+          {/* Direct Communication & Privacy Notice */}
+          <div className="text-[11px] text-charcoal-muted leading-relaxed bg-brand-surface p-3.5 rounded-lg border border-emerald-950/10">
             <p>
-              <strong>Data Privacy & Confidentiality:</strong> Kavitha & Associates strictly adheres to Chartered Accountancy standards of confidentiality. Information shared here is used exclusively to evaluate and respond to your professional consultation request. We never solicit or collect Aadhaar, PAN numbers, or financial files via web forms.
+              <strong>Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA KavithaVijay SRJ via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this demo website.
             </p>
           </div>
 
@@ -331,11 +331,11 @@ export const ContactForm: React.FC = () => {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-secondary shadow-md hover:shadow-lg transition-all focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
             >
               {isSubmitting ? (
-                <span>Validating...</span>
+                <span>Formatting Inquiry...</span>
               ) : (
                 <>
                   <Send className="w-4 h-4 text-gold" />
-                  <span>Submit Consultation Request</span>
+                  <span>Prepare WhatsApp Inquiry</span>
                 </>
               )}
             </button>
