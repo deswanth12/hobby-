@@ -169,7 +169,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             <span>Chartered Accountants & Cost Accountants</span>
             <span className="text-emerald-500/60">•</span>
-            <Link to="/contact" className="hover:text-gold transition-colors">Client Support</Link>
+            <Link to="/contact" className="hover:text-gold transition-colors">Client Support & Privacy Notice</Link>
           </div>
         </div>
       </div>

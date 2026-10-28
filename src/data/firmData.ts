@@ -154,7 +154,7 @@ export const FIRM_DATA: FirmProfile = {
   auditSpotlight: {
     title: "Audit & Assurance Services",
     subtitle: "AUDIT SPOTLIGHT",
-    description: "Independent, thorough, and compliant audits that build trust with lenders, investors, and regulators — delivered with dedicated partner-level attention.",
+    description: "Independent, thorough, and compliant audits that build trust with lenders, investors, and regulators, delivered with dedicated partner-level attention.",
     services: [
       {
         name: "Statutory Audit",

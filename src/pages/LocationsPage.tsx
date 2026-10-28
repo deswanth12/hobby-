@@ -56,7 +56,7 @@ export const LocationsPage: React.FC = () => {
                 <p className="text-xs text-charcoal-muted">Available by prior appointment for founders, directors, and taxpayers.</p>
                 <Link
                   to="/contact"
-                  className="inline-block mt-3 px-5 py-2 rounded-full bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shadow-subtle hover:shadow-card active:scale-[0.985]"
+                  className="inline-block mt-3 px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shadow-sm"
                 >
                   Schedule Appointment
                 </Link>

@@ -11,8 +11,7 @@ import {
   Globe, 
   UserCheck, 
   HeartHandshake, 
-  ArrowRight,
-  CheckCircle2
+  ArrowRight
 } from 'lucide-react';
 
 export const IndustriesPage: React.FC = () => {
@@ -115,13 +114,12 @@ export const IndustriesPage: React.FC = () => {
                   </div>
 
                   <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
-                    <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1.5">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      Tailored Compliance Scope
+                    <span className="text-xs text-emerald-800 font-medium">
+                      Sector-Specific Scope
                     </span>
                     <Link
                       to="/contact"
-                      className="text-xs font-semibold text-brand-primary hover:text-brand-deep"
+                      className="text-xs font-semibold text-brand-primary hover:text-brand-deep underline underline-offset-2"
                     >
                       Consult Practice →
                     </Link>
@@ -145,12 +143,10 @@ export const IndustriesPage: React.FC = () => {
           <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
             >
               <span>Connect with Our Practice</span>
-              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
-                <ArrowRight className="w-4 h-4" />
-              </span>
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
         </div>

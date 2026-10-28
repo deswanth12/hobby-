@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, CheckCircle2, ArrowRight, FileCheck, Search, Scale } from 'lucide-react';
+import { ShieldCheck, ArrowRight, FileCheck, Search, Scale } from 'lucide-react';
 
 export const AuditAssurancePage: React.FC = () => {
   const auditDetails = [
@@ -65,7 +65,7 @@ export const AuditAssurancePage: React.FC = () => {
               Audit & Assurance Services
             </h1>
             <p className="mt-4 text-base sm:text-lg text-emerald-100 leading-relaxed">
-              Independent, thorough, and compliant audits that build trust with lenders, investors, boards, and regulators — delivered with direct partner-level attention.
+              Independent, thorough, and compliant audits that build trust with lenders, investors, boards, and regulators, delivered with direct partner-level attention.
             </p>
           </div>
         </div>
@@ -147,13 +147,12 @@ export const AuditAssurancePage: React.FC = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-border flex items-center justify-between text-xs">
-                  <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Source-Backed Practice
+                  <span className="text-xs text-emerald-800 font-medium">
+                    ICAI Standards on Auditing
                   </span>
                   <Link
                     to="/contact"
-                    className="text-brand-primary font-semibold hover:text-brand-deep"
+                    className="text-brand-primary font-semibold hover:text-brand-deep underline underline-offset-2"
                   >
                     Enquire
                   </Link>
@@ -176,12 +175,10 @@ export const AuditAssurancePage: React.FC = () => {
           <div className="flex justify-center gap-4 pt-2">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
             >
               <span>Schedule Audit Consultation</span>
-              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
-                <ArrowRight className="w-4 h-4" />
-              </span>
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
         </div>

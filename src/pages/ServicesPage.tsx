@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, 
-  CheckCircle2, 
   ArrowRight,
   ChevronRight
 } from 'lucide-react';
@@ -51,12 +50,10 @@ export const ServicesPage: React.FC = () => {
 
             <Link
               to="/services/audit-assurance"
-              className="group inline-flex items-center gap-2.5 pl-5 pr-2 py-1.5 rounded-full bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shrink-0 shadow-card hover:shadow-card-hover active:scale-[0.985]"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0 shadow-sm"
             >
               <span>View Audit Spotlight</span>
-              <span className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
-                <ArrowRight className="w-3.5 h-3.5" />
-              </span>
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
         </div>
@@ -106,7 +103,7 @@ export const ServicesPage: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     {category.services.map((item) => (
                       <div key={item} className="flex items-start gap-2.5">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
                         <span className="text-xs text-charcoal font-medium leading-relaxed">
                           {item}
                         </span>
@@ -133,12 +130,10 @@ export const ServicesPage: React.FC = () => {
           <div className="mt-8 flex justify-center gap-4">
             <Link
               to="/contact"
-              className="group inline-flex items-center gap-3 pl-6 pr-2 py-2 rounded-full bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover transition-all active:scale-[0.985]"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors"
             >
               <span>Schedule a Discussion</span>
-              <span className="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-gold group-hover:translate-x-0.5 transition-transform">
-                <ArrowRight className="w-4 h-4" />
-              </span>
+              <ArrowRight className="w-4 h-4 text-gold" />
             </Link>
           </div>
         </div>

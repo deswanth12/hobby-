@@ -51,15 +51,9 @@ export default {
         sans: ['"Plus Jakarta Sans"', '"Inter"', 'system-ui', '-apple-system', 'sans-serif'],
       },
       boxShadow: {
-        'subtle': '0 2px 10px rgba(15, 62, 46, 0.03)',
-        'card': '0 4px 20px -2px rgba(15, 62, 46, 0.05), 0 1px 3px rgba(15, 62, 46, 0.02)',
-        'card-hover': '0 16px 36px -4px rgba(15, 62, 46, 0.09), 0 4px 12px rgba(15, 62, 46, 0.03)',
-        'elevated': '0 24px 48px -6px rgba(10, 47, 36, 0.15)',
-        'inner-bezel': 'inset 0 1px 1px rgba(255, 255, 255, 0.8)',
-      },
-      transitionTimingFunction: {
-        'expo': 'cubic-bezier(0.16, 1, 0.3, 1)',
-        'spring': 'cubic-bezier(0.32, 0.72, 0, 1)',
+        'subtle': '0 1px 4px rgba(15, 62, 46, 0.04)',
+        'card': '0 2px 8px -1px rgba(15, 62, 46, 0.05), 0 1px 3px rgba(15, 62, 46, 0.02)',
+        'card-hover': '0 6px 16px -2px rgba(15, 62, 46, 0.08)',
       },
       keyframes: {
         fadeIn: {
@@ -68,7 +62,7 @@ export default {
         },
       },
       animation: {
-        fadeIn: 'fadeIn 0.25s ease-out forwards',
+        fadeIn: 'fadeIn 0.2s ease-out forwards',
       },
     },
   },
