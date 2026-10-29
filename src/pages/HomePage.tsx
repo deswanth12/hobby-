@@ -24,12 +24,13 @@ import {
   HeartHandshake,
   Compass
 } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 import { ContactForm } from '../components/ContactForm';
 import { KnowledgeFAQ } from '../components/KnowledgeFAQ';
 import { SEOHead } from '../components/SEOHead';
 
 export const HomePage: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   // Contextual icon map for the 10 industry sectors
   const getIndustryIcon = (industryName: string) => {
     switch (industryName) {

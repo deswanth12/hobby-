@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /admin
 
 # Sitemaps
 Sitemap: https://kavithaassociates.com/sitemap.xml

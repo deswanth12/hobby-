@@ -1,8 +1,9 @@
 import React from 'react';
 import { MessageSquare } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 
 export const FloatingWhatsApp: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   return (
     <aside aria-label="Direct WhatsApp Consultation" className="fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-40">
       <a

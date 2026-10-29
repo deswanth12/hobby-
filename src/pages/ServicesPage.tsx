@@ -7,10 +7,11 @@ import {
   CheckCircle2,
   Phone
 } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 import { SEOHead } from '../components/SEOHead';
 
 export const ServicesPage: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   return (
     <div className="bg-brand-warm page-reveal">
       <SEOHead

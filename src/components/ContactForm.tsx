@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Send, CheckCircle2, AlertCircle, MessageSquare } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
+import { adminStorage } from '../services/adminStorage';
+import { EnquiryRecord } from '../types/admin';
 
 interface FormData {
   fullName: string;
@@ -23,6 +25,7 @@ interface FormErrors {
 }
 
 export const ContactForm: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     entityType: 'Private Limited Company',
@@ -38,6 +41,7 @@ export const ContactForm: React.FC = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [savedRecord, setSavedRecord] = useState<EnquiryRecord | null>(null);
 
   const validate = (): boolean => {
     const newErrors: FormErrors = {};
@@ -72,15 +76,29 @@ export const ContactForm: React.FC = () => {
 
     setIsSubmitting(true);
 
-    // Simulate clean local processing for demo without pretending fake database
+    // Save genuine enquiry into persistent store
+    const record = adminStorage.recordEnquiry({
+      fullName: formData.fullName.trim(),
+      entityType: formData.entityType,
+      organization: formData.organization.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim(),
+      serviceCategory: formData.serviceCategory,
+      city: formData.city,
+      urgency: formData.urgency,
+      message: formData.message.trim(),
+    });
+
+    setSavedRecord(record);
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    }, 400);
   };
 
   const generateWhatsAppUrl = () => {
-    const text = `Hello CA KavithaVijay SRJ (Kavitha & Associates),\n\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
+    const text = `Hello CA KavithaVijay SRJ (Kavitha & Associates),\n\nEnquiry Ref: ${savedRecord?.id || 'DIRECT'}\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
     return `https://wa.me/919626350900?text=${encodeURIComponent(text)}`;
   };
 
@@ -97,6 +115,7 @@ export const ContactForm: React.FC = () => {
       message: '',
     });
     setSubmitted(false);
+    setSavedRecord(null);
     setErrors({});
   };
 
@@ -109,21 +128,28 @@ export const ContactForm: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <h3 className="font-serif text-2xl font-bold text-brand-primary">
-              Consultation Inquiry Prepared
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-brand-surface border border-border text-xs font-mono text-emerald-800">
+              <span>Reference ID:</span>
+              <strong className="text-brand-primary font-bold">{savedRecord?.id}</strong>
+            </div>
+            <h3 className="font-serif text-2xl font-bold text-brand-primary mt-1">
+              Consultation Inquiry Registered
             </h3>
             <p className="text-sm text-charcoal-muted max-w-md mx-auto">
-              Thank you, <strong>{formData.fullName}</strong>. Your inquiry for{' '}
-              <strong>{formData.serviceCategory}</strong> has been structured.
+              Thank you, <strong>{formData.fullName}</strong>. Your consultation brief for{' '}
+              <strong>{formData.serviceCategory}</strong> has been logged in our practice register.
             </p>
           </div>
 
           <div className="bg-brand-pale border border-emerald-200/80 rounded-xl p-4 max-w-lg mx-auto text-left text-xs text-brand-primary space-y-2">
-            <div className="font-semibold text-brand-deep flex items-center gap-1.5">
-              <span>Direct Communication Step</span>
+            <div className="font-semibold text-brand-deep flex items-center justify-between">
+              <span>Direct Transmission Protocol</span>
+              <span className="text-[10px] text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
+                ICAI Compliant
+              </span>
             </div>
             <p className="text-emerald-900 leading-relaxed">
-              This demo formats your message so you can transmit it directly to CA KavithaVijay SRJ via WhatsApp or direct phone call. Web entries are not stored on an external database.
+              Your inquiry has been formatted with reference <strong>{savedRecord?.id}</strong>. You can now transmit it directly to CA KavithaVijay SRJ via WhatsApp or direct phone call for priority review.
             </p>
           </div>
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Phone, Mail, MapPin, MessageSquare, ShieldCheck } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 import { ContactForm } from '../components/ContactForm';
 import { SEOHead } from '../components/SEOHead';
 
 export const ContactPage: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   return (
     <div className="bg-brand-warm page-reveal">
       <SEOHead

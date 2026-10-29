@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 
 export const Footer: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   return (
     <footer className="bg-[#0A2F24] text-gray-200 border-t-2 border-gold pt-14 pb-8 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -170,7 +171,9 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             <span>Chartered Accountants & Cost Accountants</span>
             <span className="text-emerald-500/60">•</span>
-            <Link to="/contact" className="hover:text-gold transition-colors">Client Support & Privacy Notice</Link>
+            <Link to="/contact" className="hover:text-gold transition-colors">Client Support</Link>
+            <span className="text-emerald-500/60">•</span>
+            <Link to="/admin" className="hover:text-gold transition-colors text-emerald-300/80 font-medium">Practice Portal</Link>
           </div>
         </div>
       </div>

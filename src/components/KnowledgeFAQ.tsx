@@ -7,9 +7,10 @@ import {
   BookOpen, 
   Scale 
 } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 
 export const KnowledgeFAQ: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [expandedId, setExpandedId] = useState<string | null>('statutory-audit-mandate');
 

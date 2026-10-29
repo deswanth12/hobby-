@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Building, Globe, ShieldAlert } from 'lucide-react';
-import { FIRM_DATA } from '../data/firmData';
+import { useFirmData } from '../context/FirmDataContext';
 import { SEOHead } from '../components/SEOHead';
 
 export const LocationsPage: React.FC = () => {
+  const { data: FIRM_DATA } = useFirmData();
   return (
     <div className="bg-brand-warm page-reveal">
       <SEOHead
