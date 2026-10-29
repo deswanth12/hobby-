@@ -45,9 +45,14 @@ export const SEOHead = ({ title, description, canonicalPath, noIndex }: SEOProps
     // 5. Update Canonical Tag if path specified
     if (canonicalPath) {
       let canonical = document.querySelector('link[rel="canonical"]');
-      if (canonical) {
-        canonical.setAttribute('href', `https://kavithaassociates.com${canonicalPath}`);
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
       }
+      // Provisional production domain pending client final domain purchase confirmation
+      const productionDomain = 'https://kavithaassociates.com';
+      canonical.setAttribute('href', `${productionDomain}${canonicalPath}`);
     }
   }, [title, description, canonicalPath, noIndex]);
 

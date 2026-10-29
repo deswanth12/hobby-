@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { ContactForm } from '../components/ContactForm';
+import { KnowledgeFAQ } from '../components/KnowledgeFAQ';
 import { SEOHead } from '../components/SEOHead';
 
 export const HomePage: React.FC = () => {
@@ -265,6 +266,9 @@ export const HomePage: React.FC = () => {
               </a>
               <a href="#advisory-consulting" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
                 Strategic Advisory
+              </a>
+              <a href="#knowledge-faq" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+                Statutory FAQ
               </a>
               <a href="#contact-section" className="px-3 py-1.5 rounded-lg bg-brand-pale border border-emerald-300 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition-colors btn-tactile">
                 Direct Consultation
@@ -714,7 +718,12 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          7. CONTACT & CONSULTATION SECTION
+          7. STATUTORY KNOWLEDGE & ADVISORY FAQ
+          ========================================================================= */}
+      <KnowledgeFAQ />
+
+      {/* =========================================================================
+          8. CONTACT & CONSULTATION SECTION
           ========================================================================= */}
       <section className="py-16 sm:py-24 bg-brand-warm" id="contact-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

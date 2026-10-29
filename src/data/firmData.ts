@@ -24,6 +24,21 @@ export interface AuditItem {
   applicableEntity?: string;
 }
 
+export interface FAQItem {
+  id: string;
+  category: 'Audit & Assurance' | 'Income Tax' | 'GST Compliance' | 'Corporate & RERA';
+  question: string;
+  answer: string;
+  statuteReference: string;
+}
+
+export interface OfficialPortal {
+  name: string;
+  authority: string;
+  url: string;
+  purpose: string;
+}
+
 export interface FirmProfile {
   name: string;
   legalType: string;
@@ -86,6 +101,8 @@ export interface FirmProfile {
     description: string;
     services: AuditItem[];
   };
+  faqs: FAQItem[];
+  officialPortals: OfficialPortal[];
   verificationNotes: {
     experienceNote: string;
     branchesNote: string;
@@ -432,6 +449,82 @@ export const FIRM_DATA: FirmProfile = {
         "Strategic Business Advisory",
         "Investment & Growth Planning"
       ]
+    }
+  ],
+  faqs: [
+    {
+      id: "statutory-audit-mandate",
+      category: "Audit & Assurance",
+      question: "Which entities are legally mandated to conduct an independent Statutory Audit in India?",
+      answer: "Under Section 139 of the Companies Act, 2013, every incorporated company—whether Private Limited, One Person Company (OPC), or Public Limited—must appoint an independent practicing Chartered Accountant to conduct an annual statutory audit of its financial statements. This statutory requirement applies regardless of capital base, turnover volume, or whether the company made a profit or loss during the financial year.",
+      statuteReference: "Section 139, Companies Act, 2013"
+    },
+    {
+      id: "tax-audit-thresholds",
+      category: "Income Tax",
+      question: "When does a business enterprise or professional require a Tax Audit under Section 44AB?",
+      answer: "Under Section 44AB of the Income Tax Act, 1961, businesses with gross turnover exceeding ₹1 Crore (or ₹10 Crores where aggregate cash receipts and payments do not exceed 5% of total turnover) are required to have their accounts audited by a Chartered Accountant. For professionals declaring income under presumptive schemes (Section 44ADA) claiming profits below the prescribed percentage, a formal tax audit report in Form 3CA/3CB and Form 3CD must be furnished.",
+      statuteReference: "Section 44AB, Income Tax Act, 1961"
+    },
+    {
+      id: "gst-itc-reconciliation",
+      category: "GST Compliance",
+      question: "How are Input Tax Credit (ITC) discrepancies between GSTR-2B and GSTR-3B resolved?",
+      answer: "Under Section 16(2)(aa) of the CGST Act, Input Tax Credit can strictly be availed only if invoice details are uploaded by suppliers and reflected in the auto-generated GSTR-2B. We execute line-by-line invoice reconciliations, identify default vendors, advise on reverse charge applicability, and draft structured factual replies to departmental intimations such as Form DRC-01A or ASMT-10 notices.",
+      statuteReference: "Section 16(2)(aa), CGST Act, 2017 & Rule 36(4)"
+    },
+    {
+      id: "pvtltd-vs-llp",
+      category: "Corporate & RERA",
+      question: "What are the statutory differences between incorporating as a Private Limited Company vs. an LLP?",
+      answer: "A Private Limited Company is the standard legal structure for venture capital investment, angel funding, employee stock options (ESOPs), and DPIIT startup tax exemptions (under Section 80-IAC). An LLP provides corporate limited liability with lower mandatory secretarial filing burdens and no dividend distribution tax complexities, making it ideal for consulting firms, professional practices, and closely held service businesses.",
+      statuteReference: "Companies Act, 2013 & LLP Act, 2008"
+    },
+    {
+      id: "rera-ca-certificates",
+      category: "Corporate & RERA",
+      question: "Why are Chartered Accountant certificates mandatory for real estate project developers under RERA?",
+      answer: "Under Section 4(2)(l)(D) of the Real Estate (Regulation and Development) Act, 2016, 70% of funds realized from allottees must be deposited in a designated escrow bank account. CA certificates (Form 3) are legally required before funds can be withdrawn, verifying project completion percentages, incurred land and construction costs, and ensuring funds are not diverted away from project execution.",
+      statuteReference: "Section 4(2)(l)(D), RERA Act, 2016"
+    },
+    {
+      id: "consultation-confidentiality",
+      category: "Audit & Assurance",
+      question: "How does CA Kavitha & Associates conduct consultations and maintain client data security?",
+      answer: "Initial discussions can be conducted either in person at our practice chambers in Bairagi Patteda, Tirupati, or through encrypted remote video/WhatsApp channels. In strict accordance with the Institute of Chartered Accountants of India (ICAI) Code of Ethics, all financial records, audit workpapers, and corporate disclosures are maintained under total professional confidentiality.",
+      statuteReference: "ICAI Code of Ethics (Chartered Accountants Act, 1949)"
+    }
+  ],
+  officialPortals: [
+    {
+      name: "Income Tax Department e-Filing",
+      authority: "Central Board of Direct Taxes (CBDT)",
+      url: "https://www.incometax.gov.in/",
+      purpose: "ITR Filing, AIS/TIS Verification, PAN Services & Tax Scrutiny Portal"
+    },
+    {
+      name: "GST Common Portal",
+      authority: "Goods and Services Tax Network (GSTN)",
+      url: "https://www.gst.gov.in/",
+      purpose: "GSTR Returns, E-Way Bill, ITC Reconciliation & Departmental Notices"
+    },
+    {
+      name: "Ministry of Corporate Affairs (MCA21)",
+      authority: "Government of India",
+      url: "https://www.mca.gov.in/",
+      purpose: "Company & LLP Incorporation, Annual ROC Filings & Director KYC"
+    },
+    {
+      name: "Institute of Chartered Accountants of India",
+      authority: "ICAI Apex Regulatory Body",
+      url: "https://www.icai.org/",
+      purpose: "Standards on Auditing (SAs), Ethics Guidance & UDIN Verification"
+    },
+    {
+      name: "Andhra Pradesh RERA Portal",
+      authority: "AP Real Estate Regulatory Authority",
+      url: "https://rera.ap.gov.in/",
+      purpose: "Real Estate Project Registration, Quarterly Compliance & CA Certificates"
     }
   ],
   verificationNotes: {
