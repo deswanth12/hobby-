@@ -1,0 +1,169 @@
+{
+  "settings": {
+    "primaryPhone": "+91 96263 50900",
+    "secondaryPhone": "+91 95421 53906",
+    "email": "cakavithasrj@gmail.com",
+    "primaryLocation": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
+    "googleMapsUrl": "https://www.google.com/maps?q=13.61925,79.418028",
+    "whatsappLink": "https://wa.me/919626350900?text=Hello%20CA%20KavithaVijay%20SRJ%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
+    "openingHours": "Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only",
+    "updatedAt": "2026-10-29T15:27:17.521Z"
+  },
+  "services": [
+    {
+      "id": "income-tax",
+      "title": "Income Tax & Appellate Services",
+      "shortDescription": "Strategic direct tax planning, corporate filing, scrutiny representation, and appellate support.",
+      "fullDescription": "Comprehensive direct tax services from routine return preparation to complex dispute resolution before appellate authorities.",
+      "statutoryFramework": "Income Tax Act 1961",
+      "targetClients": "Corporates and High Net Worth Taxpayers",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:32:59.878Z"
+    },
+    {
+      "id": "gst",
+      "title": "GST Services",
+      "shortDescription": "End-to-end Indirect Tax management, periodic filings, audit reconciliation, and departmental representation.",
+      "fullDescription": "Specialized GST counsel including return preparation (GSTR-1, 3B, 9/9C), input tax credit optimization, refund processing, and departmental notice defense.",
+      "statutoryFramework": "CGST Act, 2017 & State GST Regulations",
+      "targetClients": "Manufacturers, Traders, Service Providers, Exporters",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "corporate-business",
+      "title": "Corporate & Business Services",
+      "shortDescription": "Entity incorporation, MCA/ROC filings, restructuring, loan syndication, and Virtual CFO support.",
+      "fullDescription": "End-to-end secretarial and corporate governance assistance under Company Law, including annual filings, director disclosures, and strategic restructuring advisory.",
+      "statutoryFramework": "Companies Act, 2013 & MCA Mandates",
+      "targetClients": "Private Limited Companies, Section 8 Entities, LLPs",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "rera-compliance",
+      "title": "RERA Compliance & Certification",
+      "shortDescription": "Specialized advisory for builders and developers, quarterly compliance, and mandatory CA certificates.",
+      "fullDescription": "Statutory escrow account audits, quarterly project progress disclosures, Form 3 CA certifications, and registration support under Real Estate Regulatory authorities.",
+      "statutoryFramework": "Real Estate (Regulation and Development) Act, 2016",
+      "targetClients": "Real Estate Developers, Builders, Promoters",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "advisory-consulting",
+      "title": "Advisory & Consulting",
+      "shortDescription": "Internal controls, fraud review, business process enhancement, and forward financial planning.",
+      "fullDescription": "Operational reviews, standard operating procedure audits, cash flow planning, and financial due diligence designed to build institutional strength in growing firms.",
+      "statutoryFramework": "ICAI Technical Standards & Industry Best Practices",
+      "targetClients": "Growing Enterprises, Family Businesses, Healthcare & Hospitality",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "audit-assurance",
+      "title": "Audit & Assurance (Statutory Focus)",
+      "shortDescription": "Statutory Company Audits, Tax Audits under Section 44AB, Internal Audits, and Special Bank Audits.",
+      "fullDescription": "Independent, objective examination of books of accounts in strict adherence to Standards on Auditing (SAs) issued by ICAI, ensuring true and fair view reporting.",
+      "statutoryFramework": "Companies Act 2013, Section 139–143 & SAs by ICAI",
+      "targetClients": "Public & Private Corporates, Banks, Statutory Boards",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    }
+  ],
+  "faqs": [
+    {
+      "id": "statutory-audit-mandate",
+      "question": "Which businesses are legally required to undergo a Statutory Audit in India?",
+      "answer": "Under Section 139 of the Companies Act, 2013, every incorporated company (Private Limited, Public Limited, or One Person Company) must appoint an independent statutory auditor and have its annual accounts audited, regardless of turnover or capital. For non-corporate entities (proprietorships, firms, LLPs), audit requirements are triggered by turnover thresholds under Section 44AB of the Income Tax Act, 1961.",
+      "statuteReference": "Companies Act, 2013 — Section 139; Income Tax Act, 1961 — Section 44AB",
+      "category": "Audit & Assurance",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "tax-audit-thresholds",
+      "question": "What are the turnover limits for a Tax Audit under Section 44AB?",
+      "answer": "For businesses carrying on business operations, Tax Audit under Section 44AB is generally mandatory if total sales, turnover, or gross receipts exceed ₹1 Crore in the financial year. However, if cash receipts and cash payments do not exceed 5% of aggregate transactions (digital transaction incentive), the turnover threshold is increased to ₹10 Crores. For professionals, the threshold is ₹50 Lakhs gross receipts.",
+      "statuteReference": "Income Tax Act, 1961 — Section 44AB & Budget amendments",
+      "category": "Income Tax",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "gst-annual-return-audit",
+      "question": "When is GST Annual Return (GSTR-9) and Reconciliation (GSTR-9C) mandatory?",
+      "answer": "GSTR-9 is mandatory for registered regular taxpayers whose aggregate annual turnover exceeds ₹2 Crores. The self-certified reconciliation statement in Form GSTR-9C is mandatory for taxpayers whose aggregate turnover exceeds ₹5 Crores in the financial year.",
+      "statuteReference": "CGST Act, 2017 — Section 44 & CGST Rules 80",
+      "category": "GST Compliance",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    },
+    {
+      "id": "rera-quarterly-ca-certificates",
+      "question": "Why do real estate developers require CA Certificates under RERA?",
+      "answer": "Under Section 4(2)(l)(D) of RERA 2016, 70% of amounts realized for real estate projects must be deposited in a scheduled bank separate account (Escrow). Withdrawals require three certificates: from the Project Engineer, Architect, and a Practicing Chartered Accountant (Form 3) certifying that withdrawal is in proportion to the percentage of project completion.",
+      "statuteReference": "Real Estate (Regulation and Development) Act, 2016 — Section 4(2)(l)(D)",
+      "category": "Corporate & RERA",
+      "status": "published",
+      "updatedAt": "2026-10-29T15:27:17.521Z"
+    }
+  ],
+  "enquiries": [
+    {
+      "id": "ENQ-MVTPD0ZM-200",
+      "createdAt": "2026-10-29T15:32:59.842Z",
+      "updatedAt": "2026-10-29T15:32:59.870Z",
+      "fullName": "Sreenivas Naidu (Tirupati Agro)",
+      "entityType": "Private Limited Company",
+      "organization": "Tirupati Agro Processing Pvt Ltd",
+      "phone": "+91 94401 23456",
+      "email": "sreenivas@tirupatiagro.com",
+      "serviceCategory": "Taxation & Statutory Compliances",
+      "city": "Tirupati",
+      "urgency": "statutory-deadline",
+      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
+      "status": "in-progress",
+      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
+    },
+    {
+      "id": "ENQ-MVTP861K-760",
+      "createdAt": "2026-10-29T15:29:13.112Z",
+      "updatedAt": "2026-10-29T15:29:13.147Z",
+      "fullName": "Sreenivas Naidu (Tirupati Agro)",
+      "entityType": "Private Limited Company",
+      "organization": "Tirupati Agro Processing Pvt Ltd",
+      "phone": "+91 94401 23456",
+      "email": "sreenivas@tirupatiagro.com",
+      "serviceCategory": "Taxation & Statutory Compliances",
+      "city": "Tirupati",
+      "urgency": "statutory-deadline",
+      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
+      "status": "in-progress",
+      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
+    }
+  ],
+  "sessions": {
+    "ka_tok_5f0b58d3d41d3cba4f573d011ae4f1dafcea041fc346b6cc887fd94e5de0df88": {
+      "token": "ka_tok_5f0b58d3d41d3cba4f573d011ae4f1dafcea041fc346b6cc887fd94e5de0df88",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA KavithaVijay SRJ",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-29T15:29:13.130Z"
+      },
+      "expiresAt": 1793291353130
+    },
+    "ka_tok_a117d9a398d8572ccac007e9afafa7f081fcfb791770be5fc4b4adfd96129d78": {
+      "token": "ka_tok_a117d9a398d8572ccac007e9afafa7f081fcfb791770be5fc4b4adfd96129d78",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA KavithaVijay SRJ",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-29T15:32:59.854Z"
+      },
+      "expiresAt": 1793291579854
+    }
+  },
+  "rateLimits": {}
+}

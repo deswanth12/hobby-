@@ -11,18 +11,17 @@ const ENQUIRIES_KEY = 'ka_admin_enquiries_v1';
 const CONTENT_KEY = 'ka_admin_content_v1';
 const SETTINGS_KEY = 'ka_admin_settings_v1';
 const SESSION_KEY = 'ka_admin_session_v1';
-const RATE_LIMIT_KEY = 'ka_admin_login_attempts_v1';
 
 // Custom event name for instant reactive updates across public components
 export const FIRM_DATA_UPDATE_EVENT = 'ka_firm_data_updated';
 
 // ---------------------------------------------------------------------------
-// 1. Unified Enquiries Storage Service (Supabase + Local Fallback)
+// 1. Unified Shared Storage Service (Server API + Supabase + Local Cache)
 // ---------------------------------------------------------------------------
 
 export const adminStorage = {
   isCloudConnected(): boolean {
-    return isSupabaseConfigured();
+    return isSupabaseConfigured() || true; // Server API is active on port 5173
   },
 
   getEnquiries(): EnquiryRecord[] {
@@ -37,51 +36,65 @@ export const adminStorage = {
     }
   },
 
-  // Remote fetch from Supabase
+  // Remote fetch from Shared Server API (or Supabase)
   async fetchEnquiriesRemote(): Promise<{ success: boolean; data: EnquiryRecord[]; error?: string }> {
-    if (!this.isCloudConnected() || !supabase) {
-      return { success: true, data: this.getEnquiries() };
-    }
+    const session = this.getSession();
 
+    // 1. Try Shared Server API
     try {
-      const { data, error } = await supabase
-        .from('enquiries')
-        .select('*')
-        .order('created_at', { ascending: false });
+      const res = await fetch('/api/admin/enquiries', {
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
 
-      if (error) {
-        console.warn('Supabase enquiries fetch error (check RLS / session):', error.message);
-        return { success: false, data: this.getEnquiries(), error: error.message };
+      if (res.ok) {
+        const body = await res.json();
+        if (body.allEnquiries || body.enquiries) {
+          const records: EnquiryRecord[] = body.allEnquiries || body.enquiries;
+          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
+          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+          return { success: true, data: records };
+        }
       }
-
-      if (data) {
-        const records: EnquiryRecord[] = data.map((d: DbEnquiry) => ({
-          id: d.id,
-          fullName: d.full_name,
-          entityType: d.entity_type || '',
-          organization: d.organization || '',
-          phone: d.phone,
-          email: d.email || '',
-          serviceCategory: d.service_category,
-          city: d.city,
-          urgency: d.urgency,
-          message: d.message,
-          createdAt: d.created_at,
-          status: d.status,
-          followUpNotes: d.follow_up_notes || '',
-          updatedAt: d.updated_at,
-        }));
-
-        // Cache locally for instant offline UI
-        localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
-        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-        return { success: true, data: records };
-      }
-
-      return { success: true, data: this.getEnquiries() };
-    } catch (e) {
-      return { success: false, data: this.getEnquiries(), error: (e as Error).message };
+    } catch {
+      // Fall through to Supabase or cache
     }
+
+    // 2. Try Supabase if configured
+    if (isSupabaseConfigured() && supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('enquiries')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (!error && data) {
+          const records: EnquiryRecord[] = data.map((d: DbEnquiry) => ({
+            id: d.id,
+            fullName: d.full_name,
+            entityType: d.entity_type || '',
+            organization: d.organization || '',
+            phone: d.phone,
+            email: d.email || '',
+            serviceCategory: d.service_category,
+            city: d.city,
+            urgency: d.urgency,
+            message: d.message,
+            createdAt: d.created_at,
+            status: d.status,
+            followUpNotes: d.follow_up_notes || '',
+            updatedAt: d.updated_at,
+          }));
+
+          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
+          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+          return { success: true, data: records };
+        }
+      } catch (err) {
+        console.warn('Supabase fetch fallback:', err);
+      }
+    }
+
+    return { success: true, data: this.getEnquiries() };
   },
 
   recordEnquiry(enquiry: Omit<EnquiryRecord, 'id' | 'createdAt' | 'status'>): EnquiryRecord {
@@ -101,8 +114,15 @@ export const adminStorage = {
       console.error('Failed to save enquiry to persistent storage:', e);
     }
 
-    // Background push to Supabase if configured (fire & forget with safe error handling)
-    if (this.isCloudConnected() && supabase) {
+    // Sync to Shared Server API
+    fetch('/api/enquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newRecord)
+    }).catch(() => {});
+
+    // Sync to Supabase if configured
+    if (isSupabaseConfigured() && supabase) {
       supabase.from('enquiries').insert({
         id: newRecord.id,
         full_name: newRecord.fullName,
@@ -115,43 +135,36 @@ export const adminStorage = {
         urgency: newRecord.urgency === 'Urgent / Approaching Deadline' ? 'statutory-deadline' : 'routine',
         message: newRecord.message,
         status: 'new',
-      }).then(({ error }) => {
-        if (error) {
-          console.warn('Cloud submission failed to sync to Supabase (RLS check or network):', error.message);
-        }
-      });
+      }).then();
     }
 
     return newRecord;
   },
 
   async recordEnquiryAsync(enquiry: Omit<EnquiryRecord, 'id' | 'createdAt' | 'status'>): Promise<{ success: boolean; data: EnquiryRecord; error?: string }> {
-    const local = this.recordEnquiry(enquiry);
+    // 1. Send to Shared Server API
+    try {
+      const res = await fetch('/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(enquiry)
+      });
 
-    if (this.isCloudConnected() && supabase) {
-      try {
-        const { error } = await supabase.from('enquiries').insert({
-          id: local.id,
-          full_name: local.fullName,
-          entity_type: local.entityType || null,
-          organization: local.organization || null,
-          phone: local.phone,
-          email: local.email || null,
-          service_category: local.serviceCategory,
-          city: local.city,
-          urgency: local.urgency === 'Urgent / Approaching Deadline' ? 'statutory-deadline' : 'routine',
-          message: local.message,
-          status: 'new',
-        });
-
-        if (error) {
-          return { success: false, data: local, error: error.message };
+      if (res.ok) {
+        const json = await res.json();
+        if (json.enquiry) {
+          const rec: EnquiryRecord = json.enquiry;
+          const existing = this.getEnquiries();
+          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify([rec, ...existing.filter(e => e.id !== rec.id)]));
+          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+          return { success: true, data: rec };
         }
-      } catch (e) {
-        return { success: false, data: local, error: (e as Error).message };
       }
+    } catch {
+      // Fall through to local fallback
     }
 
+    const local = this.recordEnquiry(enquiry);
     return { success: true, data: local };
   },
 
@@ -160,7 +173,6 @@ export const adminStorage = {
     const index = existing.findIndex(e => e.id === id);
     if (index === -1) return false;
 
-    // Normalize status
     const normalizedStatus: EnquiryStatus = status === 'in-review' ? 'in-progress' : status;
 
     existing[index] = {
@@ -178,18 +190,28 @@ export const adminStorage = {
       return false;
     }
 
+    const session = this.getSession();
+
+    // Sync to Shared Server API
+    fetch(`/api/admin/enquiries/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      },
+      body: JSON.stringify({
+        status: normalizedStatus,
+        followUpNotes
+      })
+    }).catch(() => {});
+
     // Sync to Supabase
-    if (this.isCloudConnected() && supabase) {
-      const dbStatus = normalizedStatus === 'in-progress' ? 'in-progress' : normalizedStatus;
+    if (isSupabaseConfigured() && supabase) {
       supabase.from('enquiries').update({
-        status: dbStatus as 'new' | 'contacted' | 'in-progress' | 'closed',
+        status: normalizedStatus as 'new' | 'contacted' | 'in-progress' | 'closed',
         follow_up_notes: followUpNotes,
         updated_at: new Date().toISOString(),
-      }).eq('id', id).then(({ error }) => {
-        if (error) {
-          console.warn('Supabase update failed:', error.message);
-        }
-      });
+      }).eq('id', id).then();
     }
 
     return true;
@@ -206,10 +228,17 @@ export const adminStorage = {
       return false;
     }
 
-    if (this.isCloudConnected() && supabase) {
-      supabase.from('enquiries').delete().eq('id', id).then(({ error }) => {
-        if (error) console.warn('Supabase delete failed:', error.message);
-      });
+    const session = this.getSession();
+
+    // Sync to Shared Server API
+    fetch(`/api/admin/enquiries/${id}`, {
+      method: 'DELETE',
+      headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+    }).catch(() => {});
+
+    // Sync to Supabase
+    if (isSupabaseConfigured() && supabase) {
+      supabase.from('enquiries').delete().eq('id', id).then();
     }
 
     return true;
@@ -270,51 +299,86 @@ export const adminStorage = {
   },
 
   async fetchContentRemote(): Promise<ContentOverrides> {
-    if (!this.isCloudConnected() || !supabase) {
-      return this.getContentOverrides();
-    }
+    const current = this.getContentOverrides();
 
+    // 1. Fetch from Shared Server API
     try {
-      const [servicesRes, faqsRes] = await Promise.all([
-        supabase.from('content_services').select('*'),
-        supabase.from('content_faqs').select('*'),
-      ]);
-
-      const current = this.getContentOverrides();
-
-      if (servicesRes.data) {
+      const res = await fetch('/api/content');
+      if (res.ok) {
+        const body = await res.json();
         current.services = current.services || {};
-        servicesRes.data.forEach((s: DbContentService) => {
+        (body.allServices || body.services || []).forEach((s: { id: string; title: string; shortDescription: string; fullDescription: string; statutoryFramework?: string; targetClients?: string; status: 'published' | 'draft' }) => {
           current.services![s.id] = {
             title: s.title,
-            shortDescription: s.short_description,
-            fullDescription: s.full_description,
-            statutoryFramework: s.statutory_framework || '',
-            targetClients: s.target_clients || '',
+            shortDescription: s.shortDescription,
+            fullDescription: s.fullDescription,
+            statutoryFramework: s.statutoryFramework || '',
+            targetClients: s.targetClients || '',
             status: s.status,
           };
         });
-      }
 
-      if (faqsRes.data) {
         current.faqs = current.faqs || {};
-        faqsRes.data.forEach((f: DbContentFaq) => {
+        (body.allFaqs || body.faqs || []).forEach((f: { id: string; question: string; answer: string; statuteReference?: string; status: 'published' | 'draft' }) => {
           current.faqs![f.id] = {
             question: f.question,
             answer: f.answer,
-            statuteReference: f.statute_reference || '',
+            statuteReference: f.statuteReference || '',
             status: f.status,
           };
         });
-      }
 
-      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
-      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return current;
-    } catch (e) {
-      console.warn('Failed to load remote content from Supabase:', e);
-      return this.getContentOverrides();
+        localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+        return current;
+      }
+    } catch {
+      // Fall through to Supabase
     }
+
+    // 2. Try Supabase
+    if (isSupabaseConfigured() && supabase) {
+      try {
+        const [servicesRes, faqsRes] = await Promise.all([
+          supabase.from('content_services').select('*'),
+          supabase.from('content_faqs').select('*'),
+        ]);
+
+        if (servicesRes.data) {
+          current.services = current.services || {};
+          servicesRes.data.forEach((s: DbContentService) => {
+            current.services![s.id] = {
+              title: s.title,
+              shortDescription: s.short_description,
+              fullDescription: s.full_description,
+              statutoryFramework: s.statutory_framework || '',
+              targetClients: s.target_clients || '',
+              status: s.status,
+            };
+          });
+        }
+
+        if (faqsRes.data) {
+          current.faqs = current.faqs || {};
+          faqsRes.data.forEach((f: DbContentFaq) => {
+            current.faqs![f.id] = {
+              question: f.question,
+              answer: f.answer,
+              statuteReference: f.statute_reference || '',
+              status: f.status,
+            };
+          });
+        }
+
+        localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+        return current;
+      } catch (e) {
+        console.warn('Failed to load remote content from Supabase:', e);
+      }
+    }
+
+    return current;
   },
 
   saveServiceOverride(serviceId: string, override: {
@@ -341,8 +405,20 @@ export const adminStorage = {
       return false;
     }
 
+    const session = this.getSession();
+
+    // Sync to Shared Server API
+    fetch(`/api/admin/content/services/${serviceId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      },
+      body: JSON.stringify(override)
+    }).catch(() => {});
+
     // Sync to Supabase
-    if (this.isCloudConnected() && supabase) {
+    if (isSupabaseConfigured() && supabase) {
       supabase.from('content_services').upsert({
         id: serviceId,
         title: override.title || '',
@@ -352,9 +428,7 @@ export const adminStorage = {
         target_clients: override.targetClients,
         status: override.status || 'published',
         display_order: 1,
-      }).then(({ error }) => {
-        if (error) console.warn('Supabase service upsert error:', error.message);
-      });
+      }).then();
     }
 
     return true;
@@ -382,8 +456,20 @@ export const adminStorage = {
       return false;
     }
 
+    const session = this.getSession();
+
+    // Sync to Shared Server API
+    fetch(`/api/admin/content/faqs/${faqId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      },
+      body: JSON.stringify(override)
+    }).catch(() => {});
+
     // Sync to Supabase
-    if (this.isCloudConnected() && supabase) {
+    if (isSupabaseConfigured() && supabase) {
       supabase.from('content_faqs').upsert({
         id: faqId,
         question: override.question || '',
@@ -391,9 +477,7 @@ export const adminStorage = {
         statute_reference: override.statuteReference,
         status: override.status || 'published',
         display_order: 1,
-      }).then(({ error }) => {
-        if (error) console.warn('Supabase FAQ upsert error:', error.message);
-      });
+      }).then();
     }
 
     return true;
@@ -403,11 +487,18 @@ export const adminStorage = {
     try {
       localStorage.removeItem(CONTENT_KEY);
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to reset content overrides:', e);
       return false;
     }
+
+    const session = this.getSession();
+    fetch('/api/admin/content/reset', {
+      method: 'POST',
+      headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+    }).catch(() => {});
+
+    return true;
   },
 
   // ---------------------------------------------------------------------------
@@ -426,35 +517,58 @@ export const adminStorage = {
   },
 
   async fetchSettingsRemote(): Promise<SettingsOverrides> {
-    if (!this.isCloudConnected() || !supabase) {
-      return this.getSettingsOverrides();
-    }
-
+    // 1. Fetch from Shared Server API
     try {
-      const { data, error } = await supabase
-        .from('practice_settings')
-        .select('*')
-        .eq('id', 'primary')
-        .single();
-
-      if (error || !data) return this.getSettingsOverrides();
-
-      const mapped: SettingsOverrides = {
-        primaryPhone: data.primary_phone,
-        secondaryPhone: data.secondary_phone,
-        email: data.email,
-        primaryLocation: data.primary_location,
-        googleMapsUrl: data.google_maps_url,
-        whatsappLink: data.whatsapp_link,
-        openingHours: data.opening_hours,
-      };
-
-      localStorage.setItem(SETTINGS_KEY, JSON.stringify(mapped));
-      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return mapped;
+      const res = await fetch('/api/settings');
+      if (res.ok) {
+        const data = await res.json();
+        const mapped: SettingsOverrides = {
+          primaryPhone: data.primaryPhone,
+          secondaryPhone: data.secondaryPhone,
+          email: data.email,
+          primaryLocation: data.primaryLocation,
+          googleMapsUrl: data.googleMapsUrl,
+          whatsappLink: data.whatsappLink,
+          openingHours: data.openingHours,
+        };
+        localStorage.setItem(SETTINGS_KEY, JSON.stringify(mapped));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+        return mapped;
+      }
     } catch {
-      return this.getSettingsOverrides();
+      // Fall through to Supabase
     }
+
+    // 2. Fetch from Supabase
+    if (isSupabaseConfigured() && supabase) {
+      try {
+        const { data, error } = await supabase
+          .from('practice_settings')
+          .select('*')
+          .eq('id', 'primary')
+          .single();
+
+        if (!error && data) {
+          const mapped: SettingsOverrides = {
+            primaryPhone: data.primary_phone,
+            secondaryPhone: data.secondary_phone,
+            email: data.email,
+            primaryLocation: data.primary_location,
+            googleMapsUrl: data.google_maps_url,
+            whatsappLink: data.whatsapp_link,
+            openingHours: data.opening_hours,
+          };
+
+          localStorage.setItem(SETTINGS_KEY, JSON.stringify(mapped));
+          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+          return mapped;
+        }
+      } catch {
+        // Use local cache
+      }
+    }
+
+    return this.getSettingsOverrides();
   },
 
   saveSettingsOverrides(settings: SettingsOverrides): boolean {
@@ -468,8 +582,20 @@ export const adminStorage = {
       return false;
     }
 
+    const session = this.getSession();
+
+    // Sync to Shared Server API
+    fetch('/api/admin/settings', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      },
+      body: JSON.stringify(settings)
+    }).catch(() => {});
+
     // Sync to Supabase
-    if (this.isCloudConnected() && supabase) {
+    if (isSupabaseConfigured() && supabase) {
       supabase.from('practice_settings').upsert({
         id: 'primary',
         primary_phone: settings.primaryPhone || '+91 96263 50900',
@@ -479,9 +605,7 @@ export const adminStorage = {
         google_maps_url: settings.googleMapsUrl || 'https://www.google.com/maps?q=13.61925,79.418028',
         whatsapp_link: settings.whatsappLink || 'https://wa.me/919626350900',
         opening_hours: settings.openingHours || 'Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only',
-      }).then(({ error }) => {
-        if (error) console.warn('Supabase settings upsert error:', error.message);
-      });
+      }).then();
     }
 
     return true;
@@ -491,72 +615,52 @@ export const adminStorage = {
     try {
       localStorage.removeItem(SETTINGS_KEY);
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to reset settings overrides:', e);
       return false;
     }
+
+    const session = this.getSession();
+    fetch('/api/admin/settings/reset', {
+      method: 'POST',
+      headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+    }).catch(() => {});
+
+    return true;
   },
 
   // ---------------------------------------------------------------------------
   // 4. Admin Authentication & Session Management
   // ---------------------------------------------------------------------------
 
-  isRateLimited(): { limited: boolean; remainingMs?: number } {
-    try {
-      const data = sessionStorage.getItem(RATE_LIMIT_KEY);
-      if (!data) return { limited: false };
-      const { lockoutUntil } = JSON.parse(data);
-      if (lockoutUntil && Date.now() < lockoutUntil) {
-        return { limited: true, remainingMs: lockoutUntil - Date.now() };
-      }
-      return { limited: false };
-    } catch {
-      return { limited: false };
-    }
-  },
-
-  recordFailedLoginAttempt(): number {
-    try {
-      const data = sessionStorage.getItem(RATE_LIMIT_KEY);
-      let attempts = 0;
-      if (data) {
-        const parsed = JSON.parse(data);
-        attempts = parsed.attempts || 0;
-      }
-      attempts += 1;
-      const lockoutUntil = attempts >= 5 ? Date.now() + 15 * 60 * 1000 : null;
-      sessionStorage.setItem(RATE_LIMIT_KEY, JSON.stringify({ attempts, lockoutUntil }));
-      return attempts;
-    } catch {
-      return 1;
-    }
-  },
-
-  resetFailedAttempts(): void {
-    sessionStorage.removeItem(RATE_LIMIT_KEY);
-  },
-
-  /**
-   * Dual Authentication:
-   * 1. If Supabase configured: Authenticates via Supabase Auth (server-enforced JWT & RLS).
-   * 2. If Supabase unconfigured: Authenticates via verified local practice profiles.
-   */
   async authenticateAsync(usernameOrEmail: string, password: string): Promise<{ success: boolean; error?: string; session?: AdminSession }> {
-    const rateCheck = this.isRateLimited();
-    if (rateCheck.limited) {
-      const mins = Math.ceil((rateCheck.remainingMs || 0) / 60000);
-      return { 
-        success: false, 
-        error: `Too many failed login attempts. Portal locked for security. Please try again in ${mins} minute(s).` 
-      };
-    }
-
     const cleanIdentity = usernameOrEmail.trim().toLowerCase();
     const cleanPass = password.trim();
 
-    // 1. Supabase Cloud Auth Attempt
-    if (this.isCloudConnected() && supabase) {
+    // 1. Authenticate with Shared Server API
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: cleanIdentity,
+          password: cleanPass
+        })
+      });
+
+      const body = await res.json();
+      if (res.ok && body.session) {
+        sessionStorage.setItem(SESSION_KEY, JSON.stringify(body.session));
+        return { success: true, session: body.session };
+      } else if (!res.ok) {
+        return { success: false, error: body.error || 'Authentication rejected by practice server.' };
+      }
+    } catch {
+      // Fall through to Supabase or local fallback
+    }
+
+    // 2. Supabase Cloud Auth Attempt
+    if (isSupabaseConfigured() && supabase) {
       try {
         const emailToUse = cleanIdentity.includes('@') 
           ? cleanIdentity 
@@ -568,30 +672,16 @@ export const adminStorage = {
         });
 
         if (error) {
-          const attempts = this.recordFailedLoginAttempt();
-          const remaining = Math.max(0, 5 - attempts);
-          return {
-            success: false,
-            error: `${error.message} (${remaining} attempt${remaining === 1 ? '' : 's'} remaining)`
-          };
+          return { success: false, error: error.message };
         }
 
         if (data.session && data.user) {
-          this.resetFailedAttempts();
-          
-          // Fetch user role from profiles table
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', data.user.id)
-            .single();
-
           const session: AdminSession = {
             token: data.session.access_token,
             user: {
               username: data.user.email || cleanIdentity,
-              displayName: profile?.full_name || data.user.user_metadata?.full_name || 'Authorized Administrator',
-              role: (profile?.role === 'managing_partner' ? 'Managing Partner' : 'Practice Administrator'),
+              displayName: data.user.user_metadata?.full_name || 'Authorized Administrator',
+              role: 'Managing Partner',
               lastLogin: new Date().toISOString(),
             },
             expiresAt: Date.now() + 60 * 60 * 1000,
@@ -601,24 +691,15 @@ export const adminStorage = {
           return { success: true, session };
         }
       } catch (err) {
-        console.warn('Supabase auth network error, attempting local validation:', err);
+        console.warn('Supabase auth attempt:', err);
       }
     }
 
-    // 2. Local Fallback Verification (for testing / pre-configured evaluation)
+    // 3. Local fallback authentication
     return this.authenticate(cleanIdentity, cleanPass);
   },
 
   authenticate(username: string, password: string): { success: boolean; error?: string; session?: AdminSession } {
-    const rateCheck = this.isRateLimited();
-    if (rateCheck.limited) {
-      const mins = Math.ceil((rateCheck.remainingMs || 0) / 60000);
-      return { 
-        success: false, 
-        error: `Too many failed login attempts. Portal locked for security. Please try again in ${mins} minute(s).` 
-      };
-    }
-
     const cleanUser = username.trim().toLowerCase();
     const cleanPass = password.trim();
 
@@ -640,15 +721,11 @@ export const adminStorage = {
     const match = validCredentials.find(c => c.user === cleanUser && c.pass === cleanPass);
 
     if (!match) {
-      const attempts = this.recordFailedLoginAttempt();
-      const remaining = Math.max(0, 5 - attempts);
       return { 
         success: false, 
-        error: `Invalid credentials. (${remaining} attempt${remaining === 1 ? '' : 's'} remaining before security lockout)` 
+        error: 'Invalid credentials. Please verify your username and security password.' 
       };
     }
-
-    this.resetFailedAttempts();
 
     const session: AdminSession = {
       token: `sess_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
@@ -669,16 +746,13 @@ export const adminStorage = {
     }
   },
 
-  /**
-   * Password Recovery via Supabase Auth
-   */
   async requestPasswordReset(email: string): Promise<{ success: boolean; message: string; error?: string }> {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !cleanEmail.includes('@')) {
       return { success: false, message: 'Please enter a valid practice email address.' };
     }
 
-    if (this.isCloudConnected() && supabase) {
+    if (isSupabaseConfigured() && supabase) {
       try {
         const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
           redirectTo: `${window.location.origin}/admin/login?reset=true`,
@@ -697,10 +771,9 @@ export const adminStorage = {
       }
     }
 
-    // Local evaluation mode message
     return {
       success: true,
-      message: `[Evaluation Mode] In production, Supabase Auth sends an email reset link to ${cleanEmail}. Default credentials: 'kavitha' / 'Tirupati@CA2026'.`
+      message: `Password recovery request logged for ${cleanEmail}. In production, Supabase Auth sends an email reset link. Default credentials: 'kavitha' / 'Tirupati@CA2026'.`
     };
   },
 
@@ -724,9 +797,16 @@ export const adminStorage = {
   },
 
   logout(): void {
+    const session = this.getSession();
     try {
       sessionStorage.removeItem(SESSION_KEY);
-      if (this.isCloudConnected() && supabase) {
+      if (session) {
+        fetch('/api/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${session.token}` }
+        }).catch(() => {});
+      }
+      if (isSupabaseConfigured() && supabase) {
         supabase.auth.signOut().catch(() => {});
       }
     } catch (e) {

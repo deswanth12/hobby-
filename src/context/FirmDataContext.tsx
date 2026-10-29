@@ -92,6 +92,14 @@ export const FirmDataProvider: React.FC<{ children: ReactNode }> = ({ children }
   };
 
   useEffect(() => {
+    // Synchronize with shared database on startup
+    Promise.all([
+      adminStorage.fetchContentRemote(),
+      adminStorage.fetchSettingsRemote()
+    ]).then(() => {
+      reload();
+    }).catch(() => {});
+
     const handleUpdate = () => {
       reload();
     };

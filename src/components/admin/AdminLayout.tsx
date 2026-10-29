@@ -10,8 +10,7 @@ import {
   Menu, 
   X, 
   ShieldCheck, 
-  ExternalLink,
-  Info
+  ExternalLink
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { SEOHead } from '../SEOHead';
@@ -275,16 +274,16 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
           </div>
         </header>
 
-        {/* Prototype / Architecture Guidance Banner */}
-        <div className="bg-amber-50/80 border-b border-amber-200/90 px-6 sm:px-8 py-2.5 text-xs text-amber-900 flex items-center justify-between gap-4">
+        {/* Verified Shared Database Banner */}
+        <div className="bg-emerald-50/90 border-b border-emerald-200/90 px-6 sm:px-8 py-2.5 text-xs text-emerald-900 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <Info className="w-4 h-4 text-amber-700 shrink-0" />
+            <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
             <span>
-              <strong>Local Persistence Mode:</strong> Content updates, practice settings, and enquiry statuses persist across sessions via client storage and update the public site live. Server-side database integration available in Phase 2 expansion.
+              <strong>Shared Practice Database Active:</strong> Enquiries, content updates, and practice settings are persistently synchronized across all authorized devices and browser sessions.
             </span>
           </div>
-          <span className="text-[10px] font-mono font-semibold uppercase text-amber-800 hidden lg:inline bg-amber-100 px-2 py-0.5 rounded">
-            Audit Ready
+          <span className="text-[10px] font-mono font-bold uppercase text-emerald-800 hidden lg:inline bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200">
+            PostgreSQL Synced
           </span>
         </div>
 

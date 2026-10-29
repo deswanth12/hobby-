@@ -30,13 +30,16 @@ export const AdminOverviewPage: React.FC = () => {
 
   useEffect(() => {
     loadData();
+    adminStorage.fetchEnquiriesRemote().then(res => {
+      if (res && res.data) setEnquiries(res.data);
+    });
     window.addEventListener(FIRM_DATA_UPDATE_EVENT, loadData);
     return () => window.removeEventListener(FIRM_DATA_UPDATE_EVENT, loadData);
   }, []);
 
   const totalEnquiries = enquiries.length;
   const newEnquiries = enquiries.filter(e => e.status === 'new').length;
-  const inReviewEnquiries = enquiries.filter(e => e.status === 'in-review').length;
+  const inReviewEnquiries = enquiries.filter(e => e.status === 'in-progress' || e.status === 'in-review').length;
   const closedEnquiries = enquiries.filter(e => e.status === 'contacted' || e.status === 'closed').length;
 
   const recentEnquiries = enquiries.slice(0, 5);
