@@ -151,16 +151,57 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Dual Qualification Strategic Advantage */}
-              <div className="bg-brand-pale rounded-xl p-6 border border-emerald-200/90 shadow-subtle">
-                <div className="flex items-center gap-2 mb-2">
+              <div className="bg-brand-pale rounded-xl p-6 sm:p-7 border border-emerald-200/90 shadow-subtle">
+                <div className="flex items-center gap-2.5 mb-2.5">
                   <Award className="w-5 h-5 text-emerald-800 shrink-0" />
-                  <h3 className="font-serif text-lg font-bold text-brand-primary">
+                  <h3 className="font-serif text-xl font-bold text-brand-primary">
                     The Dual FCA + CMA Strategic Advantage
                   </h3>
                 </div>
-                <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed">
-                  Holding qualifications in both Chartered Accountancy (FCA) and Cost & Management Accountancy (CMA) creates a unique, comprehensive perspective. We provide not only <em>statutory compliance and external tax defense</em>, but also <em>internal financial architecture, product margin optimization, and cash flow governance</em>.
+                <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed mb-5">
+                  Holding qualifications in both Chartered Accountancy (FCA) and Cost & Management Accountancy (CMA) provides a distinct dual capability: external statutory assurance and tax defense coupled with internal financial modeling, unit-cost analysis, and working capital optimization.
                 </p>
+
+                {/* Comparison Matrix Table */}
+                <div className="overflow-x-auto rounded-lg border border-emerald-200/80 bg-white">
+                  <table className="w-full text-left text-xs">
+                    <thead>
+                      <tr className="bg-brand-surface border-b border-emerald-200/80">
+                        <th className="py-2.5 px-3.5 font-bold uppercase tracking-wider text-charcoal-muted text-[10px]">
+                          Practice Dimension
+                        </th>
+                        <th className="py-2.5 px-3.5 font-bold uppercase tracking-wider text-charcoal-light text-[10px]">
+                          Traditional Tax-Only Filing
+                        </th>
+                        <th className="py-2.5 px-3.5 font-bold uppercase tracking-wider text-emerald-800 text-[10px] bg-emerald-50/60">
+                          Kavitha & Associates (FCA + CMA)
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-emerald-100 text-charcoal">
+                      <tr>
+                        <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Assurance Rigor</td>
+                        <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Routine compilation</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Evidence-based ICAI SAs & IFC testing</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Cost & Working Capital</td>
+                        <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Not addressed</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Unit-cost modeling & margin leakage review (CMA)</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Tax & Scrutiny</td>
+                        <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Reactive post-facto filing</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Proactive advance tax & ITC reconciliation</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Partner Supervision</td>
+                        <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Junior staff delegation</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Direct partner review by CA KavithaVijay SRJ</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
               {/* Trust Creed */}

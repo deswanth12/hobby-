@@ -22,8 +22,7 @@ import {
   Globe,
   UserCheck,
   HeartHandshake,
-  Compass,
-  ExternalLink
+  Compass
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { ContactForm } from '../components/ContactForm';
@@ -67,70 +66,46 @@ export const HomePage: React.FC = () => {
         canonicalPath="/"
       />
       {/* =========================================================================
-          1. HERO SECTION (Clean, Solid, Dignified Architecture)
+          1. HERO SECTION (Executive Architectural Design — ₹50,000 Standard)
           ========================================================================= */}
-      <section className="bg-brand-warm pt-12 sm:pt-16 pb-16 lg:pb-24 border-b border-border">
+      <section className="bg-brand-warm pt-12 sm:pt-20 pb-16 lg:pb-24 border-b border-border relative overflow-hidden">
+        {/* Subtle architectural ambient background glow */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-pale/40 rounded-full blur-3xl pointer-events-none -z-10" />
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
-            {/* Left Column: Headlines & Core Value Proposition */}
+            {/* Left Column: Authoritative Editorial Headlines */}
             <div className="lg:col-span-7 space-y-6">
               
-              {/* Partner Credentials Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-brand-pale border border-emerald-200/80">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold" />
+              {/* Institutional Practice Kicker */}
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-brand-surface border border-border/80 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
                 <span className="text-xs font-semibold text-brand-primary tracking-wider uppercase">
-                  Chartered Accountant • Cost Accountant
+                  Independent Chartered Accountancy Practice • Tirupati, AP
                 </span>
               </div>
 
-              {/* Main Headline (Cormorant Garamond Luxury Serif) */}
-              <h1 className="font-serif text-3xl sm:text-5xl md:text-5xl lg:text-[3.5rem] font-bold text-brand-primary tracking-tight leading-[1.14]">
-                Trusted Financial, Tax and Compliance Support
-              </h1>
-
-              {/* Sub-headline */}
-              <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed max-w-2xl font-normal">
-                Professional support across audit, income tax, GST, corporate compliance, and business advisory. Dependable, compliant, and growth-oriented counsel rooted in extensive technical expertise and partner-level accountability.
-              </p>
-
-              {/* Partner Credentials Card (Restrained, Architectural) */}
-              <div className="bg-white rounded-xl border border-border p-5 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                  <span className="text-xs font-semibold text-gold-dark uppercase tracking-wider block">
-                    Practicing Chartered Accountant
-                  </span>
-                  <h2 className="font-serif text-2xl font-bold text-brand-primary mt-0.5">
-                    {FIRM_DATA.partner.name}
-                  </h2>
-                  <p className="text-xs text-charcoal-muted font-medium mt-1">
-                    {FIRM_DATA.partner.qualifications} • Senior Partner
-                  </p>
-                  <p className="text-xs text-emerald-800 font-semibold mt-1 flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-gold-dark shrink-0" />
-                    <span>Principal Chambers: Bairagi Patteda, Tirupati – 517501</span>
-                  </p>
-                </div>
-                <div className="sm:text-right border-t sm:border-t-0 pt-3 sm:pt-0 border-border">
-                  <span className="text-xs text-charcoal-light uppercase tracking-wider block">Service Footprint</span>
-                  <span className="text-xs font-semibold text-brand-primary block">Tirupati & Pan-India</span>
-                  <a
-                    href={FIRM_DATA.contact.googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[11px] text-emerald-700 hover:text-emerald-900 font-semibold mt-1 underline"
-                  >
-                    <span>View Map (GPS)</span>
-                    <ExternalLink className="w-2.5 h-2.5 text-gold-dark" />
-                  </a>
-                </div>
+              {/* Master Headline (Cormorant Garamond Luxury Serif) */}
+              <div className="space-y-1">
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-brand-primary tracking-tight leading-[1.1]">
+                  Statutory Rigor.
+                </h1>
+                <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold text-gold-dark tracking-tight leading-[1.1]">
+                  Practical Commercial Counsel.
+                </h1>
               </div>
 
-              {/* Primary Call to Actions (Standardized, Solid, Authoritative) */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-1">
+              {/* Authoritative Lead Narrative */}
+              <p className="text-base sm:text-lg text-charcoal/80 leading-relaxed max-w-2xl font-normal">
+                Founded by <strong className="text-brand-primary font-semibold">CA KavithaVijay SRJ (B.Com, FCA, CMA)</strong>, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
+              </p>
+
+              {/* Primary Call to Action Cluster */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <a
                   href="#contact-section"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary btn-tactile"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-gold/30 transition-all focus:ring-2 focus:ring-brand-primary btn-tactile"
                 >
                   <span>Request Consultation</span>
                   <ArrowRight className="w-4 h-4 text-gold" />
@@ -138,99 +113,141 @@ export const HomePage: React.FC = () => {
 
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors focus:ring-2 focus:ring-brand-primary btn-tactile"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-surface hover:border-gold/60 shadow-subtle transition-all focus:ring-2 focus:ring-brand-primary btn-tactile"
                 >
-                  <span>Explore Services</span>
+                  <span>Explore Practice Disciplines</span>
                 </Link>
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary hover:text-brand-deep py-2 px-3 rounded-lg hover:bg-brand-pale transition-colors btn-tactile"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-charcoal hover:text-brand-primary py-2.5 px-3.5 rounded-xl hover:bg-brand-surface transition-colors btn-tactile"
+                  title="Direct telephone line"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
                   <span>Call {FIRM_DATA.contact.primaryPhone}</span>
                 </a>
               </div>
 
-              {/* Trust Tagline (Directly from Client Business Card) */}
-              <div className="pt-2 flex flex-wrap items-center gap-2.5 text-xs text-charcoal-muted font-semibold tracking-wider uppercase">
-                <span className="text-brand-primary font-bold">TRUST</span>
+              {/* Trust Creed Strip (From Client Business Card) */}
+              <div className="pt-3 border-t border-border/60 flex flex-wrap items-center gap-3 text-xs text-charcoal-muted font-bold tracking-widest uppercase">
+                <span className="text-brand-primary">TRUST</span>
                 <span className="text-gold-dark">•</span>
-                <span className="text-brand-primary font-bold">EXPERTISE</span>
+                <span className="text-brand-primary">EXPERTISE</span>
                 <span className="text-gold-dark">•</span>
-                <span className="text-brand-primary font-bold">YOUR GROWTH PARTNER</span>
+                <span className="text-brand-primary">YOUR GROWTH PARTNER</span>
+                <span className="text-gold-dark hidden sm:inline">•</span>
+                <span className="text-emerald-800 hidden sm:inline font-semibold">ESTABLISHED PRACTICE</span>
               </div>
             </div>
 
-            {/* Right Column: Hero Visual Feature Box (Solid Architectural Design) */}
+            {/* Right Column: Executive Practice Registry Plaque (Signature Component) */}
             <div className="lg:col-span-5">
-              <div className="bg-[#0A2F24] text-white rounded-xl shadow-card p-6 sm:p-7 border border-emerald-900">
+              <div className="bg-[#0A2F24] text-white rounded-2xl shadow-card-hover p-6 sm:p-8 border border-gold/40 relative overflow-hidden card-tactile">
+                
+                {/* Decorative subtle seal watermark */}
+                <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 rounded-full bg-gold/5 border border-gold/10 pointer-events-none" />
+
+                {/* Plaque Header & Monogram Seal */}
                 <div className="flex items-center justify-between border-b border-emerald-800/80 pb-5 mb-5">
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-gold">
-                      Practice Snapshot
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-12 h-12 rounded-xl bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif text-xl font-bold text-gold shadow-sm">
+                      KA
+                    </div>
+                    <div>
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-gold block">
+                        PRACTICE REGISTER • ESTD. TIRUPATI
+                      </span>
+                      <h3 className="font-serif text-2xl font-bold text-white tracking-wide">
+                        Kavitha & Associates
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Senior Partner Credential Block */}
+                <div className="bg-[#0F3E2E] rounded-xl p-4 border border-emerald-800/90 mb-5 space-y-1">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gold-light bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">
+                      Senior Partner
                     </span>
-                    <h3 className="font-serif text-2xl font-bold text-white mt-0.5">
-                      Kavitha & Associates
-                    </h3>
+                    <span className="text-[10px] text-emerald-200/80">ICAI Fellow & ICMAI</span>
                   </div>
-                  <div className="w-11 h-11 rounded-lg bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-lg font-bold text-gold-light">
-                    KA
-                  </div>
+                  <h4 className="font-serif text-xl font-bold text-white mt-1">
+                    {FIRM_DATA.partner.name}
+                  </h4>
+                  <p className="text-xs text-gold font-semibold tracking-wide">
+                    {FIRM_DATA.partner.qualifications} (Dual Qualifications)
+                  </p>
                 </div>
 
-                {/* 100% Source-Backed Core Metrics */}
-                <div className="grid grid-cols-2 gap-3 mb-5">
-                  <div className="bg-[#0F3E2E] rounded-lg p-3 border border-emerald-800/70">
-                    <span className="block font-serif text-2xl font-bold text-gold">FCA & CMA</span>
-                    <span className="text-xs text-emerald-100/90 font-medium">Dual Qualifications</span>
+                {/* Architectural Ledger Rows */}
+                <div className="space-y-3 text-xs text-emerald-100/90 divide-y divide-emerald-800/60 pt-1">
+                  
+                  {/* Chambers & GPS */}
+                  <div className="flex items-start justify-between gap-3 pt-2">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                      <div>
+                        <strong className="text-white block text-xs">Principal Chambers:</strong>
+                        <span className="text-emerald-200/90 text-[11px]">Bairagi Patteda, Tirupati – 517501, AP</span>
+                      </div>
+                    </div>
+                    <a
+                      href={FIRM_DATA.contact.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-semibold text-gold hover:underline shrink-0 mt-0.5"
+                    >
+                      Map Pin →
+                    </a>
                   </div>
-                  <div className="bg-[#0F3E2E] rounded-lg p-3 border border-emerald-800/70">
-                    <span className="block font-serif text-2xl font-bold text-gold">5 Cities</span>
-                    <span className="text-xs text-emerald-100/90 font-medium">Regional Reach</span>
+
+                  {/* Dual Competence */}
+                  <div className="flex items-start gap-2 pt-3">
+                    <ShieldCheck className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block text-xs">Dual Strategic Advantage:</strong>
+                      <span className="text-emerald-200/90 text-[11px]">External Statutory Audit + Internal Cost Accounting (CMA)</span>
+                    </div>
                   </div>
-                  <div className="bg-[#0F3E2E] rounded-lg p-3 border border-emerald-800/70">
-                    <span className="block font-serif text-2xl font-bold text-gold">PAN India</span>
-                    <span className="text-xs text-emerald-100/90 font-medium">Client Coverage</span>
+
+                  {/* Core Coverage Corridors */}
+                  <div className="flex items-start gap-2 pt-3">
+                    <Compass className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block text-xs">Regional Service Corridors:</strong>
+                      <span className="text-emerald-200/90 text-[11px]">Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore</span>
+                    </div>
                   </div>
-                  <div className="bg-[#0F3E2E] rounded-lg p-3 border border-emerald-800/70">
-                    <span className="block font-serif text-2xl font-bold text-gold">Partner</span>
-                    <span className="text-xs text-emerald-100/90 font-medium">Direct Attention</span>
+
+                  {/* Partner Supervision */}
+                  <div className="flex items-start gap-2 pt-3">
+                    <UserCheck className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="text-white block text-xs">Partner-Supervised Accountability:</strong>
+                      <span className="text-emerald-200/90 text-[11px]">Every file reviewed directly by CA KavithaVijay SRJ</span>
+                    </div>
                   </div>
+
                 </div>
 
-                {/* Core Disciplines List */}
-                <div className="space-y-2.5 text-xs text-emerald-100/90 border-t border-emerald-800/80 pt-4">
-                  <div className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                    <span>Statutory, Internal & Tax Audit Rigor</span>
+                {/* Plaque Footer & Direct Action */}
+                <div className="mt-5 pt-4 border-t border-emerald-800/80 flex items-center justify-between text-xs">
+                  <div className="flex items-center gap-1.5 text-emerald-300 text-[11px]">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Practice Chambers Open</span>
                   </div>
-                  <div className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                    <span>Direct Tax Assessment & Scrutiny Representation</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                    <span>GST Returns, Audit & ITC Optimization</span>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
-                    <span>RERA & MCA Company Law Compliance</span>
-                  </div>
-                </div>
-
-                <div className="mt-5 pt-3.5 border-t border-emerald-800/60 text-xs text-emerald-200/80 flex items-center justify-between">
-                  <a 
-                    href={FIRM_DATA.contact.googleMapsUrl}
+                  <a
+                    href={FIRM_DATA.contact.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-gold transition-colors flex items-center gap-1"
+                    className="inline-flex items-center gap-1 text-gold hover:text-white font-semibold text-xs transition-colors"
                   >
-                    <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
-                    <span>Chambers: Bairagi Patteda, Tirupati</span>
+                    <span>Direct WhatsApp Desk</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </a>
-                  <span className="text-gold font-medium">Professional Practice</span>
                 </div>
+
               </div>
             </div>
 
@@ -279,93 +296,130 @@ export const HomePage: React.FC = () => {
       </nav>
 
       {/* =========================================================================
-          2. AUDIT SPOTLIGHT (Featured in PDF Page 1)
+          2. AUDIT SPOTLIGHT (Dual-Pane Statutory Audit Matrix — ₹50,000 Standard)
           ========================================================================= */}
-      <section className="py-16 sm:py-20 bg-brand-pale/60 border-b border-border scroll-mt-28" id="audit-spotlight">
+      <section className="py-16 sm:py-24 bg-brand-pale/50 border-b border-border scroll-mt-28" id="audit-spotlight">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-12">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-primary text-gold text-xs font-bold uppercase tracking-wider mb-3">
-              <ShieldCheck className="w-3.5 h-3.5 text-gold" />
-              <span>{FIRM_DATA.auditSpotlight.subtitle}</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary tracking-tight">
-              {FIRM_DATA.auditSpotlight.title}
-            </h2>
-            <p className="mt-3 text-base text-charcoal-muted leading-relaxed">
-              {FIRM_DATA.auditSpotlight.description}
-            </p>
-          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Column: Sticky Assurance Briefing & Standards (4 cols) */}
+            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-primary text-gold text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                  <ShieldCheck className="w-3.5 h-3.5 text-gold" />
+                  <span>Assurance Spotlight</span>
+                </div>
+                <h2 className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary tracking-tight leading-tight">
+                  Statutory, Tax & Operational Audit Schedule
+                </h2>
+                <p className="mt-3 text-sm text-charcoal-muted leading-relaxed">
+                  Independent, thorough, and compliant audits that foster trust with lenders, investors, regulatory bodies, and corporate boards — delivered under the personal oversight of CA KavithaVijay SRJ.
+                </p>
+              </div>
 
-          {/* Audit Services Grid with Detailed Statute & Scope */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FIRM_DATA.auditSpotlight.services.map((service, index) => (
-              <div
-                key={service.name}
-                className="bg-white rounded-xl p-6 border border-border shadow-card card-tactile flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-bold text-gold-dark uppercase tracking-wider bg-brand-pale px-2.5 py-0.5 rounded border border-emerald-100">
-                      {service.statute}
-                    </span>
-                    <span className="text-xs font-serif font-bold text-charcoal-light">
-                      0{index + 1}
-                    </span>
+              {/* ICAI Standards Guarantee Card */}
+              <div className="bg-white rounded-xl p-5 border border-border shadow-card space-y-3">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gold-dark block">
+                  Methodology & Professional Standards
+                </span>
+                <div className="space-y-2 text-xs text-charcoal-muted">
+                  <div className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
+                    <span>Strict compliance with ICAI Standards on Auditing (SAs)</span>
                   </div>
+                  <div className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
+                    <span>Internal Financial Controls (IFC) testing under Sec 143(3)</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
+                    <span>Partner-supervised field audit and direct signature</span>
+                  </div>
+                </div>
+              </div>
 
-                  <h3 className="font-serif text-xl font-bold text-brand-primary">
-                    {service.name}
-                  </h3>
+              {/* Direct Practice Links */}
+              <div className="space-y-3 pt-1">
+                <Link
+                  to="/services/audit-assurance"
+                  className="w-full inline-flex items-center justify-between px-5 py-3 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
+                >
+                  <span>Explore Dedicated Audit Hub</span>
+                  <ArrowRight className="w-4 h-4 text-gold" />
+                </Link>
+                <a
+                  href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
+                  className="block text-center text-xs text-charcoal-muted hover:text-brand-primary py-1 font-medium"
+                >
+                  Statutory audit deadline approaching? Call <strong className="text-brand-primary font-semibold">{FIRM_DATA.contact.primaryPhone}</strong>
+                </a>
+              </div>
+            </div>
 
-                  <p className="text-xs sm:text-sm text-charcoal-muted mt-2.5 leading-relaxed">
-                    {service.scope}
-                  </p>
-
-                  {service.deliverable && (
-                    <div className="mt-3.5 pt-3 border-t border-border/50 text-[11px] text-charcoal-muted space-y-1">
-                      <div>
-                        <strong className="text-brand-primary font-semibold">Deliverable:</strong> {service.deliverable}
+            {/* Right Column: 9-Item Structured Assurance Dossier (8 cols) */}
+            <div className="lg:col-span-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {FIRM_DATA.auditSpotlight.services.map((service, index) => (
+                  <div
+                    key={service.name}
+                    className="bg-white rounded-xl p-5 border border-border shadow-card hover:border-gold/60 transition-all card-tactile flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] font-bold text-emerald-800 uppercase tracking-wider bg-brand-pale px-2.5 py-0.5 rounded border border-emerald-200">
+                          {service.statute}
+                        </span>
+                        <span className="font-serif text-xs font-bold text-charcoal-light">
+                          0{index + 1}
+                        </span>
                       </div>
-                      {service.applicableEntity && (
-                        <div>
-                          <strong className="text-brand-primary font-semibold">Applies to:</strong> {service.applicableEntity}
+
+                      <h3 className="font-serif text-lg font-bold text-brand-primary leading-snug">
+                        {service.name}
+                      </h3>
+
+                      <p className="text-xs text-charcoal-muted mt-2 leading-relaxed">
+                        {service.scope}
+                      </p>
+
+                      {service.deliverable && (
+                        <div className="mt-3 pt-2.5 border-t border-border/60 text-[11px] text-charcoal-muted space-y-1 bg-brand-surface/60 p-2.5 rounded-lg">
+                          <div>
+                            <strong className="text-brand-primary font-semibold">Deliverable:</strong> {service.deliverable}
+                          </div>
+                          {service.applicableEntity && (
+                            <div className="text-charcoal-light">
+                              <strong className="text-emerald-800 font-semibold">Applies to:</strong> {service.applicableEntity}
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
-                  )}
-                </div>
 
-                <div className="mt-5 pt-3.5 border-t border-border/60 text-xs text-emerald-800 font-medium flex items-center justify-between">
-                  <span>Supervised by CA KavithaVijay SRJ</span>
-                  <Link to="/services/audit-assurance" className="text-gold-dark hover:underline font-semibold text-[11px]">
-                    Details →
-                  </Link>
-                </div>
+                    <div className="mt-4 pt-2.5 border-t border-border/50 text-[11px] text-emerald-800 font-semibold flex items-center justify-between">
+                      <span>Partner Oversight</span>
+                      <a
+                        href={FIRM_DATA.contact.whatsappLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gold-dark hover:underline font-semibold"
+                      >
+                        Inquire Audit →
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-border">
-            <Link
-              to="/services/audit-assurance"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-primary hover:text-brand-deep underline underline-offset-4"
-            >
-              <span>Explore Dedicated Audit & Assurance Practice</span>
-              <ChevronRight className="w-4 h-4 text-gold-dark" />
-            </Link>
-
-            <a
-              href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-              className="text-xs font-semibold text-charcoal-muted hover:text-brand-primary"
-            >
-              Have an upcoming statutory audit deadline? Call {FIRM_DATA.contact.primaryPhone}
-            </a>
-          </div>
         </div>
       </section>
 
       {/* =========================================================================
-          3. FULL SERVICE SPECTRUM (Editorial Clean Architecture)
+          3. FULL SERVICE SPECTRUM (Balanced 3x2 Editorial Grid — ₹50,000 Standard)
           ========================================================================= */}
       <section className="py-16 sm:py-24 bg-brand-warm" id="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -377,16 +431,16 @@ export const HomePage: React.FC = () => {
               Comprehensive Financial, Tax & Regulatory Support
             </h2>
             <p className="text-base text-charcoal-muted mt-3">
-              End-to-end professional support under one roof, executed with rigorous diligence and transparent communication.
+              End-to-end professional disciplines under one roof, executed with rigorous diligence and transparent partner-level communication.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {FIRM_DATA.serviceCategories.map((category) => (
               <div
                 key={category.id}
                 id={category.id}
-                className="scroll-mt-24 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-card card-tactile flex flex-col justify-between"
+                className="scroll-mt-28 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-card card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
@@ -461,6 +515,77 @@ export const HomePage: React.FC = () => {
                 </div>
               </div>
             ))}
+
+            {/* Coordinating 6th Card: Virtual CFO & Strategic Financial Retainer */}
+            <div className="bg-[#0A2F24] text-white rounded-xl border border-emerald-900 p-6 sm:p-7 shadow-card card-tactile flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0F3E2E] text-gold flex items-center justify-center border border-gold/40">
+                    <ShieldCheck className="w-6 h-6 text-gold" />
+                  </div>
+                  <span className="text-[11px] font-semibold text-gold bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800">
+                    Strategic Retainer
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-2xl font-bold text-white mb-2">
+                  Virtual CFO & Retainerships
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-100/90 leading-relaxed mb-4">
+                  Outsourced financial leadership and integrated compliance retainers designed for high-growth enterprises and established businesses.
+                </p>
+
+                <div className="mb-4 p-2.5 rounded-lg bg-[#0F3E2E]/80 border border-emerald-800/80 text-xs">
+                  <span className="font-semibold text-gold block text-[11px] uppercase tracking-wider mb-0.5">
+                    Target Entities:
+                  </span>
+                  <p className="text-emerald-200/90 text-[11px] leading-relaxed">
+                    Growth-Stage Startups, MSMEs & Established Corporate Enterprises
+                  </p>
+                </div>
+
+                <div className="border-t border-emerald-800/80 pt-4">
+                  <span className="text-xs font-semibold text-gold uppercase tracking-wider block mb-2.5">
+                    Retainer Scope:
+                  </span>
+                  <ul className="space-y-2">
+                    <li className="text-xs text-emerald-100/90 flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Monthly MIS & Operational Cash Flow Budgeting</span>
+                    </li>
+                    <li className="text-xs text-emerald-100/90 flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Continuous Advance Tax & Quarterly TDS Structuring</span>
+                    </li>
+                    <li className="text-xs text-emerald-100/90 flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Bank Loan CMA Data & Project Financial Modeling</span>
+                    </li>
+                    <li className="text-xs text-emerald-100/90 flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Board-Level Fiscal Counseling with Senior Partner</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="pt-5 mt-5 border-t border-emerald-800/80 flex items-center justify-between">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold hover:text-white group"
+                >
+                  <span>Discuss Retainer Scope</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-gold" />
+                </Link>
+                <a
+                  href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
+                  className="text-[11px] font-semibold text-emerald-300 hover:text-white underline underline-offset-2"
+                >
+                  Call Directly
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

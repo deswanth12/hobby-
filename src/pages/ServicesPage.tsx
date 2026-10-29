@@ -67,6 +67,9 @@ export const ServicesPage: React.FC = () => {
               <a href="#advisory-consulting" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
                 Strategic Advisory
               </a>
+              <a href="#virtual-cfo" className="px-3 py-1.5 rounded-lg bg-brand-pale border border-emerald-300 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition-colors btn-tactile">
+                Virtual CFO
+              </a>
             </div>
           </div>
         </div>
@@ -225,6 +228,145 @@ export const ServicesPage: React.FC = () => {
               </div>
             </div>
           ))}
+
+          {/* Discipline 06: Virtual CFO & Strategic Financial Retainer */}
+          <div
+            id="virtual-cfo"
+            className="scroll-mt-28 p-6 sm:p-8 lg:p-10 rounded-xl border border-emerald-900 bg-[#0A2F24] text-white shadow-card card-tactile"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Left Column */}
+              <div className="lg:col-span-5 space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="px-2.5 py-1 rounded-md bg-[#0F3E2E] text-gold text-xs font-bold uppercase tracking-wider border border-gold/40">
+                    Discipline 06
+                  </span>
+                  <span className="text-[11px] font-semibold text-emerald-200 bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800">
+                    Multi-Statute Strategic Retainer
+                  </span>
+                </div>
+
+                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                  Virtual CFO & Retainership Practice
+                </h2>
+
+                <p className="text-sm text-emerald-100/90 leading-relaxed">
+                  Outsourced financial leadership, strategic cash flow governance, and consolidated compliance retainers designed for startups, MSMEs, and expanding enterprises that need high-level CFO expertise without the overhead of an in-house executive.
+                </p>
+
+                <div className="p-3.5 rounded-lg bg-[#0F3E2E] border border-emerald-800 text-xs">
+                  <strong className="block text-[11px] uppercase tracking-wider text-gold font-bold mb-1">
+                    Applicable Entities:
+                  </strong>
+                  <span className="text-emerald-200 leading-relaxed">
+                    Funded Startups, Manufacturing MSMEs, Commercial Real Estate Developers & Mid-Market Firms
+                  </span>
+                </div>
+
+                <div className="pt-2">
+                  <strong className="block text-xs font-bold text-gold uppercase tracking-wider mb-2">
+                    Common Practice Triggers:
+                  </strong>
+                  <ul className="space-y-1.5 text-xs text-emerald-100/90">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Transitioning from basic book-keeping to predictive financial leadership</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Preparing Bank Loan CMA data and project reports for working capital lines</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                      <span>Mitigating compliance risk through annual multi-statute calendar oversight</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-emerald-800/80">
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gold-dark hover:bg-gold text-white text-xs font-semibold transition-colors btn-tactile"
+                  >
+                    <span>Discuss Retainer Scope</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <a
+                    href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-200 hover:text-white"
+                  >
+                    <Phone className="w-3.5 h-3.5 text-gold" />
+                    <span>{FIRM_DATA.contact.primaryPhone}</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Retainer Engagements Included */}
+              <div className="lg:col-span-7 bg-[#0F3E2E] rounded-xl p-6 sm:p-7 border border-emerald-800/90">
+                <div className="flex items-center justify-between border-b border-emerald-800 pb-3 mb-4">
+                  <h3 className="font-serif text-xs font-bold text-white uppercase tracking-wider">
+                    Virtual CFO Mandate & Deliverables
+                  </h3>
+                  <span className="text-[11px] text-gold font-semibold bg-emerald-950 px-2 py-0.5 rounded border border-gold/40">
+                    CMA + FCA Supervision
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Monthly MIS, Operating Variance & Unit Cost Modeling
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Continuous Advance Tax & Quarterly TDS Structuring
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Bank Credit Facility CMA Data & Project Reports
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Multi-Branch GST Health Checks & ITC Maximization
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Annual MCA & ROC Secretarial Governance Oversight
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
+                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                      Board-Level Strategic Counsel with CA KavithaVijay SRJ
+                    </span>
+                  </div>
+                </div>
+
+                <div className="mt-5 pt-3.5 border-t border-emerald-800 flex items-center justify-between text-xs text-emerald-200">
+                  <span>Structured annual or quarterly engagement retainers</span>
+                  <a
+                    href={FIRM_DATA.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold hover:text-white font-semibold hover:underline"
+                  >
+                    Direct WhatsApp Query →
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 
