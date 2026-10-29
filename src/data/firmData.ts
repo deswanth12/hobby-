@@ -36,6 +36,15 @@ export interface FirmProfile {
     secondaryPhoneClean: string;
     email: string;
     primaryLocation: string;
+    streetAddress: string;
+    locality: string;
+    postalCode: string;
+    geoCoordinates: {
+      latitude: number;
+      longitude: number;
+      dms: string;
+    };
+    googleMapsUrl: string;
     region: string;
     whatsappNumber: string;
     whatsappLink: string;
@@ -80,7 +89,16 @@ export const FIRM_DATA: FirmProfile = {
     secondaryPhone: "+91 95421 53906",
     secondaryPhoneClean: "919542153906",
     email: "cakavithasrj@gmail.com",
-    primaryLocation: "Tirupati, Andhra Pradesh",
+    primaryLocation: "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
+    streetAddress: "Bairagi Patteda",
+    locality: "Tirupati",
+    postalCode: "517501",
+    geoCoordinates: {
+      latitude: 13.61925,
+      longitude: 79.418028,
+      dms: "13°37'09.3\"N 79°25'04.9\"E"
+    },
+    googleMapsUrl: "https://www.google.com/maps?q=13.61925,79.418028",
     region: "India (Pan-India Service Reach)",
     whatsappNumber: "+91 96263 50900",
     whatsappLink: "https://wa.me/919626350900?text=Hello%20CA%20KavithaVijay%20SRJ%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
@@ -90,7 +108,7 @@ export const FIRM_DATA: FirmProfile = {
       city: "Tirupati", 
       state: "Andhra Pradesh", 
       type: "Primary Chambers",
-      description: "Principal operating practice of CA KavithaVijay SRJ."
+      description: "Principal operating practice of CA KavithaVijay SRJ located at Bairagi Patteda, Tirupati – 517501."
     },
     { 
       city: "Chennai", 

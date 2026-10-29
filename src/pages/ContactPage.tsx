@@ -137,10 +137,19 @@ export const ContactPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="pt-1 pl-13 text-xs text-charcoal leading-relaxed">
-                    <strong className="text-brand-primary text-sm">Tirupati, Andhra Pradesh, India</strong>
+                    <strong className="text-brand-primary text-sm">Bairagi Patteda, Tirupati</strong>
                     <p className="text-charcoal-muted mt-0.5">
-                      Consultation visits in Chennai, Bengaluru, Hyderabad, and Coimbatore arranged on client mandate.
+                      Andhra Pradesh – 517501, India (GPS: 13°37'09.3"N 79°25'04.9"E)
                     </p>
+                    <a
+                      href={FIRM_DATA.contact.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-emerald-700 hover:text-emerald-900 font-semibold mt-1.5 text-xs hover:underline"
+                    >
+                      <MapPin className="w-3.5 h-3.5 text-gold-dark" />
+                      <span>View on Google Maps</span>
+                    </a>
                   </div>
                 </div>
               </div>

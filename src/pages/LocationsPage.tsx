@@ -40,11 +40,22 @@ export const LocationsPage: React.FC = () => {
                   <span>Principal Operating Practice</span>
                 </div>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
-                  Tirupati, Andhra Pradesh
+                  Bairagi Patteda, Tirupati
                 </h2>
                 <p className="text-sm text-charcoal leading-relaxed">
-                  Headquarters for CA Kavitha & Associates under the direction of CA KavithaVijay SRJ. In-person client meetings, physical documentation reviews, and core audit planning are coordinated from our Tirupati chambers.
+                  Headquarters for Kavitha & Associates under the direction of CA KavithaVijay SRJ, located at Bairagi Patteda, Tirupati, Andhra Pradesh – 517501 (GPS: 13°37'09.3"N 79°25'04.9"E). In-person client consultations, physical documentation reviews, and core audit planning are coordinated from our Tirupati chambers.
                 </p>
+                <div className="pt-1">
+                  <a
+                    href={FIRM_DATA.contact.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline"
+                  >
+                    <MapPin className="w-3.5 h-3.5 text-gold-dark" />
+                    <span>View Chambers on Google Maps (13.61925, 79.418028)</span>
+                  </a>
+                </div>
                 <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-brand-primary">
                   <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="flex items-center gap-1.5 hover:text-gold-dark">
                     <Phone className="w-4 h-4 text-gold-dark" />
