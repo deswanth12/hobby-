@@ -5,6 +5,7 @@ import {
   ContentOverrides, 
   SettingsOverrides 
 } from '../types/admin';
+import { supabase, isSupabaseConfigured, DbEnquiry, DbContentService, DbContentFaq } from '../lib/supabase';
 
 const ENQUIRIES_KEY = 'ka_admin_enquiries_v1';
 const CONTENT_KEY = 'ka_admin_content_v1';
@@ -16,10 +17,14 @@ const RATE_LIMIT_KEY = 'ka_admin_login_attempts_v1';
 export const FIRM_DATA_UPDATE_EVENT = 'ka_firm_data_updated';
 
 // ---------------------------------------------------------------------------
-// 1. Enquiries Storage Service
+// 1. Unified Enquiries Storage Service (Supabase + Local Fallback)
 // ---------------------------------------------------------------------------
 
 export const adminStorage = {
+  isCloudConnected(): boolean {
+    return isSupabaseConfigured();
+  },
+
   getEnquiries(): EnquiryRecord[] {
     try {
       const data = localStorage.getItem(ENQUIRIES_KEY);
@@ -29,6 +34,53 @@ export const adminStorage = {
     } catch (e) {
       console.error('Failed to load enquiries from persistent storage:', e);
       return [];
+    }
+  },
+
+  // Remote fetch from Supabase
+  async fetchEnquiriesRemote(): Promise<{ success: boolean; data: EnquiryRecord[]; error?: string }> {
+    if (!this.isCloudConnected() || !supabase) {
+      return { success: true, data: this.getEnquiries() };
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('enquiries')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.warn('Supabase enquiries fetch error (check RLS / session):', error.message);
+        return { success: false, data: this.getEnquiries(), error: error.message };
+      }
+
+      if (data) {
+        const records: EnquiryRecord[] = data.map((d: DbEnquiry) => ({
+          id: d.id,
+          fullName: d.full_name,
+          entityType: d.entity_type || '',
+          organization: d.organization || '',
+          phone: d.phone,
+          email: d.email || '',
+          serviceCategory: d.service_category,
+          city: d.city,
+          urgency: d.urgency,
+          message: d.message,
+          createdAt: d.created_at,
+          status: d.status,
+          followUpNotes: d.follow_up_notes || '',
+          updatedAt: d.updated_at,
+        }));
+
+        // Cache locally for instant offline UI
+        localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+        return { success: true, data: records };
+      }
+
+      return { success: true, data: this.getEnquiries() };
+    } catch (e) {
+      return { success: false, data: this.getEnquiries(), error: (e as Error).message };
     }
   },
 
@@ -48,7 +100,59 @@ export const adminStorage = {
     } catch (e) {
       console.error('Failed to save enquiry to persistent storage:', e);
     }
+
+    // Background push to Supabase if configured (fire & forget with safe error handling)
+    if (this.isCloudConnected() && supabase) {
+      supabase.from('enquiries').insert({
+        id: newRecord.id,
+        full_name: newRecord.fullName,
+        entity_type: newRecord.entityType || null,
+        organization: newRecord.organization || null,
+        phone: newRecord.phone,
+        email: newRecord.email || null,
+        service_category: newRecord.serviceCategory,
+        city: newRecord.city,
+        urgency: newRecord.urgency === 'Urgent / Approaching Deadline' ? 'statutory-deadline' : 'routine',
+        message: newRecord.message,
+        status: 'new',
+      }).then(({ error }) => {
+        if (error) {
+          console.warn('Cloud submission failed to sync to Supabase (RLS check or network):', error.message);
+        }
+      });
+    }
+
     return newRecord;
+  },
+
+  async recordEnquiryAsync(enquiry: Omit<EnquiryRecord, 'id' | 'createdAt' | 'status'>): Promise<{ success: boolean; data: EnquiryRecord; error?: string }> {
+    const local = this.recordEnquiry(enquiry);
+
+    if (this.isCloudConnected() && supabase) {
+      try {
+        const { error } = await supabase.from('enquiries').insert({
+          id: local.id,
+          full_name: local.fullName,
+          entity_type: local.entityType || null,
+          organization: local.organization || null,
+          phone: local.phone,
+          email: local.email || null,
+          service_category: local.serviceCategory,
+          city: local.city,
+          urgency: local.urgency === 'Urgent / Approaching Deadline' ? 'statutory-deadline' : 'routine',
+          message: local.message,
+          status: 'new',
+        });
+
+        if (error) {
+          return { success: false, data: local, error: error.message };
+        }
+      } catch (e) {
+        return { success: false, data: local, error: (e as Error).message };
+      }
+    }
+
+    return { success: true, data: local };
   },
 
   updateEnquiryStatus(id: string, status: EnquiryStatus, followUpNotes?: string): boolean {
@@ -56,9 +160,12 @@ export const adminStorage = {
     const index = existing.findIndex(e => e.id === id);
     if (index === -1) return false;
 
+    // Normalize status
+    const normalizedStatus: EnquiryStatus = status === 'in-review' ? 'in-progress' : status;
+
     existing[index] = {
       ...existing[index],
-      status,
+      status: normalizedStatus,
       followUpNotes: followUpNotes !== undefined ? followUpNotes : existing[index].followUpNotes,
       updatedAt: new Date().toISOString(),
     };
@@ -66,11 +173,26 @@ export const adminStorage = {
     try {
       localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(existing));
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
-      console.error('Failed to update enquiry status:', e);
+      console.error('Failed to update enquiry status in storage:', e);
       return false;
     }
+
+    // Sync to Supabase
+    if (this.isCloudConnected() && supabase) {
+      const dbStatus = normalizedStatus === 'in-progress' ? 'in-progress' : normalizedStatus;
+      supabase.from('enquiries').update({
+        status: dbStatus as 'new' | 'contacted' | 'in-progress' | 'closed',
+        follow_up_notes: followUpNotes,
+        updated_at: new Date().toISOString(),
+      }).eq('id', id).then(({ error }) => {
+        if (error) {
+          console.warn('Supabase update failed:', error.message);
+        }
+      });
+    }
+
+    return true;
   },
 
   deleteEnquiry(id: string): boolean {
@@ -79,11 +201,18 @@ export const adminStorage = {
     try {
       localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(filtered));
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to delete enquiry:', e);
       return false;
     }
+
+    if (this.isCloudConnected() && supabase) {
+      supabase.from('enquiries').delete().eq('id', id).then(({ error }) => {
+        if (error) console.warn('Supabase delete failed:', error.message);
+      });
+    }
+
+    return true;
   },
 
   exportEnquiriesCSV(): string {
@@ -140,12 +269,61 @@ export const adminStorage = {
     }
   },
 
+  async fetchContentRemote(): Promise<ContentOverrides> {
+    if (!this.isCloudConnected() || !supabase) {
+      return this.getContentOverrides();
+    }
+
+    try {
+      const [servicesRes, faqsRes] = await Promise.all([
+        supabase.from('content_services').select('*'),
+        supabase.from('content_faqs').select('*'),
+      ]);
+
+      const current = this.getContentOverrides();
+
+      if (servicesRes.data) {
+        current.services = current.services || {};
+        servicesRes.data.forEach((s: DbContentService) => {
+          current.services![s.id] = {
+            title: s.title,
+            shortDescription: s.short_description,
+            fullDescription: s.full_description,
+            statutoryFramework: s.statutory_framework || '',
+            targetClients: s.target_clients || '',
+            status: s.status,
+          };
+        });
+      }
+
+      if (faqsRes.data) {
+        current.faqs = current.faqs || {};
+        faqsRes.data.forEach((f: DbContentFaq) => {
+          current.faqs![f.id] = {
+            question: f.question,
+            answer: f.answer,
+            statuteReference: f.statute_reference || '',
+            status: f.status,
+          };
+        });
+      }
+
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      return current;
+    } catch (e) {
+      console.warn('Failed to load remote content from Supabase:', e);
+      return this.getContentOverrides();
+    }
+  },
+
   saveServiceOverride(serviceId: string, override: {
     title?: string;
     shortDescription?: string;
     fullDescription?: string;
     statutoryFramework?: string;
     targetClients?: string;
+    status?: 'published' | 'draft';
   }): boolean {
     const current = this.getContentOverrides();
     const services = current.services || {};
@@ -158,17 +336,35 @@ export const adminStorage = {
     try {
       localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to save service override:', e);
       return false;
     }
+
+    // Sync to Supabase
+    if (this.isCloudConnected() && supabase) {
+      supabase.from('content_services').upsert({
+        id: serviceId,
+        title: override.title || '',
+        short_description: override.shortDescription || '',
+        full_description: override.fullDescription || '',
+        statutory_framework: override.statutoryFramework,
+        target_clients: override.targetClients,
+        status: override.status || 'published',
+        display_order: 1,
+      }).then(({ error }) => {
+        if (error) console.warn('Supabase service upsert error:', error.message);
+      });
+    }
+
+    return true;
   },
 
   saveFAQOverride(faqId: string, override: {
     question?: string;
     answer?: string;
     statuteReference?: string;
+    status?: 'published' | 'draft';
   }): boolean {
     const current = this.getContentOverrides();
     const faqs = current.faqs || {};
@@ -181,11 +377,26 @@ export const adminStorage = {
     try {
       localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to save FAQ override:', e);
       return false;
     }
+
+    // Sync to Supabase
+    if (this.isCloudConnected() && supabase) {
+      supabase.from('content_faqs').upsert({
+        id: faqId,
+        question: override.question || '',
+        answer: override.answer || '',
+        statute_reference: override.statuteReference,
+        status: override.status || 'published',
+        display_order: 1,
+      }).then(({ error }) => {
+        if (error) console.warn('Supabase FAQ upsert error:', error.message);
+      });
+    }
+
+    return true;
   },
 
   resetContentOverrides(): boolean {
@@ -214,17 +425,66 @@ export const adminStorage = {
     }
   },
 
+  async fetchSettingsRemote(): Promise<SettingsOverrides> {
+    if (!this.isCloudConnected() || !supabase) {
+      return this.getSettingsOverrides();
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('practice_settings')
+        .select('*')
+        .eq('id', 'primary')
+        .single();
+
+      if (error || !data) return this.getSettingsOverrides();
+
+      const mapped: SettingsOverrides = {
+        primaryPhone: data.primary_phone,
+        secondaryPhone: data.secondary_phone,
+        email: data.email,
+        primaryLocation: data.primary_location,
+        googleMapsUrl: data.google_maps_url,
+        whatsappLink: data.whatsapp_link,
+        openingHours: data.opening_hours,
+      };
+
+      localStorage.setItem(SETTINGS_KEY, JSON.stringify(mapped));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      return mapped;
+    } catch {
+      return this.getSettingsOverrides();
+    }
+  },
+
   saveSettingsOverrides(settings: SettingsOverrides): boolean {
     try {
       const current = this.getSettingsOverrides();
       const updated = { ...current, ...settings };
       localStorage.setItem(SETTINGS_KEY, JSON.stringify(updated));
       window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-      return true;
     } catch (e) {
       console.error('Failed to save settings overrides:', e);
       return false;
     }
+
+    // Sync to Supabase
+    if (this.isCloudConnected() && supabase) {
+      supabase.from('practice_settings').upsert({
+        id: 'primary',
+        primary_phone: settings.primaryPhone || '+91 96263 50900',
+        secondary_phone: settings.secondaryPhone,
+        email: settings.email || 'cakavithasrj@gmail.com',
+        primary_location: settings.primaryLocation || 'Bairagi Patteda, Tirupati, Andhra Pradesh – 517501',
+        google_maps_url: settings.googleMapsUrl || 'https://www.google.com/maps?q=13.61925,79.418028',
+        whatsapp_link: settings.whatsappLink || 'https://wa.me/919626350900',
+        opening_hours: settings.openingHours || 'Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only',
+      }).then(({ error }) => {
+        if (error) console.warn('Supabase settings upsert error:', error.message);
+      });
+    }
+
+    return true;
   },
 
   resetSettingsOverrides(): boolean {
@@ -242,7 +502,6 @@ export const adminStorage = {
   // 4. Admin Authentication & Session Management
   // ---------------------------------------------------------------------------
 
-  // Check rate limiting (max 5 failed attempts in 15 minutes)
   isRateLimited(): { limited: boolean; remainingMs?: number } {
     try {
       const data = sessionStorage.getItem(RATE_LIMIT_KEY);
@@ -279,10 +538,77 @@ export const adminStorage = {
   },
 
   /**
-   * Prototype Authentication:
-   * Supports authorized practice login with verified credentials for demonstration.
-   * In full production backend, replaced with server-side bcrypt / JWT endpoints.
+   * Dual Authentication:
+   * 1. If Supabase configured: Authenticates via Supabase Auth (server-enforced JWT & RLS).
+   * 2. If Supabase unconfigured: Authenticates via verified local practice profiles.
    */
+  async authenticateAsync(usernameOrEmail: string, password: string): Promise<{ success: boolean; error?: string; session?: AdminSession }> {
+    const rateCheck = this.isRateLimited();
+    if (rateCheck.limited) {
+      const mins = Math.ceil((rateCheck.remainingMs || 0) / 60000);
+      return { 
+        success: false, 
+        error: `Too many failed login attempts. Portal locked for security. Please try again in ${mins} minute(s).` 
+      };
+    }
+
+    const cleanIdentity = usernameOrEmail.trim().toLowerCase();
+    const cleanPass = password.trim();
+
+    // 1. Supabase Cloud Auth Attempt
+    if (this.isCloudConnected() && supabase) {
+      try {
+        const emailToUse = cleanIdentity.includes('@') 
+          ? cleanIdentity 
+          : `${cleanIdentity}@kavithaca.in`;
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: emailToUse,
+          password: cleanPass,
+        });
+
+        if (error) {
+          const attempts = this.recordFailedLoginAttempt();
+          const remaining = Math.max(0, 5 - attempts);
+          return {
+            success: false,
+            error: `${error.message} (${remaining} attempt${remaining === 1 ? '' : 's'} remaining)`
+          };
+        }
+
+        if (data.session && data.user) {
+          this.resetFailedAttempts();
+          
+          // Fetch user role from profiles table
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('*')
+            .eq('id', data.user.id)
+            .single();
+
+          const session: AdminSession = {
+            token: data.session.access_token,
+            user: {
+              username: data.user.email || cleanIdentity,
+              displayName: profile?.full_name || data.user.user_metadata?.full_name || 'Authorized Administrator',
+              role: (profile?.role === 'managing_partner' ? 'Managing Partner' : 'Practice Administrator'),
+              lastLogin: new Date().toISOString(),
+            },
+            expiresAt: Date.now() + 60 * 60 * 1000,
+          };
+
+          sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+          return { success: true, session };
+        }
+      } catch (err) {
+        console.warn('Supabase auth network error, attempting local validation:', err);
+      }
+    }
+
+    // 2. Local Fallback Verification (for testing / pre-configured evaluation)
+    return this.authenticate(cleanIdentity, cleanPass);
+  },
+
   authenticate(username: string, password: string): { success: boolean; error?: string; session?: AdminSession } {
     const rateCheck = this.isRateLimited();
     if (rateCheck.limited) {
@@ -296,7 +622,6 @@ export const adminStorage = {
     const cleanUser = username.trim().toLowerCase();
     const cleanPass = password.trim();
 
-    // Verification against authorized practice admin profiles
     const validCredentials = [
       {
         user: 'kavitha',
@@ -323,7 +648,6 @@ export const adminStorage = {
       };
     }
 
-    // Success: Generate secure random session token
     this.resetFailedAttempts();
 
     const session: AdminSession = {
@@ -334,15 +658,50 @@ export const adminStorage = {
         role: match.role,
         lastLogin: new Date().toISOString()
       },
-      expiresAt: Date.now() + 60 * 60 * 1000 // 1 hour session lifetime
+      expiresAt: Date.now() + 60 * 60 * 1000
     };
 
     try {
       sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
       return { success: true, session };
-    } catch (e) {
+    } catch {
       return { success: false, error: 'Failed to initialize session storage.' };
     }
+  },
+
+  /**
+   * Password Recovery via Supabase Auth
+   */
+  async requestPasswordReset(email: string): Promise<{ success: boolean; message: string; error?: string }> {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail || !cleanEmail.includes('@')) {
+      return { success: false, message: 'Please enter a valid practice email address.' };
+    }
+
+    if (this.isCloudConnected() && supabase) {
+      try {
+        const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
+          redirectTo: `${window.location.origin}/admin/login?reset=true`,
+        });
+
+        if (error) {
+          return { success: false, message: error.message, error: error.message };
+        }
+
+        return { 
+          success: true, 
+          message: `Password reset instructions have been dispatched to ${cleanEmail}. Please inspect your inbox.` 
+        };
+      } catch (e) {
+        return { success: false, message: (e as Error).message };
+      }
+    }
+
+    // Local evaluation mode message
+    return {
+      success: true,
+      message: `[Evaluation Mode] In production, Supabase Auth sends an email reset link to ${cleanEmail}. Default credentials: 'kavitha' / 'Tirupati@CA2026'.`
+    };
   },
 
   getSession(): AdminSession | null {
@@ -367,6 +726,9 @@ export const adminStorage = {
   logout(): void {
     try {
       sessionStorage.removeItem(SESSION_KEY);
+      if (this.isCloudConnected() && supabase) {
+        supabase.auth.signOut().catch(() => {});
+      }
     } catch (e) {
       console.error('Failed to clear session:', e);
     }

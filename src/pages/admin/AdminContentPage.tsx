@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   HelpCircle, 
   Save, 
@@ -6,7 +6,10 @@ import {
   CheckCircle2, 
   AlertCircle, 
   ExternalLink,
-  Briefcase
+  Briefcase,
+  Eye,
+  Cloud,
+  Database
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage } from '../../services/adminStorage';
@@ -28,6 +31,7 @@ export const AdminContentPage: React.FC = () => {
   const [serviceFullDesc, setServiceFullDesc] = useState(currentService?.fullDescription || '');
   const [serviceStatutory, setServiceStatutory] = useState(currentService?.statutoryFramework || '');
   const [serviceTarget, setServiceTarget] = useState(currentService?.targetClients || '');
+  const [serviceStatus, setServiceStatus] = useState<'published' | 'draft'>('published');
 
   // Selected FAQ to edit
   const [selectedFaqId, setSelectedFaqId] = useState<string>(firmData.faqs[0]?.id || '');
@@ -36,20 +40,30 @@ export const AdminContentPage: React.FC = () => {
   const [faqQuestion, setFaqQuestion] = useState(currentFaq?.question || '');
   const [faqAnswer, setFaqAnswer] = useState(currentFaq?.answer || '');
   const [faqStatute, setFaqStatute] = useState(currentFaq?.statuteReference || '');
+  const [faqStatus, setFaqStatus] = useState<'published' | 'draft'>('published');
 
   // Notification banners
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
+
+  const isCloud = adminStorage.isCloudConnected();
+
+  // Load remote content on mount if Supabase is active
+  useEffect(() => {
+    adminStorage.fetchContentRemote();
+  }, []);
 
   // When changing selected service
   const handleSelectService = (id: string) => {
     setSelectedServiceId(id);
     const target = firmData.serviceCategories.find(s => s.id === id);
+    const overrides = adminStorage.getContentOverrides().services?.[id];
     if (target) {
-      setServiceTitle(target.title);
-      setServiceShortDesc(target.shortDescription);
-      setServiceFullDesc(target.fullDescription);
-      setServiceStatutory(target.statutoryFramework || '');
-      setServiceTarget(target.targetClients || '');
+      setServiceTitle(overrides?.title || target.title);
+      setServiceShortDesc(overrides?.shortDescription || target.shortDescription);
+      setServiceFullDesc(overrides?.fullDescription || target.fullDescription);
+      setServiceStatutory(overrides?.statutoryFramework || target.statutoryFramework || '');
+      setServiceTarget(overrides?.targetClients || target.targetClients || '');
+      setServiceStatus(overrides?.status || 'published');
     }
   };
 
@@ -57,10 +71,12 @@ export const AdminContentPage: React.FC = () => {
   const handleSelectFaq = (id: string) => {
     setSelectedFaqId(id);
     const target = firmData.faqs.find(f => f.id === id);
+    const overrides = adminStorage.getContentOverrides().faqs?.[id];
     if (target) {
-      setFaqQuestion(target.question);
-      setFaqAnswer(target.answer);
-      setFaqStatute(target.statuteReference);
+      setFaqQuestion(overrides?.question || target.question);
+      setFaqAnswer(overrides?.answer || target.answer);
+      setFaqStatute(overrides?.statuteReference || target.statuteReference || '');
+      setFaqStatus(overrides?.status || 'published');
     }
   };
 
@@ -74,10 +90,11 @@ export const AdminContentPage: React.FC = () => {
       fullDescription: serviceFullDesc.trim(),
       statutoryFramework: serviceStatutory.trim(),
       targetClients: serviceTarget.trim(),
+      status: serviceStatus,
     });
 
     if (ok) {
-      setSaveMessage(`Successfully published changes for "${serviceTitle}". Live on public website!`);
+      setSaveMessage(`Successfully saved changes for "${serviceTitle}" (${serviceStatus.toUpperCase()}). Live on public website!`);
       setTimeout(() => setSaveMessage(null), 4000);
     }
   };
@@ -90,10 +107,11 @@ export const AdminContentPage: React.FC = () => {
       question: faqQuestion.trim(),
       answer: faqAnswer.trim(),
       statuteReference: faqStatute.trim(),
+      status: faqStatus,
     });
 
     if (ok) {
-      setSaveMessage('Successfully updated FAQ item. Changes are live!');
+      setSaveMessage(`Successfully updated FAQ item (${faqStatus.toUpperCase()}). Live on public site!`);
       setTimeout(() => setSaveMessage(null), 4000);
     }
   };
@@ -113,6 +131,7 @@ export const AdminContentPage: React.FC = () => {
           setServiceFullDesc(targetService.fullDescription);
           setServiceStatutory(targetService.statutoryFramework || '');
           setServiceTarget(targetService.targetClients || '');
+          setServiceStatus('published');
         }
       }, 100);
     }
@@ -126,7 +145,7 @@ export const AdminContentPage: React.FC = () => {
       <div className="space-y-6">
 
         {/* Top Control Bar */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-start sm:flex-wrap items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm">
           {/* Tabs */}
           <div className="flex items-center gap-2">
             <button
@@ -155,13 +174,24 @@ export const AdminContentPage: React.FC = () => {
             </button>
           </div>
 
-          {/* Reset Action */}
+          {/* Engine indicator & Reset Action */}
           <div className="flex items-center gap-3">
+            {isCloud ? (
+              <span className="text-[11px] text-emerald-800 font-semibold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
+                <Cloud className="w-3 h-3 text-emerald-600" /> Supabase Content Table
+              </span>
+            ) : (
+              <span className="text-[11px] text-gray-600 font-semibold bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200 flex items-center gap-1">
+                <Database className="w-3 h-3 text-gray-500" /> Local Storage Sync
+              </span>
+            )}
+            
             {isModified && (
               <span className="text-[11px] text-amber-700 font-semibold bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 flex items-center gap-1">
                 <AlertCircle className="w-3 h-3" /> Custom Overrides Active
               </span>
             )}
+            
             <button
               type="button"
               onClick={handleResetToBaseline}
@@ -186,7 +216,7 @@ export const AdminContentPage: React.FC = () => {
               rel="noreferrer"
               className="text-xs text-emerald-700 hover:underline inline-flex items-center font-bold"
             >
-              Preview on Public Site <ExternalLink className="w-3 h-3 ml-1" />
+              Preview Live on Website <ExternalLink className="w-3 h-3 ml-1" />
             </a>
           </div>
         )}
@@ -204,6 +234,8 @@ export const AdminContentPage: React.FC = () => {
               </div>
               {firmData.serviceCategories.map((service, index) => {
                 const isSelected = service.id === selectedServiceId;
+                const serviceOverride = adminStorage.getContentOverrides().services?.[service.id];
+                const status = serviceOverride?.status || 'published';
                 return (
                   <button
                     key={service.id}
@@ -219,11 +251,18 @@ export const AdminContentPage: React.FC = () => {
                       <span className="font-mono text-[10px] font-bold uppercase text-gray-400">
                         Discipline 0{index + 1}
                       </span>
-                      {isSelected && (
-                        <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
-                          Editing
+                      <div className="flex items-center gap-1.5">
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                          status === 'published' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                        }`}>
+                          {status}
                         </span>
-                      )}
+                        {isSelected && (
+                          <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
+                            Editing
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="font-bold text-xs text-[#0F3E2E] mt-1 line-clamp-1">
                       {service.title}
@@ -238,7 +277,7 @@ export const AdminContentPage: React.FC = () => {
 
             {/* Right Column: Edit Form */}
             <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
-              <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between">
+              <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between flex-wrap gap-2">
                 <div>
                   <h3 className="font-serif text-lg font-bold text-[#0F3E2E]">
                     Edit Service: {currentService?.title}
@@ -247,28 +286,47 @@ export const AdminContentPage: React.FC = () => {
                     Identifier: <code className="font-mono text-emerald-800">{selectedServiceId}</code>
                   </p>
                 </div>
-                <a
-                  href="/services"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs font-bold text-[#0F3E2E] hover:text-gold inline-flex items-center"
-                >
-                  View Public Services Page <ExternalLink className="w-3.5 h-3.5 ml-1" />
-                </a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="/services"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-xs font-bold text-[#0F3E2E] hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                  >
+                    <Eye className="w-3.5 h-3.5 mr-1" />
+                    Preview Live <ExternalLink className="w-3 h-3 ml-1" />
+                  </a>
+                </div>
               </div>
 
               <form onSubmit={handleSaveService} className="space-y-5">
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Service Display Title
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={serviceTitle}
-                    onChange={(e) => setServiceTitle(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="sm:col-span-2">
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      Service Display Title
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={serviceTitle}
+                      onChange={(e) => setServiceTitle(e.target.value)}
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      Publishing State
+                    </label>
+                    <select
+                      value={serviceStatus}
+                      onChange={(e) => setServiceStatus(e.target.value as 'published' | 'draft')}
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] font-semibold bg-white"
+                    >
+                      <option value="published">Published (Visible Publicly)</option>
+                      <option value="draft">Draft (Practice Internal)</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -321,7 +379,7 @@ export const AdminContentPage: React.FC = () => {
                       required
                       value={serviceTarget}
                       onChange={(e) => setServiceTarget(e.target.value)}
-                      placeholder="e.g. Private Limited, Trusts, MSMEs"
+                      placeholder="e.g. Companies, LLPs, High-Net-Worth Individuals"
                       className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] text-gray-800"
                     />
                   </div>
@@ -333,7 +391,7 @@ export const AdminContentPage: React.FC = () => {
                     className="inline-flex items-center px-5 py-2.5 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
-                    Publish Service Updates
+                    Save & Publish Changes
                   </button>
                 </div>
               </form>
@@ -354,6 +412,8 @@ export const AdminContentPage: React.FC = () => {
               </div>
               {firmData.faqs.map((faq, index) => {
                 const isSelected = faq.id === selectedFaqId;
+                const faqOverride = adminStorage.getContentOverrides().faqs?.[faq.id];
+                const status = faqOverride?.status || 'published';
                 return (
                   <button
                     key={faq.id}
@@ -369,11 +429,18 @@ export const AdminContentPage: React.FC = () => {
                       <span className="font-mono text-[10px] font-bold text-gray-400">
                         FAQ #{index + 1}
                       </span>
-                      {isSelected && (
-                        <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
-                          Selected
+                      <div className="flex items-center gap-1.5">
+                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                          status === 'published' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                        }`}>
+                          {status}
                         </span>
-                      )}
+                        {isSelected && (
+                          <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
+                            Selected
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <div className="font-bold text-xs text-[#0F3E2E] line-clamp-2">
                       {faq.question}
@@ -394,20 +461,45 @@ export const AdminContentPage: React.FC = () => {
                     Identifier: <code className="font-mono text-emerald-800">{selectedFaqId}</code>
                   </p>
                 </div>
+                <a
+                  href="/#knowledge-faq"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs font-bold text-[#0F3E2E] hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                >
+                  <Eye className="w-3.5 h-3.5 mr-1" />
+                  Preview FAQ Section <ExternalLink className="w-3 h-3 ml-1" />
+                </a>
               </div>
 
               <form onSubmit={handleSaveFaq} className="space-y-5">
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Question Text
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={faqQuestion}
-                    onChange={(e) => setFaqQuestion(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="sm:col-span-2">
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      Question Text
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={faqQuestion}
+                      onChange={(e) => setFaqQuestion(e.target.value)}
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      Status
+                    </label>
+                    <select
+                      value={faqStatus}
+                      onChange={(e) => setFaqStatus(e.target.value as 'published' | 'draft')}
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] font-semibold bg-white"
+                    >
+                      <option value="published">Published</option>
+                      <option value="draft">Draft</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -443,7 +535,7 @@ export const AdminContentPage: React.FC = () => {
                     className="inline-flex items-center px-5 py-2.5 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
-                    Publish FAQ Updates
+                    Save & Publish FAQ
                   </button>
                 </div>
               </form>

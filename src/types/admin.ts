@@ -1,4 +1,4 @@
-export type EnquiryStatus = 'new' | 'in-review' | 'contacted' | 'closed';
+export type EnquiryStatus = 'new' | 'contacted' | 'in-progress' | 'closed' | 'in-review';
 
 export type EnquiryUrgency = 
   | 'Normal Statutory Cycle'
@@ -43,11 +43,13 @@ export interface ContentOverrides {
     fullDescription?: string;
     statutoryFramework?: string;
     targetClients?: string;
+    status?: 'published' | 'draft';
   }>;
   faqs?: Record<string, {
     question?: string;
     answer?: string;
     statuteReference?: string;
+    status?: 'published' | 'draft';
   }>;
 }
 
@@ -62,4 +64,5 @@ export interface SettingsOverrides {
   googleMapsUrl?: string;
   whatsappNumber?: string;
   whatsappLink?: string;
+  openingHours?: string;
 }

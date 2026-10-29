@@ -26,6 +26,10 @@ interface FormErrors {
 
 export const ContactForm: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
+  const formLoadedAt = React.useRef(Date.now());
+  const [honeypot, setHoneypot] = useState('');
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
+
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     entityType: 'Private Limited Company',
@@ -70,31 +74,57 @@ export const ContactForm: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const sanitizeText = (str: string) => {
+    return str.replace(/<[^>]*>?/gm, '').trim();
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmissionError(null);
+
+    // Spam Guard 1: Honeypot field inspection
+    if (honeypot) {
+      console.warn('Bot submission blocked via honeypot field.');
+      setSubmitted(true);
+      return;
+    }
+
+    // Spam Guard 2: Velocity check (submission in under 1.5s is automated)
+    if (Date.now() - formLoadedAt.current < 1500) {
+      setSubmissionError('Submission received too rapidly. Please review your brief and submit again.');
+      return;
+    }
+
     if (!validate()) return;
 
     setIsSubmitting(true);
 
-    // Save genuine enquiry into persistent store
-    const record = adminStorage.recordEnquiry({
-      fullName: formData.fullName.trim(),
-      entityType: formData.entityType,
-      organization: formData.organization.trim(),
-      phone: formData.phone.trim(),
-      email: formData.email.trim(),
-      serviceCategory: formData.serviceCategory,
-      city: formData.city,
-      urgency: formData.urgency,
-      message: formData.message.trim(),
-    });
+    try {
+      const sanitized = {
+        fullName: sanitizeText(formData.fullName),
+        entityType: formData.entityType,
+        organization: sanitizeText(formData.organization),
+        phone: sanitizeText(formData.phone),
+        email: sanitizeText(formData.email),
+        serviceCategory: formData.serviceCategory,
+        city: sanitizeText(formData.city),
+        urgency: formData.urgency,
+        message: sanitizeText(formData.message),
+      };
 
-    setSavedRecord(record);
+      const res = await adminStorage.recordEnquiryAsync(sanitized);
 
-    setTimeout(() => {
+      if (res.data) {
+        setSavedRecord(res.data);
+        setSubmitted(true);
+      } else {
+        setSubmissionError(res.error || 'Failed to record consultation inquiry in practice register. Please contact our chambers directly.');
+      }
+    } catch {
+      setSubmissionError('A network error occurred while recording your inquiry. Please reach us directly via telephone or WhatsApp.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 400);
+    }
   };
 
   const generateWhatsAppUrl = () => {
@@ -174,6 +204,26 @@ export const ContactForm: React.FC = () => {
         </div>
       ) : (
         <form onSubmit={handleSubmit} noValidate className="space-y-5">
+          {/* Honeypot field for bot suppression */}
+          <div className="opacity-0 absolute -left-[9999px] pointer-events-none" aria-hidden="true">
+            <label htmlFor="website_fax_hp">Leave empty</label>
+            <input
+              id="website_fax_hp"
+              type="text"
+              tabIndex={-1}
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
+
+          {submissionError && (
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-start gap-2.5">
+              <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+              <div className="leading-relaxed">{submissionError}</div>
+            </div>
+          )}
+
           <div className="border-b border-border pb-4">
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-1">
               Direct Enquiry

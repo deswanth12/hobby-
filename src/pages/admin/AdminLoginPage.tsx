@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Lock, User, Eye, EyeOff, ShieldCheck, AlertCircle, ArrowLeft, KeyRound } from 'lucide-react';
+import { 
+  Lock, 
+  User, 
+  Eye, 
+  EyeOff, 
+  ShieldCheck, 
+  AlertCircle, 
+  ArrowLeft, 
+  KeyRound, 
+  Mail, 
+  CheckCircle2, 
+  Database,
+  Cloud 
+} from 'lucide-react';
 import { adminStorage } from '../../services/adminStorage';
 import { SEOHead } from '../../components/SEOHead';
 
@@ -10,19 +23,29 @@ export const AdminLoginPage: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Password Reset Modal states
+  const [showResetModal, setShowResetModal] = useState(false);
+  const [resetEmail, setResetEmail] = useState('');
+  const [resetStatus, setResetStatus] = useState<{ loading: boolean; message?: string; success?: boolean }>({
+    loading: false,
+  });
+
   const navigate = useNavigate();
   const location = useLocation();
+
+  const isCloud = adminStorage.isCloudConnected();
 
   // Redirect target after successful login
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/admin';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     setIsSubmitting(true);
 
     try {
-      const res = adminStorage.authenticate(username, password);
+      const res = await adminStorage.authenticateAsync(username, password);
       if (res.success) {
         navigate(from, { replace: true });
       } else {
@@ -32,6 +55,26 @@ export const AdminLoginPage: React.FC = () => {
       setError('An unexpected error occurred during authentication.');
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  const handlePasswordReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetStatus({ loading: true });
+
+    try {
+      const res = await adminStorage.requestPasswordReset(resetEmail);
+      setResetStatus({
+        loading: false,
+        success: res.success,
+        message: res.message,
+      });
+    } catch (err) {
+      setResetStatus({
+        loading: false,
+        success: false,
+        message: (err as Error).message || 'Failed to dispatch password reset request.',
+      });
     }
   };
 
@@ -47,7 +90,7 @@ export const AdminLoginPage: React.FC = () => {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md px-4">
         {/* Return to Public Website */}
-        <div className="mb-6">
+        <div className="mb-6 flex items-center justify-between">
           <Link
             to="/"
             className="inline-flex items-center text-xs font-semibold text-[#0F3E2E] hover:text-[#C5A059] transition-colors"
@@ -55,6 +98,16 @@ export const AdminLoginPage: React.FC = () => {
             <ArrowLeft className="w-4 h-4 mr-1.5" />
             Return to Public Website
           </Link>
+
+          {isCloud ? (
+            <span className="inline-flex items-center gap-1 text-[10px] text-emerald-800 bg-emerald-100/70 px-2 py-0.5 rounded-full font-bold">
+              <Cloud className="w-3 h-3 text-emerald-700" /> Supabase DB Active
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-[10px] text-gray-600 bg-gray-200/70 px-2 py-0.5 rounded-full font-semibold">
+              <Database className="w-3 h-3 text-gray-500" /> Local Storage Mode
+            </span>
+          )}
         </div>
 
         {/* Firm Crest & Header */}
@@ -104,16 +157,25 @@ export const AdminLoginPage: React.FC = () => {
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="e.g. kavitha or admin"
+                  placeholder="e.g. kavitha or cakavithasrj@gmail.com"
                   className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] transition-all bg-gray-50/50"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
-                Access Password
-              </label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label htmlFor="password" className="block text-xs font-bold uppercase tracking-wider text-gray-700">
+                  Access Password
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowResetModal(true)}
+                  className="text-xs text-[#0F3E2E] hover:text-gold font-semibold transition-colors"
+                >
+                  Forgot Password?
+                </button>
+              </div>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
                   <KeyRound className="w-4 h-4" />
@@ -189,9 +251,79 @@ export const AdminLoginPage: React.FC = () => {
         {/* Security Policy Badge */}
         <div className="mt-6 text-center text-xs text-gray-500 flex items-center justify-center gap-1.5">
           <ShieldCheck className="w-4 h-4 text-emerald-700" />
-          <span>Restricted Portal • Session Authenticated • 15-Min Lockout Protection</span>
+          <span>Restricted Portal • Row Level Security • 15-Min Lockout Protection</span>
         </div>
       </div>
+
+      {/* =========================================================================
+          PASSWORD RECOVERY MODAL
+          ========================================================================= */}
+      {showResetModal && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-gray-200">
+            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
+              <Mail className="w-5 h-5 text-[#0F3E2E]" />
+              <h3 className="text-base font-bold text-[#0F3E2E]">Password Recovery</h3>
+            </div>
+
+            <p className="text-xs text-gray-600 leading-relaxed mb-4">
+              Enter your registered practice email address. When connected to Supabase Auth, a secure password recovery link will be dispatched to your inbox.
+            </p>
+
+            {resetStatus.message && (
+              <div className={`mb-4 p-3.5 rounded-xl text-xs flex items-start gap-2 ${
+                resetStatus.success 
+                  ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
+                  : 'bg-red-50 text-red-800 border border-red-200'
+              }`}>
+                {resetStatus.success ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                )}
+                <div className="leading-relaxed">{resetStatus.message}</div>
+              </div>
+            )}
+
+            <form onSubmit={handlePasswordReset} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1">
+                  Registered Email Address:
+                </label>
+                <input
+                  type="email"
+                  required
+                  value={resetEmail}
+                  onChange={(e) => setResetEmail(e.target.value)}
+                  placeholder="e.g. cakavithasrj@gmail.com"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E]"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-2.5 pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowResetModal(false);
+                    setResetStatus({ loading: false });
+                  }}
+                  className="px-4 py-2 text-xs font-semibold text-gray-600 hover:bg-gray-100 rounded-xl"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={resetStatus.loading}
+                  className="px-5 py-2 text-xs font-bold text-white bg-[#0F3E2E] hover:bg-[#0A2F24] rounded-xl transition-all disabled:opacity-50"
+                >
+                  {resetStatus.loading ? 'Dispatching...' : 'Send Recovery Link'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };
