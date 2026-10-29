@@ -4,11 +4,13 @@ import { FIRM_DATA } from '../data/firmData';
 
 interface FormData {
   fullName: string;
+  entityType: string;
   organization: string;
   phone: string;
   email: string;
   serviceCategory: string;
   city: string;
+  urgency: string;
   message: string;
 }
 
@@ -23,11 +25,13 @@ interface FormErrors {
 export const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
+    entityType: 'Private Limited Company',
     organization: '',
     phone: '',
     email: '',
     serviceCategory: 'Audit & Assurance Services',
     city: 'Tirupati',
+    urgency: 'Normal Statutory Cycle',
     message: '',
   });
 
@@ -76,18 +80,20 @@ export const ContactForm: React.FC = () => {
   };
 
   const generateWhatsAppUrl = () => {
-    const text = `Hello CA Kavitha & Associates,\n\nName: ${formData.fullName}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nCity: ${formData.city}\nRequirement: ${formData.message}`;
+    const text = `Hello CA KavithaVijay SRJ (Kavitha & Associates),\n\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
     return `https://wa.me/919626350900?text=${encodeURIComponent(text)}`;
   };
 
   const handleReset = () => {
     setFormData({
       fullName: '',
+      entityType: 'Private Limited Company',
       organization: '',
       phone: '',
       email: '',
       serviceCategory: 'Audit & Assurance Services',
       city: 'Tirupati',
+      urgency: 'Normal Statutory Cycle',
       message: '',
     });
     setSubmitted(false);
@@ -283,12 +289,52 @@ export const ContactForm: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                 className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
-                <option value="Tirupati">Tirupati</option>
+                <option value="Tirupati">Tirupati (Principal Chambers)</option>
                 <option value="Chennai">Chennai</option>
                 <option value="Bengaluru">Bengaluru</option>
                 <option value="Hyderabad">Hyderabad</option>
                 <option value="Coimbatore">Coimbatore</option>
-                <option value="Other Location">Other (Pan-India)</option>
+                <option value="Other Location">Other Location (Pan-India)</option>
+              </select>
+            </div>
+
+            {/* Entity Type (NSKA Structure) */}
+            <div>
+              <label htmlFor="entityType" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+                Entity Type
+              </label>
+              <select
+                id="entityType"
+                name="entityType"
+                value={formData.entityType}
+                onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+              >
+                <option value="Private Limited Company">Private Limited Company</option>
+                <option value="Partnership / LLP">Limited Liability Partnership (LLP) / Firm</option>
+                <option value="Proprietorship / MSME">Proprietorship / MSME</option>
+                <option value="Trust / Society / NGO">Trust / Society / Section 8 NGO</option>
+                <option value="Individual / Taxpayer">Individual / Salaried / Professional</option>
+                <option value="Other Entity">Other Entity Type</option>
+              </select>
+            </div>
+
+            {/* Urgency / Timeline */}
+            <div>
+              <label htmlFor="urgency" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+                Timeline / Urgency
+              </label>
+              <select
+                id="urgency"
+                name="urgency"
+                value={formData.urgency}
+                onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
+                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+              >
+                <option value="Normal Statutory Cycle">Normal Statutory Cycle / Planning</option>
+                <option value="Urgent / Approaching Deadline">Urgent / Approaching Filing Deadline</option>
+                <option value="Statutory Notice Received">Notice / Scrutiny Hearing Received</option>
+                <option value="Immediate Incorporation">Immediate Business Incorporation</option>
               </select>
             </div>
           </div>

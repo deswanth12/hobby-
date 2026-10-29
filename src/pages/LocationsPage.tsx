@@ -109,12 +109,22 @@ export const LocationsPage: React.FC = () => {
                   </h4>
                   <span className="text-xs text-charcoal-light block mb-3">{hub.state}</span>
                   <p className="text-xs text-charcoal-muted leading-relaxed">
-                    Client advisory, corporate secretarial coordination, GST audit assistance, and local stakeholder representation.
+                    {hub.description || "Client advisory, corporate secretarial coordination, GST audit assistance, and local stakeholder representation."}
                   </p>
                 </div>
 
-                <div className="mt-5 pt-3 border-t border-border text-xs font-semibold text-emerald-800">
-                  Regional Client Coverage
+                <div className="mt-5 pt-3 border-t border-border flex items-center justify-between text-xs">
+                  <span className="font-semibold text-emerald-800">
+                    Regional Client Coverage
+                  </span>
+                  <a
+                    href={FIRM_DATA.contact.whatsappLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold-dark hover:underline font-semibold text-[11px]"
+                  >
+                    Connect →
+                  </a>
                 </div>
               </div>
             ))}
