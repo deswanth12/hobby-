@@ -163,6 +163,16 @@
         "lastLogin": "2026-10-29T15:32:59.854Z"
       },
       "expiresAt": 1793291579854
+    },
+    "ka_tok_2c2be44a66a1b769993987a9cc0a26f540aaeef950730d41d99eeb52708047c9": {
+      "token": "ka_tok_2c2be44a66a1b769993987a9cc0a26f540aaeef950730d41d99eeb52708047c9",
+      "user": {
+        "username": "admin",
+        "displayName": "Practice Administrator",
+        "role": "Practice Administrator",
+        "lastLogin": "2026-10-29T15:39:53.109Z"
+      },
+      "expiresAt": 1793291993109
     }
   },
   "rateLimits": {}
