@@ -150,7 +150,7 @@ export const BlogPage: React.FC = () => {
               {filteredPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="bg-white rounded-2xl border border-border shadow-card hover:shadow-card-hover transition-all flex flex-col overflow-hidden group card-tactile"
+                  className="bg-white rounded-2xl border border-border shadow-card card-premium-hover flex flex-col overflow-hidden group"
                 >
                   {/* Card Visual Header */}
                   <div className="h-48 bg-gradient-to-br from-[#0A2F24] to-[#0F3E2E] p-6 relative flex flex-col justify-between overflow-hidden">
@@ -219,10 +219,12 @@ export const BlogPage: React.FC = () => {
 
                       <Link
                         to={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-emerald-800 hover:text-emerald-950 group/link"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 group/link"
                       >
-                        <span>Read</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-gold group-hover/link:translate-x-1 transition-transform" />
+                        <span>Read Analysis</span>
+                        <span className="w-5 h-5 rounded-full bg-brand-surface border border-border/60 flex items-center justify-center group-hover/link:bg-gold group-hover/link:border-gold transition-all">
+                          <ArrowRight className="w-3 h-3 text-gold group-hover/link:text-brand-deep group-hover/link:translate-x-0.5 transition-transform" />
+                        </span>
                       </Link>
                     </div>
                   </div>

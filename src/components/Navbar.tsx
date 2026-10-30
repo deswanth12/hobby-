@@ -227,14 +227,14 @@ export const Navbar: React.FC = () => {
             href={FIRM_DATA.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 border border-emerald-200 transition-colors btn-tactile"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-emerald-50 text-emerald-800 text-xs font-semibold hover:bg-emerald-100 border border-emerald-200 transition-colors btn-tactile"
             title="Chat directly via WhatsApp"
           >
             <span>WhatsApp</span>
           </a>
           <Link
             to="/contact"
-            className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-colors focus-visible:ring-2 focus-visible:ring-brand-primary btn-tactile"
+            className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-all active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-brand-primary btn-tactile"
           >
             Schedule Consultation
           </Link>

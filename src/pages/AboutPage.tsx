@@ -60,20 +60,21 @@ export const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
-            {/* Left: Partner Credentials Card */}
-            <div className="lg:col-span-5">
-              <div className="bg-[#0A2F24] rounded-2xl p-7 sm:p-8 text-white border border-emerald-900 shadow-xl sticky top-24">
-                <div className="flex items-center justify-between pb-6 border-b border-emerald-800/80 mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold shadow-inner">
-                    CA
+            {/* Left: Partner Credentials Card with Double-Bezel Architecture */}
+            <div className="lg:col-span-5 sticky top-24">
+              <div className="double-bezel-dark animate-fade-up">
+                <div className="double-bezel-inner-dark bg-[#0A2F24] rounded-2xl p-7 sm:p-8 text-white border border-emerald-900/60 shadow-xl">
+                  <div className="flex items-center justify-between pb-6 border-b border-emerald-800/80 mb-6">
+                    <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold shadow-inner">
+                      CA
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800 block">
+                        ICAI Mem. {partner.membershipNumber}
+                      </span>
+                      <span className="text-[10px] text-emerald-300 mt-1 block">AIR 49 CMA Inter</span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800 block">
-                      ICAI Mem. {partner.membershipNumber}
-                    </span>
-                    <span className="text-[10px] text-emerald-300 mt-1 block">AIR 49 CMA Inter</span>
-                  </div>
-                </div>
 
                 <span className="text-xs uppercase tracking-wider text-emerald-300 font-semibold block">
                   {partner.designation}
@@ -143,20 +144,23 @@ export const AboutPage: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Action CTA */}
+                {/* Action CTA with Button-in-Button Micro-physics */}
                 <div className="mt-6 pt-4 border-t border-emerald-800/60">
                   <a
                     href={FIRM_DATA.contact.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-colors btn-tactile shadow-md"
+                    className="w-full inline-flex items-center justify-between px-4 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-all group btn-tactile shadow-md"
                   >
-                    <span>Consult CA Kavitha Vijay on WhatsApp</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                    <span>Consult CA Kavitha Vijay</span>
+                    <span className="w-6 h-6 rounded-full bg-emerald-900/60 flex items-center justify-center group-hover:translate-x-0.5 group-hover:bg-gold group-hover:text-brand-deep transition-all">
+                      <ArrowRight className="w-3 h-3 text-gold group-hover:text-brand-deep" />
+                    </span>
                   </a>
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Right: Detailed Journey, Honors, Experience & Competencies */}
             <div className="lg:col-span-7 space-y-10">
@@ -189,7 +193,7 @@ export const AboutPage: React.FC = () => {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {partner.awards.map((award) => (
-                    <div key={award.title} className="p-4 rounded-xl bg-white border border-border/80 shadow-subtle flex flex-col justify-between">
+                    <div key={award.title} className="p-4 rounded-xl bg-white border border-border/80 shadow-subtle card-premium-hover flex flex-col justify-between">
                       <div>
                         <span className="text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-1">
                           {award.category}
@@ -217,7 +221,7 @@ export const AboutPage: React.FC = () => {
 
                 <div className="space-y-5">
                   {partner.careerJourney.map((job) => (
-                    <div key={job.organization} className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-card">
+                    <div key={job.organization} className="bg-white rounded-2xl p-6 sm:p-7 border border-border shadow-card card-premium-hover">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-border/70 mb-4 gap-1">
                         <div>
                           <h4 className="font-serif text-lg sm:text-xl font-bold text-brand-primary">
@@ -476,16 +480,18 @@ export const AboutPage: React.FC = () => {
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
+              className="btn-pill-action bg-brand-primary text-white hover:bg-brand-deep group text-xs sm:text-sm shadow-card hover:shadow-card-hover border border-gold/40"
             >
               <span>Contact the Practice</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="icon-badge bg-white/10 text-gold group-hover:bg-gold group-hover:text-brand-deep">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
             <a
               href={FIRM_DATA.contact.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors btn-tactile"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-white text-brand-primary text-xs sm:text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-all active:scale-[0.98] btn-tactile"
             >
               <MapPin className="w-4 h-4 text-emerald-800" />
               <span>Directions to Chambers</span>

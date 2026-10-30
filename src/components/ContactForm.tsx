@@ -453,14 +453,16 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:bg-brand-deep shadow-sm transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50 btn-tactile"
+              className="w-full sm:w-auto btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>
               ) : (
                 <>
-                  <Send className="w-4 h-4 text-gold" />
-                  <span>Prepare WhatsApp Inquiry</span>
+                  <span>Prepare Consultation Inquiry</span>
+                  <span className="icon-badge bg-white/10 text-gold group-hover:bg-gold group-hover:text-brand-deep">
+                    <Send className="w-3.5 h-3.5" />
+                  </span>
                 </>
               )}
             </button>

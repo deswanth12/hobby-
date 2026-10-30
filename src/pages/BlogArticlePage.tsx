@@ -175,33 +175,35 @@ export const BlogArticlePage: React.FC = () => {
       <section className="py-12 sm:py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          {/* Author Card Banner */}
-          <div className="mb-10 p-5 sm:p-6 rounded-2xl bg-white border border-border shadow-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-lg font-bold text-gold shrink-0">
-                CA
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h3 className="font-serif text-lg font-bold text-brand-primary">
-                    {post.author}
-                  </h3>
-                  <span className="text-[10px] font-bold text-gold-dark bg-brand-surface px-2 py-0.5 rounded border border-border">
-                    ICAI Mem. 252985
-                  </span>
+          {/* Author Card Banner with Double-Bezel Architecture */}
+          <div className="double-bezel mb-10">
+            <div className="double-bezel-inner bg-white p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-lg font-bold text-gold shrink-0 shadow-sm">
+                  CA
                 </div>
-                <p className="text-xs text-charcoal-muted mt-0.5">
-                  {post.authorRole} • Big 4 & MNC Auditor (10+ Years)
-                </p>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-serif text-lg font-bold text-brand-primary">
+                      {post.author}
+                    </h3>
+                    <span className="text-[10px] font-bold text-gold-dark bg-brand-surface px-2 py-0.5 rounded border border-border">
+                      ICAI Mem. 252985
+                    </span>
+                  </div>
+                  <p className="text-xs text-charcoal-muted mt-0.5">
+                    {post.authorRole} • Big 4 & MNC Auditor (10+ Years)
+                  </p>
+                </div>
               </div>
-            </div>
 
-            <Link
-              to="/about"
-              className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline shrink-0"
-            >
-              View Partner Credentials →
-            </Link>
+              <Link
+                to="/about"
+                className="text-xs font-semibold text-emerald-800 hover:text-emerald-950 underline shrink-0"
+              >
+                View Partner Credentials →
+              </Link>
+            </div>
           </div>
 
           {/* Render Markdown Article Body */}
@@ -234,16 +236,18 @@ export const BlogArticlePage: React.FC = () => {
             <div className="pt-2 flex justify-center items-center gap-3 flex-wrap">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors btn-tactile"
+                className="btn-pill-action bg-brand-primary text-white hover:bg-brand-deep group text-xs shadow-card hover:shadow-card-hover border border-gold/40"
               >
                 <span>Consult the Practice</span>
-                <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                <span className="icon-badge bg-white/10 text-gold group-hover:bg-gold group-hover:text-brand-deep">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </Link>
               <a
                 href={FIRM_DATA.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg border border-border bg-white text-brand-primary text-xs font-semibold hover:bg-brand-pale transition-colors btn-tactile"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-border bg-white text-brand-primary text-xs font-semibold hover:bg-brand-pale transition-colors btn-tactile"
               >
                 <span>Chat via WhatsApp</span>
               </a>
@@ -277,7 +281,7 @@ export const BlogArticlePage: React.FC = () => {
                   <Link
                     key={rel.slug}
                     to={`/blog/${rel.slug}`}
-                    className="p-5 rounded-xl bg-white border border-border shadow-subtle hover:shadow-card transition-all flex flex-col justify-between group"
+                    className="p-5 rounded-2xl bg-white border border-border shadow-subtle card-premium-hover flex flex-col justify-between group"
                   >
                     <div>
                       <span className="text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-2">

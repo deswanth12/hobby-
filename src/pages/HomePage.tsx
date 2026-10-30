@@ -69,11 +69,11 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           1. HERO SECTION (Executive Architectural Design — ₹50,000 Standard)
           ========================================================================= */}
-      <section className="bg-brand-warm pt-12 sm:pt-20 pb-16 lg:pb-24 border-b border-border relative overflow-hidden">
+      <section className="bg-brand-warm pt-12 sm:pt-20 pb-16 lg:pb-24 border-b border-border relative overflow-hidden min-h-[85dvh] flex items-center">
         {/* Subtle architectural ambient background glow */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-pale/40 rounded-full blur-3xl pointer-events-none -z-10" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand-pale/40 rounded-full blur-3xl pointer-events-none -z-10 animate-float-subtle" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
             
             {/* Left Column: Authoritative Editorial Headlines */}
@@ -102,26 +102,28 @@ export const HomePage: React.FC = () => {
                 Founded by <strong className="text-brand-primary font-semibold">CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
-              {/* Primary Call to Action Cluster */}
+              {/* Primary Call to Action Cluster with Button-in-Button Micro-physics */}
               <div className="flex flex-wrap items-center gap-3.5 pt-2">
                 <a
                   href="#contact-section"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-gold/30 transition-all focus:ring-2 focus:ring-brand-primary btn-tactile"
+                  className="btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-gold/40 group text-xs sm:text-sm"
                 >
                   <span>Request Consultation</span>
-                  <ArrowRight className="w-4 h-4 text-gold" />
+                  <span className="icon-badge bg-white/10 text-gold group-hover:bg-gold group-hover:text-brand-deep">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
                 </a>
 
                 <Link
                   to="/services"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-surface hover:border-gold/60 shadow-subtle transition-all focus:ring-2 focus:ring-brand-primary btn-tactile"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border bg-white text-brand-primary text-xs sm:text-sm font-semibold hover:bg-brand-surface hover:border-gold/60 shadow-subtle transition-all active:scale-[0.98] btn-tactile"
                 >
                   <span>Explore Practice Disciplines</span>
                 </Link>
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-charcoal hover:text-brand-primary py-2.5 px-3.5 rounded-xl hover:bg-brand-surface transition-colors btn-tactile"
+                  className="inline-flex items-center gap-2 text-xs font-semibold text-charcoal hover:text-brand-primary py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile"
                   title="Direct telephone line"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
@@ -141,9 +143,10 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Executive Practice Registry Plaque (Signature Component) */}
+            {/* Right Column: Executive Practice Registry Plaque (Double-Bezel Architecture) */}
             <div className="lg:col-span-5">
-              <div className="bg-[#0A2F24] text-white rounded-2xl shadow-card-hover p-6 sm:p-8 border border-gold/40 relative overflow-hidden card-tactile">
+              <div className="double-bezel-dark animate-fade-up">
+                <div className="double-bezel-inner-dark bg-[#0A2F24] text-white p-6 sm:p-8 relative overflow-hidden card-tactile">
                 
                 {/* Decorative subtle seal watermark */}
                 <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 rounded-full bg-gold/5 border border-gold/10 pointer-events-none" />
@@ -248,9 +251,9 @@ export const HomePage: React.FC = () => {
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
-
               </div>
             </div>
+          </div>
 
           </div>
         </div>
@@ -364,7 +367,7 @@ export const HomePage: React.FC = () => {
                 {FIRM_DATA.auditSpotlight.services.map((service, index) => (
                   <div
                     key={service.name}
-                    className="bg-white rounded-xl p-5 border border-border shadow-card hover:border-gold/60 transition-all card-tactile flex flex-col justify-between"
+                    className="bg-white rounded-xl p-5 border border-border shadow-card card-premium-hover flex flex-col justify-between"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
@@ -441,7 +444,7 @@ export const HomePage: React.FC = () => {
               <div
                 key={category.id}
                 id={category.id}
-                className="scroll-mt-28 bg-white rounded-xl border border-border p-6 sm:p-7 shadow-card card-tactile flex flex-col justify-between"
+                className="scroll-mt-28 bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-card card-premium-hover flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">

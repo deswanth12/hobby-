@@ -48,37 +48,129 @@
 
   /* 1. Tactile Button Physics (Depresses 2% on active press) */
   .btn-tactile {
-    transition: transform 120ms cubic-bezier(0.2, 0, 0, 1), box-shadow 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+    transition: transform 140ms cubic-bezier(0.2, 0, 0, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, border-color 180ms ease-out;
     will-change: transform;
   }
   .btn-tactile:active {
     transform: scale(0.98);
   }
 
-  /* 2. Velvety Card Focus & Tone Shift */
+  /* 2. Velvety Card Focus & Kinetic Tone Shift */
   .card-tactile {
-    transition: border-color 200ms ease-out, box-shadow 200ms ease-out, transform 200ms ease-out;
+    transition: border-color 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
   }
   .card-tactile:hover {
-    border-color: rgba(197, 160, 89, 0.65);
-    box-shadow: 0 6px 18px -2px rgba(15, 62, 46, 0.08);
+    border-color: rgba(197, 160, 89, 0.7);
+    box-shadow: 0 8px 24px -3px rgba(15, 62, 46, 0.09);
+    transform: translateY(-2px);
   }
 
-  /* 3. Smooth Page Mount Reveal (240ms gentle entrance) */
+  /* 3. Smooth Page Mount Reveal (280ms gentle entrance) */
   .page-reveal {
-    animation: pageReveal 240ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: pageReveal 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* 4. Double-Bezel (Doppelrand) Architecture */
+  .double-bezel {
+    border-radius: 1.5rem;
+    padding: 0.375rem;
+    background: rgba(240, 247, 243, 0.75);
+    border: 1px solid rgba(225, 232, 227, 0.95);
+    box-shadow: 0 4px 20px -2px rgba(15, 62, 46, 0.05);
+  }
+  .double-bezel-dark {
+    border-radius: 1.5rem;
+    padding: 0.375rem;
+    background: rgba(10, 47, 36, 0.85);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    box-shadow: 0 10px 32px -4px rgba(10, 47, 36, 0.3);
+  }
+  .double-bezel-inner {
+    border-radius: calc(1.5rem - 0.375rem);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  }
+  .double-bezel-inner-dark {
+    border-radius: calc(1.5rem - 0.375rem);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* 5. Button-in-Button Micro-physics (Pill Architecture) */
+  .btn-pill-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    padding: 0.625rem 0.75rem 0.625rem 1.5rem;
+    font-weight: 600;
+    transition: all 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform;
+  }
+  .btn-pill-action:active {
+    transform: scale(0.98);
+  }
+  .btn-pill-action .icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
+  }
+  .btn-pill-action:hover .icon-badge {
+    transform: translateX(3px) translateY(-1px);
+  }
+
+  /* 6. Kinetic Card Hover Elevation */
+  .card-premium-hover {
+    transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1), border-color 280ms ease;
+    will-change: transform, box-shadow;
+  }
+  .card-premium-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -4px rgba(15, 62, 46, 0.12), 0 4px 12px -2px rgba(15, 62, 46, 0.04);
+    border-color: rgba(197, 160, 89, 0.75);
   }
 }
 
 @keyframes pageReveal {
   0% {
     opacity: 0;
-    transform: translateY(4px);
+    transform: translateY(6px);
   }
   100% {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Subtle Ambient Floating Animation */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.animate-float-subtle {
+  animation: floatSubtle 4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* Waterfall Fade-Up Animation */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {

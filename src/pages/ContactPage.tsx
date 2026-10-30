@@ -49,7 +49,7 @@ export const ContactPage: React.FC = () => {
               {/* Cards */}
               <div className="space-y-4">
                 {/* Telephone */}
-                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2 card-tactile">
+                <div className="p-5 rounded-2xl border border-border bg-white shadow-subtle space-y-2 card-premium-hover">
                   <div className="flex items-center gap-3 text-brand-primary">
                     <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Phone className="w-5 h-5 text-emerald-800" />
@@ -78,7 +78,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* Email */}
-                <div className="p-5 rounded-xl border border-border bg-white shadow-subtle space-y-2 card-tactile">
+                <div className="p-5 rounded-2xl border border-border bg-white shadow-subtle space-y-2 card-premium-hover">
                   <div className="flex items-center gap-3 text-brand-primary">
                     <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-primary flex items-center justify-center border border-emerald-100">
                       <Mail className="w-5 h-5 text-emerald-800" />
@@ -98,7 +98,7 @@ export const ContactPage: React.FC = () => {
                 </div>
 
                 {/* WhatsApp */}
-                <div className="p-5 rounded-xl border border-emerald-200 bg-emerald-50/60 shadow-subtle space-y-2 card-tactile">
+                <div className="p-5 rounded-2xl border border-emerald-200 bg-emerald-50/60 shadow-subtle space-y-2 card-premium-hover">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-lg bg-emerald-700 text-white flex items-center justify-center">
