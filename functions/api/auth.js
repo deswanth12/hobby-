@@ -39,7 +39,10 @@ export async function onRequestGet(context) {
   // 4. Construct callback URL and authorization parameters
   const callbackUrl = `${url.origin}/api/callback`;
   const rawScope = url.searchParams.get('scope') || 'repo';
-  const scope = (rawScope === 'public_repo' || rawScope === 'repo') ? rawScope : 'repo';
+  const ALLOWED_SCOPES = new Set(['repo', 'public_repo', 'user', 'read:user', 'user:email']);
+  const requestedScopes = rawScope.split(',').map(s => s.trim()).filter(Boolean);
+  const validScopes = requestedScopes.filter(s => ALLOWED_SCOPES.has(s));
+  const scope = validScopes.length > 0 ? validScopes.join(',') : 'repo';
 
   const githubAuthUrl = new URL('https://github.com/login/oauth/authorize');
   githubAuthUrl.searchParams.set('client_id', clientId);
