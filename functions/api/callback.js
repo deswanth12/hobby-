@@ -142,7 +142,7 @@ export async function onRequestGet(context) {
         var normalized = origin.replace(/\\/+$/, '');
         if (allowedOrigins.indexOf(normalized) !== -1) return true;
         if (/^https?:\\/\\/(localhost|127\\.0\\.0\\.1)(:\\d+)?$/.test(normalized)) return true;
-        if (/^https?:\\/\\/[a-z0-9-]+\\.kavitha-and-associates\\.pages\\.dev$/.test(normalized)) return true;
+        if (/^https?:\\/\\/(?:[a-z0-9-]+\\.)?kavitha-and-associates\\.pages\\.dev$/.test(normalized)) return true;
         return false;
       }
 
@@ -150,16 +150,17 @@ export async function onRequestGet(context) {
         if (sent) return;
         
         // Enforce that targetOrigin is strictly trusted and NEVER wildcard '*'
-        var finalOrigin = isOriginAllowed(targetOrigin) ? targetOrigin : trustedOrigin;
-        if (!isOriginAllowed(finalOrigin)) {
+        var verifiedOrigin = isOriginAllowed(targetOrigin) ? targetOrigin : (isOriginAllowed(trustedOrigin) ? trustedOrigin : 'https://kavithaassociates.com');
+        if (!isOriginAllowed(verifiedOrigin)) {
           console.error('PostMessage delivery aborted: Target origin is not trusted:', targetOrigin);
           return;
         }
+        targetOrigin = verifiedOrigin;
 
         sent = true;
         try {
           if (window.opener) {
-            window.opener.postMessage(${safeJsonStringify(messageData)}, finalOrigin);
+            window.opener.postMessage(${safeJsonStringify(messageData)}, targetOrigin);
           }
         } catch (err) {
           console.error('PostMessage transmission error:', err);
@@ -170,6 +171,8 @@ export async function onRequestGet(context) {
       }
 
       function onMessage(e) {
+        // Enforce that message source is strictly the parent opener window
+        if (e.source && e.source !== window.opener) return;
         // Enforce incoming message origin verification
         if (isOriginAllowed(e.origin)) {
           deliverMessage(e.origin);
@@ -179,11 +182,12 @@ export async function onRequestGet(context) {
       }
 
       if (window.opener) {
+        var handshakeOrigin = isOriginAllowed(trustedOrigin) ? trustedOrigin : 'https://kavithaassociates.com';
         window.addEventListener('message', onMessage, false);
-        window.opener.postMessage('authorizing:github', trustedOrigin);
+        window.opener.postMessage('authorizing:github', handshakeOrigin);
         // Fallback: If opener does not echo handshake within 1200ms, deliver directly to trusted origin
         setTimeout(function () {
-          deliverMessage(trustedOrigin);
+          deliverMessage(handshakeOrigin);
         }, 1200);
       } else {
         var el = document.getElementById('status-text');

@@ -58,10 +58,10 @@ export class ErrorBoundary extends Component<Props, State> {
               </p>
             </div>
 
-            {/* Error Message for debugging if in dev */}
-            {this.state.error && (
+            {/* Error Message for debugging in development only */}
+            {import.meta.env.DEV && this.state.error && (
               <div className="text-left bg-brand-surface rounded-lg p-3 text-xs text-charcoal-muted border border-border font-mono overflow-x-auto max-h-32">
-                <span className="text-red-700 font-semibold block mb-1">Diagnostic Info:</span>
+                <span className="text-red-700 font-semibold block mb-1">Diagnostic Info (Development Only):</span>
                 {this.state.error.message || String(this.state.error)}
               </div>
             )}

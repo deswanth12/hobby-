@@ -28,7 +28,9 @@ export const SEOHead = ({
 }: SEOProps) => {
   useEffect(() => {
     // 1. Update Document Title
-    const fullTitle = `${title} | Kavitha & Associates`;
+    const fullTitle = title.includes('Kavitha & Associates')
+      ? title
+      : `${title} | Kavitha & Associates`;
     document.title = fullTitle;
 
     const getOrCreateMeta = (attr: string, value: string): HTMLMetaElement => {

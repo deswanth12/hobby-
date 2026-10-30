@@ -175,7 +175,7 @@ export const ContactForm: React.FC = () => {
             <div className="font-semibold text-brand-deep flex items-center justify-between">
               <span>Direct Transmission Protocol</span>
               <span className="text-[10px] text-emerald-700 bg-white px-2 py-0.5 rounded border border-emerald-200">
-                ICAI Compliant
+                Statutory Protocol
               </span>
             </div>
             <p className="text-emerald-900 leading-relaxed">

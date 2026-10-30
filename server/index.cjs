@@ -28,11 +28,32 @@ const server = http.createServer((req, res) => {
 
   // 2. Static File Serving (from dist/)
   const url = new URL(req.url, `http://localhost:${PORT}`);
-  let pathname = url.pathname;
+  let pathname;
+  try {
+    pathname = decodeURIComponent(url.pathname);
+  } catch {
+    res.writeHead(400, { 'Content-Type': 'text/plain', 'X-Content-Type-Options': 'nosniff' });
+    res.end('Bad Request: Malformed URI encoding.');
+    return;
+  }
 
-  let filePath = path.join(DIST_DIR, pathname);
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
+  // Path Traversal Defense: Normalize and verify destination remains strictly within DIST_DIR
+  const normalizedPath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
+  let filePath = path.resolve(DIST_DIR, '.' + normalizedPath);
+  const resolvedDist = path.resolve(DIST_DIR);
+
+  if (filePath !== resolvedDist && !filePath.startsWith(resolvedDist + path.sep)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain', 'X-Content-Type-Options': 'nosniff' });
+    res.end('Forbidden: Directory traversal request blocked.');
+    return;
+  }
+
+  try {
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      filePath = path.join(filePath, 'index.html');
+    }
+  } catch {
+    filePath = path.join(DIST_DIR, 'index.html');
   }
 
   // If file doesn't exist, SPA fallback to /index.html
@@ -43,10 +64,14 @@ const server = http.createServer((req, res) => {
   if (fs.existsSync(filePath)) {
     const ext = path.extname(filePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-    res.writeHead(200, { 'Content-Type': contentType });
+    res.writeHead(200, {
+      'Content-Type': contentType,
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN'
+    });
     fs.createReadStream(filePath).pipe(res);
   } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.writeHead(404, { 'Content-Type': 'text/plain', 'X-Content-Type-Options': 'nosniff' });
     res.end('Not found. Please build the client first with `npm run build`.');
   }
 });

@@ -12,7 +12,7 @@ const BASELINE_DATA = {
     email: 'cakavithasrj@gmail.com',
     primaryLocation: 'Bairagi Patteda, Tirupati, Andhra Pradesh – 517501',
     googleMapsUrl: 'https://www.google.com/maps?q=13.61925,79.418028',
-    whatsappLink: 'https://wa.me/919626350900?text=Hello%20CA%20KavithaVijay%20SRJ%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.',
+    whatsappLink: 'https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.',
     openingHours: 'Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only',
     updatedAt: new Date().toISOString()
   },
@@ -161,7 +161,7 @@ const AUTHORIZED_USERS = [
   {
     username: 'kavitha',
     passwordHash: hashPassword('Tirupati@CA2026'),
-    displayName: 'CA KavithaVijay SRJ',
+    displayName: 'CA Kavitha Vijay',
     role: 'Managing Partner'
   },
   {

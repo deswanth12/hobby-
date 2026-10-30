@@ -213,39 +213,41 @@ export const AdminLoginPage: React.FC = () => {
             </div>
           </form>
 
-          {/* Quick Demo Pre-Fill Buttons for Evaluation */}
-          <div className="mt-6 pt-6 border-t border-gray-100">
-            <div className="flex items-center justify-between mb-2.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
-                Evaluation Test Credentials:
-              </span>
-              <span className="text-[10px] text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                Authorized Client Profiles
-              </span>
+          {/* Quick Demo Pre-Fill Buttons for Evaluation (Development / QA Mode Only) */}
+          {import.meta.env.DEV && (
+            <div className="mt-6 pt-6 border-t border-gray-100">
+              <div className="flex items-center justify-between mb-2.5">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
+                  Evaluation Test Credentials (Dev Only):
+                </span>
+                <span className="text-[10px] text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  Authorized Client Profiles
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 text-left">
+                <button
+                  type="button"
+                  onClick={() => handlePreFill('kavitha', 'Tirupati@CA2026')}
+                  className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
+                >
+                  <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
+                    CA Kavitha Vijay
+                  </div>
+                  <div className="text-[10px] text-gray-500 font-mono mt-0.5">kavitha</div>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handlePreFill('admin', 'KavithaAssoc#2026')}
+                  className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
+                >
+                  <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
+                    Practice Admin
+                  </div>
+                  <div className="text-[10px] text-gray-500 font-mono mt-0.5">admin</div>
+                </button>
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-2 text-left">
-              <button
-                type="button"
-                onClick={() => handlePreFill('kavitha', 'Tirupati@CA2026')}
-                className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
-              >
-                <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
-                  CA Kavitha Vijay
-                </div>
-                <div className="text-[10px] text-gray-500 font-mono mt-0.5">kavitha</div>
-              </button>
-              <button
-                type="button"
-                onClick={() => handlePreFill('admin', 'KavithaAssoc#2026')}
-                className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
-              >
-                <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
-                  Practice Admin
-                </div>
-                <div className="text-[10px] text-gray-500 font-mono mt-0.5">admin</div>
-              </button>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Security Policy Badge */}

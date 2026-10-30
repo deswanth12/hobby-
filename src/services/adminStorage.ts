@@ -773,7 +773,7 @@ export const adminStorage = {
 
     return {
       success: true,
-      message: `Password recovery request logged for ${cleanEmail}. In production, Supabase Auth sends an email reset link. Default credentials: 'kavitha' / 'Tirupati@CA2026'.`
+      message: `Password recovery request logged for ${cleanEmail}. In production, an authorized password reset link is securely dispatched to registered chambers accounts.`
     };
   },
 
