@@ -10,6 +10,8 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { StatutoryEntityAdvisor } from '../components/StatutoryEntityAdvisor';
+import { DualArrowButton } from '../components/animations/DualArrowButton';
 
 export const ServicesPage: React.FC = () => {
   const { data } = useFirmData();
@@ -28,7 +30,7 @@ export const ServicesPage: React.FC = () => {
           ========================================================================= */}
       <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-3">
               Practice Areas & Disciplines
             </span>
@@ -56,6 +58,12 @@ export const ServicesPage: React.FC = () => {
               <span>Jump to Area:</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
+              <a 
+                href="#statutory-advisor" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-xs font-semibold text-brand-forest hover:bg-brand-gold/25 hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
+                Entity Advisor
+              </a>
               <a 
                 href="#audit-spotlight-banner" 
                 className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
@@ -108,7 +116,7 @@ export const ServicesPage: React.FC = () => {
           ========================================================================= */}
       <section className="py-12 bg-brand-surface/70 border-b border-brand-border scroll-mt-32" id="audit-spotlight-banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-white p-7 sm:p-9 rounded-2xl border border-brand-border shadow-card card-tactile">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-white p-7 sm:p-9 rounded-2xl border border-brand-border shadow-card card-tactile scroll-reveal">
             <div className="flex items-start gap-5">
               <div className="w-14 h-14 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center shrink-0 border border-brand-gold/40 shadow-inner">
                 <ShieldCheck className="w-7 h-7" />
@@ -126,16 +134,21 @@ export const ServicesPage: React.FC = () => {
               </div>
             </div>
 
-            <Link
+            <DualArrowButton
               to="/services/audit-assurance"
-              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors shrink-0 shadow-card hover:shadow-card-hover btn-tactile border border-brand-gold/30"
+              variant="primary"
+              className="text-xs font-semibold shrink-0"
             >
-              <span>Explore All 9 Audit Streams</span>
-              <ArrowRight className="w-4 h-4 text-brand-gold" />
-            </Link>
+              Explore All 9 Audit Streams
+            </DualArrowButton>
           </div>
         </div>
       </section>
+
+      {/* =========================================================================
+          INTERACTIVE STATUTORY SCOPE & ENTITY ADVISOR
+          ========================================================================= */}
+      <StatutoryEntityAdvisor />
 
       {/* =========================================================================
           4. THE 5 PRACTICE DISCIPLINES (Asymmetric 5:7 Grid Ledgers)
@@ -146,12 +159,12 @@ export const ServicesPage: React.FC = () => {
             <div
               key={category.id}
               id={category.id}
-              className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile"
+              className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 {/* Left 5 Columns: Discipline Overview */}
-                <div className="lg:col-span-5 space-y-5">
+                <div className="lg:col-span-5 space-y-5 scroll-reveal-left">
                   <div className="flex items-center gap-3 flex-wrap">
                     <span className="px-3 py-1 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta text-xs border border-brand-forest/20">
                       Discipline 0{idx + 1}
@@ -203,10 +216,10 @@ export const ServicesPage: React.FC = () => {
                   <div className="pt-4 flex flex-wrap items-center gap-3.5 border-t border-brand-border">
                     <Link
                       to="/contact"
-                      className="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors btn-tactile border border-brand-gold/30"
+                      className="min-h-[44px] w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors btn-tactile border border-brand-gold/30"
                     >
                       <span>Inquire Regarding {category.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
+                      <ArrowRight className="w-3.5 h-3.5 text-brand-gold shrink-0" />
                     </Link>
                     <a
                       href={`tel:${firm.contact.primaryPhoneClean}`}
@@ -219,8 +232,8 @@ export const ServicesPage: React.FC = () => {
                 </div>
 
                 {/* Right 7 Columns: Ruled Service Scope Ledger */}
-                <div className="lg:col-span-7 bg-brand-surface rounded-2xl p-7 sm:p-8 border border-brand-border">
-                  <div className="flex items-center justify-between border-b border-brand-border pb-4 mb-5">
+                <div className="lg:col-span-7 bg-brand-surface rounded-2xl p-5 sm:p-8 border border-brand-border scroll-reveal-right">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-4 mb-5">
                     <h3 className="font-editorial-meta text-brand-forest text-xs">
                       Statutory Scope & Engagements Included
                     </h3>
@@ -229,9 +242,9 @@ export const ServicesPage: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 scroll-stagger">
                     {category.services.map((item) => (
-                      <div key={item} className="flex items-start gap-3 p-3 rounded-xl bg-brand-white border border-brand-border/70 shadow-subtle">
+                      <div key={item} className="flex items-start gap-3 p-3 rounded-xl bg-brand-white border border-brand-border/70 shadow-subtle scroll-reveal">
                         <CheckCircle2 className="w-4 h-4 text-brand-forest shrink-0 mt-0.5" />
                         <span className="font-editorial-body text-xs text-brand-charcoal font-medium leading-relaxed">
                           {item}
@@ -261,12 +274,12 @@ export const ServicesPage: React.FC = () => {
           {/* Discipline 06: Deep Green Virtual CFO & Multi-Statute Retainer Showcase */}
           <div
             id="virtual-cfo"
-            className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-gold/30 bg-brand-deep text-white shadow-editorial-lg scroll-reveal"
+            className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-gold/30 bg-brand-deep text-white shadow-editorial-lg scroll-reveal-scale"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               
               {/* Left Column */}
-              <div className="lg:col-span-5 space-y-5">
+              <div className="lg:col-span-5 space-y-5 scroll-reveal-left">
                 <div className="flex items-center gap-3 flex-wrap">
                   <span className="px-3 py-1 rounded-full bg-brand-forest text-brand-gold font-editorial-meta text-xs border border-brand-gold/40">
                     Discipline 06
@@ -405,7 +418,7 @@ export const ServicesPage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="max-w-3xl mx-auto text-center mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
               Systematic Execution
             </span>
@@ -417,8 +430,8 @@ export const ServicesPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <span className="font-editorial-meta text-brand-gold text-lg block mb-2">01</span>
                 <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Discovery & Scoping</h3>
@@ -427,7 +440,7 @@ export const ServicesPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <span className="font-editorial-meta text-brand-gold text-lg block mb-2">02</span>
                 <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Document Audit</h3>
@@ -436,7 +449,7 @@ export const ServicesPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <span className="font-editorial-meta text-brand-gold text-lg block mb-2">03</span>
                 <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Partner Execution</h3>
@@ -445,7 +458,7 @@ export const ServicesPage: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <span className="font-editorial-meta text-brand-gold text-lg block mb-2">04</span>
                 <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Filing & Archival</h3>
@@ -462,7 +475,7 @@ export const ServicesPage: React.FC = () => {
           6. CONSULTATION CTA SECTION
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-brand-surface text-center">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Advisory & Retainerships
           </span>

@@ -24,6 +24,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 
 // Admin Pages (Code-split for optimized initial page load)
 import { AdminProtectedRoute } from './components/admin/AdminProtectedRoute';
+import { ADMIN_ROUTES, IS_ADMIN_CONFIGURED } from './config/adminConfig';
 
 const AdminLoginPage = React.lazy(() => import('./pages/admin/AdminLoginPage').then(m => ({ default: m.AdminLoginPage })));
 const AdminOverviewPage = React.lazy(() => import('./pages/admin/AdminOverviewPage').then(m => ({ default: m.AdminOverviewPage })));
@@ -42,14 +43,17 @@ const AdminFallback: React.FC = () => (
   </div>
 );
 
+const ScrollRevealInit: React.FC = () => {
+  useScrollReveal();
+  return null;
+};
+
 /**
  * Public Layout Wrapper:
  * Includes public top navigation bar, scroll progress tracker, footer,
  * floating WhatsApp consultation button, and back-to-top button.
  */
 const PublicLayout: React.FC = () => {
-  useScrollReveal();
-
   return (
     <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative">
       <ScrollProgress />
@@ -70,6 +74,7 @@ export const App: React.FC = () => {
       <FirmDataProvider>
         <BrowserRouter>
           <ScrollToTop />
+          <ScrollRevealInit />
           <Routes>
             {/* Public Routes with public chrome */}
             <Route element={<PublicLayout />}>
@@ -85,55 +90,63 @@ export const App: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
 
-            {/* Admin Authentication & Dedicated Management Console (Code-Split) */}
-            <Route
-              path="/admin/login"
-              element={
-                <React.Suspense fallback={<AdminFallback />}>
-                  <AdminLoginPage />
-                </React.Suspense>
-              }
-            />
-            <Route
-              path="/admin"
-              element={
-                <AdminProtectedRoute>
-                  <React.Suspense fallback={<AdminFallback />}>
-                    <AdminOverviewPage />
-                  </React.Suspense>
-                </AdminProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/enquiries"
-              element={
-                <AdminProtectedRoute>
-                  <React.Suspense fallback={<AdminFallback />}>
-                    <AdminEnquiriesPage />
-                  </React.Suspense>
-                </AdminProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/content"
-              element={
-                <AdminProtectedRoute>
-                  <React.Suspense fallback={<AdminFallback />}>
-                    <AdminContentPage />
-                  </React.Suspense>
-                </AdminProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/settings"
-              element={
-                <AdminProtectedRoute>
-                  <React.Suspense fallback={<AdminFallback />}>
-                    <AdminSettingsPage />
-                  </React.Suspense>
-                </AdminProtectedRoute>
-              }
-            />
+            {/* Quarantined Legacy Admin Routes - Strictly Return Generic 404 */}
+            <Route path="/admin" element={<NotFoundPage />} />
+            <Route path="/admin/*" element={<NotFoundPage />} />
+
+            {/* Secret Admin Authentication & Dedicated Management Console (Code-Split) */}
+            {IS_ADMIN_CONFIGURED && (
+              <>
+                <Route
+                  path={ADMIN_ROUTES.login}
+                  element={
+                    <React.Suspense fallback={<AdminFallback />}>
+                      <AdminLoginPage />
+                    </React.Suspense>
+                  }
+                />
+                <Route
+                  path={ADMIN_ROUTES.root}
+                  element={
+                    <AdminProtectedRoute>
+                      <React.Suspense fallback={<AdminFallback />}>
+                        <AdminOverviewPage />
+                      </React.Suspense>
+                    </AdminProtectedRoute>
+                  }
+                />
+                <Route
+                  path={ADMIN_ROUTES.enquiries}
+                  element={
+                    <AdminProtectedRoute>
+                      <React.Suspense fallback={<AdminFallback />}>
+                        <AdminEnquiriesPage />
+                      </React.Suspense>
+                    </AdminProtectedRoute>
+                  }
+                />
+                <Route
+                  path={ADMIN_ROUTES.content}
+                  element={
+                    <AdminProtectedRoute>
+                      <React.Suspense fallback={<AdminFallback />}>
+                        <AdminContentPage />
+                      </React.Suspense>
+                    </AdminProtectedRoute>
+                  }
+                />
+                <Route
+                  path={ADMIN_ROUTES.settings}
+                  element={
+                    <AdminProtectedRoute>
+                      <React.Suspense fallback={<AdminFallback />}>
+                        <AdminSettingsPage />
+                      </React.Suspense>
+                    </AdminProtectedRoute>
+                  }
+                />
+              </>
+            )}
           </Routes>
         </BrowserRouter>
       </FirmDataProvider>

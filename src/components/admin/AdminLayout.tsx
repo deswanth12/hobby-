@@ -13,6 +13,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
+import { ADMIN_ROUTES } from '../../config/adminConfig';
 import { SEOHead } from '../SEOHead';
 
 interface AdminLayoutProps {
@@ -48,19 +49,19 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
 
   const handleLogout = () => {
     adminStorage.logout();
-    navigate('/admin/login');
+    navigate(ADMIN_ROUTES.login);
   };
 
   const navItems = [
-    { name: 'Overview', path: '/admin', icon: LayoutDashboard, exact: true },
+    { name: 'Overview', path: ADMIN_ROUTES.root, icon: LayoutDashboard, exact: true },
     { 
       name: 'Client Enquiries', 
-      path: '/admin/enquiries', 
+      path: ADMIN_ROUTES.enquiries, 
       icon: Inbox, 
       badge: newEnquiryCount > 0 ? newEnquiryCount : undefined 
     },
-    { name: 'Content Editor', path: '/admin/content', icon: FileEdit },
-    { name: 'Practice Settings', path: '/admin/settings', icon: Sliders },
+    { name: 'Content Editor', path: ADMIN_ROUTES.content, icon: FileEdit },
+    { name: 'Practice Settings', path: ADMIN_ROUTES.settings, icon: Sliders },
   ];
 
   return (
@@ -74,7 +75,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
         
         {/* Brand Plaque */}
         <div className="p-6 border-b border-emerald-800/60">
-          <Link to="/admin" className="flex items-center gap-3 group">
+          <Link to={ADMIN_ROUTES.root} className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-lg bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif text-lg font-bold text-gold">
               KA
             </div>
@@ -173,19 +174,20 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
       {/* =========================================================================
           2. MOBILE NAVBAR
           ========================================================================= */}
-      <div className="md:hidden bg-[#0A2F24] text-white p-4 flex items-center justify-between border-b border-emerald-950">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif font-bold text-gold text-sm">
+      <div className="md:hidden bg-[#0A2F24] text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-emerald-950">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-8 h-8 rounded-lg bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif font-bold text-gold text-sm shrink-0">
             KA
           </div>
-          <span className="font-serif text-base font-bold text-white">
+          <span className="font-serif text-sm sm:text-base font-bold text-white truncate">
             Kavitha & Associates Admin
           </span>
         </div>
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-lg bg-[#0F3E2E] text-emerald-200 hover:text-white"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-[#0F3E2E] text-emerald-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-gold transition-colors shrink-0"
+          aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -205,7 +207,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-semibold ${
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-xs font-semibold min-h-[44px] transition-colors ${
                   isActive ? 'bg-[#0F3E2E] text-gold border border-gold/40' : 'text-emerald-100 hover:bg-[#0F3E2E]'
                 }`}
               >
@@ -222,12 +225,25 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
             );
           })}
           <div className="pt-3 border-t border-emerald-800/80 flex items-center justify-between text-xs">
-            <Link to="/" className="text-gold font-medium flex items-center gap-1">
-              <Globe className="w-3.5 h-3.5" />
+            <Link
+              to="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileOpen(false)}
+              className="text-gold font-medium flex items-center gap-1.5 min-h-[44px] px-2 py-2 hover:text-white transition-colors"
+            >
+              <Globe className="w-4 h-4" />
               <span>Public Site</span>
             </Link>
-            <button type="button" onClick={handleLogout} className="text-rose-300 font-medium flex items-center gap-1">
-              <LogOut className="w-3.5 h-3.5" />
+            <button
+              type="button"
+              onClick={() => {
+                setMobileOpen(false);
+                handleLogout();
+              }}
+              className="text-rose-300 font-medium flex items-center gap-1.5 min-h-[44px] px-2 py-2 hover:text-white transition-colors"
+            >
+              <LogOut className="w-4 h-4" />
               <span>Sign Out</span>
             </button>
           </div>
@@ -288,7 +304,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
         </div>
 
         {/* Page Content Canvas */}
-        <main className="p-6 sm:p-8 flex-1">
+        <main className="p-6 sm:p-8 flex-1 scroll-reveal">
           {children}
         </main>
 

@@ -132,12 +132,12 @@ if (fs.existsSync(redirectsPath)) {
   const lines = redirectsContent.split(/\r?\n/).map(l => l.trim()).filter(l => l && !l.startsWith('#'));
   
   // Find indices of rules
-  const adminIndex = lines.findIndex(l => /^\/admin\s+\/admin\/index\.html\s+200/.test(l));
-  const adminStarIndex = lines.findIndex(l => /^\/admin\/\*\s+\/admin\/index\.html\s+200/.test(l));
+  const adminIndex = lines.findIndex(l => /^\/admin\s+\/index\.html\s+404/.test(l));
+  const adminStarIndex = lines.findIndex(l => /^\/admin\/\*\s+\/index\.html\s+404/.test(l));
   const catchAllIndex = lines.findIndex(l => /^\/\*\s+\/index\.html\s+200/.test(l));
 
-  assert(adminIndex !== -1, 'dist/_redirects contains /admin -> /admin/index.html 200');
-  assert(adminStarIndex !== -1, 'dist/_redirects contains /admin/* -> /admin/index.html 200');
+  assert(adminIndex !== -1, 'dist/_redirects contains /admin -> /index.html 404 (quarantined generic 404)');
+  assert(adminStarIndex !== -1, 'dist/_redirects contains /admin/* -> /index.html 404 (quarantined generic 404)');
   assert(catchAllIndex !== -1, 'dist/_redirects contains /* -> /index.html 200');
 
   // Verify ordering: /admin rules MUST be ahead of /*

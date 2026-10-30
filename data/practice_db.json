@@ -3,8 +3,8 @@
     "primaryPhone": "+91 96263 50900",
     "secondaryPhone": "+91 95421 53906",
     "email": "cakavithasrj@gmail.com",
-    "primaryLocation": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
-    "googleMapsUrl": "https://www.google.com/maps?q=13.61925,79.418028",
+    "primaryLocation": "19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India",
+    "googleMapsUrl": "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
     "whatsappLink": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
     "openingHours": "Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only",
     "updatedAt": "2026-10-29T15:27:17.521Z"
@@ -365,7 +365,315 @@
         "lastLogin": "2026-10-30T06:40:59.876Z"
       },
       "expiresAt": 1793346059876
+    },
+    "ka_jwt.eyJqdGkiOiJjNzc5MTYzMWZiZjdmYTk3OTNkMzMzMzZhN2FkMzVjNiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY3MjE1LCJleHAiOjE3OTMzNzA4MTV9.wriz9LIfiaLw_UjajL4plqEg0GunrvoXw08k97QZXSw": {
+      "token": "ka_jwt.eyJqdGkiOiJjNzc5MTYzMWZiZjdmYTk3OTNkMzMzMzZhN2FkMzVjNiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY3MjE1LCJleHAiOjE3OTMzNzA4MTV9.wriz9LIfiaLw_UjajL4plqEg0GunrvoXw08k97QZXSw",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T13:33:35.521Z"
+      },
+      "expiresAt": 1793370815000
+    },
+    "ka_jwt.eyJqdGkiOiI5OTE1YmU0ZTA3NDdkYjM0Y2RjZTA2OThhODExMDEwOCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY3Mjc4LCJleHAiOjE3OTMzNzA4Nzh9.IcyyyWAJCeJYsvzLUDW9GTkSnecHjMIMSMBKj8O5F6A": {
+      "token": "ka_jwt.eyJqdGkiOiI5OTE1YmU0ZTA3NDdkYjM0Y2RjZTA2OThhODExMDEwOCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY3Mjc4LCJleHAiOjE3OTMzNzA4Nzh9.IcyyyWAJCeJYsvzLUDW9GTkSnecHjMIMSMBKj8O5F6A",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T13:34:38.792Z"
+      },
+      "expiresAt": 1793370878000
+    },
+    "ka_jwt.eyJqdGkiOiI5NzRjYzUwMGZjZDdlZjFhZDk1NWRiNjhkODNmMTRmMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY4MzQ4LCJleHAiOjE3OTMzNzE5NDh9.ohwq3kKlo9_bAZF7kKv1SQFhf08WFhuBiQRxIYGcM4M": {
+      "token": "ka_jwt.eyJqdGkiOiI5NzRjYzUwMGZjZDdlZjFhZDk1NWRiNjhkODNmMTRmMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY4MzQ4LCJleHAiOjE3OTMzNzE5NDh9.ohwq3kKlo9_bAZF7kKv1SQFhf08WFhuBiQRxIYGcM4M",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T13:52:28.413Z"
+      },
+      "expiresAt": 1793371948000
+    },
+    "ka_jwt.eyJqdGkiOiJlZGNhOGQ1NTY0MGRiY2E4NmM0ZjI5NzE1NjU0YzQ3MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY4ODAyLCJleHAiOjE3OTMzNzI0MDJ9.rmizl41u0NKUUBiXue3qphcrqDblyo-LnIzpRILUrP8": {
+      "token": "ka_jwt.eyJqdGkiOiJlZGNhOGQ1NTY0MGRiY2E4NmM0ZjI5NzE1NjU0YzQ3MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzY4ODAyLCJleHAiOjE3OTMzNzI0MDJ9.rmizl41u0NKUUBiXue3qphcrqDblyo-LnIzpRILUrP8",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T14:00:02.769Z"
+      },
+      "expiresAt": 1793372402000
+    },
+    "ka_jwt.eyJqdGkiOiJkNWI2OGQwYTZjMzU0ZWNkNjcwODVkNjAxYzM2N2JmNCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcwMzY4LCJleHAiOjE3OTMzNzM5Njh9.ap3xws1tDVKhw7-ZdoeJERXU0r73q7JFNrtVK3n8NXk": {
+      "token": "ka_jwt.eyJqdGkiOiJkNWI2OGQwYTZjMzU0ZWNkNjcwODVkNjAxYzM2N2JmNCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcwMzY4LCJleHAiOjE3OTMzNzM5Njh9.ap3xws1tDVKhw7-ZdoeJERXU0r73q7JFNrtVK3n8NXk",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T14:26:08.333Z"
+      },
+      "expiresAt": 1793373968000
+    },
+    "ka_jwt.eyJqdGkiOiI0MzQyNTIxMjcwMGI2Yzc1OTE5MmM3YjllYTdjOTZhZCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcxNjY3LCJleHAiOjE3OTMzNzUyNjd9.uXdcFNAu09GvCj2--TdF3MCg4PSPgebIWgDJRdQNUSg": {
+      "token": "ka_jwt.eyJqdGkiOiI0MzQyNTIxMjcwMGI2Yzc1OTE5MmM3YjllYTdjOTZhZCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcxNjY3LCJleHAiOjE3OTMzNzUyNjd9.uXdcFNAu09GvCj2--TdF3MCg4PSPgebIWgDJRdQNUSg",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T14:47:47.759Z"
+      },
+      "expiresAt": 1793375267000
+    },
+    "ka_jwt.eyJqdGkiOiJhZTAyYzNjZjMwNmIwMWExMWM2YzA3MDE2MDZhNWYwOSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyMDY1LCJleHAiOjE3OTMzNzU2NjV9.O3OrGvmJz-rkHbdbdNmd_3bomC5CziJk80EUBbVvVCE": {
+      "token": "ka_jwt.eyJqdGkiOiJhZTAyYzNjZjMwNmIwMWExMWM2YzA3MDE2MDZhNWYwOSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyMDY1LCJleHAiOjE3OTMzNzU2NjV9.O3OrGvmJz-rkHbdbdNmd_3bomC5CziJk80EUBbVvVCE",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T14:54:25.163Z"
+      },
+      "expiresAt": 1793375665000
+    },
+    "ka_jwt.eyJqdGkiOiIwZjMzMTAxYmY3YTdmZTQ3YTczYTk2NTMwMDNlNGE5ZSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyNjc0LCJleHAiOjE3OTMzNzYyNzR9.WJOxAVn3LT28JCmCPeAl2KEAv4wj6N4ff0cDO_H4V7Y": {
+      "token": "ka_jwt.eyJqdGkiOiIwZjMzMTAxYmY3YTdmZTQ3YTczYTk2NTMwMDNlNGE5ZSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyNjc0LCJleHAiOjE3OTMzNzYyNzR9.WJOxAVn3LT28JCmCPeAl2KEAv4wj6N4ff0cDO_H4V7Y",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T15:04:34.760Z"
+      },
+      "expiresAt": 1793376274000
+    },
+    "ka_jwt.eyJqdGkiOiI2M2Q0ODUxNWQ0NmM3Njk4MTA4NDQ2OTFiM2JkNjcwYiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyODQ0LCJleHAiOjE3OTMzNzY0NDR9.rOrY1qrEmaY8F5Q6TeKuvy4o6NBp4GovMh2K0PohEok": {
+      "token": "ka_jwt.eyJqdGkiOiI2M2Q0ODUxNWQ0NmM3Njk4MTA4NDQ2OTFiM2JkNjcwYiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzcyODQ0LCJleHAiOjE3OTMzNzY0NDR9.rOrY1qrEmaY8F5Q6TeKuvy4o6NBp4GovMh2K0PohEok",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T15:07:24.909Z"
+      },
+      "expiresAt": 1793376444000
+    },
+    "ka_jwt.eyJqdGkiOiJiNzNhMGIwODFiNTBmMGY5MDUwZWRjZGU0ODRmMmUwNCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzczODgzLCJleHAiOjE3OTMzNzc0ODN9.rGOhiCmpGE8EjL53B8JBPVSiVAzMqP3BeZJmcuacpng": {
+      "token": "ka_jwt.eyJqdGkiOiJiNzNhMGIwODFiNTBmMGY5MDUwZWRjZGU0ODRmMmUwNCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzczODgzLCJleHAiOjE3OTMzNzc0ODN9.rGOhiCmpGE8EjL53B8JBPVSiVAzMqP3BeZJmcuacpng",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T15:24:43.639Z"
+      },
+      "expiresAt": 1793377483000
+    },
+    "ka_jwt.eyJqdGkiOiJhMDEwMWNmMzJiNGE2MzQ2NzYzNzk5OGNiZWUwNDQ5NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc0MTk5LCJleHAiOjE3OTMzNzc3OTl9.tOxrrkF-nqD2LUk8GgRNfjy9blxRoh3EffEs31ZUZFA": {
+      "token": "ka_jwt.eyJqdGkiOiJhMDEwMWNmMzJiNGE2MzQ2NzYzNzk5OGNiZWUwNDQ5NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc0MTk5LCJleHAiOjE3OTMzNzc3OTl9.tOxrrkF-nqD2LUk8GgRNfjy9blxRoh3EffEs31ZUZFA",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T15:29:59.520Z"
+      },
+      "expiresAt": 1793377799000
+    },
+    "ka_jwt.eyJqdGkiOiJmYzNiN2NkY2M5NTg3NzM5MDhiNjkyZTM5ODk3YTZlYiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc1NTgyLCJleHAiOjE3OTMzNzkxODJ9.Z4jpB37NWkra1fSjd-iGZhHQOeiQgj-OHqJywytEEm0": {
+      "token": "ka_jwt.eyJqdGkiOiJmYzNiN2NkY2M5NTg3NzM5MDhiNjkyZTM5ODk3YTZlYiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc1NTgyLCJleHAiOjE3OTMzNzkxODJ9.Z4jpB37NWkra1fSjd-iGZhHQOeiQgj-OHqJywytEEm0",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T15:53:02.529Z"
+      },
+      "expiresAt": 1793379182000
+    },
+    "ka_jwt.eyJqdGkiOiI2OGU5YWRjZTc2NjM1YjA2OGU0YTEyNGE3MGU1ZGRjZCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc2MDk1LCJleHAiOjE3OTMzNzk2OTV9.uXKVnMcpSTfD8iLX5tLhrfKjpKhDLVG5akapgnHO2RA": {
+      "token": "ka_jwt.eyJqdGkiOiI2OGU5YWRjZTc2NjM1YjA2OGU0YTEyNGE3MGU1ZGRjZCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc2MDk1LCJleHAiOjE3OTMzNzk2OTV9.uXKVnMcpSTfD8iLX5tLhrfKjpKhDLVG5akapgnHO2RA",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T16:01:35.885Z"
+      },
+      "expiresAt": 1793379695000
+    },
+    "ka_jwt.eyJqdGkiOiJiMzM0YTI5NWFhMmQ2MjBmYTEyNDY1NGE1MjdlZTllOSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc2NzAxLCJleHAiOjE3OTMzODAzMDF9.PeE3VQaqyFrYk6xhsZYso10e5P77B1CnUIy0AA_Ct2g": {
+      "token": "ka_jwt.eyJqdGkiOiJiMzM0YTI5NWFhMmQ2MjBmYTEyNDY1NGE1MjdlZTllOSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc2NzAxLCJleHAiOjE3OTMzODAzMDF9.PeE3VQaqyFrYk6xhsZYso10e5P77B1CnUIy0AA_Ct2g",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T16:11:41.368Z"
+      },
+      "expiresAt": 1793380301000
+    },
+    "ka_jwt.eyJqdGkiOiJhZGQxMzRkOGJjZmExOWFhMmYwMjQxMGUxNGQ3ZWE2MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc4MjExLCJleHAiOjE3OTMzODE4MTF9.AuePcjP5QNpdyZXql2Z_gHVZc68h1xPjh_xgvolXbT0": {
+      "token": "ka_jwt.eyJqdGkiOiJhZGQxMzRkOGJjZmExOWFhMmYwMjQxMGUxNGQ3ZWE2MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc4MjExLCJleHAiOjE3OTMzODE4MTF9.AuePcjP5QNpdyZXql2Z_gHVZc68h1xPjh_xgvolXbT0",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T16:36:51.150Z"
+      },
+      "expiresAt": 1793381811000
+    },
+    "ka_jwt.eyJqdGkiOiJiNTA2NmI5MmJhMmY4ZjA1MWUxMTMzMGZhODNkNWVkMCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc4OTU3LCJleHAiOjE3OTMzODI1NTd9.H-DIYNz4djxmJRcmO7iyWudM64dx8Y8QlC43l7LB-10": {
+      "token": "ka_jwt.eyJqdGkiOiJiNTA2NmI5MmJhMmY4ZjA1MWUxMTMzMGZhODNkNWVkMCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc4OTU3LCJleHAiOjE3OTMzODI1NTd9.H-DIYNz4djxmJRcmO7iyWudM64dx8Y8QlC43l7LB-10",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T16:49:17.900Z"
+      },
+      "expiresAt": 1793382557000
+    },
+    "ka_jwt.eyJqdGkiOiJiMjM4Zjg5NmQ0MzNjZjg3ZmQyOTQ3ZDIxZGE3ZDlhYSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc5MTcyLCJleHAiOjE3OTMzODI3NzJ9.q4w_IHWCv-8P9xTZaOGmQsdHevkHTSxymBQVxZqRqNk": {
+      "token": "ka_jwt.eyJqdGkiOiJiMjM4Zjg5NmQ0MzNjZjg3ZmQyOTQ3ZDIxZGE3ZDlhYSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzc5MTcyLCJleHAiOjE3OTMzODI3NzJ9.q4w_IHWCv-8P9xTZaOGmQsdHevkHTSxymBQVxZqRqNk",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T16:52:52.879Z"
+      },
+      "expiresAt": 1793382772000
+    },
+    "ka_jwt.eyJqdGkiOiJjZTU5MjRjNzAwMGIwMzA0NDYyYjJkZGM4NGFiNzQ0YiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwMzIxLCJleHAiOjE3OTMzODM5MjF9.cGiT586mRCPdnQTVahj-ONNThwMqcdnf32HLCEsktFw": {
+      "token": "ka_jwt.eyJqdGkiOiJjZTU5MjRjNzAwMGIwMzA0NDYyYjJkZGM4NGFiNzQ0YiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwMzIxLCJleHAiOjE3OTMzODM5MjF9.cGiT586mRCPdnQTVahj-ONNThwMqcdnf32HLCEsktFw",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T17:12:01.292Z"
+      },
+      "expiresAt": 1793383921000
+    },
+    "ka_jwt.eyJqdGkiOiJiNjhjZTAwM2RkMmJlNDY2ZjZiOWRjMzUzOTEwNzI0YSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwNDM0LCJleHAiOjE3OTMzODQwMzR9.lBJlovMEbj-WjMjhyGNxwi3hKvRCsHygBOh-ob7o39M": {
+      "token": "ka_jwt.eyJqdGkiOiJiNjhjZTAwM2RkMmJlNDY2ZjZiOWRjMzUzOTEwNzI0YSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwNDM0LCJleHAiOjE3OTMzODQwMzR9.lBJlovMEbj-WjMjhyGNxwi3hKvRCsHygBOh-ob7o39M",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T17:13:54.168Z"
+      },
+      "expiresAt": 1793384034000
+    },
+    "ka_jwt.eyJqdGkiOiJiYjhjOTY5NzNmMmFlNmIwYWU5MDZiODE3N2E0ODFmMiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwNjkyLCJleHAiOjE3OTMzODQyOTJ9.pAjoHE1Xy-t7EhtSWAAfvUXSerls4PnbeDf9l1m_dt4": {
+      "token": "ka_jwt.eyJqdGkiOiJiYjhjOTY5NzNmMmFlNmIwYWU5MDZiODE3N2E0ODFmMiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgwNjkyLCJleHAiOjE3OTMzODQyOTJ9.pAjoHE1Xy-t7EhtSWAAfvUXSerls4PnbeDf9l1m_dt4",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T17:18:12.195Z"
+      },
+      "expiresAt": 1793384292000
+    },
+    "ka_jwt.eyJqdGkiOiJhMDNiNDQxNDVlODNmNTUwZWY0NGZjNWQwNThjYzAwMiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgyMjczLCJleHAiOjE3OTMzODU4NzN9.lJXUBSsUC24rgtSNyigbjw2k2gsM6Rwp0Xj4QBNmngo": {
+      "token": "ka_jwt.eyJqdGkiOiJhMDNiNDQxNDVlODNmNTUwZWY0NGZjNWQwNThjYzAwMiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgyMjczLCJleHAiOjE3OTMzODU4NzN9.lJXUBSsUC24rgtSNyigbjw2k2gsM6Rwp0Xj4QBNmngo",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T17:44:33.815Z"
+      },
+      "expiresAt": 1793385873000
+    },
+    "ka_jwt.eyJqdGkiOiIzNjQ4ODU5NmNjZjA0MWUwNjRiMDBlNzBkMjRhYTIwMCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzMDIzLCJleHAiOjE3OTMzODY2MjN9.A-3JZT2mTaVy1pRY6XiXQFOTpTwNG5PZnVL6QvSNcj8": {
+      "token": "ka_jwt.eyJqdGkiOiIzNjQ4ODU5NmNjZjA0MWUwNjRiMDBlNzBkMjRhYTIwMCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzMDIzLCJleHAiOjE3OTMzODY2MjN9.A-3JZT2mTaVy1pRY6XiXQFOTpTwNG5PZnVL6QvSNcj8",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T17:57:03.714Z"
+      },
+      "expiresAt": 1793386623000
+    },
+    "ka_jwt.eyJqdGkiOiI5ZGJlM2NiNTE4NTI1MDEyODQyZjIxN2M1MTBkYzA4ZiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzMjczLCJleHAiOjE3OTMzODY4NzN9.ZT0wldXZP60MuqAotm1-25StQyX60s0N5MV9-xkWw3k": {
+      "token": "ka_jwt.eyJqdGkiOiI5ZGJlM2NiNTE4NTI1MDEyODQyZjIxN2M1MTBkYzA4ZiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzMjczLCJleHAiOjE3OTMzODY4NzN9.ZT0wldXZP60MuqAotm1-25StQyX60s0N5MV9-xkWw3k",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:01:13.428Z"
+      },
+      "expiresAt": 1793386873000
+    },
+    "ka_jwt.eyJqdGkiOiIzMGYxMWJiMTY5MTQ3NGQwMzgxNjc0MmM5ZTlhNjk2NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzNDI5LCJleHAiOjE3OTMzODcwMjl9.bRWOcT5eeLOeVHWScTCwZuaqfHCGWJgzEfNvfSbDiqQ": {
+      "token": "ka_jwt.eyJqdGkiOiIzMGYxMWJiMTY5MTQ3NGQwMzgxNjc0MmM5ZTlhNjk2NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzgzNDI5LCJleHAiOjE3OTMzODcwMjl9.bRWOcT5eeLOeVHWScTCwZuaqfHCGWJgzEfNvfSbDiqQ",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:03:49.497Z"
+      },
+      "expiresAt": 1793387029000
+    },
+    "ka_jwt.eyJqdGkiOiI4MGM3OWE4N2Y2OWVjNzRkYmIzYTVmYzBiYTUxMTQ4MSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0MDc3LCJleHAiOjE3OTMzODc2Nzd9.AI_sSdA9wrCsao2nrUWMJIbzMQOdPN9VuBKBPmGJRAU": {
+      "token": "ka_jwt.eyJqdGkiOiI4MGM3OWE4N2Y2OWVjNzRkYmIzYTVmYzBiYTUxMTQ4MSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0MDc3LCJleHAiOjE3OTMzODc2Nzd9.AI_sSdA9wrCsao2nrUWMJIbzMQOdPN9VuBKBPmGJRAU",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:14:37.689Z"
+      },
+      "expiresAt": 1793387677000
+    },
+    "ka_jwt.eyJqdGkiOiJkYTUwNzhhNDYxYzg0Yzg1YjljOThhMzJmOWEzOWRlNiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0NTUzLCJleHAiOjE3OTMzODgxNTN9.JhgdpamO6inRmsWBiJgDK7a3gacaaeHFZUAetrzeI0M": {
+      "token": "ka_jwt.eyJqdGkiOiJkYTUwNzhhNDYxYzg0Yzg1YjljOThhMzJmOWEzOWRlNiIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0NTUzLCJleHAiOjE3OTMzODgxNTN9.JhgdpamO6inRmsWBiJgDK7a3gacaaeHFZUAetrzeI0M",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:22:33.342Z"
+      },
+      "expiresAt": 1793388153000
+    },
+    "ka_jwt.eyJqdGkiOiIzM2M5YjBhOTlhMjBjYWEyNjA1OWM1N2M3NzRjMjA0NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0Nzk3LCJleHAiOjE3OTMzODgzOTd9.Lkz5V5KkWPaenfeV2MxXFTANGw6h4xmPvbPMWfrpyWo": {
+      "token": "ka_jwt.eyJqdGkiOiIzM2M5YjBhOTlhMjBjYWEyNjA1OWM1N2M3NzRjMjA0NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg0Nzk3LCJleHAiOjE3OTMzODgzOTd9.Lkz5V5KkWPaenfeV2MxXFTANGw6h4xmPvbPMWfrpyWo",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:26:37.371Z"
+      },
+      "expiresAt": 1793388397000
+    },
+    "ka_jwt.eyJqdGkiOiI4OTUwOGY4YTdhMTI0OTczY2JhOTI1MDE1NjhkNTE5MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg1Nzk3LCJleHAiOjE3OTMzODkzOTd9.xYjLY9NYzTXFhJggkQRS1NgjZwmd2xp9l04zKDtxLZw": {
+      "token": "ka_jwt.eyJqdGkiOiI4OTUwOGY4YTdhMTI0OTczY2JhOTI1MDE1NjhkNTE5MCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg1Nzk3LCJleHAiOjE3OTMzODkzOTd9.xYjLY9NYzTXFhJggkQRS1NgjZwmd2xp9l04zKDtxLZw",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T18:43:17.773Z"
+      },
+      "expiresAt": 1793389397000
+    },
+    "ka_jwt.eyJqdGkiOiJlNGFiYTRmMTI5YzEyYTQ0NDMxNTUwMTk2NTJkMTcwMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg2ODc1LCJleHAiOjE3OTMzOTA0NzV9.UIf5YinhPWe31To025bNAaHepUlPjDLYxBOT3LOwVmw": {
+      "token": "ka_jwt.eyJqdGkiOiJlNGFiYTRmMTI5YzEyYTQ0NDMxNTUwMTk2NTJkMTcwMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg2ODc1LCJleHAiOjE3OTMzOTA0NzV9.UIf5YinhPWe31To025bNAaHepUlPjDLYxBOT3LOwVmw",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T19:01:15.429Z"
+      },
+      "expiresAt": 1793390475000
+    },
+    "ka_jwt.eyJqdGkiOiI0MDA5YjMxNTAyNTRkYmIzM2I3N2ZjYTg3NDc3MzlhMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg3Njc3LCJleHAiOjE3OTMzOTEyNzd9.OAJFhMr58w2kXjfeZVmtYzD_n_Mqspvk5pxUlifGrxg": {
+      "token": "ka_jwt.eyJqdGkiOiI0MDA5YjMxNTAyNTRkYmIzM2I3N2ZjYTg3NDc3MzlhMyIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzMzg3Njc3LCJleHAiOjE3OTMzOTEyNzd9.OAJFhMr58w2kXjfeZVmtYzD_n_Mqspvk5pxUlifGrxg",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-30T19:14:37.939Z"
+      },
+      "expiresAt": 1793391277000
     }
   },
-  "rateLimits": {}
+  "rateLimits": {},
+  "revokedTokens": {
+    "80c79a87f69ec74dbb3a5fc0ba511481": 1793387677,
+    "da5078a461c84c85b9c98a32f9a39de6": 1793388153,
+    "33c9b0a99a20caa26059c57c774c2044": 1793388397,
+    "89508f8a7a124973cba92501568d5190": 1793389397,
+    "e4aba4f129c12a4443155019652d1703": 1793390475,
+    "4009b3150254dbb33b77fca8747739a3": 1793391277
+  }
 }

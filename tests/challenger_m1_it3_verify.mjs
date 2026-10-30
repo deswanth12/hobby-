@@ -127,13 +127,13 @@ assert(parsedRules.length >= 3, `Found ${parsedRules.length} redirect rules`);
 
 // Test rule 1: /admin
 const adminExactRule = parsedRules.find(r => r.from === '/admin');
-assert(adminExactRule && adminExactRule.to === '/admin/index.html' && adminExactRule.status === 200,
-  '/admin rewrites to /admin/index.html with status 200');
+assert(adminExactRule && adminExactRule.to === '/index.html' && adminExactRule.status === 404,
+  '/admin rewrites to /index.html with status 404 (quarantined generic 404)');
 
 // Test rule 2: /admin/*
 const adminWildcardRule = parsedRules.find(r => r.from === '/admin/*');
-assert(adminWildcardRule && adminWildcardRule.to === '/admin/index.html' && adminWildcardRule.status === 200,
-  '/admin/* rewrites to /admin/index.html with status 200');
+assert(adminWildcardRule && adminWildcardRule.to === '/index.html' && adminWildcardRule.status === 404,
+  '/admin/* rewrites to /index.html with status 404 (quarantined generic 404)');
 
 // Test rule 3: /*
 const globalCatchAllRule = parsedRules.find(r => r.from === '/*');

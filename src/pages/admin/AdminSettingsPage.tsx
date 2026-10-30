@@ -237,7 +237,7 @@ export const AdminSettingsPage: React.FC = () => {
                   required
                   value={primaryLocation}
                   onChange={(e) => setPrimaryLocation(e.target.value)}
-                  placeholder="Bairagi Patteda, Tirupati, Andhra Pradesh – 517501"
+                  placeholder="19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India"
                   className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed font-medium"
                 />
               </div>

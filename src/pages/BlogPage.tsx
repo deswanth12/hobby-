@@ -60,7 +60,7 @@ export const BlogPage: React.FC = () => {
           ========================================================================= */}
       <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20 min-h-[44px]">
               <BookOpen className="w-3.5 h-3.5 text-brand-gold shrink-0" />
               <span>Technical Publications & Regulatory Insights • ICAI Mem. 252985</span>
@@ -81,8 +81,11 @@ export const BlogPage: React.FC = () => {
       {featuredPost && !searchQuery && !selectedTag && (
         <section className="py-12 lg:py-16 border-b border-brand-border bg-white/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="double-bezel-dark animate-fade-up">
-              <div className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-7 sm:p-10 lg:p-12 text-white border border-white/10 shadow-editorial-lg relative overflow-hidden">
+            <div className="double-bezel-dark scroll-reveal scroll-reveal-scale">
+              <div 
+                className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-7 sm:p-10 lg:p-12 text-white border border-white/10 shadow-editorial-lg relative overflow-hidden"
+                style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+              >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                   
                   {/* Left 7 Columns: Narrative & Metadata */}
@@ -135,8 +138,12 @@ export const BlogPage: React.FC = () => {
                   {/* Right 5 Columns: Editorial Ledger Plaque */}
                   <div className="lg:col-span-5 bg-brand-forest/90 rounded-2xl p-6 sm:p-7 border border-brand-gold/30 backdrop-blur-sm space-y-5">
                     <div className="flex items-center justify-between pb-4 border-b border-brand-gold/20">
-                      <div className="w-12 h-12 rounded-xl bg-brand-deep border border-brand-gold/40 flex items-center justify-center font-serif text-lg font-bold text-brand-gold shadow-sm">
-                        KA
+                      <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                        <img 
+                          src="/brand/ka-seal-medallion.png" 
+                          alt="KA Monogram Seal" 
+                          className="w-full h-full object-contain drop-shadow-sm"
+                        />
                       </div>
                       <span className="font-editorial-meta text-brand-gold bg-black/30 px-3 py-1.5 rounded-full border border-brand-gold/30">
                         ICAI Standards SA 700
@@ -288,11 +295,11 @@ export const BlogPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 scroll-stagger">
               {filteredPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="bg-white rounded-2xl border border-brand-border shadow-card hover:shadow-card-hover card-tactile flex flex-col overflow-hidden group"
+                  className="bg-white rounded-2xl border border-brand-border shadow-card hover:shadow-card-hover card-tactile flex flex-col overflow-hidden group scroll-reveal"
                 >
                   {/* Card Visual Top Plaque */}
                   <div className="bg-brand-deep p-6 relative flex flex-col justify-between overflow-hidden border-b border-brand-border">
@@ -376,7 +383,7 @@ export const BlogPage: React.FC = () => {
           {/* =========================================================================
               5. REGULATORY ETHICS & COMPLIANCE NOTICE
               ========================================================================= */}
-          <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-brand-surface border border-brand-border flex items-start gap-4 shadow-subtle">
+          <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-brand-surface border border-brand-border flex items-start gap-4 shadow-subtle scroll-reveal">
             <ShieldCheck className="w-6 h-6 text-brand-forest shrink-0 mt-0.5" />
             <div className="text-xs text-brand-muted leading-relaxed">
               <strong className="text-brand-forest block font-editorial-meta text-sm font-semibold mb-1">

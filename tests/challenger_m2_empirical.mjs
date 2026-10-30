@@ -84,7 +84,7 @@ assert(footerCode.includes('whatsappLink'), 'Footer Column 4 contains WhatsApp c
 
 const icaiDisclaimer = "As per the code of ethics and guidelines issued by the Institute of Chartered Accountants of India (ICAI)";
 assert(footerCode.includes(icaiDisclaimer), 'Footer contains verbatim ICAI regulatory compliance disclaimer');
-assert(footerCode.includes('to="/admin"'), 'Footer colophon includes discreet Practice Portal link to /admin');
+assert(!footerCode.includes('to="/admin"') && !footerCode.includes('4464654646464654'), 'Footer colophon strictly excludes public Practice Portal link (/admin) to protect secret route');
 
 
 // 3. Inspect HomePage.tsx

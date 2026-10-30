@@ -23,6 +23,7 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { DualArrowButton } from '../components/animations';
 
 export const AboutPage: React.FC = () => {
   const { data } = useFirmData();
@@ -42,7 +43,7 @@ export const AboutPage: React.FC = () => {
           ========================================================================= */}
       <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
               <span>Chartered & Cost Accountancy Practice • ICAI Mem. 252985</span>
@@ -65,12 +66,19 @@ export const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             
             {/* Left 5 Cols: Sticky Double-Bezel Plaque */}
-            <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <div className="lg:col-span-5 lg:sticky lg:top-28 scroll-reveal-left">
               <div className="double-bezel-dark animate-fade-up">
-                <div className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-7 sm:p-8 text-white border border-white/10 shadow-editorial-lg">
+                <div 
+                  className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-7 sm:p-8 text-white border border-white/10 shadow-editorial-lg"
+                  style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+                >
                   <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-brand-forest border border-brand-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-brand-gold shadow-inner">
-                      KA
+                    <div className="w-16 h-16 flex items-center justify-center shrink-0">
+                      <img 
+                        src="/brand/ka-seal-medallion.png" 
+                        alt="KA Official Practice Seal" 
+                        className="w-full h-full object-contain drop-shadow-md"
+                      />
                     </div>
                     <div className="text-right">
                       <span className="font-editorial-meta text-brand-gold bg-black/40 px-3 py-1 rounded-full border border-brand-gold/30 block">
@@ -140,7 +148,7 @@ export const AboutPage: React.FC = () => {
                     </div>
                     <div className="flex items-start gap-2">
                       <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                      <span>Chambers: Bairagi Patteda, Tirupati – 517501</span>
+                      <span>Chambers: 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati – 517501</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-brand-gold shrink-0" />
@@ -169,7 +177,7 @@ export const AboutPage: React.FC = () => {
             </div>
 
             {/* Right 7 Cols: Detailed Journey, Honors, Experience & Competencies */}
-            <div className="lg:col-span-7 space-y-12">
+            <div className="lg:col-span-7 space-y-12 scroll-reveal-right">
               
               {/* Professional Summary */}
               <div>
@@ -190,16 +198,16 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Honors & Key Achievements */}
-              <div className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile">
+              <div className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile scroll-reveal">
                 <div className="flex items-center gap-2.5 mb-6">
                   <Trophy className="w-5 h-5 text-brand-gold shrink-0" />
                   <h3 className="font-editorial-h3 text-brand-forest">
                     Key Achievements & Professional Honors
                   </h3>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 scroll-stagger">
                   {partner.awards.map((award) => (
-                    <div key={award.title} className="p-5 rounded-xl bg-brand-surface/70 border border-brand-border shadow-subtle card-premium-hover flex flex-col justify-between">
+                    <div key={award.title} className="p-5 rounded-xl bg-brand-surface/70 border border-brand-border shadow-subtle card-premium-hover flex flex-col justify-between scroll-reveal">
                       <div>
                         <span className="font-editorial-meta text-brand-gold block mb-1.5 text-[10px]">
                           {award.category}
@@ -217,7 +225,7 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Professional Experience & Career Journey */}
-              <div className="space-y-6">
+              <div className="space-y-6 scroll-reveal">
                 <div className="flex items-center gap-2.5">
                   <Briefcase className="w-5 h-5 text-brand-forest shrink-0" />
                   <h3 className="font-editorial-h3 text-brand-forest">
@@ -225,9 +233,9 @@ export const AboutPage: React.FC = () => {
                   </h3>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-6 scroll-stagger">
                   {partner.careerJourney.map((job) => (
-                    <div key={job.organization} className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-premium-hover">
+                    <div key={job.organization} className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-premium-hover scroll-reveal">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-brand-border mb-5 gap-2">
                         <div>
                           <h4 className="font-editorial-h3 text-lg sm:text-xl font-bold text-brand-forest">
@@ -281,16 +289,16 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Core Competencies Grid */}
-              <div className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile">
+              <div className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile scroll-reveal">
                 <div className="flex items-center gap-2.5 mb-6">
                   <FileCheck2 className="w-5 h-5 text-brand-forest shrink-0" />
                   <h3 className="font-editorial-h3 text-brand-forest">
                     Core Technical Competencies
                   </h3>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 scroll-stagger">
                   {partner.coreCompetencies.map((comp) => (
-                    <div key={comp} className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-surface/60 border border-brand-border/70">
+                    <div key={comp} className="flex items-start gap-3 p-3.5 rounded-xl bg-brand-surface/60 border border-brand-border/70 scroll-reveal">
                       <span className="w-2 h-2 rounded-full bg-brand-forest shrink-0 mt-2" />
                       <span className="font-editorial-body text-xs font-semibold text-brand-forest leading-snug">
                         {comp}
@@ -301,7 +309,7 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Personal Traits Grid */}
-              <div className="bg-brand-surface rounded-2xl p-6 sm:p-7 border border-brand-border">
+              <div className="bg-brand-surface rounded-2xl p-6 sm:p-7 border border-brand-border scroll-reveal">
                 <span className="font-editorial-meta text-brand-gold block mb-3.5">
                   Professional Traits & Working Style
                 </span>
@@ -318,7 +326,7 @@ export const AboutPage: React.FC = () => {
               </div>
 
               {/* Dual Qualification Strategic Advantage Matrix */}
-              <div className="bg-brand-surface rounded-2xl p-7 sm:p-8 border border-brand-border shadow-subtle">
+              <div className="bg-brand-surface rounded-2xl p-7 sm:p-8 border border-brand-border shadow-subtle scroll-reveal-scale">
                 <div className="flex items-center gap-2.5 mb-3">
                   <Scale className="w-5 h-5 text-brand-forest shrink-0" />
                   <h3 className="font-editorial-h3 text-brand-forest">
@@ -382,7 +390,7 @@ export const AboutPage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-24 lg:py-28 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
               Our Professional Foundation
             </span>
@@ -394,11 +402,11 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-stagger">
             {firm.philosophy.corePrinciples.map((principle, index) => (
               <div
                 key={principle.title}
-                className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card flex items-start gap-5 card-tactile"
+                className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card flex items-start gap-5 card-tactile scroll-reveal"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center font-serif font-bold text-base shrink-0 border border-brand-forest/20 text-brand-gold">
                   0{index + 1}
@@ -416,7 +424,7 @@ export const AboutPage: React.FC = () => {
           </div>
 
           {/* ICAI Code of Ethics Guarantee Plaque */}
-          <div className="mt-12 bg-brand-deep text-white rounded-2xl p-7 sm:p-9 border border-brand-gold/30 shadow-editorial-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+          <div className="mt-12 bg-brand-deep text-white rounded-2xl p-7 sm:p-9 border border-brand-gold/30 shadow-editorial-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-8 scroll-reveal-scale">
             <div className="flex items-start gap-5">
               <div className="w-14 h-14 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center shrink-0 border border-brand-gold/40 shadow-inner">
                 <Shield className="w-7 h-7" />
@@ -446,7 +454,7 @@ export const AboutPage: React.FC = () => {
       <section className="py-20 sm:py-24 bg-brand-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-brand-white p-8 sm:p-10 rounded-2xl border border-brand-border shadow-subtle space-y-4 card-tactile">
+            <div className="bg-brand-white p-8 sm:p-10 rounded-2xl border border-brand-border shadow-subtle space-y-4 card-tactile scroll-reveal-left">
               <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center border border-brand-forest/20">
                 <Target className="w-6 h-6 text-brand-forest" />
               </div>
@@ -456,7 +464,7 @@ export const AboutPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-brand-white p-8 sm:p-10 rounded-2xl border border-brand-border shadow-subtle space-y-4 card-tactile">
+            <div className="bg-brand-white p-8 sm:p-10 rounded-2xl border border-brand-border shadow-subtle space-y-4 card-tactile scroll-reveal-right">
               <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center border border-brand-forest/20">
                 <Eye className="w-6 h-6 text-brand-forest" />
               </div>
@@ -466,6 +474,143 @@ export const AboutPage: React.FC = () => {
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          5. AUTHENTIC PRACTICE CHAMBERS & STATUTORY PHYSICAL PRESENCE
+          ========================================================================= */}
+      <section className="py-20 sm:py-24 lg:py-28 bg-brand-surface border-t border-brand-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mb-12 sm:mb-16 scroll-reveal">
+            <span className="badge-gold-pill mb-3">
+              Physical Practice Chambers • Tirupati
+            </span>
+            <h2 className="font-editorial-h2 text-brand-forest mt-2">
+              Verified Chambers, Law Library & Audit Desks
+            </h2>
+            <p className="mt-3 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">
+              Operating from principal chambers at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, our practice combines authentic physical infrastructure—including extensive corporate law digests, legal archives, and dedicated workstations—with modern digital compliance workflows across South India.
+            </p>
+          </div>
+
+          {/* 4-Item Double-Bezel Photographic Mosaic */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 scroll-stagger">
+            
+            {/* Photo 1: Chamber Nameplate */}
+            <div className="space-y-3 scroll-reveal">
+              <div className="image-frame-editorial h-64 overflow-hidden scroll-reveal-image">
+                <img 
+                  src="/brand/chambers/chamber-nameplate.jpeg" 
+                  alt="Official CA India Practice Nameplate - CA Kavitha Vijay" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 className="font-editorial-h3 text-base text-brand-forest font-semibold">Chambers Entrance</h4>
+                <p className="font-editorial-body text-xs text-brand-muted mt-0.5">
+                  Official ICAI statutory brass nameplate at 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda.
+                </p>
+              </div>
+            </div>
+
+            {/* Photo 2: Workstations & Audit Staff */}
+            <div className="space-y-3 scroll-reveal">
+              <div className="image-frame-editorial h-64 overflow-hidden scroll-reveal-image">
+                <img 
+                  src="/brand/chambers/chamber-workstations.jpeg" 
+                  alt="Audit Workstations and Practice Staff" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 className="font-editorial-h3 text-base text-brand-forest font-semibold">Active Workstations</h4>
+                <p className="font-editorial-body text-xs text-brand-muted mt-0.5">
+                  Audit desks preparing client filings, reconciliations, and ledgers.
+                </p>
+              </div>
+            </div>
+
+            {/* Photo 3: Law Library Archives */}
+            <div className="space-y-3 scroll-reveal">
+              <div className="image-frame-editorial h-64 overflow-hidden scroll-reveal-image">
+                <img 
+                  src="/brand/chambers/chamber-library.jpeg" 
+                  alt="Corporate Tax and Law Library Archives" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 className="font-editorial-h3 text-base text-brand-forest font-semibold">Tax & Legal Archives</h4>
+                <p className="font-editorial-body text-xs text-brand-muted mt-0.5">
+                  All India Law Digest, Andhra Law Times, and statutory reference digests.
+                </p>
+              </div>
+            </div>
+
+            {/* Photo 4: Client Consultation Chambers */}
+            <div className="space-y-3 scroll-reveal">
+              <div className="image-frame-editorial h-64 overflow-hidden scroll-reveal-image">
+                <img 
+                  src="/brand/chambers/chamber-consultation.jpeg" 
+                  alt="Client Consultation Chambers" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div>
+                <h4 className="font-editorial-h3 text-base text-brand-forest font-semibold">Consultation Chambers</h4>
+                <p className="font-editorial-body text-xs text-brand-muted mt-0.5">
+                  Private desk for executive reviews, tax scrutiny, and business strategy.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Physical Visiting Card & Direct Channels Callout */}
+          <div className="bg-brand-deep rounded-2xl p-6 sm:p-8 text-white border border-brand-gold/30 shadow-editorial-lg flex flex-col lg:flex-row items-center justify-between gap-8 scroll-reveal-scale">
+            <div className="space-y-2 max-w-xl">
+              <span className="font-editorial-meta text-xs text-brand-gold uppercase tracking-wider block">
+                Direct Principal Channels
+              </span>
+              <h3 className="font-editorial-h3 text-xl sm:text-2xl text-white">
+                Connect Directly with CA Kavitha Vijay
+              </h3>
+              <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 leading-relaxed">
+                Reach out directly via our dual chambers contact lines for priority scheduling or visit our chambers in person.
+              </p>
+              <div className="pt-2 flex flex-wrap gap-4 text-xs font-editorial-body text-emerald-200">
+                <div>
+                  <strong className="text-white block">Primary Desk:</strong>
+                  <a href="tel:+919626350900" className="text-brand-gold hover:underline font-semibold">+91 96263 50900</a>
+                </div>
+                <div>
+                  <strong className="text-white block">Alternative Line:</strong>
+                  <a href="tel:+919542153906" className="text-brand-gold hover:underline font-semibold">+91 95421 53906</a>
+                </div>
+                <div>
+                  <strong className="text-white block">Official Email:</strong>
+                  <a href="mailto:cakavithasrj@gmail.com" className="text-brand-gold hover:underline font-semibold">cakavithasrj@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex items-center gap-4">
+              <DualArrowButton
+                href={firm.contact.whatsappLink}
+                external
+                variant="primary"
+                className="text-xs font-semibold"
+              >
+                Direct WhatsApp Desk
+              </DualArrowButton>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -481,7 +626,7 @@ export const AboutPage: React.FC = () => {
             Schedule a Direct Professional Consultation
           </h2>
           <p className="mt-4 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">
-            Visit our chambers at Bairagi Patteda, Tirupati, or schedule a remote video/telephonic review of your compliance requirements with CA Kavitha Vijay.
+            Visit our chambers at 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, or schedule a remote video/telephonic review of your compliance requirements with CA Kavitha Vijay.
           </p>
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
             <Link

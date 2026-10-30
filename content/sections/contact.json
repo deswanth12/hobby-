@@ -4,8 +4,8 @@
   "primaryPhone": "+91 96263 50900",
   "secondaryPhone": "+91 95421 53906",
   "email": "cakavithasrj@gmail.com",
-  "address": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
-  "mapsUrl": "https://www.google.com/maps?q=13.61925,79.418028",
+  "address": "19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India",
+  "mapsUrl": "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
   "contactChannels": {
     "primaryPhone": "+91 96263 50900",
     "primaryPhoneClean": "919626350900",
@@ -16,19 +16,19 @@
     "whatsappLink": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
   },
   "physicalChambers": {
-    "streetAddress": "Bairagi Patteda",
+    "streetAddress": "19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda",
     "locality": "Bairagi Patteda",
     "city": "Tirupati",
     "state": "Andhra Pradesh",
     "postalCode": "517501",
     "country": "India",
-    "fullAddress": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
+    "fullAddress": "19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India",
     "geoCoordinates": {
-      "latitude": 13.61925,
-      "longitude": 79.418028,
-      "dms": "13°37'09.3\"N 79°25'04.9\"E"
+      "latitude": 13.6192242,
+      "longitude": 79.418046,
+      "dms": "13°37'09.2\"N 79°25'05.0\"E"
     },
-    "googleMapsUrl": "https://www.google.com/maps?q=13.61925,79.418028"
+    "googleMapsUrl": "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6"
   },
   "officeHours": {
     "mondayToFriday": "09:30 AM – 06:30 PM (IST)",
@@ -40,7 +40,7 @@
       "city": "Tirupati",
       "state": "Andhra Pradesh",
       "type": "Primary Chambers",
-      "description": "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, Tirupati – 517501."
+      "description": "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati – 517501."
     },
     {
       "city": "Chennai",

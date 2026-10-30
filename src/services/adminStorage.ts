@@ -6,6 +6,7 @@ import {
   SettingsOverrides 
 } from '../types/admin';
 import { supabase, isSupabaseConfigured, DbEnquiry, DbContentService, DbContentFaq } from '../lib/supabase';
+import { ADMIN_ROUTES } from '../config/adminConfig';
 
 const ENQUIRIES_KEY = 'ka_admin_enquiries_v1';
 const CONTENT_KEY = 'ka_admin_content_v1';
@@ -601,8 +602,8 @@ export const adminStorage = {
         primary_phone: settings.primaryPhone || '+91 96263 50900',
         secondary_phone: settings.secondaryPhone,
         email: settings.email || 'cakavithasrj@gmail.com',
-        primary_location: settings.primaryLocation || 'Bairagi Patteda, Tirupati, Andhra Pradesh – 517501',
-        google_maps_url: settings.googleMapsUrl || 'https://www.google.com/maps?q=13.61925,79.418028',
+        primary_location: settings.primaryLocation || '19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India',
+        google_maps_url: settings.googleMapsUrl || 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
         whatsapp_link: settings.whatsappLink || 'https://wa.me/919626350900',
         opening_hours: settings.openingHours || 'Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only',
       }).then();
@@ -790,7 +791,7 @@ export const adminStorage = {
     if (isSupabaseConfigured() && supabase) {
       try {
         const { error } = await supabase.auth.resetPasswordForEmail(cleanEmail, {
-          redirectTo: `${window.location.origin}/admin/login?reset=true`,
+          redirectTo: `${window.location.origin}${ADMIN_ROUTES.login}?reset=true`,
         });
 
         if (error) {

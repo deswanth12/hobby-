@@ -304,16 +304,16 @@ export const FIRM_DATA: FirmProfile = {
     secondaryPhone: "+91 95421 53906",
     secondaryPhoneClean: "919542153906",
     email: "cakavithasrj@gmail.com",
-    primaryLocation: "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
-    streetAddress: "Bairagi Patteda",
+    primaryLocation: "19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India",
+    streetAddress: "19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda",
     locality: "Tirupati",
     postalCode: "517501",
     geoCoordinates: {
-      latitude: 13.61925,
-      longitude: 79.418028,
-      dms: "13°37'09.3\"N 79°25'04.9\"E"
+      latitude: 13.6192242,
+      longitude: 79.418046,
+      dms: "13°37'09.2\"N 79°25'05.0\"E"
     },
-    googleMapsUrl: "https://www.google.com/maps?q=13.61925,79.418028",
+    googleMapsUrl: "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
     region: "India (Pan-India Service Reach)",
     whatsappNumber: "+91 96263 50900",
     whatsappLink: "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%20(Kavitha%20%26%20Associates)%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
@@ -323,7 +323,7 @@ export const FIRM_DATA: FirmProfile = {
       city: "Tirupati", 
       state: "Andhra Pradesh", 
       type: "Primary Chambers",
-      description: "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, Tirupati – 517501."
+      description: "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati – 517501."
     },
     { 
       city: "Chennai", 
@@ -615,7 +615,7 @@ export const FIRM_DATA: FirmProfile = {
       id: "consultation-confidentiality",
       category: "Audit & Assurance",
       question: "How does CA Kavitha & Associates conduct consultations and maintain client data security?",
-      answer: "Initial discussions can be conducted either in person at our practice chambers in Bairagi Patteda, Tirupati, or through encrypted remote video/WhatsApp channels. In strict accordance with the Institute of Chartered Accountants of India (ICAI) Code of Ethics, all financial records, audit workpapers, and corporate disclosures are maintained under total professional confidentiality.",
+      answer: "Initial discussions can be conducted either in person at our practice chambers at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, or through encrypted remote video/WhatsApp channels. In strict accordance with the Institute of Chartered Accountants of India (ICAI) Code of Ethics, all financial records, audit workpapers, and corporate disclosures are maintained under total professional confidentiality.",
       statuteReference: "ICAI Code of Ethics (Chartered Accountants Act, 1949)"
     }
   ],

@@ -1,4 +1,4 @@
-const { readDb, writeDb, AUTHORIZED_USERS, hashPassword, BASELINE_DATA } = require('./db.cjs');
+const { readDb, writeDb, AUTHORIZED_USERS, hashPassword, BASELINE_DATA, SESSION_SECRET } = require('./db.cjs');
 const crypto = require('crypto');
 
 const MAX_BODY_SIZE = 1024 * 1024; // 1MB payload ceiling
@@ -91,22 +91,148 @@ function sendJson(res, statusCode, data, req) {
   res.end(JSON.stringify(data));
 }
 
-// Token Verification Middleware
-function authenticateRequest(req, db) {
+// Extract session token from Authorization Header or HttpOnly Cookie
+function extractSessionToken(req) {
   const authHeader = req.headers['authorization'] || '';
-  if (!authHeader.startsWith('Bearer ')) {
-    return null;
+  if (authHeader.startsWith('Bearer ')) {
+    return authHeader.substring(7).trim();
   }
-  const token = authHeader.substring(7).trim();
+  const cookieHeader = req.headers['cookie'] || '';
+  if (cookieHeader) {
+    const cookies = cookieHeader.split(';').map(c => c.trim());
+    for (const c of cookies) {
+      if (c.startsWith('ka_admin_session=')) {
+        return decodeURIComponent(c.substring('ka_admin_session='.length));
+      }
+    }
+  }
+  return null;
+}
+
+// Sign a stateless cryptographic session token (HMAC-SHA256 JWT)
+function signSessionToken(user) {
+  const jti = crypto.randomBytes(16).toString('hex');
+  const iat = Math.floor(Date.now() / 1000);
+  const exp = iat + 3600; // 1 hour expiration
+  const payload = {
+    jti,
+    sub: user.username,
+    name: user.displayName,
+    role: user.role,
+    iat,
+    exp
+  };
+  const payloadB64 = Buffer.from(JSON.stringify(payload)).toString('base64url');
+  const sig = crypto.createHmac('sha256', SESSION_SECRET).update(payloadB64).digest('base64url');
+  return {
+    token: `ka_jwt.${payloadB64}.${sig}`,
+    payload
+  };
+}
+
+// Verify a stateless cryptographic session token against signature, expiry & persistent revocation ledger
+function verifySessionToken(token, db) {
+  if (!token || typeof token !== 'string') return null;
+
+  if (token.startsWith('ka_jwt.')) {
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+    const [, payloadB64, sig] = parts;
+
+    // 1. Cryptographic HMAC-SHA256 Verification
+    const expectedSig = crypto.createHmac('sha256', SESSION_SECRET).update(payloadB64).digest('base64url');
+    const sigBuf = Buffer.from(sig);
+    const expectedBuf = Buffer.from(expectedSig);
+    if (sigBuf.length !== expectedBuf.length || !crypto.timingSafeEqual(sigBuf, expectedBuf)) {
+      return null; // Signature mismatch / forged token
+    }
+
+    // 2. Decode claims
+    let payload;
+    try {
+      payload = JSON.parse(Buffer.from(payloadB64, 'base64url').toString('utf8'));
+    } catch {
+      return null;
+    }
+
+    // 3. Expiration check
+    const nowSec = Math.floor(Date.now() / 1000);
+    if (!payload.exp || nowSec >= payload.exp) {
+      return null;
+    }
+
+    // 4. Shared persistent revocation check (survives restarts and syncs across instances)
+    db.revokedTokens = db.revokedTokens || {};
+    if (payload.jti && db.revokedTokens[payload.jti]) {
+      return null; // Token revoked
+    }
+
+    // 5. User-level revocation epoch
+    db.userRevocationEpochs = db.userRevocationEpochs || {};
+    const userEpoch = db.userRevocationEpochs[payload.sub] || 0;
+    if (payload.iat < userEpoch) {
+      return null; // User sessions invalidated
+    }
+
+    return {
+      token,
+      user: {
+        username: payload.sub,
+        displayName: payload.name,
+        role: payload.role
+      },
+      jti: payload.jti,
+      expiresAt: payload.exp * 1000
+    };
+  }
+
+  // Fallback for legacy local development tokens
   const session = db.sessions?.[token];
   if (!session) return null;
-
   if (Date.now() > session.expiresAt) {
     delete db.sessions[token];
     writeDb(db);
     return null;
   }
   return session;
+}
+
+// Revoke session token in shared persistent ledger
+function revokeSessionToken(token, db) {
+  if (!token || typeof token !== 'string') return;
+  db.revokedTokens = db.revokedTokens || {};
+
+  if (token.startsWith('ka_jwt.')) {
+    try {
+      const parts = token.split('.');
+      const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+      if (payload.jti) {
+        db.revokedTokens[payload.jti] = payload.exp || Math.floor(Date.now() / 1000) + 3600;
+      }
+    } catch {
+      // ignore
+    }
+  } else if (db.sessions && db.sessions[token]) {
+    delete db.sessions[token];
+  }
+
+  // Prune expired revocations
+  const nowSec = Math.floor(Date.now() / 1000);
+  for (const id in db.revokedTokens) {
+    if (db.revokedTokens[id] < nowSec) {
+      delete db.revokedTokens[id];
+    }
+  }
+  writeDb(db);
+}
+
+// Token Verification Middleware
+function authenticateRequest(req, db) {
+  const token = extractSessionToken(req);
+  if (!token) {
+    return null;
+  }
+  return verifySessionToken(token, db);
 }
 
 async function handleApiRequest(req, res) {
@@ -294,8 +420,8 @@ async function handleApiRequest(req, res) {
     // Success: Reset rate limits
     delete db.rateLimits[rateKey];
 
-    // Issue cryptographic bearer token
-    const token = `ka_tok_${crypto.randomBytes(32).toString('hex')}`;
+    // Issue stateless cryptographic token with embedded claims and HMAC signature
+    const { token, payload } = signSessionToken(matchUser);
     const session = {
       token,
       user: {
@@ -304,28 +430,58 @@ async function handleApiRequest(req, res) {
         role: matchUser.role,
         lastLogin: new Date().toISOString()
       },
-      expiresAt: Date.now() + 60 * 60 * 1000 // 1 hour
+      expiresAt: payload.exp * 1000
     };
 
+    // Also persist in db.sessions for audit and backward compatibility
     db.sessions = db.sessions || {};
     db.sessions[token] = session;
     writeDb(db);
 
-    return sendJson(res, 200, { success: true, session });
+    const origin = req.headers['origin'] || '';
+    const forwardedHost = req.headers['x-forwarded-host'] || req.headers['host'] || '';
+    const isProdDomain = origin.includes('kavithaassociates.com') || origin.includes('pages.dev') ||
+                         forwardedHost.includes('kavithaassociates.com') || forwardedHost.includes('pages.dev');
+    const isSecure = isProdDomain || req.headers['x-forwarded-proto'] === 'https' || req.socket?.encrypted || process.env.NODE_ENV === 'production';
+    const cookieFlags = [
+      `ka_admin_session=${encodeURIComponent(token)}`,
+      'Path=/',
+      'HttpOnly',
+      'SameSite=Strict',
+      'Max-Age=3600'
+    ];
+    if (isSecure) {
+      cookieFlags.push('Secure');
+    }
+    res.setHeader('Set-Cookie', cookieFlags.join('; '));
+
+    return sendJson(res, 200, { success: true, session }, req);
   }
 
   // 6. Authentication: Logout
   if (method === 'POST' && pathname === '/api/auth/logout') {
-    const authHeader = req.headers['authorization'] || '';
-    if (authHeader.startsWith('Bearer ')) {
-      const token = authHeader.substring(7).trim();
+    const token = extractSessionToken(req);
+    if (token) {
       const db = readDb();
-      if (db.sessions && db.sessions[token]) {
-        delete db.sessions[token];
-        writeDb(db);
-      }
+      revokeSessionToken(token, db);
     }
-    return sendJson(res, 200, { success: true, message: 'Session terminated.' });
+    const origin = req.headers['origin'] || '';
+    const forwardedHost = req.headers['x-forwarded-host'] || req.headers['host'] || '';
+    const isProdDomain = origin.includes('kavithaassociates.com') || origin.includes('pages.dev') ||
+                         forwardedHost.includes('kavithaassociates.com') || forwardedHost.includes('pages.dev');
+    const isSecure = isProdDomain || req.headers['x-forwarded-proto'] === 'https' || req.socket?.encrypted || process.env.NODE_ENV === 'production';
+    const cookieFlags = [
+      'ka_admin_session=',
+      'Path=/',
+      'HttpOnly',
+      'SameSite=Strict',
+      'Max-Age=0'
+    ];
+    if (isSecure) {
+      cookieFlags.push('Secure');
+    }
+    res.setHeader('Set-Cookie', cookieFlags.join('; '));
+    return sendJson(res, 200, { success: true, message: 'Session terminated and revoked in persistent ledger.' }, req);
   }
 
   // 7. Authentication: Check Session
@@ -333,13 +489,13 @@ async function handleApiRequest(req, res) {
     const db = readDb();
     const session = authenticateRequest(req, db);
     if (!session) {
-      return sendJson(res, 401, { success: false, error: 'Unauthorized or expired session.' });
+      return sendJson(res, 401, { success: false, error: 'Unauthorized or expired session.' }, req);
     }
-    return sendJson(res, 200, { success: true, session });
+    return sendJson(res, 200, { success: true, session }, req);
   }
 
   // ===========================================================================
-  // PROTECTED ADMIN ENDPOINTS (Require Authorization: Bearer <token>)
+  // PROTECTED ADMIN ENDPOINTS (Require Authorization: Bearer <token> or ka_admin_session cookie)
   // ===========================================================================
   const db = readDb();
   const authenticatedSession = authenticateRequest(req, db);
@@ -348,7 +504,26 @@ async function handleApiRequest(req, res) {
     return sendJson(res, 401, {
       success: false,
       error: 'Unauthorized: Access to private practice records requires administrator credentials.'
-    });
+    }, req);
+  }
+
+  // Anti-CSRF Protection for State-Changing Administrative Requests
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
+    const origin = req.headers['origin'];
+    if (origin && !isOriginAllowed(origin)) {
+      return sendJson(res, 403, { success: false, error: 'Forbidden: Cross-origin administrative mutation denied.' }, req);
+    }
+    const referer = req.headers['referer'];
+    if (!origin && referer) {
+      try {
+        const refUrl = new URL(referer);
+        if (!isOriginAllowed(refUrl.origin)) {
+          return sendJson(res, 403, { success: false, error: 'Forbidden: Cross-origin administrative referer denied.' }, req);
+        }
+      } catch {
+        return sendJson(res, 403, { success: false, error: 'Forbidden: Malformed referer header.' }, req);
+      }
+    }
   }
 
   // --- A. Enquiries Management ---

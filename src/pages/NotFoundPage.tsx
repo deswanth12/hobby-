@@ -82,7 +82,7 @@ export const NotFoundPage: React.FC = () => {
   ];
 
   return (
-    <div className="bg-brand-warm page-reveal min-h-[90vh] py-14 sm:py-20 border-b border-border">
+    <div className="bg-brand-ivory page-reveal min-h-[90vh] py-14 sm:py-20 border-b border-brand-border">
       <SEOHead
         title="404 — Page Not Located in Practice Registry | Kavitha & Associates"
         description="The requested document could not be located in the Kavitha & Associates directory. Explore our verified practice areas or contact our chambers directly."
@@ -94,24 +94,24 @@ export const NotFoundPage: React.FC = () => {
         {/* =========================================================================
             1. MAIN 404 STATUS BANNER
             ========================================================================= */}
-        <div className="bg-white rounded-2xl border border-border shadow-card p-8 sm:p-14 text-center space-y-6 relative overflow-hidden">
+        <div className="bg-brand-white rounded-2xl border border-brand-border shadow-card p-8 sm:p-14 text-center space-y-6 relative overflow-hidden scroll-reveal scroll-reveal-scale">
           
           {/* Subtle Top Status Watermark Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-pale text-brand-primary text-xs font-semibold border border-emerald-200 min-h-[44px]">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest text-xs font-semibold border border-brand-forest/20 min-h-[44px]">
             <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
             <span className="font-editorial-meta tracking-wider">STATUTORY REGISTRY • HTTP 404 NOT LOCATED</span>
           </div>
 
           {/* Big Editorial 404 Display & Typography */}
           <div className="space-y-4">
-            <div className="font-serif text-[clamp(4.5rem,10vw,7.5rem)] font-bold text-brand-primary tracking-tight leading-none selection:bg-brand-pale">
+            <div className="font-serif text-[clamp(4.5rem,10vw,7.5rem)] font-bold text-brand-forest tracking-tight leading-none selection:bg-brand-pale">
               404
             </div>
-            <h1 className="font-editorial-h1 text-brand-primary">
+            <h1 className="font-editorial-h1 text-brand-forest">
               Page Not Located in Practice Registry
             </h1>
-            <p className="font-editorial-body text-charcoal-muted max-w-xl mx-auto leading-relaxed">
-              The page or statutory reference at <code className="bg-brand-surface px-2.5 py-1 rounded text-brand-deep font-mono text-xs border border-border">{location.pathname}</code> does not exist, has been archived under periodic regulatory updates, or is currently unpublished.
+            <p className="font-editorial-body text-brand-muted max-w-xl mx-auto leading-relaxed">
+              The page or statutory reference at <code className="bg-brand-surface px-2.5 py-1 rounded text-brand-deep font-mono text-xs border border-brand-border">{location.pathname}</code> does not exist, has been archived under periodic regulatory updates, or is currently unpublished.
             </p>
           </div>
 
@@ -119,26 +119,26 @@ export const NotFoundPage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <Link
               to="/"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile min-h-[44px]"
+              className="btn-pill-primary"
             >
-              <Home className="w-4 h-4 text-gold" />
+              <Home className="w-4 h-4 text-brand-gold" />
               <span>Return to Practice Homepage</span>
             </Link>
 
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg border border-border bg-white text-charcoal text-xs font-semibold hover:bg-brand-pale shadow-subtle transition-colors btn-tactile min-h-[44px]"
+              className="btn-pill-secondary"
             >
-              <ArrowLeft className="w-4 h-4 text-charcoal-muted" />
+              <ArrowLeft className="w-4 h-4 text-brand-muted" />
               <span>Previous Directory View</span>
             </button>
 
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg border border-emerald-300 bg-brand-pale text-brand-primary text-xs font-semibold hover:bg-emerald-100 transition-colors btn-tactile min-h-[44px]"
+              className="btn-pill-secondary"
             >
-              <Phone className="w-4 h-4 text-brand-primary" />
+              <Phone className="w-4 h-4 text-brand-forest" />
               <span>Contact Tirupati Chambers</span>
             </Link>
           </div>
@@ -147,7 +147,7 @@ export const NotFoundPage: React.FC = () => {
         {/* =========================================================================
             2. DIRECTORY RECOVERY GRID (ALL 8 CORE DESTINATIONS)
             ========================================================================= */}
-        <div className="mt-14 space-y-5">
+        <div className="mt-14 space-y-5 scroll-reveal">
           <div className="flex items-center justify-between border-b border-border pb-4">
             <div>
               <span className="font-editorial-meta text-gold-dark block mb-1">
@@ -163,14 +163,14 @@ export const NotFoundPage: React.FC = () => {
             <Search className="w-5 h-5 text-gold-dark hidden sm:block shrink-0" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 scroll-stagger">
             {recoveryDirectory.map((item) => {
               const IconComp = item.icon;
               return (
                 <Link
                   key={item.title}
                   to={item.path}
-                  className="bg-white rounded-xl p-5 border border-border shadow-subtle card-tactile flex flex-col justify-between group min-h-[44px]"
+                  className="bg-white rounded-xl p-5 border border-border shadow-subtle card-tactile flex flex-col justify-between group min-h-[44px] scroll-reveal"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-3">
@@ -204,7 +204,7 @@ export const NotFoundPage: React.FC = () => {
         {/* =========================================================================
             3. URGENT STATUTORY AUDIT & TAX FILING ASSISTANCE DESK
             ========================================================================= */}
-        <div className="mt-12 bg-[#0A2F24] text-white rounded-2xl p-6 sm:p-8 border border-emerald-900 shadow-card flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 bg-[#0A2F24] text-white rounded-2xl p-6 sm:p-8 border border-emerald-900 shadow-card flex flex-col md:flex-row items-center justify-between gap-6 scroll-reveal">
           <div className="space-y-1 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 text-gold text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-gold" />

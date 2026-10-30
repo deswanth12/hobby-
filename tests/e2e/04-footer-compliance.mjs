@@ -116,10 +116,10 @@ check(
   'Footer provides dedicated navigation spotlight for Audit & Assurance services'
 );
 
-// 8. Administrative Colophon & Practice Portal
+// 8. Administrative Colophon & Practice Portal Secret Protection
 check(
-  footerCode.includes('to="/admin"'),
-  'Footer colophon provides secure link to practice administration portal (/admin)'
+  !footerCode.includes('to="/admin"') && !footerCode.includes('4464654646464654'),
+  'Footer colophon strictly excludes public links to administration portal (/admin) ensuring zero secret route exposure'
 );
 
 // 9. Floating WhatsApp Widget Accessibility & Compliance

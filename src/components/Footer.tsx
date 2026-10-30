@@ -11,13 +11,17 @@ export const Footer: React.FC = () => {
     <footer className="bg-brand-deep text-brand-white border-t-2 border-brand-gold pt-16 pb-10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* 4-Column Ledger Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-brand-forest/60">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-brand-forest/60 scroll-stagger">
           
           {/* Column 1: Firm Identity & Verified Lead Partner */}
-          <div className="space-y-4">
+          <div className="space-y-4 scroll-reveal">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-lg bg-brand-forest text-brand-gold flex items-center justify-center font-serif font-bold text-xl border border-brand-gold/60 shadow-sm">
-                KA
+              <div className="w-12 h-12 flex items-center justify-center shrink-0">
+                <img 
+                  src="/brand/ka-seal-medallion.png" 
+                  alt="Kavitha &amp; Associates Official Practice Seal" 
+                  className="w-full h-full object-contain drop-shadow-sm"
+                />
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold text-white tracking-wide">
@@ -45,7 +49,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 2: Practice Areas */}
-          <div className="space-y-3">
+          <div className="space-y-3 scroll-reveal">
             <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Practice Areas
             </h4>
@@ -110,7 +114,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 3: Regional Corridors & Site Navigation */}
-          <div className="space-y-3">
+          <div className="space-y-3 scroll-reveal">
             <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Service Locations
             </h4>
@@ -146,17 +150,26 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 4: Chambers Address & Direct Channels */}
-          <div className="space-y-3">
+          <div className="space-y-3 scroll-reveal">
             <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Direct Contact
             </h4>
             <div className="space-y-2.5 text-xs text-emerald-100/90 font-sans">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                <span>
-                  <strong className="text-white block font-medium">Principal Practice:</strong>
-                  Bairagi Patteda, Tirupati – 517501, AP
-                </span>
+                <address className="not-italic leading-relaxed">
+                  <strong className="text-white block font-medium">Principal Practice Chambers:</strong>
+                  <span className="block">19-12-46, 1st Floor, Near Bairagipetteda Arch</span>
+                  <span className="block text-emerald-200/90">Bairagi Patteda, Tirupati – 517501, AP, India</span>
+                  <a
+                    href="https://maps.app.goo.gl/p9ToGUtxqYDCghpF6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[11px] text-brand-gold hover:text-white mt-1 underline underline-offset-2"
+                  >
+                    <span>Google Maps Directions ↗</span>
+                  </a>
+                </address>
               </div>
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
@@ -182,7 +195,7 @@ export const Footer: React.FC = () => {
                 href={FIRM_DATA.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-brand-forest hover:bg-forest-700 text-brand-white text-xs font-medium border border-brand-gold/40 transition-colors shadow-xs btn-tactile"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-brand-forest hover:bg-forest-700 text-brand-white text-xs font-medium border border-brand-gold/40 transition-colors shadow-xs btn-tactile min-h-[44px]"
               >
                 <span>WhatsApp Consultation</span>
                 <ExternalLink className="w-3.5 h-3.5 text-brand-gold" />
@@ -192,7 +205,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Verbatim Regulatory & ICAI Compliance Disclaimer */}
-        <div className="pt-8 pb-4 text-xs text-emerald-200/80 border-b border-brand-forest/50 leading-relaxed">
+        <div className="pt-8 pb-4 text-xs text-emerald-200/80 border-b border-brand-forest/50 leading-relaxed scroll-reveal">
           <div className="flex items-start gap-2.5 max-w-4xl">
             <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
             <p>
@@ -210,8 +223,6 @@ export const Footer: React.FC = () => {
             <span>Chartered Accountants & Cost Accountants</span>
             <span className="text-brand-forest">•</span>
             <Link to="/contact" className="hover:text-brand-gold transition-colors">Client Support</Link>
-            <span className="text-brand-forest">•</span>
-            <Link to="/admin" className="hover:text-brand-gold transition-colors text-emerald-300/80 font-medium">Practice Portal</Link>
           </div>
         </div>
       </div>

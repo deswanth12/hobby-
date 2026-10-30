@@ -33,7 +33,7 @@ export const AuditAssurancePage: React.FC = () => {
           ========================================================================= */}
       <section className="bg-brand-deep text-white py-20 sm:py-24 lg:py-28 border-b border-brand-gold/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
               <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
               <span>Dedicated Audit Practice • ICAI Mem. 252985</span>
@@ -53,8 +53,8 @@ export const AuditAssurancePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-12 bg-brand-surface border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-stagger">
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
               <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
                 <FileCheck className="w-6 h-6 text-brand-forest" />
               </div>
@@ -69,7 +69,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile">
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
               <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
                 <Search className="w-6 h-6 text-brand-forest" />
               </div>
@@ -84,7 +84,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile">
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
               <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
                 <Scale className="w-6 h-6 text-brand-forest" />
               </div>
@@ -107,7 +107,7 @@ export const AuditAssurancePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
               Systematic Assurance Workflow
             </span>
@@ -119,8 +119,8 @@ export const AuditAssurancePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-editorial-meta text-brand-gold text-base">Phase 01</span>
@@ -135,7 +135,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-editorial-meta text-brand-gold text-base">Phase 02</span>
@@ -150,7 +150,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-editorial-meta text-brand-gold text-base">Phase 03</span>
@@ -165,7 +165,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-editorial-meta text-brand-gold text-base">Phase 04</span>
@@ -188,7 +188,7 @@ export const AuditAssurancePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mb-14">
+          <div className="max-w-3xl mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
               Statutory Scope & Assurance Streams
             </span>
@@ -208,9 +208,12 @@ export const AuditAssurancePage: React.FC = () => {
                 return (
                   <div 
                     key={audit.name}
-                    className="double-bezel-dark"
+                    className="double-bezel-dark scroll-reveal-scale"
                   >
-                    <div className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-8 sm:p-10 lg:p-12 text-white border border-white/10 shadow-editorial-lg">
+                    <div 
+                      className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-8 sm:p-10 lg:p-12 text-white border border-white/10 shadow-editorial-lg"
+                      style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+                    >
                       <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-white/10 mb-6 gap-4">
                         <div>
                           <div className="flex items-center gap-3 mb-2 flex-wrap">
@@ -277,14 +280,14 @@ export const AuditAssurancePage: React.FC = () => {
             })}
 
             {/* Grid for Streams 02 through 09 */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 scroll-stagger">
               {firm.auditSpotlight.services.map((audit, idx) => {
                 if (idx === 0) return null; // already rendered above
 
                 return (
                   <div
                     key={audit.name}
-                    className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile flex flex-col justify-between"
+                    className="bg-brand-white rounded-2xl p-7 sm:p-8 border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-4">
@@ -354,7 +357,7 @@ export const AuditAssurancePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="max-w-3xl mx-auto text-center mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
               Defensible Assurance
             </span>
@@ -367,7 +370,7 @@ export const AuditAssurancePage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-brand-white p-8 rounded-2xl border border-brand-border shadow-card card-tactile">
+            <div className="bg-brand-white p-8 rounded-2xl border border-brand-border shadow-card card-tactile scroll-reveal-left">
               <span className="font-editorial-meta text-brand-gold block mb-2">ICAI Chartered Accountant</span>
               <h3 className="font-editorial-h3 text-xl text-brand-forest mb-3">External Statutory Rigor</h3>
               <p className="font-editorial-body text-xs sm:text-sm text-brand-muted leading-relaxed">
@@ -375,7 +378,7 @@ export const AuditAssurancePage: React.FC = () => {
               </p>
             </div>
 
-            <div className="bg-brand-white p-8 rounded-2xl border border-brand-border shadow-card card-tactile">
+            <div className="bg-brand-white p-8 rounded-2xl border border-brand-border shadow-card card-tactile scroll-reveal-right">
               <span className="font-editorial-meta text-brand-gold block mb-2">ICMAI Cost Accountant (AIR 49)</span>
               <h3 className="font-editorial-h3 text-xl text-brand-forest mb-3">Internal Operational Depth</h3>
               <p className="font-editorial-body text-xs sm:text-sm text-brand-muted leading-relaxed">
@@ -390,7 +393,7 @@ export const AuditAssurancePage: React.FC = () => {
           6. STATUTORY TIMELINES & AUDIT READINESS CTA
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-brand-surface text-center">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Statutory Timelines & Readiness
           </span>

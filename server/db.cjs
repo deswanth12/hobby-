@@ -10,8 +10,8 @@ const BASELINE_DATA = {
     primaryPhone: '+91 96263 50900',
     secondaryPhone: '+91 95421 53906',
     email: 'cakavithasrj@gmail.com',
-    primaryLocation: 'Bairagi Patteda, Tirupati, Andhra Pradesh – 517501',
-    googleMapsUrl: 'https://www.google.com/maps?q=13.61925,79.418028',
+    primaryLocation: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India',
+    googleMapsUrl: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
     whatsappLink: 'https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.',
     openingHours: 'Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only',
     updatedAt: new Date().toISOString()
@@ -118,6 +118,8 @@ const BASELINE_DATA = {
   ],
   enquiries: [],
   sessions: {},
+  revokedTokens: {},
+  userRevocationEpochs: {},
   rateLimits: {}
 };
 
@@ -179,5 +181,6 @@ module.exports = {
   writeDb,
   BASELINE_DATA,
   AUTHORIZED_USERS,
-  hashPassword
+  hashPassword,
+  SESSION_SECRET: DEFAULT_SALT
 };

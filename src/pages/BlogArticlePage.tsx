@@ -87,7 +87,7 @@ export const BlogArticlePage: React.FC = () => {
           1. EDITORIAL ARTICLE HEADER & BREADCRUMBS
           ========================================================================= */}
       <section className="bg-brand-surface py-12 sm:py-16 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-reveal">
           
           {/* Accessible Semantic Breadcrumb Navigation */}
           <nav aria-label="Breadcrumb" className="mb-6 flex flex-wrap items-center gap-2 text-xs font-editorial-meta text-charcoal-muted">
@@ -135,24 +135,24 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Article Title */}
-          <h1 className="font-editorial-h1 text-brand-primary leading-[1.2]">
+          <h1 className="font-editorial-h1 text-brand-forest leading-[1.22]">
             {post.title}
           </h1>
 
           {/* Metadata Row */}
-          <div className="mt-6 pt-6 border-t border-border flex flex-wrap items-center justify-between gap-4 text-xs font-editorial-meta text-charcoal-muted">
+          <div className="mt-6 pt-6 border-t border-brand-border flex flex-wrap items-center justify-between gap-4 text-xs font-editorial-meta text-brand-muted">
             <div className="flex items-center gap-4 flex-wrap">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-gold-dark" />
+                <Calendar className="w-4 h-4 text-brand-gold" />
                 <span>{new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-gold-dark" />
+                <Clock className="w-4 h-4 text-brand-gold" />
                 <span>{post.readingTime} min read</span>
               </span>
               <span>•</span>
-              <span className="text-brand-primary font-semibold">
+              <span className="text-brand-forest font-semibold">
                 Authored by {post.author}
               </span>
             </div>
@@ -221,7 +221,7 @@ export const BlogArticlePage: React.FC = () => {
           
           {/* Accessible Cover Illustration */}
           {post.coverImage && (
-            <div className="mb-10 rounded-2xl overflow-hidden border border-border shadow-card bg-brand-surface">
+            <div className="mb-10 rounded-2xl overflow-hidden border border-border shadow-card bg-brand-surface scroll-reveal scroll-reveal-image">
               <img
                 src={post.coverImage}
                 alt={post.coverImageAlt || `Cover illustration for ${post.title}`}
@@ -232,7 +232,7 @@ export const BlogArticlePage: React.FC = () => {
           )}
 
           {/* Verified Lead Partner Credentials Plaque (Double-Bezel Architecture) */}
-          <div className="double-bezel mb-10 card-tactile">
+          <div className="double-bezel mb-10 card-tactile scroll-reveal scroll-reveal-left">
             <div className="double-bezel-inner bg-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-start sm:items-center gap-4">
                 <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-xl font-bold text-gold shrink-0 shadow-sm">
@@ -270,13 +270,16 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Render Markdown Article Body */}
-          <article className="bg-white rounded-2xl border border-border p-6 sm:p-12 shadow-card font-editorial-body text-charcoal">
+          <article className="bg-white rounded-2xl border border-border p-6 sm:p-12 shadow-card font-editorial-body text-charcoal scroll-reveal">
             <MarkdownRenderer content={post.content} />
           </article>
 
           {/* ICAI Professional Standards Notice & Regulatory Ethics Disclaimer */}
-          <div className="mt-10 p-6 sm:p-8 rounded-2xl bg-[#0A2F24] text-white border border-emerald-900 shadow-card flex items-start gap-4">
-            <ShieldCheck className="w-6 h-6 text-gold shrink-0 mt-0.5" />
+          <div 
+            className="mt-10 p-6 sm:p-8 rounded-2xl bg-brand-deep text-white border border-brand-gold/30 shadow-card flex items-start gap-4 scroll-reveal"
+            style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+          >
+            <ShieldCheck className="w-6 h-6 text-brand-gold shrink-0 mt-0.5" />
             <div className="text-xs text-emerald-100/90 leading-relaxed space-y-1">
               <strong className="text-white block font-editorial-meta text-sm font-semibold tracking-wide">
                 ICAI Professional Standards & Statutory Disclaimer
@@ -288,23 +291,23 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Technical Advisory & Consultation Intake CTA Banner */}
-          <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-brand-surface border border-border text-center space-y-4">
-            <span className="font-editorial-meta text-xs font-bold uppercase tracking-wider text-gold-dark block">
+          <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-brand-surface border border-brand-border text-center space-y-4 scroll-reveal scroll-reveal-scale">
+            <span className="font-editorial-meta text-xs font-bold uppercase tracking-wider text-brand-gold block">
               PROFESSIONAL ADVISORY & STATUTORY REVIEW
             </span>
-            <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-primary">
+            <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
               Require Technical Advisory on this Matter?
             </h2>
-            <p className="font-editorial-body text-xs sm:text-sm text-charcoal-muted max-w-lg mx-auto leading-relaxed">
+            <p className="font-editorial-body text-xs sm:text-sm text-brand-muted max-w-lg mx-auto leading-relaxed">
               Schedule a confidential chambers consultation with CA Kavitha Vijay to evaluate your organization's statutory audit schedules, tax filing positions, or internal controls framework.
             </p>
             <div className="pt-2 flex justify-center items-center gap-3 flex-wrap">
               <Link
                 to="/contact"
-                className="btn-pill-action bg-brand-primary text-white hover:bg-brand-deep group text-xs shadow-card hover:shadow-card-hover border border-gold/40 min-h-[44px]"
+                className="btn-pill-primary"
               >
                 <span>Consult Practice Chambers</span>
-                <span className="icon-badge bg-white/10 text-gold group-hover:bg-gold group-hover:text-brand-deep">
+                <span className="icon-badge">
                   <ArrowRight className="w-3.5 h-3.5" />
                 </span>
               </Link>
@@ -312,7 +315,7 @@ export const BlogArticlePage: React.FC = () => {
                 href={FIRM_DATA.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border bg-white text-brand-primary text-xs font-semibold hover:bg-brand-pale transition-colors btn-tactile min-h-[44px]"
+                className="btn-pill-secondary"
               >
                 <span>Chat via WhatsApp</span>
               </a>
@@ -323,7 +326,7 @@ export const BlogArticlePage: React.FC = () => {
               3. CURATED RELATED REGULATORY PUBLICATIONS
               ========================================================================= */}
           {relatedPosts.length > 0 && (
-            <div className="mt-16 pt-12 border-t border-border">
+            <div className="mt-16 pt-12 border-t border-border scroll-reveal">
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <span className="font-editorial-meta text-xs font-bold uppercase tracking-wider text-gold-dark block">
@@ -342,12 +345,12 @@ export const BlogArticlePage: React.FC = () => {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 scroll-stagger">
                 {relatedPosts.map((rel) => (
                   <Link
                     key={rel.slug}
                     to={`/blog/${rel.slug}`}
-                    className="p-6 rounded-2xl bg-white border border-border shadow-subtle card-tactile flex flex-col justify-between group min-h-[44px]"
+                    className="p-6 rounded-2xl bg-white border border-border shadow-subtle card-tactile flex flex-col justify-between group min-h-[44px] scroll-reveal"
                   >
                     <div>
                       <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-2">

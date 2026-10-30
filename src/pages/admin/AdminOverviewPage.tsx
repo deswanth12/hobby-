@@ -18,6 +18,7 @@ import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { EnquiryRecord } from '../../types/admin';
 import { useFirmData } from '../../context/FirmDataContext';
+import { ADMIN_ROUTES } from '../../config/adminConfig';
 
 export const AdminOverviewPage: React.FC = () => {
   const [enquiries, setEnquiries] = useState<EnquiryRecord[]>([]);
@@ -173,7 +174,7 @@ export const AdminOverviewPage: React.FC = () => {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Link
-                to="/admin/enquiries"
+                to={ADMIN_ROUTES.enquiries}
                 className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
               >
                 <div>
@@ -193,7 +194,7 @@ export const AdminOverviewPage: React.FC = () => {
               </Link>
 
               <Link
-                to="/admin/content"
+                to={ADMIN_ROUTES.content}
                 className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
               >
                 <div>
@@ -213,7 +214,7 @@ export const AdminOverviewPage: React.FC = () => {
               </Link>
 
               <Link
-                to="/admin/settings"
+                to={ADMIN_ROUTES.settings}
                 className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
               >
                 <div>
@@ -317,7 +318,7 @@ export const AdminOverviewPage: React.FC = () => {
               </p>
             </div>
             <Link
-              to="/admin/enquiries"
+              to={ADMIN_ROUTES.enquiries}
               className="inline-flex items-center text-xs font-bold text-[#0F3E2E] hover:text-[#C5A059] transition-colors"
             >
               View All {totalEnquiries} Enquiries <ArrowRight className="w-3.5 h-3.5 ml-1" />
@@ -351,74 +352,129 @@ export const AdminOverviewPage: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
-                <thead>
-                  <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider">
-                    <th className="py-3 px-4">Ref ID</th>
-                    <th className="py-3 px-4">Date / Time</th>
-                    <th className="py-3 px-4">Client / Entity</th>
-                    <th className="py-3 px-4">Contact</th>
-                    <th className="py-3 px-4">Service Category</th>
-                    <th className="py-3 px-4">Status</th>
-                    <th className="py-3 px-4 text-right">Action</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {recentEnquiries.map((enquiry) => (
-                    <tr key={enquiry.id} className="hover:bg-gray-50/60 transition-colors">
-                      <td className="py-3.5 px-4 font-mono font-bold text-[#0F3E2E]">
+            <div>
+              {/* Mobile Responsive Cards (< md) */}
+              <div className="md:hidden divide-y divide-gray-100">
+                {recentEnquiries.map((enquiry) => (
+                  <div key={enquiry.id} className="p-4 space-y-2 hover:bg-gray-50/60 transition-colors">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono font-bold text-xs text-[#0F3E2E]">
                         {enquiry.id}
-                      </td>
-                      <td className="py-3.5 px-4 text-gray-600">
+                      </span>
+                      <span
+                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                          enquiry.status === 'new'
+                            ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                            : enquiry.status === 'in-review'
+                            ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                            : enquiry.status === 'contacted'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                            : 'bg-gray-100 text-gray-800 border border-gray-200'
+                        }`}
+                      >
+                        {enquiry.status}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-sm text-gray-900">{enquiry.fullName}</h4>
+                      {enquiry.organization && (
+                        <p className="text-xs text-gray-500">{enquiry.organization}</p>
+                      )}
+                    </div>
+                    <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
+                      <span>{enquiry.phone}</span>
+                      <span>•</span>
+                      <span>{enquiry.serviceCategory}</span>
+                    </div>
+                    <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
+                      <span className="text-[11px] text-gray-400">
                         {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
                           day: 'numeric',
                           month: 'short',
                           year: 'numeric'
                         })}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <div className="font-bold text-gray-900">{enquiry.fullName}</div>
-                        {enquiry.organization && (
-                          <div className="text-[11px] text-gray-500">{enquiry.organization}</div>
-                        )}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <div className="text-gray-900 font-medium">{enquiry.phone}</div>
-                        {enquiry.email && (
-                          <div className="text-[11px] text-gray-500">{enquiry.email}</div>
-                        )}
-                      </td>
-                      <td className="py-3.5 px-4 text-gray-700 font-medium">
-                        {enquiry.serviceCategory}
-                      </td>
-                      <td className="py-3.5 px-4">
-                        <span
-                          className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                            enquiry.status === 'new'
-                              ? 'bg-amber-100 text-amber-800 border border-amber-200'
-                              : enquiry.status === 'in-review'
-                              ? 'bg-blue-100 text-blue-800 border border-blue-200'
-                              : enquiry.status === 'contacted'
-                              ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
-                              : 'bg-gray-100 text-gray-800 border border-gray-200'
-                          }`}
-                        >
-                          {enquiry.status}
-                        </span>
-                      </td>
-                      <td className="py-3.5 px-4 text-right">
-                        <Link
-                          to={`/admin/enquiries?id=${enquiry.id}`}
-                          className="inline-flex items-center font-bold text-[#0F3E2E] hover:text-gold transition-colors"
-                        >
-                          Review →
-                        </Link>
-                      </td>
+                      </span>
+                      <Link
+                        to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
+                        className="min-h-[44px] inline-flex items-center font-bold text-[#0F3E2E] hover:text-gold"
+                      >
+                        Review Enquiry →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table (>= md) */}
+              <div className="hidden md:block overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider">
+                      <th className="py-3 px-4">Ref ID</th>
+                      <th className="py-3 px-4">Date / Time</th>
+                      <th className="py-3 px-4">Client / Entity</th>
+                      <th className="py-3 px-4">Contact</th>
+                      <th className="py-3 px-4">Service Category</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4 text-right">Action</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {recentEnquiries.map((enquiry) => (
+                      <tr key={enquiry.id} className="hover:bg-gray-50/60 transition-colors">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[#0F3E2E]">
+                          {enquiry.id}
+                        </td>
+                        <td className="py-3.5 px-4 text-gray-600">
+                          {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                          })}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <div className="font-bold text-gray-900">{enquiry.fullName}</div>
+                          {enquiry.organization && (
+                            <div className="text-[11px] text-gray-500">{enquiry.organization}</div>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <div className="text-gray-900 font-medium">{enquiry.phone}</div>
+                          {enquiry.email && (
+                            <div className="text-[11px] text-gray-500">{enquiry.email}</div>
+                          )}
+                        </td>
+                        <td className="py-3.5 px-4 text-gray-700 font-medium">
+                          {enquiry.serviceCategory}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          <span
+                            className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                              enquiry.status === 'new'
+                                ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                                : enquiry.status === 'in-review'
+                                ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                                : enquiry.status === 'contacted'
+                                ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                                : 'bg-gray-100 text-gray-800 border border-gray-200'
+                            }`}
+                          >
+                            {enquiry.status}
+                          </span>
+                        </td>
+                        <td className="py-3.5 px-4 text-right">
+                          <Link
+                            to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
+                            className="inline-flex items-center font-bold text-[#0F3E2E] hover:text-gold transition-colors"
+                          >
+                            Review →
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </div>

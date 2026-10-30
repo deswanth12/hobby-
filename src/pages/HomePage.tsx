@@ -22,16 +22,21 @@ import {
   Globe,
   UserCheck,
   HeartHandshake,
-  Compass
+  Compass,
+  Award
 } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
 import { ContactForm } from '../components/ContactForm';
 import { KnowledgeFAQ } from '../components/KnowledgeFAQ';
 import { SEOHead } from '../components/SEOHead';
+import { DualArrowButton, SectorMarquee, AccentTicker } from '../components/animations';
+import { ConnectedTimeline } from '../components/ConnectedTimeline';
 
 export const HomePage: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
   const [activeSection, setActiveSection] = useState<string>('audit-spotlight');
+  const [activeChamberPhoto, setActiveChamberPhoto] = useState<'consultation' | 'library'>('consultation');
+  const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
 
   // IntersectionObserver to dynamically highlight the active section in the quick-jump strip
   useEffect(() => {
@@ -138,28 +143,27 @@ export const HomePage: React.FC = () => {
                 Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
-              {/* Primary Call to Action Cluster with Button-in-Button Micro-physics */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <a
+              {/* Primary Call to Action Cluster with Dual-Arrow Micro-physics */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-2">
+                <DualArrowButton
                   href="#contact-section"
-                  className="btn-pill-action bg-brand-forest text-brand-white hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-brand-gold/40 group text-xs sm:text-sm"
+                  variant="primary"
+                  className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
                 >
-                  <span>Request Consultation</span>
-                  <span className="icon-badge bg-white/10 text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-deep">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </span>
-                </a>
+                  Request Consultation
+                </DualArrowButton>
 
-                <Link
+                <DualArrowButton
                   to="/services"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest text-xs sm:text-sm font-semibold hover:bg-brand-surface hover:border-brand-gold/60 shadow-subtle transition-all active:scale-[0.98] btn-tactile"
+                  variant="secondary"
+                  className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
                 >
-                  <span>Explore Practice Disciplines</span>
-                </Link>
+                  Explore Practice Disciplines
+                </DualArrowButton>
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="inline-flex items-center gap-2 text-xs font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile"
+                  className="w-full sm:w-auto justify-center inline-flex items-center gap-2 text-xs font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile min-h-[44px]"
                   title="Direct telephone line"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
@@ -179,10 +183,95 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 5 Columns: Executive Practice Registry Plaque (Double-Bezel Architecture) */}
-            <div className="lg:col-span-5 scroll-reveal-right">
-              <div className="double-bezel-dark animate-fade-up">
-                <div className="double-bezel-inner-dark bg-brand-deep text-brand-white p-6 sm:p-8 relative overflow-hidden">
+            {/* Right 5 Columns: Authentic Chambers Photo Card & Executive Registry Plaque */}
+            <div className="lg:col-span-5 space-y-5 scroll-reveal-right">
+              
+              {/* Authentic Chambers Photo Card with Floating Gold Accreditation Badges */}
+              <div className="relative rounded-3xl p-1 bg-brand-deep border border-brand-gold/40 shadow-editorial-lg overflow-hidden group">
+                <div className="relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden">
+                  <img
+                    src={
+                      activeChamberPhoto === 'consultation'
+                        ? '/brand/chambers/chamber-consultation.jpeg'
+                        : '/brand/chambers/chamber-library.jpeg'
+                    }
+                    alt={
+                      activeChamberPhoto === 'consultation'
+                        ? 'CA Kavitha Vijay - Principal Consultation Chambers, Tirupati'
+                        : 'Corporate Tax and Law Library Archives - Tirupati Chambers'
+                    }
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="eager"
+                  />
+                  {/* Subtle editorial vignette gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/20 to-transparent pointer-events-none" />
+
+                  {/* Top Floating Control Bar: Accreditation Badge & View Switcher (Unified Flex Container to Prevent Overlap) */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+                    {/* Floating Gold Accreditation Badge */}
+                    <div className="pointer-events-auto min-w-0 shrink flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-brand-deep/90 backdrop-blur-md border border-brand-gold/50 shadow-md">
+                      <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
+                      <span className="font-editorial-meta text-[9px] sm:text-[10px] font-bold text-brand-gold tracking-wider uppercase truncate">
+                        ICAI Reg. Chambers<span className="hidden sm:inline"> • Tirupati</span>
+                      </span>
+                    </div>
+
+                    {/* Floating View Switcher */}
+                    <div className="pointer-events-auto shrink-0 flex items-center gap-1 bg-black/60 backdrop-blur-md p-1 rounded-full border border-white/20">
+                      <button
+                        type="button"
+                        onClick={() => setActiveChamberPhoto('consultation')}
+                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold transition-all min-h-[26px] cursor-pointer ${
+                          activeChamberPhoto === 'consultation'
+                            ? 'bg-brand-gold text-brand-deep shadow-xs font-bold'
+                            : 'text-white/80 hover:text-white'
+                        }`}
+                        title="View Consultation Chambers"
+                      >
+                        Chambers
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setActiveChamberPhoto('library')}
+                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold transition-all min-h-[26px] cursor-pointer ${
+                          activeChamberPhoto === 'library'
+                            ? 'bg-brand-gold text-brand-deep shadow-xs font-bold'
+                            : 'text-white/80 hover:text-white'
+                        }`}
+                        title="View Law Library Archives"
+                      >
+                        Archives
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Bottom Photo Metadata Caption */}
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                    <div>
+                      <span className="font-editorial-meta text-[10px] font-semibold tracking-wider text-brand-gold block">
+                        {activeChamberPhoto === 'consultation' ? 'CONSULTATION CHAMBERS' : 'STATUTORY LAW ARCHIVES'}
+                      </span>
+                      <span className="text-xs font-medium text-emerald-100/90 block">
+                        19-12-46, Near Bairagipetteda Arch, Tirupati – 517501
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-forest/90 border border-brand-gold/40 text-[10px] font-semibold text-brand-gold">
+                      <Award className="w-3 h-3 text-brand-gold" />
+                      <span>AIR 49 CMA</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Executive Practice Registry Plaque (Double-Bezel Architecture) */}
+              <div 
+                className="double-bezel-dark animate-fade-up rounded-3xl p-1.5"
+                style={{ backgroundColor: '#102D25', borderColor: 'rgba(195, 166, 107, 0.45)', borderWidth: '1px', borderStyle: 'solid', boxShadow: '0 12px 36px -4px rgba(16, 45, 37, 0.45)' }}
+              >
+                <div 
+                  className="double-bezel-inner-dark bg-brand-deep text-brand-white p-6 sm:p-8 relative overflow-hidden rounded-2xl"
+                  style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+                >
                   
                   {/* Subtle decorative seal watermark */}
                   <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 rounded-full bg-brand-gold/5 border border-brand-gold/10 pointer-events-none" />
@@ -190,14 +279,24 @@ export const HomePage: React.FC = () => {
                   {/* Plaque Header & Monogram Seal */}
                   <div className="flex items-center justify-between border-b border-brand-forest pb-5 mb-5">
                     <div className="flex items-center gap-3.5">
-                      <div className="w-12 h-12 rounded-xl bg-brand-forest border border-brand-gold/60 flex items-center justify-center font-serif text-xl font-bold text-brand-gold shadow-sm">
-                        KA
+                      <div className="w-14 h-14 flex items-center justify-center shrink-0">
+                        <img 
+                          src="/brand/ka-seal-medallion.png" 
+                          alt="KA Official Practice Seal" 
+                          className="w-full h-full object-contain drop-shadow-md"
+                        />
                       </div>
                       <div>
-                        <span className="font-editorial-meta text-[11px] font-bold uppercase tracking-widest text-brand-gold block">
+                        <span 
+                          className="font-editorial-meta text-[11px] font-bold uppercase tracking-widest text-brand-gold block"
+                          style={{ color: '#C3A66B' }}
+                        >
                           PRACTICE REGISTER • ESTD. TIRUPATI
                         </span>
-                        <h3 className="font-editorial-h3 text-2xl font-bold text-white tracking-wide">
+                        <h3 
+                          className="font-editorial-h3 text-2xl font-bold text-white tracking-wide"
+                          style={{ color: '#FFFFFF' }}
+                        >
                           Kavitha & Associates
                         </h3>
                       </div>
@@ -205,17 +304,34 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   {/* Senior Partner Credential Block */}
-                  <div className="bg-brand-forest/90 rounded-xl p-4 border border-brand-gold/30 mb-5 space-y-1">
+                  <div 
+                    className="bg-brand-forest/90 rounded-xl p-4 border border-brand-gold/30 mb-5 space-y-1"
+                    style={{ backgroundColor: 'rgba(21, 63, 50, 0.95)' }}
+                  >
                     <div className="flex items-center justify-between">
-                      <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-light bg-brand-deep px-2 py-0.5 rounded border border-brand-gold/20">
+                      <span 
+                        className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-light bg-brand-deep px-2 py-0.5 rounded border border-brand-gold/20"
+                        style={{ color: '#D8C296', backgroundColor: '#102D25' }}
+                      >
                         Senior Partner
                       </span>
-                      <span className="text-[10px] text-emerald-200/90 font-medium">ICAI Mem. 252985 • CMA AIR 49</span>
+                      <span 
+                        className="text-[10px] text-emerald-200 font-medium"
+                        style={{ color: '#A7F3D0' }}
+                      >
+                        ICAI Mem. 252985 • CMA AIR 49
+                      </span>
                     </div>
-                    <h4 className="font-editorial-h3 text-xl font-bold text-white mt-1">
+                    <h4 
+                      className="font-editorial-h3 text-xl font-bold text-white mt-1"
+                      style={{ color: '#FFFFFF' }}
+                    >
                       {FIRM_DATA.partner.name}
                     </h4>
-                    <p className="text-xs text-brand-gold font-semibold tracking-wide">
+                    <p 
+                      className="text-xs text-brand-gold font-semibold tracking-wide"
+                      style={{ color: '#C3A66B' }}
+                    >
                       {FIRM_DATA.partner.qualifications} (Dual Qualifications)
                     </p>
                   </div>
@@ -226,10 +342,20 @@ export const HomePage: React.FC = () => {
                     {/* Chambers & GPS Coordinates */}
                     <div className="flex items-start justify-between gap-3 pt-2">
                       <div className="flex items-start gap-2.5">
-                        <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                        <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
                         <div>
-                          <strong className="text-white block text-xs font-semibold">Principal Chambers:</strong>
-                          <span className="text-emerald-100 text-xs font-normal">Bairagi Patteda, Tirupati – 517501, AP</span>
+                          <strong 
+                            className="text-white block text-xs font-semibold"
+                            style={{ color: '#FFFFFF' }}
+                          >
+                            Principal Chambers:
+                          </strong>
+                          <span 
+                            className="text-emerald-100 text-xs font-normal"
+                            style={{ color: '#D1FAE5' }}
+                          >
+                            19-12-46, Near Bairagipetteda Arch, Tirupati – 517501, AP
+                          </span>
                         </div>
                       </div>
                       <a
@@ -237,6 +363,7 @@ export const HomePage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs font-semibold text-brand-gold hover:text-white hover:underline shrink-0 mt-0.5"
+                        style={{ color: '#C3A66B' }}
                       >
                         Map Pin →
                       </a>
@@ -244,28 +371,58 @@ export const HomePage: React.FC = () => {
 
                     {/* Dual Strategic Competence */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                      <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
                       <div>
-                        <strong className="text-white block text-xs font-semibold">Dual Strategic Advantage:</strong>
-                        <span className="text-emerald-100 text-xs font-normal">External Statutory Audit + Internal Cost Accounting (CMA)</span>
+                        <strong 
+                          className="text-white block text-xs font-semibold"
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          Dual Strategic Advantage:
+                        </strong>
+                        <span 
+                          className="text-emerald-100 text-xs font-normal"
+                          style={{ color: '#D1FAE5' }}
+                        >
+                          External Statutory Audit + Internal Cost Accounting (CMA)
+                        </span>
                       </div>
                     </div>
 
                     {/* Regional Service Corridors */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <Compass className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                      <Compass className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
                       <div>
-                        <strong className="text-white block text-xs font-semibold">Regional Service Corridors:</strong>
-                        <span className="text-emerald-100 text-xs font-normal">Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore</span>
+                        <strong 
+                          className="text-white block text-xs font-semibold"
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          Regional Service Corridors:
+                        </strong>
+                        <span 
+                          className="text-emerald-100 text-xs font-normal"
+                          style={{ color: '#D1FAE5' }}
+                        >
+                          Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore
+                        </span>
                       </div>
                     </div>
 
                     {/* Partner Supervision Guarantee */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <UserCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                      <UserCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
                       <div>
-                        <strong className="text-white block text-xs font-semibold">Partner-Supervised Accountability:</strong>
-                        <span className="text-emerald-100 text-xs font-normal">Every file reviewed directly by CA Kavitha Vijay</span>
+                        <strong 
+                          className="text-white block text-xs font-semibold"
+                          style={{ color: '#FFFFFF' }}
+                        >
+                          Partner-Supervised Accountability:
+                        </strong>
+                        <span 
+                          className="text-emerald-100 text-xs font-normal"
+                          style={{ color: '#D1FAE5' }}
+                        >
+                          Every file reviewed directly by CA Kavitha Vijay
+                        </span>
                       </div>
                     </div>
 
@@ -273,7 +430,10 @@ export const HomePage: React.FC = () => {
 
                   {/* Plaque Footer & Direct Action */}
                   <div className="mt-5 pt-4 border-t border-brand-forest flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1.5 text-emerald-300 text-[11px] font-medium">
+                    <div 
+                      className="flex items-center gap-1.5 text-emerald-300 text-[11px] font-medium"
+                      style={{ color: '#6EE7B7' }}
+                    >
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       <span>Practice Chambers Open</span>
                     </div>
@@ -282,6 +442,7 @@ export const HomePage: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-brand-gold hover:text-white font-semibold text-xs transition-colors"
+                      style={{ color: '#C3A66B' }}
                     >
                       <span>Direct WhatsApp Desk</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -297,15 +458,35 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* =========================================================================
+          STAGE 1: CROSSED TYPOGRAPHICAL ACCENT BANDS & SECTOR MARQUEE
+          Canvas: Warm Ivory #F5F1E8
+          ========================================================================= */}
+      <AccentTicker />
+
+      {/* Infinite Sector Marquee Engine with Left & Right Gradient Masks */}
+      <div className="bg-brand-ivory py-4 border-b border-brand-border/60 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
+          <div className="flex items-center justify-between text-xs font-editorial-meta text-gold-dark tracking-wider uppercase">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-brand-gold" />
+              <span>Verified Industry Sectors Under Coverage</span>
+            </span>
+            <span className="hidden sm:inline text-brand-muted">Pan-South India & Pan-India Scope</span>
+          </div>
+        </div>
+        <SectorMarquee />
+      </div>
+
+      {/* =========================================================================
           SECTION 2: PRACTICE QUICK-JUMP NAVIGATION STRIP (Sticky Anchor Observer)
           Canvas: Surface Tint #EDE8DF (bg-brand-surface)
           ========================================================================= */}
       <nav
         aria-label="Practice Disciplines Quick Navigation"
-        className="bg-brand-surface/95 backdrop-blur-md py-3.5 border-b border-brand-border sticky top-[57px] sm:top-[65px] z-30 shadow-subtle"
+        className="bg-brand-surface/95 backdrop-blur-md py-3.5 border-b border-brand-border sticky top-[57px] sm:top-[65px] z-30 shadow-subtle overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-0.5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
+          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-0.5 w-full min-w-0">
             <span className="font-editorial-meta text-xs font-bold text-gold-dark uppercase tracking-wider shrink-0 flex items-center gap-1.5">
               <Compass className="w-3.5 h-3.5 text-gold-dark" />
               <span>Practice Disciplines:</span>
@@ -545,163 +726,236 @@ export const HomePage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 scroll-stagger">
-            {/* 5 Statutory Category Cards */}
-            {FIRM_DATA.serviceCategories.map((category) => (
-              <div
-                key={category.id}
-                id={category.id}
-                className="scroll-mt-28 bg-brand-white card-tactile card-premium-hover rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-forest flex items-center justify-center border border-emerald-100">
-                      {category.id === 'income-tax' && <FileText className="w-6 h-6 text-brand-forest" />}
-                      {category.id === 'gst' && <BarChart3 className="w-6 h-6 text-brand-forest" />}
-                      {category.id === 'corporate-business' && <Building2 className="w-6 h-6 text-brand-forest" />}
-                      {category.id === 'rera-compliance' && <Briefcase className="w-6 h-6 text-brand-forest" />}
-                      {category.id === 'advisory-consulting' && <Users className="w-6 h-6 text-brand-forest" />}
+            {/* 5 Statutory Category Cards with Curtain Expansion */}
+            {FIRM_DATA.serviceCategories.map((category) => {
+              const isExpanded = expandedCardId === category.id;
+              return (
+                <div
+                  key={category.id}
+                  id={category.id}
+                  className={`scroll-mt-28 bg-brand-white card-tactile card-premium-hover rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal service-card-interactive group/card ${
+                    isExpanded ? 'service-card-expanded border-brand-gold/80' : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-forest flex items-center justify-center border border-emerald-100 group-hover/card:bg-brand-forest group-hover/card:text-brand-gold transition-colors">
+                        {category.id === 'income-tax' && <FileText className="w-6 h-6" />}
+                        {category.id === 'gst' && <BarChart3 className="w-6 h-6" />}
+                        {category.id === 'corporate-business' && <Building2 className="w-6 h-6" />}
+                        {category.id === 'rera-compliance' && <Briefcase className="w-6 h-6" />}
+                        {category.id === 'advisory-consulting' && <Users className="w-6 h-6" />}
+                      </div>
+                      {category.statutoryFramework && (
+                        <span className="font-editorial-meta text-[11px] font-semibold text-emerald-800 bg-brand-pale px-2.5 py-1 rounded border border-emerald-200 text-right max-w-[180px] leading-tight">
+                          {category.statutoryFramework.split('&')[0]}
+                        </span>
+                      )}
                     </div>
-                    {category.statutoryFramework && (
-                      <span className="font-editorial-meta text-[11px] font-semibold text-emerald-800 bg-brand-pale px-2.5 py-1 rounded border border-emerald-200 text-right max-w-[180px] leading-tight">
-                        {category.statutoryFramework.split('&')[0]}
-                      </span>
+
+                    <h3 className="font-editorial-h3 text-2xl text-brand-forest mb-2 group-hover/card:text-brand-deep transition-colors">
+                      {category.title}
+                    </h3>
+                    <p className="font-editorial-body text-xs sm:text-sm text-brand-muted leading-relaxed mb-4">
+                      {category.shortDescription}
+                    </p>
+
+                    {category.targetClients && (
+                      <div className="mb-4 p-2.5 rounded-lg bg-brand-surface/70 border border-brand-border/60 text-xs">
+                        <span className="font-semibold text-brand-forest block font-editorial-meta text-[11px] uppercase tracking-wider text-gold-dark mb-0.5">
+                          Target Entities:
+                        </span>
+                        <p className="font-editorial-body text-brand-muted text-[11px] leading-relaxed">
+                          {category.targetClients}
+                        </p>
+                      </div>
                     )}
+
+                    <div className="border-t border-brand-border/60 pt-4">
+                      <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block mb-2.5">
+                        Key Engagements:
+                      </span>
+                      <ul className="space-y-2">
+                        {category.services.slice(0, 5).map((srv) => (
+                          <li key={srv} className="font-editorial-body text-xs text-brand-charcoal flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
+                            <span>{srv}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Expanding Curtain Section with Typical Scenarios & Scope */}
+                    <div id={`curtain-${category.id}`} className="service-curtain-body mt-3">
+                      <div className="service-curtain-inner pt-3 border-t border-brand-gold/30 space-y-3">
+                        {category.typicalScenarios && category.typicalScenarios.length > 0 && (
+                          <div className="p-3 rounded-lg bg-brand-surface/90 border border-brand-border/80 text-xs">
+                            <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-1.5">
+                              Typical Statutory Scenarios:
+                            </span>
+                            <ul className="space-y-1.5">
+                              {category.typicalScenarios.map((scen, sIdx) => (
+                                <li key={sIdx} className="font-editorial-body text-[11px] text-brand-muted flex items-start gap-2">
+                                  <span className="text-brand-gold shrink-0 mt-0.5">▸</span>
+                                  <span>{scen}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        {category.services.length > 5 && (
+                          <div className="text-[11px] text-brand-forest font-medium pt-1">
+                            <span className="font-semibold text-gold-dark uppercase text-[10px] tracking-wider block mb-1">Additional Engagements:</span>
+                            <span>{category.services.slice(5).join(' • ')}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Interactive Mobile Tap Toggle */}
+                    <button
+                      type="button"
+                      onClick={() => setExpandedCardId(isExpanded ? null : category.id)}
+                      className="mt-3 text-[11px] text-gold-dark hover:text-brand-forest font-semibold flex items-center gap-1 sm:hidden cursor-pointer"
+                      aria-expanded={isExpanded}
+                      aria-controls={`curtain-${category.id}`}
+                    >
+                      <span>{isExpanded ? 'Collapse Scope ↑' : 'Expand Full Scope ↓'}</span>
+                    </button>
                   </div>
 
-                  <h3 className="font-editorial-h3 text-2xl text-brand-forest mb-2">
-                    {category.title}
-                  </h3>
-                  <p className="font-editorial-body text-xs sm:text-sm text-brand-muted leading-relaxed mb-4">
-                    {category.shortDescription}
-                  </p>
+                  <div className="pt-5 mt-5 border-t border-brand-border flex items-center justify-between">
+                    <Link
+                      to={`/services#${category.id}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-forest hover:text-brand-deep group"
+                    >
+                      <span>View all {category.title}</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-gold-dark group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                    <a
+                      href={FIRM_DATA.contact.whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 underline underline-offset-2"
+                    >
+                      Inquire
+                    </a>
+                  </div>
+                </div>
+              );
+            })}
 
-                  {category.targetClients && (
-                    <div className="mb-4 p-2.5 rounded-lg bg-brand-surface/70 border border-brand-border/60 text-xs">
-                      <span className="font-semibold text-brand-forest block font-editorial-meta text-[11px] uppercase tracking-wider text-gold-dark mb-0.5">
+            {/* Coordinating 6th Card: Virtual CFO & Strategic Financial Retainer with Curtain Expansion */}
+            {(() => {
+              const isCfoExpanded = expandedCardId === 'virtual-cfo';
+              return (
+                <div
+                  id="virtual-cfo"
+                  className={`bg-brand-deep text-brand-white rounded-2xl border border-brand-forest p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal service-card-interactive group/card ${
+                    isCfoExpanded ? 'service-card-expanded border-brand-gold/80' : ''
+                  }`}
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center border border-brand-gold/40 group-hover/card:bg-brand-gold group-hover/card:text-brand-deep transition-colors">
+                        <ShieldCheck className="w-6 h-6" />
+                      </div>
+                      <span className="font-editorial-meta text-[11px] font-semibold text-brand-gold bg-brand-forest/60 px-2.5 py-1 rounded border border-brand-gold/30">
+                        Strategic Retainer
+                      </span>
+                    </div>
+
+                    <h3 className="font-editorial-h3 text-2xl text-white mb-2">
+                      Virtual CFO & Retainerships
+                    </h3>
+                    <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 leading-relaxed mb-4">
+                      Outsourced financial leadership and integrated compliance retainers designed for high-growth enterprises and established businesses.
+                    </p>
+
+                    <div className="mb-4 p-2.5 rounded-lg bg-brand-forest/80 border border-brand-gold/20 text-xs">
+                      <span className="font-editorial-meta font-semibold text-brand-gold block text-[11px] uppercase tracking-wider mb-0.5">
                         Target Entities:
                       </span>
-                      <p className="font-editorial-body text-brand-muted text-[11px] leading-relaxed">
-                        {category.targetClients}
+                      <p className="font-editorial-body text-emerald-200/90 text-[11px] leading-relaxed">
+                        Growth-Stage Startups, MSMEs & Established Corporate Enterprises
                       </p>
                     </div>
-                  )}
 
-                  <div className="border-t border-brand-border/60 pt-4">
-                    <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block mb-2.5">
-                      Key Engagements:
-                    </span>
-                    <ul className="space-y-2">
-                      {category.services.slice(0, 5).map((srv) => (
-                        <li key={srv} className="font-editorial-body text-xs text-brand-charcoal flex items-start gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
-                          <span>{srv}</span>
+                    <div className="border-t border-brand-forest pt-4">
+                      <span className="font-editorial-meta text-xs font-semibold text-brand-gold uppercase tracking-wider block mb-2.5">
+                        Retainer Scope:
+                      </span>
+                      <ul className="space-y-2">
+                        <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
+                          <span>Monthly MIS & Operational Cash Flow Budgeting</span>
                         </li>
-                      ))}
-                      {category.services.length > 5 && (
-                        <li className="font-editorial-body text-xs text-brand-forest font-medium pl-4 pt-1">
-                          + {category.services.length - 5} additional specialized services
+                        <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
+                          <span>Continuous Advance Tax & Quarterly TDS Structuring</span>
                         </li>
-                      )}
-                    </ul>
+                        <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
+                          <span>Bank Loan CMA Data & Project Financial Modeling</span>
+                        </li>
+                        <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
+                          <span>Board-Level Fiscal Counseling with Senior Partner</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Expanding Curtain Section for Virtual CFO */}
+                    <div id="curtain-virtual-cfo" className="service-curtain-body mt-3">
+                      <div className="service-curtain-inner pt-3 border-t border-brand-gold/20 space-y-2.5">
+                        <div className="p-3 rounded-lg bg-brand-forest/90 border border-brand-gold/20 text-xs text-emerald-100">
+                          <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-brand-gold block mb-1">
+                            Executive Oversight:
+                          </span>
+                          <p className="text-[11px] text-emerald-200/90 leading-relaxed">
+                            Direct access to CA Kavitha Vijay for board reviews, debt restructuring, and investor due diligence briefings.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Interactive Mobile Tap Toggle */}
+                    <button
+                      type="button"
+                      onClick={() => setExpandedCardId(isCfoExpanded ? null : 'virtual-cfo')}
+                      className="mt-3 text-[11px] text-brand-gold hover:text-white font-semibold flex items-center gap-1 sm:hidden cursor-pointer"
+                      aria-expanded={isCfoExpanded}
+                      aria-controls="curtain-virtual-cfo"
+                    >
+                      <span>{isCfoExpanded ? 'Collapse Scope ↑' : 'Expand Full Scope ↓'}</span>
+                    </button>
+                  </div>
+
+                  <div className="pt-5 mt-5 border-t border-brand-forest flex items-center justify-between">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-gold hover:text-white group"
+                    >
+                      <span>Discuss Retainer Scope</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-brand-gold group-hover:translate-x-0.5 transition-transform" />
+                    </Link>
+                    <a
+                      href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
+                      className="text-[11px] font-semibold text-emerald-300 hover:text-white underline underline-offset-2"
+                    >
+                      Call Directly
+                    </a>
                   </div>
                 </div>
-
-                <div className="pt-5 mt-5 border-t border-brand-border flex items-center justify-between">
-                  <Link
-                    to={`/services#${category.id}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-forest hover:text-brand-deep group"
-                  >
-                    <span>View all {category.title}</span>
-                    <ChevronRight className="w-3.5 h-3.5 text-gold-dark" />
-                  </Link>
-                  <a
-                    href={FIRM_DATA.contact.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 underline underline-offset-2"
-                  >
-                    Inquire
-                  </a>
-                </div>
-              </div>
-            ))}
-
-            {/* Coordinating 6th Card: Virtual CFO & Strategic Financial Retainer */}
-            <div className="bg-brand-deep text-brand-white rounded-2xl border border-brand-forest p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal">
-              <div>
-                <div className="flex items-center justify-between mb-5">
-                  <div className="w-12 h-12 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center border border-brand-gold/40">
-                    <ShieldCheck className="w-6 h-6 text-brand-gold" />
-                  </div>
-                  <span className="font-editorial-meta text-[11px] font-semibold text-brand-gold bg-brand-forest/60 px-2.5 py-1 rounded border border-brand-gold/30">
-                    Strategic Retainer
-                  </span>
-                </div>
-
-                <h3 className="font-editorial-h3 text-2xl text-white mb-2">
-                  Virtual CFO & Retainerships
-                </h3>
-                <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 leading-relaxed mb-4">
-                  Outsourced financial leadership and integrated compliance retainers designed for high-growth enterprises and established businesses.
-                </p>
-
-                <div className="mb-4 p-2.5 rounded-lg bg-brand-forest/80 border border-brand-gold/20 text-xs">
-                  <span className="font-editorial-meta font-semibold text-brand-gold block text-[11px] uppercase tracking-wider mb-0.5">
-                    Target Entities:
-                  </span>
-                  <p className="font-editorial-body text-emerald-200/90 text-[11px] leading-relaxed">
-                    Growth-Stage Startups, MSMEs & Established Corporate Enterprises
-                  </p>
-                </div>
-
-                <div className="border-t border-brand-forest pt-4">
-                  <span className="font-editorial-meta text-xs font-semibold text-brand-gold uppercase tracking-wider block mb-2.5">
-                    Retainer Scope:
-                  </span>
-                  <ul className="space-y-2">
-                    <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
-                      <span>Monthly MIS & Operational Cash Flow Budgeting</span>
-                    </li>
-                    <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
-                      <span>Continuous Advance Tax & Quarterly TDS Structuring</span>
-                    </li>
-                    <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
-                      <span>Bank Loan CMA Data & Project Financial Modeling</span>
-                    </li>
-                    <li className="font-editorial-body text-xs text-emerald-100/90 flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-1.5" />
-                      <span>Board-Level Fiscal Counseling with Senior Partner</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-brand-forest flex items-center justify-between">
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-gold hover:text-white group"
-                >
-                  <span>Discuss Retainer Scope</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-brand-gold" />
-                </Link>
-                <a
-                  href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="text-[11px] font-semibold text-emerald-300 hover:text-white underline underline-offset-2"
-                >
-                  Call Directly
-                </a>
-              </div>
-            </div>
+              );
+            })()}
 
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          SECTION 5: ENGAGEMENT METHODOLOGY (4-Step Linear Journey)
+          SECTION 5: ENGAGEMENT METHODOLOGY (Connected Process Timeline)
           Canvas: Surface Tint #EDE8DF (bg-brand-surface)
           ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-surface border-b border-brand-border">
@@ -714,51 +968,11 @@ export const HomePage: React.FC = () => {
               How We Work With You
             </h2>
             <p className="font-editorial-body text-base text-brand-muted mt-2">
-              A structured, transparent 4-step engagement model ensuring regulatory compliance and proactive guidance.
+              A structured, transparent 4-step connected engagement model ensuring regulatory compliance and proactive guidance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
-            {FIRM_DATA.workflow.map((flow) => (
-              <div
-                key={flow.step}
-                className="bg-brand-white card-tactile rounded-xl p-6 border border-brand-border shadow-card flex flex-col justify-between relative scroll-reveal"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-forest flex items-center justify-center font-serif text-xl font-bold mb-4 border border-emerald-100 text-gold-dark">
-                    {flow.step}
-                  </div>
-                  <h3 className="font-editorial-h3 text-lg font-bold text-brand-forest mb-2">
-                    {flow.title}
-                  </h3>
-                  <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
-                    {flow.description}
-                  </p>
-                </div>
-                <div className="mt-5 pt-3 border-t border-brand-border/50 text-[11px] font-semibold text-emerald-800 flex items-center gap-1.5">
-                  <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-                  <span>Partner-Supervised</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <div className="inline-flex flex-wrap items-center justify-center gap-4 p-4 rounded-xl bg-brand-white border border-brand-border shadow-subtle">
-              <span className="font-editorial-body text-xs text-brand-charcoal font-medium">
-                Ready to review your firm's compliance or upcoming audit requirements?
-              </span>
-              <a
-                href={FIRM_DATA.contact.whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-forest text-brand-white text-xs font-semibold hover:bg-brand-deep transition-colors shadow-xs btn-tactile"
-              >
-                <span>Schedule a Consultation</span>
-                <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
-              </a>
-            </div>
-          </div>
+          <ConnectedTimeline />
         </div>
       </section>
 
@@ -915,7 +1129,7 @@ export const HomePage: React.FC = () => {
                   <span className="font-editorial-body text-xs text-brand-muted block mt-0.5">{loc.state}</span>
                   {loc.type === 'Primary Chambers' ? (
                     <span className="font-editorial-meta text-[11px] text-emerald-800 font-semibold block mt-1">
-                      Bairagi Patteda
+                      Near Bairagipetteda Arch
                     </span>
                   ) : (
                     <span className="font-editorial-meta text-[11px] text-charcoal-light block mt-1">

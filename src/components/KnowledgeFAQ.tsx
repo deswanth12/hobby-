@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   ChevronDown, 
   ExternalLink, 
@@ -8,6 +8,7 @@ import {
   Scale 
 } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
+import { StatutoryCalendar } from './StatutoryCalendar';
 
 export const KnowledgeFAQ: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
@@ -23,6 +24,36 @@ export const KnowledgeFAQ: React.FC = () => {
   const toggleAccordion = (id: string) => {
     setExpandedId(prev => (prev === id ? null : id));
   };
+
+  useEffect(() => {
+    // Inject Schema.org FAQPage structured data
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      'mainEntity': FIRM_DATA.faqs.map(faq => ({
+        '@type': 'Question',
+        'name': faq.question,
+        'acceptedAnswer': {
+          '@type': 'Answer',
+          'text': `${faq.answer} (Statutory Reference: ${faq.statuteReference})`
+        }
+      }))
+    };
+
+    let script = document.getElementById('faqpage-jsonld') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'faqpage-jsonld';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(faqSchema);
+
+    return () => {
+      const el = document.getElementById('faqpage-jsonld');
+      if (el) el.remove();
+    };
+  }, [FIRM_DATA.faqs]);
 
   return (
     <section className="py-16 sm:py-24 bg-brand-warm border-y border-border" id="knowledge-faq">
@@ -125,6 +156,9 @@ export const KnowledgeFAQ: React.FC = () => {
             );
           })}
         </div>
+
+        {/* Interactive Statutory & Tax Calendar for FY 2026-27 */}
+        <StatutoryCalendar />
 
         {/* Official Government & Regulatory Portals Strip (Knowledge Resource) */}
         <div className="bg-brand-surface rounded-2xl p-6 sm:p-8 border border-border shadow-subtle">

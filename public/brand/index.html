@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kavitha &amp; Associates — Brand Identity Assets &amp; Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-forest: #153F32;
+      --brand-deep: #102D25;
+      --brand-gold: #C3A66B;
+      --brand-ivory: #F5F1E8;
+      --brand-charcoal: #252B27;
+      --brand-border: #E5E1D8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--brand-ivory);
+      color: var(--brand-charcoal);
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid var(--brand-border);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 42px;
+      color: var(--brand-forest);
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--brand-gold);
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid var(--brand-border);
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(21, 63, 50, 0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-dark {
+      background: var(--brand-deep);
+      border-color: rgba(195, 166, 107, 0.4);
+      color: #FFFFFF;
+    }
+    .card-header {
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--brand-forest);
+      margin-bottom: 4px;
+    }
+    .card-dark .card-title {
+      color: #FFFFFF;
+    }
+    .card-tag {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--brand-gold);
+    }
+    .preview-box {
+      background: #FAF8F5;
+      border: 1px solid var(--brand-border);
+      border-radius: 12px;
+      padding: 24px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .preview-box.dark {
+      background: var(--brand-deep);
+      border-color: rgba(195, 166, 107, 0.3);
+    }
+    .preview-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: var(--brand-forest);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 9999px;
+      transition: all 0.2s ease;
+      border: 1px solid var(--brand-gold);
+    }
+    .btn-download:hover {
+      background: var(--brand-deep);
+      transform: translateY(-2px);
+    }
+    .specs-list {
+      font-size: 11px;
+      color: #747A73;
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .card-dark .specs-list {
+      color: #A7F3D0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="subtitle">Official Brand Assets &amp; Vector System</span>
+      <h1>Kavitha &amp; Associates</h1>
+      <p style="color: #747A73; font-size: 14px; max-width: 650px; margin: 10px auto 0;">
+        Recreated flat vector identity system with checked, precision typography, calibrated kerning, and pure mathematical SVG geometry based on the approved intertwined KA emblem direction.
+      </p>
+    </header>
+
+    <div class="grid">
+      <!-- 1. Header Logo -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-tag">Deliverable 1 • Website Navigation</span>
+          <h2 class="card-title">Website Header Logo</h2>
+          <p class="specs-list">Horizontal layout (340x56) • Scaled for navbar height (36-48px) • Crisp vector text</p>
+        </div>
+        <div class="preview-box">
+          <img src="ka-logo-header.svg" alt="Header Logo" style="max-height: 56px;">
+        </div>
+        <a href="ka-logo-header.svg" download class="btn-download">Download ka-logo-header.svg</a>
+      </div>
+
+      <!-- 2. Favicon & App Icon -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-tag">Deliverable 2 • Browser &amp; Touch Icon</span>
+          <h2 class="card-title">Favicon &amp; App Icon</h2>
+          <p class="specs-list">Squircle 64x64 • Recognizable at 16px/32px • Embedded in public/favicon.svg</p>
+        </div>
+        <div class="preview-box">
+          <img src="../favicon.svg" alt="Favicon" style="width: 64px; height: 64px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-radius: 16px;">
+        </div>
+        <a href="../favicon.svg" download class="btn-download">Download favicon.svg</a>
+      </div>
+
+      <!-- 3. Google Business Profile Avatar -->
+      <div class="card card-dark">
+        <div class="card-header">
+          <span class="card-tag" style="color: #E0CDA9;">Deliverable 3 • Google Maps &amp; Search</span>
+          <h2 class="card-title">Google Business Profile Avatar</h2>
+          <p class="specs-list">1:1 Square (1024x1024) • Circular safe-crop tested (r=480px) • High-contrast</p>
+        </div>
+        <div class="preview-box dark">
+          <img src="ka-google-profile-logo.svg" alt="Google Profile Logo" style="max-height: 180px; border-radius: 50%; border: 2px solid #C3A66B;">
+        </div>
+        <a href="ka-google-profile-logo.svg" download class="btn-download" style="background: #C3A66B; color: #102D25;">Download ka-google-profile-logo.svg</a>
+      </div>
+
+      <!-- 4. Google Business Profile Cover Banner -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-tag">Deliverable 4 • Knowledge Panel Banner</span>
+          <h2 class="card-title">Google Profile Cover Banner</h2>
+          <p class="specs-list">16:9 Landscape (1024x576) • Practice pillars &amp; partner credentials • High resolution</p>
+        </div>
+        <div class="preview-box">
+          <img src="ka-google-cover-banner.svg" alt="Cover Banner" style="max-height: 140px; border-radius: 8px;">
+        </div>
+        <a href="ka-google-cover-banner.svg" download class="btn-download">Download ka-google-cover-banner.svg</a>
+      </div>
+
+      <!-- 5. Business Card Front -->
+      <div class="card card-dark">
+        <div class="card-header">
+          <span class="card-tag" style="color: #E0CDA9;">Deliverable 5 • Corporate Stationery</span>
+          <h2 class="card-title">Business Card — Front</h2>
+          <p class="specs-list">Standard 3.5" x 2" (1050x600 px @ 300 DPI) • Deep forest green with gold foil accents</p>
+        </div>
+        <div class="preview-box dark">
+          <img src="ka-business-card-front.svg" alt="Business Card Front" style="max-height: 140px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.3);">
+        </div>
+        <a href="ka-business-card-front.svg" download class="btn-download" style="background: #C3A66B; color: #102D25;">Download ka-business-card-front.svg</a>
+      </div>
+
+      <!-- 6. Business Card Back -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-tag">Deliverable 6 • Corporate Stationery</span>
+          <h2 class="card-title">Business Card — Back</h2>
+          <p class="specs-list">Standard 3.5" x 2" • Warm ivory with partner qualifications &amp; Tirupati chambers details</p>
+        </div>
+        <div class="preview-box">
+          <img src="ka-business-card-back.svg" alt="Business Card Back" style="max-height: 140px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+        </div>
+        <a href="ka-business-card-back.svg" download class="btn-download">Download ka-business-card-back.svg</a>
+      </div>
+
+      <!-- 7. Full Corporate Brandmark -->
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-header">
+          <span class="card-tag">Master Corporate Lockup (Vector)</span>
+          <h2 class="card-title">Full Horizontal Corporate Brandmark</h2>
+          <p class="specs-list">840x180 • Full 3-tier hierarchy: Wordmark + Chartered Accountants + Disciplines Kicker</p>
+        </div>
+        <div class="preview-box">
+          <img src="ka-logo-full.svg" alt="Full Corporate Logo" style="max-height: 100px;">
+        </div>
+        <a href="ka-logo-full.svg" download class="btn-download">Download ka-logo-full.svg</a>
+      </div>
+
+      <!-- 8. Master High-Resolution Official Brandmark -->
+      <div class="card" style="grid-column: 1 / -1;">
+        <div class="card-header">
+          <span class="card-tag">Official High-Resolution Master Emblem</span>
+          <h2 class="card-title">Master Brandmark &amp; Emblem (PNG High-Res)</h2>
+          <p class="specs-list">1024x550 • Official Intertwined KA Monogram with 3D Elevation &amp; Drop Shadow • Transparent Alpha Canvas</p>
+        </div>
+        <div class="preview-box" style="background: #FFFFFF; padding: 40px 20px;">
+          <img src="ka-logo-official.png" alt="Official Master Logo" style="max-height: 220px; object-contain: contain;">
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="ka-logo-official.png" download class="btn-download">Download ka-logo-official.png (Master PNG)</a>
+          <a href="ka-logo-master.png" download class="btn-download" style="background: var(--brand-deep);">Download ka-logo-master.png</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

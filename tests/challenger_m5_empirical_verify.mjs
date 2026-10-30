@@ -204,7 +204,7 @@ assert(routesContent.includes('"/api/*"'), '_routes.json includes /api/* to prot
 
 assert(fs.existsSync(redirectsPath), 'public/_redirects exists');
 const redirectsContent = fs.readFileSync(redirectsPath, 'utf8');
-assert(redirectsContent.includes('/admin/*          /admin/index.html    200'), '_redirects configures CMS SPA fallback');
+assert(redirectsContent.includes('/admin/*          /index.html          404'), '_redirects configures quarantined legacy admin generic 404');
 assert(redirectsContent.includes('/*                /index.html          200'), '_redirects configures public website SPA fallback');
 
 // -----------------------------------------------------------------------------

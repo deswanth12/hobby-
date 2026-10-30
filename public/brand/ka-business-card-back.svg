@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 600" width="1050" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap');
+      .bc-partner-name {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        fill: #153F32;
+      }
+      .bc-partner-title {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        fill: #A68848;
+      }
+      .bc-quals {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        fill: #153F32;
+      }
+      .bc-bio {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 11.5px;
+        font-weight: 400;
+        line-height: 1.5;
+        fill: #747A73;
+      }
+      .bc-label {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        fill: #A68848;
+      }
+      .bc-value {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 12.5px;
+        font-weight: 600;
+        fill: #252B27;
+      }
+    </style>
+  </defs>
+
+  <!-- Warm Ivory Background -->
+  <rect width="1050" height="600" fill="#F5F1E8" />
+
+  <!-- Outer Hairline Frame -->
+  <rect x="24" y="24" width="1002" height="552" rx="14" fill="none" stroke="#E5E1D8" stroke-width="1.2" />
+
+  <!-- Left Accent Color Pillar -->
+  <rect x="24" y="24" width="12" height="552" rx="6" fill="#153F32" />
+
+  <!-- Left 5 Columns: Partner Credentials & Authority -->
+  <g transform="translate(70, 75)">
+    <!-- Small Monogram Watermark -->
+    
+  <g transform="translate(0, 0) scale(0.5)">
+    <!-- DEFINITIONS: Subtle refined linear gradients for flat vector richness -->
+    <defs>
+      <linearGradient id="goldGrad_light" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#E0CDA9" />
+        <stop offset="50%" stop-color="#C3A66B" />
+        <stop offset="100%" stop-color="#A68848" />
+      </linearGradient>
+      <linearGradient id="forestGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1E5443" />
+        <stop offset="60%" stop-color="#153F32" />
+        <stop offset="100%" stop-color="#102D25" />
+      </linearGradient>
+      <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+        <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="rgba(16,45,37,0.25)" />
+      </filter>
+    </defs>
+
+    <!-- ===================================================================
+         LETTER 'K' (Classical Roman Capital Serif in Forest Green)
+         Stem: Left x=35-52, height 28-142
+         Upper Arm: Slopes up-right to (115, 28)
+         Lower Leg: Slopes down-right to (118, 142)
+         =================================================================== -->
+    <g id="letter-K" fill="url(#forestGrad)">
+      <!-- K Stem -->
+      <path d="M 35 34 
+               L 43 34 
+               L 43 136 
+               L 35 136 
+               C 32 136, 30 137, 30 140 
+               L 30 142 
+               L 60 142 
+               L 60 140 
+               C 60 137, 58 136, 55 136 
+               L 48 136 
+               L 48 34 
+               L 55 34 
+               C 58 34, 60 33, 60 30 
+               L 60 28 
+               L 30 28 
+               L 30 30 
+               C 30 33, 32 34, 35 34 Z" />
+
+      <!-- K Upper Arm (Diagonal) -->
+      <path d="M 48 94 
+               L 95 36 
+               L 88 36 
+               C 85 36, 84 35, 84 32 
+               L 84 28 
+               L 115 28 
+               L 115 32 
+               C 115 35, 113 36, 110 36 
+               L 104 36 
+               L 62 88 
+               Z" />
+
+      <!-- K Lower Leg (Diagonal with classical flared foot terminal) -->
+      <path d="M 54 84 
+               L 98 136 
+               L 92 136 
+               C 89 136, 88 137, 88 140 
+               L 88 142 
+               L 122 142 
+               C 120 138, 117 136, 112 133 
+               L 72 84 
+               Z" />
+    </g>
+
+    <!-- ===================================================================
+         LETTER 'A' (Classical Intertwined Serif in Refined Matte Gold)
+         Apex: x=135, y=28
+         Left diagonal slopes to x=86, y=142
+         Right diagonal slopes to x=175, y=142
+         =================================================================== -->
+    <g id="letter-A" fill="url(#goldGrad_light)">
+      <!-- Apex Serif / Crown -->
+      <path d="M 125 28 
+               L 145 28 
+               L 143 33 
+               L 127 33 Z" />
+
+      <!-- Left Diagonal Leg (Thin / Harmonic stroke) -->
+      <path d="M 133 33 
+               L 90 136 
+               L 84 136 
+               C 81 136, 80 137, 80 140 
+               L 80 142 
+               L 108 142 
+               L 108 140 
+               C 108 137, 106 136, 103 136 
+               L 98 136 
+               L 112 102 
+               L 136 102 
+               L 138 95 
+               L 115 95 
+               L 137 42 
+               Z" />
+
+      <!-- Right Diagonal Leg (Heavy architectural stroke) -->
+      <path d="M 137 33 
+               L 170 136 
+               L 165 136 
+               C 162 136, 160 137, 160 140 
+               L 160 142 
+               L 190 142 
+               L 190 140 
+               C 190 137, 188 136, 184 136 
+               L 178 136 
+               L 148 33 
+               Z" />
+
+      <!-- A Crossbar (Hairline bridge) -->
+      <path d="M 112 102 L 158 102 L 157 106 L 111 106 Z" opacity="0.9" />
+    </g>
+
+    <!-- ===================================================================
+         FINANCIAL GROWTH BARS (Inside the triangular counter of the A)
+         Signifies Auditing, Accounting, Assurance & Strategic Financial Growth
+         =================================================================== -->
+    <g id="growth-bars" fill="#153F32">
+      <!-- Bar 1 (Left - Foundation): h=16px -->
+      <rect x="131" y="90" width="4.5" height="12" rx="1.2" />
+      <!-- Bar 2 (Middle - Acceleration): h=24px -->
+      <rect x="138" y="82" width="4.5" height="20" rx="1.2" />
+      <!-- Bar 3 (Right - Statutory Rigor & Peak Governance): h=32px -->
+      <rect x="145" y="74" width="4.5" height="28" rx="1.2" />
+    </g>
+
+    <!-- ===================================================================
+         DYNAMIC TRAJECTORY SWOOSH (Golden Ascending Arch)
+         Curves fluidly from K's waist through A, symbolizing forward commercial momentum
+         =================================================================== -->
+    <path id="dynamic-swoosh"
+          d="M 28 88 
+             C 48 83, 76 87, 105 103 
+             C 128 116, 152 119, 180 110 
+             C 162 115, 140 112, 118 102 
+             C 88 88, 56 82, 28 88 Z"
+          fill="url(#goldGrad_light)"
+          filter="url(#subtleGlow)" />
+
+    <!-- Secondary Upper Accent Arc (Echoing the crest of the letter A) -->
+    <path id="crest-swoosh"
+          d="M 88 116 
+             C 120 78, 160 58, 204 65 
+             C 172 66, 138 82, 108 114 
+             C 101 122, 94 125, 88 116 Z"
+          fill="url(#goldGrad_light)"
+          opacity="0.95" />
+  </g>
+  
+
+    <g transform="translate(0, 115)">
+      <text x="0" y="32" class="bc-partner-name">CA Kavitha Vijay</text>
+      <text x="0" y="58" class="bc-partner-title">Senior Partner &amp; Managing Auditor</text>
+      <text x="0" y="85" class="bc-quals">B.Com, CA, CMA (AIR 49)  |  ICAI Mem. 252985</text>
+      <line x1="0" y1="105" x2="380" y2="105" stroke="#E5E1D8" stroke-width="1" />
+      <text x="0" y="132" class="bc-bio">
+        <tspan x="0" dy="0">10+ Years Big 4 (Deloitte) &amp; Fortune 50 MNC Experience.</tspan>
+        <tspan x="0" dy="20">Direct partner supervision for all corporate audit &amp; tax files.</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- Center Hairline Divider -->
+  <line x1="535" y1="65" x2="535" y2="535" stroke="#E5E1D8" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Right Columns: Chambers & Direct Transmission Protocol -->
+  <g transform="translate(585, 75)">
+    <!-- Section 1: Phone -->
+    <g transform="translate(0, 25)">
+      <text x="0" y="0" class="bc-label">Direct Chambers Telephone</text>
+      <text x="0" y="22" class="bc-value">+91 96263 50900  /  +91 95421 53906</text>
+    </g>
+
+    <!-- Section 2: Email -->
+    <g transform="translate(0, 95)">
+      <text x="0" y="0" class="bc-label">Written &amp; Statutory Enquiries</text>
+      <text x="0" y="22" class="bc-value">cakavithasrj@gmail.com</text>
+    </g>
+
+    <!-- Section 3: Web Portal -->
+    <g transform="translate(0, 165)">
+      <text x="0" y="0" class="bc-label">Official Web Portal</text>
+      <text x="0" y="22" class="bc-value">www.kavithaassociates.com</text>
+    </g>
+
+    <!-- Section 4: Physical Chambers -->
+    <g transform="translate(0, 235)">
+      <text x="0" y="0" class="bc-label">Principal Chambers (By Prior Appointment)</text>
+      <text x="0" y="22" class="bc-value">19-12-46, Near Bairagipetteda Arch, Tirupati – 517501</text>
+      <text x="0" y="42" class="bc-bio">Regional Corridors: Chennai • Bengaluru • Hyderabad • Coimbatore</text>
+    </g>
+
+    <!-- Section 5: Statutory Compliance Disclaimer -->
+    <g transform="translate(0, 335)">
+      <rect x="0" y="0" width="410" height="60" rx="6" fill="#FFFFFF" stroke="#E5E1D8" stroke-width="1" />
+      <text x="14" y="24" class="bc-bio" fill="#747A73">
+        <tspan x="14" dy="0">Practicing Chartered Accountant governed by the regulations</tspan>
+        <tspan x="14" dy="18">and code of ethics of the Institute of Chartered Accountants of India.</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

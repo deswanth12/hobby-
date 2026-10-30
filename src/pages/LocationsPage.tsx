@@ -87,11 +87,11 @@ export const LocationsPage: React.FC = () => {
               </div>
 
               <h2 className="font-editorial-h2 text-3xl sm:text-4xl font-bold text-brand-forest">
-                Bairagi Patteda, Tirupati
+                Principal Chambers, Tirupati
               </h2>
 
               <p className="font-editorial-body text-base text-brand-muted leading-relaxed">
-                Headquarters for Kavitha & Associates under the direction of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (ICAI Mem. 252985), located at <strong className="text-brand-forest font-semibold">Bairagi Patteda, Tirupati, Andhra Pradesh – 517501</strong>. In-person client consultations, physical documentation reviews, audit workpaper archives, and core audit planning are coordinated directly from our Tirupati chambers.
+                Headquarters for Kavitha & Associates under the direction of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (ICAI Mem. 252985), located at <strong className="text-brand-forest font-semibold">19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India</strong>. In-person client consultations, physical documentation reviews, audit workpaper archives, and core audit planning are coordinated directly from our Tirupati chambers.
               </p>
 
               {/* Verified GPS & Navigation Box */}
@@ -106,7 +106,7 @@ export const LocationsPage: React.FC = () => {
                   </span>
                 </div>
                 <div className="font-mono text-xs text-brand-charcoal bg-brand-surface p-3 rounded-xl border border-brand-border/60">
-                  GPS DMS: 13°37'09.3"N 79°25'04.9"E • Decimal: 13.61925, 79.418028
+                  GPS DMS: 13°37'09.2"N 79°25'05.0"E • Decimal: 13.6192242, 79.418046
                 </div>
                 <div className="pt-1">
                   <a
@@ -307,7 +307,7 @@ export const LocationsPage: React.FC = () => {
                 ICAI Regulatory Disclosure & Regional Footprint Notice
               </span>
               <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
-                In strict adherence to the Chartered Accountants Act, 1949 and regulations established by the Institute of Chartered Accountants of India (ICAI), the chambers in Bairagi Patteda, Tirupati, constitute the firm's Principal Operating Chambers. The representations in Chennai, Bengaluru, Hyderabad, and Coimbatore indicate active regional client coverage corridors for regular on-site audits and client representations, and are not represented as autonomous branch offices under Section 27.
+                In strict adherence to the Chartered Accountants Act, 1949 and regulations established by the Institute of Chartered Accountants of India (ICAI), the chambers at 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, constitute the firm's Principal Operating Chambers. The representations in Chennai, Bengaluru, Hyderabad, and Coimbatore indicate active regional client coverage corridors for regular on-site audits and client representations, and are not represented as autonomous branch offices under Section 27.
               </p>
             </div>
           </div>

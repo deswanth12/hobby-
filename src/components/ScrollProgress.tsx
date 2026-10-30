@@ -3,43 +3,42 @@ import React, { useEffect, useRef } from 'react';
 /**
  * ScrollProgress Component
  * Renders an accessible, ultra-thin gold & forest progress bar at top-0.
- * Powered by CSS scroll-driven animations on modern Chromium/Edge/Safari engines,
- * with passive JS scroll listener fallback for complete cross-browser support.
+ * Powered by high-performance requestAnimationFrame scroll tracking with
+ * native CSS scroll-timeline enhancement where supported.
  */
 export const ScrollProgress: React.FC = () => {
   const barRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if browser already supports native animation-timeline: scroll()
-    const supportsScrollTimeline =
-      typeof CSS !== 'undefined' &&
-      CSS.supports &&
-      (CSS.supports('animation-timeline: scroll()') || CSS.supports('animation-timeline', 'scroll()'));
-
-    if (supportsScrollTimeline) {
-      return;
-    }
-
-    // Passive scroll listener fallback
     let ticking = false;
+
+    const updateProgress = () => {
+      if (barRef.current) {
+        const docElem = document.documentElement;
+        const scrollable = docElem.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY || docElem.scrollTop || 0;
+        const progress = scrollable > 0 ? scrolled / scrollable : 0;
+        const clamped = Math.min(Math.max(progress, 0), 1);
+        barRef.current.style.transform = `scaleX(${clamped})`;
+      }
+      ticking = false;
+    };
+
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
-          if (barRef.current) {
-            const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-            barRef.current.style.transform = `scaleX(${Math.min(Math.max(progress, 0), 1)})`;
-          }
-          ticking = false;
-        });
+        window.requestAnimationFrame(updateProgress);
         ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    window.addEventListener('resize', handleScroll, { passive: true });
+    updateProgress();
 
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (

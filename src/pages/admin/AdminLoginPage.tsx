@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
 import { 
   Lock, 
   User, 
@@ -16,8 +16,12 @@ import {
 } from 'lucide-react';
 import { adminStorage } from '../../services/adminStorage';
 import { SEOHead } from '../../components/SEOHead';
+import { ADMIN_ROUTES, IS_ADMIN_CONFIGURED } from '../../config/adminConfig';
 
 export const AdminLoginPage: React.FC = () => {
+  if (!IS_ADMIN_CONFIGURED) {
+    return <Navigate to="/" replace />;
+  }
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -37,7 +41,7 @@ export const AdminLoginPage: React.FC = () => {
   const isCloud = adminStorage.isCloudConnected();
 
   // Redirect target after successful login
-  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || '/admin';
+  const from = (location.state as { from?: { pathname: string } })?.from?.pathname || ADMIN_ROUTES.root;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,7 +115,7 @@ export const AdminLoginPage: React.FC = () => {
         </div>
 
         {/* Firm Crest & Header */}
-        <div className="text-center">
+        <div className="text-center scroll-reveal">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0A2F24] border-2 border-[#C5A059] shadow-lg mb-4">
             <span className="font-serif text-2xl font-bold text-[#C5A059]">KA</span>
           </div>
@@ -124,7 +128,7 @@ export const AdminLoginPage: React.FC = () => {
         </div>
 
         {/* Login Box */}
-        <div className="mt-8 bg-white py-8 px-6 sm:px-10 shadow-card rounded-2xl border border-gray-200/80">
+        <div className="mt-8 bg-white py-8 px-6 sm:px-10 shadow-card rounded-2xl border border-gray-200/80 scroll-reveal-scale">
           <div className="flex items-center gap-2 mb-6 pb-4 border-b border-gray-100">
             <Lock className="w-5 h-5 text-[#0F3E2E]" />
             <div>
@@ -224,11 +228,11 @@ export const AdminLoginPage: React.FC = () => {
                   Authorized Client Profiles
                 </span>
               </div>
-              <div className="grid grid-cols-2 gap-2 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
                 <button
                   type="button"
                   onClick={() => handlePreFill('kavitha', 'Tirupati@CA2026')}
-                  className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
+                  className="min-h-[44px] p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
                 >
                   <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
                     CA Kavitha Vijay
@@ -238,7 +242,7 @@ export const AdminLoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => handlePreFill('admin', 'KavithaAssoc#2026')}
-                  className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
+                  className="min-h-[44px] p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
                 >
                   <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
                     Practice Admin

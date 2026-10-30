@@ -179,7 +179,7 @@ export const IndustriesPage: React.FC = () => {
           ========================================================================= */}
       <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-3">
               Commercial Verticals • Specialized Statutory Frameworks
             </span>
@@ -234,12 +234,12 @@ export const IndustriesPage: React.FC = () => {
               <div
                 key={ind.id}
                 id={ind.id}
-                className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile"
+                className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                   
                   {/* Left Column: Sector Header & Core Focus */}
-                  <div className={`lg:col-span-6 space-y-5 ${isEven ? '' : 'lg:order-2'}`}>
+                  <div className={`lg:col-span-6 space-y-5 scroll-reveal-left ${isEven ? '' : 'lg:order-2'}`}>
                     <div className="flex items-center gap-3 flex-wrap">
                       <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
                         <IconComponent className="w-6 h-6 text-brand-forest" />
@@ -265,17 +265,17 @@ export const IndustriesPage: React.FC = () => {
                     <div className="pt-2">
                       <Link
                         to="/contact"
-                        className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors btn-tactile border border-brand-gold/30 shadow-card"
+                        className="min-h-[44px] w-full sm:w-auto text-center justify-center inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors btn-tactile border border-brand-gold/30 shadow-card"
                       >
                         <span>Consult Practice Regarding {ind.name.split(' ')[0]}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
+                        <ArrowRight className="w-3.5 h-3.5 text-brand-gold shrink-0" />
                       </Link>
                     </div>
                   </div>
 
                   {/* Right Column: Key Statutory Compliance Foci */}
-                  <div className={`lg:col-span-6 bg-brand-surface rounded-2xl p-7 sm:p-8 border border-brand-border ${isEven ? '' : 'lg:order-1'}`}>
-                    <div className="flex items-center justify-between border-b border-brand-border pb-4 mb-5">
+                  <div className={`lg:col-span-6 bg-brand-surface rounded-2xl p-5 sm:p-8 border border-brand-border scroll-reveal-right ${isEven ? '' : 'lg:order-1'}`}>
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-4 mb-5">
                       <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
                         Critical Statutory & Tax Foci
                       </h3>
@@ -284,9 +284,9 @@ export const IndustriesPage: React.FC = () => {
                       </span>
                     </div>
 
-                    <ul className="space-y-3.5">
+                    <ul className="space-y-3.5 scroll-stagger">
                       {ind.statutoryFoci.map((focal, fIdx) => (
-                        <li key={fIdx} className="flex items-start gap-3 p-3 rounded-xl bg-brand-white border border-brand-border/70 shadow-subtle">
+                        <li key={fIdx} className="flex items-start gap-3 p-3 rounded-xl bg-brand-white border border-brand-border/70 shadow-subtle scroll-reveal">
                           <span className="w-2 h-2 rounded-full bg-brand-forest shrink-0 mt-2" />
                           <span className="font-editorial-body text-xs sm:text-sm text-brand-charcoal font-medium leading-relaxed">
                             {focal}
@@ -321,7 +321,7 @@ export const IndustriesPage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-14">
+          <div className="max-w-3xl mx-auto text-center mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
               Statutory Synthesis
             </span>
@@ -333,7 +333,7 @@ export const IndustriesPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="overflow-x-auto rounded-2xl border border-brand-border bg-brand-white shadow-card">
+          <div className="overflow-x-auto rounded-2xl border border-brand-border bg-brand-white shadow-card scroll-reveal-scale">
             <table className="w-full text-left text-xs">
               <thead>
                 <tr className="bg-brand-surface border-b border-brand-border">
@@ -390,7 +390,7 @@ export const IndustriesPage: React.FC = () => {
           5. SPECIALIZED INDUSTRY CONSULTATION CTA
           ========================================================================= */}
       <section className="py-20 sm:py-24 bg-brand-surface text-center">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Specialized Industry Counsel
           </span>

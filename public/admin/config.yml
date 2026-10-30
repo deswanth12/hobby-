@@ -259,9 +259,9 @@ collections:
             name: "physicalChambers"
             widget: "object"
             fields:
-              - { label: "Street Address", name: "address", widget: "text", default: "Bairagi Patteda" }
+              - { label: "Street Address", name: "address", widget: "text", default: "19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda" }
               - { label: "City", name: "city", widget: "string", default: "Tirupati" }
               - { label: "State", name: "state", widget: "string", default: "Andhra Pradesh" }
               - { label: "Postal Code", name: "pincode", widget: "string", default: "517501" }
-              - { label: "Google Maps URL", name: "mapsUrl", widget: "string", default: "https://www.google.com/maps?q=13.61925,79.418028" }
+              - { label: "Google Maps URL", name: "mapsUrl", widget: "string", default: "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6" }
           - { label: "Office Hours", name: "officeHours", widget: "string", default: "Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only" }
