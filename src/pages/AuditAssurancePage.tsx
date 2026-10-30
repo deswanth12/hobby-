@@ -70,7 +70,7 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
               <div>
                 <strong className="text-brand-primary block text-sm">Direct Partner Supervision</strong>
-                <p className="text-charcoal-muted mt-0.5">Supervised and signed by CA KavithaVijay SRJ (B.Com, FCA, CMA).</p>
+                <p className="text-charcoal-muted mt-0.5">Supervised and signed by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49).</p>
               </div>
             </div>
           </div>

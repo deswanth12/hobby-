@@ -15,6 +15,8 @@ import { AuditAssurancePage } from './pages/AuditAssurancePage';
 import { IndustriesPage } from './pages/IndustriesPage';
 import { LocationsPage } from './pages/LocationsPage';
 import { ContactPage } from './pages/ContactPage';
+import { BlogPage } from './pages/BlogPage';
+import { BlogArticlePage } from './pages/BlogArticlePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
 // Admin Pages & Protected Route
@@ -57,6 +59,8 @@ export const App: React.FC = () => {
               <Route path="/services/audit-assurance" element={<AuditAssurancePage />} />
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/locations" element={<LocationsPage />} />
+              <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogArticlePage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>

@@ -47,9 +47,35 @@ export interface FirmProfile {
     name: string;
     designation: string;
     qualifications: string;
+    membershipNumber: string;
     role: string;
+    tagline: string;
+    summary: string;
+    experienceYears: string;
+    specialization: string;
     memberships: string[];
     coreCompetencies: string[];
+    awards: {
+      title: string;
+      category: string;
+      organization: string;
+    }[];
+    education: {
+      year: string;
+      degree: string;
+      institution: string;
+      distinction?: string;
+    }[];
+    careerJourney: {
+      role: string;
+      organization: string;
+      period: string;
+      location: string;
+      highlights: string[];
+      keyEngagements?: string[];
+    }[];
+    languages: string[];
+    traits: string[];
   };
   philosophy: {
     statement: string;
@@ -114,22 +140,120 @@ export const FIRM_DATA: FirmProfile = {
   legalType: "Chartered Accountants | Cost Accountants",
   tagline: "TRUST | EXPERTISE | YOUR GROWTH PARTNER",
   partner: {
-    name: "CA KavithaVijay SRJ",
-    designation: "Practicing Chartered Accountant",
-    qualifications: "B.Com, FCA, CMA",
-    role: "Senior Partner",
+    name: "CA Kavitha Vijay",
+    designation: "Practicing Chartered Accountant & Cost Accountant",
+    qualifications: "B.Com, CA, CMA (AIR 49)",
+    membershipNumber: "252985",
+    role: "Managing Partner",
+    tagline: "MNC Auditor with Big 4 Experience of 10+ Years",
+    summary: "Results-driven Chartered Accountant and Cost & Management Accountant with 10+ years of progressive experience spanning Big 4 audit (Deloitte), multinational internal audit (Ford Motor Company), and public practice. Demonstrated expertise across enterprise risk management, internal controls, statutory audits, IPO engagements, and cross-border audit projects in Asia-Pacific, Africa, and Europe. Recognised with prestigious individual and team performance awards at Ford Motor Company and Deloitte. Known for translating complex audit findings into impactful management insights.",
+    experienceYears: "10+ Years",
+    specialization: "Audit Expert | Compliance & Advisory Expert | International Exposure | Career Mentorship & Financial Literacy for B2C & B2B",
     memberships: [
-      "Fellow Member of the Institute of Chartered Accountants of India (ICAI)",
-      "Member of the Institute of Cost Accountants of India (ICMAI)"
+      "The Institute of Chartered Accountants of India (ICAI) — Membership No. 252985",
+      "The Institute of Cost Accountants of India (ICMAI) — All India Rank 49 in CMA Intermediate"
     ],
     coreCompetencies: [
-      "Corporate & Statutory Audit",
-      "Direct Tax Planning & Appellate Litigation",
-      "GST Audits & ITC Reconciliations",
-      "Cost Accounting & Internal Financial Controls",
-      "MCA / ROC Secretarial Governance",
-      "RERA Project Certification & Compliance"
-    ]
+      "Enterprise Risk Management",
+      "Internal Audit & Risk-Based Auditing",
+      "Statutory & Tax Audits (ICAI Standards)",
+      "Internal Financial Controls (ICFR)",
+      "IPO Audit Engagements",
+      "Transfer Pricing & Global Compliance",
+      "Cross-Border & Onsite Audit Execution",
+      "GST & Income Tax Compliance",
+      "Management Reporting & Advisory",
+      "Conflict Resolution & Stakeholder Management"
+    ],
+    awards: [
+      {
+        title: "Move the Dot",
+        category: "Individual Excellence Award",
+        organization: "Deloitte Haskins & Sells"
+      },
+      {
+        title: "Live the Dot",
+        category: "Team Achievement Award",
+        organization: "Deloitte Haskins & Sells"
+      },
+      {
+        title: "All India 49th Rank",
+        category: "CMA Intermediate Merit",
+        organization: "Institute of Cost Accountants of India"
+      }
+    ],
+    education: [
+      {
+        year: "2019",
+        degree: "Chartered Accountant (CA)",
+        institution: "Institute of Chartered Accountants of India (ICAI)",
+        distinction: "Membership No. 252985"
+      },
+      {
+        year: "2019",
+        degree: "Cost & Management Accountant (CMA)",
+        institution: "Institute of Cost Accountants of India (ICMAI)",
+        distinction: "All India Rank 49 in CMA Intermediate"
+      },
+      {
+        year: "2017",
+        degree: "Bachelor of Commerce (B.Com)",
+        institution: "Madras University"
+      }
+    ],
+    careerJourney: [
+      {
+        role: "Business Auditor",
+        organization: "Ford Motor Company Private Limited",
+        period: "April 2022 – January 2026",
+        location: "Chennai, India (Onsite in South Africa & Australia)",
+        highlights: [
+          "Led comprehensive enterprise risk interviews with C-suite and senior leadership, prioritising key operational and strategic risks across multiple business functions.",
+          "Executed risk-based audits assessing process effectiveness, internal controls, and compliance, delivering corrective action plans that measurably strengthened the control environment.",
+          "Visited South Africa and Australia, demonstrating cross-border audit execution across diverse international regulatory environments.",
+          "Provided advisory support for new system launches — proactively identifying process bottlenecks and control gaps before go-live.",
+          "Collaborated with global SMEs, skill teams, and senior leadership to align audit findings with enterprise business priorities."
+        ],
+        keyEngagements: [
+          "Global Warranty Reserve & Forecast Audit",
+          "Global Transfer Pricing Audit",
+          "FCSD India Strategy Post-Restructuring Audit",
+          "Change Management Audit — New IT System",
+          "Ford Motor Company South Africa Manufacturing Audit (Onsite)",
+          "Ford–Volkswagen Strategic Alliance Audit",
+          "South Africa – DEI & Sustainability Review",
+          "Australia Market Review (Onsite)",
+          "IMPRS Segmentation Implementation & Governance",
+          "GPDS Market Equation Audit"
+        ]
+      },
+      {
+        role: "Deputy Manager — Assurance (Statutory Audit)",
+        organization: "Deloitte Haskins & Sells",
+        period: "February 2020 – March 2022",
+        location: "Chennai, India",
+        highlights: [
+          "Field Senior on a landmark ₹1,000 Crore IPO engagement — one of India's significant public listings, demanding the highest standards of audit rigour and investor confidence.",
+          "Conferred Move the Dot (Individual Excellence) & Live the Dot (Team Achievement) Awards for outstanding audit delivery and cross-functional leadership.",
+          "Directed statutory, tax, and limited review audits with full ICFR assessments for listed and private entities across service and manufacturing sectors (up to ₹2,000 Crore turnover).",
+          "Designed and executed audit plans aligned with ICAI professional standards and Deloitte global methodology, consistently delivering within deadlines.",
+          "Reported findings and management letters directly to the Engagement Partner — reflecting senior-level trust and accountability."
+        ]
+      },
+      {
+        role: "Articled Assistant",
+        organization: "Manohar Chowdhry & Associates",
+        period: "September 2016 – September 2019",
+        location: "Chennai, India",
+        highlights: [
+          "Conducted statutory, internal, and GST audits for listed and private companies across multiple sectors.",
+          "Independently managed income tax matters — assessments, scrutiny cases, and return filings — for corporate and high-net-worth individual clients.",
+          "Prepared and filed income tax returns, building deep expertise in Indian direct taxation and appellate procedure."
+        ]
+      }
+    ],
+    languages: ["Tamil", "Telugu", "English (Professional Proficiency)"],
+    traits: ["Optimistic", "Conflict Resolution", "Decision Making", "Team Worker", "Self-Motivated", "Diligent"]
   },
   philosophy: {
     statement: "Technical precision rooted in statutory independence and practical commercial thinking. We bridge rigorous compliance with strategic business growth.",
@@ -140,7 +264,7 @@ export const FIRM_DATA: FirmProfile = {
       },
       {
         title: "Partner-Supervised Accountability",
-        description: "Every engagement is directly supervised by CA KavithaVijay SRJ, ensuring senior technical competence at every stage."
+        description: "Every engagement is directly supervised by CA Kavitha Vijay, ensuring senior technical competence at every stage."
       },
       {
         title: "Integrated CA + CMA Competence",

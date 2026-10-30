@@ -116,7 +116,7 @@ export const KnowledgeFAQ: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-gold-dark hover:underline font-semibold"
                       >
-                        Ask CA KavithaVijay SRJ →
+                        Ask CA Kavitha Vijay →
                       </a>
                     </div>
                   </div>
@@ -182,7 +182,7 @@ export const KnowledgeFAQ: React.FC = () => {
                   Need Personalized Legal Guidance?
                 </h4>
                 <p className="text-[11px] text-emerald-100/90 mt-1 leading-relaxed">
-                  Have an upcoming filing deadline or departmental notice? Schedule a direct discussion with CA KavithaVijay SRJ.
+                  Have an upcoming filing deadline or departmental notice? Schedule a direct discussion with CA Kavitha Vijay.
                 </p>
               </div>
               <div className="mt-3 pt-2 border-t border-emerald-800/80">

@@ -63,7 +63,7 @@ export const HomePage: React.FC = () => {
     <div className="bg-brand-warm page-reveal">
       <SEOHead
         title="Chartered Accountants & Cost Accountants | Tirupati & Pan India"
-        description="Independent Chartered Accountancy practice led by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional support across Statutory Audit, Income Tax, GST, Corporate Compliance, and Strategic Advisory."
+        description="Independent Chartered Accountancy practice led by CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49). Ex-Deloitte Big 4 & Ford Motor Company auditor. Professional support across Statutory Audit, Income Tax, GST, and Corporate Governance."
         canonicalPath="/"
       />
       {/* =========================================================================
@@ -99,7 +99,7 @@ export const HomePage: React.FC = () => {
 
               {/* Authoritative Lead Narrative */}
               <p className="text-base sm:text-lg text-charcoal/80 leading-relaxed max-w-2xl font-normal">
-                Founded by <strong className="text-brand-primary font-semibold">CA KavithaVijay SRJ (B.Com, FCA, CMA)</strong>, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
+                Founded by <strong className="text-brand-primary font-semibold">CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
               {/* Primary Call to Action Cluster */}
@@ -171,7 +171,7 @@ export const HomePage: React.FC = () => {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gold-light bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">
                       Senior Partner
                     </span>
-                    <span className="text-[10px] text-emerald-200/80">ICAI Fellow & ICMAI</span>
+                    <span className="text-[10px] text-emerald-200/80">ICAI Mem. 252985 • CMA AIR 49</span>
                   </div>
                   <h4 className="font-serif text-xl font-bold text-white mt-1">
                     {FIRM_DATA.partner.name}
@@ -226,7 +226,7 @@ export const HomePage: React.FC = () => {
                     <UserCheck className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                     <div>
                       <strong className="text-white block text-xs">Partner-Supervised Accountability:</strong>
-                      <span className="text-emerald-200/90 text-[11px]">Every file reviewed directly by CA KavithaVijay SRJ</span>
+                      <span className="text-emerald-200/90 text-[11px]">Every file reviewed directly by CA Kavitha Vijay</span>
                     </div>
                   </div>
 
@@ -315,7 +315,7 @@ export const HomePage: React.FC = () => {
                   Statutory, Tax & Operational Audit Schedule
                 </h2>
                 <p className="mt-3 text-sm text-charcoal-muted leading-relaxed">
-                  Independent, thorough, and compliant audits that foster trust with lenders, investors, regulatory bodies, and corporate boards — delivered under the personal oversight of CA KavithaVijay SRJ.
+                  Independent, thorough, and compliant audits that foster trust with lenders, investors, regulatory bodies, and corporate boards — delivered under the personal oversight of CA Kavitha Vijay.
                 </p>
               </div>
 

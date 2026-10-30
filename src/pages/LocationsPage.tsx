@@ -44,7 +44,7 @@ export const LocationsPage: React.FC = () => {
                   Bairagi Patteda, Tirupati
                 </h2>
                 <p className="text-sm text-charcoal leading-relaxed">
-                  Headquarters for Kavitha & Associates under the direction of CA KavithaVijay SRJ, located at Bairagi Patteda, Tirupati, Andhra Pradesh – 517501 (GPS: 13°37'09.3"N 79°25'04.9"E). In-person client consultations, physical documentation reviews, and core audit planning are coordinated from our Tirupati chambers.
+                  Headquarters for Kavitha & Associates under the direction of CA Kavitha Vijay, located at Bairagi Patteda, Tirupati, Andhra Pradesh – 517501 (GPS: 13°37'09.3"N 79°25'04.9"E). In-person client consultations, physical documentation reviews, and core audit planning are coordinated from our Tirupati chambers.
                 </p>
                 <div className="pt-1">
                   <a

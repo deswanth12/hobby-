@@ -100,6 +100,7 @@ export const Footer: React.FC = () => {
               <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">Navigation</h5>
               <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-emerald-200">
                 <Link to="/about" className="hover:text-gold transition-colors">About Firm</Link>
+                <Link to="/blog" className="hover:text-gold transition-colors">Articles & Insights</Link>
                 <Link to="/industries" className="hover:text-gold transition-colors">Industries</Link>
                 <Link to="/locations" className="hover:text-gold transition-colors">Service Reach</Link>
                 <a href="/#knowledge-faq" className="hover:text-gold transition-colors">Statutory FAQ</a>

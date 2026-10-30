@@ -128,7 +128,7 @@ export const ContactForm: React.FC = () => {
   };
 
   const generateWhatsAppUrl = () => {
-    const text = `Hello CA KavithaVijay SRJ (Kavitha & Associates),\n\nEnquiry Ref: ${savedRecord?.id || 'DIRECT'}\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
+    const text = `Hello CA Kavitha Vijay (Kavitha & Associates),\n\nEnquiry Ref: ${savedRecord?.id || 'DIRECT'}\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
     return `https://wa.me/919626350900?text=${encodeURIComponent(text)}`;
   };
 
@@ -179,7 +179,7 @@ export const ContactForm: React.FC = () => {
               </span>
             </div>
             <p className="text-emerald-900 leading-relaxed">
-              Your inquiry has been formatted with reference <strong>{savedRecord?.id}</strong>. You can now transmit it directly to CA KavithaVijay SRJ via WhatsApp or direct phone call for priority review.
+              Your inquiry has been formatted with reference <strong>{savedRecord?.id}</strong>. You can now transmit it directly to CA Kavitha Vijay via WhatsApp or direct phone call for priority review.
             </p>
           </div>
 
@@ -444,7 +444,7 @@ export const ContactForm: React.FC = () => {
           {/* Direct Communication & Privacy Notice */}
           <div className="text-xs text-charcoal-muted leading-relaxed bg-brand-surface p-4 rounded-xl border border-border">
             <p>
-              <strong className="text-brand-primary">Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA KavithaVijay SRJ via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this demo website.
+              <strong className="text-brand-primary">Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA Kavitha Vijay via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this website.
             </p>
           </div>
 

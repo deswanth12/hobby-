@@ -165,7 +165,7 @@ export const NotFoundPage: React.FC = () => {
               Have an impending statutory audit or tax filing deadline?
             </h3>
             <p className="text-xs text-emerald-100/80 max-w-lg">
-              Contact CA KavithaVijay SRJ directly through our verified priority telephone or WhatsApp channels.
+              Contact CA Kavitha Vijay directly through our verified priority telephone or WhatsApp channels.
             </p>
           </div>
 

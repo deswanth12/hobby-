@@ -1,0 +1,70 @@
+{
+  "firmName": "Kavitha & Associates",
+  "legalDesignation": "Chartered Accountants | Cost Accountants",
+  "primaryPhone": "+91 96263 50900",
+  "secondaryPhone": "+91 95421 53906",
+  "email": "cakavithasrj@gmail.com",
+  "address": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
+  "mapsUrl": "https://www.google.com/maps?q=13.61925,79.418028",
+  "contactChannels": {
+    "primaryPhone": "+91 96263 50900",
+    "primaryPhoneClean": "919626350900",
+    "secondaryPhone": "+91 95421 53906",
+    "secondaryPhoneClean": "919542153906",
+    "email": "cakavithasrj@gmail.com",
+    "whatsappNumber": "+91 96263 50900",
+    "whatsappLink": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
+  },
+  "physicalChambers": {
+    "streetAddress": "Bairagi Patteda",
+    "locality": "Bairagi Patteda",
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "postalCode": "517501",
+    "country": "India",
+    "fullAddress": "Bairagi Patteda, Tirupati, Andhra Pradesh – 517501",
+    "geoCoordinates": {
+      "latitude": 13.61925,
+      "longitude": 79.418028,
+      "dms": "13°37'09.3\"N 79°25'04.9\"E"
+    },
+    "googleMapsUrl": "https://www.google.com/maps?q=13.61925,79.418028"
+  },
+  "officeHours": {
+    "mondayToFriday": "09:30 AM – 06:30 PM (IST)",
+    "saturday": "10:00 AM – 02:00 PM (IST)",
+    "sunday": "Closed (Urgent statutory deadlines accommodated by appointment)"
+  },
+  "serviceFootprint": [
+    {
+      "city": "Tirupati",
+      "state": "Andhra Pradesh",
+      "type": "Primary Chambers",
+      "description": "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, Tirupati – 517501."
+    },
+    {
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "type": "Regional Client Coverage",
+      "description": "Corporate compliance, GST litigation, and statutory audits for Tamil Nadu business corridors."
+    },
+    {
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "type": "Regional Client Coverage",
+      "description": "Startup structuring, virtual CFO mandates, and technology sector audit support."
+    },
+    {
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "type": "Regional Client Coverage",
+      "description": "Real estate RERA advisory, project finance assistance, and corporate tax compliance."
+    },
+    {
+      "city": "Coimbatore",
+      "state": "Tamil Nadu",
+      "type": "Regional Client Coverage",
+      "description": "Manufacturing stock audits, MSME financial controls, and indirect tax health checks."
+    }
+  ]
+}

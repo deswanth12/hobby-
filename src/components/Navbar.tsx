@@ -199,6 +199,17 @@ export const Navbar: React.FC = () => {
           </Link>
 
           <Link
+            to="/blog"
+            className={`py-2 text-sm font-medium transition-colors ${
+              isActive('/blog')
+                ? 'text-brand-primary font-semibold border-b-2 border-gold'
+                : 'text-charcoal hover:text-brand-primary'
+            }`}
+          >
+            Articles
+          </Link>
+
+          <Link
             to="/contact"
             className={`py-2 text-sm font-medium transition-colors ${
               isActive('/contact')
@@ -326,6 +337,17 @@ export const Navbar: React.FC = () => {
               }`}
             >
               Service Reach
+            </Link>
+
+            <Link
+              to="/blog"
+              className={`block px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                isActive('/blog')
+                  ? 'bg-brand-pale text-brand-primary font-semibold'
+                  : 'text-charcoal hover:bg-white'
+              }`}
+            >
+              Publications & Articles
             </Link>
 
             <Link

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Kavitha & Associates Chartered Accountants — Content Management Console" />
+    <title>Kavitha & Associates — Content Manager</title>
+
+    <!-- Firm Emblem Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Explicit CMS Config Link (Adheres to Decap & Sveltia Discovery Standard) -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+
+    <style>
+      /* Prevent FOUC and provide initial loading indicator */
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #FCFCFA;
+        color: #0F3E2E;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      #sveltia-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+        gap: 1rem;
+      }
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(15, 62, 46, 0.15);
+        border-top-color: #0F3E2E;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      .loading-brand {
+        font-family: 'Cinzel', serif, Georgia;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0F3E2E;
+        letter-spacing: 0.05em;
+      }
+      .loading-sub {
+        font-size: 0.875rem;
+        color: #6B7280;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Fallback message for environments with JavaScript disabled -->
+    <noscript>
+      <div style="padding: 2rem; text-align: center; color: #0F3E2E;">
+        <h2>JavaScript Required</h2>
+        <p>The Kavitha & Associates Content Management System requires JavaScript to manage firm publications and website content.</p>
+      </div>
+    </noscript>
+
+    <!-- Initial loading state, automatically cleared when Sveltia mounts -->
+    <div id="sveltia-loading">
+      <div class="spinner" aria-hidden="true"></div>
+      <div class="loading-brand">Kavitha & Associates</div>
+      <div class="loading-sub">Loading Content Management Console...</div>
+    </div>
+
+    <!-- =========================================================================
+         PRIMARY CMS ENGINE: Sveltia CMS
+         - Ultra-lightweight (~350 KB minified vs 2.8 MB Decap CMS)
+         - Native W3C File System Access API for local development without proxy
+         - 100% Decap CMS config.yml compatibility
+         - Mobile-first responsive touch interface
+         ========================================================================= -->
+    <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+
+    <!-- =========================================================================
+         PINNED VERSION ALTERNATIVE (For production freeze if preferred):
+         <script src="https://unpkg.com/@sveltia/cms@0.46.2/dist/sveltia-cms.js"></script>
+         or jsDelivr CDN mirror:
+         <script src="https://cdn.jsdelivr.net/npm/@sveltia/cms/dist/sveltia-cms.js"></script>
+         ========================================================================= -->
+
+    <!-- =========================================================================
+         DECAP CMS FALLBACK (DROP-IN REPLACEMENT SNIPPET):
+         To switch back to Decap CMS v3 at any time:
+         1. Comment out the Sveltia CMS <script> tag above.
+         2. Uncomment the Decap CMS <script> tag below.
+         Zero configuration changes are required in config.yml or auth proxy.
+         ========================================================================= -->
+    <!-- <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script> -->
+  </body>
+</html>

@@ -9,8 +9,8 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="bg-brand-warm page-reveal">
       <SEOHead
-        title="Contact CA KavithaVijay SRJ | Tirupati Practice Chambers"
-        description="Schedule a consultation with CA KavithaVijay SRJ. Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries."
+        title="Contact CA Kavitha Vijay | Tirupati Practice Chambers"
+        description="Schedule a consultation with CA Kavitha Vijay (ICAI Mem. 252985). Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries."
         canonicalPath="/contact"
       />
       {/* Header Banner */}
@@ -24,7 +24,7 @@ export const ContactPage: React.FC = () => {
               Contact Kavitha & Associates
             </h1>
             <p className="mt-4 text-base sm:text-lg text-charcoal-muted leading-relaxed">
-              Reach out directly to CA KavithaVijay SRJ and our senior audit team for initial consultations, regulatory assessments, and compliance engagements.
+              Reach out directly to CA Kavitha Vijay and our senior audit team for initial consultations, regulatory assessments, and compliance engagements.
             </p>
           </div>
         </div>

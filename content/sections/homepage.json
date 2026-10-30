@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "headlinePrimary": "Statutory Rigor.",
+    "headlineAccent": "Practical Commercial Counsel.",
+    "leadNarrative": "Founded by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49), an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.",
+    "badgeText": "Independent Chartered Accountancy Practice • Tirupati, AP",
+    "primaryCta": "Request Consultation",
+    "secondaryCta": "Explore Practice Disciplines"
+  },
+  "heroTitle": "Statutory Rigor. Practical Commercial Counsel.",
+  "heroSubtitle": "Independent Chartered Accountancy and Cost Accountancy practice in Tirupati providing audit, taxation, and corporate governance services throughout India.",
+  "badgeText": "Independent Chartered Accountancy Practice • Tirupati, AP",
+  "pillars": [
+    {
+      "title": "Partner-Level Attention",
+      "description": "Direct engagement with CA Kavitha Vijay on complex accounting standards, tax litigation, and statutory reporting matters."
+    },
+    {
+      "title": "Robust Corporate & Practical Expertise",
+      "description": "Deep proficiency spanning statutory audit frameworks, direct tax statutes, GST litigation, and MCA corporate affairs."
+    },
+    {
+      "title": "Ethical & Transparent Professional Standards",
+      "description": "Rigorous adherence to the Institute of Chartered Accountants of India (ICAI) code of ethics, ensuring total confidentiality and independence."
+    },
+    {
+      "title": "Timely Compliance & Reliable Delivery",
+      "description": "Structured compliance calendars and diligent tracking to safeguard businesses from interest, penalties, and procedural lapses."
+    },
+    {
+      "title": "Business-Focused Advisory Approach",
+      "description": "Practical financial intelligence and risk-mitigated strategies tailored to the economic realities of founders and corporations."
+    }
+  ],
+  "stats": {
+    "dualQualification": "FCA + CMA Dual Accredited",
+    "practiceChambers": "Tirupati Principal Chambers",
+    "statutoryFocus": "100% ICAI & ICMAI Code Aligned",
+    "serviceReach": "Southern Economic Corridors & Pan-India Coverage"
+  },
+  "practiceHighlights": [
+    "Independent Statutory Audits under Companies Act, 2013",
+    "Direct Tax Planning, Scrutiny & Appellate Representation",
+    "GST Returns, Reconciliations & Departmental Defense",
+    "MCA / ROC Secretarial Filings & Startup Incorporations",
+    "Real Estate CA Certifications under AP/TN RERA",
+    "Unit Cost Modeling & Internal Financial Controls Assurance"
+  ]
+}

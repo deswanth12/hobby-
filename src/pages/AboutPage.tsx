@@ -9,17 +9,27 @@ import {
   CheckCircle2, 
   MapPin, 
   Phone, 
-  Shield
+  Shield,
+  Briefcase,
+  GraduationCap,
+  Globe2,
+  Trophy,
+  Languages,
+  Sparkles,
+  Building2,
+  FileCheck2
 } from 'lucide-react';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
 
 export const AboutPage: React.FC = () => {
+  const { partner } = FIRM_DATA;
+
   return (
     <div className="bg-brand-warm page-reveal">
       <SEOHead
-        title="About CA KavithaVijay SRJ & Practice Credentials"
-        description="Learn about Kavitha & Associates, led by CA KavithaVijay SRJ (B.Com, FCA, CMA). Professional audit, direct taxation, GST, and corporate governance practice in Tirupati, AP."
+        title="About CA Kavitha Vijay | Big 4 & MNC Auditor | Kavitha & Associates"
+        description="Profile of CA Kavitha Vijay (ICAI 252985, B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit, and independent practice in Tirupati."
         canonicalPath="/about"
       />
 
@@ -31,20 +41,20 @@ export const AboutPage: React.FC = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-pale text-emerald-800 text-xs font-bold uppercase tracking-wider mb-3 border border-emerald-200">
               <ShieldCheck className="w-3.5 h-3.5 text-gold-dark" />
-              <span>Chartered & Cost Accountancy Practice</span>
+              <span>Chartered & Cost Accountancy Practice • ICAI Mem. 252985</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary tracking-tight">
-              About Kavitha & Associates
+              About CA Kavitha Vijay & Practice
             </h1>
             <p className="mt-4 text-base sm:text-lg text-charcoal-muted leading-relaxed">
-              Founded on the bedrock of statutory independence, partner-level accessibility, and comprehensive corporate governance expertise. Operating from Tirupati with regional coverage across southern economic corridors.
+              MNC Auditor with Big 4 Experience of 10+ Years spanning Deloitte, Ford Motor Company, and public practice. Bringing global audit rigor, ₹1,000 Cr IPO experience, and enterprise risk governance directly to emerging businesses and corporations in Tirupati and pan-India.
             </p>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          2. SENIOR PARTNER PROFILE (NSKA Structural Rigor + Carvi Approachability)
+          2. PARTNER PROFILE & INSTITUTIONAL PEDIGREE
           ========================================================================= */}
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,42 +62,75 @@ export const AboutPage: React.FC = () => {
             
             {/* Left: Partner Credentials Card */}
             <div className="lg:col-span-5">
-              <div className="bg-[#0A2F24] rounded-xl p-8 text-white border border-emerald-900 shadow-card sticky top-24">
+              <div className="bg-[#0A2F24] rounded-2xl p-7 sm:p-8 text-white border border-emerald-900 shadow-xl sticky top-24">
                 <div className="flex items-center justify-between pb-6 border-b border-emerald-800/80 mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold">
+                  <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-2xl font-bold text-gold shadow-inner">
                     CA
                   </div>
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-gold bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800">
-                    Senior Partner
-                  </span>
+                  <div className="text-right">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800 block">
+                      ICAI Mem. {partner.membershipNumber}
+                    </span>
+                    <span className="text-[10px] text-emerald-300 mt-1 block">AIR 49 CMA Inter</span>
+                  </div>
                 </div>
 
                 <span className="text-xs uppercase tracking-wider text-emerald-300 font-semibold block">
-                  {FIRM_DATA.partner.designation}
+                  {partner.designation}
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">
-                  {FIRM_DATA.partner.name}
+                  {partner.name}
                 </h2>
-                <div className="mt-2 inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#0F3E2E] border border-gold/30">
-                  <span className="text-xs font-bold text-gold">{FIRM_DATA.partner.qualifications}</span>
-                  <span className="text-[11px] text-emerald-200">Dual Credentials</span>
+                <p className="text-xs text-gold-light mt-1 font-medium">
+                  {partner.tagline}
+                </p>
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#0F3E2E] border border-gold/30 text-xs font-bold text-gold">
+                    <Award className="w-3.5 h-3.5" />
+                    <span>{partner.qualifications}</span>
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-emerald-950/70 border border-emerald-800 text-[11px] text-emerald-200">
+                    <Globe2 className="w-3 h-3 text-gold" />
+                    <span>International Exposure</span>
+                  </span>
+                </div>
+
+                {/* Specialization / Mentorship Badge */}
+                <div className="mt-5 p-3 rounded-lg bg-emerald-950/60 border border-emerald-800/70 text-xs text-emerald-100">
+                  <div className="flex items-center gap-2 text-gold font-semibold text-[11px] uppercase tracking-wider mb-1">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Focus Domains</span>
+                  </div>
+                  <p className="leading-relaxed text-[11px] text-emerald-200">
+                    Audit & Assurance • Enterprise Risk Management • Career Mentorship & Financial Literacy for B2C and B2B
+                  </p>
                 </div>
 
                 {/* Statutory Memberships */}
-                <div className="mt-6 pt-6 border-t border-emerald-800/80 space-y-3 text-xs text-emerald-100">
+                <div className="mt-5 pt-5 border-t border-emerald-800/80 space-y-2.5 text-xs text-emerald-100">
                   <span className="text-[10px] font-bold uppercase tracking-wider text-gold block">
-                    Statutory Body Memberships
+                    Statutory Qualifications
                   </span>
-                  {FIRM_DATA.partner.memberships.map((membership) => (
-                    <div key={membership} className="flex items-start gap-2.5">
-                      <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{membership}</span>
+                  {partner.education.map((edu) => (
+                    <div key={edu.degree} className="flex items-start gap-2.5">
+                      <GraduationCap className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                      <div>
+                        <div className="font-semibold text-white">{edu.degree} ({edu.year})</div>
+                        <div className="text-[11px] text-emerald-300">
+                          {edu.institution} {edu.distinction && `• ${edu.distinction}`}
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* Location & Practice Desk */}
-                <div className="mt-6 pt-5 border-t border-emerald-800/80 text-xs text-emerald-200 space-y-2">
+                {/* Languages & Traits */}
+                <div className="mt-5 pt-5 border-t border-emerald-800/80 text-xs text-emerald-200 space-y-2">
+                  <div className="flex items-center gap-2">
+                    <Languages className="w-4 h-4 text-gold shrink-0" />
+                    <span><strong>Languages:</strong> {partner.languages.join(' • ')}</span>
+                  </div>
                   <div className="flex items-start gap-2">
                     <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
                     <span>Chambers: Bairagi Patteda, Tirupati – 517501</span>
@@ -100,47 +143,144 @@ export const AboutPage: React.FC = () => {
                   </div>
                 </div>
 
+                {/* Action CTA */}
                 <div className="mt-6 pt-4 border-t border-emerald-800/60">
                   <a
                     href={FIRM_DATA.contact.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-colors btn-tactile"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-semibold transition-colors btn-tactile shadow-md"
                   >
-                    <span>Connect on WhatsApp</span>
+                    <span>Consult CA Kavitha Vijay on WhatsApp</span>
                     <ArrowRight className="w-3.5 h-3.5 text-gold" />
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Right: Detailed Firm Background & Competencies */}
-            <div className="lg:col-span-7 space-y-8">
+            {/* Right: Detailed Journey, Honors, Experience & Competencies */}
+            <div className="lg:col-span-7 space-y-10">
+              
+              {/* Professional Summary */}
               <div>
                 <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
-                  Firm Profile & Technical Orientation
+                  Professional Profile & Leadership
                 </span>
                 <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-brand-primary leading-tight">
-                  Bridging Statutory Compliance with Practical Fiscal Strategy
+                  Global Audit Rigor Combined with Independent Practice
                 </h2>
                 <div className="mt-4 space-y-4 text-sm sm:text-base text-charcoal-muted leading-relaxed">
                   <p>
-                    <strong className="text-brand-primary font-semibold">Kavitha & Associates</strong> is an independent Chartered Accountancy practice founded by <strong className="text-brand-primary font-semibold">CA KavithaVijay SRJ</strong>. We provide end-to-end audit, direct taxation, indirect taxation (GST), corporate secretarial governance, and project advisory services to corporate bodies, MSMEs, entrepreneurs, and institutions across India.
+                    {partner.summary}
                   </p>
                   <p>
-                    Rooted in the commercial heart of Tirupati, Andhra Pradesh, the firm distinguishes itself through <strong className="text-brand-primary font-semibold">partner-supervised execution</strong>. Unlike larger multi-tier consultancies where client files are delegated to junior staff, every critical engagement at Kavitha & Associates receives the direct analytical oversight of a dual-qualified professional.
+                    Operating from Tirupati, Andhra Pradesh, <strong className="text-brand-primary font-semibold">Kavitha & Associates</strong> offers companies and growing ventures direct access to senior Big 4-trained audit and advisory expertise. Every audit file, tax defense memo, and internal controls engagement is directly led and signed by <strong className="text-brand-primary font-semibold">CA Kavitha Vijay</strong>.
                   </p>
                 </div>
               </div>
 
+              {/* Honors & Key Achievements */}
+              <div className="bg-brand-surface rounded-2xl p-6 sm:p-7 border border-border shadow-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <Trophy className="w-5 h-5 text-gold-dark" />
+                  <h3 className="font-serif text-xl font-bold text-brand-primary">
+                    Key Achievements & Professional Honors
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {partner.awards.map((award) => (
+                    <div key={award.title} className="p-4 rounded-xl bg-white border border-border/80 shadow-subtle flex flex-col justify-between">
+                      <div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-1">
+                          {award.category}
+                        </span>
+                        <h4 className="font-serif text-base font-bold text-brand-primary">
+                          {award.title}
+                        </h4>
+                      </div>
+                      <p className="text-xs text-charcoal-muted mt-2 pt-2 border-t border-border/60">
+                        {award.organization}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Professional Experience & Career Journey */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-2">
+                  <Briefcase className="w-5 h-5 text-emerald-800" />
+                  <h3 className="font-serif text-2xl font-bold text-brand-primary">
+                    Institutional Career Experience
+                  </h3>
+                </div>
+
+                <div className="space-y-5">
+                  {partner.careerJourney.map((job) => (
+                    <div key={job.organization} className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-card">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-border/70 mb-4 gap-1">
+                        <div>
+                          <h4 className="font-serif text-lg sm:text-xl font-bold text-brand-primary">
+                            {job.role}
+                          </h4>
+                          <span className="text-sm font-semibold text-emerald-800 flex items-center gap-1.5 mt-0.5">
+                            <Building2 className="w-4 h-4 text-gold-dark shrink-0" />
+                            {job.organization}
+                          </span>
+                        </div>
+                        <div className="text-left sm:text-right">
+                          <span className="text-xs font-bold text-charcoal-muted bg-brand-surface px-2.5 py-1 rounded border border-border inline-block">
+                            {job.period}
+                          </span>
+                          <span className="text-[11px] text-charcoal-muted block mt-1">
+                            {job.location}
+                          </span>
+                        </div>
+                      </div>
+
+                      <ul className="space-y-2 text-xs sm:text-sm text-charcoal-muted">
+                        {job.highlights.map((h, i) => (
+                          <li key={i} className="flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                            <span className="leading-relaxed">{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Key Engagements Pill Cloud if present */}
+                      {job.keyEngagements && (
+                        <div className="mt-5 pt-4 border-t border-border/70">
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-gold-dark block mb-2.5">
+                            Key Audit & International Engagements
+                          </span>
+                          <div className="flex flex-wrap gap-1.5">
+                            {job.keyEngagements.map((eng) => (
+                              <span 
+                                key={eng} 
+                                className="px-2.5 py-1 rounded-md bg-brand-surface text-brand-primary text-[11px] font-medium border border-border/80"
+                              >
+                                {eng}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* Core Competencies Grid */}
-              <div className="bg-white rounded-xl p-6 sm:p-7 border border-border shadow-card">
-                <span className="text-xs font-bold uppercase tracking-wider text-gold-dark block mb-4">
-                  Partner Core Competencies
-                </span>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  {FIRM_DATA.partner.coreCompetencies.map((comp) => (
-                    <div key={comp} className="flex items-start gap-2.5 p-2 rounded-lg bg-brand-surface/60 border border-border/50">
+              <div className="bg-white rounded-2xl p-6 sm:p-7 border border-border shadow-card">
+                <div className="flex items-center gap-2 mb-4">
+                  <FileCheck2 className="w-5 h-5 text-emerald-800" />
+                  <h3 className="font-serif text-xl font-bold text-brand-primary">
+                    Core Technical Competencies
+                  </h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {partner.coreCompetencies.map((comp) => (
+                    <div key={comp} className="flex items-start gap-2.5 p-2.5 rounded-lg bg-brand-surface/70 border border-border/60">
                       <span className="w-2 h-2 rounded-full bg-emerald-700 shrink-0 mt-1.5" />
                       <span className="text-xs font-semibold text-brand-primary leading-snug">
                         {comp}
@@ -150,20 +290,37 @@ export const AboutPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Dual Qualification Strategic Advantage */}
-              <div className="bg-brand-pale rounded-xl p-6 sm:p-7 border border-emerald-200/90 shadow-subtle">
+              {/* Personal Traits Grid */}
+              <div className="bg-brand-surface rounded-xl p-5 border border-border">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-gold-dark block mb-3">
+                  Professional Traits & Working Style
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {partner.traits.map((trait) => (
+                    <span 
+                      key={trait}
+                      className="px-3 py-1 rounded-full bg-white text-brand-primary text-xs font-semibold border border-border shadow-subtle"
+                    >
+                      {trait}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dual Qualification Strategic Advantage Matrix */}
+              <div className="bg-brand-pale rounded-2xl p-6 sm:p-7 border border-emerald-200/90 shadow-subtle">
                 <div className="flex items-center gap-2.5 mb-2.5">
                   <Award className="w-5 h-5 text-emerald-800 shrink-0" />
                   <h3 className="font-serif text-xl font-bold text-brand-primary">
-                    The Dual FCA + CMA Strategic Advantage
+                    The Dual CA + CMA Strategic Advantage
                   </h3>
                 </div>
                 <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed mb-5">
-                  Holding qualifications in both Chartered Accountancy (FCA) and Cost & Management Accountancy (CMA) provides a distinct dual capability: external statutory assurance and tax defense coupled with internal financial modeling, unit-cost analysis, and working capital optimization.
+                  Holding qualifications in both Chartered Accountancy (ICAI Mem. 252985) and Cost & Management Accountancy (AIR 49) provides a rare dual capability: external statutory assurance and direct tax defense coupled with internal financial controls (ICFR), unit-cost modeling, and operational risk mitigation.
                 </p>
 
                 {/* Comparison Matrix Table */}
-                <div className="overflow-x-auto rounded-lg border border-emerald-200/80 bg-white">
+                <div className="overflow-x-auto rounded-lg border border-emerald-200/80 bg-white shadow-sm">
                   <table className="w-full text-left text-xs">
                     <thead>
                       <tr className="bg-brand-surface border-b border-emerald-200/80">
@@ -174,7 +331,7 @@ export const AboutPage: React.FC = () => {
                           Traditional Tax-Only Filing
                         </th>
                         <th className="py-2.5 px-3.5 font-bold uppercase tracking-wider text-emerald-800 text-[10px] bg-emerald-50/60">
-                          Kavitha & Associates (FCA + CMA)
+                          Kavitha & Associates (CA + CMA)
                         </th>
                       </tr>
                     </thead>
@@ -182,39 +339,26 @@ export const AboutPage: React.FC = () => {
                       <tr>
                         <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Assurance Rigor</td>
                         <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Routine compilation</td>
-                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Evidence-based ICAI SAs & IFC testing</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Big 4 & ICAI SAs methodology with ICFR testing</td>
                       </tr>
                       <tr>
                         <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Cost & Working Capital</td>
                         <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Not addressed</td>
-                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Unit-cost modeling & margin leakage review (CMA)</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Unit-cost modeling & margin leakage review (CMA AIR 49)</td>
                       </tr>
                       <tr>
                         <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Tax & Scrutiny</td>
                         <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Reactive post-facto filing</td>
-                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Proactive advance tax & ITC reconciliation</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Proactive advance tax, transfer pricing & ITC reconciliation</td>
                       </tr>
                       <tr>
                         <td className="py-2.5 px-3.5 font-semibold text-brand-primary text-[11px]">Partner Supervision</td>
                         <td className="py-2.5 px-3.5 text-charcoal-muted text-[11px]">Junior staff delegation</td>
-                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Direct partner review by CA KavithaVijay SRJ</td>
+                        <td className="py-2.5 px-3.5 font-medium text-emerald-950 bg-emerald-50/30 text-[11px]">Direct partner leadership by CA Kavitha Vijay</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-              </div>
-
-              {/* Trust Creed */}
-              <div className="p-4 rounded-xl bg-white border border-border flex items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <ShieldCheck className="w-6 h-6 text-emerald-800 shrink-0" />
-                  <span className="text-xs font-bold text-brand-primary uppercase tracking-wider">
-                    Trust • Expertise • Your Growth Partner
-                  </span>
-                </div>
-                <span className="text-xs text-charcoal-muted hidden sm:inline">
-                  Client Business Card Creed
-                </span>
               </div>
 
             </div>
@@ -224,7 +368,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          3. PRACTICE PHILOSOPHY & GOVERNANCE (NSKA Model)
+          3. PRACTICE PHILOSOPHY & GOVERNANCE
           ========================================================================= */}
       <section className="py-16 sm:py-20 bg-brand-surface border-y border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -316,7 +460,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          5. APPROACHABLE CONSULTATION CTA (Carvi Desk)
+          5. APPROACHABLE CONSULTATION CTA
           ========================================================================= */}
       <section className="py-16 text-center bg-brand-surface border-t border-border">
         <div className="max-w-3xl mx-auto px-4">
@@ -327,7 +471,7 @@ export const AboutPage: React.FC = () => {
             Schedule a Direct Professional Consultation
           </h2>
           <p className="mt-3 text-sm text-charcoal-muted leading-relaxed">
-            Visit our chambers at Bairagi Patteda, Tirupati, or schedule a remote video/telephonic review of your compliance requirements.
+            Visit our chambers at Bairagi Patteda, Tirupati, or schedule a remote video/telephonic review of your compliance requirements with CA Kavitha Vijay.
           </p>
           <div className="mt-8 flex justify-center items-center gap-4 flex-wrap">
             <Link

@@ -11,7 +11,7 @@ export const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="group flex items-center gap-2.5 bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-3 rounded-full shadow-card hover:shadow-card-hover border border-gold/40 transition-all btn-tactile hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-        aria-label="Chat directly with CA KavithaVijay SRJ on WhatsApp"
+        aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
         <span className="relative flex h-2.5 w-2.5 rounded-full bg-emerald-400" aria-hidden="true"></span>
         <MessageSquare className="w-5 h-5 text-gold-light" aria-hidden="true" />

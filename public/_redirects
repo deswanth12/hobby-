@@ -1,2 +1,11 @@
-# SPA redirect rule for Netlify and Cloudflare Pages
-/*    /index.html   200
+# ==============================================================================
+# Cloudflare Pages SPA Routing Rules
+# Evaluation Order: Top to bottom. First matching rule wins.
+# ==============================================================================
+
+# 1. Sveltia CMS Admin Console SPA Fallback
+/admin            /admin/index.html    200
+/admin/*          /admin/index.html    200
+
+# 2. Public Website SPA Fallback (React Router DOM)
+/*                /index.html          200
