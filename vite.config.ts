@@ -14,7 +14,13 @@ export default defineConfig({
       configureServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.startsWith('/api/')) {
-            handleApiRequest(req, res);
+            try {
+              delete require.cache[require.resolve('./server/apiRouter.cjs')];
+              const { handleApiRequest: freshHandler } = require('./server/apiRouter.cjs');
+              freshHandler(req, res);
+            } catch {
+              handleApiRequest(req, res);
+            }
           } else {
             next();
           }
@@ -23,7 +29,13 @@ export default defineConfig({
       configurePreviewServer(server) {
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.startsWith('/api/')) {
-            handleApiRequest(req, res);
+            try {
+              delete require.cache[require.resolve('./server/apiRouter.cjs')];
+              const { handleApiRequest: freshHandler } = require('./server/apiRouter.cjs');
+              freshHandler(req, res);
+            } catch {
+              handleApiRequest(req, res);
+            }
           } else {
             next();
           }
