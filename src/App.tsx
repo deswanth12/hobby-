@@ -22,13 +22,25 @@ import { BlogPage } from './pages/BlogPage';
 import { BlogArticlePage } from './pages/BlogArticlePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-// Admin Pages & Protected Route
+// Admin Pages (Code-split for optimized initial page load)
 import { AdminProtectedRoute } from './components/admin/AdminProtectedRoute';
-import { AdminLoginPage } from './pages/admin/AdminLoginPage';
-import { AdminOverviewPage } from './pages/admin/AdminOverviewPage';
-import { AdminEnquiriesPage } from './pages/admin/AdminEnquiriesPage';
-import { AdminContentPage } from './pages/admin/AdminContentPage';
-import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
+
+const AdminLoginPage = React.lazy(() => import('./pages/admin/AdminLoginPage').then(m => ({ default: m.AdminLoginPage })));
+const AdminOverviewPage = React.lazy(() => import('./pages/admin/AdminOverviewPage').then(m => ({ default: m.AdminOverviewPage })));
+const AdminEnquiriesPage = React.lazy(() => import('./pages/admin/AdminEnquiriesPage').then(m => ({ default: m.AdminEnquiriesPage })));
+const AdminContentPage = React.lazy(() => import('./pages/admin/AdminContentPage').then(m => ({ default: m.AdminContentPage })));
+const AdminSettingsPage = React.lazy(() => import('./pages/admin/AdminSettingsPage').then(m => ({ default: m.AdminSettingsPage })));
+
+const AdminFallback: React.FC = () => (
+  <div className="min-h-screen bg-brand-deep flex items-center justify-center p-4">
+    <div className="flex flex-col items-center gap-3 text-brand-gold">
+      <div className="w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full animate-spin" />
+      <span className="font-editorial-meta text-xs tracking-wider uppercase text-emerald-200">
+        Loading Practice Console...
+      </span>
+    </div>
+  </div>
+);
 
 /**
  * Public Layout Wrapper:
@@ -73,13 +85,22 @@ export const App: React.FC = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
 
-            {/* Admin Authentication & Dedicated Management Console */}
-            <Route path="/admin/login" element={<AdminLoginPage />} />
+            {/* Admin Authentication & Dedicated Management Console (Code-Split) */}
+            <Route
+              path="/admin/login"
+              element={
+                <React.Suspense fallback={<AdminFallback />}>
+                  <AdminLoginPage />
+                </React.Suspense>
+              }
+            />
             <Route
               path="/admin"
               element={
                 <AdminProtectedRoute>
-                  <AdminOverviewPage />
+                  <React.Suspense fallback={<AdminFallback />}>
+                    <AdminOverviewPage />
+                  </React.Suspense>
                 </AdminProtectedRoute>
               }
             />
@@ -87,7 +108,9 @@ export const App: React.FC = () => {
               path="/admin/enquiries"
               element={
                 <AdminProtectedRoute>
-                  <AdminEnquiriesPage />
+                  <React.Suspense fallback={<AdminFallback />}>
+                    <AdminEnquiriesPage />
+                  </React.Suspense>
                 </AdminProtectedRoute>
               }
             />
@@ -95,7 +118,9 @@ export const App: React.FC = () => {
               path="/admin/content"
               element={
                 <AdminProtectedRoute>
-                  <AdminContentPage />
+                  <React.Suspense fallback={<AdminFallback />}>
+                    <AdminContentPage />
+                  </React.Suspense>
                 </AdminProtectedRoute>
               }
             />
@@ -103,7 +128,9 @@ export const App: React.FC = () => {
               path="/admin/settings"
               element={
                 <AdminProtectedRoute>
-                  <AdminSettingsPage />
+                  <React.Suspense fallback={<AdminFallback />}>
+                    <AdminSettingsPage />
+                  </React.Suspense>
                 </AdminProtectedRoute>
               }
             />

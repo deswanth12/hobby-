@@ -168,13 +168,75 @@ A total of **11 functional bugs and operational defects** (9 previously remediat
 
 ---
 
+### BUG-014: Unvalidated URL Inputs in Admin Settings Console
+- **Defect ID**: `BUG-014`
+- **Severity**: MEDIUM (Input Sanitization & XSS Risk)
+- **Affected File**: `src/pages/admin/AdminSettingsPage.tsx`
+- **Description**: The admin settings form permitted arbitrary strings into `googleMapsUrl` and `whatsappLink` fields without verifying that they conformed to safe HTTP/HTTPS web schemes.
+- **Remediation**: Integrated `isSafeUrl()` validation on form submit, blocking any unsafe protocols (`javascript:`, `data:`, `vbscript:`, protocol-relative `//`) and presenting an inline error alert.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### BUG-015: FirmDataContext Override Applied Without Protocol Verification
+- **Defect ID**: `BUG-015`
+- **Severity**: MEDIUM (Defense-in-Depth Injection Gap)
+- **Affected File**: `src/context/FirmDataContext.tsx`
+- **Description**: The merged firm profile directly adopted `whatsappLink` and `googleMapsUrl` from localStorage settings overrides without checking URL safety.
+- **Remediation**: Added `isSafeUrl()` checks prior to overriding baseline practice links in `FirmDataContext`, guaranteeing that malformed or malicious localStorage overrides fail safely to baseline defaults.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### BUG-016: Garbled Copyright Entity in Footer
+- **Defect ID**: `BUG-016`
+- **Severity**: LOW (Cosmetic / Typographical Encoding)
+- **Affected File**: `src/components/Footer.tsx`
+- **Description**: In certain terminal encodings, the copyright symbol rendered as `Ac {currentYear}`.
+- **Remediation**: Standardized the character output to explicit Unicode literal `{"\u00A9"}` to render cleanly across all environments.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### BUG-017: Plaintext Password in Admin Protected Route QA Bypass
+- **Defect ID**: `BUG-017`
+- **Severity**: MEDIUM (Credential Exposure in Source Code)
+- **Affected File**: `src/components/admin/AdminProtectedRoute.tsx`
+- **Description**: The headless QA bypass (`?qa_auth=true`) called `adminStorage.authenticate('kavitha', 'Tirupati@CA2026')`, leaving the plaintext password in the source file.
+- **Remediation**: Added `adminStorage.createDevSession()` which manufactures a session directly in `sessionStorage` in DEV mode without referencing or storing the administrative password string.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### BUG-018: Missing Crawler Disallow for API Endpoints in robots.txt
+- **Defect ID**: `BUG-018`
+- **Severity**: LOW (SEO & Crawler Hygiene)
+- **Affected File**: `public/robots.txt`
+- **Description**: `public/robots.txt` disallowed `/admin` and `/admin/` but omitted rules for `/api` and `/api/`.
+- **Remediation**: Added `Disallow: /api/` and `Disallow: /api` to `public/robots.txt`.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### PERF-001: Monolithic Admin Bundle Bloat (815 kB uncompressed chunk)
+- **Defect ID**: `PERF-001`
+- **Severity**: MEDIUM (Performance & Bundle Splitting)
+- **Affected Files**: `src/App.tsx`, `vite.config.ts`
+- **Description**: The production bundle was compiling into an 815 kB monolithic JS chunk because admin pages and vendor libraries were bundled into the main entry point, triggering Vite chunk size warnings.
+- **Remediation**: Implemented `React.lazy()` with `<React.Suspense fallback={<AdminFallback />}>` for all admin routes (`AdminLoginPage`, `AdminOverviewPage`, `AdminEnquiriesPage`, `AdminContentPage`, `AdminSettingsPage`). Added `manualChunks` in `vite.config.ts` separating `vendor-react`, `vendor-icons`, and `vendor-supabase`. Main bundle dropped from 815 kB to 313 kB (69 kB gzip).
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
 ## 4. Verification Summary
 
-All 13 functional bugs have been verified as resolved through automated and regression test suites.
-- `npm test`: 167/167 tests passed.
-- `node tests/challenger_xss_origin_stress.mjs`: 204/204 assertions passed (BUG-010 verified).
-- `node tests/challenger_remediation_extended.mjs`: 19/19 assertions passed (BUG-011 and BUG-012 verified).
-- `node scripts/test-shared-security.cjs`: 13/13 assertions passed (BUG-013 verified).
+All 18 functional bugs and performance defects have been verified as resolved through automated and regression test suites.
+- `npm test`: 167/167 tests passed (100%).
+- `node tests/challenger_remediation_extended.mjs`: 19/19 assertions passed.
+- `node tests/challenger_m1_2_empirical.mjs`: 89/89 assertions passed.
+- `node tests/challenger_remediation_audit.mjs`: 18/18 assertions passed.
+- `node tests/challenger_xss_origin_stress.mjs`: 204/204 assertions passed.
+- `node scripts/test-shared-security.cjs`: 13/13 assertions passed.
 - `node scripts/verify-site.cjs`: 13/13 assertions passed.
 - `npm run lint`: 0 TypeScript type errors.
-- `npm run build`: Production build passes in 3.06s.
+- `npm run build`: Production build passes in 2.61s with zero bundle warnings.

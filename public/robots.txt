@@ -5,6 +5,8 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /admin
+Disallow: /api/
+Disallow: /api
 
 # Sitemaps
 Sitemap: https://kavithaassociates.com/sitemap.xml

@@ -761,6 +761,26 @@ export const adminStorage = {
     }
   },
 
+  createDevSession(): AdminSession | null {
+    if (!import.meta.env.DEV) return null;
+    const session: AdminSession = {
+      token: `sess_dev_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
+      user: {
+        username: 'kavitha',
+        displayName: 'CA Kavitha Vijay',
+        role: 'Managing Partner',
+        lastLogin: new Date().toISOString()
+      },
+      expiresAt: Date.now() + 60 * 60 * 1000
+    };
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+      return session;
+    } catch {
+      return null;
+    }
+  },
+
   async requestPasswordReset(email: string): Promise<{ success: boolean; message: string; error?: string }> {
     const cleanEmail = email.trim().toLowerCase();
     if (!cleanEmail || !cleanEmail.includes('@')) {

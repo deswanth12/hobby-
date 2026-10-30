@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { FIRM_DATA, FirmProfile } from '../data/firmData';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../services/adminStorage';
+import { isSafeUrl } from '../lib/markdown';
 
 interface FirmDataContextType {
   data: FirmProfile;
@@ -41,10 +42,10 @@ export const FirmDataProvider: React.FC<{ children: ReactNode }> = ({ children }
     if (settingsOverrides.primaryLocation) {
       base.contact.primaryLocation = settingsOverrides.primaryLocation;
     }
-    if (settingsOverrides.googleMapsUrl) {
+    if (settingsOverrides.googleMapsUrl && isSafeUrl(settingsOverrides.googleMapsUrl)) {
       base.contact.googleMapsUrl = settingsOverrides.googleMapsUrl;
     }
-    if (settingsOverrides.whatsappLink) {
+    if (settingsOverrides.whatsappLink && isSafeUrl(settingsOverrides.whatsappLink)) {
       base.contact.whatsappLink = settingsOverrides.whatsappLink;
     }
 

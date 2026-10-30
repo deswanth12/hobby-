@@ -204,7 +204,7 @@ export const Footer: React.FC = () => {
         {/* Copyright & Statutory Colophon Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/70">
           <div>
-            © {currentYear} Kavitha & Associates. All rights reserved.
+            {"\u00A9"} {currentYear} Kavitha & Associates. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
             <span>Chartered Accountants & Cost Accountants</span>

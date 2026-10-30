@@ -11,11 +11,13 @@ import {
   Database, 
   Sparkles,
   Clock,
-  Cloud
+  Cloud,
+  AlertCircle
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage } from '../../services/adminStorage';
 import { useFirmData } from '../../context/FirmDataContext';
+import { isSafeUrl } from '../../lib/markdown';
 
 export const AdminSettingsPage: React.FC = () => {
   const { data: firmData, isModified } = useFirmData();
@@ -31,6 +33,7 @@ export const AdminSettingsPage: React.FC = () => {
   const [openingHours, setOpeningHours] = useState('Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only');
 
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
   const isCloud = adminStorage.isCloudConnected();
 
   useEffect(() => {
@@ -43,14 +46,28 @@ export const AdminSettingsPage: React.FC = () => {
 
   const handleSaveSettings = (e: React.FormEvent) => {
     e.preventDefault();
+    setValidationError(null);
+
+    const cleanMapsUrl = googleMapsUrl.trim();
+    const cleanWhatsapp = whatsappLink.trim();
+
+    if (cleanMapsUrl && !isSafeUrl(cleanMapsUrl)) {
+      setValidationError('Invalid Google Maps URL. Only safe web protocols (https://) are permitted.');
+      return;
+    }
+
+    if (cleanWhatsapp && !isSafeUrl(cleanWhatsapp)) {
+      setValidationError('Invalid WhatsApp Link. Only safe web protocols (https://) are permitted.');
+      return;
+    }
 
     const ok = adminStorage.saveSettingsOverrides({
       primaryPhone: primaryPhone.trim(),
       secondaryPhone: secondaryPhone.trim(),
       email: email.trim(),
       primaryLocation: primaryLocation.trim(),
-      googleMapsUrl: googleMapsUrl.trim(),
-      whatsappLink: whatsappLink.trim(),
+      googleMapsUrl: cleanMapsUrl,
+      whatsappLink: cleanWhatsapp,
       openingHours: openingHours.trim(),
     });
 
@@ -62,6 +79,7 @@ export const AdminSettingsPage: React.FC = () => {
 
   const handleResetSettings = () => {
     if (window.confirm('Reset all practice contact information to original baseline?')) {
+      setValidationError(null);
       adminStorage.resetSettingsOverrides();
       setSaveSuccess(true);
       setTimeout(() => setSaveSuccess(false), 3500);
@@ -101,6 +119,14 @@ export const AdminSettingsPage: React.FC = () => {
             >
               Verify Public Contact Page <ExternalLink className="w-3 h-3 ml-1" />
             </a>
+          </div>
+        )}
+
+        {/* Validation Error Notification */}
+        {validationError && (
+          <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-xs font-bold text-red-800 flex items-center gap-2 shadow-sm animate-in fade-in">
+            <AlertCircle className="w-4 h-4 text-red-600 shrink-0" />
+            <span>{validationError}</span>
           </div>
         )}
 

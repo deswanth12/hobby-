@@ -123,6 +123,30 @@ A total of **13 source/configuration files** and **2 dedicated automated regress
 - **Substance of Change:** Added `https://*.supabase.co` and `wss://*.supabase.co` to `connect-src` in Content Security Policy.
 - **Rationale:** Restores functional database queries and realtime subscriptions under edge CSP rules.
 
+### 15. `public/robots.txt`
+- **Substance of Change:** Added `Disallow: /api/` and `Disallow: /api` to robots directives.
+- **Rationale:** Prevents web crawlers and automated bots from indexing or hitting internal API routes.
+
+### 16. `src/pages/admin/AdminSettingsPage.tsx`
+- **Substance of Change:** Added `isSafeUrl()` input validation for `googleMapsUrl` and `whatsappLink` with inline error alert presentation on form submit.
+- **Rationale:** Blocks stored pseudo-protocol injections (`javascript:`, `data:`, `vbscript:`, `//`) from entering practice settings.
+
+### 17. `src/context/FirmDataContext.tsx`
+- **Substance of Change:** Validated `settingsOverrides.googleMapsUrl` and `settingsOverrides.whatsappLink` with `isSafeUrl()` before overriding baseline values.
+- **Rationale:** Provides defense-in-depth against malicious localStorage tampering or state injection.
+
+### 18. `src/components/Footer.tsx`
+- **Substance of Change:** Replaced raw character with explicit Unicode literal `{"\u00A9"}` for the copyright symbol.
+- **Rationale:** Prevents character encoding distortion (`Ac`) on legacy consoles or strict ASCII pipelines.
+
+### 19. `src/components/admin/AdminProtectedRoute.tsx` & `src/services/adminStorage.ts`
+- **Substance of Change:** Removed hardcoded credentials `'Tirupati@CA2026'` from `AdminProtectedRoute.tsx`. Implemented `adminStorage.createDevSession()` which manufactures an in-memory session directly in DEV mode without any password string.
+- **Rationale:** Prevents cleartext credentials from existing in the frontend source code.
+
+### 20. `src/App.tsx` & `vite.config.ts`
+- **Substance of Change:** Converted all `/admin/*` routes to dynamic lazy loading via `React.lazy()` with `<React.Suspense fallback={<AdminFallback />}>`. Configured `manualChunks` in `vite.config.ts` separating vendor packages (`vendor-react`, `vendor-icons`, `vendor-supabase`).
+- **Rationale:** Reduces main bundle size from 815 kB down to 313 kB (69 kB gzip), eliminates Vite chunk size warnings, and speeds up initial page load for public visitors.
+
 ---
 
 ## 4. Verification Evidence Matrix

@@ -8,7 +8,7 @@ export const AdminProtectedRoute: React.FC<{ children: React.ReactElement }> = (
 
   // Safe Dev QA session initialization for headless capture
   if (import.meta.env.DEV && searchParams.get('qa_auth') === 'true' && !adminStorage.isAuthenticated()) {
-    adminStorage.authenticate('kavitha', 'Tirupati@CA2026');
+    adminStorage.createDevSession();
   }
 
   const authenticated = adminStorage.isAuthenticated();

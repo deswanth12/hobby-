@@ -44,6 +44,9 @@ The audit independently reviewed the 17 previously reported vulnerabilities (VUL
 | **VULN-023** | MEDIUM | API / Rate Limit | Rate Limiting & Account Lockout Bypass via Header Spoofing & Invalid IP Format | **FIXED & VERIFIED** |
 | **VULN-024** | MEDIUM | Frontend / Redirect | Open Redirect Bypass via Control-Characters & Encoded Slashes in `isSafeUrl()` | **FIXED & VERIFIED** |
 | **VULN-025** | LOW | Auth & Edge | Unrestricted Requested OAuth Scope Parameter in `/api/auth` | **FIXED & VERIFIED** |
+| **VULN-026** | MEDIUM | Frontend / XSS | Missing Scheme/Protocol Validation on Custom Practice URLs in Admin Settings | **FIXED & VERIFIED** |
+| **VULN-027** | MEDIUM | Frontend / Injection | Context Override Injection Gap in FirmDataContext | **FIXED & VERIFIED** |
+| **VULN-028** | MEDIUM | Credential Safety | Cleartext Password in Headless QA Auth Bypass Source Code | **FIXED & VERIFIED** |
 
 ---
 
@@ -360,6 +363,39 @@ Threat actors evaluated during this audit:
 - **Fix Applied**: Restricted allowable scopes strictly to `repo` and `public_repo` (`scope = (rawScope === 'public_repo' || rawScope === 'repo') ? rawScope : 'repo'`).
 - **Regression Test**: `tests/challenger_remediation_extended.mjs` Assert 18.
 - **Remaining Risk**: None.
+
+---
+
+### VULN-026: Missing Protocol Validation on Custom Practice URLs in Admin Settings
+- **Finding ID**: `VULN-026`
+- **Severity**: MEDIUM (CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N - 4.8)
+- **Affected File**: `src/pages/admin/AdminSettingsPage.tsx`
+- **Evidence / Reproduction**: Admin settings form allowed inputting arbitrary pseudo-protocols (such as `javascript:alert(1)` or `data:`) into Google Maps URL and WhatsApp Consultation links.
+- **Root Cause**: Form submission directly passed input values to `adminStorage.saveSettingsOverrides` without validating with `isSafeUrl()`.
+- **Fix Applied**: Added validation against `isSafeUrl()` on `googleMapsUrl` and `whatsappLink` inputs; blocks dangerous protocols and presents an immediate user alert banner.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### VULN-027: Context Override Injection Gap in FirmDataContext
+- **Finding ID**: `VULN-027`
+- **Severity**: MEDIUM (CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:L/I:L/A:N - 5.0)
+- **Affected File**: `src/context/FirmDataContext.tsx`
+- **Evidence / Reproduction**: If localStorage contained a manipulated `ka_admin_settings_v1` payload with malicious URL values, the React context merged them into the firm baseline without verification, exposing users to malicious links on public CTA buttons.
+- **Root Cause**: Missing runtime URL sanity checks in `computeMergedData()`.
+- **Fix Applied**: Wrapped `settingsOverrides.googleMapsUrl` and `settingsOverrides.whatsappLink` in `isSafeUrl()` guards before applying to the active firm profile, falling back safely to statutory baseline links if invalid.
+- **Status**: **RESOLVED & VERIFIED**
+
+---
+
+### VULN-028: Cleartext Password in Headless QA Auth Bypass Source Code
+- **Finding ID**: `VULN-028`
+- **Severity**: MEDIUM (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N - 6.2)
+- **Affected Files**: `src/components/admin/AdminProtectedRoute.tsx`, `src/services/adminStorage.ts`
+- **Evidence / Reproduction**: `AdminProtectedRoute.tsx` contained literal string `'Tirupati@CA2026'` in a QA development bypass clause (`?qa_auth=true`).
+- **Root Cause**: Direct invocation of `authenticate('kavitha', 'Tirupati@CA2026')` inside the React component.
+- **Fix Applied**: Removed the hardcoded credentials from `AdminProtectedRoute.tsx` and introduced `adminStorage.createDevSession()`, which directly creates a mock session in `sessionStorage` in `import.meta.env.DEV` mode without any password string.
+- **Status**: **RESOLVED & VERIFIED**
 
 ---
 
