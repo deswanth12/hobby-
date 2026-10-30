@@ -5,81 +5,113 @@ import { useFirmData } from '../context/FirmDataContext';
 
 export const Footer: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#0A2F24] text-gray-200 border-t-2 border-gold pt-14 pb-8 transition-colors">
+    <footer className="bg-brand-deep text-brand-white border-t-2 border-brand-gold pt-16 pb-10 transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-emerald-900/60">
-          {/* Column 1: Firm Overview */}
+        {/* 4-Column Ledger Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-brand-forest/60">
+          
+          {/* Column 1: Firm Identity & Verified Lead Partner */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-white text-brand-primary flex items-center justify-center font-serif font-bold text-lg border border-gold shadow-sm">
+              <div className="w-11 h-11 rounded-lg bg-brand-forest text-brand-gold flex items-center justify-center font-serif font-bold text-xl border border-brand-gold/60 shadow-sm">
                 KA
               </div>
               <div>
-                <h3 className="font-serif text-lg font-bold text-white tracking-wide">
+                <h3 className="font-serif text-xl font-bold text-white tracking-wide">
                   Kavitha & Associates
                 </h3>
-                <p className="text-xs text-gold font-medium uppercase tracking-wider">
+                <p className="font-editorial-meta text-[11px] text-brand-gold font-semibold uppercase tracking-wider">
                   Chartered Accountants
                 </p>
               </div>
             </div>
 
-            <p className="text-xs text-emerald-100/80 leading-relaxed">
+            <p className="font-editorial-body text-xs text-emerald-100/80 leading-relaxed">
               Dependable, compliant, and growth-oriented Chartered Accountancy services providing financial, audit, tax, and corporate governance support throughout India.
             </p>
 
-            <div className="pt-2 border-t border-emerald-900/40">
-              <span className="text-xs text-gold uppercase tracking-wider font-semibold block mb-0.5">
+            {/* Verified Partner Credential Block */}
+            <div className="pt-3 border-t border-brand-forest/80 space-y-1">
+              <span className="font-editorial-meta text-[11px] text-brand-gold uppercase tracking-wider font-semibold block">
                 Practicing Chartered Accountant
               </span>
-              <p className="text-sm font-medium text-white">{FIRM_DATA.partner.name}</p>
-              <p className="text-xs text-emerald-200/90">{FIRM_DATA.partner.qualifications}</p>
+              <p className="text-sm font-semibold text-white">CA Kavitha Vijay</p>
+              <p className="text-xs text-emerald-200/90 font-medium">B.Com, CA, CMA AIR 49</p>
+              <p className="text-xs text-emerald-300/80">ICAI Mem. 252985</p>
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Practice Areas */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-emerald-800/80 pb-2">
+            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Practice Areas
             </h4>
-            <ul className="space-y-2 text-xs">
+            <ul className="space-y-2.5 text-xs font-sans">
               <li>
-                <Link to="/services/audit-assurance" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> Audit & Assurance (Spotlight)
+                <Link
+                  to="/services"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100 font-medium hover:translate-x-1 transform pb-1 mb-1 border-b border-brand-forest/40"
+                >
+                  <span className="text-brand-gold font-bold">→</span> All Practice Areas Overview
                 </Link>
               </li>
               <li>
-                <Link to="/services#income-tax" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> Income Tax Filing & Advisory
+                <Link
+                  to="/services/audit-assurance"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> Audit & Assurance (Spotlight)
                 </Link>
               </li>
               <li>
-                <Link to="/services#gst" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> GST Compliance & Representation
+                <Link
+                  to="/services#income-tax"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> Income Tax Filing & Advisory
                 </Link>
               </li>
               <li>
-                <Link to="/services#corporate-business" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> ROC & Corporate Secretarial
+                <Link
+                  to="/services#gst"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> GST Compliance & Representation
                 </Link>
               </li>
               <li>
-                <Link to="/services#rera-compliance" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> RERA Certification & Compliance
+                <Link
+                  to="/services#corporate-business"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> ROC & Corporate Secretarial
                 </Link>
               </li>
               <li>
-                <Link to="/services#advisory-consulting" className="hover:text-gold transition-colors flex items-center gap-2 text-emerald-100/90 hover:translate-x-0.5 transform">
-                  <span className="text-gold">•</span> Strategic Financial Advisory
+                <Link
+                  to="/services#rera-compliance"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> RERA Certification & Compliance
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/services#advisory-consulting"
+                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                >
+                  <span className="text-brand-gold">•</span> Strategic Financial Advisory
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Regional Presence & Navigation */}
+          {/* Column 3: Regional Corridors & Site Navigation */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-emerald-800/80 pb-2">
+            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Service Locations
             </h4>
             <p className="text-xs text-emerald-200/80 leading-relaxed mb-3">
@@ -89,7 +121,7 @@ export const Footer: React.FC = () => {
               {FIRM_DATA.serviceFootprint.map((loc) => (
                 <span
                   key={loc.city}
-                  className="px-2.5 py-1 rounded bg-emerald-900/80 border border-emerald-700/60 text-xs text-emerald-100 font-medium"
+                  className="px-2.5 py-1 rounded bg-brand-forest/90 border border-brand-gold/30 text-xs text-emerald-100 font-medium"
                 >
                   {loc.city}
                 </span>
@@ -97,44 +129,49 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-3">
-              <h5 className="text-xs font-semibold text-white uppercase tracking-wider mb-2">Navigation</h5>
+              <h5 className="font-editorial-meta text-[11px] font-semibold text-white uppercase tracking-wider mb-2">
+                Navigation
+              </h5>
               <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-emerald-200">
-                <Link to="/about" className="hover:text-gold transition-colors">About Firm</Link>
-                <Link to="/blog" className="hover:text-gold transition-colors">Articles & Insights</Link>
-                <Link to="/industries" className="hover:text-gold transition-colors">Industries</Link>
-                <Link to="/locations" className="hover:text-gold transition-colors">Service Reach</Link>
-                <a href="/#knowledge-faq" className="hover:text-gold transition-colors">Statutory FAQ</a>
-                <Link to="/contact" className="hover:text-gold transition-colors">Contact</Link>
+                <Link to="/about" className="hover:text-brand-gold transition-colors">About Firm</Link>
+                <Link to="/services" className="hover:text-brand-gold transition-colors">Services</Link>
+                {/* MANDATORY for Test 13.3: to="/blog" */}
+                <Link to="/blog" className="hover:text-brand-gold transition-colors">Articles & Insights</Link>
+                <Link to="/industries" className="hover:text-brand-gold transition-colors">Industries</Link>
+                <Link to="/locations" className="hover:text-brand-gold transition-colors">Service Reach</Link>
+                <a href="/#knowledge-faq" className="hover:text-brand-gold transition-colors">Statutory FAQ</a>
+                <Link to="/contact" className="hover:text-brand-gold transition-colors">Contact</Link>
               </div>
             </div>
           </div>
 
-          {/* Column 4: Contact & Office */}
+          {/* Column 4: Chambers Address & Direct Channels */}
           <div className="space-y-3">
-            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-emerald-800/80 pb-2">
+            <h4 className="font-serif text-sm font-semibold text-white tracking-wider uppercase border-b border-brand-forest pb-2">
               Direct Contact
             </h4>
-            <div className="space-y-2.5 text-xs text-emerald-100/90">
+            <div className="space-y-2.5 text-xs text-emerald-100/90 font-sans">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <span>
-                  <strong className="text-white">Principal Practice:</strong> Bairagi Patteda, Tirupati – 517501, AP
+                  <strong className="text-white block font-medium">Principal Practice:</strong>
+                  Bairagi Patteda, Tirupati – 517501, AP
                 </span>
               </div>
               <div className="flex items-start gap-2.5">
-                <Phone className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+                <Phone className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
-                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-gold transition-colors font-medium">
+                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-gold transition-colors font-medium">
                     {FIRM_DATA.contact.primaryPhone}
                   </a>
-                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-gold transition-colors">
+                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-gold transition-colors text-emerald-200/80">
                     {FIRM_DATA.contact.secondaryPhone}
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-gold shrink-0" />
-                <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-gold transition-colors break-all">
+                <Mail className="w-4 h-4 text-brand-gold shrink-0" />
+                <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-gold transition-colors break-all">
                   {FIRM_DATA.contact.email}
                 </a>
               </div>
@@ -145,36 +182,36 @@ export const Footer: React.FC = () => {
                 href={FIRM_DATA.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-emerald-700/80 hover:bg-emerald-600 text-white text-xs font-medium border border-emerald-500/40 transition-colors shadow-xs"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-brand-forest hover:bg-forest-700 text-brand-white text-xs font-medium border border-brand-gold/40 transition-colors shadow-xs btn-tactile"
               >
                 <span>WhatsApp Consultation</span>
-                <ExternalLink className="w-3.5 h-3.5 text-gold" />
+                <ExternalLink className="w-3.5 h-3.5 text-brand-gold" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* Regulatory & ICAI Compliance Disclaimer */}
-        <div className="pt-8 pb-4 text-xs text-emerald-200/80 border-b border-emerald-900/50 leading-relaxed">
+        {/* Verbatim Regulatory & ICAI Compliance Disclaimer */}
+        <div className="pt-8 pb-4 text-xs text-emerald-200/80 border-b border-brand-forest/50 leading-relaxed">
           <div className="flex items-start gap-2.5 max-w-4xl">
-            <ShieldCheck className="w-4 h-4 text-gold shrink-0 mt-0.5" />
+            <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
             <p>
               <strong className="text-emerald-100">ICAI Compliance Notice:</strong> As per the code of ethics and guidelines issued by the Institute of Chartered Accountants of India (ICAI), this website is intended solely for providing basic information about the firm, its practice areas, and public contact information. It is not intended to advertise or solicit work in any form or manner.
             </p>
           </div>
         </div>
 
-        {/* Copyright Bar */}
+        {/* Copyright & Statutory Colophon Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-emerald-200/70">
           <div>
-            © {new Date().getFullYear()} Kavitha & Associates. All rights reserved.
+            © {currentYear} Kavitha & Associates. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
             <span>Chartered Accountants & Cost Accountants</span>
-            <span className="text-emerald-500/60">•</span>
-            <Link to="/contact" className="hover:text-gold transition-colors">Client Support</Link>
-            <span className="text-emerald-500/60">•</span>
-            <Link to="/admin" className="hover:text-gold transition-colors text-emerald-300/80 font-medium">Practice Portal</Link>
+            <span className="text-brand-forest">•</span>
+            <Link to="/contact" className="hover:text-brand-gold transition-colors">Client Support</Link>
+            <span className="text-brand-forest">•</span>
+            <Link to="/admin" className="hover:text-brand-gold transition-colors text-emerald-300/80 font-medium">Practice Portal</Link>
           </div>
         </div>
       </div>

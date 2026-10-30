@@ -1,18 +1,19 @@
 import React from 'react';
+import { isSafeUrl } from '../lib/markdown';
 
 interface MarkdownRendererProps {
   content: string;
 }
 
 /**
- * Pure React Markdown renderer for Kavitha & Associates blog articles.
+ * Pure React Virtual DOM Markdown renderer for Kavitha & Associates publications.
  * Renders structured semantic HTML without raw innerHTML evaluation,
- * ensuring complete immunity against stored XSS and arbitrary script execution.
+ * ensuring complete mathematical immunity against stored XSS and arbitrary script execution.
  */
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   if (!content) return null;
 
-  // Split into structural blocks separated by double newlines or table lines
+  // Split into structural blocks separated by newlines
   const lines = content.split(/\r?\n/);
   const elements: React.ReactNode[] = [];
   let index = 0;
@@ -48,7 +49,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       i++; // Skip closing ```
       elements.push(
         <div key={`code-${index++}`} className="my-6 rounded-xl overflow-x-auto bg-[#0A2F24] p-4 text-emerald-100 border border-emerald-900/80 font-mono text-xs sm:text-sm shadow-inner leading-relaxed">
-          <pre>{codeLines.join('\n')}</pre>
+          <pre><code>{codeLines.join('\n')}</code></pre>
         </div>
       );
       continue;
@@ -112,7 +113,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       continue;
     }
 
-    // Headings
+    // Headings (H1 - H6)
     if (trimmed.startsWith('# ')) {
       elements.push(
         <h1 key={`h1-${index++}`} className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary mt-10 mb-4 tracking-tight leading-tight">
@@ -153,19 +154,58 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       continue;
     }
 
-    // Unordered List (- or * )
-    if (/^[-*]\s/.test(trimmed)) {
-      const listItems: string[] = [];
-      while (i < lines.length && /^[-*]\s/.test(lines[i].trim())) {
-        listItems.push(lines[i].trim().replace(/^[-*]\s+/, ''));
+    if (trimmed.startsWith('##### ')) {
+      elements.push(
+        <h5 key={`h5-${index++}`} className="font-serif text-base font-bold text-brand-primary mt-4 mb-2">
+          {renderFormattedInline(trimmed.slice(6))}
+        </h5>
+      );
+      i++;
+      continue;
+    }
+
+    if (trimmed.startsWith('###### ')) {
+      elements.push(
+        <h6 key={`h6-${index++}`} className="font-serif text-sm font-bold text-brand-primary mt-3 mb-1 uppercase tracking-wider">
+          {renderFormattedInline(trimmed.slice(7))}
+        </h6>
+      );
+      i++;
+      continue;
+    }
+
+    // Image Block standalone: ![alt](url)
+    const imgBlockMatch = trimmed.match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgBlockMatch) {
+      const alt = imgBlockMatch[1];
+      const url = imgBlockMatch[2];
+      if (isSafeUrl(url)) {
+        elements.push(
+          <div key={`img-block-${index++}`} className="my-6 rounded-xl overflow-hidden border border-border shadow-subtle bg-brand-surface">
+            <img src={url} alt={alt} className="w-full h-auto max-h-[500px] object-cover" loading="lazy" />
+          </div>
+        );
+      }
+      i++;
+      continue;
+    }
+
+    // Unordered List (- or * ) with indentation support
+    if (/^\s*[-*]\s/.test(line)) {
+      const listItems: { text: string; indent: number }[] = [];
+      while (i < lines.length && /^\s*[-*]\s/.test(lines[i])) {
+        const rawLine = lines[i];
+        const leadingSpaces = rawLine.match(/^\s*/)?.[0].length || 0;
+        const itemText = rawLine.trim().replace(/^[-*]\s+/, '');
+        listItems.push({ text: itemText, indent: leadingSpaces >= 2 ? 1 : 0 });
         i++;
       }
       elements.push(
         <ul key={`ul-${index++}`} className="my-4 space-y-2 list-none text-sm sm:text-base text-charcoal-muted">
           {listItems.map((item, itemIdx) => (
-            <li key={itemIdx} className="flex items-start gap-2.5">
+            <li key={itemIdx} className={`flex items-start gap-2.5 ${item.indent > 0 ? 'ml-6' : ''}`}>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-700 shrink-0 mt-2" />
-              <span className="leading-relaxed">{renderFormattedInline(item)}</span>
+              <span className="leading-relaxed">{renderFormattedInline(item.text)}</span>
             </li>
           ))}
         </ul>
@@ -173,21 +213,25 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       continue;
     }
 
-    // Ordered List (1. )
-    if (/^\d+\.\s/.test(trimmed)) {
-      const listItems: string[] = [];
-      while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
-        listItems.push(lines[i].trim().replace(/^\d+\.\s+/, ''));
+    // Ordered List (1. ) with indentation support
+    if (/^\s*\d+\.\s/.test(line)) {
+      const listItems: { text: string; indent: number; num: number }[] = [];
+      let count = 1;
+      while (i < lines.length && /^\s*\d+\.\s/.test(lines[i])) {
+        const rawLine = lines[i];
+        const leadingSpaces = rawLine.match(/^\s*/)?.[0].length || 0;
+        const itemText = rawLine.trim().replace(/^\d+\.\s+/, '');
+        listItems.push({ text: itemText, indent: leadingSpaces >= 2 ? 1 : 0, num: count++ });
         i++;
       }
       elements.push(
         <ol key={`ol-${index++}`} className="my-4 space-y-2.5 list-none text-sm sm:text-base text-charcoal-muted">
           {listItems.map((item, itemIdx) => (
-            <li key={itemIdx} className="flex items-start gap-3">
+            <li key={itemIdx} className={`flex items-start gap-3 ${item.indent > 0 ? 'ml-6' : ''}`}>
               <span className="w-6 h-6 rounded-md bg-brand-pale text-brand-primary font-bold text-xs flex items-center justify-center shrink-0 border border-emerald-200 mt-0.5">
-                {itemIdx + 1}
+                {item.num}
               </span>
-              <span className="leading-relaxed">{renderFormattedInline(item)}</span>
+              <span className="leading-relaxed">{renderFormattedInline(item.text)}</span>
             </li>
           ))}
         </ol>
@@ -203,10 +247,12 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       !lines[i].trim().startsWith('#') &&
       !lines[i].trim().startsWith('```') &&
       !lines[i].trim().startsWith('---') &&
+      !lines[i].trim().startsWith('***') &&
       !lines[i].trim().startsWith('>') &&
       !lines[i].trim().startsWith('|') &&
-      !/^[-*]\s/.test(lines[i].trim()) &&
-      !/^\d+\.\s/.test(lines[i].trim())
+      !/^\s*[-*]\s/.test(lines[i]) &&
+      !/^\s*\d+\.\s/.test(lines[i]) &&
+      !lines[i].trim().startsWith('![')
     ) {
       paraLines.push(lines[i].trim());
       i++;
@@ -225,31 +271,57 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
 };
 
 /**
- * Parses bold, italics, inline code, and links safely into React nodes.
+ * Parses bold, italics, inline code, images, and links safely into React nodes.
  */
 function renderFormattedInline(text: string): React.ReactNode {
   if (!text) return null;
 
-  // Split by link, code, bold, italic tokens
+  // Split by inline markdown tokens
   const parts: React.ReactNode[] = [];
   let remaining = text;
   let key = 0;
 
   while (remaining) {
+    // Check for Inline Image ![alt](url)
+    const imgMatch = remaining.match(/^!\[(.*?)\]\((.*?)\)/);
+    if (imgMatch) {
+      const alt = imgMatch[1];
+      const url = imgMatch[2];
+      if (isSafeUrl(url)) {
+        parts.push(
+          <img
+            key={`inline-img-${key++}`}
+            src={url}
+            alt={alt}
+            loading="lazy"
+            className="inline-block max-h-48 rounded-lg border border-border shadow-subtle my-2"
+          />
+        );
+      }
+      remaining = remaining.slice(imgMatch[0].length);
+      continue;
+    }
+
     // Check for Markdown Link [text](url)
-    const linkMatch = remaining.match(/^\[(.*?)\]\((https?:\/\/[^\s)]+|\/[^\s)]*)\)/);
+    const linkMatch = remaining.match(/^\[(.*?)\]\((https?:\/\/[^\s)]+|\/[^\s)]*|mailto:[^\s)]+|tel:[^\s)]*)\)/);
     if (linkMatch) {
-      parts.push(
-        <a
-          key={`link-${key++}`}
-          href={linkMatch[2]}
-          target={linkMatch[2].startsWith('http') ? '_blank' : undefined}
-          rel={linkMatch[2].startsWith('http') ? 'noopener noreferrer' : undefined}
-          className="text-emerald-800 font-semibold underline hover:text-emerald-950 transition-colors"
-        >
-          {linkMatch[1]}
-        </a>
-      );
+      const linkText = linkMatch[1];
+      const url = linkMatch[2];
+      if (isSafeUrl(url)) {
+        parts.push(
+          <a
+            key={`link-${key++}`}
+            href={url}
+            target={url.startsWith('http') ? '_blank' : undefined}
+            rel={url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="text-emerald-800 font-semibold underline hover:text-emerald-950 transition-colors"
+          >
+            {linkText}
+          </a>
+        );
+      } else {
+        parts.push(linkText);
+      }
       remaining = remaining.slice(linkMatch[0].length);
       continue;
     }
@@ -294,7 +366,7 @@ function renderFormattedInline(text: string): React.ReactNode {
     }
 
     // Find nearest formatting token
-    const nextTokenIdx = remaining.search(/(\[|\`|\*\*|\*)/);
+    const nextTokenIdx = remaining.search(/(!\[|\[|\`|\*\*|\*)/);
     if (nextTokenIdx === -1) {
       parts.push(remaining);
       break;

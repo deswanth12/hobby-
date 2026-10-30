@@ -8,12 +8,15 @@ import {
   Phone
 } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
+import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
 
 export const ServicesPage: React.FC = () => {
-  const { data: FIRM_DATA } = useFirmData();
+  const { data } = useFirmData();
+  const firm = data || FIRM_DATA;
+
   return (
-    <div className="bg-brand-warm page-reveal">
+    <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
         title="Comprehensive Accounting, Audit & Tax Services | Kavitha & Associates"
         description="Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications in Tirupati."
@@ -23,52 +26,76 @@ export const ServicesPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-14 sm:py-18 border-b border-border">
+      <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
+            <span className="font-editorial-meta text-brand-gold block mb-3">
               Practice Areas & Disciplines
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary tracking-tight">
-              Comprehensive Financial, Tax & Regulatory Services
+            <h1 className="font-editorial-h1 text-brand-forest tracking-tight">
+              Statutory Rigor. Multi-Disciplinary Counsel.
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-charcoal-muted leading-relaxed">
-              End-to-end professional support executed under the personal supervision of CA KavithaVijay SRJ (FCA, CMA). Tailored for emerging ventures, established enterprises, and institutions.
+            <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
+              End-to-end professional support executed under the direct supervision of CA Kavitha Vijay (B.Com, CA, CMA AIR 49). 5 Practice Areas • 34 Specialized Services • 100% Partner-Led for emerging ventures, established enterprises, and institutions.
             </p>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          QUICK-JUMP NAVIGATION STRIP (Carvi Anchor Navigation)
+          2. STICKY ARCHITECTURAL QUICK-JUMP NAVIGATION STRIP
           ========================================================================= */}
-      <nav aria-label="Services Quick Navigation" className="bg-brand-surface py-3.5 border-b border-border sticky top-[57px] sm:top-[65px] z-30 shadow-xs backdrop-blur-sm bg-brand-surface/95">
+      <nav 
+        aria-label="Services Quick Navigation" 
+        className="bg-brand-surface/95 py-3 border-b border-brand-border sticky top-[57px] sm:top-[65px] z-30 shadow-xs backdrop-blur-md"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-0.5">
-            <span className="text-xs font-bold text-gold-dark uppercase tracking-wider shrink-0 flex items-center gap-1.5">
-              <Compass className="w-3.5 h-3.5 text-gold-dark" />
+          <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-1">
+            <span className="font-editorial-meta text-brand-gold shrink-0 flex items-center gap-1.5 text-[11px]">
+              <Compass className="w-3.5 h-3.5 text-brand-gold" />
               <span>Jump to Area:</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
-              <a href="#audit-spotlight-banner" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#audit-spotlight-banner" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 Audit & Assurance
               </a>
-              <a href="#income-tax" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#income-tax" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 Income Tax
               </a>
-              <a href="#gst" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#gst" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 GST Compliance
               </a>
-              <a href="#corporate-business" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#corporate-business" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 ROC & Corporate
               </a>
-              <a href="#rera-compliance" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#rera-compliance" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 RERA Practice
               </a>
-              <a href="#advisory-consulting" className="px-3 py-1.5 rounded-lg bg-white border border-border text-xs font-semibold text-brand-primary hover:border-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile">
+              <a 
+                href="#advisory-consulting" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
+              >
                 Strategic Advisory
               </a>
-              <a href="#virtual-cfo" className="px-3 py-1.5 rounded-lg bg-brand-pale border border-emerald-300 text-xs font-semibold text-emerald-800 hover:bg-emerald-100 transition-colors btn-tactile">
+              <a 
+                href="#virtual-cfo" 
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-forest/10 border border-brand-forest/30 text-xs font-semibold text-brand-forest hover:bg-brand-forest hover:text-white transition-colors btn-tactile"
+              >
                 Virtual CFO
               </a>
             </div>
@@ -77,23 +104,23 @@ export const ServicesPage: React.FC = () => {
       </nav>
 
       {/* =========================================================================
-          FEATURED AUDIT SPOTLIGHT BANNER
+          3. FEATURED AUDIT ASSURANCE SPOTLIGHT BANNER
           ========================================================================= */}
-      <section className="py-8 bg-brand-pale/70 border-b border-border scroll-mt-28" id="audit-spotlight-banner">
+      <section className="py-12 bg-brand-surface/70 border-b border-brand-border scroll-mt-32" id="audit-spotlight-banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-white p-6 sm:p-7 rounded-xl border border-border shadow-subtle">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-brand-primary text-gold flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-6 h-6" />
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-white p-7 sm:p-9 rounded-2xl border border-brand-border shadow-card card-tactile">
+            <div className="flex items-start gap-5">
+              <div className="w-14 h-14 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center shrink-0 border border-brand-gold/40 shadow-inner">
+                <ShieldCheck className="w-7 h-7" />
               </div>
               <div>
-                <span className="text-xs font-bold text-gold-dark uppercase tracking-wider block">
+                <span className="font-editorial-meta text-brand-gold block mb-1">
                   Featured Core Specialization
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary mt-0.5">
+                <h2 className="font-editorial-h2 text-xl sm:text-2xl font-bold text-brand-forest">
                   Audit & Assurance Practice (9 Statutory Streams)
                 </h2>
-                <p className="text-xs sm:text-sm text-charcoal-muted mt-1 max-w-2xl leading-relaxed">
+                <p className="font-editorial-body text-xs sm:text-sm text-brand-muted mt-2 max-w-2xl leading-relaxed">
                   Independent, thorough, and compliant audits encompassing Companies Act statutory audits, Tax audits under Section 44AB, GST reconciliations, Internal Financial Controls (IFC), and Stock audits.
                 </p>
               </div>
@@ -101,71 +128,71 @@ export const ServicesPage: React.FC = () => {
 
             <Link
               to="/services/audit-assurance"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors shrink-0 shadow-sm btn-tactile"
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors shrink-0 shadow-card hover:shadow-card-hover btn-tactile border border-brand-gold/30"
             >
               <span>Explore All 9 Audit Streams</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <ArrowRight className="w-4 h-4 text-brand-gold" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          DETAILED SERVICE CATEGORIES (NSKA Depth + Carvi Cleanliness)
+          4. THE 5 PRACTICE DISCIPLINES (Asymmetric 5:7 Grid Ledgers)
           ========================================================================= */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          {FIRM_DATA.serviceCategories.map((category, idx) => (
+      <section className="py-20 sm:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+          {firm.serviceCategories.map((category, idx) => (
             <div
               key={category.id}
               id={category.id}
-              className="scroll-mt-28 p-6 sm:p-8 lg:p-10 rounded-xl border border-border bg-white shadow-card card-tactile"
+              className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
-                {/* Left Overview Column */}
-                <div className="lg:col-span-5 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <span className="px-2.5 py-1 rounded-md bg-brand-pale text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200">
+                {/* Left 5 Columns: Discipline Overview */}
+                <div className="lg:col-span-5 space-y-5">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span className="px-3 py-1 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta text-xs border border-brand-forest/20">
                       Discipline 0{idx + 1}
                     </span>
                     {category.statutoryFramework && (
-                      <span className="text-[11px] font-semibold text-charcoal-muted bg-brand-surface px-2.5 py-1 rounded border border-border">
+                      <span className="font-editorial-meta text-brand-muted bg-brand-surface px-3 py-1 rounded-full border border-brand-border text-[11px]">
                         {category.statutoryFramework}
                       </span>
                     )}
                   </div>
 
-                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
+                  <h2 className="font-editorial-h2 text-brand-forest">
                     {category.title}
                   </h2>
 
-                  <p className="text-sm text-charcoal-muted leading-relaxed">
+                  <p className="font-editorial-body text-sm text-brand-muted leading-relaxed">
                     {category.fullDescription}
                   </p>
 
-                  {/* Target Entities Box */}
+                  {/* Target Entities Dossier Box */}
                   {category.targetClients && (
-                    <div className="p-3.5 rounded-lg bg-brand-warm border border-border/80 text-xs">
-                      <strong className="block text-[11px] uppercase tracking-wider text-gold-dark font-bold mb-1">
+                    <div className="p-4 rounded-xl bg-brand-surface border border-brand-border text-xs">
+                      <strong className="block font-editorial-meta text-brand-gold mb-1.5 text-[11px]">
                         Applicable Entities:
                       </strong>
-                      <span className="text-charcoal-muted leading-relaxed">
+                      <span className="font-editorial-body text-brand-muted leading-relaxed">
                         {category.targetClients}
                       </span>
                     </div>
                   )}
 
-                  {/* Typical Scenarios */}
+                  {/* Common Practice Triggers */}
                   {category.typicalScenarios && (
                     <div className="pt-2">
-                      <strong className="block text-xs font-bold text-brand-primary uppercase tracking-wider mb-2">
+                      <strong className="block font-editorial-meta text-brand-forest mb-2.5 text-xs">
                         Common Practice Triggers:
                       </strong>
-                      <ul className="space-y-1.5 text-xs text-charcoal-muted">
+                      <ul className="space-y-2 text-xs font-editorial-body text-brand-muted">
                         {category.typicalScenarios.map((scen) => (
-                          <li key={scen} className="flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-gold-dark shrink-0 mt-1.5" />
+                          <li key={scen} className="flex items-start gap-2.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-2" />
                             <span>{scen}</span>
                           </li>
                         ))}
@@ -173,55 +200,56 @@ export const ServicesPage: React.FC = () => {
                     </div>
                   )}
 
-                  <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-border">
+                  <div className="pt-4 flex flex-wrap items-center gap-3.5 border-t border-brand-border">
                     <Link
                       to="/contact"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors btn-tactile"
+                      className="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-deep transition-colors btn-tactile border border-brand-gold/30"
                     >
                       <span>Inquire Regarding {category.title}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-gold" />
+                      <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
                     </Link>
                     <a
-                      href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-charcoal-muted hover:text-brand-primary"
+                      href={`tel:${firm.contact.primaryPhoneClean}`}
+                      className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-semibold text-brand-muted hover:text-brand-forest px-3 py-2"
                     >
-                      <Phone className="w-3.5 h-3.5 text-gold-dark" />
-                      <span>{FIRM_DATA.contact.primaryPhone}</span>
+                      <Phone className="w-3.5 h-3.5 text-brand-gold" />
+                      <span>{firm.contact.primaryPhone}</span>
                     </a>
                   </div>
                 </div>
 
-                {/* Right Service Scope Grid */}
-                <div className="lg:col-span-7 bg-brand-surface rounded-xl p-6 sm:p-7 border border-border">
-                  <div className="flex items-center justify-between border-b border-border pb-3 mb-4">
-                    <h3 className="font-serif text-xs font-bold text-brand-primary uppercase tracking-wider">
+                {/* Right 7 Columns: Ruled Service Scope Ledger */}
+                <div className="lg:col-span-7 bg-brand-surface rounded-2xl p-7 sm:p-8 border border-brand-border">
+                  <div className="flex items-center justify-between border-b border-brand-border pb-4 mb-5">
+                    <h3 className="font-editorial-meta text-brand-forest text-xs">
                       Statutory Scope & Engagements Included
                     </h3>
-                    <span className="text-[11px] text-emerald-800 font-semibold bg-brand-pale px-2 py-0.5 rounded border border-emerald-200">
+                    <span className="font-editorial-meta text-brand-forest bg-brand-forest/10 px-2.5 py-1 rounded-full border border-brand-forest/20 text-[10px]">
                       Partner Oversight
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {category.services.map((item) => (
-                      <div key={item} className="flex items-start gap-2.5 p-2 rounded-lg bg-white border border-border/60">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                        <span className="text-xs text-charcoal font-medium leading-relaxed">
+                      <div key={item} className="flex items-start gap-3 p-3 rounded-xl bg-brand-white border border-brand-border/70 shadow-subtle">
+                        <CheckCircle2 className="w-4 h-4 text-brand-forest shrink-0 mt-0.5" />
+                        <span className="font-editorial-body text-xs text-brand-charcoal font-medium leading-relaxed">
                           {item}
                         </span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-5 pt-3.5 border-t border-border/60 flex items-center justify-between text-xs text-charcoal-muted">
+                  <div className="mt-6 pt-4 border-t border-brand-border/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-editorial-body text-brand-muted">
                     <span>Compliant with prevailing Indian statutory frameworks</span>
                     <a
-                      href={FIRM_DATA.contact.whatsappLink}
+                      href={firm.contact.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-emerald-800 hover:text-emerald-950 font-semibold hover:underline"
+                      className="text-brand-forest hover:text-brand-deep font-semibold hover:underline inline-flex items-center gap-1 min-h-[44px]"
                     >
-                      Quick WhatsApp Query →
+                      <span>Quick WhatsApp Query</span>
+                      <span>→</span>
                     </a>
                   </div>
                 </div>
@@ -230,138 +258,139 @@ export const ServicesPage: React.FC = () => {
             </div>
           ))}
 
-          {/* Discipline 06: Virtual CFO & Strategic Financial Retainer */}
+          {/* Discipline 06: Deep Green Virtual CFO & Multi-Statute Retainer Showcase */}
           <div
             id="virtual-cfo"
-            className="scroll-mt-28 p-6 sm:p-8 lg:p-10 rounded-xl border border-emerald-900 bg-[#0A2F24] text-white shadow-card card-tactile"
+            className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-gold/30 bg-brand-deep text-white shadow-editorial-lg card-tactile"
           >
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               
               {/* Left Column */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="px-2.5 py-1 rounded-md bg-[#0F3E2E] text-gold text-xs font-bold uppercase tracking-wider border border-gold/40">
+              <div className="lg:col-span-5 space-y-5">
+                <div className="flex items-center gap-3 flex-wrap">
+                  <span className="px-3 py-1 rounded-full bg-brand-forest text-brand-gold font-editorial-meta text-xs border border-brand-gold/40">
                     Discipline 06
                   </span>
-                  <span className="text-[11px] font-semibold text-emerald-200 bg-emerald-950 px-2.5 py-1 rounded border border-emerald-800">
+                  <span className="font-editorial-meta text-emerald-200 bg-black/40 px-3 py-1 rounded-full border border-white/10 text-[11px]">
                     Multi-Statute Strategic Retainer
                   </span>
                 </div>
 
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                <h2 className="font-editorial-h2 text-white">
                   Virtual CFO & Retainership Practice
                 </h2>
 
-                <p className="text-sm text-emerald-100/90 leading-relaxed">
+                <p className="font-editorial-body text-sm text-emerald-100/90 leading-relaxed">
                   Outsourced financial leadership, strategic cash flow governance, and consolidated compliance retainers designed for startups, MSMEs, and expanding enterprises that need high-level CFO expertise without the overhead of an in-house executive.
                 </p>
 
-                <div className="p-3.5 rounded-lg bg-[#0F3E2E] border border-emerald-800 text-xs">
-                  <strong className="block text-[11px] uppercase tracking-wider text-gold font-bold mb-1">
+                <div className="p-4 rounded-xl bg-brand-forest/60 border border-brand-forest text-xs">
+                  <strong className="block font-editorial-meta text-brand-gold mb-1.5 text-[11px]">
                     Applicable Entities:
                   </strong>
-                  <span className="text-emerald-200 leading-relaxed">
+                  <span className="font-editorial-body text-emerald-100/90 leading-relaxed">
                     Funded Startups, Manufacturing MSMEs, Commercial Real Estate Developers & Mid-Market Firms
                   </span>
                 </div>
 
                 <div className="pt-2">
-                  <strong className="block text-xs font-bold text-gold uppercase tracking-wider mb-2">
+                  <strong className="block font-editorial-meta text-brand-gold mb-2.5 text-xs">
                     Common Practice Triggers:
                   </strong>
-                  <ul className="space-y-1.5 text-xs text-emerald-100/90">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                  <ul className="space-y-2 text-xs font-editorial-body text-emerald-100/90">
+                    <li className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-2" />
                       <span>Transitioning from basic book-keeping to predictive financial leadership</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                    <li className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-2" />
                       <span>Preparing Bank Loan CMA data and project reports for working capital lines</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0 mt-1.5" />
+                    <li className="flex items-start gap-2.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0 mt-2" />
                       <span>Mitigating compliance risk through annual multi-statute calendar oversight</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-emerald-800/80">
+                <div className="pt-4 flex flex-wrap items-center gap-3.5 border-t border-white/10">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gold-dark hover:bg-gold text-white text-xs font-semibold transition-colors btn-tactile"
+                    className="min-h-[44px] inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-gold hover:bg-brand-gold/90 text-brand-deep font-editorial-meta text-xs font-bold transition-colors btn-tactile shadow-md"
                   >
                     <span>Discuss Retainer Scope</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                   <a
-                    href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-200 hover:text-white"
+                    href={`tel:${firm.contact.primaryPhoneClean}`}
+                    className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-200 hover:text-white px-3 py-2"
                   >
-                    <Phone className="w-3.5 h-3.5 text-gold" />
-                    <span>{FIRM_DATA.contact.primaryPhone}</span>
+                    <Phone className="w-3.5 h-3.5 text-brand-gold" />
+                    <span>{firm.contact.primaryPhone}</span>
                   </a>
                 </div>
               </div>
 
               {/* Right Column: Retainer Engagements Included */}
-              <div className="lg:col-span-7 bg-[#0F3E2E] rounded-xl p-6 sm:p-7 border border-emerald-800/90">
-                <div className="flex items-center justify-between border-b border-emerald-800 pb-3 mb-4">
-                  <h3 className="font-serif text-xs font-bold text-white uppercase tracking-wider">
+              <div className="lg:col-span-7 bg-brand-forest/60 rounded-2xl p-7 sm:p-8 border border-white/10">
+                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                  <h3 className="font-editorial-meta text-white text-xs">
                     Virtual CFO Mandate & Deliverables
                   </h3>
-                  <span className="text-[11px] text-gold font-semibold bg-emerald-950 px-2 py-0.5 rounded border border-gold/40">
-                    CMA + FCA Supervision
+                  <span className="font-editorial-meta text-brand-gold bg-black/40 px-2.5 py-1 rounded-full border border-brand-gold/30 text-[10px]">
+                    CMA + CA Supervision
                   </span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
                       Monthly MIS, Operating Variance & Unit Cost Modeling
                     </span>
                   </div>
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
                       Continuous Advance Tax & Quarterly TDS Structuring
                     </span>
                   </div>
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
                       Bank Credit Facility CMA Data & Project Reports
                     </span>
                   </div>
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
                       Multi-Branch GST Health Checks & ITC Maximization
                     </span>
                   </div>
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
                       Annual MCA & ROC Secretarial Governance Oversight
                     </span>
                   </div>
-                  <div className="flex items-start gap-2.5 p-2 rounded-lg bg-[#0A2F24] border border-emerald-800/60">
-                    <CheckCircle2 className="w-4 h-4 text-gold shrink-0 mt-0.5" />
-                    <span className="text-xs text-emerald-100 font-medium leading-relaxed">
-                      Board-Level Strategic Counsel with CA KavithaVijay SRJ
+                  <div className="flex items-start gap-3 p-3 rounded-xl bg-brand-deep/80 border border-white/10">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <span className="font-editorial-body text-xs text-emerald-100 font-medium leading-relaxed">
+                      Board-Level Strategic Counsel with CA Kavitha Vijay
                     </span>
                   </div>
                 </div>
 
-                <div className="mt-5 pt-3.5 border-t border-emerald-800 flex items-center justify-between text-xs text-emerald-200">
+                <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-editorial-body text-emerald-200">
                   <span>Structured annual or quarterly engagement retainers</span>
                   <a
-                    href={FIRM_DATA.contact.whatsappLink}
+                    href={firm.contact.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gold hover:text-white font-semibold hover:underline"
+                    className="text-brand-gold hover:text-white font-semibold hover:underline inline-flex items-center gap-1 min-h-[44px]"
                   >
-                    Direct WhatsApp Query →
+                    <span>Direct WhatsApp Query</span>
+                    <span>→</span>
                   </a>
                 </div>
               </div>
@@ -372,32 +401,92 @@ export const ServicesPage: React.FC = () => {
       </section>
 
       {/* =========================================================================
-          CONSULTATION CTA SECTION
+          5. THE 4-STAGE CLIENT ENGAGEMENT CYCLE
           ========================================================================= */}
-      <section className="py-16 bg-brand-surface border-t border-border text-center">
+      <section className="py-20 bg-brand-surface border-y border-brand-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <span className="font-editorial-meta text-brand-gold block mb-2">
+              Systematic Execution
+            </span>
+            <h2 className="font-editorial-h2 text-brand-forest">
+              The 4-Stage Client Engagement Cycle
+            </h2>
+            <p className="font-editorial-body text-sm sm:text-base text-brand-muted mt-3">
+              Every mandate follows a transparent workflow from initial scoping to formal statutory dispatch.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+              <div>
+                <span className="font-editorial-meta text-brand-gold text-lg block mb-2">01</span>
+                <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Discovery & Scoping</h3>
+                <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
+                  Deep assessment of operational statutes, financial statements, and compliance backlog.
+                </p>
+              </div>
+            </div>
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+              <div>
+                <span className="font-editorial-meta text-brand-gold text-lg block mb-2">02</span>
+                <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Document Audit</h3>
+                <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
+                  Rigorous reconciliation of ledgers, tax invoices, bank statements, and statutory returns.
+                </p>
+              </div>
+            </div>
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+              <div>
+                <span className="font-editorial-meta text-brand-gold text-lg block mb-2">03</span>
+                <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Partner Execution</h3>
+                <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
+                  Technical audit memo synthesis, tax planning, and filing preparation by CA Kavitha Vijay.
+                </p>
+              </div>
+            </div>
+            <div className="bg-brand-white p-6 sm:p-7 rounded-2xl border border-brand-border shadow-subtle card-tactile flex flex-col justify-between">
+              <div>
+                <span className="font-editorial-meta text-brand-gold text-lg block mb-2">04</span>
+                <h3 className="font-editorial-h3 text-base text-brand-forest mb-2">Filing & Archival</h3>
+                <p className="font-editorial-body text-xs text-brand-muted leading-relaxed">
+                  Mandatory UDIN generation, official portal submission, and secure archival delivery.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          6. CONSULTATION CTA SECTION
+          ========================================================================= */}
+      <section className="py-20 sm:py-24 bg-brand-surface text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
+          <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Advisory & Retainerships
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary">
+          <h2 className="font-editorial-h2 text-brand-forest">
             Need Custom Corporate Structuring or Audit Consultation?
           </h2>
-          <p className="mt-3 text-sm text-charcoal-muted leading-relaxed">
+          <p className="mt-4 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">
             We structure annual compliance calendars, virtual CFO retainerships, and multi-state GST reconciliations tailored to your operating scale.
           </p>
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-sm font-semibold hover:bg-brand-deep shadow-sm transition-colors btn-tactile"
+              className="min-h-[44px] btn-pill-action bg-brand-forest text-white hover:bg-brand-deep group font-editorial-meta text-xs shadow-card hover:shadow-card-hover border border-brand-gold/40"
             >
               <span>Schedule a Discussion</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
+              <span className="icon-badge bg-white/10 text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-deep">
+                <ArrowRight className="w-3.5 h-3.5" />
+              </span>
             </Link>
             <a
-              href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-border bg-white text-brand-primary text-sm font-semibold hover:bg-brand-pale shadow-subtle transition-colors btn-tactile"
+              href={`tel:${firm.contact.primaryPhoneClean}`}
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-all active:scale-[0.98] btn-tactile"
             >
-              <Phone className="w-4 h-4 text-gold-dark" />
+              <Phone className="w-4 h-4 text-brand-gold" />
               <span>Call Senior Partner</span>
             </a>
           </div>

@@ -230,7 +230,7 @@ export const AdminLoginPage: React.FC = () => {
                 className="p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
               >
                 <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
-                  CA KavithaVijay SRJ
+                  CA Kavitha Vijay
                 </div>
                 <div className="text-[10px] text-gray-500 font-mono mt-0.5">kavitha</div>
               </button>

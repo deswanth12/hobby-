@@ -290,7 +290,7 @@ export const FIRM_DATA: FirmProfile = {
     {
       step: "03",
       title: "Partner-Supervised Execution",
-      description: "Rigorous statutory examination, tax computation, or audit verification executed under the direct oversight of CA KavithaVijay SRJ."
+      description: "Rigorous statutory examination, tax computation, or audit verification executed under the direct oversight of CA Kavitha Vijay."
     },
     {
       step: "04",
@@ -316,14 +316,14 @@ export const FIRM_DATA: FirmProfile = {
     googleMapsUrl: "https://www.google.com/maps?q=13.61925,79.418028",
     region: "India (Pan-India Service Reach)",
     whatsappNumber: "+91 96263 50900",
-    whatsappLink: "https://wa.me/919626350900?text=Hello%20CA%20KavithaVijay%20SRJ%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
+    whatsappLink: "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%20(Kavitha%20%26%20Associates)%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services."
   },
   serviceFootprint: [
     { 
       city: "Tirupati", 
       state: "Andhra Pradesh", 
       type: "Primary Chambers",
-      description: "Principal operating practice of CA KavithaVijay SRJ located at Bairagi Patteda, Tirupati – 517501."
+      description: "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, Tirupati – 517501."
     },
     { 
       city: "Chennai", 
@@ -353,7 +353,7 @@ export const FIRM_DATA: FirmProfile = {
   pillars: [
     {
       title: "Partner-Level Attention",
-      description: "Direct engagement with CA KavithaVijay SRJ on complex accounting standards, tax litigation, and statutory reporting matters."
+      description: "Direct engagement with CA Kavitha Vijay on complex accounting standards, tax litigation, and statutory reporting matters."
     },
     {
       title: "Robust Corporate & Practical Expertise",
@@ -652,7 +652,7 @@ export const FIRM_DATA: FirmProfile = {
     }
   ],
   verificationNotes: {
-    experienceNote: "Pending Client Clarification: The supplied profile states 'more than ten years of robust corporate experience'. As per project guidelines, this claim is set aside from marketing headlines until CA KavithaVijay SRJ confirms the exact wording, dates, and regulatory scope.",
+    experienceNote: "Pending Client Clarification: The supplied profile states 'more than ten years of robust corporate experience'. As per project guidelines, this claim is set aside from marketing headlines until CA Kavitha Vijay confirms the exact wording, dates, and regulatory scope.",
     branchesNote: "Locations to confirm: Tirupati is presented as the primary practice base; Chennai, Bengaluru, Hyderabad, and Coimbatore are presented as regional client coverage areas. Confirm operational wording with the client."
   }
 };

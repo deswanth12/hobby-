@@ -5,8 +5,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #24342F;
-    background-color: #FCFCFA;
+    color: #252B27;
+    background-color: #F5F1E8;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -15,87 +15,82 @@
   body {
     font-size: 1rem;
     line-height: 1.6;
-    color: #24342F;
-    background-color: #FCFCFA;
+    color: #252B27;
+    background-color: #F5F1E8;
     overflow-x: hidden;
   }
 
   /* Accessible focus indicators with high contrast */
   :focus-visible {
-    outline: 2px solid #0F3E2E;
+    outline: 2px solid #153F32;
     outline-offset: 3px;
   }
 
-  /* Elegant heading styles */
+  /* Elegant heading defaults */
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.015em;
   }
 }
 
 @layer utilities {
-  .bg-brand-deep {
-    background-color: #0A2F24;
-  }
-  .bg-brand-primary {
-    background-color: #0F3E2E;
-  }
-  .bg-brand-warm {
-    background-color: #FCFCFA;
-  }
-  .text-brand-primary {
-    color: #0F3E2E;
+  /* =========================================================================
+     Fluid Editorial Typography Scale (clamp())
+     ========================================================================= */
+  .font-editorial-h1 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
   }
 
-  /* 1. Tactile Button Physics (Depresses 2% on active press) */
+  .font-editorial-h2 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.75rem, 1.35rem + 2vw, 2.75rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+  }
+
+  .font-editorial-h3 {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .font-editorial-body {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: clamp(0.9375rem, 0.875rem + 0.3vw, 1.0625rem);
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: -0.005em;
+  }
+
+  .font-editorial-meta {
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+  }
+
+  /* =========================================================================
+     Tactile Buttons & Interactive Physics
+     ========================================================================= */
   .btn-tactile {
-    transition: transform 140ms cubic-bezier(0.2, 0, 0, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), background-color 180ms ease-out, border-color 180ms ease-out;
+    transition: transform 140ms cubic-bezier(0.2, 0, 0, 1),
+                box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 180ms ease-out,
+                border-color 180ms ease-out;
     will-change: transform;
   }
   .btn-tactile:active {
     transform: scale(0.98);
   }
 
-  /* 2. Velvety Card Focus & Kinetic Tone Shift */
-  .card-tactile {
-    transition: border-color 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, box-shadow;
-  }
-  .card-tactile:hover {
-    border-color: rgba(197, 160, 89, 0.7);
-    box-shadow: 0 8px 24px -3px rgba(15, 62, 46, 0.09);
-    transform: translateY(-2px);
-  }
-
-  /* 3. Smooth Page Mount Reveal (280ms gentle entrance) */
-  .page-reveal {
-    animation: pageReveal 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  /* 4. Double-Bezel (Doppelrand) Architecture */
-  .double-bezel {
-    border-radius: 1.5rem;
-    padding: 0.375rem;
-    background: rgba(240, 247, 243, 0.75);
-    border: 1px solid rgba(225, 232, 227, 0.95);
-    box-shadow: 0 4px 20px -2px rgba(15, 62, 46, 0.05);
-  }
-  .double-bezel-dark {
-    border-radius: 1.5rem;
-    padding: 0.375rem;
-    background: rgba(10, 47, 36, 0.85);
-    border: 1px solid rgba(197, 160, 89, 0.35);
-    box-shadow: 0 10px 32px -4px rgba(10, 47, 36, 0.3);
-  }
-  .double-bezel-inner {
-    border-radius: calc(1.5rem - 0.375rem);
-    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8);
-  }
-  .double-bezel-inner-dark {
-    border-radius: calc(1.5rem - 0.375rem);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-  }
-
-  /* 5. Button-in-Button Micro-physics (Pill Architecture) */
   .btn-pill-action {
     display: inline-flex;
     align-items: center;
@@ -122,15 +117,76 @@
     transform: translateX(3px) translateY(-1px);
   }
 
-  /* 6. Kinetic Card Hover Elevation */
+  /* =========================================================================
+     Editorial Cards & Elevation Physics
+     ========================================================================= */
+  .card-tactile {
+    transition: border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, box-shadow;
+    border: 1px solid #E5E1D8;
+    background-color: #FFFFFF;
+  }
+  .card-tactile:hover {
+    border-color: rgba(195, 166, 107, 0.7);
+    box-shadow: 0 8px 24px -3px rgba(21, 63, 50, 0.08);
+    transform: translateY(-2px);
+  }
+
   .card-premium-hover {
-    transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1), border-color 280ms ease;
+    transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 380ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 280ms ease;
     will-change: transform, box-shadow;
   }
   .card-premium-hover:hover {
     transform: translateY(-4px);
-    box-shadow: 0 16px 36px -4px rgba(15, 62, 46, 0.12), 0 4px 12px -2px rgba(15, 62, 46, 0.04);
-    border-color: rgba(197, 160, 89, 0.75);
+    box-shadow: 0 16px 36px -4px rgba(21, 63, 50, 0.12), 0 4px 12px -2px rgba(21, 63, 50, 0.04);
+    border-color: rgba(195, 166, 107, 0.75);
+  }
+
+  /* =========================================================================
+     Editorial Hairline Dividers
+     ========================================================================= */
+  .editorial-divider {
+    border-top: 1px solid #E5E1D8;
+  }
+  .editorial-divider-gold {
+    border-top: 1px solid rgba(195, 166, 107, 0.4);
+  }
+
+  /* =========================================================================
+     Double-Bezel (Doppelrand) Architectural Plaque
+     ========================================================================= */
+  .double-bezel {
+    border-radius: 1.5rem;
+    padding: 0.375rem;
+    background: rgba(245, 241, 232, 0.85);
+    border: 1px solid rgba(229, 225, 216, 0.95);
+    box-shadow: 0 4px 20px -2px rgba(21, 63, 50, 0.04);
+  }
+  .double-bezel-dark {
+    border-radius: 1.5rem;
+    padding: 0.375rem;
+    background: rgba(16, 45, 37, 0.92);
+    border: 1px solid rgba(195, 166, 107, 0.35);
+    box-shadow: 0 10px 32px -4px rgba(16, 45, 37, 0.35);
+  }
+  .double-bezel-inner {
+    border-radius: calc(1.5rem - 0.375rem);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  }
+  .double-bezel-inner-dark {
+    border-radius: calc(1.5rem - 0.375rem);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  /* =========================================================================
+     Mount & Reveal Animations
+     ========================================================================= */
+  .page-reveal {
+    animation: pageReveal 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
@@ -173,6 +229,9 @@
   animation: fadeUp 450ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* =========================================================================
+   Accessibility: Reduced Motion Overrides
+   ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,
@@ -184,20 +243,22 @@
   }
 }
 
-/* Custom subtle scrollbar */
+/* =========================================================================
+   Architectural Scrollbar
+   ========================================================================= */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F0F7F3;
+  background: #F5F1E8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBDCD3;
+  background: #D8D2C5;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ABFB0;
+  background: #C3BAA7;
 }

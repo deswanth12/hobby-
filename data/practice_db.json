@@ -12,13 +12,13 @@
   "services": [
     {
       "id": "income-tax",
-      "title": "Income Tax & Appellate Services",
+      "title": "Income Tax Services",
       "shortDescription": "Strategic direct tax planning, corporate filing, scrutiny representation, and appellate support.",
-      "fullDescription": "Comprehensive direct tax services from routine return preparation to complex dispute resolution before appellate authorities.",
-      "statutoryFramework": "Income Tax Act 1961",
-      "targetClients": "Corporates and High Net Worth Taxpayers",
+      "fullDescription": "Comprehensive direct tax services from routine return preparation to complex dispute resolution before appellate authorities, structured to protect financial compliance.",
+      "statutoryFramework": "Income Tax Act, 1961 & CBDT Guidelines",
+      "targetClients": "Companies, LLPs, High-Net-Worth Individuals, Trusts",
       "status": "published",
-      "updatedAt": "2026-10-29T15:32:59.878Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "gst",
@@ -28,7 +28,7 @@
       "statutoryFramework": "CGST Act, 2017 & State GST Regulations",
       "targetClients": "Manufacturers, Traders, Service Providers, Exporters",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "corporate-business",
@@ -38,7 +38,7 @@
       "statutoryFramework": "Companies Act, 2013 & MCA Mandates",
       "targetClients": "Private Limited Companies, Section 8 Entities, LLPs",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "rera-compliance",
@@ -48,7 +48,7 @@
       "statutoryFramework": "Real Estate (Regulation and Development) Act, 2016",
       "targetClients": "Real Estate Developers, Builders, Promoters",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "advisory-consulting",
@@ -58,7 +58,7 @@
       "statutoryFramework": "ICAI Technical Standards & Industry Best Practices",
       "targetClients": "Growing Enterprises, Family Businesses, Healthcare & Hospitality",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "audit-assurance",
@@ -68,7 +68,7 @@
       "statutoryFramework": "Companies Act 2013, Section 139–143 & SAs by ICAI",
       "targetClients": "Public & Private Corporates, Banks, Statutory Boards",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     }
   ],
   "faqs": [
@@ -79,7 +79,7 @@
       "statuteReference": "Companies Act, 2013 — Section 139; Income Tax Act, 1961 — Section 44AB",
       "category": "Audit & Assurance",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "tax-audit-thresholds",
@@ -88,7 +88,7 @@
       "statuteReference": "Income Tax Act, 1961 — Section 44AB & Budget amendments",
       "category": "Income Tax",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "gst-annual-return-audit",
@@ -97,7 +97,7 @@
       "statuteReference": "CGST Act, 2017 — Section 44 & CGST Rules 80",
       "category": "GST Compliance",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     },
     {
       "id": "rera-quarterly-ca-certificates",
@@ -106,7 +106,7 @@
       "statuteReference": "Real Estate (Regulation and Development) Act, 2016 — Section 4(2)(l)(D)",
       "category": "Corporate & RERA",
       "status": "published",
-      "updatedAt": "2026-10-29T15:27:17.521Z"
+      "updatedAt": "2026-10-30T01:02:16.873Z"
     }
   ],
   "enquiries": [
@@ -173,6 +173,16 @@
         "lastLogin": "2026-10-29T15:39:53.109Z"
       },
       "expiresAt": 1793291993109
+    },
+    "ka_tok_61934a265d529ffa23c380888bff45da46ba78112c9d4d5c42f2fa785dcb6a2d": {
+      "token": "ka_tok_61934a265d529ffa23c380888bff45da46ba78112c9d4d5c42f2fa785dcb6a2d",
+      "user": {
+        "username": "admin",
+        "displayName": "Practice Administrator",
+        "role": "Practice Administrator",
+        "lastLogin": "2026-10-30T02:59:02.455Z"
+      },
+      "expiresAt": 1793332742455
     }
   },
   "rateLimits": {}

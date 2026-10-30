@@ -138,6 +138,19 @@ function calculateReadingTime(text: string): number {
   return Math.max(1, minutes);
 }
 
+/**
+ * Fail-closed draft verification helper.
+ * Missing, undefined, null, or malformed draft fields default to quarantined draft: true.
+ */
+export function isDraft(rawDraft: any): boolean {
+  if (rawDraft === undefined || rawDraft === null) return true;
+  if (typeof rawDraft === 'boolean') return rawDraft;
+  if (typeof rawDraft === 'string') {
+    return rawDraft.trim().toLowerCase() !== 'false';
+  }
+  return true;
+}
+
 // Vite glob import of all markdown posts in /content/posts/
 const rawPostFiles = import.meta.glob('/content/posts/*.md', {
   query: '?raw',
@@ -163,7 +176,7 @@ const allLoadedPosts: BlogPost[] = Object.entries(rawPostFiles).map(([filePath, 
     coverImageAlt: data.coverImageAlt,
     excerpt: data.excerpt || 'Technical commentary and statutory advisory from Kavitha & Associates.',
     tags: Array.isArray(data.tags) ? data.tags : [],
-    draft: data.draft === true,
+    draft: isDraft(data.draft),
     content,
     readingTime: calculateReadingTime(content),
     seo: data.seo,

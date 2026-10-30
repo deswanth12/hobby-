@@ -707,7 +707,7 @@ export const adminStorage = {
       {
         user: 'kavitha',
         pass: 'Tirupati@CA2026',
-        displayName: 'CA KavithaVijay SRJ',
+        displayName: 'CA Kavitha Vijay',
         role: 'Managing Partner' as const
       },
       {

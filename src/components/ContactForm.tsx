@@ -209,6 +209,7 @@ export const ContactForm: React.FC = () => {
             <label htmlFor="website_fax_hp">Leave empty</label>
             <input
               id="website_fax_hp"
+              name="website_fax_hp"
               type="text"
               tabIndex={-1}
               value={honeypot}
