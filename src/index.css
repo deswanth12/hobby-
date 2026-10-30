@@ -26,38 +26,39 @@
     outline-offset: 3px;
   }
 
-  /* Elegant heading defaults */
+  /* Elegant heading defaults: zero negative tracking prevents serif letter collision */
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
   }
 }
 
 @layer utilities {
   /* =========================================================================
      Fluid Editorial Typography Scale (clamp())
+     Calibrated line-height and relaxed letter-spacing to prevent letter overlap
      ========================================================================= */
   .font-editorial-h1 {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4rem);
     font-weight: 500;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    line-height: 1.16;
+    letter-spacing: -0.005em;
   }
 
   .font-editorial-h2 {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(1.75rem, 1.35rem + 2vw, 2.75rem);
     font-weight: 500;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
+    line-height: 1.22;
+    letter-spacing: -0.003em;
   }
 
   .font-editorial-h3 {
     font-family: "Cormorant Garamond", Georgia, serif;
     font-size: clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem);
     font-weight: 600;
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+    line-height: 1.28;
+    letter-spacing: 0;
   }
 
   .font-editorial-body {
@@ -119,17 +120,15 @@
 
   /* =========================================================================
      Editorial Cards & Elevation Physics
+     Does NOT enforce background color so dark & custom cards retain their palette
      ========================================================================= */
   .card-tactile {
     transition: border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
                 transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, box-shadow;
-    border: 1px solid #E5E1D8;
-    background-color: #FFFFFF;
   }
   .card-tactile:hover {
-    border-color: rgba(195, 166, 107, 0.7);
     box-shadow: 0 8px 24px -3px rgba(21, 63, 50, 0.08);
     transform: translateY(-2px);
   }
@@ -158,6 +157,7 @@
 
   /* =========================================================================
      Double-Bezel (Doppelrand) Architectural Plaque
+     Strictly anchors dark background (#102D25) for high-contrast visibility
      ========================================================================= */
   .double-bezel {
     border-radius: 1.5rem;
@@ -169,9 +169,9 @@
   .double-bezel-dark {
     border-radius: 1.5rem;
     padding: 0.375rem;
-    background: rgba(16, 45, 37, 0.92);
-    border: 1px solid rgba(195, 166, 107, 0.35);
-    box-shadow: 0 10px 32px -4px rgba(16, 45, 37, 0.35);
+    background: #102D25 !important;
+    border: 1px solid rgba(195, 166, 107, 0.45);
+    box-shadow: 0 12px 36px -4px rgba(16, 45, 37, 0.45);
   }
   .double-bezel-inner {
     border-radius: calc(1.5rem - 0.375rem);
@@ -179,7 +179,121 @@
   }
   .double-bezel-inner-dark {
     border-radius: calc(1.5rem - 0.375rem);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    background-color: #102D25 !important;
+    color: #FFFFFF !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  }
+
+  /* =========================================================================
+     Fluid Scroll Progress Indicator
+     ========================================================================= */
+  #scroll-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #153F32 0%, #C3A66B 50%, #E0CDA9 100%);
+    transform-origin: 0% 50%;
+    transform: scaleX(0);
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 1px 3px rgba(195, 166, 107, 0.4);
+  }
+
+  /* =========================================================================
+     Scroll-Triggered Reveal Animations
+     Hardware-accelerated transforms & opacity transitions
+     ========================================================================= */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal-left.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal-right.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .scroll-reveal-scale {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+                transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .scroll-reveal-scale.is-revealed {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Child Stagger Sequences */
+  .scroll-stagger > *:nth-child(1) { transition-delay: 40ms; }
+  .scroll-stagger > *:nth-child(2) { transition-delay: 90ms; }
+  .scroll-stagger > *:nth-child(3) { transition-delay: 140ms; }
+  .scroll-stagger > *:nth-child(4) { transition-delay: 190ms; }
+  .scroll-stagger > *:nth-child(5) { transition-delay: 240ms; }
+  .scroll-stagger > *:nth-child(6) { transition-delay: 290ms; }
+  .scroll-stagger > *:nth-child(7) { transition-delay: 340ms; }
+  .scroll-stagger > *:nth-child(8) { transition-delay: 390ms; }
+  .scroll-stagger > *:nth-child(9) { transition-delay: 440ms; }
+  .scroll-stagger > *:nth-child(10) { transition-delay: 490ms; }
+
+  /* Back to Top Button */
+  .btn-back-to-top {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 1.5rem;
+    z-index: 40;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    background: #153F32;
+    color: #C3A66B;
+    border: 1px solid rgba(195, 166, 107, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(21, 63, 50, 0.25);
+    transition: all 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    will-change: transform, opacity;
+  }
+  .btn-back-to-top:hover {
+    background: #102D25;
+    color: #FFFFFF;
+    border-color: #C3A66B;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(21, 63, 50, 0.35);
+  }
+  .btn-back-to-top:active {
+    transform: scale(0.94);
   }
 
   /* =========================================================================
@@ -230,6 +344,40 @@
 }
 
 /* =========================================================================
+   Modern CSS Native Scroll-Driven Animations (Compositor Thread)
+   ========================================================================= */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    #scroll-progress-bar {
+      animation: growScrollProgress auto linear;
+      animation-timeline: scroll(root);
+    }
+    @keyframes growScrollProgress {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .scroll-view-reveal {
+      animation: viewReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 8% cover 28%;
+    }
+    @keyframes viewReveal {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+/* =========================================================================
    Accessibility: Reduced Motion Overrides
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
@@ -240,6 +388,14 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .scroll-reveal,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 

@@ -135,7 +135,7 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Article Title */}
-          <h1 className="font-editorial-h1 text-brand-primary tracking-tight leading-[1.2]">
+          <h1 className="font-editorial-h1 text-brand-primary leading-[1.2]">
             {post.title}
           </h1>
 

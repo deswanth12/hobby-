@@ -107,7 +107,7 @@ export const NotFoundPage: React.FC = () => {
             <div className="font-serif text-[clamp(4.5rem,10vw,7.5rem)] font-bold text-brand-primary tracking-tight leading-none selection:bg-brand-pale">
               404
             </div>
-            <h1 className="font-editorial-h1 text-brand-primary tracking-tight">
+            <h1 className="font-editorial-h1 text-brand-primary">
               Page Not Located in Practice Registry
             </h1>
             <p className="font-editorial-body text-charcoal-muted max-w-xl mx-auto leading-relaxed">

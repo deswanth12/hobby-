@@ -38,7 +38,7 @@ export const AuditAssurancePage: React.FC = () => {
               <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
               <span>Dedicated Audit Practice • ICAI Mem. 252985</span>
             </div>
-            <h1 className="font-editorial-h1 text-white tracking-tight">
+            <h1 className="font-editorial-h1 text-white">
               Evidence-Based Rigor. Institutional Trust.
             </h1>
             <p className="mt-4 font-editorial-body text-emerald-100/90 leading-relaxed text-base sm:text-lg">

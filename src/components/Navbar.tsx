@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
             <span className="font-serif font-bold text-xl tracking-wider text-brand-gold">KA</span>
           </div>
           <div>
-            <span className="block font-serif text-xl sm:text-2xl font-bold tracking-tight text-brand-forest leading-none group-hover:text-brand-deep transition-colors">
+            <span className="block font-serif text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-none group-hover:text-brand-deep transition-colors">
               Kavitha & Associates
             </span>
             <span className="block font-editorial-meta text-[11px] tracking-wider uppercase font-semibold text-gold-dark mt-1">

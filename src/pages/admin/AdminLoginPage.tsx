@@ -115,7 +115,7 @@ export const AdminLoginPage: React.FC = () => {
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0A2F24] border-2 border-[#C5A059] shadow-lg mb-4">
             <span className="font-serif text-2xl font-bold text-[#C5A059]">KA</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A2F24] tracking-tight">
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A2F24] tracking-normal">
             Kavitha & Associates
           </h1>
           <p className="text-xs uppercase tracking-widest text-[#5A7368] font-bold mt-1">

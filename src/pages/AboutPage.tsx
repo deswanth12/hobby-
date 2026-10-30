@@ -47,7 +47,7 @@ export const AboutPage: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
               <span>Chartered & Cost Accountancy Practice • ICAI Mem. 252985</span>
             </div>
-            <h1 className="font-editorial-h1 text-brand-forest tracking-tight">
+            <h1 className="font-editorial-h1 text-brand-forest">
               Institutional Rigor. Independent Counsel.
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
@@ -386,7 +386,7 @@ export const AboutPage: React.FC = () => {
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
               Our Professional Foundation
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+            <h2 className="font-editorial-h2 text-brand-forest">
               Governance, Independence & Ethics
             </h2>
             <p className="font-editorial-body text-base text-brand-muted mt-4">

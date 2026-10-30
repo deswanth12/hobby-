@@ -32,7 +32,7 @@ export const ServicesPage: React.FC = () => {
             <span className="font-editorial-meta text-brand-gold block mb-3">
               Practice Areas & Disciplines
             </span>
-            <h1 className="font-editorial-h1 text-brand-forest tracking-tight">
+            <h1 className="font-editorial-h1 text-brand-forest">
               Statutory Rigor. Multi-Disciplinary Counsel.
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
@@ -261,7 +261,7 @@ export const ServicesPage: React.FC = () => {
           {/* Discipline 06: Deep Green Virtual CFO & Multi-Statute Retainer Showcase */}
           <div
             id="virtual-cfo"
-            className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-gold/30 bg-brand-deep text-white shadow-editorial-lg card-tactile"
+            className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-brand-gold/30 bg-brand-deep text-white shadow-editorial-lg scroll-reveal"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
               

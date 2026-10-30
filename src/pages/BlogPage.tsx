@@ -65,7 +65,7 @@ export const BlogPage: React.FC = () => {
               <BookOpen className="w-3.5 h-3.5 text-brand-gold shrink-0" />
               <span>Technical Publications & Regulatory Insights • ICAI Mem. 252985</span>
             </div>
-            <h1 className="font-editorial-h1 text-brand-forest tracking-tight">
+            <h1 className="font-editorial-h1 text-brand-forest">
               Regulatory Insights & Technical Commentary
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">

@@ -183,7 +183,7 @@ export const IndustriesPage: React.FC = () => {
             <span className="font-editorial-meta text-brand-gold block mb-3">
               Commercial Verticals • Specialized Statutory Frameworks
             </span>
-            <h1 className="font-editorial-h1 text-brand-forest tracking-tight">
+            <h1 className="font-editorial-h1 text-brand-forest">
               Tailored Statutory Governance. Sector-Specific Precision.
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed text-base sm:text-lg">

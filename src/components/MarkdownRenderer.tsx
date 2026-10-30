@@ -116,7 +116,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
     // Headings (H1 - H6)
     if (trimmed.startsWith('# ')) {
       elements.push(
-        <h1 key={`h1-${index++}`} className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary mt-10 mb-4 tracking-tight leading-tight">
+        <h1 key={`h1-${index++}`} className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary mt-10 mb-4 leading-tight">
           {renderFormattedInline(trimmed.slice(2))}
         </h1>
       );
@@ -126,7 +126,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
 
     if (trimmed.startsWith('## ')) {
       elements.push(
-        <h2 key={`h2-${index++}`} className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary mt-8 mb-3.5 tracking-tight border-b border-border/80 pb-2">
+        <h2 key={`h2-${index++}`} className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary mt-8 mb-3.5 border-b border-border/80 pb-2">
           {renderFormattedInline(trimmed.slice(3))}
         </h2>
       );

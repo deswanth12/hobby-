@@ -20,7 +20,7 @@ export const ContactPage: React.FC = () => {
             <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-2">
               Practice Consultation
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary tracking-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary">
               Contact Kavitha & Associates
             </h1>
             <p className="mt-4 text-base sm:text-lg text-charcoal-muted leading-relaxed">

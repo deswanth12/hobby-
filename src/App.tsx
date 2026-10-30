@@ -3,9 +3,12 @@ import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollProgress } from './components/ScrollProgress';
+import { BackToTop } from './components/BackToTop';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { FirmDataProvider } from './context/FirmDataContext';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Public Pages
 import { HomePage } from './pages/HomePage';
@@ -29,17 +32,22 @@ import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 
 /**
  * Public Layout Wrapper:
- * Includes public top navigation bar, footer, and floating WhatsApp consultation button.
+ * Includes public top navigation bar, scroll progress tracker, footer,
+ * floating WhatsApp consultation button, and back-to-top button.
  */
 const PublicLayout: React.FC = () => {
+  useScrollReveal();
+
   return (
-    <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary">
+    <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative">
+      <ScrollProgress />
       <Navbar />
       <main className="flex-grow">
         <Outlet />
       </main>
       <Footer />
       <FloatingWhatsApp />
+      <BackToTop />
     </div>
   );
 };

@@ -34,7 +34,7 @@ export const KnowledgeFAQ: React.FC = () => {
             <BookOpen className="w-3.5 h-3.5 text-gold-dark" />
             <span>Statutory Knowledge & Advisory FAQ</span>
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-brand-primary">
             Clear Answers to Core Compliance Questions
           </h2>
           <p className="mt-3 text-base text-charcoal-muted leading-relaxed">

@@ -113,7 +113,7 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left 7 Columns: Editorial Narrative & Action Cluster */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
+            <div className="lg:col-span-7 space-y-6 sm:space-y-8 scroll-reveal-left">
               
               {/* Institutional Practice Kicker */}
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-xs">
@@ -125,10 +125,10 @@ export const HomePage: React.FC = () => {
 
               {/* Master Headline (Cormorant Garamond Monumental Serif) */}
               <div className="space-y-1">
-                <h1 className="font-editorial-h1 text-brand-forest tracking-tight leading-[1.08]">
+                <h1 className="font-editorial-h1 text-brand-forest">
                   Statutory Rigor.
                 </h1>
-                <h1 className="font-editorial-h1 text-brand-gold tracking-tight leading-[1.08]">
+                <h1 className="font-editorial-h1 text-brand-gold">
                   Practical Commercial Counsel.
                 </h1>
               </div>
@@ -180,9 +180,9 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Right 5 Columns: Executive Practice Registry Plaque (Double-Bezel Architecture) */}
-            <div className="lg:col-span-5">
+            <div className="lg:col-span-5 scroll-reveal-right">
               <div className="double-bezel-dark animate-fade-up">
-                <div className="double-bezel-inner-dark bg-brand-deep text-brand-white p-6 sm:p-8 relative overflow-hidden card-tactile">
+                <div className="double-bezel-inner-dark bg-brand-deep text-brand-white p-6 sm:p-8 relative overflow-hidden">
                   
                   {/* Subtle decorative seal watermark */}
                   <div className="absolute top-0 right-0 -mt-6 -mr-6 w-32 h-32 rounded-full bg-brand-gold/5 border border-brand-gold/10 pointer-events-none" />
@@ -210,7 +210,7 @@ export const HomePage: React.FC = () => {
                       <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-light bg-brand-deep px-2 py-0.5 rounded border border-brand-gold/20">
                         Senior Partner
                       </span>
-                      <span className="text-[10px] text-emerald-200/80">ICAI Mem. 252985 • CMA AIR 49</span>
+                      <span className="text-[10px] text-emerald-200/90 font-medium">ICAI Mem. 252985 • CMA AIR 49</span>
                     </div>
                     <h4 className="font-editorial-h3 text-xl font-bold text-white mt-1">
                       {FIRM_DATA.partner.name}
@@ -221,51 +221,51 @@ export const HomePage: React.FC = () => {
                   </div>
 
                   {/* Architectural Ledger Rows */}
-                  <div className="space-y-3 font-editorial-body text-xs text-emerald-100/90 divide-y divide-brand-forest/60 pt-1">
+                  <div className="space-y-3 font-editorial-body text-xs divide-y divide-brand-forest/60 pt-1">
                     
                     {/* Chambers & GPS Coordinates */}
                     <div className="flex items-start justify-between gap-3 pt-2">
-                      <div className="flex items-start gap-2">
+                      <div className="flex items-start gap-2.5">
                         <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                         <div>
-                          <strong className="text-white block text-xs">Principal Chambers:</strong>
-                          <span className="text-emerald-200/90 text-[11px]">Bairagi Patteda, Tirupati – 517501, AP</span>
+                          <strong className="text-white block text-xs font-semibold">Principal Chambers:</strong>
+                          <span className="text-emerald-100 text-xs font-normal">Bairagi Patteda, Tirupati – 517501, AP</span>
                         </div>
                       </div>
                       <a
                         href={FIRM_DATA.contact.googleMapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[11px] font-semibold text-brand-gold hover:underline shrink-0 mt-0.5"
+                        className="text-xs font-semibold text-brand-gold hover:text-white hover:underline shrink-0 mt-0.5"
                       >
                         Map Pin →
                       </a>
                     </div>
 
                     {/* Dual Strategic Competence */}
-                    <div className="flex items-start gap-2 pt-3">
+                    <div className="flex items-start gap-2.5 pt-3">
                       <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-white block text-xs">Dual Strategic Advantage:</strong>
-                        <span className="text-emerald-200/90 text-[11px]">External Statutory Audit + Internal Cost Accounting (CMA)</span>
+                        <strong className="text-white block text-xs font-semibold">Dual Strategic Advantage:</strong>
+                        <span className="text-emerald-100 text-xs font-normal">External Statutory Audit + Internal Cost Accounting (CMA)</span>
                       </div>
                     </div>
 
                     {/* Regional Service Corridors */}
-                    <div className="flex items-start gap-2 pt-3">
+                    <div className="flex items-start gap-2.5 pt-3">
                       <Compass className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-white block text-xs">Regional Service Corridors:</strong>
-                        <span className="text-emerald-200/90 text-[11px]">Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore</span>
+                        <strong className="text-white block text-xs font-semibold">Regional Service Corridors:</strong>
+                        <span className="text-emerald-100 text-xs font-normal">Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore</span>
                       </div>
                     </div>
 
                     {/* Partner Supervision Guarantee */}
-                    <div className="flex items-start gap-2 pt-3">
+                    <div className="flex items-start gap-2.5 pt-3">
                       <UserCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                       <div>
-                        <strong className="text-white block text-xs">Partner-Supervised Accountability:</strong>
-                        <span className="text-emerald-200/90 text-[11px]">Every file reviewed directly by CA Kavitha Vijay</span>
+                        <strong className="text-white block text-xs font-semibold">Partner-Supervised Accountability:</strong>
+                        <span className="text-emerald-100 text-xs font-normal">Every file reviewed directly by CA Kavitha Vijay</span>
                       </div>
                     </div>
 
@@ -273,7 +273,7 @@ export const HomePage: React.FC = () => {
 
                   {/* Plaque Footer & Direct Action */}
                   <div className="mt-5 pt-4 border-t border-brand-forest flex items-center justify-between text-xs">
-                    <div className="flex items-center gap-1.5 text-emerald-300 text-[11px]">
+                    <div className="flex items-center gap-1.5 text-emerald-300 text-[11px] font-medium">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                       <span>Practice Chambers Open</span>
                     </div>
@@ -409,13 +409,13 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             
             {/* Left Column: Sticky Assurance Briefing & Standards Guarantee (4 cols) */}
-            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
+            <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6 scroll-reveal-left">
               <div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-forest text-brand-gold text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
                   <ShieldCheck className="w-3.5 h-3.5 text-brand-gold" />
                   <span className="font-editorial-meta">Assurance Spotlight</span>
                 </div>
-                <h2 className="font-editorial-h2 text-brand-forest tracking-tight leading-tight">
+                <h2 className="font-editorial-h2 text-brand-forest leading-tight">
                   Statutory, Tax & Operational Audit Schedule
                 </h2>
                 <p className="mt-3 font-editorial-body text-sm text-brand-muted leading-relaxed">
@@ -463,12 +463,12 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Right Column: 9-Item Structured Assurance Dossier (8 cols) */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="lg:col-span-8 scroll-reveal-right">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 scroll-stagger">
                 {FIRM_DATA.auditSpotlight.services.map((service, index) => (
                   <div
                     key={service.name}
-                    className="card-tactile card-premium-hover rounded-xl p-5 sm:p-6 border border-brand-border shadow-card flex flex-col justify-between"
+                    className="bg-brand-white card-tactile card-premium-hover rounded-xl p-5 sm:p-6 border border-brand-border shadow-card flex flex-col justify-between scroll-reveal"
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
@@ -532,11 +532,11 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-28 lg:py-32 bg-brand-ivory border-b border-brand-border" id="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
               Our Practice Areas
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+            <h2 className="font-editorial-h2 text-brand-forest">
               Comprehensive Financial, Tax & Regulatory Support
             </h2>
             <p className="font-editorial-body text-base text-brand-muted mt-3">
@@ -544,13 +544,13 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 scroll-stagger">
             {/* 5 Statutory Category Cards */}
             {FIRM_DATA.serviceCategories.map((category) => (
               <div
                 key={category.id}
                 id={category.id}
-                className="scroll-mt-28 card-tactile card-premium-hover rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card flex flex-col justify-between"
+                className="scroll-mt-28 bg-brand-white card-tactile card-premium-hover rounded-2xl border border-brand-border p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
@@ -627,7 +627,7 @@ export const HomePage: React.FC = () => {
             ))}
 
             {/* Coordinating 6th Card: Virtual CFO & Strategic Financial Retainer */}
-            <div className="bg-brand-deep text-brand-white rounded-2xl border border-brand-forest p-6 sm:p-8 shadow-card card-tactile flex flex-col justify-between">
+            <div className="bg-brand-deep text-brand-white rounded-2xl border border-brand-forest p-6 sm:p-8 shadow-card flex flex-col justify-between scroll-reveal">
               <div>
                 <div className="flex items-center justify-between mb-5">
                   <div className="w-12 h-12 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center border border-brand-gold/40">
@@ -706,11 +706,11 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-surface border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
               Our Methodology
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+            <h2 className="font-editorial-h2 text-brand-forest">
               How We Work With You
             </h2>
             <p className="font-editorial-body text-base text-brand-muted mt-2">
@@ -718,11 +718,11 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
             {FIRM_DATA.workflow.map((flow) => (
               <div
                 key={flow.step}
-                className="card-tactile rounded-xl p-6 border border-brand-border shadow-card flex flex-col justify-between relative"
+                className="bg-brand-white card-tactile rounded-xl p-6 border border-brand-border shadow-card flex flex-col justify-between relative scroll-reveal"
               >
                 <div>
                   <div className="w-12 h-12 rounded-xl bg-brand-pale text-brand-forest flex items-center justify-center font-serif text-xl font-bold mb-4 border border-emerald-100 text-gold-dark">
@@ -768,11 +768,11 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
               Practice Philosophy & Governance
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+            <h2 className="font-editorial-h2 text-brand-forest">
               Technical Excellence & Practical Thinking
             </h2>
             <p className="font-editorial-body text-base text-brand-muted mt-3">
@@ -780,11 +780,11 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-stagger">
             {FIRM_DATA.philosophy.corePrinciples.map((principle, idx) => (
               <div
                 key={principle.title}
-                className="card-tactile rounded-xl p-6 border border-brand-border shadow-card flex items-start gap-4"
+                className="bg-brand-white card-tactile rounded-xl p-6 border border-brand-border shadow-card flex items-start gap-4 scroll-reveal"
               >
                 <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-forest flex items-center justify-center font-serif font-bold text-sm shrink-0 border border-emerald-200 text-gold-dark">
                   0{idx + 1}
@@ -801,7 +801,7 @@ export const HomePage: React.FC = () => {
             ))}
 
             {/* Dual Qualification Advantage Panel */}
-            <div className="card-tactile rounded-xl p-6 border-2 border-brand-gold/50 shadow-card flex items-start gap-4">
+            <div className="bg-brand-white card-tactile rounded-xl p-6 border-2 border-brand-gold/50 shadow-card flex items-start gap-4 scroll-reveal">
               <div className="w-10 h-10 rounded-lg bg-brand-pale text-brand-forest flex items-center justify-center font-serif font-bold text-sm shrink-0 border border-brand-gold/40 text-gold-dark">
                 ★
               </div>
@@ -821,7 +821,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* ICAI Code of Ethics Commitment Panel */}
-            <div className="bg-brand-deep text-brand-white rounded-xl p-6 border border-brand-forest shadow-card flex items-start gap-4">
+            <div className="bg-brand-deep text-brand-white rounded-xl p-6 border border-brand-forest shadow-card flex items-start gap-4 scroll-reveal">
               <div className="w-10 h-10 rounded-lg bg-brand-forest text-brand-gold flex items-center justify-center font-serif font-bold text-sm shrink-0 border border-brand-gold/40">
                 <Shield className="w-5 h-5 text-brand-gold" />
               </div>
@@ -844,12 +844,12 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 scroll-reveal">
             <div>
               <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
                 Industry Capabilities
               </span>
-              <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+              <h2 className="font-editorial-h2 text-brand-forest">
                 Industries We Serve
               </h2>
             </div>
@@ -858,13 +858,13 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 scroll-stagger">
             {FIRM_DATA.industries.map((ind) => {
               const IconComp = getIndustryIcon(ind);
               return (
                 <div
                   key={ind}
-                  className="card-tactile rounded-xl p-5 text-center border border-brand-border shadow-subtle group hover:border-brand-gold"
+                  className="bg-brand-white card-tactile rounded-xl p-5 text-center border border-brand-border shadow-subtle group hover:border-brand-gold scroll-reveal"
                 >
                   <div className="w-11 h-11 rounded-lg bg-brand-pale text-brand-forest flex items-center justify-center mx-auto mb-3 border border-emerald-100 group-hover:bg-brand-white transition-colors">
                     <IconComp className="w-5 h-5 text-brand-forest" />
@@ -885,11 +885,11 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <section className="py-20 sm:py-28 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
             <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
               Geographic Presence
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+            <h2 className="font-editorial-h2 text-brand-forest">
               Service Locations & Reach
             </h2>
             <p className="font-editorial-body text-sm text-brand-muted mt-2">
@@ -897,11 +897,11 @@ export const HomePage: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 scroll-stagger">
             {FIRM_DATA.serviceFootprint.map((loc) => (
               <div
                 key={loc.city}
-                className={`rounded-xl p-5 border text-center card-tactile flex flex-col justify-between ${
+                className={`rounded-xl p-5 border text-center card-tactile flex flex-col justify-between scroll-reveal ${
                   loc.type === 'Primary Chambers'
                     ? 'bg-brand-white border-2 border-brand-forest shadow-card relative'
                     : 'bg-brand-white border-brand-border shadow-subtle'
@@ -960,7 +960,7 @@ export const HomePage: React.FC = () => {
           SECTION 9: STATUTORY KNOWLEDGE & ADVISORY FAQ
           Canvas: Surface Tint #EDE8DF (bg-brand-surface)
           ========================================================================= */}
-      <div id="knowledge-faq" className="scroll-mt-28">
+      <div id="knowledge-faq" className="scroll-mt-28 scroll-reveal">
         <KnowledgeFAQ />
       </div>
 
@@ -973,12 +973,12 @@ export const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14">
             
             {/* Left 5 Columns: Chambers Contact Information */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-6 scroll-reveal-left">
               <div>
                 <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
                   Connect With CA Kavitha & Associates
                 </span>
-                <h2 className="font-editorial-h2 text-brand-forest tracking-tight">
+                <h2 className="font-editorial-h2 text-brand-forest">
                   Let's Discuss Your Financial & Compliance Priorities
                 </h2>
                 <p className="font-editorial-body text-sm text-brand-muted mt-3 leading-relaxed">
@@ -1048,7 +1048,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {/* Right 7 Columns: Embedded ContactForm */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 scroll-reveal-right">
               <ContactForm />
             </div>
 
