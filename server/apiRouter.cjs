@@ -14,9 +14,30 @@ function isOriginAllowed(origin) {
   return ALLOWED_ORIGIN_PATTERNS.some(p => p.test(origin.trim()));
 }
 
+const IPV4_REGEX = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+
+function isValidIp(ip) {
+  if (!ip || typeof ip !== 'string') return false;
+  const clean = ip.startsWith('::ffff:') ? ip.slice(7) : ip;
+  return IPV4_REGEX.test(clean) || clean.includes(':');
+}
+
 function getClientIp(req) {
+  const cfIp = req.headers['cf-connecting-ip'];
+  if (typeof cfIp === 'string' && cfIp.trim()) {
+    let ip = cfIp.trim();
+    if (ip.startsWith('::ffff:')) ip = ip.slice(7);
+    if (isValidIp(ip)) return ip;
+  }
   const rawForwarded = req.headers['x-forwarded-for'];
-  let ip = typeof rawForwarded === 'string' ? rawForwarded.split(',')[0].trim() : (req.socket?.remoteAddress || '127.0.0.1');
+  if (typeof rawForwarded === 'string') {
+    const parts = rawForwarded.split(',').map(s => s.trim()).filter(Boolean);
+    for (const part of parts) {
+      let candidate = part.startsWith('::ffff:') ? part.slice(7) : part;
+      if (isValidIp(candidate)) return candidate;
+    }
+  }
+  let ip = req.socket?.remoteAddress || '127.0.0.1';
   if (ip.startsWith('::ffff:')) {
     ip = ip.slice(7);
   }
@@ -179,8 +200,9 @@ async function handleApiRequest(req, res) {
     if (fullName.length < 2 || fullName.length > 100) {
       return sendJson(res, 400, { success: false, error: 'Full name must be between 2 and 100 characters.' }, req);
     }
-    if (phone.length < 8 || phone.length > 20) {
-      return sendJson(res, 400, { success: false, error: 'Please provide a valid contact number (min 8 digits, max 20).' }, req);
+    const digitCount = (phone.replace(/\D/g, '')).length;
+    if (phone.length < 8 || phone.length > 20 || !/^[0-9+\s\-()]{8,20}$/.test(phone) || digitCount < 7) {
+      return sendJson(res, 400, { success: false, error: 'Please provide a valid contact number (min 7 digits, max 20).' }, req);
     }
     if (message.length < 5 || message.length > 3000) {
       return sendJson(res, 400, { success: false, error: 'Message description must be between 5 and 3000 characters.' }, req);

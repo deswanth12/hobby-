@@ -37,6 +37,13 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Null Byte Defense
+  if (pathname.includes('\0')) {
+    res.writeHead(400, { 'Content-Type': 'text/plain', 'X-Content-Type-Options': 'nosniff' });
+    res.end('Bad Request: Null byte prohibited.');
+    return;
+  }
+
   // Path Traversal Defense: Normalize and verify destination remains strictly within DIST_DIR
   const normalizedPath = path.normalize(pathname).replace(/^(\.\.[\/\\])+/, '');
   let filePath = path.resolve(DIST_DIR, '.' + normalizedPath);

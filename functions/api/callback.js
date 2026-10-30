@@ -187,7 +187,7 @@ export async function onRequestGet(context) {
         window.opener.postMessage('authorizing:github', handshakeOrigin);
         // Fallback: If opener does not echo handshake within 1200ms, deliver directly to trusted origin
         setTimeout(function () {
-          deliverMessage(handshakeOrigin);
+          deliverMessage(trustedOrigin);
         }, 1200);
       } else {
         var el = document.getElementById('status-text');

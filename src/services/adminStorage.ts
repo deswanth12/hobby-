@@ -695,11 +695,26 @@ export const adminStorage = {
       }
     }
 
-    // 3. Local fallback authentication
-    return this.authenticate(cleanIdentity, cleanPass);
+    // 3. Local fallback authentication (restricted to development/QA evaluation only)
+    if (import.meta.env.DEV) {
+      return this.authenticate(cleanIdentity, cleanPass);
+    }
+
+    return {
+      success: false,
+      error: 'Authentication failed. Please verify credentials with the practice server.'
+    };
   },
 
   authenticate(username: string, password: string): { success: boolean; error?: string; session?: AdminSession } {
+    // In production environments, client-side fallback authentication is disabled to prevent credential leakage in bundle
+    if (!import.meta.env.DEV) {
+      return {
+        success: false,
+        error: 'Direct client-side authentication is disabled in production. Authentication must be verified server-side.'
+      };
+    }
+
     const cleanUser = username.trim().toLowerCase();
     const cleanPass = password.trim();
 

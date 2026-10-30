@@ -56,8 +56,8 @@ export const ContactForm: React.FC = () => {
 
     if (!formData.phone.trim()) {
       newErrors.phone = 'Phone number is required';
-    } else if (!/^[0-9+\s-]{8,15}$/.test(formData.phone.trim())) {
-      newErrors.phone = 'Please provide a valid contact number';
+    } else if (!/^[0-9+\s-]{8,15}$/.test(formData.phone.trim()) || (formData.phone.replace(/\D/g, '')).length < 7) {
+      newErrors.phone = 'Please provide a valid contact number (min 7 digits)';
     }
 
     if (!formData.email.trim()) {

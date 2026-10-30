@@ -1,5 +1,5 @@
 import React from 'react';
-import { isSafeUrl } from '../lib/markdown';
+import { isSafeUrl, sanitizeMarkdown } from '../lib/markdown';
 
 interface MarkdownRendererProps {
   content: string;
@@ -13,8 +13,9 @@ interface MarkdownRendererProps {
 export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
   if (!content) return null;
 
+  const sanitized = sanitizeMarkdown(content);
   // Split into structural blocks separated by newlines
-  const lines = content.split(/\r?\n/);
+  const lines = sanitized.split(/\r?\n/);
   const elements: React.ReactNode[] = [];
   let index = 0;
 

@@ -153,20 +153,22 @@ function writeDb(data) {
 }
 
 // Hash password with salt
-function hashPassword(password, salt = 'ka_salt_tirupati_ca') {
+const DEFAULT_SALT = process.env.SESSION_SECRET || 'ka_salt_tirupati_ca';
+
+function hashPassword(password, salt = DEFAULT_SALT) {
   return crypto.createHmac('sha256', salt).update(password).digest('hex');
 }
 
 const AUTHORIZED_USERS = [
   {
     username: 'kavitha',
-    passwordHash: hashPassword('Tirupati@CA2026'),
+    passwordHash: hashPassword(process.env.ADMIN_KAVITHA_PASSWORD || 'Tirupati@CA2026', DEFAULT_SALT),
     displayName: 'CA Kavitha Vijay',
     role: 'Managing Partner'
   },
   {
     username: 'admin',
-    passwordHash: hashPassword('KavithaAssoc#2026'),
+    passwordHash: hashPassword(process.env.ADMIN_PASSWORD || 'KavithaAssoc#2026', DEFAULT_SALT),
     displayName: 'Practice Administrator',
     role: 'Practice Administrator'
   }
