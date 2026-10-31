@@ -48,7 +48,7 @@ export default {
         gold: {
           light: '#D8C296',
           DEFAULT: '#C3A66B',     // Approved Muted Gold Accent
-          dark: '#7A5C22',       // Calibrated for WCAG AA 4.5:1+ contrast on light surfaces
+          dark: '#73561E',       // Calibrated for WCAG AA 4.5:1+ contrast on light surfaces (6.02:1 on Ivory)
         },
         charcoal: {
           DEFAULT: '#252B27',     // Approved Charcoal Body Text

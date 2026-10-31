@@ -181,7 +181,7 @@ export const IndustriesPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
+      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-3">
@@ -228,7 +228,7 @@ export const IndustriesPage: React.FC = () => {
       {/* =========================================================================
           3. THE 10 SECTOR PROFILES (Alternating Asymmetric Editorial Ledgers)
           ========================================================================= */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {industryProfiles.map((ind, idx) => {
             const IconComponent = ind.icon;
@@ -323,7 +323,7 @@ export const IndustriesPage: React.FC = () => {
       {/* =========================================================================
           4. CROSS-SECTOR COMPLIANCE MATRIX
           ========================================================================= */}
-      <section className="py-20 bg-brand-surface border-y border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
@@ -393,7 +393,7 @@ export const IndustriesPage: React.FC = () => {
       {/* =========================================================================
           5. SPECIALIZED INDUSTRY CONSULTATION CTA
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-surface text-center">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface text-center">
         <div className="max-w-3xl mx-auto px-4 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Specialized Industry Counsel

@@ -76,7 +76,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
+      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20">
@@ -96,7 +96,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           2. PARTNER PROFILE & INSTITUTIONAL PEDIGREE (ASYMMETRIC 5:7 SPLIT)
           ========================================================================= */}
-      <section className="py-20 sm:py-24 lg:py-28">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
             
@@ -434,7 +434,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           3. PRACTICE PHILOSOPHY & GOVERNANCE
           ========================================================================= */}
-      <section className="py-20 sm:py-24 lg:py-28 bg-brand-surface border-y border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-28 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
@@ -497,7 +497,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           4. VISION & MISSION
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-ivory">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-brand-white p-8 sm:p-10 rounded-2xl border border-brand-border shadow-subtle space-y-4 card-tactile scroll-reveal-left">
@@ -526,7 +526,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           5. AUTHENTIC PRACTICE CHAMBERS & STATUTORY PHYSICAL PRESENCE
           ========================================================================= */}
-      <section className="py-20 sm:py-24 lg:py-28 bg-brand-surface border-t border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-28 bg-brand-surface border-t border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16 scroll-reveal">
             <span className="badge-gold-pill mb-3">
@@ -663,7 +663,7 @@ export const AboutPage: React.FC = () => {
       {/* =========================================================================
           5. APPROACHABLE CONSULTATION CTA
           ========================================================================= */}
-      <section className="py-20 sm:py-24 text-center bg-brand-surface border-t border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 text-center bg-brand-surface border-t border-brand-border">
         <div className="max-w-3xl mx-auto px-4">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             In-Person & Remote Practice

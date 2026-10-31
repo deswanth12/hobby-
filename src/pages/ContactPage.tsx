@@ -46,7 +46,7 @@ export const ContactPage: React.FC = () => {
         }}
       />
       {/* Header Banner */}
-      <section className="bg-brand-surface py-20 sm:py-24 border-b border-brand-border">
+      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
             <span className="badge-gold-pill mb-3">
@@ -63,7 +63,7 @@ export const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Content */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             

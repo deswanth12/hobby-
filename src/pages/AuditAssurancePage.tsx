@@ -49,7 +49,7 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-deep text-white py-20 sm:py-24 lg:py-28 border-b border-brand-gold/30">
+      <section className="bg-brand-deep text-white py-10 sm:py-16 md:py-20 lg:py-28 border-b border-brand-gold/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
@@ -123,7 +123,7 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           3. THE 4-PHASE AUDIT LIFECYCLE
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-ivory border-b border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
@@ -204,7 +204,7 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           4. THE 9 STATUTORY AUDIT STREAMS (Asymmetric Catalog)
           ========================================================================= */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2.5">
@@ -373,7 +373,7 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           5. DUAL CA + CMA AUDIT ADVANTAGE
           ========================================================================= */}
-      <section className="py-20 bg-brand-surface border-y border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
@@ -410,7 +410,7 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           6. STATUTORY TIMELINES & AUDIT READINESS CTA
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-surface text-center">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface text-center">
         <div className="max-w-3xl mx-auto px-4 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Statutory Timelines & Readiness

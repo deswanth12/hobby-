@@ -177,40 +177,42 @@ export const HomePage: React.FC = () => {
           SECTION 1: HERO & PRACTICE REGISTRY PLAQUE (Asymmetric 7:5 Split)
           Canvas: Warm Ivory #F5F1E8 (bg-brand-ivory)
           ========================================================================= */}
-      <section className="bg-brand-ivory pt-12 sm:pt-16 lg:pt-16 xl:pt-14 pb-14 sm:pb-20 lg:pb-16 xl:pb-14 border-b border-brand-border relative overflow-hidden min-h-0 flex items-center">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <section className="bg-brand-ivory pt-6 xs:pt-8 sm:pt-14 lg:pt-16 pb-10 sm:pb-16 lg:pb-16 border-b border-brand-border relative overflow-hidden min-h-0 flex items-center">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
             
             {/* Left 7 Columns: Editorial Narrative & Action Cluster */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-5 scroll-reveal-left">
+            <div className="lg:col-span-7 space-y-3.5 sm:space-y-5 scroll-reveal-left">
               
               {/* Institutional Practice Kicker */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-xs">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-xs">
                 <span className="w-2 h-2 rounded-full bg-brand-gold motion-safe:animate-pulse" />
-                <span className="text-xs font-semibold text-brand-forest">
+                <span className="text-[11px] sm:text-xs font-semibold text-brand-forest">
                   Independent Chartered Accountancy Practice, Tirupati
                 </span>
               </div>
 
               {/* Master Headline (Cormorant Garamond Monumental Serif) */}
               <div className="space-y-1">
-                <h1 className="font-editorial-h1 leading-[1.15]">
-                <span className="block text-brand-forest">Chartered Accountant in Tirupati</span>
-                <span className="block text-gold-dark font-serif italic text-[0.82em] mt-1.5 font-medium">Statutory Rigor & Commercial Tax Counsel</span>
-              </h1>
+                <h1 className="font-editorial-h1 leading-[1.14]">
+                  <span className="block text-brand-forest">Chartered Accountant in Tirupati</span>
+                  <span className="block font-editorial-hero-sub text-gold-dark font-serif italic mt-1.5 sm:mt-2 font-medium">
+                    Statutory Rigor &amp; Commercial Tax Counsel
+                  </span>
+                </h1>
               </div>
 
               {/* Authoritative Lead Narrative */}
-              <p className="font-editorial-body text-brand-charcoal/85 leading-relaxed max-w-2xl font-normal">
+              <p className="font-editorial-body text-brand-charcoal/90 max-w-xl font-normal leading-[1.65] sm:leading-[1.7]">
                 Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
               {/* Primary Call to Action Cluster with Dual-Arrow Micro-physics */}
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row sm:items-center flex-wrap gap-2.5 sm:gap-3.5 pt-1 sm:pt-2">
                 <DualArrowButton
                   href="#contact-section"
                   variant="primary"
-                  className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
+                  className="w-full sm:w-auto text-xs sm:text-[13px] font-semibold justify-center py-2.5 px-4.5 min-h-[46px] whitespace-nowrap"
                 >
                   Request Consultation
                 </DualArrowButton>
@@ -218,30 +220,30 @@ export const HomePage: React.FC = () => {
                 <DualArrowButton
                   to="/services"
                   variant="secondary"
-                  className="w-full sm:w-auto text-xs sm:text-sm font-semibold"
+                  className="w-full sm:w-auto text-xs sm:text-[13px] font-semibold justify-center py-2.5 px-4.5 min-h-[46px] whitespace-nowrap"
                 >
                   Explore Practice Disciplines
                 </DualArrowButton>
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest w-full sm:w-auto justify-center inline-flex items-center gap-2 text-xs font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile min-h-[44px]"
+                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest w-full sm:w-auto justify-center inline-flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full bg-brand-surface/70 hover:bg-brand-surface border border-brand-border/70 transition-colors btn-tactile min-h-[46px] whitespace-nowrap"
                   title="Direct telephone line"
                 >
-                  <Phone className="w-4 h-4 text-gold-dark" />
+                  <Phone className="w-4 h-4 text-gold-dark shrink-0" />
                   <span>Call {FIRM_DATA.contact.primaryPhone}</span>
                 </a>
               </div>
 
               {/* Trust Creed Strip */}
-              <div className="pt-4 border-t border-brand-border/60 flex flex-wrap items-center gap-3 text-xs text-brand-muted">
+              <div className="pt-3 sm:pt-4 border-t border-brand-border/60 flex flex-wrap items-center gap-x-2.5 sm:gap-x-3 gap-y-1.5 text-xs text-brand-muted">
                 <span className="text-brand-forest font-semibold">Trust</span>
-                <span className="text-brand-gold/60" aria-hidden="true">,</span>
+                <span className="text-brand-gold font-bold" aria-hidden="true">·</span>
                 <span className="text-brand-forest font-semibold">Expertise</span>
-                <span className="text-brand-gold/60" aria-hidden="true">,</span>
+                <span className="text-brand-gold font-bold" aria-hidden="true">·</span>
                 <span className="text-brand-forest font-semibold">Strategic Counsel</span>
-                <span className="text-brand-gold/60 hidden sm:inline" aria-hidden="true">,</span>
-                <span className="text-brand-forest hidden sm:inline font-semibold">Established Practice</span>
+                <span className="text-brand-gold font-bold hidden xs:inline" aria-hidden="true">·</span>
+                <span className="text-brand-forest hidden xs:inline font-semibold">Established Practice</span>
               </div>
             </div>
 
@@ -565,7 +567,7 @@ export const HomePage: React.FC = () => {
           Canvas: Pure White #FFFFFF (bg-brand-white)
           ========================================================================= */}
       <section
-        className="py-20 sm:py-28 lg:py-32 bg-brand-white border-b border-brand-border scroll-mt-28"
+        className="py-10 sm:py-16 md:py-20 lg:py-28 bg-brand-white border-b border-brand-border scroll-mt-28"
         id="audit-spotlight"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -694,7 +696,7 @@ export const HomePage: React.FC = () => {
           SECTION 4: COMPREHENSIVE SERVICE SPECTRUM (3x2 Editorial Grid)
           Canvas: Warm Ivory #F5F1E8 (bg-brand-ivory)
           ========================================================================= */}
-      <section className="py-20 sm:py-28 lg:py-32 bg-brand-ivory border-b border-brand-border" id="services-overview">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-28 bg-brand-ivory border-b border-brand-border" id="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="text-xs font-semibold text-gold-dark block mb-2">
@@ -941,7 +943,7 @@ export const HomePage: React.FC = () => {
           SECTION 5: ENGAGEMENT METHODOLOGY (Connected Process Timeline)
           Canvas: Surface Tint #EDE8DF (bg-brand-surface)
           ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-brand-surface border-b border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="text-xs font-semibold text-gold-dark block mb-2">
@@ -963,7 +965,7 @@ export const HomePage: React.FC = () => {
           SECTION 6: PRACTICE PHILOSOPHY & GOVERNANCE (Dual Advantage & ICAI Ethics)
           Canvas: Warm Ivory #F5F1E8 (bg-brand-ivory)
           ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-brand-ivory border-b border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
             <span className="text-xs font-semibold text-gold-dark block mb-2">
@@ -1039,7 +1041,7 @@ export const HomePage: React.FC = () => {
           SECTION 7: INDUSTRIES WE SERVE (10 Contextual Sector Profiles)
           Canvas: Pure White #FFFFFF (bg-brand-white)
           ========================================================================= */}
-      <section className="py-20 sm:py-28 bg-brand-white border-b border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-white border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 scroll-reveal">
             <div>
@@ -1165,7 +1167,7 @@ export const HomePage: React.FC = () => {
           SECTION 10: CHAMBERS CONSULTATION & INTAKE (Asymmetric 5:7 Split)
           Canvas: Warm Ivory #F5F1E8 (bg-brand-ivory)
           ========================================================================= */}
-      <section className="py-20 sm:py-28 lg:py-32 bg-brand-ivory" id="contact-section">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-28 bg-brand-ivory" id="contact-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14">
             

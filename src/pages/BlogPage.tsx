@@ -73,7 +73,7 @@ export const BlogPage: React.FC = () => {
       {/* =========================================================================
           1. EDITORIAL HERO BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
+      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20 min-h-[44px]">
@@ -285,7 +285,7 @@ export const BlogPage: React.FC = () => {
       {/* =========================================================================
           4. PUBLISHED ARTICLE CARDS GRID
           ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24">
+      <section className="py-16 sm:py-10 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {filteredPosts.length === 0 ? (

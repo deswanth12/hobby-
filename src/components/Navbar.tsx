@@ -170,39 +170,39 @@ export const Navbar: React.FC = () => {
 
       {/* Main Navbar */}
       <nav
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-[padding] duration-200 ${
-          isScrolled ? 'py-2.5' : 'py-3.5'
+        className={`max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between transition-[padding] duration-200 ${
+          isScrolled ? 'py-2' : 'py-2.5 sm:py-3.5'
         }`}
         aria-label="Main Navigation"
       >
         {/* Typographic Brand Mark & Monogram Badge */}
         <Link
           to="/"
-          className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-1 btn-tactile"
+          className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-0.5 sm:p-1 btn-tactile shrink-0"
         >
           {/* Refined Monogram Badge with Master Vector Emblem */}
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
             <img
               src="/brand/ka-monogram-flat.svg"
               alt="Kavitha &amp; Associates Official Practice Monogram"
-              width="44"
-              height="44"
-              className="w-full h-full object-contain drop-shadow-xs "
+              width="40"
+              height="40"
+              className="w-full h-full object-contain drop-shadow-xs"
             />
             <span className="sr-only font-serif font-bold text-xl tracking-wider text-brand-gold">KA</span>
           </div>
-          <div>
-            <span className="block font-serif text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-snug group-hover:text-brand-deep transition-colors">
-              Kavitha & Associates
+          <div className="min-w-0">
+            <span className="block font-serif text-[1.125rem] xs:text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-tight group-hover:text-brand-deep transition-colors whitespace-nowrap">
+              Kavitha &amp; Associates
             </span>
-            <span className="block text-xs font-semibold text-gold-dark mt-0.5">
+            <span className="block text-[10px] sm:text-xs font-semibold text-gold-dark mt-0.5 leading-none">
               Chartered Accountants
             </span>
           </div>
         </Link>
 
         {/* Restrained Desktop Navigation Links */}
-        <div className="hidden xl:flex items-center gap-2 xl:gap-2.5 2xl:gap-4">
+        <div className="hidden xl:flex items-center gap-2 xl:gap-2.5 2xl:gap-4 font-editorial-nav">
           <Link
             to="/"
             className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${

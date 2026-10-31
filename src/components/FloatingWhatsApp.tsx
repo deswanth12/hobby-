@@ -16,6 +16,30 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' 
 export const FloatingWhatsApp: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // On mobile viewports (< 640px), keep WhatsApp button hidden while the hero section is in view.
+      // Smoothly reveal once user scrolls past 200px. On tablet/desktop (>= 640px), always visible.
+      if (typeof window !== 'undefined') {
+        if (window.innerWidth < 640) {
+          setIsVisible(window.scrollY > 200);
+        } else {
+          setIsVisible(true);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     // Check if dismissed in this session to prevent repeated covering of content
@@ -57,7 +81,11 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <aside 
       aria-label="Direct WhatsApp Consultation" 
-      className="fixed bottom-5 right-4 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end pointer-events-none"
+      className={`fixed bottom-4 right-3.5 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end transition-[opacity,transform] duration-300 ${
+        isVisible 
+          ? 'opacity-100 translate-y-0 pointer-events-auto' 
+          : 'opacity-0 translate-y-3 pointer-events-none sm:opacity-100 sm:translate-y-0 sm:pointer-events-auto'
+      }`}
     >
       {/* Interactive Consultation Speech Bubble (Desktop/Tablet only, auto-timed & non-blocking) */}
       {showTooltip && (

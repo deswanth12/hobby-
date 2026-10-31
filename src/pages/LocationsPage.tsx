@@ -79,7 +79,7 @@ export const LocationsPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-20 sm:py-24 lg:py-28 border-b border-brand-border">
+      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <span className="font-editorial-meta text-brand-gold block mb-3">
@@ -98,7 +98,7 @@ export const LocationsPage: React.FC = () => {
       {/* =========================================================================
           2. PRINCIPAL CHAMBERS (ASYMMETRIC 7:5 SPLIT)
           ========================================================================= */}
-      <section className="py-20 sm:py-24">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
             
@@ -223,7 +223,7 @@ export const LocationsPage: React.FC = () => {
       {/* =========================================================================
           3. THE 4 ACTIVE REGIONAL CORRIDORS (2x2 STRUCTURED LEDGER)
           ========================================================================= */}
-      <section className="py-20 bg-brand-surface border-y border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 bg-brand-surface border-y border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
             <span className="font-editorial-meta text-brand-gold block mb-2">
@@ -293,7 +293,7 @@ export const LocationsPage: React.FC = () => {
       {/* =========================================================================
           4. PAN-INDIA SECURE DIGITAL AUDIT INFRASTRUCTURE
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-ivory">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-ivory">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-brand-white rounded-2xl p-8 sm:p-10 lg:p-12 border border-brand-border shadow-card card-tactile flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="flex items-start gap-5">
@@ -340,7 +340,7 @@ export const LocationsPage: React.FC = () => {
       {/* =========================================================================
           5. APPOINTMENT SCHEDULING CTA
           ========================================================================= */}
-      <section className="py-20 sm:py-24 bg-brand-surface text-center border-t border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface text-center border-t border-brand-border">
         <div className="max-w-3xl mx-auto px-4">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
             Chambers & Virtual Meetings
