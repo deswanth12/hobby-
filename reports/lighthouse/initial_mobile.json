@@ -3017,7 +3017,7 @@
                 "height": 35
               },
               "snippet": "<div class=\"text-charcoal-light\">",
-              "nodeLabel": "Applies to: Businesses with turnover > â‚¹1 Cr / â‚¹10 Cr & Professionals",
+              "nodeLabel": "Applies to: Businesses with turnover > ₹1 Cr / ₹10 Cr & Professionals",
               "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 2.28 (foreground color: #9da39c, background color: #f4f1ec, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
             },
             "subItems": {
@@ -7586,7 +7586,7 @@
                 "height": 156
               },
               "snippet": "<p class=\"mt-2 text-charcoal-muted leading-relaxed\">",
-              "nodeLabel": "Under Section 139 of the Companies Act, 2013, every incorporated companyâ€”whet…",
+              "nodeLabel": "Under Section 139 of the Companies Act, 2013, every incorporated company—whet…",
               "explanation": "Fix any of the following:\n  Element has insufficient color contrast of 4.39 (foreground color: #747a73, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
             },
             "subItems": {

@@ -280,7 +280,7 @@ export const AdminOverviewPage: React.FC = () => {
                 {firmData.name}
               </h3>
               <p className="text-xs text-emerald-200/80 mt-1">
-                Chartered Accountants â€¢ Tirupati Chambers
+                Chartered Accountants • Tirupati Chambers
               </p>
 
               <div className="mt-4 space-y-2 text-xs text-gray-200">
@@ -381,7 +381,7 @@ export const AdminOverviewPage: React.FC = () => {
                     </div>
                     <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
                       <span>{enquiry.phone}</span>
-                      <span>â€¢</span>
+                      <span>•</span>
                       <span>{enquiry.serviceCategory}</span>
                     </div>
                     <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
@@ -396,7 +396,7 @@ export const AdminOverviewPage: React.FC = () => {
                         to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
                         className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-gold"
                       >
-                        Review Enquiry â†’
+                        Review Enquiry →
                       </Link>
                     </div>
                   </div>
@@ -465,7 +465,7 @@ export const AdminOverviewPage: React.FC = () => {
                             to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
                             className="inline-flex items-center font-bold text-brand-darkgreen hover:text-gold transition-colors"
                           >
-                            Review â†’
+                            Review →
                           </Link>
                         </td>
                       </tr>

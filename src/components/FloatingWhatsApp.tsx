@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Sparkles } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
 
@@ -15,17 +15,54 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' 
 
 export const FloatingWhatsApp: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
-  const [showTooltip, setShowTooltip] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    // Check if dismissed in this session to prevent repeated covering of content
+    try {
+      if (sessionStorage.getItem('ka_wa_dismissed')) {
+        return;
+      }
+    } catch (e) {
+      // sessionStorage unavailable
+    }
+
+    // Delay prompt appearance so it doesn't immediately obscure page entry
+    const showTimer = setTimeout(() => {
+      setShowTooltip(true);
+    }, 1200);
+
+    // Auto-dismiss after 10 seconds to keep reading flow unobstructed
+    const hideTimer = setTimeout(() => {
+      setShowTooltip(false);
+    }, 11200);
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
+  const handleDismiss = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowTooltip(false);
+    try {
+      sessionStorage.setItem('ka_wa_dismissed', '1');
+    } catch (err) {
+      // ignore
+    }
+  };
 
   return (
     <aside 
       aria-label="Direct WhatsApp Consultation" 
-      className="fixed bottom-5 right-4 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end"
+      className="fixed bottom-5 right-4 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end pointer-events-none"
     >
-      {/* Alive Interactive Consultation Speech Bubble */}
+      {/* Interactive Consultation Speech Bubble (Desktop/Tablet only, auto-timed & non-blocking) */}
       {showTooltip && (
         <div 
-          className="hidden sm:block mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-editorial-lg text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-[opacity,transform] duration-200"
+          className="hidden sm:block mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-editorial-lg text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-[opacity,transform] duration-200 pointer-events-auto"
           role="status"
         >
           <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -41,11 +78,7 @@ export const FloatingWhatsApp: React.FC = () => {
             </div>
             <button
               type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setShowTooltip(false);
-              }}
+              onClick={handleDismiss}
               className="min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-400 hover:text-gray-700 -mt-1 -mr-1 rounded-full hover:bg-gray-100 transition-colors"
               aria-label="Dismiss consultation prompt"
             >
@@ -60,24 +93,21 @@ export const FloatingWhatsApp: React.FC = () => {
         </div>
       )}
 
-      {/* Alive Floating Action Button */}
+      {/* Floating Action Button */}
       <a
         href={FIRM_DATA.contact.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center gap-2.5 min-w-[48px] min-h-[48px] w-12 h-12 sm:w-auto sm:h-auto bg-emerald-700 hover:bg-emerald-800 text-white sm:px-4 sm:py-3 rounded-full shadow-lg hover:shadow-editorial-lg border border-brand-gold/40 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+        className="pointer-events-auto group relative flex items-center justify-center gap-2.5 min-w-[48px] min-h-[48px] w-12 h-12 sm:w-auto sm:h-auto bg-emerald-700 hover:bg-emerald-800 text-white sm:px-4 sm:py-3 rounded-full shadow-lg hover:shadow-editorial-lg border border-brand-gold/40 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
         aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
-        {/* Alive Luminescent Aura Ring */}
-        
-
         {/* Live Double Radar Ping */}
         <span className="relative flex h-3 w-3 shrink-0" aria-hidden="true">
           <span className="motion-safe:animate-[pulse_3s_ease-in-out_infinite] absolute inline-flex h-full w-full rounded-full bg-emerald-400/40" />
           <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-sm" />
         </span>
 
-        {/* Branded WhatsApp Vector Glyph with Micro-Bounce */}
+        {/* Branded WhatsApp Vector Glyph */}
         <WhatsAppIcon className="w-5 h-5 text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 shrink-0 drop-shadow-sm" />
 
         {/* Action Label & Status */}

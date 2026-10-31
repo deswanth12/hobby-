@@ -153,7 +153,7 @@ export const FIRM_DATA: FirmProfile = {
     specialization: "Audit Expert | Compliance & Advisory Expert | International Exposure | Career Mentorship & Financial Literacy for B2C & B2B",
     memberships: [
       "The Institute of Chartered Accountants of India (ICAI)",
-      "The Institute of Cost Accountants of India (ICMAI) â€” All India Rank 49 in CMA Intermediate"
+      "The Institute of Cost Accountants of India (ICMAI) — All India Rank 49 in CMA Intermediate"
     ],
     coreCompetencies: [
       "Enterprise Risk Management",
@@ -207,49 +207,49 @@ export const FIRM_DATA: FirmProfile = {
       {
         role: "Business Auditor",
         organization: "Ford Motor Company Private Limited",
-        period: "April 2022 â€“ January 2026",
+        period: "April 2022 – January 2026",
         location: "Chennai, India (Onsite in South Africa & Australia)",
         highlights: [
           "Led comprehensive enterprise risk interviews with C-suite and senior leadership, prioritising key operational and strategic risks across multiple business functions.",
           "Executed risk-based audits assessing process effectiveness, internal controls, and compliance, delivering corrective action plans that measurably strengthened the control environment.",
           "Visited South Africa and Australia, demonstrating cross-border audit execution across diverse international regulatory environments.",
-          "Provided advisory support for new system launches â€” proactively identifying process bottlenecks and control gaps before go-live.",
+          "Provided advisory support for new system launches — proactively identifying process bottlenecks and control gaps before go-live.",
           "Collaborated with global SMEs, skill teams, and senior leadership to align audit findings with enterprise business priorities."
         ],
         keyEngagements: [
           "Global Warranty Reserve & Forecast Audit",
           "Global Transfer Pricing Audit",
           "FCSD India Strategy Post-Restructuring Audit",
-          "Change Management Audit â€” New IT System",
+          "Change Management Audit — New IT System",
           "Ford Motor Company South Africa Manufacturing Audit (Onsite)",
-          "Fordâ€“Volkswagen Strategic Alliance Audit",
-          "South Africa â€“ DEI & Sustainability Review",
+          "Ford–Volkswagen Strategic Alliance Audit",
+          "South Africa – DEI & Sustainability Review",
           "Australia Market Review (Onsite)",
           "IMPRS Segmentation Implementation & Governance",
           "GPDS Market Equation Audit"
         ]
       },
       {
-        role: "Deputy Manager â€” Assurance (Statutory Audit)",
+        role: "Deputy Manager — Assurance (Statutory Audit)",
         organization: "Deloitte Haskins & Sells",
-        period: "February 2020 â€“ March 2022",
+        period: "February 2020 – March 2022",
         location: "Chennai, India",
         highlights: [
-          "Field Senior on a landmark â‚¹1,000 Crore IPO engagement â€” one of India's significant public listings, demanding the highest standards of audit rigour and investor confidence.",
+          "Field Senior on a landmark ₹1,000 Crore IPO engagement — one of India's significant public listings, demanding the highest standards of audit rigour and investor confidence.",
           "Conferred Move the Dot (Individual Excellence) & Live the Dot (Team Achievement) Awards for outstanding audit delivery and cross-functional leadership.",
-          "Directed statutory, tax, and limited review audits with full ICFR assessments for listed and private entities across service and manufacturing sectors (up to â‚¹2,000 Crore turnover).",
+          "Directed statutory, tax, and limited review audits with full ICFR assessments for listed and private entities across service and manufacturing sectors (up to ₹2,000 Crore turnover).",
           "Designed and executed audit plans aligned with ICAI professional standards and Deloitte global methodology, consistently delivering within deadlines.",
-          "Reported findings and management letters directly to the Engagement Partner â€” reflecting senior-level trust and accountability."
+          "Reported findings and management letters directly to the Engagement Partner — reflecting senior-level trust and accountability."
         ]
       },
       {
         role: "Articled Assistant",
         organization: "Manohar Chowdhry & Associates",
-        period: "September 2016 â€“ September 2019",
+        period: "September 2016 – September 2019",
         location: "Chennai, India",
         highlights: [
           "Conducted statutory, internal, and GST audits for listed and private companies across multiple sectors.",
-          "Independently managed income tax matters â€” assessments, scrutiny cases, and return filings â€” for corporate and high-net-worth individual clients.",
+          "Independently managed income tax matters — assessments, scrutiny cases, and return filings — for corporate and high-net-worth individual clients.",
           "Prepared and filed income tax returns, building deep expertise in Indian direct taxation and appellate procedure."
         ]
       }
@@ -313,7 +313,7 @@ export const FIRM_DATA: FirmProfile = {
     geoCoordinates: {
       latitude: 13.6192242,
       longitude: 79.418046,
-      dms: "13Â°37'09.2\"N 79Â°25'05.0\"E"
+      dms: "13°37'09.2\"N 79°25'05.0\"E"
     },
     googleMapsUrl: "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
     region: "India (Pan-India Service Reach)",
@@ -326,7 +326,7 @@ export const FIRM_DATA: FirmProfile = {
       city: "Tirupati", 
       state: "Andhra Pradesh", 
       type: "Primary Chambers",
-      description: "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati â€“ 517501."
+      description: "Principal operating practice of CA Kavitha Vijay located at Bairagi Patteda, 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati – 517501."
     },
     { 
       city: "Chennai", 
@@ -404,7 +404,7 @@ export const FIRM_DATA: FirmProfile = {
         statute: "Sec 44AB, Income Tax Act",
         scope: "Verification of books, allowable deductions, 3CD reporting clauses, and tax compliance reconciliations.",
         deliverable: "Form 3CA/3CB & Form 3CD Filing",
-        applicableEntity: "Businesses with turnover > â‚¹1 Cr / â‚¹10 Cr & Professionals"
+        applicableEntity: "Businesses with turnover > ₹1 Cr / ₹10 Cr & Professionals"
       },
       {
         name: "Internal Audit",
@@ -583,14 +583,14 @@ export const FIRM_DATA: FirmProfile = {
       id: "statutory-audit-mandate",
       category: "Audit & Assurance",
       question: "Which entities are legally mandated to conduct an independent Statutory Audit in India?",
-      answer: "Under Section 139 of the Companies Act, 2013, every incorporated companyâ€”whether Private Limited, One Person Company (OPC), or Public Limitedâ€”must appoint an independent practicing Chartered Accountant to conduct an annual statutory audit of its financial statements. This statutory requirement applies regardless of capital base, turnover volume, or whether the company made a profit or loss during the financial year.",
+      answer: "Under Section 139 of the Companies Act, 2013, every incorporated company—whether Private Limited, One Person Company (OPC), or Public Limited—must appoint an independent practicing Chartered Accountant to conduct an annual statutory audit of its financial statements. This statutory requirement applies regardless of capital base, turnover volume, or whether the company made a profit or loss during the financial year.",
       statuteReference: "Section 139, Companies Act, 2013"
     },
     {
       id: "tax-audit-thresholds",
       category: "Income Tax",
       question: "When does a business enterprise or professional require a Tax Audit under Section 44AB?",
-      answer: "Under Section 44AB of the Income Tax Act, 1961, businesses with gross turnover exceeding â‚¹1 Crore (or â‚¹10 Crores where aggregate cash receipts and payments do not exceed 5% of total turnover) are required to have their accounts audited by a Chartered Accountant. For professionals declaring income under presumptive schemes (Section 44ADA) claiming profits below the prescribed percentage, a formal tax audit report in Form 3CA/3CB and Form 3CD must be furnished.",
+      answer: "Under Section 44AB of the Income Tax Act, 1961, businesses with gross turnover exceeding ₹1 Crore (or ₹10 Crores where aggregate cash receipts and payments do not exceed 5% of total turnover) are required to have their accounts audited by a Chartered Accountant. For professionals declaring income under presumptive schemes (Section 44ADA) claiming profits below the prescribed percentage, a formal tax audit report in Form 3CA/3CB and Form 3CD must be furnished.",
       statuteReference: "Section 44AB, Income Tax Act, 1961"
     },
     {
