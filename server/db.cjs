@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const DB_PATH = path.join(__dirname, '..', 'data', 'practice_db.json');
+const DATA_DIR_PATH = path.join(__dirname, '..', 'data', 'practice_db.json');
+const VERCEL_TMP_PATH = '/tmp/practice_db.json';
+const DB_PATH = process.env.VERCEL ? VERCEL_TMP_PATH : DATA_DIR_PATH;
 
 // Baseline fallback data
 const BASELINE_DATA = {
@@ -125,6 +127,21 @@ const BASELINE_DATA = {
 
 function readDb() {
   try {
+    if (process.env.VERCEL && !fs.existsSync(DB_PATH)) {
+      if (fs.existsSync(DATA_DIR_PATH)) {
+        try {
+          const initial = fs.readFileSync(DATA_DIR_PATH, 'utf8');
+          fs.writeFileSync(DB_PATH, initial, 'utf8');
+          return JSON.parse(initial);
+        } catch {
+          writeDb(BASELINE_DATA);
+          return JSON.parse(JSON.stringify(BASELINE_DATA));
+        }
+      } else {
+        writeDb(BASELINE_DATA);
+        return JSON.parse(JSON.stringify(BASELINE_DATA));
+      }
+    }
     if (!fs.existsSync(DB_PATH)) {
       writeDb(BASELINE_DATA);
       return JSON.parse(JSON.stringify(BASELINE_DATA));

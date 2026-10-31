@@ -6,7 +6,8 @@ const MAX_BODY_SIZE = 1024 * 1024; // 1MB payload ceiling
 const ALLOWED_ORIGIN_PATTERNS = [
   /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/,
   /^https:\/\/(?:[a-z0-9-]+\.)?kavitha-and-associates\.pages\.dev$/,
-  /^https:\/\/(?:www\.)?kavithaassociates\.com$/
+  /^https:\/\/(?:www\.)?kavithaassociates\.com$/,
+  /^https:\/\/(?:[a-z0-9-]+\.)?vercel\.app$/
 ];
 
 function isOriginAllowed(origin) {
@@ -45,6 +46,16 @@ function getClientIp(req) {
 }
 
 function parseJsonBody(req) {
+  if (req.body && typeof req.body === 'object') {
+    return Promise.resolve(req.body);
+  }
+  if (typeof req.body === 'string') {
+    try {
+      return Promise.resolve(JSON.parse(req.body));
+    } catch {
+      return Promise.resolve({});
+    }
+  }
   return new Promise((resolve) => {
     let body = '';
     let bytesReceived = 0;
@@ -237,7 +248,10 @@ function authenticateRequest(req, db) {
 
 async function handleApiRequest(req, res) {
   const url = new URL(req.url, 'http://localhost');
-  const pathname = url.pathname;
+  let pathname = url.pathname;
+  if (!pathname.startsWith('/api')) {
+    pathname = '/api' + (pathname.startsWith('/') ? pathname : '/' + pathname);
+  }
   const method = req.method;
 
   // OPTIONS Preflight Handling with Strict Whitelist

@@ -23,7 +23,6 @@ import {
   UserCheck,
   HeartHandshake,
   Compass,
-  Award
 } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
 import { ContactForm } from '../components/ContactForm';
@@ -35,7 +34,6 @@ import { ConnectedTimeline } from '../components/ConnectedTimeline';
 export const HomePage: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
   const [activeSection, setActiveSection] = useState<string>('audit-spotlight');
-  const [activeChamberPhoto, setActiveChamberPhoto] = useState<'consultation' | 'library'>('consultation');
   const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
 
   // IntersectionObserver to dynamically highlight the active section in the quick-jump strip
@@ -183,86 +181,9 @@ export const HomePage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 5 Columns: Authentic Chambers Photo Card & Executive Registry Plaque */}
-            <div className="lg:col-span-5 space-y-5 scroll-reveal-right">
+            {/* Right 5 Columns: Executive Practice Registry Plaque */}
+            <div className="lg:col-span-5 scroll-reveal-right">
               
-              {/* Authentic Chambers Photo Card with Floating Gold Accreditation Badges */}
-              <div className="relative rounded-3xl p-1 bg-brand-deep border border-brand-gold/40 shadow-editorial-lg overflow-hidden group">
-                <div className="relative h-56 sm:h-64 w-full rounded-2xl overflow-hidden">
-                  <img
-                    src={
-                      activeChamberPhoto === 'consultation'
-                        ? '/brand/chambers/chamber-consultation.jpeg'
-                        : '/brand/chambers/chamber-library.jpeg'
-                    }
-                    alt={
-                      activeChamberPhoto === 'consultation'
-                        ? 'CA Kavitha Vijay - Principal Consultation Chambers, Tirupati'
-                        : 'Corporate Tax and Law Library Archives - Tirupati Chambers'
-                    }
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="eager"
-                  />
-                  {/* Subtle editorial vignette gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/20 to-transparent pointer-events-none" />
-
-                  {/* Top Floating Control Bar: Accreditation Badge & View Switcher (Unified Flex Container to Prevent Overlap) */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
-                    {/* Floating Gold Accreditation Badge */}
-                    <div className="pointer-events-auto min-w-0 shrink flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-brand-deep/90 backdrop-blur-md border border-brand-gold/50 shadow-md">
-                      <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-                      <span className="font-editorial-meta text-[9px] sm:text-[10px] font-bold text-brand-gold tracking-wider uppercase truncate">
-                        ICAI Reg. Chambers<span className="hidden sm:inline"> • Tirupati</span>
-                      </span>
-                    </div>
-
-                    {/* Floating View Switcher */}
-                    <div className="pointer-events-auto shrink-0 flex items-center gap-1 bg-black/60 backdrop-blur-md p-1 rounded-full border border-white/20">
-                      <button
-                        type="button"
-                        onClick={() => setActiveChamberPhoto('consultation')}
-                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold transition-all min-h-[26px] cursor-pointer ${
-                          activeChamberPhoto === 'consultation'
-                            ? 'bg-brand-gold text-brand-deep shadow-xs font-bold'
-                            : 'text-white/80 hover:text-white'
-                        }`}
-                        title="View Consultation Chambers"
-                      >
-                        Chambers
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setActiveChamberPhoto('library')}
-                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-semibold transition-all min-h-[26px] cursor-pointer ${
-                          activeChamberPhoto === 'library'
-                            ? 'bg-brand-gold text-brand-deep shadow-xs font-bold'
-                            : 'text-white/80 hover:text-white'
-                        }`}
-                        title="View Law Library Archives"
-                      >
-                        Archives
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Bottom Photo Metadata Caption */}
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
-                    <div>
-                      <span className="font-editorial-meta text-[10px] font-semibold tracking-wider text-brand-gold block">
-                        {activeChamberPhoto === 'consultation' ? 'CONSULTATION CHAMBERS' : 'STATUTORY LAW ARCHIVES'}
-                      </span>
-                      <span className="text-xs font-medium text-emerald-100/90 block">
-                        19-12-46, Near Bairagipetteda Arch, Tirupati – 517501
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-brand-forest/90 border border-brand-gold/40 text-[10px] font-semibold text-brand-gold">
-                      <Award className="w-3 h-3 text-brand-gold" />
-                      <span>AIR 49 CMA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               {/* Executive Practice Registry Plaque (Double-Bezel Architecture) */}
               <div 
                 className="double-bezel-dark animate-fade-up rounded-3xl p-1.5"
