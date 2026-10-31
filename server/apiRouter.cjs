@@ -752,6 +752,44 @@ async function handleApiRequest(req, res) {
     return sendJson(res, 200, { success: true, faq });
   }
 
+  // --- E2. Update / Create Post Content ---
+  if ((method === 'PUT' || method === 'POST') && pathname.startsWith('/api/admin/content/posts/')) {
+    const slug = pathname.replace('/api/admin/content/posts/', '').toLowerCase().trim();
+    const body = await parseJsonBody(req);
+    db.posts = db.posts || [];
+    let post = db.posts.find(p => p.slug.toLowerCase().trim() === slug);
+
+    if (!post) {
+      post = { slug };
+      db.posts.push(post);
+    }
+
+    if (body.title) post.title = body.title.trim();
+    if (body.excerpt !== undefined) post.excerpt = body.excerpt.trim();
+    if (body.content !== undefined) post.content = body.content;
+    if (body.tags !== undefined) post.tags = Array.isArray(body.tags) ? body.tags : String(body.tags).split(',').map(t => t.trim()).filter(Boolean);
+    if (body.author) post.author = body.author.trim();
+    if (body.authorRole) post.authorRole = body.authorRole.trim();
+    if (body.coverImage !== undefined) post.coverImage = body.coverImage.trim();
+    if (body.coverImageAlt !== undefined) post.coverImageAlt = body.coverImageAlt.trim();
+    if (body.draft !== undefined) post.draft = Boolean(body.draft);
+    if (body.readingTime !== undefined) post.readingTime = body.readingTime;
+    if (body.seo !== undefined) post.seo = body.seo;
+    if (!post.date) post.date = new Date().toISOString();
+    post.updatedAt = new Date().toISOString();
+
+    writeDb(db);
+    return sendJson(res, 200, { success: true, post });
+  }
+
+  // --- E3. Delete Post Content ---
+  if (method === 'DELETE' && pathname.startsWith('/api/admin/content/posts/')) {
+    const slug = pathname.replace('/api/admin/content/posts/', '').toLowerCase().trim();
+    db.posts = (db.posts || []).filter(p => p.slug.toLowerCase().trim() !== slug);
+    writeDb(db);
+    return sendJson(res, 200, { success: true, message: `Post ${slug} removed.` });
+  }
+
   // --- F. Reset Content to Baseline ---
   if (method === 'POST' && pathname === '/api/admin/content/reset') {
     db.services = JSON.parse(JSON.stringify(BASELINE_DATA.services));

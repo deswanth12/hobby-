@@ -36,6 +36,27 @@ export interface AdminSession {
   expiresAt: number;
 }
 
+export interface AdminPost {
+  slug: string;
+  title: string;
+  date: string;
+  author: string;
+  authorRole: string;
+  coverImage?: string;
+  coverImageAlt?: string;
+  excerpt: string;
+  tags: string[];
+  draft: boolean;
+  content: string;
+  readingTime?: number;
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    canonicalUrl?: string;
+  };
+  updatedAt?: string;
+}
+
 export interface ContentOverrides {
   services?: Record<string, {
     title?: string;
@@ -51,6 +72,7 @@ export interface ContentOverrides {
     statuteReference?: string;
     status?: 'published' | 'draft';
   }>;
+  posts?: Record<string, AdminPost>;
 }
 
 export interface SettingsOverrides {

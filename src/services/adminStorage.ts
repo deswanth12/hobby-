@@ -3,7 +3,8 @@ import {
   EnquiryStatus, 
   AdminSession, 
   ContentOverrides, 
-  SettingsOverrides 
+  SettingsOverrides,
+  AdminPost
 } from '../types/admin';
 import { supabase, isSupabaseConfigured, DbEnquiry, DbContentService, DbContentFaq } from '../lib/supabase';
 import { ADMIN_ROUTES } from '../config/adminConfig';
@@ -319,6 +320,13 @@ export const adminStorage = {
           };
         });
 
+        current.posts = current.posts || {};
+        (body.allPosts || body.posts || []).forEach((p: AdminPost) => {
+          if (p.slug) {
+            current.posts![p.slug.toLowerCase().trim()] = p;
+          }
+        });
+
         current.faqs = current.faqs || {};
         (body.allFaqs || body.faqs || []).forEach((f: { id: string; question: string; answer: string; statuteReference?: string; status: 'published' | 'draft' }) => {
           current.faqs![f.id] = {
@@ -480,6 +488,79 @@ export const adminStorage = {
         display_order: 1,
       }).then();
     }
+
+    return true;
+  },
+
+  getPosts(): AdminPost[] {
+    const current = this.getContentOverrides();
+    const postsObj = current.posts || {};
+    return Object.values(postsObj).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  },
+
+  getPostBySlug(slug: string): AdminPost | undefined {
+    const current = this.getContentOverrides();
+    return current.posts?.[slug.toLowerCase().trim()];
+  },
+
+  savePost(post: AdminPost): boolean {
+    const cleanSlug = (post.slug || '').toLowerCase().trim();
+    if (!cleanSlug) return false;
+
+    const current = this.getContentOverrides();
+    current.posts = current.posts || {};
+    current.posts[cleanSlug] = {
+      ...post,
+      slug: cleanSlug,
+      updatedAt: new Date().toISOString()
+    };
+
+    try {
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+    } catch (e) {
+      console.error('Failed to save post override:', e);
+      return false;
+    }
+
+    const session = this.getSession();
+
+    fetch(`/api/admin/content/posts/${cleanSlug}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      },
+      body: JSON.stringify(post)
+    }).catch(() => {});
+
+    return true;
+  },
+
+  deletePost(slug: string): boolean {
+    const cleanSlug = (slug || '').toLowerCase().trim();
+    if (!cleanSlug) return false;
+
+    const current = this.getContentOverrides();
+    if (current.posts && current.posts[cleanSlug]) {
+      delete current.posts[cleanSlug];
+      try {
+        localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      } catch (e) {
+        console.error('Failed to delete post:', e);
+        return false;
+      }
+    }
+
+    const session = this.getSession();
+
+    fetch(`/api/admin/content/posts/${cleanSlug}`, {
+      method: 'DELETE',
+      headers: {
+        ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+      }
+    }).catch(() => {});
 
     return true;
   },

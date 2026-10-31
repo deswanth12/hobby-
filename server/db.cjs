@@ -118,6 +118,7 @@ const BASELINE_DATA = {
       updatedAt: new Date().toISOString()
     }
   ],
+  posts: [],
   enquiries: [],
   sessions: {},
   revokedTokens: {},
