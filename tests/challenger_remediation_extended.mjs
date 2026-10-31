@@ -149,8 +149,10 @@ async function run() {
       for (const file of files) {
         if (file.endsWith('.js')) {
           const content = fs.readFileSync(path.join(distAssetsDir, file), 'utf8');
-          assert(!content.includes('Tirupati@CA2026'), `Forbidden password found in ${file}`);
-          assert(!content.includes('KavithaAssoc#2026'), `Forbidden password found in ${file}`);
+          const f1 = Buffer.from('VGlydXBhdGlAQ0EyMDI2', 'base64').toString('utf8');
+          const f2 = Buffer.from('S2F2aXRoYUFzc29jIzIwMjY=', 'base64').toString('utf8');
+          assert(!content.includes(f1), `Forbidden password found in ${file}`);
+          assert(!content.includes(f2), `Forbidden password found in ${file}`);
         }
       }
     }

@@ -68,7 +68,7 @@ Threat actors evaluated during this audit:
 - **Finding ID**: `VULN-001`
 - **Severity**: HIGH (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N - 7.5)
 - **Affected File(s)**: `src/services/adminStorage.ts`
-- **Evidence / Reproduction**: Calling `adminStorage.requestPasswordReset('cakavithasrj@gmail.com')` returned a user-facing toast disclosing default passwords: `'kavitha' / 'Tirupati@CA2026'`. Furthermore, inspecting built production assets `dist/assets/index-*.js` revealed plain-text credentials embedded in `adminStorage.authenticate()` fallback arrays.
+- **Evidence / Reproduction**: Calling `adminStorage.requestPasswordReset('cakavithasrj@gmail.com')` returned a user-facing toast disclosing default passwords: `'kavitha' / '[REDACTED_COMPROMISED_CREDENTIAL]'`. Furthermore, inspecting built production assets `dist/assets/index-*.js` revealed plain-text credentials embedded in `adminStorage.authenticate()` fallback arrays.
 - **Root Cause**: Hardcoded fallback credentials intended for local evaluation were rendered in user-facing toasts and bundled directly into production client distributions without environment-gated dead code elimination.
 - **Fix Applied**: Removed credentials from recovery toast. Gated `validCredentials` and local client-side fallback authentication strictly behind `import.meta.env.DEV`. In production (`!import.meta.env.DEV`), client-side authentication is rejected with an error requiring server verification, and Vite's dead code elimination strips all credentials from `dist/`.
 - **Regression Test**: Verified via `node scripts/test-shared-security.cjs`, `tests/challenger_m4_adversarial_oracle.mjs`, and `tests/challenger_remediation_extended.mjs` Assert 19 (0 occurrences in `dist/assets/*.js`).
@@ -188,7 +188,7 @@ Threat actors evaluated during this audit:
 - **Finding ID**: `VULN-011`
 - **Severity**: HIGH (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N - 7.5)
 - **Affected File**: `src/pages/admin/AdminLoginPage.tsx`
-- **Evidence / Reproduction**: Public visitors navigating to `/admin/login` were presented with clickable buttons pre-filling administrator credentials (`kavitha` / `Tirupati@CA2026`).
+- **Evidence / Reproduction**: Public visitors navigating to `/admin/login` were presented with clickable buttons pre-filling administrator credentials (`kavitha` / `[REDACTED_COMPROMISED_CREDENTIAL]`).
 - **Root Cause**: Development convenience buttons were included in the public UI.
 - **Fix Applied**: Gated buttons behind `{import.meta.env.DEV && (...)}`.
 - **Regression Test**: `tests/challenger_remediation_audit.mjs` Test 17; production bundle contains zero credential occurrences.
@@ -392,8 +392,8 @@ Threat actors evaluated during this audit:
 - **Finding ID**: `VULN-028`
 - **Severity**: MEDIUM (CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N - 6.2)
 - **Affected Files**: `src/components/admin/AdminProtectedRoute.tsx`, `src/services/adminStorage.ts`
-- **Evidence / Reproduction**: `AdminProtectedRoute.tsx` contained literal string `'Tirupati@CA2026'` in a QA development bypass clause (`?qa_auth=true`).
-- **Root Cause**: Direct invocation of `authenticate('kavitha', 'Tirupati@CA2026')` inside the React component.
+- **Evidence / Reproduction**: `AdminProtectedRoute.tsx` contained literal string `'[REDACTED_COMPROMISED_CREDENTIAL]'` in a QA development bypass clause (`?qa_auth=true`).
+- **Root Cause**: Direct invocation of `authenticate('kavitha', '[REDACTED_COMPROMISED_CREDENTIAL]')` inside the React component.
 - **Fix Applied**: Removed the hardcoded credentials from `AdminProtectedRoute.tsx` and introduced `adminStorage.createDevSession()`, which directly creates a mock session in `sessionStorage` in `import.meta.env.DEV` mode without any password string.
 - **Status**: **RESOLVED & VERIFIED**
 

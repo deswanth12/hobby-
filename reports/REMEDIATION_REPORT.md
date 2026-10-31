@@ -140,7 +140,7 @@ A total of **13 source/configuration files** and **2 dedicated automated regress
 - **Rationale:** Prevents character encoding distortion (`Ac`) on legacy consoles or strict ASCII pipelines.
 
 ### 19. `src/components/admin/AdminProtectedRoute.tsx` & `src/services/adminStorage.ts`
-- **Substance of Change:** Removed hardcoded credentials `'Tirupati@CA2026'` from `AdminProtectedRoute.tsx`. Implemented `adminStorage.createDevSession()` which manufactures an in-memory session directly in DEV mode without any password string.
+- **Substance of Change:** Removed hardcoded credentials `'[REDACTED_COMPROMISED_CREDENTIAL]'` from `AdminProtectedRoute.tsx`. Implemented `adminStorage.createDevSession()` which manufactures an in-memory session directly in DEV mode without any password string.
 - **Rationale:** Prevents cleartext credentials from existing in the frontend source code.
 
 ### 20. `src/App.tsx` & `vite.config.ts`
