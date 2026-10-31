@@ -135,7 +135,7 @@ export const AdminSettingsPage: React.FC = () => {
           {/* =========================================================================
               1. CONTACT & PRACTICE DETAILS FORM (Col 7)
               ========================================================================= */}
-          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
+          <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-xl border border-[#EAEAEA]">
             <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between flex-wrap gap-2">
               <div>
                 <h2 className="text-base font-bold text-brand-darkgreen">Official Contact Channels</h2>
@@ -298,7 +298,7 @@ export const AdminSettingsPage: React.FC = () => {
           <div className="lg:col-span-5 space-y-6">
             
             {/* System Specs Card */}
-            <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm space-y-4">
+            <div className="bg-white p-6 rounded-xl border border-[#EAEAEA] space-y-4">
               <div className="flex items-center gap-2 pb-3 border-b border-gray-100">
                 <Shield className="w-5 h-5 text-brand-darkgreen" />
                 <h3 className="text-sm font-bold text-brand-darkgreen">Security & Session Specs</h3>

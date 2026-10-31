@@ -9,8 +9,7 @@ import {
   Globe, 
   Menu, 
   X, 
-  ShieldCheck, 
-  ExternalLink
+  ExternalLink,
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { ADMIN_ROUTES } from '../../config/adminConfig';
@@ -42,7 +41,6 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
     return () => window.removeEventListener(FIRM_DATA_UPDATE_EVENT, handleUpdate);
   }, []);
 
-  // Close mobile drawer on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
@@ -65,35 +63,35 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
   ];
 
   return (
-    <div className="min-h-screen bg-[#F4F6F4] text-[#24342F] flex flex-col md:flex-row font-sans">
+    <div className="min-h-screen bg-[#FBFBFA] text-[#191919] flex flex-col md:flex-row font-sans selection:bg-neutral-200">
       <SEOHead title={`Admin — ${title}`} description="Practice Management Console" noIndex={true} />
 
       {/* =========================================================================
-          1. SIDEBAR (Desktop)
+          1. MINIMALIST DESKTOP SIDEBAR
           ========================================================================= */}
-      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-brand-chambers text-white shrink-0 border-r border-emerald-950/60 shadow-card">
+      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-white text-neutral-800 shrink-0 border-r border-[#EAEAEA]">
         
-        {/* Brand Plaque */}
-        <div className="p-6 border-b border-emerald-800/60">
+        {/* Brand Header */}
+        <div className="p-5 border-b border-[#F0F0F0]">
           <Link to={ADMIN_ROUTES.root} className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-brand-darkgreen border border-gold/60 flex items-center justify-center font-serif text-lg font-bold text-gold">
+            <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center font-serif text-sm font-bold text-amber-300 shrink-0">
               KA
             </div>
-            <div>
-              <span className="font-serif text-lg font-bold text-white block leading-tight tracking-wide group-hover:text-gold transition-colors">
+            <div className="min-w-0">
+              <span className="font-serif text-sm font-bold text-neutral-900 block leading-tight truncate group-hover:text-neutral-700 transition-colors">
                 Kavitha & Associates
               </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-gold-light mt-0.5 block">
-                Practice Admin Console
+              <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mt-0.5 block truncate">
+                Admin Console
               </span>
             </div>
           </Link>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="flex-1 p-4 space-y-1.5" aria-label="Admin Navigation">
-          <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-400/60 px-3 py-1 mb-1">
-            Core Management
+        {/* Navigation Items */}
+        <nav className="flex-1 p-3.5 space-y-1" aria-label="Admin Navigation">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 px-3 py-1.5 mb-1">
+            Navigation
           </div>
 
           {navItems.map((item) => {
@@ -106,18 +104,18 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+                className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-150 ${
                   isActive
-                    ? 'bg-brand-darkgreen text-white border border-gold/40 shadow-xs'
-                    : 'text-emerald-100/80 hover:bg-brand-darkgreen/60 hover:text-white'
+                    ? 'bg-neutral-100 text-neutral-900 font-semibold'
+                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-gold' : 'text-emerald-300'}`} />
+                <div className="flex items-center gap-2.5">
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-neutral-900' : 'text-neutral-400'}`} />
                   <span>{item.name}</span>
                 </div>
                 {item.badge !== undefined && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-stone-950">
+                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-200">
                     {item.badge}
                   </span>
                 )}
@@ -126,67 +124,65 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
           })}
         </nav>
 
-        {/* Bottom Profile & Actions */}
-        <div className="p-4 border-t border-emerald-800/60 space-y-3 bg-[#08261D]">
+        {/* User Profile & Actions Footer */}
+        <div className="p-3.5 border-t border-[#F0F0F0] space-y-2 bg-[#FAFAFA]">
           
-          {/* User Profile Info */}
-          <div className="flex items-center gap-3 px-2">
-            <div className="w-9 h-9 rounded-full bg-brand-darkgreen border border-gold/30 flex items-center justify-center text-gold font-serif font-bold text-xs shrink-0">
-              {session?.user.displayName.substring(0, 2).toUpperCase() || 'CA'}
-            </div>
-            <div className="truncate">
-              <span className="text-xs font-bold text-white block truncate">
-                {session?.user.displayName || 'Authorized Admin'}
-              </span>
-              <span className="text-[10px] text-gold font-medium block truncate">
-                {session?.user.role || 'Senior Partner'}
-              </span>
+          <div className="flex items-center justify-between px-2 py-1">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-7 h-7 rounded-full bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-700 font-serif font-bold text-[10px] shrink-0">
+                {session?.user.displayName.substring(0, 2).toUpperCase() || 'CA'}
+              </div>
+              <div className="truncate">
+                <span className="text-xs font-semibold text-neutral-900 block truncate leading-tight">
+                  {session?.user.displayName || 'Authorized Admin'}
+                </span>
+                <span className="text-[10px] text-neutral-500 font-mono block truncate">
+                  {session?.user.role || 'Managing Partner'}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Public Website Link */}
-          <Link
-            to="/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-brand-darkgreen/60 hover:bg-brand-darkgreen text-emerald-200 hover:text-white text-xs font-medium border border-emerald-800/60 transition-colors"
-          >
-            <span className="flex items-center gap-2">
-              <Globe className="w-3.5 h-3.5 text-gold" />
-              <span>View Live Website</span>
-            </span>
-            <ExternalLink className="w-3 h-3 text-emerald-400" />
-          </Link>
+          <div className="grid grid-cols-2 gap-1.5 pt-1">
+            <Link
+              to="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900 text-[11px] font-medium border border-neutral-200 transition-colors"
+            >
+              <Globe className="w-3 h-3 text-neutral-400" />
+              <span>Live Site</span>
+            </Link>
 
-          {/* Logout Action */}
-          <button
-            type="button"
-            onClick={handleLogout}
-            className="flex items-center gap-2 w-full px-3 py-2 rounded-lg text-rose-300 hover:text-white hover:bg-rose-950/60 text-xs font-medium transition-colors"
-          >
-            <LogOut className="w-3.5 h-3.5" />
-            <span>Sign Out Session</span>
-          </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white hover:bg-red-50 text-neutral-600 hover:text-red-700 text-[11px] font-medium border border-neutral-200 hover:border-red-200 transition-colors"
+            >
+              <LogOut className="w-3 h-3" />
+              <span>Sign Out</span>
+            </button>
+          </div>
 
         </div>
       </aside>
 
       {/* =========================================================================
-          2. MOBILE NAVBAR
+          2. MINIMALIST MOBILE HEADER
           ========================================================================= */}
-      <div className="md:hidden bg-brand-chambers text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-emerald-950">
+      <div className="md:hidden bg-white text-neutral-900 p-3.5 flex items-center justify-between border-b border-[#EAEAEA]">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-8 h-8 rounded-lg bg-brand-darkgreen border border-gold/60 flex items-center justify-center font-serif font-bold text-gold text-sm shrink-0">
+          <div className="w-7 h-7 rounded-lg bg-neutral-900 flex items-center justify-center font-serif font-bold text-amber-300 text-xs shrink-0">
             KA
           </div>
-          <span className="font-serif text-sm sm:text-base font-bold text-white truncate">
-            Kavitha & Associates Admin
+          <span className="font-serif text-sm font-bold text-neutral-900 truncate">
+            Kavitha & Associates
           </span>
         </div>
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-brand-darkgreen text-emerald-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-gold transition-colors shrink-0"
+          className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:outline-none transition-colors"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
@@ -196,7 +192,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden bg-brand-chambers text-white border-b border-emerald-800 p-4 space-y-2 animate-fadeIn">
+        <div className="md:hidden bg-white border-b border-[#EAEAEA] p-3 space-y-1 animate-in fade-in">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.exact 
@@ -208,32 +204,32 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-xs font-semibold min-h-[44px] transition-colors ${
-                  isActive ? 'bg-brand-darkgreen text-gold border border-gold/40' : 'text-emerald-100 hover:bg-brand-darkgreen'
+                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                  isActive ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:bg-neutral-50'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 text-neutral-500" />
                   <span>{item.name}</span>
                 </div>
                 {item.badge !== undefined && (
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-stone-950">
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-800">
                     {item.badge}
                   </span>
                 )}
               </Link>
             );
           })}
-          <div className="pt-3 border-t border-emerald-800/80 flex items-center justify-between text-xs">
+          <div className="pt-2 mt-2 border-t border-[#F0F0F0] flex items-center justify-between text-xs px-2">
             <Link
               to="/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
-              className="text-gold font-medium flex items-center gap-1.5 min-h-[44px] px-2 py-2 hover:text-white transition-colors"
+              className="text-neutral-600 hover:text-neutral-900 py-1.5 flex items-center gap-1.5 font-medium"
             >
-              <Globe className="w-4 h-4" />
-              <span>Public Site</span>
+              <Globe className="w-3.5 h-3.5 text-neutral-400" />
+              <span>Live Site</span>
             </Link>
             <button
               type="button"
@@ -241,9 +237,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 setMobileOpen(false);
                 handleLogout();
               }}
-              className="text-rose-300 font-medium flex items-center gap-1.5 min-h-[44px] px-2 py-2 hover:text-white transition-colors"
+              className="text-red-600 hover:text-red-700 py-1.5 flex items-center gap-1.5 font-medium"
             >
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-3.5 h-3.5" />
               <span>Sign Out</span>
             </button>
           </div>
@@ -251,60 +247,46 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
       )}
 
       {/* =========================================================================
-          3. MAIN CONTENT CONTAINER
+          3. MAIN CONTENT CONTAINER (MINIMALIST)
           ========================================================================= */}
       <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
         
-        {/* Top Header Bar */}
-        <header className="bg-white border-b border-border px-6 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sticky top-0 z-20 shadow-xs">
+        {/* Minimalist Top Header */}
+        <header className="bg-white border-b border-[#EAEAEA] px-6 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-0 z-20">
           <div>
-            <div className="flex items-center gap-2 text-[11px] font-semibold text-charcoal-light uppercase tracking-wider mb-0.5">
-              <span>Practice Admin</span>
-              <span>/</span>
-              <span className="text-gold-dark">{title}</span>
+            <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-0.5">
+              Practice / {title}
             </div>
-            <h1 className="font-serif text-2xl font-bold text-brand-primary">
+            <h1 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
               {title}
             </h1>
             {subtitle && (
-              <p className="text-xs text-charcoal-muted mt-0.5">
+              <p className="text-xs text-neutral-500 mt-0.5">
                 {subtitle}
               </p>
             )}
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
-              <span>Protected Session Active</span>
+          <div className="flex items-center gap-2.5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-100">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>Encrypted Session</span>
             </div>
+
             <Link
               to="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-brand-primary text-xs font-semibold transition-colors btn-tactile shadow-xs"
+              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-700 text-xs font-medium transition-colors"
             >
-              <span>Live Site</span>
-              <ExternalLink className="w-3 h-3 text-gold-dark" />
+              <span>View Site</span>
+              <ExternalLink className="w-3 h-3 text-neutral-400" />
             </Link>
           </div>
         </header>
 
-        {/* Verified Shared Database Banner */}
-        <div className="bg-emerald-50/90 border-b border-emerald-200/90 px-6 sm:px-8 py-2.5 text-xs text-emerald-900 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" />
-            <span>
-              <strong>Shared Practice Database Active:</strong> Enquiries, content updates, and practice settings are persistently synchronized across all authorized devices and browser sessions.
-            </span>
-          </div>
-          <span className="text-[10px] font-mono font-bold uppercase text-emerald-800 hidden lg:inline bg-emerald-100 px-2 py-0.5 rounded border border-emerald-200">
-            PostgreSQL Synced
-          </span>
-        </div>
-
-        {/* Page Content Canvas */}
-        <main className="p-6 sm:p-8 flex-1 scroll-reveal">
+        {/* Clean Content Canvas */}
+        <main className="p-6 sm:p-8 flex-1 max-w-7xl mx-auto w-full">
           {children}
         </main>
 

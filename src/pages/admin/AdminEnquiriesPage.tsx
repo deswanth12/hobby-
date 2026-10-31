@@ -223,7 +223,7 @@ export const AdminEnquiriesPage: React.FC = () => {
         {/* =========================================================================
             1. FILTER & SEARCH TOOLBAR
             ========================================================================= */}
-        <div className="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <div className="bg-white p-5 rounded-xl border border-[#EAEAEA] flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           
           {/* Search Input */}
           <div className="relative flex-1 max-w-md">
@@ -292,7 +292,7 @@ export const AdminEnquiriesPage: React.FC = () => {
         {/* =========================================================================
             2. ENQUIRIES TABLE WITH PAGINATION
             ========================================================================= */}
-        <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-xl border border-[#EAEAEA] overflow-hidden">
           {filtered.length === 0 ? (
             <div className="p-12 text-center">
               <div className="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 flex items-center justify-center mx-auto mb-3">

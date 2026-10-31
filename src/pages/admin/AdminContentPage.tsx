@@ -4,19 +4,15 @@ import {
   Save, 
   RotateCcw, 
   CheckCircle2, 
-  AlertCircle, 
   ExternalLink,
   Briefcase,
   Eye,
-  Cloud,
-  Database,
   BookOpen,
   PlusCircle,
   Trash2,
   Edit3,
   Search,
-  Clock,
-  Tag
+  Clock
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage } from '../../services/adminStorage';
@@ -26,7 +22,7 @@ import { MarkdownRenderer } from '../../components/MarkdownRenderer';
 import { AdminPost } from '../../types/admin';
 
 export const AdminContentPage: React.FC = () => {
-  const { data: firmData, isModified } = useFirmData();
+  const { data: firmData } = useFirmData();
   const [activeTab, setActiveTab] = useState<'services' | 'faqs' | 'posts'>('services');
 
   // =========================================================================
@@ -75,19 +71,14 @@ export const AdminContentPage: React.FC = () => {
   const [postStatus, setPostStatus] = useState<'published' | 'draft'>('published');
   const [postContent, setPostContent] = useState<string>('');
 
-  // Notification banners
   const [saveMessage, setSaveMessage] = useState<string | null>(null);
 
-  const isCloud = adminStorage.isCloudConnected();
-
-  // Load remote content on mount if Supabase/Server API is active
   useEffect(() => {
     adminStorage.fetchContentRemote().then(() => {
       setPosts(BlogService.getAllPosts(true));
     });
   }, []);
 
-  // Initialize selected post fields
   useEffect(() => {
     if (!isCreatingNewPost && selectedPostSlug) {
       const target = BlogService.getPostBySlug(selectedPostSlug, true);
@@ -106,7 +97,6 @@ export const AdminContentPage: React.FC = () => {
     }
   }, [selectedPostSlug, isCreatingNewPost]);
 
-  // When changing selected service
   const handleSelectService = (id: string) => {
     setSelectedServiceId(id);
     const target = firmData.serviceCategories.find(s => s.id === id);
@@ -121,7 +111,6 @@ export const AdminContentPage: React.FC = () => {
     }
   };
 
-  // When changing selected FAQ
   const handleSelectFaq = (id: string) => {
     setSelectedFaqId(id);
     const target = firmData.faqs.find(f => f.id === id);
@@ -134,31 +123,28 @@ export const AdminContentPage: React.FC = () => {
     }
   };
 
-  // When changing selected post
   const handleSelectPost = (slug: string) => {
     setIsCreatingNewPost(false);
     setSelectedPostSlug(slug);
     setPostViewMode('edit');
   };
 
-  // Start new article form
   const handleStartNewPost = () => {
     setIsCreatingNewPost(true);
     setSelectedPostSlug('');
     setPostTitle('');
     setPostSlug('');
     setPostExcerpt('');
-    setPostTags('Income Tax, Statutory Advisory');
+    setPostTags('Income Tax, Advisory');
     setPostAuthor('CA Kavitha Vijay');
     setPostAuthorRole('Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
     setPostCoverImage('/uploads/blog/corporate-tax-planning-2026.webp');
     setPostCoverImageAlt('');
     setPostStatus('published');
-    setPostContent('# Article Heading\n\nEnter article text with Markdown formatting, statutory references, and tax analysis.');
+    setPostContent('# Article Title\n\nWrite statutory analysis, commentary, and compliance observations here...');
     setPostViewMode('edit');
   };
 
-  // Slug generator helper
   const handleTitleChange = (val: string) => {
     setPostTitle(val);
     if (isCreatingNewPost) {
@@ -185,8 +171,8 @@ export const AdminContentPage: React.FC = () => {
     });
 
     if (ok) {
-      setSaveMessage(`Successfully saved changes for "${serviceTitle}" (${serviceStatus.toUpperCase()}). Live on public website!`);
-      setTimeout(() => setSaveMessage(null), 4000);
+      setSaveMessage(`Updated "${serviceTitle}" (${serviceStatus.toUpperCase()})`);
+      setTimeout(() => setSaveMessage(null), 3500);
     }
   };
 
@@ -202,8 +188,8 @@ export const AdminContentPage: React.FC = () => {
     });
 
     if (ok) {
-      setSaveMessage(`Successfully updated FAQ item (${faqStatus.toUpperCase()}). Live on public site!`);
-      setTimeout(() => setSaveMessage(null), 4000);
+      setSaveMessage(`Updated FAQ item (${faqStatus.toUpperCase()})`);
+      setTimeout(() => setSaveMessage(null), 3500);
     }
   };
 
@@ -211,7 +197,7 @@ export const AdminContentPage: React.FC = () => {
     e.preventDefault();
     const cleanSlug = postSlug.toLowerCase().trim().replace(/[^a-z0-9-]/g, '-');
     if (!cleanSlug || !postTitle.trim() || !postContent.trim()) {
-      alert('Please provide an article title, valid URL slug, and article body content.');
+      alert('Please provide an article title, valid URL slug, and content.');
       return;
     }
 
@@ -249,13 +235,13 @@ export const AdminContentPage: React.FC = () => {
       setPosts(updated);
       setSelectedPostSlug(cleanSlug);
       setIsCreatingNewPost(false);
-      setSaveMessage(`Article "${postTitle.trim()}" published successfully (${postStatus.toUpperCase()})!`);
-      setTimeout(() => setSaveMessage(null), 5000);
+      setSaveMessage(`Publication "${postTitle.trim()}" saved (${postStatus.toUpperCase()})`);
+      setTimeout(() => setSaveMessage(null), 3500);
     }
   };
 
   const handleDeletePost = (slug: string) => {
-    if (window.confirm(`Are you sure you want to delete the publication "${slug}"? This action cannot be undone.`)) {
+    if (window.confirm(`Delete publication "${slug}"? This cannot be undone.`)) {
       adminStorage.deletePost(slug);
       const updated = BlogService.getAllPosts(true);
       setPosts(updated);
@@ -264,33 +250,20 @@ export const AdminContentPage: React.FC = () => {
       } else {
         handleStartNewPost();
       }
-      setSaveMessage(`Article "${slug}" was deleted.`);
-      setTimeout(() => setSaveMessage(null), 4000);
+      setSaveMessage(`Publication "${slug}" removed`);
+      setTimeout(() => setSaveMessage(null), 3500);
     }
   };
 
   const handleResetToBaseline = () => {
-    if (window.confirm('Are you sure you want to revert all services, FAQs, and articles back to baseline? Custom modifications will be cleared.')) {
+    if (window.confirm('Reset all content back to baseline default? Custom modifications will be cleared.')) {
       adminStorage.resetContentOverrides();
       setPosts(BlogService.getAllPosts(true));
-      setSaveMessage('All content has been restored to default verified baseline.');
-      setTimeout(() => setSaveMessage(null), 4000);
-
-      setTimeout(() => {
-        const targetService = firmData.serviceCategories.find(s => s.id === selectedServiceId);
-        if (targetService) {
-          setServiceTitle(targetService.title);
-          setServiceShortDesc(targetService.shortDescription);
-          setServiceFullDesc(targetService.fullDescription);
-          setServiceStatutory(targetService.statutoryFramework || '');
-          setServiceTarget(targetService.targetClients || '');
-          setServiceStatus('published');
-        }
-      }, 100);
+      setSaveMessage('All content restored to verified baseline.');
+      setTimeout(() => setSaveMessage(null), 3500);
     }
   };
 
-  // Filter posts
   const filteredPosts = useMemo(() => {
     if (!postSearchQuery.trim()) return posts;
     const q = postSearchQuery.toLowerCase().trim();
@@ -303,110 +276,91 @@ export const AdminContentPage: React.FC = () => {
 
   return (
     <AdminLayout 
-      title="Content & Services Editor" 
-      subtitle="Edit approved statutory service scopes, FAQ answers, and technical articles. Updates reflect live on the public website."
+      title="Content & Services" 
+      subtitle="Edit practice disciplines, statutory FAQs, and technical articles."
     >
       <div className="space-y-6">
 
-        {/* Top Control Bar */}
-        <div className="flex flex-col sm:flex-row items-start sm:flex-wrap items-center justify-between gap-4 bg-white p-4 sm:p-5 rounded-2xl border border-gray-200/80 shadow-sm">
-          {/* Tabs */}
-          <div className="flex flex-wrap items-center gap-2">
+        {/* Minimalist Tab Bar */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#EAEAEA]">
+          {/* Segmented Control */}
+          <div className="inline-flex p-1 bg-neutral-100 rounded-lg border border-neutral-200/60 max-w-fit">
             <button
               type="button"
               onClick={() => setActiveTab('services')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors duration-200 flex items-center gap-2 ${
+              className={`px-3.5 py-1.5 rounded-md text-xs transition-colors flex items-center gap-2 ${
                 activeTab === 'services'
-                  ? 'bg-brand-darkgreen text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-white text-neutral-900 font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 font-medium'
               }`}
             >
-              <Briefcase className="w-3.5 h-3.5" />
-              Practice Services ({firmData.serviceCategories.length})
+              <Briefcase className="w-3.5 h-3.5 text-neutral-500" />
+              <span>Services ({firmData.serviceCategories.length})</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('faqs')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors duration-200 flex items-center gap-2 ${
+              className={`px-3.5 py-1.5 rounded-md text-xs transition-colors flex items-center gap-2 ${
                 activeTab === 'faqs'
-                  ? 'bg-brand-darkgreen text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-white text-neutral-900 font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 font-medium'
               }`}
             >
-              <HelpCircle className="w-3.5 h-3.5" />
-              Statutory FAQs ({firmData.faqs.length})
+              <HelpCircle className="w-3.5 h-3.5 text-neutral-500" />
+              <span>FAQs ({firmData.faqs.length})</span>
             </button>
             <button
               type="button"
               onClick={() => setActiveTab('posts')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors duration-200 flex items-center gap-2 ${
+              className={`px-3.5 py-1.5 rounded-md text-xs transition-colors flex items-center gap-2 ${
                 activeTab === 'posts'
-                  ? 'bg-brand-darkgreen text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-white text-neutral-900 font-semibold shadow-xs'
+                  : 'text-neutral-600 hover:text-neutral-900 font-medium'
               }`}
             >
-              <BookOpen className="w-3.5 h-3.5" />
-              Statutory Articles & Insights ({posts.length})
+              <BookOpen className="w-3.5 h-3.5 text-neutral-500" />
+              <span>Articles ({posts.length})</span>
             </button>
           </div>
 
-          {/* Engine indicator & Reset Action */}
-          <div className="flex items-center gap-3">
-            {isCloud ? (
-              <span className="text-[11px] text-emerald-800 font-semibold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 flex items-center gap-1">
-                <Cloud className="w-3 h-3 text-emerald-600" /> Supabase Content Table
-              </span>
-            ) : (
-              <span className="text-[11px] text-gray-600 font-semibold bg-gray-100 px-2.5 py-1 rounded-full border border-gray-200 flex items-center gap-1">
-                <Database className="w-3 h-3 text-gray-500" /> Local Storage Sync
-              </span>
-            )}
-            
-            {isModified && (
-              <span className="text-[11px] text-amber-700 font-semibold bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 flex items-center gap-1">
-                <AlertCircle className="w-3 h-3" /> Custom Overrides Active
-              </span>
-            )}
-            
-            <button
-              type="button"
-              onClick={handleResetToBaseline}
-              className="inline-flex items-center text-xs font-bold text-gray-600 hover:text-red-700 transition-colors px-3 py-1.5 rounded-lg border border-gray-200 hover:border-red-200 hover:bg-red-50/50"
-            >
-              <RotateCcw className="w-3.5 h-3.5 mr-1.5" />
-              Reset All to Baseline
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={handleResetToBaseline}
+            className="text-[11px] font-mono text-neutral-400 hover:text-red-700 transition-colors flex items-center gap-1 self-start sm:self-auto py-1"
+          >
+            <RotateCcw className="w-3 h-3" />
+            <span>Reset to Baseline</span>
+          </button>
         </div>
 
-        {/* Success Toast Banner */}
+        {/* Minimal Toast Feedback */}
         {saveMessage && (
-          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-brand-darkgreen flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="p-3 rounded-lg bg-emerald-50/80 border border-emerald-200/80 text-xs text-emerald-900 flex items-center justify-between animate-in fade-in">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>{saveMessage}</span>
+              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+              <span className="font-medium">{saveMessage}</span>
             </div>
             <a
               href={activeTab === 'posts' ? '/insights' : '/services'}
               target="_blank"
               rel="noreferrer"
-              className="text-xs text-emerald-700 hover:underline inline-flex items-center font-bold"
+              className="text-[11px] font-medium text-emerald-700 hover:text-emerald-900 inline-flex items-center gap-1 underline"
             >
-              Preview Live on Website <ExternalLink className="w-3 h-3 ml-1" />
+              View on Site <ExternalLink className="w-2.5 h-2.5" />
             </a>
           </div>
         )}
 
         {/* =========================================================================
-            TAB 1: SERVICES EDITOR
+            TAB 1: SERVICES EDITOR (MINIMALIST)
             ========================================================================= */}
         {activeTab === 'services' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
-            {/* Left Column: Service Selector List */}
-            <div className="lg:col-span-4 space-y-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 px-1">
-                Select Service Category:
+            {/* Left Column: Service Selector */}
+            <div className="lg:col-span-4 space-y-1.5">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-2 px-1">
+                Disciplines
               </div>
               {firmData.serviceCategories.map((service, index) => {
                 const isSelected = service.id === selectedServiceId;
@@ -417,33 +371,26 @@ export const AdminContentPage: React.FC = () => {
                     key={service.id}
                     type="button"
                     onClick={() => handleSelectService(service.id)}
-                    className={`w-full text-left p-4 rounded-xl border transition-colors duration-200 flex flex-col justify-between ${
+                    className={`w-full text-left p-3.5 rounded-lg border transition-colors text-xs ${
                       isSelected
-                        ? 'bg-white border-brand-darkgreen ring-2 ring-brand-darkgreen/10 shadow-sm'
-                        : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white'
+                        ? 'bg-white border-neutral-900 shadow-xs'
+                        : 'bg-white border-[#EAEAEA] hover:border-neutral-300'
                     }`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-bold text-gray-400">
-                        DISCIPLINE 0{index + 1}
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-mono text-[10px] text-neutral-400">
+                        0{index + 1}
                       </span>
-                      <div className="flex items-center gap-1.5">
-                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                          status === 'published' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
-                        }`}>
-                          {status}
-                        </span>
-                        {isSelected && (
-                          <span className="text-[10px] bg-emerald-100 text-brand-darkgreen font-bold px-2 py-0.5 rounded-full">
-                            Editing
-                          </span>
-                        )}
-                      </div>
+                      <span className={`text-[9px] font-mono uppercase px-1.5 py-0.2 rounded ${
+                        status === 'published' ? 'bg-[#EDF3EC] text-[#2D5A38]' : 'bg-[#FEF7E6] text-[#8A5B00]'
+                      }`}>
+                        {status}
+                      </span>
                     </div>
-                    <div className="font-bold text-xs text-brand-darkgreen mt-1">
+                    <div className="font-semibold text-neutral-900">
                       {service.title}
                     </div>
-                    <div className="text-[11px] text-gray-500 line-clamp-1 mt-0.5">
+                    <div className="text-[11px] text-neutral-500 line-clamp-1 mt-0.5">
                       {service.shortDescription}
                     </div>
                   </button>
@@ -452,117 +399,117 @@ export const AdminContentPage: React.FC = () => {
             </div>
 
             {/* Right Column: Service Edit Form */}
-            <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
-              <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between">
+            <div className="lg:col-span-8 bg-white p-6 sm:p-7 rounded-xl border border-[#EAEAEA]">
+              <div className="pb-4 border-b border-[#F0F0F0] mb-5 flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-brand-darkgreen">
-                    Edit Service: {currentService?.title}
+                  <h3 className="font-serif text-base font-bold text-neutral-900">
+                    {currentService?.title}
                   </h3>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    Identifier: <code className="font-mono text-emerald-800">{selectedServiceId}</code>
+                  <p className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                    Identifier: {selectedServiceId}
                   </p>
                 </div>
                 <a
                   href="/services"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-bold text-brand-darkgreen hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                  className="text-xs text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 font-medium px-2.5 py-1 rounded border border-neutral-200 hover:bg-neutral-50"
                 >
-                  <Eye className="w-3.5 h-3.5 mr-1" />
-                  Preview Live <ExternalLink className="w-3 h-3 ml-1" />
+                  <Eye className="w-3 h-3 text-neutral-400" />
+                  <span>Preview</span>
                 </a>
               </div>
 
-              <form onSubmit={handleSaveService} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <form onSubmit={handleSaveService} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Service Display Title
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Title
                     </label>
                     <input
                       type="text"
                       required
                       value={serviceTitle}
                       onChange={(e) => setServiceTitle(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-bold text-gray-900"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-900 font-medium"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Publishing State
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Status
                     </label>
                     <select
                       value={serviceStatus}
                       onChange={(e) => setServiceStatus(e.target.value as 'published' | 'draft')}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-semibold bg-white"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-900 bg-white font-medium"
                     >
-                      <option value="published">Published (Visible Publicly)</option>
-                      <option value="draft">Draft (Quarantined)</option>
+                      <option value="published">Published</option>
+                      <option value="draft">Draft</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Short Description (Homepage Card & Overview)
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Short Overview
                   </label>
                   <textarea
                     rows={2}
                     required
                     value={serviceShortDesc}
                     onChange={(e) => setServiceShortDesc(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
+                    className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800 leading-relaxed"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Comprehensive Statutory Scope / Full Description
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Statutory Scope Description
                   </label>
                   <textarea
                     rows={4}
                     required
                     value={serviceFullDesc}
                     onChange={(e) => setServiceFullDesc(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
+                    className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800 leading-relaxed"
                   />
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                       Statutory Framework
                     </label>
                     <input
                       type="text"
                       value={serviceStatutory}
                       onChange={(e) => setServiceStatutory(e.target.value)}
-                      placeholder="e.g. Income Tax Act 1961"
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                      placeholder="e.g. Income Tax Act, 1961"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Target Entities / Clients
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Target Entities
                     </label>
                     <input
                       type="text"
                       value={serviceTarget}
                       onChange={(e) => setServiceTarget(e.target.value)}
-                      placeholder="e.g. Private Limited Companies, LLPs"
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                      placeholder="e.g. Companies, LLPs"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                     />
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 flex items-center justify-end">
+                <div className="pt-3 border-t border-[#F0F0F0] flex items-center justify-end">
                   <button
                     type="submit"
-                    className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-medium rounded-lg transition-colors shadow-xs"
                   >
-                    <Save className="w-3.5 h-3.5 mr-1.5" />
-                    Save & Publish Changes
+                    <Save className="w-3.5 h-3.5" />
+                    <span>Save Changes</span>
                   </button>
                 </div>
               </form>
@@ -572,15 +519,15 @@ export const AdminContentPage: React.FC = () => {
         )}
 
         {/* =========================================================================
-            TAB 2: FAQS EDITOR
+            TAB 2: FAQS EDITOR (MINIMALIST)
             ========================================================================= */}
         {activeTab === 'faqs' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             
             {/* FAQ List */}
-            <div className="lg:col-span-4 space-y-2">
-              <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2 px-1">
-                Select FAQ Question:
+            <div className="lg:col-span-4 space-y-1.5">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-2 px-1">
+                Frequently Asked Questions
               </div>
               {firmData.faqs.map((faq, index) => {
                 const isSelected = faq.id === selectedFaqId;
@@ -591,30 +538,23 @@ export const AdminContentPage: React.FC = () => {
                     key={faq.id}
                     type="button"
                     onClick={() => handleSelectFaq(faq.id)}
-                    className={`w-full text-left p-4 rounded-xl border transition-colors duration-200 ${
+                    className={`w-full text-left p-3.5 rounded-lg border transition-colors text-xs ${
                       isSelected
-                        ? 'bg-white border-brand-darkgreen ring-2 ring-brand-darkgreen/10 shadow-sm'
-                        : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white'
+                        ? 'bg-white border-neutral-900 shadow-xs'
+                        : 'bg-white border-[#EAEAEA] hover:border-neutral-300'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-mono text-[10px] font-bold text-gray-400">
-                        FAQ #{index + 1}
+                      <span className="font-mono text-[10px] text-neutral-400">
+                        FAQ 0{index + 1}
                       </span>
-                      <div className="flex items-center gap-1.5">
-                        <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                          status === 'published' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
-                        }`}>
-                          {status}
-                        </span>
-                        {isSelected && (
-                          <span className="text-[10px] bg-emerald-100 text-brand-darkgreen font-bold px-2 py-0.5 rounded-full">
-                            Selected
-                          </span>
-                        )}
-                      </div>
+                      <span className={`text-[9px] font-mono uppercase px-1.5 py-0.2 rounded ${
+                        status === 'published' ? 'bg-[#EDF3EC] text-[#2D5A38]' : 'bg-[#FEF7E6] text-[#8A5B00]'
+                      }`}>
+                        {status}
+                      </span>
                     </div>
-                    <div className="font-bold text-xs text-brand-darkgreen line-clamp-2">
+                    <div className="font-medium text-neutral-900 line-clamp-2">
                       {faq.question}
                     </div>
                   </button>
@@ -623,50 +563,50 @@ export const AdminContentPage: React.FC = () => {
             </div>
 
             {/* FAQ Edit Form */}
-            <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
-              <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between">
+            <div className="lg:col-span-8 bg-white p-6 sm:p-7 rounded-xl border border-[#EAEAEA]">
+              <div className="pb-4 border-b border-[#F0F0F0] mb-5 flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-brand-darkgreen">
+                  <h3 className="font-serif text-base font-bold text-neutral-900">
                     Edit Statutory FAQ
                   </h3>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    Identifier: <code className="font-mono text-emerald-800">{selectedFaqId}</code>
+                  <p className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                    Identifier: {selectedFaqId}
                   </p>
                 </div>
                 <a
                   href="/#knowledge-faq"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-bold text-brand-darkgreen hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                  className="text-xs text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 font-medium px-2.5 py-1 rounded border border-neutral-200 hover:bg-neutral-50"
                 >
-                  <Eye className="w-3.5 h-3.5 mr-1" />
-                  Preview FAQ Section <ExternalLink className="w-3 h-3 ml-1" />
+                  <Eye className="w-3 h-3 text-neutral-400" />
+                  <span>Preview</span>
                 </a>
               </div>
 
-              <form onSubmit={handleSaveFaq} className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <form onSubmit={handleSaveFaq} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Question Text
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Question
                     </label>
                     <input
                       type="text"
                       required
                       value={faqQuestion}
                       onChange={(e) => setFaqQuestion(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-bold text-gray-900"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-900 font-medium"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                       Status
                     </label>
                     <select
                       value={faqStatus}
                       onChange={(e) => setFaqStatus(e.target.value as 'published' | 'draft')}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-semibold bg-white"
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-900 bg-white font-medium"
                     >
                       <option value="published">Published</option>
                       <option value="draft">Draft</option>
@@ -675,21 +615,21 @@ export const AdminContentPage: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Statutory Answer (ICAI Compliant, Informational)
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Statutory Answer
                   </label>
                   <textarea
                     rows={5}
                     required
                     value={faqAnswer}
                     onChange={(e) => setFaqAnswer(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
+                    className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800 leading-relaxed"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                    Statute Citation / Authority
+                  <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                    Statute Reference
                   </label>
                   <input
                     type="text"
@@ -697,17 +637,17 @@ export const AdminContentPage: React.FC = () => {
                     value={faqStatute}
                     onChange={(e) => setFaqStatute(e.target.value)}
                     placeholder="e.g. Section 44AB of Income Tax Act, 1961"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                    className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                   />
                 </div>
 
-                <div className="pt-4 border-t border-gray-100 flex items-center justify-end">
+                <div className="pt-3 border-t border-[#F0F0F0] flex items-center justify-end">
                   <button
                     type="submit"
-                    className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-medium rounded-lg transition-colors shadow-xs"
                   >
-                    <Save className="w-3.5 h-3.5 mr-1.5" />
-                    Save & Publish FAQ
+                    <Save className="w-3.5 h-3.5" />
+                    <span>Save FAQ</span>
                   </button>
                 </div>
               </form>
@@ -717,38 +657,35 @@ export const AdminContentPage: React.FC = () => {
         )}
 
         {/* =========================================================================
-            TAB 3: STATUTORY ARTICLES & INSIGHTS PUBLISHING
+            TAB 3: STATUTORY ARTICLES (MINIMALIST)
             ========================================================================= */}
         {activeTab === 'posts' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-            {/* Left Column: Article Selector & New Article CTA */}
-            <div className="lg:col-span-4 space-y-3">
+            {/* Left Column: Article Selector */}
+            <div className="lg:col-span-4 space-y-2">
               
-              {/* New Article Action Button */}
               <button
                 type="button"
                 onClick={handleStartNewPost}
-                className="w-full py-3 px-4 rounded-xl bg-brand-darkgreen text-white text-xs font-bold hover:bg-brand-chambers transition-colors shadow-sm flex items-center justify-center gap-2 border border-brand-darkgreen"
+                className="w-full py-2.5 px-3 rounded-lg bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-medium transition-colors flex items-center justify-center gap-1.5 shadow-xs"
               >
-                <PlusCircle className="w-4 h-4 text-gold-300" />
-                Write & Publish New Article
+                <PlusCircle className="w-3.5 h-3.5 text-amber-300" />
+                <span>Write New Article</span>
               </button>
 
-              {/* Search Filter */}
               <div className="relative">
-                <Search className="w-3.5 h-3.5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search className="w-3.5 h-3.5 text-neutral-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
-                  placeholder="Search articles by title or tag..."
+                  placeholder="Filter articles..."
                   value={postSearchQuery}
                   onChange={(e) => setPostSearchQuery(e.target.value)}
-                  className="w-full text-xs pl-9 pr-3 py-2 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                  className="w-full text-xs pl-8 pr-2.5 py-1.5 rounded-lg border border-neutral-200 bg-white focus:outline-none focus:border-neutral-900 text-neutral-800"
                 />
               </div>
 
-              {/* Articles List */}
-              <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1">
+              <div className="space-y-1.5 max-h-[620px] overflow-y-auto pr-0.5">
                 {filteredPosts.map((post) => {
                   const isSelected = !isCreatingNewPost && post.slug === selectedPostSlug;
                   return (
@@ -756,41 +693,34 @@ export const AdminContentPage: React.FC = () => {
                       key={post.slug}
                       type="button"
                       onClick={() => handleSelectPost(post.slug)}
-                      className={`w-full text-left p-4 rounded-xl border transition-colors duration-200 flex flex-col justify-between ${
+                      className={`w-full text-left p-3.5 rounded-lg border transition-colors text-xs ${
                         isSelected
-                          ? 'bg-white border-brand-darkgreen ring-2 ring-brand-darkgreen/10 shadow-sm'
-                          : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white'
+                          ? 'bg-white border-neutral-900 shadow-xs'
+                          : 'bg-white border-[#EAEAEA] hover:border-neutral-300'
                       }`}
                     >
                       <div className="flex items-center justify-between mb-1">
-                        <span className="font-mono text-[10px] font-bold text-gray-400 truncate max-w-[150px]">
+                        <span className="font-mono text-[10px] text-neutral-400 truncate max-w-[140px]">
                           /{post.slug}
                         </span>
-                        <div className="flex items-center gap-1.5">
-                          <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
-                            post.draft ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
-                          }`}>
-                            {post.draft ? 'Draft' : 'Published'}
-                          </span>
-                          {isSelected && (
-                            <span className="text-[10px] bg-emerald-100 text-brand-darkgreen font-bold px-2 py-0.5 rounded-full">
-                              Editing
-                            </span>
-                          )}
-                        </div>
+                        <span className={`text-[9px] font-mono uppercase px-1.5 py-0.2 rounded ${
+                          post.draft ? 'bg-[#FEF7E6] text-[#8A5B00]' : 'bg-[#EDF3EC] text-[#2D5A38]'
+                        }`}>
+                          {post.draft ? 'Draft' : 'Published'}
+                        </span>
                       </div>
 
-                      <div className="font-bold text-xs text-brand-darkgreen line-clamp-2 mt-1">
+                      <div className="font-semibold text-neutral-900 line-clamp-2">
                         {post.title}
                       </div>
 
-                      <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-100 text-[10px] text-gray-500">
+                      <div className="flex items-center gap-2 mt-2 pt-2 border-t border-[#F5F5F5] text-[10px] text-neutral-400 font-mono">
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3 text-gray-400" />
-                          {post.readingTime} min
+                          <Clock className="w-3 h-3 text-neutral-300" />
+                          {post.readingTime}m
                         </span>
                         <span>•</span>
-                        <span className="truncate max-w-[140px] text-gray-600 font-medium">
+                        <span className="truncate max-w-[140px]">
                           {post.tags[0] || 'Advisory'}
                         </span>
                       </div>
@@ -799,43 +729,42 @@ export const AdminContentPage: React.FC = () => {
                 })}
 
                 {filteredPosts.length === 0 && (
-                  <div className="p-6 text-center text-xs text-gray-500 bg-white rounded-xl border border-gray-200">
-                    No articles found matching "{postSearchQuery}".
+                  <div className="p-4 text-center text-xs text-neutral-400 bg-white rounded-lg border border-neutral-200">
+                    No matching articles.
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Right Column: Article Editor & Live Markdown Preview */}
-            <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
-              <div className="pb-4 border-b border-gray-100 mb-6 flex flex-wrap items-center justify-between gap-3">
+            {/* Right Column: Article Editor / Preview */}
+            <div className="lg:col-span-8 bg-white p-6 sm:p-7 rounded-xl border border-[#EAEAEA]">
+              <div className="pb-4 border-b border-[#F0F0F0] mb-5 flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-brand-darkgreen">
-                    {isCreatingNewPost ? 'Write New Statutory Article' : `Edit Article: ${postTitle || postSlug}`}
+                  <h3 className="font-serif text-base font-bold text-neutral-900">
+                    {isCreatingNewPost ? 'New Statutory Article' : (postTitle || postSlug)}
                   </h3>
-                  <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
-                    Public Route: <code className="font-mono text-emerald-800">/insights/{postSlug || 'your-slug-here'}</code>
+                  <p className="text-[11px] font-mono text-neutral-400 mt-0.5">
+                    Route: /insights/{postSlug || '...'}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  {/* Mode Toggle: Edit vs Preview */}
-                  <div className="flex items-center bg-gray-100 p-1 rounded-xl text-xs font-bold">
+                  <div className="inline-flex p-0.5 bg-neutral-100 rounded-md border border-neutral-200/60 text-xs">
                     <button
                       type="button"
                       onClick={() => setPostViewMode('edit')}
-                      className={`px-3 py-1 rounded-lg transition-colors ${
-                        postViewMode === 'edit' ? 'bg-white text-brand-darkgreen shadow-sm' : 'text-gray-600 hover:text-gray-900'
+                      className={`px-2.5 py-1 rounded text-xs transition-colors ${
+                        postViewMode === 'edit' ? 'bg-white text-neutral-900 font-semibold shadow-xs' : 'text-neutral-500 hover:text-neutral-900'
                       }`}
                     >
                       <Edit3 className="w-3 h-3 inline mr-1" />
-                      Editor
+                      Edit
                     </button>
                     <button
                       type="button"
                       onClick={() => setPostViewMode('preview')}
-                      className={`px-3 py-1 rounded-lg transition-colors ${
-                        postViewMode === 'preview' ? 'bg-white text-brand-darkgreen shadow-sm' : 'text-gray-600 hover:text-gray-900'
+                      className={`px-2.5 py-1 rounded text-xs transition-colors ${
+                        postViewMode === 'preview' ? 'bg-white text-neutral-900 font-semibold shadow-xs' : 'text-neutral-500 hover:text-neutral-900'
                       }`}
                     >
                       <Eye className="w-3 h-3 inline mr-1" />
@@ -843,26 +772,24 @@ export const AdminContentPage: React.FC = () => {
                     </button>
                   </div>
 
-                  {/* Public Link */}
                   {!isCreatingNewPost && postSlug && (
                     <a
                       href={`/insights/${postSlug}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-xs font-bold text-brand-darkgreen hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                      className="text-xs text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 font-medium px-2.5 py-1 rounded border border-neutral-200 hover:bg-neutral-50"
                     >
-                      <ExternalLink className="w-3.5 h-3.5 mr-1" />
-                      View Live
+                      <span>Live</span>
+                      <ExternalLink className="w-3 h-3 text-neutral-400" />
                     </a>
                   )}
 
-                  {/* Delete button (for custom articles) */}
                   {!isCreatingNewPost && postSlug && (
                     <button
                       type="button"
                       onClick={() => handleDeletePost(postSlug)}
                       title="Delete publication"
-                      className="p-1.5 rounded-lg text-gray-400 hover:text-red-700 hover:bg-red-50 border border-transparent hover:border-red-200 transition-colors"
+                      className="p-1 rounded text-neutral-400 hover:text-red-700 hover:bg-red-50 border border-transparent hover:border-red-200 transition-colors"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>
@@ -872,51 +799,50 @@ export const AdminContentPage: React.FC = () => {
 
               {postViewMode === 'preview' ? (
                 /* LIVE MARKDOWN PREVIEW */
-                <div className="p-6 bg-parchment-50 rounded-xl border border-gray-200 space-y-4 max-h-[600px] overflow-y-auto">
-                  <div className="pb-4 border-b border-gray-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-[10px] font-bold text-gold-700 uppercase tracking-widest bg-gold-100/60 px-2 py-0.5 rounded">
+                <div className="p-6 bg-[#FAFAF9] rounded-lg border border-[#EAEAEA] space-y-4 max-h-[620px] overflow-y-auto">
+                  <div className="pb-3 border-b border-neutral-200">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="text-[10px] font-mono text-neutral-500 uppercase px-1.5 py-0.5 bg-neutral-200/60 rounded">
                         {postTags.split(',')[0]?.trim() || 'Insight'}
                       </span>
-                      <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500 font-serif italic">
+                      <span className="text-xs text-neutral-300">•</span>
+                      <span className="text-xs text-neutral-500 italic">
                         By {postAuthor}
                       </span>
                     </div>
-                    <h1 className="font-serif text-2xl font-bold text-brand-darkgreen leading-tight">
-                      {postTitle || 'Untitled Article'}
+                    <h1 className="font-serif text-xl font-bold text-neutral-900 leading-tight">
+                      {postTitle || 'Untitled Publication'}
                     </h1>
                     {postExcerpt && (
-                      <p className="text-xs text-gray-600 mt-2 font-medium leading-relaxed italic border-l-2 border-gold-400 pl-3">
+                      <p className="text-xs text-neutral-600 mt-2 font-medium leading-relaxed italic border-l-2 border-neutral-300 pl-3">
                         {postExcerpt}
                       </p>
                     )}
                   </div>
-                  <div className="prose prose-sm max-w-none text-xs leading-relaxed text-gray-800">
+                  <div className="prose prose-sm max-w-none text-xs leading-relaxed text-neutral-800">
                     <MarkdownRenderer content={postContent} />
                   </div>
                 </div>
               ) : (
                 /* EDIT FORM */
                 <form onSubmit={handleSavePost} className="space-y-4">
-                  {/* Title & Slug */}
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div className="sm:col-span-2">
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                        Article Title
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                        Title
                       </label>
                       <input
                         type="text"
                         required
                         value={postTitle}
                         onChange={(e) => handleTitleChange(e.target.value)}
-                        placeholder="e.g. Assessment Defense Protocols under Income Tax Act"
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-bold text-gray-900"
+                        placeholder="e.g. Corporate Tax Assessment Protocols FY 2026-27"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-900 font-semibold"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                         URL Slug
                       </label>
                       <input
@@ -924,18 +850,16 @@ export const AdminContentPage: React.FC = () => {
                         required
                         value={postSlug}
                         onChange={(e) => setPostSlug(e.target.value)}
-                        placeholder="e.g. assessment-defense-protocols"
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-mono text-gray-700"
+                        placeholder="e.g. corporate-tax-protocols"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 font-mono text-neutral-700"
                       />
                     </div>
                   </div>
 
-                  {/* Tags & Publishing Status */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center justify-between">
-                        <span>Category Tags (Comma separated)</span>
-                        <Tag className="w-3 h-3 text-gray-400" />
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                        Tags (Comma separated)
                       </label>
                       <input
                         type="text"
@@ -943,29 +867,28 @@ export const AdminContentPage: React.FC = () => {
                         value={postTags}
                         onChange={(e) => setPostTags(e.target.value)}
                         placeholder="e.g. Income Tax, Corporate Tax, Advisory"
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                         Publishing Status
                       </label>
                       <select
                         value={postStatus}
                         onChange={(e) => setPostStatus(e.target.value as 'published' | 'draft')}
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-semibold bg-white"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800 bg-white font-medium"
                       >
-                        <option value="published">Published (Visible Publicly on /insights)</option>
-                        <option value="draft">Draft (Quarantined / Private)</option>
+                        <option value="published">Published (Visible Publicly)</option>
+                        <option value="draft">Draft (Quarantined)</option>
                       </select>
                     </div>
                   </div>
 
-                  {/* Author Name & Role */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
                         Author Name
                       </label>
                       <input
@@ -973,77 +896,73 @@ export const AdminContentPage: React.FC = () => {
                         required
                         value={postAuthor}
                         onChange={(e) => setPostAuthor(e.target.value)}
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                        Author Professional Designation
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                        Author Designation
                       </label>
                       <input
                         type="text"
                         required
                         value={postAuthorRole}
                         onChange={(e) => setPostAuthorRole(e.target.value)}
-                        className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
+                        className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800"
                       />
                     </div>
                   </div>
 
-                  {/* Excerpt / Overview */}
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Executive Summary / Excerpt (Displayed on Cards & Search Engines)
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Synopsis / Summary
                     </label>
                     <textarea
                       rows={2}
                       required
                       value={postExcerpt}
                       onChange={(e) => setPostExcerpt(e.target.value)}
-                      placeholder="Concise 1-2 sentence overview of statutory insights discussed in this publication..."
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
+                      placeholder="Concise overview of statutory insights discussed in this article..."
+                      className="w-full text-xs p-2.5 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 leading-relaxed text-neutral-800"
                     />
                   </div>
 
-                  {/* Cover Image URL */}
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider">
-                      Cover Image Path or URL (Optional)
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500 mb-1">
+                      Cover Image URL (Optional)
                     </label>
                     <input
                       type="text"
                       value={postCoverImage}
                       onChange={(e) => setPostCoverImage(e.target.value)}
                       placeholder="/uploads/blog/corporate-tax-planning-2026.webp"
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800 font-mono text-[11px]"
+                      className="w-full text-xs p-2 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 text-neutral-800 font-mono text-[11px]"
                     />
                   </div>
 
-                  {/* Markdown Body Content */}
                   <div>
-                    <div className="flex items-center justify-between mb-1.5">
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider">
-                        Article Body (Markdown Supported)
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500">
+                        Markdown Body
                       </label>
-                      <span className="text-[10px] text-gray-400 font-mono">
-                        Supports # Headings, **bold**, *italics*, tables, and lists
+                      <span className="text-[10px] font-mono text-neutral-400">
+                        # Heading · **bold** · *italic* · | table | · - list
                       </span>
                     </div>
                     <textarea
-                      rows={10}
+                      rows={11}
                       required
                       value={postContent}
                       onChange={(e) => setPostContent(e.target.value)}
-                      placeholder="# Main Title&#10;&#10;Section 1: Statutory Framework...&#10;&#10;| Assessment Year | Slab | Rate |&#10;| --- | --- | --- |"
-                      className="w-full text-xs p-3.5 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-mono leading-relaxed text-gray-800"
+                      placeholder="# Main Title&#10;&#10;Section 1: Statutory Framework...&#10;&#10;| Year | Slab | Rate |&#10;| --- | --- | --- |"
+                      className="w-full text-xs p-3 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 font-mono leading-relaxed text-neutral-800 bg-[#FAFAFA]"
                     />
                   </div>
 
-                  {/* Action Bar */}
-                  <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <div className="text-[11px] text-gray-500 font-mono">
-                      Estimated Reading Time: ~{Math.max(1, Math.ceil(postContent.trim().split(/\s+/).length / 200))} min ({postContent.trim().split(/\s+/).filter(Boolean).length} words)
+                  <div className="pt-3 border-t border-[#F0F0F0] flex items-center justify-between">
+                    <div className="text-[11px] font-mono text-neutral-400">
+                      ~{Math.max(1, Math.ceil(postContent.trim().split(/\s+/).length / 200))} min ({postContent.trim().split(/\s+/).filter(Boolean).length} words)
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -1054,7 +973,7 @@ export const AdminContentPage: React.FC = () => {
                             setIsCreatingNewPost(false);
                             if (posts[0]) setSelectedPostSlug(posts[0].slug);
                           }}
-                          className="px-4 py-2 rounded-xl text-xs font-bold text-gray-600 hover:bg-gray-100 transition-colors"
+                          className="px-3 py-1.5 rounded-lg text-xs font-medium text-neutral-500 hover:text-neutral-800 hover:bg-neutral-100 transition-colors"
                         >
                           Cancel
                         </button>
@@ -1062,10 +981,10 @@ export const AdminContentPage: React.FC = () => {
 
                       <button
                         type="submit"
-                        className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-medium rounded-lg transition-colors shadow-xs"
                       >
-                        <Save className="w-3.5 h-3.5 mr-1.5" />
-                        {isCreatingNewPost ? 'Publish New Article' : 'Save & Publish Changes'}
+                        <Save className="w-3.5 h-3.5" />
+                        <span>{isCreatingNewPost ? 'Publish Article' : 'Save Changes'}</span>
                       </button>
                     </div>
                   </div>

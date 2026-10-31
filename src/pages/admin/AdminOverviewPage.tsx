@@ -89,7 +89,7 @@ export const AdminOverviewPage: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
           {/* Total Enquiries */}
-          <div className="bg-white p-5 rounded-2xl border border-gray-200/80 shadow-sm flex items-center justify-between">
+          <div className="bg-white p-5 rounded-xl border border-[#EAEAEA] flex items-center justify-between">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
                 Total Enquiries
@@ -167,7 +167,7 @@ export const AdminOverviewPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Quick Shortcuts */}
-          <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
+          <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-[#EAEAEA]">
             <h2 className="text-sm font-bold uppercase tracking-wider text-brand-darkgreen mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-gold" />
               Practice Operations & Navigation
@@ -255,7 +255,7 @@ export const AdminOverviewPage: React.FC = () => {
           </div>
 
           {/* Active Chambers Configuration */}
-          <div className="bg-brand-chambers text-white p-6 rounded-2xl border border-emerald-900 shadow-sm flex flex-col justify-between">
+          <div className="bg-neutral-900 text-white p-6 rounded-xl border border-neutral-800 flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gold">
@@ -309,7 +309,7 @@ export const AdminOverviewPage: React.FC = () => {
         {/* =========================================================================
             3. RECENT CLIENT ENQUIRIES TABLE
             ========================================================================= */}
-        <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden">
+        <div className="bg-white rounded-xl border border-[#EAEAEA] overflow-hidden">
           <div className="p-6 border-b border-gray-100 flex items-center justify-between flex-wrap gap-4">
             <div>
               <h2 className="text-base font-bold text-brand-darkgreen">Recent Inquiries</h2>
