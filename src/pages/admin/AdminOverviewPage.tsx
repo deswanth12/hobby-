@@ -94,14 +94,14 @@ export const AdminOverviewPage: React.FC = () => {
               <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
                 Total Enquiries
               </div>
-              <div className="text-3xl font-serif font-bold text-[#0F3E2E] mt-1">
+              <div className="text-3xl font-serif font-bold text-brand-darkgreen mt-1">
                 {totalEnquiries}
               </div>
               <div className="text-[11px] text-gray-500 mt-0.5">
                 Logged in practice register
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#0F3E2E] flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-brand-darkgreen flex items-center justify-center">
               <Inbox className="w-6 h-6" />
             </div>
           </div>
@@ -168,67 +168,67 @@ export const AdminOverviewPage: React.FC = () => {
           
           {/* Quick Shortcuts */}
           <div className="lg:col-span-2 bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-[#0F3E2E] mb-4 flex items-center gap-2">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-brand-darkgreen mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-gold" />
               Practice Operations & Navigation
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <Link
                 to={ADMIN_ROUTES.enquiries}
-                className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-[#0F3E2E] flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
                     <Inbox className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-[#0F3E2E]">
+                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
                     Client Enquiries
                   </div>
                   <div className="text-[11px] text-gray-500 mt-0.5">
                     Filter, reply, and add follow-up notes
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-[#0F3E2E] mt-3">
+                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
                   Open Register <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
 
               <Link
                 to={ADMIN_ROUTES.content}
-                className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-[#0F3E2E] flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
                     <FileEdit className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-[#0F3E2E]">
+                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
                     Content Editor
                   </div>
                   <div className="text-[11px] text-gray-500 mt-0.5">
                     Update services, statutory FAQs & copy
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-[#0F3E2E] mt-3">
+                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
                   Edit Content <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
 
               <Link
                 to={ADMIN_ROUTES.settings}
-                className="p-4 rounded-xl border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/40 transition-all text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-[#0F3E2E] flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
                     <Sliders className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-[#0F3E2E]">
+                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
                     Practice Settings
                   </div>
                   <div className="text-[11px] text-gray-500 mt-0.5">
                     Chambers phone, email, and location
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-[#0F3E2E] mt-3">
+                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
                   Manage Settings <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
@@ -238,7 +238,7 @@ export const AdminOverviewPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleExportCSV}
-                className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-[#0F3E2E] bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-brand-darkgreen bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
               >
                 <Download className="w-3.5 h-3.5 mr-1.5" />
                 Export Enquiries Register (CSV)
@@ -247,7 +247,7 @@ export const AdminOverviewPage: React.FC = () => {
               <button
                 type="button"
                 onClick={handleCreateSampleEnquiry}
-                className="inline-flex items-center px-3 py-1.5 text-xs text-gray-600 hover:text-[#0F3E2E] transition-colors"
+                className="inline-flex items-center px-3 py-1.5 text-xs text-gray-600 hover:text-brand-darkgreen transition-colors"
               >
                 + Inject Evaluation Sample Enquiry
               </button>
@@ -255,7 +255,7 @@ export const AdminOverviewPage: React.FC = () => {
           </div>
 
           {/* Active Chambers Configuration */}
-          <div className="bg-[#0A2F24] text-white p-6 rounded-2xl border border-emerald-900 shadow-sm flex flex-col justify-between">
+          <div className="bg-brand-chambers text-white p-6 rounded-2xl border border-emerald-900 shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[10px] font-bold uppercase tracking-wider text-gold">
@@ -312,14 +312,14 @@ export const AdminOverviewPage: React.FC = () => {
         <div className="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden">
           <div className="p-6 border-b border-gray-100 flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h2 className="text-base font-bold text-[#0F3E2E]">Recent Inquiries</h2>
+              <h2 className="text-base font-bold text-brand-darkgreen">Recent Inquiries</h2>
               <p className="text-xs text-gray-500 mt-0.5">
                 Latest client consultation submissions from the public website contact form
               </p>
             </div>
             <Link
               to={ADMIN_ROUTES.enquiries}
-              className="inline-flex items-center text-xs font-bold text-[#0F3E2E] hover:text-[#C5A059] transition-colors"
+              className="inline-flex items-center text-xs font-bold text-brand-darkgreen hover:text-brand-brightgold transition-colors"
             >
               View All {totalEnquiries} Enquiries <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </Link>
@@ -338,14 +338,14 @@ export const AdminOverviewPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCreateSampleEnquiry}
-                  className="px-4 py-2 text-xs font-bold text-white bg-[#0F3E2E] hover:bg-[#0A2F24] rounded-xl transition-all"
+                  className="px-4 py-2 text-xs font-bold text-white bg-brand-darkgreen hover:bg-brand-chambers rounded-xl transition-colors duration-200"
                 >
                   Create Evaluation Sample
                 </button>
                 <Link
                   to="/contact"
                   target="_blank"
-                  className="px-4 py-2 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-all inline-flex items-center gap-1"
+                  className="px-4 py-2 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors duration-200 inline-flex items-center gap-1"
                 >
                   Test Public Contact Form <ExternalLink className="w-3 h-3" />
                 </Link>
@@ -358,7 +358,7 @@ export const AdminOverviewPage: React.FC = () => {
                 {recentEnquiries.map((enquiry) => (
                   <div key={enquiry.id} className="p-4 space-y-2 hover:bg-gray-50/60 transition-colors">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono font-bold text-xs text-[#0F3E2E]">
+                      <span className="font-mono font-bold text-xs text-brand-darkgreen">
                         {enquiry.id}
                       </span>
                       <span
@@ -396,7 +396,7 @@ export const AdminOverviewPage: React.FC = () => {
                       </span>
                       <Link
                         to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
-                        className="min-h-[44px] inline-flex items-center font-bold text-[#0F3E2E] hover:text-gold"
+                        className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-gold"
                       >
                         Review Enquiry →
                       </Link>
@@ -422,7 +422,7 @@ export const AdminOverviewPage: React.FC = () => {
                   <tbody className="divide-y divide-gray-100">
                     {recentEnquiries.map((enquiry) => (
                       <tr key={enquiry.id} className="hover:bg-gray-50/60 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-[#0F3E2E]">
+                        <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
                           {enquiry.id}
                         </td>
                         <td className="py-3.5 px-4 text-gray-600">
@@ -465,7 +465,7 @@ export const AdminOverviewPage: React.FC = () => {
                         <td className="py-3.5 px-4 text-right">
                           <Link
                             to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
-                            className="inline-flex items-center font-bold text-[#0F3E2E] hover:text-gold transition-colors"
+                            className="inline-flex items-center font-bold text-brand-darkgreen hover:text-gold transition-colors"
                           >
                             Review →
                           </Link>

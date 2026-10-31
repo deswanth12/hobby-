@@ -49,7 +49,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
       }
       i++; // Skip closing ```
       elements.push(
-        <div key={`code-${index++}`} className="my-6 rounded-xl overflow-x-auto bg-[#0A2F24] p-4 text-emerald-100 border border-emerald-900/80 font-mono text-xs sm:text-sm shadow-inner leading-relaxed">
+        <div key={`code-${index++}`} className="my-6 rounded-xl overflow-x-auto bg-brand-chambers p-4 text-emerald-100 border border-emerald-900/80 font-mono text-xs sm:text-sm shadow-inner leading-relaxed">
           <pre><code>{codeLines.join('\n')}</code></pre>
         </div>
       );

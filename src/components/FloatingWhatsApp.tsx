@@ -25,16 +25,16 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* Alive Interactive Consultation Speech Bubble */}
       {showTooltip && (
         <div 
-          className="mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-[0_12px_32px_-6px_rgba(16,45,37,0.25)] text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-all duration-300"
+          className="mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-editorial-lg text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-[opacity,transform] duration-200"
           role="status"
         >
           <div className="flex items-start justify-between gap-2 mb-1.5">
             <div className="flex items-center gap-1.5">
               <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]" />
+                <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400/50" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
-              <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1">
+              <span className="text-xs font-semibold text-emerald-900 flex items-center gap-1.5">
                 Active Partner Desk
                 <Sparkles className="w-2.5 h-2.5 text-brand-gold shrink-0" />
               </span>
@@ -65,19 +65,16 @@ export const FloatingWhatsApp: React.FC = () => {
         href={FIRM_DATA.contact.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center gap-2.5 min-w-[44px] min-h-[44px] bg-gradient-to-r from-emerald-600 via-emerald-700 to-[#0F3E2E] hover:from-emerald-500 hover:to-emerald-700 text-white px-4 py-3 rounded-full shadow-[0_10px_25px_-5px_rgba(16,185,129,0.5),0_0_0_1px_rgba(195,166,107,0.45)] hover:shadow-[0_16px_36px_-4px_rgba(16,185,129,0.7),0_0_0_1.5px_rgba(195,166,107,0.8)] border border-brand-gold/40 transition-all duration-300 ease-spring hover:-translate-y-1 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+        className="group relative flex items-center justify-center gap-2.5 min-w-[44px] min-h-[44px] bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-editorial-lg border border-brand-gold/40 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
         aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
         {/* Alive Luminescent Aura Ring */}
-        <span 
-          className="absolute -inset-1 rounded-full bg-emerald-400/30 blur-md animate-pulse pointer-events-none" 
-          aria-hidden="true" 
-        />
+        
 
         {/* Live Double Radar Ping */}
         <span className="relative flex h-3 w-3 shrink-0" aria-hidden="true">
-          <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80" />
-          <span className="relative inline-flex rounded-full h-3 w-3 bg-[#25D366] shadow-[0_0_8px_#25D366]" />
+          <span className="motion-safe:animate-[pulse_3s_ease-in-out_infinite] absolute inline-flex h-full w-full rounded-full bg-emerald-400/40" />
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 shadow-sm" />
         </span>
 
         {/* Branded WhatsApp Vector Glyph with Micro-Bounce */}
@@ -89,7 +86,7 @@ export const FloatingWhatsApp: React.FC = () => {
         </span>
 
         {/* Online Status Pill */}
-        <span className="hidden xl:inline-flex items-center text-[10px] font-bold uppercase tracking-wider text-emerald-100 bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-400/30">
+        <span className="hidden xl:inline-flex items-center text-[10px] font-semibold text-emerald-100 bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-400/30">
           Online
         </span>
       </a>

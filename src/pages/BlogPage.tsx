@@ -197,7 +197,7 @@ export const BlogPage: React.FC = () => {
                 placeholder="Search by statute, title, excerpt, or keyword..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-12 py-3 text-sm rounded-xl border border-brand-border bg-white text-brand-charcoal placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-brand-forest focus:border-brand-forest transition-all shadow-subtle min-h-[44px]"
+                className="w-full pl-11 pr-12 py-3 text-sm rounded-xl border border-brand-border bg-white text-brand-charcoal placeholder:text-brand-muted/70 focus:outline-none focus:ring-2 focus:ring-brand-forest focus:border-brand-forest transition-colors duration-200 shadow-subtle min-h-[44px]"
               />
               {searchQuery && (
                 <button
@@ -369,7 +369,7 @@ export const BlogPage: React.FC = () => {
                         className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-forest hover:text-brand-deep group/link min-h-[44px]"
                       >
                         <span>Read Analysis</span>
-                        <span className="w-6 h-6 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center group-hover/link:bg-brand-forest group-hover/link:border-brand-forest transition-all">
+                        <span className="w-6 h-6 rounded-full bg-brand-surface border border-brand-border flex items-center justify-center group-hover/link:bg-brand-forest group-hover/link:border-brand-forest transition-colors duration-200">
                           <ArrowRight className="w-3.5 h-3.5 text-brand-gold group-hover/link:text-white group-hover/link:translate-x-0.5 transition-transform" />
                         </span>
                       </Link>

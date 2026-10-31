@@ -206,7 +206,7 @@ export const AdminEnquiriesPage: React.FC = () => {
             type="button"
             onClick={() => loadEnquiries(true)}
             disabled={isLoading}
-            className="inline-flex items-center text-xs font-bold text-[#0F3E2E] hover:text-[#C5A059] transition-colors"
+            className="inline-flex items-center text-xs font-bold text-brand-darkgreen hover:text-brand-brightgold transition-colors"
           >
             <RefreshCw className={`w-3.5 h-3.5 mr-1 ${isLoading ? 'animate-spin' : ''}`} />
             Refresh
@@ -235,7 +235,7 @@ export const AdminEnquiriesPage: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by client, firm, phone, ID or town..."
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] bg-gray-50/50"
+              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen bg-gray-50/50"
             />
             {searchQuery && (
               <button
@@ -256,7 +256,7 @@ export const AdminEnquiriesPage: React.FC = () => {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-[#0F3E2E] bg-white"
+                className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white"
               >
                 <option value="all">All Statuses ({enquiries.length})</option>
                 <option value="new">New ({enquiries.filter(e => e.status === 'new').length})</option>
@@ -270,7 +270,7 @@ export const AdminEnquiriesPage: React.FC = () => {
             <select
               value={urgencyFilter}
               onChange={(e) => setUrgencyFilter(e.target.value)}
-              className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-[#0F3E2E] bg-white text-gray-600"
+              className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white text-gray-600"
             >
               <option value="all">All Urgencies</option>
               <option value="statutory-deadline">Statutory Deadline</option>
@@ -281,7 +281,7 @@ export const AdminEnquiriesPage: React.FC = () => {
             <button
               type="button"
               onClick={handleExportCSV}
-              className="inline-flex items-center px-3.5 py-1.5 text-xs font-bold text-[#0F3E2E] bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70 rounded-lg transition-colors"
+              className="inline-flex items-center px-3.5 py-1.5 text-xs font-bold text-brand-darkgreen bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70 rounded-lg transition-colors"
             >
               <Download className="w-3.5 h-3.5 mr-1.5" />
               Export CSV
@@ -318,7 +318,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-mono font-bold text-xs text-[#0F3E2E]">
+                      <span className="font-mono font-bold text-xs text-brand-darkgreen">
                         {enquiry.id}
                       </span>
                       {getStatusBadge(enquiry.status)}
@@ -350,7 +350,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                           e.stopPropagation();
                           openEnquiryDrawer(enquiry);
                         }}
-                        className="min-h-[44px] inline-flex items-center font-bold text-[#0F3E2E] hover:text-[#C5A059]"
+                        className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-brand-brightgold"
                       >
                         Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                       </button>
@@ -384,7 +384,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                         }`}
                         onClick={() => openEnquiryDrawer(enquiry)}
                       >
-                        <td className="py-3.5 px-4 font-mono font-bold text-[#0F3E2E]">
+                        <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
                           {enquiry.id}
                         </td>
                         <td className="py-3.5 px-4 text-gray-600 whitespace-nowrap">
@@ -440,7 +440,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                               e.stopPropagation();
                               openEnquiryDrawer(enquiry);
                             }}
-                            className="text-[#0F3E2E] hover:text-[#C5A059] font-bold inline-flex items-center"
+                            className="text-brand-darkgreen hover:text-brand-brightgold font-bold inline-flex items-center"
                           >
                             Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                           </button>
@@ -478,7 +478,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                         onClick={() => setCurrentPage(p)}
                         className={`w-7 h-7 rounded-lg text-xs font-bold transition-colors ${
                           p === currentPage
-                            ? 'bg-[#0F3E2E] text-white'
+                            ? 'bg-brand-darkgreen text-white'
                             : 'border border-gray-200 text-gray-700 hover:bg-gray-50'
                         }`}
                       >
@@ -516,7 +516,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 <div className="flex items-start justify-between pb-4 border-b border-gray-100">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-bold text-[#0F3E2E]">
+                      <span className="font-mono text-sm font-bold text-brand-darkgreen">
                         {selectedEnquiry.id}
                       </span>
                       {getStatusBadge(selectedEnquiry.status)}
@@ -570,7 +570,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                   <div className="pt-2 border-t border-gray-200/60 flex flex-wrap gap-2 text-xs">
                     <a
                       href={`tel:${selectedEnquiry.phone.replace(/[^0-9+]/g, '')}`}
-                      className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-emerald-50 text-[#0F3E2E] font-bold hover:bg-emerald-100 transition-colors"
+                      className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-emerald-50 text-brand-darkgreen font-bold hover:bg-emerald-100 transition-colors"
                     >
                       <Phone className="w-3.5 h-3.5 mr-1.5" />
                       Call {selectedEnquiry.phone}
@@ -602,7 +602,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
                       Requested Service Domain
                     </span>
-                    <div className="text-xs font-bold text-[#0F3E2E] bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
+                    <div className="text-xs font-bold text-brand-darkgreen bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
                       {selectedEnquiry.serviceCategory}
                     </div>
                   </div>
@@ -620,7 +620,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 {/* Update Status & Practice Follow-Up Notes */}
                 <form onSubmit={handleSaveStatusAndNotes} className="mt-6 space-y-4 pt-4 border-t border-gray-100">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#0F3E2E]">
+                    <span className="text-xs font-bold uppercase tracking-wider text-brand-darkgreen">
                       Practice Follow-Up & Action Log
                     </span>
                     {saveSuccess && (
@@ -637,7 +637,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                     <select
                       value={editStatus}
                       onChange={(e) => setEditStatus(e.target.value as EnquiryStatus)}
-                      className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] bg-white font-semibold"
+                      className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen bg-white font-semibold"
                     >
                       <option value="new">New (Pending Action)</option>
                       <option value="contacted">Contacted (Meeting / Call Completed)</option>
@@ -655,13 +655,13 @@ export const AdminEnquiriesPage: React.FC = () => {
                       value={editNotes}
                       onChange={(e) => setEditNotes(e.target.value)}
                       placeholder="e.g. Discussed with managing partner; requested audited financials for FY 25-26."
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full min-h-[44px] inline-flex items-center justify-center py-3 px-4 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
+                    className="w-full min-h-[44px] inline-flex items-center justify-center py-3 px-4 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
                     Save Status & Practice Notes

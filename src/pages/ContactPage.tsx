@@ -200,7 +200,7 @@ export const ContactPage: React.FC = () => {
                 href={FIRM_DATA.contact.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white text-xs font-semibold hover:bg-brand-deep transition-all shadow-xs btn-tactile shrink-0"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-forest text-white text-xs font-semibold hover:bg-brand-deep transition-colors duration-200 shadow-xs btn-tactile shrink-0"
               >
                 <MapPin className="w-4 h-4 text-brand-gold" />
                 <span>Open Google Maps Directions ↗</span>

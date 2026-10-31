@@ -164,10 +164,10 @@ export const AboutPage: React.FC = () => {
                       href={firm.contact.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full min-h-[44px] inline-flex items-center justify-between px-5 py-3 rounded-full bg-brand-forest hover:bg-brand-forest/80 text-white font-editorial-meta text-xs transition-all group btn-tactile shadow-md border border-brand-gold/40"
+                      className="w-full min-h-[44px] inline-flex items-center justify-between px-5 py-3 rounded-full bg-brand-forest hover:bg-brand-forest/80 text-white font-editorial-meta text-xs transition-colors duration-200 group btn-tactile shadow-md border border-brand-gold/40"
                     >
                       <span>Consult CA Kavitha Vijay</span>
-                      <span className="w-7 h-7 rounded-full bg-black/40 flex items-center justify-center group-hover:translate-x-1 group-hover:bg-brand-gold group-hover:text-brand-deep transition-all">
+                      <span className="w-7 h-7 rounded-full bg-black/40 flex items-center justify-center group-hover:translate-x-1 group-hover:bg-brand-gold group-hover:text-brand-deep transition-colors duration-200">
                         <ArrowRight className="w-3.5 h-3.5 text-brand-gold group-hover:text-brand-deep" />
                       </span>
                     </a>
@@ -642,7 +642,7 @@ export const AboutPage: React.FC = () => {
               href={firm.contact.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-all active:scale-[0.98] btn-tactile"
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-colors duration-200 active:scale-[0.98] btn-tactile"
             >
               <MapPin className="w-4 h-4 text-brand-gold" />
               <span>Directions to Chambers</span>

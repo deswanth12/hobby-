@@ -64,7 +64,7 @@ export const SectorMarquee: React.FC<SectorMarqueeProps> = ({ className = '' }) 
             return (
               <div
                 key={`${sector}-${index}`}
-                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-surface/90 border border-brand-border hover:border-brand-gold/70 shadow-xs transition-all duration-300 hover:scale-[1.02] shrink-0 group cursor-default"
+                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-brand-surface/90 border border-brand-border hover:border-brand-gold/70 shadow-xs transition-colors duration-200 duration-300 hover:scale-[1.02] shrink-0 group cursor-default"
                 aria-hidden={index >= sectors.length ? 'true' : undefined}
               >
                 <span className="w-7 h-7 rounded-full bg-brand-pale text-brand-forest group-hover:bg-brand-forest group-hover:text-brand-gold flex items-center justify-center transition-colors shrink-0">

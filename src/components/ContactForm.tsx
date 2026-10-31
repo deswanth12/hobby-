@@ -150,9 +150,9 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-all">
+    <div className="bg-white rounded-2xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-[border-color,box-shadow] duration-200">
       {submitted ? (
-        <div className="text-center py-8 space-y-5 animate-fadeIn">
+        <div className="text-center py-8 space-y-5 motion-safe:animate-fadeIn">
           <div className="w-16 h-16 bg-brand-pale text-brand-primary rounded-full flex items-center justify-center mx-auto border border-emerald-200">
             <CheckCircle2 className="w-9 h-9 text-brand-interactive" />
           </div>
@@ -226,7 +226,7 @@ export const ContactForm: React.FC = () => {
           )}
 
           <div className="border-b border-border pb-4">
-            <span className="text-xs font-semibold uppercase tracking-wider text-gold-dark block mb-1">
+            <span className="text-xs font-semibold text-gold-dark block mb-1">
               Direct Enquiry
             </span>
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">
@@ -454,7 +454,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-card hover:shadow-card-hover border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              className="w-full sm:w-auto btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-sm hover:shadow-md border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>

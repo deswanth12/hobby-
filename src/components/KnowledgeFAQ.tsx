@@ -80,7 +80,7 @@ export const KnowledgeFAQ: React.FC = () => {
               key={cat}
               type="button"
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all btn-tactile ${
+              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-colors duration-200 btn-tactile ${
                 selectedCategory === cat
                   ? 'bg-brand-primary text-white shadow-xs'
                   : 'bg-white text-charcoal border border-border hover:bg-brand-surface hover:border-gold/50'
@@ -98,7 +98,7 @@ export const KnowledgeFAQ: React.FC = () => {
             return (
               <div
                 key={faq.id}
-                className={`rounded-xl border transition-all ${
+                className={`rounded-xl border transition-colors duration-200 ${
                   isExpanded 
                     ? 'bg-white border-gold/60 shadow-card' 
                     : 'bg-white border-border shadow-subtle hover:border-border/80'
@@ -147,7 +147,7 @@ export const KnowledgeFAQ: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-gold-dark hover:underline font-semibold"
                       >
-                        Ask CA Kavitha Vijay →
+                        Ask CA Kavitha Vijay
                       </a>
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export const KnowledgeFAQ: React.FC = () => {
                 href={portal.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white p-4 rounded-xl border border-border shadow-subtle hover:border-gold hover:shadow-card transition-all group card-tactile flex flex-col justify-between"
+                className="bg-white p-4 rounded-xl border border-border shadow-subtle hover:border-gold hover:shadow-card transition-colors duration-200 group card-tactile flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-2">
@@ -207,9 +207,9 @@ export const KnowledgeFAQ: React.FC = () => {
             ))}
 
             {/* Direct Consultation Desk Prompt */}
-            <div className="bg-[#0A2F24] text-white p-4 rounded-xl border border-emerald-900 shadow-subtle flex flex-col justify-between">
+            <div className="bg-brand-chambers text-white p-4 rounded-xl border border-emerald-900 shadow-subtle flex flex-col justify-between">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-[#0F3E2E] px-2 py-0.5 rounded border border-gold/30">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-gold bg-brand-darkgreen px-2 py-0.5 rounded border border-gold/30">
                   Practice Assistance
                 </span>
                 <h4 className="font-serif text-base font-bold text-white mt-2">

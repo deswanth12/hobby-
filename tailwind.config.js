@@ -11,14 +11,19 @@ export default {
           // Canonical Luxury Editorial Tokens
           forest: '#153F32',     // Primary forest green
           deep: '#102D25',       // Deep rich green
+          chambers: '#0A2F24',   // Deepest dark chambers green
+          darkgreen: '#0F3E2E',  // Official header dark forest green
           ivory: '#F5F1E8',      // Warm ivory background
           white: '#FFFFFF',      // Pure white canvas
+          tintedwhite: '#FAF8F5', // Hallmark tinted surface (non-absolute)
           gold: '#C3A66B',       // Muted refined gold accent
+          brightgold: '#C5A059', // Hallmark warm editorial gold
+          goldhover: '#D4B26F',  // Highlighted gold hover
           charcoal: '#252B27',   // Dark charcoal body text
           muted: '#747A73',      // Secondary readable text
           border: '#E5E1D8',     // Architectural hairline border
           surface: '#EDE8DF',    // Approved surface tint
-          pale: '#EDE8DF',       // Muted ivory tint replacing old cold pale
+          pale: '#EDE8DF',       // Muted ivory tint
 
           // Backward-Compatible Aliases mapping to the new palette
           primary: '#153F32',     // Maps to brand-forest

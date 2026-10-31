@@ -71,12 +71,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
       {/* =========================================================================
           1. SIDEBAR (Desktop)
           ========================================================================= */}
-      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-[#0A2F24] text-white shrink-0 border-r border-emerald-950/60 shadow-card">
+      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-brand-chambers text-white shrink-0 border-r border-emerald-950/60 shadow-card">
         
         {/* Brand Plaque */}
         <div className="p-6 border-b border-emerald-800/60">
           <Link to={ADMIN_ROUTES.root} className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif text-lg font-bold text-gold">
+            <div className="w-10 h-10 rounded-lg bg-brand-darkgreen border border-gold/60 flex items-center justify-center font-serif text-lg font-bold text-gold">
               KA
             </div>
             <div>
@@ -106,10 +106,10 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
                   isActive
-                    ? 'bg-[#0F3E2E] text-white border border-gold/40 shadow-xs'
-                    : 'text-emerald-100/80 hover:bg-[#0F3E2E]/60 hover:text-white'
+                    ? 'bg-brand-darkgreen text-white border border-gold/40 shadow-xs'
+                    : 'text-emerald-100/80 hover:bg-brand-darkgreen/60 hover:text-white'
                 }`}
               >
                 <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
           
           {/* User Profile Info */}
           <div className="flex items-center gap-3 px-2">
-            <div className="w-9 h-9 rounded-full bg-[#0F3E2E] border border-gold/30 flex items-center justify-center text-gold font-serif font-bold text-xs shrink-0">
+            <div className="w-9 h-9 rounded-full bg-brand-darkgreen border border-gold/30 flex items-center justify-center text-gold font-serif font-bold text-xs shrink-0">
               {session?.user.displayName.substring(0, 2).toUpperCase() || 'CA'}
             </div>
             <div className="truncate">
@@ -149,7 +149,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
             to="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-[#0F3E2E]/60 hover:bg-[#0F3E2E] text-emerald-200 hover:text-white text-xs font-medium border border-emerald-800/60 transition-colors"
+            className="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-brand-darkgreen/60 hover:bg-brand-darkgreen text-emerald-200 hover:text-white text-xs font-medium border border-emerald-800/60 transition-colors"
           >
             <span className="flex items-center gap-2">
               <Globe className="w-3.5 h-3.5 text-gold" />
@@ -174,9 +174,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
       {/* =========================================================================
           2. MOBILE NAVBAR
           ========================================================================= */}
-      <div className="md:hidden bg-[#0A2F24] text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-emerald-950">
+      <div className="md:hidden bg-brand-chambers text-white p-3.5 sm:p-4 flex items-center justify-between border-b border-emerald-950">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-8 h-8 rounded-lg bg-[#0F3E2E] border border-gold/60 flex items-center justify-center font-serif font-bold text-gold text-sm shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-brand-darkgreen border border-gold/60 flex items-center justify-center font-serif font-bold text-gold text-sm shrink-0">
             KA
           </div>
           <span className="font-serif text-sm sm:text-base font-bold text-white truncate">
@@ -186,7 +186,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-[#0F3E2E] text-emerald-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-gold transition-colors shrink-0"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-brand-darkgreen text-emerald-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-gold transition-colors shrink-0"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
@@ -196,7 +196,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden bg-[#0A2F24] text-white border-b border-emerald-800 p-4 space-y-2 animate-fadeIn">
+        <div className="md:hidden bg-brand-chambers text-white border-b border-emerald-800 p-4 space-y-2 animate-fadeIn">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.exact 
@@ -209,7 +209,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
                 className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-xs font-semibold min-h-[44px] transition-colors ${
-                  isActive ? 'bg-[#0F3E2E] text-gold border border-gold/40' : 'text-emerald-100 hover:bg-[#0F3E2E]'
+                  isActive ? 'bg-brand-darkgreen text-gold border border-gold/40' : 'text-emerald-100 hover:bg-brand-darkgreen'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
