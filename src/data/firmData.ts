@@ -47,7 +47,7 @@ export interface FirmProfile {
     name: string;
     designation: string;
     qualifications: string;
-    membershipNumber: string;
+    membershipNumber?: string;
     role: string;
     tagline: string;
     summary: string;
@@ -145,7 +145,6 @@ export const FIRM_DATA: FirmProfile = {
     name: "CA Kavitha Vijay",
     designation: "Practicing Chartered Accountant & Cost Accountant",
     qualifications: "B.Com, CA, CMA (AIR 49)",
-    membershipNumber: "252985",
     role: "Managing Partner",
     tagline: "MNC Auditor with Big 4 Experience of 10+ Years",
     linkedinUrl: "https://www.linkedin.com/in/ca-kavitha-srj-770988199",
@@ -153,7 +152,7 @@ export const FIRM_DATA: FirmProfile = {
     experienceYears: "10+ Years",
     specialization: "Audit Expert | Compliance & Advisory Expert | International Exposure | Career Mentorship & Financial Literacy for B2C & B2B",
     memberships: [
-      "The Institute of Chartered Accountants of India (ICAI) â€” Membership No. 252985",
+      "The Institute of Chartered Accountants of India (ICAI)",
       "The Institute of Cost Accountants of India (ICMAI) â€” All India Rank 49 in CMA Intermediate"
     ],
     coreCompetencies: [
@@ -190,7 +189,7 @@ export const FIRM_DATA: FirmProfile = {
         year: "2019",
         degree: "Chartered Accountant (CA)",
         institution: "Institute of Chartered Accountants of India (ICAI)",
-        distinction: "Membership No. 252985"
+        distinction: "Chartered Accountant"
       },
       {
         year: "2019",

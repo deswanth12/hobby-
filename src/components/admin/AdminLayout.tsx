@@ -10,6 +10,8 @@ import {
   Menu, 
   X, 
   ExternalLink,
+  BookOpen,
+  PenTool,
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { ADMIN_ROUTES } from '../../config/adminConfig';
@@ -60,6 +62,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
     },
     { name: 'Content Editor', path: ADMIN_ROUTES.content, icon: FileEdit },
     { name: 'Practice Settings', path: ADMIN_ROUTES.settings, icon: Sliders },
+    { name: 'Articles & Insights', path: ADMIN_ROUTES.articles, icon: BookOpen },
   ];
 
   return (
@@ -122,6 +125,15 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               </NavLink>
             );
           })}
+          <div className="pt-3 px-1 mt-2 border-t border-[#F0F0F0]">
+            <Link
+              to={`${ADMIN_ROUTES.articles}?action=new`}
+              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold shadow-xs transition-colors group"
+            >
+              <PenTool className="w-3.5 h-3.5 text-amber-300 group-hover:rotate-12 transition-transform" />
+              <span>+ Write New Article</span>
+            </Link>
+          </div>
         </nav>
 
         {/* User Profile & Actions Footer */}
@@ -220,7 +232,33 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               </Link>
             );
           })}
-          <div className="pt-2 mt-2 border-t border-[#F0F0F0] flex items-center justify-between text-xs px-2">
+          
+          <div className="pt-2 mt-2 border-t border-[#F0F0F0] space-y-1">
+            <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 px-3 py-1">
+              Articles & Publications
+            </div>
+            <Link
+              to={ADMIN_ROUTES.articles}
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
+                location.pathname.startsWith(ADMIN_ROUTES.articles) ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:bg-neutral-50'
+              }`}
+            >
+              <div className="flex items-center gap-2.5">
+                <BookOpen className="w-4 h-4 text-neutral-500" />
+                <span>Articles & Insights</span>
+              </div>
+            </Link>
+            <Link
+              to={`${ADMIN_ROUTES.articles}?action=new`}
+              onClick={() => setMobileOpen(false)}
+              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium shadow-xs"
+            >
+              <PenTool className="w-3.5 h-3.5 text-amber-300" />
+              <span>+ Write New Article</span>
+            </Link>
+          </div>
+<div className="pt-2 mt-2 border-t border-[#F0F0F0] flex items-center justify-between text-xs px-2">
             <Link
               to="/"
               target="_blank"
@@ -268,6 +306,14 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
           </div>
 
           <div className="flex items-center gap-2.5">
+            <Link
+              to={`${ADMIN_ROUTES.articles}?action=new`}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium shadow-xs transition-colors"
+            >
+              <PenTool className="w-3 h-3 text-amber-300" />
+              <span>+ Write Article</span>
+            </Link>
+
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-100">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Encrypted Session</span>

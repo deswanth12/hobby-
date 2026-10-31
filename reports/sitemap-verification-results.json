@@ -1,0 +1,118 @@
+{
+  "total": 16,
+  "allOk": true,
+  "results": [
+    {
+      "url": "https://kavithaassociates.com/",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/about",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/audit-assurance",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/gst-consultant-tirupati",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/income-tax-consultant-tirupati",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/company-registration-tirupati",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/virtual-cfo-tirupati",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/services/rera-consultant-tirupati",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/industries",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/locations",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/contact",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/blog",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    },
+    {
+      "url": "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026",
+      "status": 200,
+      "ok": true,
+      "hasCanonical": true,
+      "hasRobots": true
+    }
+  ]
+}

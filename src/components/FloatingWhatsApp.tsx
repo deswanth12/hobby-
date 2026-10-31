@@ -20,12 +20,12 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <aside 
       aria-label="Direct WhatsApp Consultation" 
-      className="fixed bottom-6 right-5 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end"
+      className="fixed bottom-5 right-4 sm:bottom-8 sm:right-8 z-40 flex flex-col items-end"
     >
       {/* Alive Interactive Consultation Speech Bubble */}
       {showTooltip && (
         <div 
-          className="mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-editorial-lg text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-[opacity,transform] duration-200"
+          className="hidden sm:block mb-2.5 p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-brand-gold/60 shadow-editorial-lg text-brand-forest max-w-[280px] sm:max-w-[300px] animate-fade-up relative transition-[opacity,transform] duration-200"
           role="status"
         >
           <div className="flex items-start justify-between gap-2 mb-1.5">
@@ -46,7 +46,7 @@ export const FloatingWhatsApp: React.FC = () => {
                 e.stopPropagation();
                 setShowTooltip(false);
               }}
-              className="text-gray-400 hover:text-gray-700 -mt-0.5 -mr-0.5 p-1 rounded-full hover:bg-gray-100 transition-colors"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-400 hover:text-gray-700 -mt-1 -mr-1 rounded-full hover:bg-gray-100 transition-colors"
               aria-label="Dismiss consultation prompt"
             >
               <X className="w-3.5 h-3.5" />
@@ -65,7 +65,7 @@ export const FloatingWhatsApp: React.FC = () => {
         href={FIRM_DATA.contact.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative flex items-center justify-center gap-2.5 min-w-[44px] min-h-[44px] bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-3 rounded-full shadow-lg hover:shadow-editorial-lg border border-brand-gold/40 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+        className="group relative flex items-center justify-center gap-2.5 min-w-[48px] min-h-[48px] w-12 h-12 sm:w-auto sm:h-auto bg-emerald-700 hover:bg-emerald-800 text-white sm:px-4 sm:py-3 rounded-full shadow-lg hover:shadow-editorial-lg border border-brand-gold/40 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
         aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
         {/* Alive Luminescent Aura Ring */}

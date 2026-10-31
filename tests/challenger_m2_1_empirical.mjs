@@ -190,10 +190,10 @@ console.log('\n--- 4. Testing Client Credibility & Regulatory Compliance ---');
 
 // Verified Partner Name & ICAI Membership
 assert(homePageContent.includes('CA Kavitha Vijay'), 'HomePage mentions CA Kavitha Vijay');
-assert(homePageContent.includes('252985'), 'HomePage contains ICAI Mem. 252985');
+assert(homePageContent.includes('[REDACTED_MEMBERSHIP_NO]'), 'HomePage contains ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(homePageContent.includes('AIR 49'), 'HomePage mentions CMA AIR 49');
 assert(footerContent.includes('CA Kavitha Vijay'), 'Footer mentions CA Kavitha Vijay');
-assert(footerContent.includes('252985'), 'Footer contains ICAI Mem. 252985');
+assert(footerContent.includes('[REDACTED_MEMBERSHIP_NO]'), 'Footer contains ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 
 // Verified Chambers Address & Phones
 assert(footerContent.includes('Bairagi Patteda'), 'Footer contains physical address at Bairagi Patteda');

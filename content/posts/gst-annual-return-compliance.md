@@ -4,7 +4,7 @@ slug: "gst-annual-return-compliance"
 draft: false
 date: "2026-02-20T09:00:00Z"
 author: "CA Kavitha Vijay"
-authorRole: "Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)"
+authorRole: "Managing Partner (B.Com, CA, CMA AIR 49)"
 coverImage: "/uploads/blog/gst-annual-return-compliance.webp"
 coverImageAlt: "Goods and Services Tax annual return reconciliation between GSTR-9, GSTR-3B, GSTR-2B, and audited financial statements"
 excerpt: "Technical walkthrough of GSTR-9 annual return preparation, GSTR-9C reconciliation requirements, Section 16(2)(aa) ITC matching protocols, and departmental notice management."
@@ -134,7 +134,7 @@ To ensure zero post-filing audit queries, taxpayers should execute the following
 
 ## Regulatory Compliance & Ethics Disclosure
 
-*This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+*This technical commentary is prepared by **CA Kavitha Vijay (B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
 
 ---
 

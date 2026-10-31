@@ -67,7 +67,7 @@ assert(footerCode.includes('border-brand-gold'), 'Footer header features top mut
 
 assert(footerCode.includes('CA Kavitha Vijay'), 'Footer Column 1 contains partner CA Kavitha Vijay');
 assert(footerCode.includes('B.Com, CA, CMA AIR 49'), 'Footer Column 1 contains exact credentials B.Com, CA, CMA AIR 49');
-assert(footerCode.includes('ICAI Mem. 252985'), 'Footer Column 1 contains exact registration ICAI Mem. 252985');
+assert(footerCode.includes('ICAI Mem. [REDACTED_MEMBERSHIP_NO]'), 'Footer Column 1 contains exact registration ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 
 assert(footerCode.includes('to="/services/audit-assurance"'), 'Footer Column 2 contains Audit Spotlight link');
 assert(footerCode.includes('to="/services#income-tax"'), 'Footer Column 2 contains Income Tax anchor link');
@@ -128,7 +128,7 @@ assert(homeCode.includes('Practical Commercial Counsel.'), 'Monumental headline 
 assert(homeCode.includes('Deloitte'), 'Lead narrative cites verified Big 4 Deloitte experience');
 assert(homeCode.includes('Ford Motor Company'), 'Lead narrative cites verified Fortune 50 Ford Motor Company experience');
 assert(homeCode.includes('CA Kavitha Vijay'), 'Lead narrative features verified partner name CA Kavitha Vijay');
-assert(homeCode.includes('ICAI Mem. 252985'), 'Practice Plaque features ICAI Mem. 252985');
+assert(homeCode.includes('ICAI Mem. [REDACTED_MEMBERSHIP_NO]'), 'Practice Plaque features ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(homeCode.includes('CMA AIR 49'), 'Practice Plaque features CMA AIR 49');
 
 assert(homeCode.includes('ICAI Standards on Auditing (SAs)'), 'Audit spotlight guarantees ICAI Standards on Auditing (SAs)');

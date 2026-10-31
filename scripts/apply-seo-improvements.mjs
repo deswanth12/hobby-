@@ -138,7 +138,7 @@ const newHomeSEOHead = `<SEOHead
               name: 'CA Kavitha Vijay',
               jobTitle: 'Practicing Chartered Accountant & Cost Accountant',
               honorificPrefix: 'CA',
-              description: 'B.Com, CA, CMA (AIR 49) | ICAI Mem. 252985'
+              description: 'B.Com, CA, CMA (AIR 49) | ICAI Mem. [REDACTED_MEMBERSHIP_NO]'
             },
             areaServed: ['Tirupati', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'India'],
             knowsAbout: [
@@ -172,7 +172,7 @@ const oldAboutSEORegex = /<SEOHead\r?\n\s*title="About CA Kavitha Vijay \| Big 4
 
 const newAboutSEO = `<SEOHead
         title="About CA Kavitha Vijay | Chartered Accountant in Tirupati"
-        description="Profile of CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice."
+        description="Profile of CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice."
         canonicalPath="/about"
         breadcrumbs={[
           { name: 'Home', path: '/' },
@@ -405,7 +405,7 @@ const oldBlogSEORegex = /<SEOHead\r?\n\s*title="Regulatory Insights & Technical 
 
 const newBlogSEO = `<SEOHead
         title="Tax & Regulatory Insights | CA Kavitha & Associates Tirupati"
-        description="Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (ICAI Mem. 252985, CMA AIR 49) for businesses and founders."
+        description="Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49) for businesses and founders."
         canonicalPath="/blog"
         breadcrumbs={[
           { name: 'Home', path: '/' },

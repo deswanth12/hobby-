@@ -1,0 +1,1728 @@
+{
+  "testedAt": "2026-10-31T16:06:11.075Z",
+  "totalChecks": 140,
+  "overflowIssues": [],
+  "smallTouchTargets": [
+    {
+      "breakpoint": 320,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 320,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 360,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 375,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 390,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 414,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        }
+      ]
+    },
+    {
+      "breakpoint": 430,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 167,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "Start WhatsApp Conversation",
+          "width": 205,
+          "height": 32
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/",
+      "name": "Homepage",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/about",
+      "name": "About Chambers",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "LinkedIn Profile",
+          "width": 136,
+          "height": 30
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services",
+      "name": "Services Directory",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/gst-consultant-tirupati",
+      "name": "GST Services",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/income-tax-consultant-tirupati",
+      "name": "Income Tax",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/company-registration-tirupati",
+      "name": "Company Registration",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/virtual-cfo-tirupati",
+      "name": "Virtual CFO",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/services/rera-consultant-tirupati",
+      "name": "RERA Consultant",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/industries",
+      "name": "Industries",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/locations",
+      "name": "Locations",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/blog",
+      "name": "Articles Hub",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Blog Post",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        }
+      ]
+    },
+    {
+      "breakpoint": 768,
+      "route": "/contact",
+      "name": "Contact",
+      "targets": [
+        {
+          "tag": "a",
+          "text": "Skip to main content",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 123,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "cakavithasrj@gmail.com",
+          "width": 158,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 96263 50900",
+          "width": 121,
+          "height": 20
+        },
+        {
+          "tag": "a",
+          "text": "+91 95421 53906",
+          "width": 117,
+          "height": 20
+        }
+      ]
+    }
+  ],
+  "headerHeightMeasurements": [
+    {
+      "breakpoint": 320,
+      "device": "Small Mobile 320px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 360,
+      "device": "Android Standard 360px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 375,
+      "device": "iPhone SE/8 375px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 390,
+      "device": "iPhone 12-15 390px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 414,
+      "device": "iPhone Plus/Max 414px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 430,
+      "device": "iPhone Pro Max 430px",
+      "headerHeight": 83
+    },
+    {
+      "breakpoint": 768,
+      "device": "Tablet Portrait 768px",
+      "headerHeight": 124
+    },
+    {
+      "breakpoint": 1024,
+      "device": "Tablet Landscape 1024px",
+      "headerHeight": 124
+    },
+    {
+      "breakpoint": 1280,
+      "device": "Laptop Standard 1280px",
+      "headerHeight": 124
+    },
+    {
+      "breakpoint": 1440,
+      "device": "Desktop Large 1440px",
+      "headerHeight": 124
+    }
+  ],
+  "screenshotsCaptured": [
+    "homepage-320px.png",
+    "about-320px.png",
+    "services-320px.png",
+    "contact-320px.png",
+    "homepage-375px.png",
+    "about-375px.png",
+    "services-375px.png",
+    "contact-375px.png",
+    "homepage-390px.png",
+    "about-390px.png",
+    "services-390px.png",
+    "contact-390px.png",
+    "homepage-768px.png",
+    "about-768px.png",
+    "services-768px.png",
+    "contact-768px.png",
+    "homepage-1440px.png",
+    "about-1440px.png",
+    "services-1440px.png",
+    "contact-1440px.png"
+  ],
+  "menuTest": {
+    "toggleFound": true,
+    "initialOverflow": "",
+    "openedOverflow": "hidden",
+    "isDrawerVisible": true,
+    "closedAgainOverflow": ""
+  }
+}

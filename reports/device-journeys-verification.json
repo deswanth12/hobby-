@@ -1,0 +1,120 @@
+[
+  {
+    "device": "Android Standard (Samsung Galaxy / Pixel 412x915)",
+    "header": {
+      "headerFound": true,
+      "height": 83,
+      "isSticky": true,
+      "utilityVisible": false,
+      "brandMarkWidth": 230,
+      "hamburgerWidth": 44,
+      "hamburgerHeight": 44
+    },
+    "navigation": {
+      "drawerOpens": true,
+      "bodyOverflowLocked": true,
+      "servicesAccordionWorks": true,
+      "minTargetViolations": 0,
+      "totalDrawerControls": 18,
+      "drawerCloses": true,
+      "bodyUnlocked": true
+    },
+    "whatsapp": {
+      "totalWhatsAppLinks": 26,
+      "allValidWaUrls": true,
+      "floatingFound": true,
+      "floatingBtnWidth": 48,
+      "floatingBtnHeight": 48,
+      "tooltipVisibleOnMobile": false
+    },
+    "telephone": {
+      "totalTelLinks": 11,
+      "allValidCleanTelProtocols": true
+    },
+    "form": {
+      "inputChecks": {
+        "nameAutoComplete": true,
+        "phoneType": true,
+        "phoneInputMode": true,
+        "phoneAutoComplete": true,
+        "emailType": true,
+        "emailInputMode": true,
+        "emailAutoComplete": true,
+        "nameFontSize": "16px",
+        "phoneFontSize": "16px",
+        "emailFontSize": "16px"
+      },
+      "emptyValidationFires": false,
+      "validationErrors": [],
+      "submissionSuccess": true,
+      "referenceIdGenerated": true,
+      "referenceId": "ENQ-MVWMCCP1-723",
+      "whatsappTransmitLinkReady": true
+    },
+    "seo": {
+      "title": "Contact Chartered Accountant in Tirupati | Kavitha & Associates",
+      "metaDesc": "Schedule a consultation with CA Kavitha Vijay in Tirupati. Call +91 96263 50900 or WhatsApp for statutory audit, income tax filing, and GST advisory inquiries.",
+      "canonical": "https://kavithaassociates.com/contact",
+      "hasAccountingServiceSchema": true
+    }
+  },
+  {
+    "device": "Apple iPhone (iPhone 14/15 Safari 390x844)",
+    "header": {
+      "headerFound": true,
+      "height": 83,
+      "isSticky": true,
+      "utilityVisible": false,
+      "brandMarkWidth": 230,
+      "hamburgerWidth": 44,
+      "hamburgerHeight": 44
+    },
+    "navigation": {
+      "drawerOpens": true,
+      "bodyOverflowLocked": true,
+      "servicesAccordionWorks": true,
+      "minTargetViolations": 0,
+      "totalDrawerControls": 18,
+      "drawerCloses": true,
+      "bodyUnlocked": true
+    },
+    "whatsapp": {
+      "totalWhatsAppLinks": 26,
+      "allValidWaUrls": true,
+      "floatingFound": true,
+      "floatingBtnWidth": 48,
+      "floatingBtnHeight": 48,
+      "tooltipVisibleOnMobile": false
+    },
+    "telephone": {
+      "totalTelLinks": 11,
+      "allValidCleanTelProtocols": true
+    },
+    "form": {
+      "inputChecks": {
+        "nameAutoComplete": true,
+        "phoneType": true,
+        "phoneInputMode": true,
+        "phoneAutoComplete": true,
+        "emailType": true,
+        "emailInputMode": true,
+        "emailAutoComplete": true,
+        "nameFontSize": "16px",
+        "phoneFontSize": "16px",
+        "emailFontSize": "16px"
+      },
+      "emptyValidationFires": false,
+      "validationErrors": [],
+      "submissionSuccess": true,
+      "referenceIdGenerated": true,
+      "referenceId": "ENQ-MVWMCH0I-550",
+      "whatsappTransmitLinkReady": true
+    },
+    "seo": {
+      "title": "Contact Chartered Accountant in Tirupati | Kavitha & Associates",
+      "metaDesc": "Schedule a consultation with CA Kavitha Vijay in Tirupati. Call +91 96263 50900 or WhatsApp for statutory audit, income tax filing, and GST advisory inquiries.",
+      "canonical": "https://kavithaassociates.com/contact",
+      "hasAccountingServiceSchema": true
+    }
+  }
+]

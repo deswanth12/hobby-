@@ -109,8 +109,8 @@ assert(!fakeTestimonialsRegex.test(navbarCode), 'Navbar.tsx has NO fake testimon
 assert(!fakeTestimonialsRegex.test(footerCode), 'Footer.tsx has NO fake testimonials section');
 
 // 2.4 Invented credentials verification
-assert(homePageCode.includes('252985'), 'HomePage.tsx references verified ICAI Mem. 252985');
-assert(footerCode.includes('252985'), 'Footer.tsx references verified ICAI Mem. 252985');
+assert(homePageCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'HomePage.tsx references verified ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
+assert(footerCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'Footer.tsx references verified ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(homePageCode.includes('AIR 49'), 'HomePage.tsx references verified CMA AIR 49');
 assert(footerCode.includes('AIR 49'), 'Footer.tsx references verified CMA AIR 49');
 assert(homePageCode.includes('CA Kavitha Vijay'), 'HomePage.tsx references verified partner CA Kavitha Vijay');

@@ -1,4 +1,4 @@
-﻿/* Hallmark · v2.0.0 · Polish · Editorial */
+/* Hallmark · v2.0.0 · Polish · Editorial */
 :root {
   --color-forest: #153F32;
   --color-deep: #102D25;
@@ -10,7 +10,7 @@
   --color-brightgold: #C5A059;
   --color-goldhover: #D4B26F;
   --color-charcoal: #252B27;
-  --color-muted: #747A73;
+  --color-muted: #4A524D;
   --color-border: #E5E1D8;
   --color-surface: #EDE8DF;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -56,7 +56,7 @@
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 
@@ -65,7 +65,7 @@
     line-height: 1.6;
     color: var(--color-charcoal);
     background-color: var(--color-ivory);
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 
@@ -88,7 +88,7 @@
      ========================================================================= */
   .font-editorial-h1 {
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 1.5rem + 3.75vw, 4rem);
+    font-size: clamp(1.875rem, 1.35rem + 2.5vw, 3.75rem);
     font-weight: 500;
     line-height: 1.22;
     letter-spacing: 0;
@@ -575,11 +575,13 @@
   /* Back to Top Button */
   .btn-back-to-top {
     position: fixed;
-    bottom: 5.5rem;
-    right: 1.5rem;
+    bottom: 4.75rem;
+    right: 1.25rem;
     z-index: 40;
     width: 2.75rem;
     height: 2.75rem;
+    min-width: 44px;
+    min-height: 44px;
     border-radius: 9999px;
     background: var(--color-forest);
     color: var(--color-gold);
@@ -823,4 +825,11 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-scrollbar-hover);
+}
+
+/* Prevent automatic zoom on iOS Safari when focusing form inputs */
+@media (max-width: 639px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }

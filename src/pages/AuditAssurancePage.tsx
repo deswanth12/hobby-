@@ -54,7 +54,7 @@ export const AuditAssurancePage: React.FC = () => {
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
               <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
-              <span>Dedicated Audit Practice • ICAI Mem. 252985</span>
+              <span>Dedicated Audit Practice • Tirupati Chambers</span>
             </div>
             <h1 className="font-editorial-h1 text-white">
               Evidence-Based Rigor. Institutional Trust.
@@ -112,7 +112,7 @@ export const AuditAssurancePage: React.FC = () => {
                   Direct Partner Supervision
                 </h3>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
-                  Supervised and signed by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49) with mandatory UDIN generation.
+                  Supervised and signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49) with mandatory UDIN generation.
                 </p>
               </div>
             </div>
@@ -276,7 +276,7 @@ export const AuditAssurancePage: React.FC = () => {
 
                       <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <span className="font-editorial-meta text-brand-gold text-xs">
-                          Supervised & Signed by CA Kavitha Vijay (ICAI Mem. 252985)
+                          Supervised & Signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49)
                         </span>
                         <a
                           href={firm.contact.whatsappLink}

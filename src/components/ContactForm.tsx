@@ -247,9 +247,10 @@ export const ContactForm: React.FC = () => {
                 type="text"
                 id="fullName"
                 name="fullName"
+                autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
                   errors.fullName ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="e.g. S. Ramanathan"
@@ -273,9 +274,10 @@ export const ContactForm: React.FC = () => {
                 type="text"
                 id="organization"
                 name="organization"
+                autoComplete="organization"
                 value={formData.organization}
                 onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
                 placeholder="e.g. Enterprise / LLP / Individual"
               />
             </div>
@@ -287,11 +289,13 @@ export const ContactForm: React.FC = () => {
               </label>
               <input
                 type="tel"
+                inputMode="tel"
+                autoComplete="tel"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
                   errors.phone ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="+91 98765 43210"
@@ -313,11 +317,13 @@ export const ContactForm: React.FC = () => {
               </label>
               <input
                 type="email"
+                inputMode="email"
+                autoComplete="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
                   errors.email ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
                 }`}
                 placeholder="client@domain.com"
@@ -342,7 +348,7 @@ export const ContactForm: React.FC = () => {
                 name="serviceCategory"
                 value={formData.serviceCategory}
                 onChange={(e) => setFormData({ ...formData, serviceCategory: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Audit & Assurance Services">Audit & Assurance (Statutory, Internal, Tax Audit)</option>
                 <option value="Income Tax Services">Income Tax (Filing, Planning, Scrutiny, Appeals)</option>
@@ -364,7 +370,7 @@ export const ContactForm: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Tirupati">Tirupati (Principal Chambers)</option>
                 <option value="Chennai">Chennai</option>
@@ -385,7 +391,7 @@ export const ContactForm: React.FC = () => {
                 name="entityType"
                 value={formData.entityType}
                 onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Private Limited Company">Private Limited Company</option>
                 <option value="Partnership / LLP">Limited Liability Partnership (LLP) / Firm</option>
@@ -406,7 +412,7 @@ export const ContactForm: React.FC = () => {
                 name="urgency"
                 value={formData.urgency}
                 onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
               >
                 <option value="Normal Statutory Cycle">Normal Statutory Cycle / Planning</option>
                 <option value="Urgent / Approaching Deadline">Urgent / Approaching Filing Deadline</option>
@@ -427,7 +433,7 @@ export const ContactForm: React.FC = () => {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
+              className={`w-full px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
                 errors.message ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
               }`}
               placeholder="Please describe your specific requirements (e.g., upcoming statutory audit deadline, GST dispute notice, company incorporation, or tax advisory)..."
@@ -454,7 +460,7 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-sm hover:shadow-md border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              className="w-full sm:w-auto min-h-[48px] btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-sm hover:shadow-md border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
             >
               {isSubmitting ? (
                 <span>Formatting Inquiry...</span>

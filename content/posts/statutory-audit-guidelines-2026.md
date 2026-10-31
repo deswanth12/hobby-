@@ -4,7 +4,7 @@ slug: "statutory-audit-guidelines-2026"
 draft: false
 date: "2026-03-15T09:00:00Z"
 author: "CA Kavitha Vijay"
-authorRole: "Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)"
+authorRole: "Managing Partner (B.Com, CA, CMA AIR 49)"
 coverImage: "/uploads/blog/statutory-audit-guidelines-2026.webp"
 coverImageAlt: "Statutory audit examination of corporate balance sheets, internal financial controls, and statutory books of account"
 excerpt: "A comprehensive examination of statutory audit obligations under Section 143 of the Companies Act 2013, CARO 2020 reporting mandates, and internal financial control (IFC) testing for Indian corporate entities."
@@ -132,7 +132,7 @@ A foundational principle of statutory assurance is the separation of responsibil
 
 ## Regulatory Compliance & Ethics Disclosure
 
-*This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+*This technical commentary is prepared by **CA Kavitha Vijay (B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
 
 ---
 

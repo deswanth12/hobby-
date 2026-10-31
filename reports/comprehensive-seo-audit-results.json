@@ -1,0 +1,589 @@
+{
+  "timestamp": "2026-10-31T15:19:28.807Z",
+  "target": "https://kavithaassociates.com",
+  "httpAudit": {},
+  "technicalFiles": {
+    "robots": {
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "length": 266,
+      "hasSitemap": true,
+      "disallowAdmin": true,
+      "content": "# Robots.txt for Kavitha & Associates (Chartered Accountants)\n# Production Domain: https://kavithaassociates.com\n\nUser-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /admin\nDisallow: /api/\nDisallow: /api\n\n# Sitemaps\nSitemap: https://kavithaassociates.com/sitemap.xml"
+    },
+    "sitemap": {
+      "status": 200,
+      "contentType": "application/xml",
+      "urlCount": 11,
+      "urls": [
+        "https://kavithaassociates.com/",
+        "https://kavithaassociates.com/about",
+        "https://kavithaassociates.com/services",
+        "https://kavithaassociates.com/services/audit-assurance",
+        "https://kavithaassociates.com/industries",
+        "https://kavithaassociates.com/locations",
+        "https://kavithaassociates.com/contact",
+        "https://kavithaassociates.com/blog",
+        "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+        "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+        "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026"
+      ]
+    }
+  },
+  "pageAudits": [
+    {
+      "route": "/",
+      "name": "Homepage",
+      "title": "Chartered Accountants & Cost Accountants | Tirupati & Pan India | Kavitha & Associates",
+      "metaDesc": "Independent Chartered Accountancy practice led by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). Ex-Deloitte Big 4 & Ford Motor Company auditor. Professional support across Statutory Audit, Income Tax, GST, and Corporate Governance.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/",
+      "ogTitle": "Chartered Accountants & Cost Accountants | Tirupati & Pan India | Kavitha & Associates",
+      "ogDesc": "Independent Chartered Accountancy practice led by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). Ex-Deloitte Big 4 & Ford Motor Company auditor. Professional support across Statutory Audit, Income Tax, GST, and Corporate Governance.",
+      "ogUrl": "https://kavithaassociates.com/",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 2,
+      "h1s": [
+        "Statutory Rigor.",
+        "Practical Commercial Counsel."
+      ],
+      "h2Count": 8,
+      "h2s": [
+        "Statutory, Tax & Operational Audit Schedule",
+        "Comprehensive Financial, Tax & Regulatory Support",
+        "How We Work With You",
+        "Technical Excellence & Practical Thinking",
+        "Industries We Serve",
+        "Service Locations & Reach",
+        "Clear Answers to Core Compliance Questions",
+        "Let's Discuss Your Financial & Compliance Priorities"
+      ],
+      "h3Count": 45,
+      "totalImages": 3,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 91,
+      "internalLinkCount": 39,
+      "externalLinkCount": 29,
+      "jsonLdCount": 2,
+      "jsonLdSchemas": [
+        "AccountingService",
+        "FAQPage"
+      ],
+      "wordCount": 3252,
+      "keywordOccurrences": {
+        "tirupati": 15,
+        "charteredAccountant": 11,
+        "gst": 45,
+        "audit": 77,
+        "tax": 78
+      }
+    },
+    {
+      "route": "/about",
+      "name": "About",
+      "title": "About CA Kavitha Vijay | Big 4 & MNC Auditor | Kavitha & Associates",
+      "metaDesc": "Profile of CA Kavitha Vijay (ICAI [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit, and independent practice in Tirupati.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/about",
+      "ogTitle": "About CA Kavitha Vijay | Big 4 & MNC Auditor | Kavitha & Associates",
+      "ogDesc": "Profile of CA Kavitha Vijay (ICAI [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit, and independent practice in Tirupati.",
+      "ogUrl": "https://kavithaassociates.com/about",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Institutional Rigor. Independent Counsel."
+      ],
+      "h2Count": 5,
+      "h2s": [
+        "CA Kavitha Vijay",
+        "Global Audit Rigor Combined with Independent Practice",
+        "Governance, Independence & Ethics",
+        "Verified Chambers, Law Library & Audit Desks",
+        "Schedule a Direct Professional Consultation"
+      ],
+      "h3Count": 13,
+      "totalImages": 7,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 52,
+      "internalLinkCount": 33,
+      "externalLinkCount": 8,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 1499,
+      "keywordOccurrences": {
+        "tirupati": 8,
+        "charteredAccountant": 11,
+        "gst": 3,
+        "audit": 42,
+        "tax": 18
+      }
+    },
+    {
+      "route": "/services",
+      "name": "Services Spectrum",
+      "title": "Comprehensive Accounting, Audit & Tax Services | Kavitha & Associates",
+      "metaDesc": "Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications in Tirupati.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/services",
+      "ogTitle": "Comprehensive Accounting, Audit & Tax Services | Kavitha & Associates",
+      "ogDesc": "Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications in Tirupati.",
+      "ogUrl": "https://kavithaassociates.com/services",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Statutory Rigor. Multi-Disciplinary Counsel."
+      ],
+      "h2Count": 10,
+      "h2s": [
+        "Audit & Assurance Practice (9 Statutory Streams)",
+        "Statutory Scope & Entity Advisor",
+        "Income Tax & Appellate Services",
+        "GST Services",
+        "Corporate & Business Services",
+        "RERA Compliance & Certification",
+        "Advisory & Consulting",
+        "Virtual CFO & Retainership Practice",
+        "The 4-Stage Client Engagement Cycle",
+        "Need Custom Corporate Structuring or Audit Consultation?"
+      ],
+      "h3Count": 12,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 73,
+      "internalLinkCount": 40,
+      "externalLinkCount": 11,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 1489,
+      "keywordOccurrences": {
+        "tirupati": 2,
+        "charteredAccountant": 6,
+        "gst": 27,
+        "audit": 29,
+        "tax": 25
+      }
+    },
+    {
+      "route": "/services/audit-assurance",
+      "name": "Audit & Assurance Spotlight",
+      "title": "Audit & Assurance Practice | Statutory, Tax & Internal Audits | Kavitha & Associates",
+      "metaDesc": "Dedicated Audit & Assurance practice: Statutory Audits under Companies Act, Tax Audits under Sec 44AB, Internal Audits, Concurrent Audits, and Due Diligence in Tirupati, AP.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/services/audit-assurance",
+      "ogTitle": "Audit & Assurance Practice | Statutory, Tax & Internal Audits | Kavitha & Associates",
+      "ogDesc": "Dedicated Audit & Assurance practice: Statutory Audits under Companies Act, Tax Audits under Sec 44AB, Internal Audits, Concurrent Audits, and Due Diligence in Tirupati, AP.",
+      "ogUrl": "https://kavithaassociates.com/services/audit-assurance",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Evidence-Based Rigor. Institutional Trust."
+      ],
+      "h2Count": 4,
+      "h2s": [
+        "The 4-Phase Audit Lifecycle",
+        "The 9 Disciplines of Our Audit Practice",
+        "The Dual CA + CMA Audit Advantage",
+        "Plan Your Upcoming Financial Year Audit Cycle"
+      ],
+      "h3Count": 19,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 54,
+      "internalLinkCount": 32,
+      "externalLinkCount": 14,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 1019,
+      "keywordOccurrences": {
+        "tirupati": 2,
+        "charteredAccountant": 9,
+        "gst": 2,
+        "audit": 41,
+        "tax": 9
+      }
+    },
+    {
+      "route": "/industries",
+      "name": "Industries",
+      "title": "Industry Expertise | Startups, MSMEs, Manufacturing, Healthcare | Kavitha & Associates",
+      "metaDesc": "Sector-specific Chartered Accountancy expertise across 10 commercial sectors: Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, Education, and NGOs.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/industries",
+      "ogTitle": "Industry Expertise | Startups, MSMEs, Manufacturing, Healthcare | Kavitha & Associates",
+      "ogDesc": "Sector-specific Chartered Accountancy expertise across 10 commercial sectors: Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, Education, and NGOs.",
+      "ogUrl": "https://kavithaassociates.com/industries",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Tailored Statutory Governance. Sector-Specific Precision."
+      ],
+      "h2Count": 12,
+      "h2s": [
+        "Startups & Emerging Ventures",
+        "MSMEs & Family Businesses",
+        "Manufacturing & Industrial",
+        "Real Estate & Infrastructure",
+        "Retail & Distribution",
+        "Healthcare & Pharmaceuticals",
+        "Education & Academic Institutions",
+        "E-Commerce & Digital Commerce",
+        "Professionals & Consultants",
+        "NGOs, Societies & Public Trusts"
+      ],
+      "h3Count": 11,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 75,
+      "internalLinkCount": 42,
+      "externalLinkCount": 15,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 1400,
+      "keywordOccurrences": {
+        "tirupati": 2,
+        "charteredAccountant": 6,
+        "gst": 17,
+        "audit": 27,
+        "tax": 32
+      }
+    },
+    {
+      "route": "/locations",
+      "name": "Locations & Chambers",
+      "title": "Service Footprint & Regional Presence | Tirupati & South India | Kavitha & Associates",
+      "metaDesc": "Principal practice chambers located in Tirupati, Andhra Pradesh, with active regional client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/locations",
+      "ogTitle": "Service Footprint & Regional Presence | Tirupati & South India | Kavitha & Associates",
+      "ogDesc": "Principal practice chambers located in Tirupati, Andhra Pradesh, with active regional client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore.",
+      "ogUrl": "https://kavithaassociates.com/locations",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Principal Chambers in Tirupati. Active Regional Coverage."
+      ],
+      "h2Count": 3,
+      "h2s": [
+        "Principal Chambers, Tirupati",
+        "Metropolitan Client Engagements",
+        "Schedule a Direct Chambers or Regional Session"
+      ],
+      "h3Count": 7,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 54,
+      "internalLinkCount": 34,
+      "externalLinkCount": 10,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 762,
+      "keywordOccurrences": {
+        "tirupati": 10,
+        "charteredAccountant": 8,
+        "gst": 2,
+        "audit": 14,
+        "tax": 8
+      }
+    },
+    {
+      "route": "/contact",
+      "name": "Contact & Chambers",
+      "title": "Contact CA Kavitha Vijay | Tirupati Practice Chambers | Kavitha & Associates",
+      "metaDesc": "Schedule a consultation with CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO]). Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/contact",
+      "ogTitle": "Contact CA Kavitha Vijay | Tirupati Practice Chambers | Kavitha & Associates",
+      "ogDesc": "Schedule a consultation with CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO]). Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries.",
+      "ogUrl": "https://kavithaassociates.com/contact",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Contact Kavitha & Associates"
+      ],
+      "h2Count": 1,
+      "h2s": [
+        "Official Communication Channels"
+      ],
+      "h3Count": 3,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 50,
+      "internalLinkCount": 31,
+      "externalLinkCount": 8,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 592,
+      "keywordOccurrences": {
+        "tirupati": 6,
+        "charteredAccountant": 7,
+        "gst": 2,
+        "audit": 8,
+        "tax": 7
+      }
+    },
+    {
+      "route": "/blog",
+      "name": "Regulatory Insights (Blog)",
+      "title": "Regulatory Insights & Technical Commentary | Kavitha & Associates",
+      "metaDesc": "Authoritative tax, audit, GST, and corporate governance commentary prepared by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49). Factual analysis for growing enterprises.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/blog",
+      "ogTitle": "Regulatory Insights & Technical Commentary | Kavitha & Associates",
+      "ogDesc": "Authoritative tax, audit, GST, and corporate governance commentary prepared by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49). Factual analysis for growing enterprises.",
+      "ogUrl": "https://kavithaassociates.com/blog",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Regulatory Insights & Technical Commentary"
+      ],
+      "h2Count": 1,
+      "h2s": [
+        "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and Reporting Norms for FY 2025-26"
+      ],
+      "h3Count": 4,
+      "totalImages": 3,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 51,
+      "internalLinkCount": 39,
+      "externalLinkCount": 5,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 612,
+      "keywordOccurrences": {
+        "tirupati": 2,
+        "charteredAccountant": 7,
+        "gst": 7,
+        "audit": 10,
+        "tax": 10
+      }
+    },
+    {
+      "route": "/blog/corporate-tax-planning-2026",
+      "name": "Article: Corporate Tax Planning",
+      "title": "Corporate Tax Planning & Assessment Strategies FY 2025-26 | Kavitha & Associates",
+      "metaDesc": "Strategic analysis of Section 115BAA, MAT provisions, faceless scrutiny defense, and advance tax management by CA Kavitha Vijay.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+      "ogTitle": "Corporate Tax Planning & Assessment Strategies FY 2025-26 | Kavitha & Associates",
+      "ogDesc": "Strategic analysis of Section 115BAA, MAT provisions, faceless scrutiny defense, and advance tax management by CA Kavitha Vijay.",
+      "ogUrl": "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+      "ogImage": "https://kavithaassociates.com/uploads/blog/corporate-tax-planning-2026.webp",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "h1Count": 2,
+      "h1s": [
+        "Corporate Tax Planning and Assessment Strategies under Income Tax Act, 1961: Key Protocols for FY 2025-26",
+        "Corporate Tax Planning and Assessment Strategies under Income Tax Act, 1961: Key Protocols for FY 2025-26"
+      ],
+      "h2Count": 6,
+      "h2s": [
+        "1. Concessional Tax Regime Evaluation: Section 115BAA vs. Normal Provisions",
+        "2. Faceless Assessment & Scrutiny Defense Architecture",
+        "3. Advance Tax Compliance Timelines",
+        "Regulatory Compliance & Ethics Disclosure",
+        "Require Technical Advisory on this Matter?",
+        "Related Regulatory Publications"
+      ],
+      "h3Count": 5,
+      "totalImages": 3,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 52,
+      "internalLinkCount": 39,
+      "externalLinkCount": 6,
+      "jsonLdCount": 2,
+      "jsonLdSchemas": [
+        "AccountingService",
+        "BlogPosting"
+      ],
+      "wordCount": 1095,
+      "keywordOccurrences": {
+        "tirupati": 4,
+        "charteredAccountant": 10,
+        "gst": 8,
+        "audit": 9,
+        "tax": 32
+      }
+    },
+    {
+      "route": "/blog/gst-annual-return-compliance",
+      "name": "Article: GST Annual Return Compliance",
+      "title": "GSTR-9 & GSTR-9C Compliance Guide | Kavitha & Associates",
+      "metaDesc": "Technical guide to filing GST Annual Return GSTR-9 and self-certified reconciliation statement GSTR-9C, with ITC verification protocols by CA Kavitha Vijay.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+      "ogTitle": "GSTR-9 & GSTR-9C Compliance Guide | Kavitha & Associates",
+      "ogDesc": "Technical guide to filing GST Annual Return GSTR-9 and self-certified reconciliation statement GSTR-9C, with ITC verification protocols by CA Kavitha Vijay.",
+      "ogUrl": "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+      "ogImage": "https://kavithaassociates.com/uploads/blog/gst-annual-return-compliance.webp",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "h1Count": 2,
+      "h1s": [
+        "GST Annual Return and Reconciliation Statement: Comprehensive Technical Guide for Form GSTR-9 and Form GSTR-9C",
+        "GST Annual Return and Reconciliation Statement: Comprehensive Technical Guide for Form GSTR-9 and Form GSTR-9C"
+      ],
+      "h2Count": 8,
+      "h2s": [
+        "1. Legislative Mandate and Threshold Applicability",
+        "2. Table-Wise Architecture of Form GSTR-9",
+        "3. Input Tax Credit Matching & Section 16(2)(aa) Verification",
+        "4. Self-Certified Reconciliation Statement (Form GSTR-9C)",
+        "5. Procedural Roadmap for Pre-Filing Ledger Audits",
+        "Regulatory Compliance & Ethics Disclosure",
+        "Require Technical Advisory on this Matter?",
+        "Related Regulatory Publications"
+      ],
+      "h3Count": 12,
+      "totalImages": 3,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 52,
+      "internalLinkCount": 39,
+      "externalLinkCount": 6,
+      "jsonLdCount": 2,
+      "jsonLdSchemas": [
+        "AccountingService",
+        "BlogPosting"
+      ],
+      "wordCount": 1678,
+      "keywordOccurrences": {
+        "tirupati": 4,
+        "charteredAccountant": 10,
+        "gst": 53,
+        "audit": 12,
+        "tax": 35
+      }
+    },
+    {
+      "route": "/blog/statutory-audit-guidelines-2026",
+      "name": "Article: Statutory Audit Guidelines",
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "metaDesc": "Comprehensive guide to corporate statutory audit obligations under Section 143 of Companies Act 2013, CARO 2020 clauses, and IFC reporting by CA Kavitha Vijay.",
+      "metaRobots": "",
+      "canonical": "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026",
+      "ogTitle": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "ogDesc": "Comprehensive guide to corporate statutory audit obligations under Section 143 of Companies Act 2013, CARO 2020 clauses, and IFC reporting by CA Kavitha Vijay.",
+      "ogUrl": "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026",
+      "ogImage": "https://kavithaassociates.com/uploads/blog/statutory-audit-guidelines-2026.webp",
+      "ogType": "article",
+      "twitterCard": "summary_large_image",
+      "h1Count": 2,
+      "h1s": [
+        "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and Reporting Norms for FY 2025-26",
+        "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and Reporting Norms for FY 2025-26"
+      ],
+      "h2Count": 9,
+      "h2s": [
+        "1. Statutory Foundation & Legislative Mandate",
+        "2. Applicability Across Corporate Categories",
+        "3. Comprehensive Reporting under CARO 2020",
+        "4. Internal Financial Controls over Financial Reporting (IFCoFR)",
+        "5. Auditor Documentation & ICAI Standards on Auditing (SAs)",
+        "6. Auditor Responsibility vs. Management Responsibility",
+        "Regulatory Compliance & Ethics Disclosure",
+        "Require Technical Advisory on this Matter?",
+        "Related Regulatory Publications"
+      ],
+      "h3Count": 8,
+      "totalImages": 3,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 52,
+      "internalLinkCount": 39,
+      "externalLinkCount": 6,
+      "jsonLdCount": 2,
+      "jsonLdSchemas": [
+        "AccountingService",
+        "BlogPosting"
+      ],
+      "wordCount": 1726,
+      "keywordOccurrences": {
+        "tirupati": 4,
+        "charteredAccountant": 13,
+        "gst": 7,
+        "audit": 45,
+        "tax": 12
+      }
+    },
+    {
+      "route": "/404-nonexistent-route",
+      "name": "404 Error Page",
+      "title": "404 — Page Not Located in Practice Registry | Kavitha & Associates",
+      "metaDesc": "The requested document could not be located in the Kavitha & Associates directory. Explore our verified practice areas or contact our chambers directly.",
+      "metaRobots": "noindex, nofollow",
+      "canonical": "https://kavithaassociates.com/",
+      "ogTitle": "404 — Page Not Located in Practice Registry | Kavitha & Associates",
+      "ogDesc": "The requested document could not be located in the Kavitha & Associates directory. Explore our verified practice areas or contact our chambers directly.",
+      "ogUrl": "https://kavithaassociates.com/404-nonexistent-route",
+      "ogImage": "",
+      "ogType": "website",
+      "twitterCard": "summary_large_image",
+      "h1Count": 1,
+      "h1s": [
+        "Page Not Located in Practice Registry"
+      ],
+      "h2Count": 1,
+      "h2s": [
+        "Direct Practice Navigation & Document Recovery"
+      ],
+      "h3Count": 10,
+      "totalImages": 2,
+      "missingAltCount": 0,
+      "missingAltImages": [],
+      "totalLinks": 55,
+      "internalLinkCount": 41,
+      "externalLinkCount": 6,
+      "jsonLdCount": 1,
+      "jsonLdSchemas": [
+        "AccountingService"
+      ],
+      "wordCount": 495,
+      "keywordOccurrences": {
+        "tirupati": 5,
+        "charteredAccountant": 6,
+        "gst": 3,
+        "audit": 9,
+        "tax": 7
+      }
+    }
+  ]
+}

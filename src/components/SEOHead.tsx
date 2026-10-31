@@ -56,18 +56,14 @@ export const SEOHead = ({
     const metaDesc = getOrCreateMeta('name', 'description');
     metaDesc.setAttribute('content', description);
 
-    // 3. Update Robots Meta Tag (for 404 / noindex pages)
+    // 3. Update Robots Meta Tag
     let metaRobots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-    if (noIndex) {
-      if (!metaRobots) {
-        metaRobots = document.createElement('meta');
-        metaRobots.setAttribute('name', 'robots');
-        document.head.appendChild(metaRobots);
-      }
-      metaRobots.setAttribute('content', 'noindex, nofollow');
-    } else if (metaRobots) {
-      metaRobots.setAttribute('content', 'index, follow');
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
     }
+    metaRobots.setAttribute('content', noIndex ? 'noindex, nofollow' : 'index, follow');
 
     // 4. Update Open Graph Meta Tags (og:title, og:description, og:type, og:url, og:image)
     const currentUrl = canonicalPath ? `${productionDomain}${canonicalPath}` : window.location.href;
@@ -131,7 +127,7 @@ export const SEOHead = ({
           name: 'Kavitha & Associates',
           logo: {
             '@type': 'ImageObject',
-            url: `${productionDomain}/favicon-512x512.png`,
+            url: `${productionDomain}/favicon.svg`,
           },
         },
         datePublished: article?.datePublished,

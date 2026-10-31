@@ -20,6 +20,8 @@ export const Footer: React.FC = () => {
                 <img 
                   src="/brand/ka-seal-medallion.png" 
                   alt="Kavitha &amp; Associates Official Practice Seal" 
+                  width="48"
+                  height="48"
                   className="w-full h-full object-contain drop-shadow-sm"
                 />
               </div>
@@ -44,7 +46,7 @@ export const Footer: React.FC = () => {
               </span>
               <p className="text-sm font-semibold text-white">CA Kavitha Vijay</p>
               <p className="text-xs text-emerald-200/90 font-medium">B.Com, CA, CMA AIR 49</p>
-              <p className="text-xs text-emerald-300/80">ICAI Mem. 252985</p>
+              <p className="text-xs text-emerald-300/80">Chartered &amp; Cost Accountant</p>
             </div>
           </div>
 
@@ -67,47 +69,47 @@ export const Footer: React.FC = () => {
                   to="/services/audit-assurance"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> Audit & Assurance (Spotlight)
+                  <span className="text-brand-gold">•</span> Audit & Assurance (9 Streams)
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/services#income-tax"
+                  to="/services/income-tax-consultant-tirupati"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> Income Tax Filing & Advisory
+                  <span className="text-brand-gold">•</span> Income Tax Consultant & ITR
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/services#gst"
+                  to="/services/gst-consultant-tirupati"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> GST Compliance & Representation
+                  <span className="text-brand-gold">•</span> GST Consultant & Filings
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/services#corporate-business"
+                  to="/services/company-registration-tirupati"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> ROC & Corporate Secretarial
+                  <span className="text-brand-gold">•</span> Company & Business Registration
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/services#rera-compliance"
+                  to="/services/virtual-cfo-tirupati"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> RERA Certification & Compliance
+                  <span className="text-brand-gold">•</span> Virtual CFO & CMA Services
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/services#advisory-consulting"
+                  to="/services/rera-consultant-tirupati"
                   className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
-                  <span className="text-brand-gold">•</span> Strategic Financial Advisory
+                  <span className="text-brand-gold">•</span> RERA Advisory & Real Estate
                 </Link>
               </li>
             </ul>
@@ -174,10 +176,10 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
-                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors font-medium">
+                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors font-medium min-h-[44px] flex items-center py-1">
                     {FIRM_DATA.contact.primaryPhone}
                   </a>
-                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors text-emerald-200/80">
+                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors text-emerald-200/80 min-h-[44px] flex items-center py-1">
                     {FIRM_DATA.contact.secondaryPhone}
                   </a>
                 </div>

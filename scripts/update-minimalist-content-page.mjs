@@ -68,7 +68,7 @@ export const AdminContentPage: React.FC = () => {
   const [postExcerpt, setPostExcerpt] = useState<string>('');
   const [postTags, setPostTags] = useState<string>('');
   const [postAuthor, setPostAuthor] = useState<string>('CA Kavitha Vijay');
-  const [postAuthorRole, setPostAuthorRole] = useState<string>('Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+  const [postAuthorRole, setPostAuthorRole] = useState<string>('Managing Partner (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)');
   const [postCoverImage, setPostCoverImage] = useState<string>('');
   const [postCoverImageAlt, setPostCoverImageAlt] = useState<string>('');
   const [postStatus, setPostStatus] = useState<'published' | 'draft'>('published');
@@ -91,7 +91,7 @@ export const AdminContentPage: React.FC = () => {
         setPostExcerpt(target.excerpt);
         setPostTags(target.tags.join(', '));
         setPostAuthor(target.author || 'CA Kavitha Vijay');
-        setPostAuthorRole(target.authorRole || 'Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+        setPostAuthorRole(target.authorRole || 'Managing Partner (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)');
         setPostCoverImage(target.coverImage || '');
         setPostCoverImageAlt(target.coverImageAlt || '');
         setPostStatus(target.draft ? 'draft' : 'published');
@@ -140,7 +140,7 @@ export const AdminContentPage: React.FC = () => {
     setPostExcerpt('');
     setPostTags('Income Tax, Advisory');
     setPostAuthor('CA Kavitha Vijay');
-    setPostAuthorRole('Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+    setPostAuthorRole('Managing Partner (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)');
     setPostCoverImage('/uploads/blog/corporate-tax-planning-2026.webp');
     setPostCoverImageAlt('');
     setPostStatus('published');
@@ -217,7 +217,7 @@ export const AdminContentPage: React.FC = () => {
       title: postTitle.trim(),
       date: isCreatingNewPost ? new Date().toISOString() : (BlogService.getPostBySlug(cleanSlug, true)?.date || new Date().toISOString()),
       author: postAuthor.trim() || 'CA Kavitha Vijay',
-      authorRole: postAuthorRole.trim() || 'Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)',
+      authorRole: postAuthorRole.trim() || 'Managing Partner (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)',
       coverImage: postCoverImage.trim() || undefined,
       coverImageAlt: postCoverImageAlt.trim() || postTitle.trim(),
       excerpt: postExcerpt.trim() || postContent.trim().slice(0, 160) + '...',

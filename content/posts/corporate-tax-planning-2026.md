@@ -4,7 +4,7 @@ slug: "corporate-tax-planning-2026"
 draft: false
 date: "2026-01-18T09:00:00Z"
 author: "CA Kavitha Vijay"
-authorRole: "Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)"
+authorRole: "Managing Partner (B.Com, CA, CMA AIR 49)"
 coverImage: "/uploads/blog/corporate-tax-planning-2026.webp"
 coverImageAlt: "Corporate income tax assessment, Section 115BAA calculations, and advance tax scheduling"
 excerpt: "Strategic analysis of Section 115BAA corporate tax regimes, minimum alternate tax (MAT) credit optimization, faceless assessment defenses, and advance tax calendars for Indian enterprises."
@@ -70,7 +70,7 @@ To avert mandatory compensatory interest under **Section 234B** and **Section 23
 
 ## Regulatory Compliance & Ethics Disclosure
 
-*This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+*This technical commentary is prepared by **CA Kavitha Vijay (B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
 
 ---
 

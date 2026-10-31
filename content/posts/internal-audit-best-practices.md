@@ -4,7 +4,7 @@ slug: "internal-audit-best-practices"
 draft: true
 date: "2026-04-10T09:00:00Z"
 author: "CA Kavitha Vijay"
-authorRole: "Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)"
+authorRole: "Managing Partner (B.Com, CA, CMA AIR 49)"
 coverImage: "/uploads/blog/internal-audit-best-practices.webp"
 coverImageAlt: "Internal audit workflow and operational risk appraisal matrix for enterprise governance"
 excerpt: "Internal discussion paper on designing risk-based internal audit frameworks, fraud detection mechanisms, and operational control testing for enterprises under Section 138 of the Companies Act."
@@ -127,4 +127,4 @@ Internal audit reports must be actionable and concise. Each audit finding must i
 
 ## Regulatory Compliance & Ethics Disclosure
 
-*This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+*This technical commentary is prepared by **CA Kavitha Vijay (B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*

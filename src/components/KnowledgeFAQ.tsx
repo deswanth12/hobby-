@@ -131,8 +131,7 @@ export const KnowledgeFAQ: React.FC = () => {
                   </div>
                 </button>
 
-                {isExpanded && (
-                  <div className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-charcoal leading-relaxed border-t border-border/50 animate-fadeIn">
+                <div className={`px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-charcoal leading-relaxed border-t border-border/50 animate-fadeIn ${isExpanded ? 'block' : 'hidden'}`}>
                     <p className="mt-2 text-charcoal-muted leading-relaxed">
                       {faq.answer}
                     </p>
@@ -151,7 +150,6 @@ export const KnowledgeFAQ: React.FC = () => {
                       </a>
                     </div>
                   </div>
-                )}
               </div>
             );
           })}

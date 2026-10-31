@@ -160,7 +160,7 @@ export const StatutoryCalendar: React.FC = () => {
                 <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${getCategoryBadge(ev.category)}`}>
                   {ev.category.toUpperCase()}
                 </span>
-                <span className="font-editorial-meta text-[11px] font-bold text-brand-gold">
+                <span className="font-editorial-meta text-[11px] font-bold text-gold-dark">
                   {ev.deadline}
                 </span>
               </div>

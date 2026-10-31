@@ -12,7 +12,8 @@ import {
   PhoneCall, 
   Building2, 
   ExternalLink,
-  Sparkles
+  Sparkles,
+  BookOpen,
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
@@ -162,7 +163,7 @@ export const AdminOverviewPage: React.FC = () => {
               <Sparkles className="w-4 h-4 text-gold" />
               Practice Operations & Navigation
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <Link
                 to={ADMIN_ROUTES.enquiries}
                 className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
@@ -203,7 +204,27 @@ export const AdminOverviewPage: React.FC = () => {
                 </div>
               </Link>
 
-              <Link
+                            <Link
+                to={ADMIN_ROUTES.articles}
+                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
+                    <BookOpen className="w-4 h-4" />
+                  </div>
+                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
+                    Articles & Insights
+                  </div>
+                  <div className="text-[11px] text-gray-500 mt-0.5">
+                    Write, edit, and publish statutory commentary
+                  </div>
+                </div>
+                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
+                  Write / Edit Articles <ArrowRight className="w-3 h-3 ml-1" />
+                </div>
+              </Link>
+
+<Link
                 to={ADMIN_ROUTES.settings}
                 className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
               >

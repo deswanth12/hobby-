@@ -32,7 +32,7 @@ export const NotFoundPage: React.FC = () => {
     },
     {
       title: "About the Practice",
-      desc: "Leadership bio of CA Kavitha Vijay (ICAI Mem. 252985, CMA AIR 49, Big 4 background).",
+      desc: "Leadership bio of CA Kavitha Vijay (B.Com, CA, CMA AIR 49, Big 4 background).",
       path: "/about",
       icon: UserCheck,
       badge: "Credentials"

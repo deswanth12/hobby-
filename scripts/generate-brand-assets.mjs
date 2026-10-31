@@ -627,14 +627,14 @@ function generateGoogleCoverBannerSvg() {
     <!-- Lead Body -->
     <text x="0" y="172" class="banner-lead">
       <tspan x="0" dy="0">Statutory Audit • Corporate Governance • Direct &amp; Indirect Tax Defense</tspan>
-      <tspan x="0" dy="24">Led by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</tspan>
+      <tspan x="0" dy="24">Led by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)</tspan>
       <tspan x="0" dy="24">10+ Years Big 4 (Deloitte) &amp; Fortune 50 Multinational Audit Leadership</tspan>
     </text>
 
     <!-- Badges Row -->
     <g transform="translate(0, 275)">
       <rect x="0" y="0" width="165" height="32" rx="16" fill="rgba(255,255,255,0.08)" stroke="${COLORS.gold}" stroke-width="1" stroke-opacity="0.35" />
-      <text x="82" y="20" class="banner-badge" text-anchor="middle">ICAI Mem. 252985</text>
+      <text x="82" y="20" class="banner-badge" text-anchor="middle">ICAI Mem. [REDACTED_MEMBERSHIP_NO]</text>
 
       <rect x="178" y="0" width="160" height="32" rx="16" fill="rgba(255,255,255,0.08)" stroke="${COLORS.gold}" stroke-width="1" stroke-opacity="0.35" />
       <text x="258" y="20" class="banner-badge" text-anchor="middle">AIR 49 CMA Inter</text>
@@ -805,7 +805,7 @@ function generateBusinessCardBackSvg() {
     <g transform="translate(0, 115)">
       <text x="0" y="32" class="bc-partner-name">CA Kavitha Vijay</text>
       <text x="0" y="58" class="bc-partner-title">Senior Partner &amp; Managing Auditor</text>
-      <text x="0" y="85" class="bc-quals">B.Com, CA, CMA (AIR 49)  |  ICAI Mem. 252985</text>
+      <text x="0" y="85" class="bc-quals">B.Com, CA, CMA (AIR 49)  |  ICAI Mem. [REDACTED_MEMBERSHIP_NO]</text>
       <line x1="0" y1="105" x2="380" y2="105" stroke="${COLORS.border}" stroke-width="1" />
       <text x="0" y="132" class="bc-bio">
         <tspan x="0" dy="0">10+ Years Big 4 (Deloitte) &amp; Fortune 50 MNC Experience.</tspan>

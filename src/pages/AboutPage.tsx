@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, 
@@ -35,7 +35,7 @@ export const AboutPage: React.FC = () => {
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
         title="About CA Kavitha Vijay | Chartered Accountant in Tirupati"
-        description="Profile of CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice."
+        description="Profile of CA Kavitha Vijay (B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice."
         canonicalPath="/about"
         breadcrumbs={[
           { name: 'Home', path: '/' },
@@ -81,7 +81,7 @@ export const AboutPage: React.FC = () => {
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-              <span>Chartered & Cost Accountancy Practice â€¢ ICAI Mem. 252985</span>
+              <span>Chartered & Cost Accountancy Practice • Tirupati Chambers</span>
             </div>
             <h1 className="font-editorial-h1 text-brand-forest">
               Institutional Rigor. Independent Counsel.
@@ -117,7 +117,7 @@ export const AboutPage: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <span className="font-editorial-meta text-brand-gold bg-black/40 px-3 py-1 rounded-full border border-brand-gold/30 block">
-                        ICAI Mem. {partner.membershipNumber}
+                        Chartered Accountant
                       </span>
                       <span className="font-editorial-meta text-emerald-300 mt-1.5 block normal-case">
                         AIR 49 CMA Inter
@@ -380,7 +380,7 @@ export const AboutPage: React.FC = () => {
                   </h3>
                 </div>
                 <p className="font-editorial-body text-xs sm:text-sm text-brand-muted leading-relaxed mb-6">
-                  Holding qualifications in both Chartered Accountancy (ICAI Mem. 252985) and Cost & Management Accountancy (AIR 49) provides a rare dual capability: external statutory assurance and direct tax defense coupled with internal financial controls (ICFR), unit-cost modeling, and operational risk mitigation.
+                  Holding qualifications in both Chartered Accountancy and Cost & Management Accountancy (AIR 49) provides a rare dual capability: external statutory assurance and direct tax defense coupled with internal financial controls (ICFR), unit-cost modeling, and operational risk mitigation.
                 </p>
 
                 {/* Comparison Matrix Table */}

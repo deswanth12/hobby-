@@ -1,0 +1,203 @@
+{
+  "allFaqsVisible": true,
+  "auditReport": [
+    {
+      "route": "/",
+      "faqEntitiesFound": 1,
+      "faqCount": 6,
+      "verification": [
+        {
+          "question": "Which entities are legally mandated to conduct an independent Statutory Audit in India?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 139 of the Companies Act, 2013, every incorpor"
+        },
+        {
+          "question": "When does a business enterprise or professional require a Tax Audit under Section 44AB?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 44AB of the Income Tax Act, 1961, businesses w"
+        },
+        {
+          "question": "How are Input Tax Credit (ITC) discrepancies between GSTR-2B and GSTR-3B resolved?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 16(2)(aa) of the CGST Act, Input Tax Credit ca"
+        },
+        {
+          "question": "What are the statutory differences between incorporating as a Private Limited Company vs. an LLP?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "A Private Limited Company is the standard legal structure fo"
+        },
+        {
+          "question": "Why are Chartered Accountant certificates mandatory for real estate project developers under RERA?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 4(2)(l)(D) of the Real Estate (Regulation and "
+        },
+        {
+          "question": "How does CA Kavitha & Associates conduct consultations and maintain client data security?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Initial discussions can be conducted either in person at our"
+        }
+      ]
+    },
+    {
+      "route": "/services/gst-consultant-tirupati",
+      "faqEntitiesFound": 1,
+      "faqCount": 4,
+      "verification": [
+        {
+          "question": "When is GST registration mandatory for a business operating in Tirupati, Andhra Pradesh?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 22 of the CGST/APGST Act, GST registration is "
+        },
+        {
+          "question": "How does CA Kavitha & Associates resolve Input Tax Credit (ITC) mismatches between GSTR-2B and purchase records?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 16(2)(aa) of the CGST Act, ITC can strictly be"
+        },
+        {
+          "question": "What should a business do upon receiving a Form ASMT-10 or DRC-01A notice from the Andhra Pradesh GST Department?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Form ASMT-10 is a notice pointing out discrepancies under sc"
+        },
+        {
+          "question": "Can a composition dealer in Tirupati switch to the regular scheme, and what are the compliance requirements?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Yes. A taxpayer can opt out of the composition scheme volunt"
+        }
+      ]
+    },
+    {
+      "route": "/services/income-tax-consultant-tirupati",
+      "faqEntitiesFound": 1,
+      "faqCount": 4,
+      "verification": [
+        {
+          "question": "When does a business or professional in Tirupati require a mandatory Tax Audit under Section 44AB?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 44AB of the Income Tax Act, a Tax Audit by an "
+        },
+        {
+          "question": "How should property sellers in Tirupati plan capital gains on real estate under Section 54 and Section 54EC?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Long-term capital gains arising from the sale of residential"
+        },
+        {
+          "question": "What are the key advantages of Section 115BAA for corporate entities in Andhra Pradesh?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Section 115BAA offers domestic companies a reduced base corp"
+        },
+        {
+          "question": "How does CA Kavitha & Associates handle Faceless Scrutiny notices issued under Section 143(2)?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Faceless scrutiny requires strictly electronic, document-bac"
+        }
+      ]
+    },
+    {
+      "route": "/services/company-registration-tirupati",
+      "faqEntitiesFound": 1,
+      "faqCount": 4,
+      "verification": [
+        {
+          "question": "Which legal structure is best for a new business in Tirupati: Private Limited Company or LLP?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "A Private Limited Company is the standard legal structure fo"
+        },
+        {
+          "question": "How long does it take to incorporate a Private Limited Company in Andhra Pradesh through CA Kavitha & Associates?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under the integrated SPICe+ MCA-21 platform, incorporation t"
+        },
+        {
+          "question": "What are the consequences of failing to file annual ROC forms (AOC-4 and MGT-7) on time?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "The Ministry of Corporate Affairs imposes severe statutory p"
+        },
+        {
+          "question": "What is the minimum capital requirement to register a company in Tirupati?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "The Companies (Amendment) Act eliminated the earlier require"
+        }
+      ]
+    },
+    {
+      "route": "/services/virtual-cfo-tirupati",
+      "faqEntitiesFound": 1,
+      "faqCount": 4,
+      "verification": [
+        {
+          "question": "What is a Virtual CFO, and why is it beneficial for growing businesses in Tirupati?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "A Virtual CFO (Chief Financial Officer) provides high-level "
+        },
+        {
+          "question": "How does CA Kavitha Vijay’s dual CA + CMA background benefit my business?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "CA Kavitha Vijay holds dual qualifications as a Chartered Ac"
+        },
+        {
+          "question": "What is a CMA Report for bank loans, and why is it required by banks in Andhra Pradesh?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "A CMA (Credit Monitoring Arrangement) report is a standardiz"
+        },
+        {
+          "question": "Can CA Kavitha & Associates assist in restructuring disorganized accounting ledgers?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Yes. Disorganized bookkeeping is the primary cause of GST mi"
+        }
+      ]
+    },
+    {
+      "route": "/services/rera-consultant-tirupati",
+      "faqEntitiesFound": 1,
+      "faqCount": 4,
+      "verification": [
+        {
+          "question": "Why is a Chartered Accountant Form 3 Certificate mandatory under RERA before withdrawing funds?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 4(2)(l)(D) of the Real Estate (Regulation and "
+        },
+        {
+          "question": "What is the threshold for mandatory AP RERA project registration in Tirupati and surrounding areas?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under Section 3 of the RERA Act, registration with the Andhr"
+        },
+        {
+          "question": "Can the same Chartered Accountant issue both the statutory audit report of the builder and the RERA Form 5 audit report?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Under the third proviso to Section 4(2)(l)(D) of the RERA Ac"
+        },
+        {
+          "question": "How does Section 45(5A) of the Income Tax Act apply to Joint Development Agreements (JDA) in Tirupati?",
+          "qInDom": true,
+          "aInDom": true,
+          "answerSnippet": "Section 45(5A) provides relief to individual and HUF landown"
+        }
+      ]
+    }
+  ]
+}

@@ -87,14 +87,14 @@ assert(aboutData.partnerBio.qualifications.includes('FCA'), 'about.json partnerB
 assert(aboutData.partnerBio.qualifications.includes('CMA'), 'about.json partnerBio.qualifications includes "CMA"');
 assert(aboutData.partnerBio.verifiedName === 'CA Kavitha Vijay', 'about.json partnerBio defines verifiedName "CA Kavitha Vijay"');
 assert(aboutData.partnerName === 'CA Kavitha Vijay', 'about.json top-level partnerName is verified "CA Kavitha Vijay"');
-assert(aboutData.credentials.includes('ICAI Mem. 252985'), 'about.json top-level credentials contains ICAI Mem. 252985');
+assert(aboutData.credentials.includes('ICAI Mem. [REDACTED_MEMBERSHIP_NO]'), 'about.json top-level credentials contains ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(aboutData.experienceYears === '10+', 'about.json top-level experienceYears is "10+"');
 
 // index.html Cleansing
 const indexHtmlContent = fs.readFileSync(indexHtmlPath, 'utf8');
 assert(!indexHtmlContent.includes('CA KavithaVijay SRJ'), 'index.html contains zero occurrences of legacy "CA KavithaVijay SRJ"');
 assert(indexHtmlContent.includes('CA Kavitha Vijay'), 'index.html incorporates verified "CA Kavitha Vijay"');
-assert(indexHtmlContent.includes('B.Com, CA, CMA (AIR 49) | ICAI Mem. 252985'), 'index.html Schema.org founder description contains verified qualifications');
+assert(indexHtmlContent.includes('B.Com, CA, CMA (AIR 49) | ICAI Mem. [REDACTED_MEMBERSHIP_NO]'), 'index.html Schema.org founder description contains verified qualifications');
 
 // firmData.ts Cleansing
 const firmDataContent = fs.readFileSync(firmDataPath, 'utf8');
@@ -159,7 +159,7 @@ assert(footerContent.includes('ICAI Compliance Notice'), 'Footer renders ICAI Co
 assert(footerContent.includes('not intended to advertise or solicit work'), 'Footer contains verbatim ICAI non-solicitation disclaimer');
 assert(footerContent.includes('CA Kavitha Vijay'), 'Footer renders partner CA Kavitha Vijay');
 assert(footerContent.includes('B.Com, CA, CMA AIR 49'), 'Footer renders credentials B.Com, CA, CMA AIR 49');
-assert(footerContent.includes('ICAI Mem. 252985'), 'Footer renders ICAI Mem. 252985');
+assert(footerContent.includes('ICAI Mem. [REDACTED_MEMBERSHIP_NO]'), 'Footer renders ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(footerContent.includes('Bairagi Patteda, Tirupati – 517501, AP'), 'Footer renders principal chambers address');
 assert(footerContent.includes('whatsappLink'), 'Footer embeds direct WhatsApp consultation deep link');
 

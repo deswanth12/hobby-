@@ -114,7 +114,7 @@ export const LocationsPage: React.FC = () => {
               </h2>
 
               <p className="font-editorial-body text-base text-brand-muted leading-relaxed">
-                Headquarters for Kavitha & Associates under the direction of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (ICAI Mem. 252985), located at <strong className="text-brand-forest font-semibold">19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India</strong>. In-person client consultations, physical documentation reviews, audit workpaper archives, and core audit planning are coordinated directly from our Tirupati chambers.
+                Headquarters for Kavitha & Associates under the direction of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (B.Com, CA, CMA AIR 49), located at <strong className="text-brand-forest font-semibold">19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India</strong>. In-person client consultations, physical documentation reviews, audit workpaper archives, and core audit planning are coordinated directly from our Tirupati chambers.
               </p>
 
               {/* Verified GPS & Navigation Box */}

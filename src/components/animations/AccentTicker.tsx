@@ -17,7 +17,7 @@ export const AccentTicker: React.FC<AccentTickerProps> = ({ className = '' }) =>
   ];
 
   const band2Credos = [
-    'ICAI MEM. 252985',
+    'CHARTERED ACCOUNTANT',
     'CMA ALL INDIA RANK 49',
     'EX-DELOITTE BIG 4 AUDIT',
     'EX-FORD MNC AUDITOR',
@@ -38,7 +38,7 @@ export const AccentTicker: React.FC<AccentTickerProps> = ({ className = '' }) =>
       aria-label="Verified Practice Credentials and Accents"
     >
       {/* Band 1: Tilted -1deg with Forest Green & Gold */}
-      <div className="w-[110%] -ml-[5%] transform -rotate-1 origin-center shadow-md bg-brand-forest border-y border-brand-gold/40 py-2 sm:py-2.5 overflow-hidden marquee-mask">
+      <div className="w-full shadow-md bg-brand-forest border-y border-brand-gold/40 py-2 sm:py-2.5 overflow-hidden marquee-mask">
         <div className="animate-marquee-track flex items-center gap-6 whitespace-nowrap">
           {repeatedBand1.map((item, idx) => (
             <div
@@ -56,7 +56,7 @@ export const AccentTicker: React.FC<AccentTickerProps> = ({ className = '' }) =>
       </div>
 
       {/* Band 2: Tilted +1deg with Deep Green & Muted Gold Accent */}
-      <div className="w-[110%] -ml-[5%] transform rotate-1 origin-center shadow-lg bg-brand-deep border-y border-brand-gold/30 py-2 sm:py-2.5 mt-2 overflow-hidden marquee-mask">
+      <div className="w-full shadow-lg bg-brand-deep border-y border-brand-gold/30 py-2 sm:py-2.5 mt-2 overflow-hidden marquee-mask">
         <div className="animate-marquee-track-reverse flex items-center gap-6 whitespace-nowrap">
           {repeatedBand2.map((item, idx) => (
             <div

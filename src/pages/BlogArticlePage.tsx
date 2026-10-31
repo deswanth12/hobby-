@@ -249,7 +249,7 @@ export const BlogArticlePage: React.FC = () => {
                       {post.author}
                     </h3>
                     <span className="font-editorial-meta text-[10px] font-bold text-gold-dark bg-brand-surface px-2.5 py-0.5 rounded border border-border">
-                      ICAI Mem. 252985
+                      Chartered Accountant
                     </span>
                     <span className="font-editorial-meta text-[10px] font-bold text-emerald-800 bg-brand-pale px-2.5 py-0.5 rounded border border-emerald-200">
                       CMA AIR 49

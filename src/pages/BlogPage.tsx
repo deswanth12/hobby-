@@ -51,7 +51,7 @@ export const BlogPage: React.FC = () => {
     <div className="bg-brand-ivory text-brand-charcoal min-h-screen page-reveal">
       <SEOHead
         title="Tax & Regulatory Insights | CA Kavitha & Associates Tirupati"
-        description="Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (ICAI Mem. 252985, CMA AIR 49) for businesses and founders."
+        description="Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (B.Com, CA, CMA AIR 49) for businesses and founders."
         canonicalPath="/blog"
         breadcrumbs={[
           { name: 'Home', path: '/' },
@@ -78,13 +78,13 @@ export const BlogPage: React.FC = () => {
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20 min-h-[44px]">
               <BookOpen className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-              <span>Technical Publications & Regulatory Insights • ICAI Mem. 252985</span>
+              <span>Technical Publications & Regulatory Insights • Tirupati Chambers</span>
             </div>
             <h1 className="font-editorial-h1 text-brand-forest">
               Regulatory Insights & Technical Commentary
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
-              Authoritative technical analysis on corporate statutory audits, GST reconciliation frameworks, Section 115BAA direct tax planning, and internal financial controls. Authored by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49) under the informational pull model to foster fiscal governance and statutory compliance.
+              Authoritative technical analysis on corporate statutory audits, GST reconciliation frameworks, Section 115BAA direct tax planning, and internal financial controls. Authored by CA Kavitha Vijay (B.Com, CA, CMA AIR 49) under the informational pull model to foster fiscal governance and statutory compliance.
             </p>
           </div>
         </div>

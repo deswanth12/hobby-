@@ -186,8 +186,8 @@ assert(
 
 // 2. ICAI Membership Number
 assert(
-  fullCorpus.includes('252985'),
-  'ICAI Membership Number 252985 verified in firm data and pages'
+  fullCorpus.includes('[REDACTED_MEMBERSHIP_NO]'),
+  'ICAI Membership Number [REDACTED_MEMBERSHIP_NO] verified in firm data and pages'
 );
 
 // 3. CMA All India Rank

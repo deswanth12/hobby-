@@ -20,7 +20,7 @@ export default {
           brightgold: '#C5A059', // Hallmark warm editorial gold
           goldhover: '#D4B26F',  // Highlighted gold hover
           charcoal: '#252B27',   // Dark charcoal body text
-          muted: '#747A73',      // Secondary readable text
+          muted: '#4A524D',      // Calibrated for WCAG AA 4.5:1+ contrast      // Secondary readable text
           border: '#E5E1D8',     // Architectural hairline border
           surface: '#EDE8DF',    // Approved surface tint
           pale: '#EDE8DF',       // Muted ivory tint
@@ -48,12 +48,12 @@ export default {
         gold: {
           light: '#D8C296',
           DEFAULT: '#C3A66B',     // Approved Muted Gold Accent
-          dark: '#A68848',
+          dark: '#7A5C22',       // Calibrated for WCAG AA 4.5:1+ contrast on light surfaces
         },
         charcoal: {
           DEFAULT: '#252B27',     // Approved Charcoal Body Text
-          muted: '#747A73',       // Approved Secondary Text
-          light: '#9DA39C',       // Subdued Tertiary Annotations
+          muted: '#4A524D',       // Approved Secondary Text (Calibrated for WCAG AA 4.5:1+)
+          light: '#5A625C',      // Calibrated for 4.5:1+ contrast       // Subdued Tertiary Annotations
         },
         border: {
           DEFAULT: '#E5E1D8',     // Approved Border Token
@@ -66,7 +66,7 @@ export default {
         editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
       fontSize: {
-        'fluid-h1': 'clamp(2.25rem, 1.5rem + 3.75vw, 4rem)',
+        'fluid-h1': 'clamp(1.875rem, 1.35rem + 2.5vw, 3.75rem)',
         'fluid-h2': 'clamp(1.75rem, 1.35rem + 2vw, 2.75rem)',
         'fluid-h3': 'clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem)',
         'fluid-h4': 'clamp(1.25rem, 1.125rem + 0.55vw, 1.5rem)',

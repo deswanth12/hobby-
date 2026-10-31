@@ -122,7 +122,7 @@ assert(!/CA KavithaVijay SRJ/.test(pages.map(p => p.content).join(' ')), 'Zero s
 
 // Verbatim credentials
 assert(corpus.includes('CA Kavitha Vijay'), 'Partner name CA Kavitha Vijay present across corpus');
-assert(corpus.includes('252985'), 'ICAI Membership 252985 verified');
+assert(corpus.includes('[REDACTED_MEMBERSHIP_NO]'), 'ICAI Membership [REDACTED_MEMBERSHIP_NO] verified');
 assert(/AIR 49/i.test(corpus), 'CMA Inter AIR 49 verified');
 assert(/Deloitte/i.test(corpus), 'Deloitte institutional pedigree verified');
 assert(/Ford Motor Company/i.test(corpus), 'Ford Motor Company internal audit pedigree verified');

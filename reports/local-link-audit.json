@@ -1,0 +1,121 @@
+{
+  "total": 23,
+  "broken": [],
+  "checked": [
+    {
+      "href": "/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/about",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/audit-assurance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/industries",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/locations",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/contact",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#income-tax",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#gst",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#corporate-business",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#rera-compliance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#advisory-consulting",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/income-tax-consultant-tirupati",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/gst-consultant-tirupati",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/company-registration-tirupati",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/virtual-cfo-tirupati",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/rera-consultant-tirupati",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/#knowledge-faq",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/contact?entity=Private%20Limited%20%26%20Public%20Companies",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/statutory-audit-guidelines-2026",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/gst-annual-return-compliance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/corporate-tax-planning-2026",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}

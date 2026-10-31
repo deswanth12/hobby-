@@ -117,9 +117,9 @@ Object.entries(files).forEach(([name, { code }]) => {
 });
 
 // Check ICAI Membership number
-check('AboutPage cites ICAI Mem. 252985', files.about.code.includes('252985'));
-check('AuditAssurancePage cites ICAI Mem. 252985', files.audit.code.includes('252985'));
-check('LocationsPage cites ICAI Mem. 252985', files.locations.code.includes('252985'));
+check('AboutPage cites ICAI Mem. [REDACTED_MEMBERSHIP_NO]', files.about.code.includes('[REDACTED_MEMBERSHIP_NO]'));
+check('AuditAssurancePage cites ICAI Mem. [REDACTED_MEMBERSHIP_NO]', files.audit.code.includes('[REDACTED_MEMBERSHIP_NO]'));
+check('LocationsPage cites ICAI Mem. [REDACTED_MEMBERSHIP_NO]', files.locations.code.includes('[REDACTED_MEMBERSHIP_NO]'));
 
 // Check CMA AIR 49
 check('AboutPage cites CMA AIR 49', files.about.code.includes('AIR 49'));

@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -15,6 +15,11 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { AuditAssurancePage } from './pages/AuditAssurancePage';
+import { GSTServicesPage } from './pages/GSTServicesPage';
+import { IncomeTaxPage } from './pages/IncomeTaxPage';
+import { CompanyRegistrationPage } from './pages/CompanyRegistrationPage';
+import { VirtualCFOPage } from './pages/VirtualCFOPage';
+import { RERAConsultantPage } from './pages/RERAConsultantPage';
 import { IndustriesPage } from './pages/IndustriesPage';
 import { LocationsPage } from './pages/LocationsPage';
 import { ContactPage } from './pages/ContactPage';
@@ -55,7 +60,7 @@ const ScrollRevealInit: React.FC = () => {
  */
 const PublicLayout: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative overflow-x-hidden w-full max-w-full">
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-brand-chambers focus:text-brand-tintedwhite focus:border focus:border-brand-gold focus:rounded-full focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-gold text-xs font-semibold tracking-wide transition-all"
@@ -64,7 +69,7 @@ const PublicLayout: React.FC = () => {
       </a>
       <ScrollProgress />
       <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-grow outline-none overflow-x-hidden">
+      <main id="main-content" tabIndex={-1} className="flex-grow outline-none">
         <Outlet />
       </main>
       <Footer />
@@ -88,6 +93,11 @@ export const App: React.FC = () => {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/audit-assurance" element={<AuditAssurancePage />} />
+              <Route path="/services/gst-consultant-tirupati" element={<GSTServicesPage />} />
+              <Route path="/services/income-tax-consultant-tirupati" element={<IncomeTaxPage />} />
+              <Route path="/services/company-registration-tirupati" element={<CompanyRegistrationPage />} />
+              <Route path="/services/virtual-cfo-tirupati" element={<VirtualCFOPage />} />
+              <Route path="/services/rera-consultant-tirupati" element={<RERAConsultantPage />} />
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/locations" element={<LocationsPage />} />
               <Route path="/blog" element={<BlogPage />} />
@@ -137,6 +147,16 @@ export const App: React.FC = () => {
                     <AdminProtectedRoute>
                       <React.Suspense fallback={<AdminFallback />}>
                         <AdminContentPage />
+                      </React.Suspense>
+                    </AdminProtectedRoute>
+                  }
+                />
+                <Route
+                  path={ADMIN_ROUTES.articles}
+                  element={
+                    <AdminProtectedRoute>
+                      <React.Suspense fallback={<AdminFallback />}>
+                        <AdminContentPage initialTab="posts" />
                       </React.Suspense>
                     </AdminProtectedRoute>
                   }

@@ -47,6 +47,42 @@ function createStaticServer(distDir, port) {
   });
 }
 
+async function runAuditForPreset(port, preset, outputPath) {
+  const edgePath = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
+  const args = [
+    `http://127.0.0.1:${port}/`,
+    '--output=json',
+    `--output-path=${outputPath}`,
+    `--chrome-path=${edgePath}`,
+    '--chrome-flags="--headless=new --no-sandbox --disable-gpu"',
+    '--only-categories=performance,accessibility,best-practices,seo',
+    `--preset=${preset}`,
+    '--quiet'
+  ];
+
+  const lhProcess = spawn('npx', ['lighthouse', ...args], { shell: true, stdio: 'inherit' });
+  await new Promise((resolve, reject) => {
+    lhProcess.on('exit', (code) => {
+      if (code === 0) resolve();
+      else reject(new Error(`Lighthouse (${preset}) exited with code ${code}`));
+    });
+  });
+
+  const raw = fs.readFileSync(outputPath, 'utf8');
+  const data = JSON.parse(raw);
+  return {
+    performance: Math.round((data.categories.performance?.score || 0) * 100),
+    accessibility: Math.round((data.categories.accessibility?.score || 0) * 100),
+    bestPractices: Math.round((data.categories['best-practices']?.score || 0) * 100),
+    seo: Math.round((data.categories.seo?.score || 0) * 100),
+    metrics: {
+      lcp: data.audits['largest-contentful-paint']?.displayValue,
+      cls: data.audits['cumulative-layout-shift']?.displayValue,
+      tbt: data.audits['total-blocking-time']?.displayValue
+    }
+  };
+}
+
 async function runLighthouse() {
   const distDir = path.resolve('dist');
   const port = 4175;
@@ -54,54 +90,33 @@ async function runLighthouse() {
 
   const reportDir = path.resolve('reports/lighthouse');
   if (!fs.existsSync(reportDir)) fs.mkdirSync(reportDir, { recursive: true });
-  const reportPath = path.join(reportDir, 'report.json');
 
-  const edgePath = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
+  const desktopPath = path.join(reportDir, 'report-desktop.json');
+  const mobilePath = path.join(reportDir, 'report-mobile.json');
 
-  console.log('Spawning Lighthouse CLI...');
-  const lhArgs = [
-    `http://127.0.0.1:${port}/`,
-    '--output=json',
-    `--output-path=${reportPath}`,
-    `--chrome-path=${edgePath}`,
-    '--chrome-flags="--headless=new --no-sandbox --disable-gpu"',
-    '--only-categories=performance,accessibility,best-practices,seo',
-    '--preset=desktop',
-    '--quiet'
-  ];
+  try {
+    console.log('Running Desktop Lighthouse...');
+    const desktopScores = await runAuditForPreset(port, 'desktop', desktopPath);
 
-  const lhProcess = spawn('npx', ['lighthouse', ...lhArgs], { shell: true, stdio: 'inherit' });
+    console.log('Running Mobile Lighthouse...');
+    const mobileScores = await runAuditForPreset(port, 'perf', mobilePath);
 
-  await new Promise((resolve, reject) => {
-    lhProcess.on('exit', (code) => {
-      server.close();
-      if (code === 0) resolve();
-      else reject(new Error(`Lighthouse exited with code ${code}`));
-    });
-  });
-
-  if (fs.existsSync(reportPath)) {
-    const raw = fs.readFileSync(reportPath, 'utf8');
-    const data = JSON.parse(raw);
-    const scores = {
-      performance: Math.round((data.categories.performance?.score || 0) * 100),
-      accessibility: Math.round((data.categories.accessibility?.score || 0) * 100),
-      bestPractices: Math.round((data.categories['best-practices']?.score || 0) * 100),
-      seo: Math.round((data.categories.seo?.score || 0) * 100)
-    };
     console.log('\n=============================================');
     console.log('ACTUAL MEASURED LIGHTHOUSE AUDIT SCORES:');
-    console.log(JSON.stringify(scores, null, 2));
+    console.log('Desktop:', JSON.stringify(desktopScores, null, 2));
+    console.log('Mobile:', JSON.stringify(mobileScores, null, 2));
     console.log('=============================================\n');
 
-    const artifactDir = 'C:\\Users\\k deswanth\\.gemini\\antigravity\\brain\\915eb0d1-0751-489f-a770-da815fa3ba6c';
-    fs.writeFileSync(path.join(artifactDir, 'lighthouse_scores.json'), JSON.stringify(scores, null, 2), 'utf8');
-  } else {
-    throw new Error('Report file not generated.');
+    const artifactDir = 'C:\\Users\\k deswanth\\.gemini\\antigravity\\brain\\98a52437-4417-4f06-a2da-763017b7aaa0';
+    const finalReport = { desktop: desktopScores, mobile: mobileScores };
+    fs.writeFileSync(path.join(artifactDir, 'lighthouse_scores.json'), JSON.stringify(finalReport, null, 2), 'utf8');
+    fs.writeFileSync(path.join(reportDir, 'summary.json'), JSON.stringify(finalReport, null, 2), 'utf8');
+  } finally {
+    server.close();
   }
 }
 
-runLighthouse().catch(err => {
+runLighthouse().catch((err) => {
   console.error(err);
   process.exit(1);
 });

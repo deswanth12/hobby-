@@ -371,13 +371,13 @@ const blogArticleCode = fs.readFileSync(path.resolve('src/pages/BlogArticlePage.
 const blogPageCode = fs.readFileSync(path.resolve('src/pages/BlogPage.tsx'), 'utf8');
 
 assert(blogArticleCode.includes('CA Kavitha Vijay'), 'BlogArticlePage references verified partner CA Kavitha Vijay');
-assert(blogArticleCode.includes('252985'), 'BlogArticlePage references ICAI Mem. 252985');
+assert(blogArticleCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'BlogArticlePage references ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(blogArticleCode.includes('AIR 49') || blogArticleCode.includes('CMA AIR 49'), 'BlogArticlePage references CMA AIR 49');
 assert(blogArticleCode.includes('ICAI') && blogArticleCode.includes('Chartered Accountants of India'),
   'BlogArticlePage renders mandatory ICAI regulatory disclaimer');
 
 assert(blogPageCode.includes('CA Kavitha Vijay'), 'BlogPage references verified partner CA Kavitha Vijay');
-assert(blogPageCode.includes('252985'), 'BlogPage references ICAI Mem. 252985');
+assert(blogPageCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'BlogPage references ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(blogPageCode.includes('AIR 49') || blogPageCode.includes('CMA AIR 49'), 'BlogPage references CMA AIR 49');
 
 // -----------------------------------------------------------------------------

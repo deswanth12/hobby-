@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "pageData": [
+    {
+      "route": "/",
+      "title": "Chartered Accountant in Tirupati | CA Kavitha & Associates",
+      "metaDesc": "Leading Chartered Accountant in Tirupati. CA Kavitha & Associates provides expert Statutory Audit, Income Tax Return filing, GST, ROC compliance & CFO advisory.",
+      "canonical": "https://kavithaassociates.com/",
+      "h1Count": 1,
+      "h1Text": "Chartered Accountant in TirupatiStatutory Rigor & Commercial Tax Counsel",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/about",
+      "title": "About CA Kavitha Vijay | Chartered Accountant in Tirupati | Kavitha & Associates",
+      "metaDesc": "Profile of CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice.",
+      "canonical": "https://kavithaassociates.com/about",
+      "h1Count": 1,
+      "h1Text": "Institutional Rigor. Independent Counsel.",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services",
+      "title": "Accounting & Tax Services in Tirupati | Kavitha & Associates",
+      "metaDesc": "Comprehensive CA services in Tirupati: Statutory Audit, Income Tax Return (ITR) filing, GST compliance, Company Incorporation, ROC filings & Virtual CFO advisory.",
+      "canonical": "https://kavithaassociates.com/services",
+      "h1Count": 1,
+      "h1Text": "Statutory Rigor. Multi-Disciplinary Counsel.",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/audit-assurance",
+      "title": "Statutory Audit in Tirupati | Tax & Internal Audits | Kavitha & Associates",
+      "metaDesc": "Independent Statutory Audit under Companies Act 2013, Tax Audit under Sec 44AB, Internal Audit, Concurrent Audit & Stock Verification in Tirupati, AP.",
+      "canonical": "https://kavithaassociates.com/services/audit-assurance",
+      "h1Count": 1,
+      "h1Text": "Evidence-Based Rigor. Institutional Trust.",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/gst-consultant-tirupati",
+      "title": "GST Consultant in Tirupati | GST Filing | Kavitha & Associates",
+      "metaDesc": "Expert GST consultant in Tirupati. CA Kavitha & Associates provides GST registration, monthly GSTR-1 & 3B return filing, GSTR-9/9C reconciliation & notice defense.",
+      "canonical": "https://kavithaassociates.com/services/gst-consultant-tirupati",
+      "h1Count": 1,
+      "h1Text": "GST Consultant in Tirupati",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/income-tax-consultant-tirupati",
+      "title": "Income Tax Consultant in Tirupati | ITR | Kavitha & Associates",
+      "metaDesc": "Expert Income Tax consultant in Tirupati. CA Kavitha & Associates provides corporate tax planning, Section 44AB tax audit, capital gains advisory & ITR filing.",
+      "canonical": "https://kavithaassociates.com/services/income-tax-consultant-tirupati",
+      "h1Count": 1,
+      "h1Text": "Income Tax Consultant in Tirupati",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/company-registration-tirupati",
+      "title": "Company Registration in Tirupati | ROC | Kavitha & Associates",
+      "metaDesc": "Expert company registration in Tirupati. CA Kavitha & Associates provides Private Limited, LLP, OPC incorporation, DPIIT Startup India & annual ROC compliance.",
+      "canonical": "https://kavithaassociates.com/services/company-registration-tirupati",
+      "h1Count": 1,
+      "h1Text": "Company Registration in Tirupati",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/virtual-cfo-tirupati",
+      "title": "Virtual CFO Services in Tirupati | CMA | Kavitha & Associates",
+      "metaDesc": "Strategic Virtual CFO services in Tirupati. CA Kavitha & Associates provides bank loan CMA data, cost governance, cash flow forecasting & accounting advisory.",
+      "canonical": "https://kavithaassociates.com/services/virtual-cfo-tirupati",
+      "h1Count": 1,
+      "h1Text": "Virtual CFO Services in Tirupati",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/services/rera-consultant-tirupati",
+      "title": "RERA Advisory & CA Certificates in Tirupati | Kavitha & Associates",
+      "metaDesc": "Specialized RERA advisory in Tirupati. CA Kavitha & Associates provides mandatory Form 3 CA certificates for escrow withdrawal, AP RERA compliance & JDA tax planning.",
+      "canonical": "https://kavithaassociates.com/services/rera-consultant-tirupati",
+      "h1Count": 1,
+      "h1Text": "RERA Advisory in Tirupati",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/industries",
+      "title": "Industry Accounting & Tax Solutions in Tirupati | Kavitha & Associates",
+      "metaDesc": "Sector-specific Chartered Accountancy expertise in Tirupati for Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, and Education sectors.",
+      "canonical": "https://kavithaassociates.com/industries",
+      "h1Count": 1,
+      "h1Text": "Tailored Statutory Governance. Sector-Specific Precision.",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/locations",
+      "title": "CA Chambers in Tirupati & Regional Client Coverage | Kavitha & Associates",
+      "metaDesc": "Principal practice chambers located at Bairagi Patteda, Tirupati, Andhra Pradesh, with verified regional client coverage across Chennai, Bengaluru, and Hyderabad.",
+      "canonical": "https://kavithaassociates.com/locations",
+      "h1Count": 1,
+      "h1Text": "Principal Chambers in Tirupati. Active Regional Coverage.",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/contact",
+      "title": "Contact Chartered Accountant in Tirupati | Kavitha & Associates",
+      "metaDesc": "Schedule a consultation with CA Kavitha Vijay in Tirupati. Call +91 96263 50900 or WhatsApp for statutory audit, income tax filing, and GST advisory inquiries.",
+      "canonical": "https://kavithaassociates.com/contact",
+      "h1Count": 1,
+      "h1Text": "Contact Kavitha & Associates",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/blog",
+      "title": "Tax & Regulatory Insights | CA Kavitha & Associates Tirupati",
+      "metaDesc": "Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49) for businesses and founders.",
+      "canonical": "https://kavithaassociates.com/blog",
+      "h1Count": 1,
+      "h1Text": "Regulatory Insights & Technical Commentary",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/blog/corporate-tax-planning-2026",
+      "title": "Corporate Tax Planning & Assessment Strategies FY 2025-26 | Kavitha & Associates",
+      "metaDesc": "Strategic analysis of Section 115BAA, MAT provisions, faceless scrutiny defense, and advance tax management by CA Kavitha Vijay.",
+      "canonical": "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+      "h1Count": 1,
+      "h1Text": "Corporate Tax Planning and Assessment Strategies under Income Tax Act, 1961: Key Protocols for FY 2025-26",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/blog/gst-annual-return-compliance",
+      "title": "GSTR-9 & GSTR-9C Compliance Guide | Kavitha & Associates",
+      "metaDesc": "Technical guide to filing GST Annual Return GSTR-9 and self-certified reconciliation statement GSTR-9C, with ITC verification protocols by CA Kavitha Vijay.",
+      "canonical": "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+      "h1Count": 1,
+      "h1Text": "GST Annual Return and Reconciliation Statement: Comprehensive Technical Guide for Form GSTR-9 and Form GSTR-9C",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/blog/statutory-audit-guidelines-2026",
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "metaDesc": "Comprehensive guide to corporate statutory audit obligations under Section 143 of Companies Act 2013, CARO 2020 clauses, and IFC reporting by CA Kavitha Vijay.",
+      "canonical": "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026",
+      "h1Count": 1,
+      "h1Text": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and Reporting Norms for FY 2025-26",
+      "robots": "index, follow"
+    },
+    {
+      "route": "/404-check",
+      "title": "404 — Page Not Found | Kavitha & Associates",
+      "metaDesc": "The requested page could not be located in our practice registry. Browse our verified practice areas or contact our Tirupati chambers.",
+      "canonical": null,
+      "h1Count": 1,
+      "h1Text": "Page Not Located in Practice Registry",
+      "robots": "noindex, nofollow"
+    }
+  ]
+}

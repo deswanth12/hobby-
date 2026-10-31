@@ -1,7 +1,22 @@
 # Robots.txt for Kavitha & Associates (Chartered Accountants)
 # Production Domain: https://kavithaassociates.com
 
+# Standard Search Crawlers
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /api/
+Disallow: /api
+
+# Generative Engine Optimization (GEO): AI Search Engines & Retrieval Crawlers
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: PerplexityBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
 Allow: /
 Disallow: /admin/
 Disallow: /admin

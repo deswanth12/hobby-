@@ -113,8 +113,8 @@ export const HomePage: React.FC = () => {
             name: 'Kavitha & Associates',
             legalName: 'Kavitha & Associates Chartered Accountants',
             url: 'https://kavithaassociates.com/',
-            logo: 'https://kavithaassociates.com/favicon-512x512.png',
-            image: 'https://kavithaassociates.com/favicon-512x512.png',
+            logo: 'https://kavithaassociates.com/favicon.svg',
+            image: 'https://kavithaassociates.com/brand/ka-google-cover-banner.svg',
             telephone: '+919626350900',
             email: 'cakavithasrj@gmail.com',
             priceRange: '₹₹',
@@ -132,18 +132,26 @@ export const HomePage: React.FC = () => {
               longitude: 79.418046
             },
             hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
-            openingHoursSpecification: {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-              opens: '09:30',
-              closes: '18:30'
-            },
+            openingHoursSpecification: [
+              {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                opens: '09:30',
+                closes: '18:30'
+              },
+              {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Saturday'],
+                opens: '10:00',
+                closes: '14:00'
+              }
+            ],
             founder: {
               '@type': 'Person',
               name: 'CA Kavitha Vijay',
               jobTitle: 'Practicing Chartered Accountant & Cost Accountant',
               honorificPrefix: 'CA',
-              description: 'B.Com, CA, CMA (AIR 49) | ICAI Mem. 252985'
+              description: 'B.Com, CA, CMA (AIR 49)'
             },
             areaServed: ['Tirupati', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'India'],
             knowsAbout: [
@@ -185,14 +193,16 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Master Headline (Cormorant Garamond Monumental Serif) */}
-              <h1 className="font-editorial-h1 text-brand-forest leading-[1.14] tracking-tight lg:text-[2.85rem] xl:text-[3.35rem]">
-                <span className="block">Statutory Rigor.</span>
-                <span className="block text-brand-forest/90">Practical Commercial Counsel.</span>
+              <div className="space-y-1">
+                <h1 className="font-editorial-h1 leading-[1.15]">
+                <span className="block text-brand-forest">Chartered Accountant in Tirupati</span>
+                <span className="block text-gold-dark font-serif italic text-[0.82em] mt-1.5 font-medium">Statutory Rigor & Commercial Tax Counsel</span>
               </h1>
+              </div>
 
               {/* Authoritative Lead Narrative */}
               <p className="font-editorial-body text-brand-charcoal/85 leading-relaxed max-w-2xl font-normal">
-                Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
+                Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
               {/* Primary Call to Action Cluster with Dual-Arrow Micro-physics */}
@@ -240,7 +250,7 @@ export const HomePage: React.FC = () => {
               
               {/* Executive Practice Registry Plaque (Double-Bezel Architecture) */}
               <div 
-                className="double-bezel-dark animate-fade-up rounded-3xl p-1.5"
+                className="double-bezel-dark animate-fade-up rounded-3xl p-1.5 overflow-hidden"
                 
               >
                 <div 
@@ -258,6 +268,8 @@ export const HomePage: React.FC = () => {
                         <img 
                           src="/brand/ka-seal-medallion.png" 
                           alt="KA Official Practice Seal" 
+                          width="56"
+                          height="56"
                           className="w-full h-full object-contain drop-shadow-md"
                         />
                       </div>
@@ -266,12 +278,12 @@ export const HomePage: React.FC = () => {
                           className="text-xs font-semibold text-brand-brightgold block">
                           Practice Register , Estd. Tirupati
                         </span>
-                        <h3 
+                        <h2 
                           className="font-editorial-h3 text-2xl font-bold text-white tracking-wide"
                           
                         >
                           Kavitha & Associates
-                        </h3>
+                        </h2>
                       </div>
                     </div>
                   </div>
@@ -290,15 +302,15 @@ export const HomePage: React.FC = () => {
                         className="text-[10px] text-emerald-200 font-medium"
                         
                       >
-                        ICAI Mem. 252985, CMA AIR 49
+                        Chartered Accountant, CMA AIR 49
                       </span>
                     </div>
-                    <h4 
+                    <h3 
                       className="font-editorial-h3 text-xl font-bold text-white mt-1"
                       
                     >
                       {FIRM_DATA.partner.name}
-                    </h4>
+                    </h3>
                     <p 
                       className="text-xs text-brand-gold font-semibold tracking-wide"
                       
@@ -333,7 +345,7 @@ export const HomePage: React.FC = () => {
                         href={FIRM_DATA.contact.googleMapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-semibold text-brand-gold hover:text-white hover:underline shrink-0 mt-0.5"
+                        className="min-h-[44px] inline-flex items-center text-xs font-semibold text-brand-gold hover:text-white hover:underline shrink-0"
                         
                       >
                         <span>Map Pin</span><ArrowUpRight className="w-3.5 h-3.5 ml-1 inline text-brand-gold" aria-hidden="true" />
@@ -454,7 +466,7 @@ export const HomePage: React.FC = () => {
           ========================================================================= */}
       <nav
         aria-label="Practice Disciplines Quick Navigation"
-        className="bg-brand-surface/95 backdrop-blur-md py-3.5 border-b border-brand-border sticky top-[57px] sm:top-[65px] z-30 shadow-subtle overflow-hidden"
+        className="bg-brand-surface/95 backdrop-blur-md py-2.5 sm:py-3.5 border-b border-brand-border sticky top-[60px] md:top-[96px] z-30 shadow-subtle overflow-hidden"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
           <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-0.5 w-full min-w-0">
@@ -663,7 +675,7 @@ export const HomePage: React.FC = () => {
                         href={FIRM_DATA.contact.whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gold-dark hover:underline font-semibold"
+                        className="min-h-[44px] inline-flex items-center text-gold-dark hover:underline font-semibold"
                       >
                         <span>Inquire Audit</span><ArrowRight className="w-3.5 h-3.5 ml-1 inline text-brand-gold" aria-hidden="true" />
                       </a>
@@ -787,7 +799,7 @@ export const HomePage: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setExpandedCardId(isExpanded ? null : category.id)}
-                      className="mt-3 text-[11px] text-gold-dark hover:text-brand-forest font-semibold flex items-center gap-1 sm:hidden cursor-pointer"
+                      className="mt-2 min-h-[44px] text-[11px] text-gold-dark hover:text-brand-forest font-semibold flex items-center gap-1 sm:hidden cursor-pointer"
                       aria-expanded={isExpanded}
                       aria-controls={`curtain-${category.id}`}
                     >
@@ -798,7 +810,7 @@ export const HomePage: React.FC = () => {
                   <div className="pt-5 mt-5 border-t border-brand-border flex items-center justify-between">
                     <Link
                       to={`/services#${category.id}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-forest hover:text-brand-deep group"
+                      className="min-h-[44px] inline-flex items-center gap-1.5 text-xs font-semibold text-brand-forest hover:text-brand-deep group"
                     >
                       <span>View all {category.title}</span>
                       <ChevronRight className="w-3.5 h-3.5 text-gold-dark group-hover:translate-x-0.5 transition-transform" />
@@ -807,7 +819,7 @@ export const HomePage: React.FC = () => {
                       href={FIRM_DATA.contact.whatsappLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 underline underline-offset-2"
+                      className="min-h-[44px] inline-flex items-center text-[11px] font-semibold text-emerald-800 hover:text-emerald-950 underline underline-offset-2"
                     >
                       Inquire
                     </a>

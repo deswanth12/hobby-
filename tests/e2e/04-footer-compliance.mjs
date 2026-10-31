@@ -63,8 +63,8 @@ check(
   'Footer displays accredited academic and professional qualifications'
 );
 check(
-  footerCode.includes('ICAI Mem. 252985') || footerCode.includes('252985'),
-  'Footer displays verified ICAI Membership number 252985'
+  footerCode.includes('Chartered'),
+  'Footer displays verified lead partner professional role without exposing membership number'
 );
 
 // 4. Chambers Physical Operating Address

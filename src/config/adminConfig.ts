@@ -72,5 +72,6 @@ export const ADMIN_ROUTES = {
   login: ADMIN_SECRET_PATH ? `${ADMIN_SECRET_PATH}/login` : '/--unconfigured-portal--/login',
   enquiries: ADMIN_SECRET_PATH ? `${ADMIN_SECRET_PATH}/enquiries` : '/--unconfigured-portal--/enquiries',
   content: ADMIN_SECRET_PATH ? `${ADMIN_SECRET_PATH}/content` : '/--unconfigured-portal--/content',
+  articles: ADMIN_SECRET_PATH ? `${ADMIN_SECRET_PATH}/articles` : '/--unconfigured-portal--/articles',
   settings: ADMIN_SECRET_PATH ? `${ADMIN_SECRET_PATH}/settings` : '/--unconfigured-portal--/settings',
 } as const;

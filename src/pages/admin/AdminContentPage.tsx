@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { 
   HelpCircle, 
   Save, 
@@ -21,9 +22,18 @@ import { BlogService, BlogPost } from '../../services/blogService';
 import { MarkdownRenderer } from '../../components/MarkdownRenderer';
 import { AdminPost } from '../../types/admin';
 
-export const AdminContentPage: React.FC = () => {
+export interface AdminContentPageProps {
+  initialTab?: 'services' | 'faqs' | 'posts';
+}
+
+export const AdminContentPage: React.FC<AdminContentPageProps> = ({ initialTab }) => {
+  const location = useLocation();
   const { data: firmData } = useFirmData();
-  const [activeTab, setActiveTab] = useState<'services' | 'faqs' | 'posts'>('services');
+  const [activeTab, setActiveTab] = useState<'services' | 'faqs' | 'posts'>(() => {
+    if (initialTab) return initialTab;
+    if (typeof window !== 'undefined' && window.location.pathname.includes('/articles')) return 'posts';
+    return 'services';
+  });
 
   // =========================================================================
   // 1. SERVICES STATE
@@ -65,7 +75,7 @@ export const AdminContentPage: React.FC = () => {
   const [postExcerpt, setPostExcerpt] = useState<string>('');
   const [postTags, setPostTags] = useState<string>('');
   const [postAuthor, setPostAuthor] = useState<string>('CA Kavitha Vijay');
-  const [postAuthorRole, setPostAuthorRole] = useState<string>('Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+  const [postAuthorRole, setPostAuthorRole] = useState<string>('Managing Partner (B.Com, CA, CMA AIR 49)');
   const [postCoverImage, setPostCoverImage] = useState<string>('');
   const [postCoverImageAlt, setPostCoverImageAlt] = useState<string>('');
   const [postStatus, setPostStatus] = useState<'published' | 'draft'>('published');
@@ -88,7 +98,7 @@ export const AdminContentPage: React.FC = () => {
         setPostExcerpt(target.excerpt);
         setPostTags(target.tags.join(', '));
         setPostAuthor(target.author || 'CA Kavitha Vijay');
-        setPostAuthorRole(target.authorRole || 'Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+        setPostAuthorRole(target.authorRole || 'Managing Partner (B.Com, CA, CMA AIR 49)');
         setPostCoverImage(target.coverImage || '');
         setPostCoverImageAlt(target.coverImageAlt || '');
         setPostStatus(target.draft ? 'draft' : 'published');
@@ -137,13 +147,24 @@ export const AdminContentPage: React.FC = () => {
     setPostExcerpt('');
     setPostTags('Income Tax, Advisory');
     setPostAuthor('CA Kavitha Vijay');
-    setPostAuthorRole('Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)');
+    setPostAuthorRole('Managing Partner (B.Com, CA, CMA AIR 49)');
     setPostCoverImage('/uploads/blog/corporate-tax-planning-2026.webp');
     setPostCoverImageAlt('');
     setPostStatus('published');
     setPostContent('# Article Title\n\nWrite statutory analysis, commentary, and compliance observations here...');
     setPostViewMode('edit');
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('action') === 'new') {
+      setActiveTab('posts');
+      handleStartNewPost();
+    } else if (initialTab === 'posts' || location.pathname.includes('/articles')) {
+      setActiveTab('posts');
+    }
+  }, [location.pathname, location.search, initialTab]);
+
 
   const handleTitleChange = (val: string) => {
     setPostTitle(val);
@@ -214,7 +235,7 @@ export const AdminContentPage: React.FC = () => {
       title: postTitle.trim(),
       date: isCreatingNewPost ? new Date().toISOString() : (BlogService.getPostBySlug(cleanSlug, true)?.date || new Date().toISOString()),
       author: postAuthor.trim() || 'CA Kavitha Vijay',
-      authorRole: postAuthorRole.trim() || 'Managing Partner (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)',
+      authorRole: postAuthorRole.trim() || 'Managing Partner (B.Com, CA, CMA AIR 49)',
       coverImage: postCoverImage.trim() || undefined,
       coverImageAlt: postCoverImageAlt.trim() || postTitle.trim(),
       excerpt: postExcerpt.trim() || postContent.trim().slice(0, 160) + '...',
@@ -276,8 +297,8 @@ export const AdminContentPage: React.FC = () => {
 
   return (
     <AdminLayout 
-      title="Content & Services" 
-      subtitle="Edit practice disciplines, statutory FAQs, and technical articles."
+      title={activeTab === 'posts' ? "Articles & Insights" : "Content & Services"} 
+      subtitle={activeTab === 'posts' ? "Write, edit, and publish statutory articles & commentary." : "Edit practice disciplines, statutory FAQs, and technical articles."}
     >
       <div className="space-y-6">
 

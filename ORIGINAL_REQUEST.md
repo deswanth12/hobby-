@@ -29,7 +29,7 @@ Execute the route redesign in structured sequence:
    - 404 page (`*`)
 
 ### R3. Client Data & Professional Credibility Preservation
-Preserve all supplied details for CA Kavitha Vijay exactly: ICAI Mem. 252985, B.Com, CA, CMA AIR 49, 10+ Years experience across Deloitte, Ford Motor Company, Manohar Chowdhry & Associates, Move the Dot & Live the Dot awards, and Tirupati chambers. Cross-check every credential, award, and employment claim against client-approved records in the repository before publication. Do not invent, alter, or embellish any professional credentials, firm history, or client representations.
+Preserve all supplied details for CA Kavitha Vijay exactly: ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49, 10+ Years experience across Deloitte, Ford Motor Company, Manohar Chowdhry & Associates, Move the Dot & Live the Dot awards, and Tirupati chambers. Cross-check every credential, award, and employment claim against client-approved records in the repository before publication. Do not invent, alter, or embellish any professional credentials, firm history, or client representations.
 
 ### R4. Functional Preservation & Integrations
 Preserve and verify all existing functionality with zero recurring hosting costs:
@@ -61,7 +61,7 @@ Work directly inside the existing project (`c:\kavitha ca`). Do not interpret "c
 
 ### Route Coverage & Content Integrity
 - [ ] Homepage and navigation/footer are completed and validated first, followed by all remaining routes (`/about`, `/services`, `/services/audit-assurance`, `/industries`, `/locations`, `/blog`, `/blog/:slug`, `/contact`, `*`).
-- [ ] Verified profile data for CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49, 10+ years experience, Deloitte / Ford / Manohar Chowdhry background, Move/Live the Dot awards, Tirupati chambers) is verbatim accurate and cross-checked against client-approved records.
+- [ ] Verified profile data for CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49, 10+ years experience, Deloitte / Ford / Manohar Chowdhry background, Move/Live the Dot awards, Tirupati chambers) is verbatim accurate and cross-checked against client-approved records.
 - [ ] No fake testimonials, fake awards, fake statistics, or invented credentials exist on any page.
 
 ### Functional Preservation & Integrations

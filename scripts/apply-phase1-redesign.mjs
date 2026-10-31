@@ -148,14 +148,14 @@ if (heroStartIdx !== -1 && heroEndIdx !== -1) {
 
               {/* Authoritative Lead Narrative */}
               <p className="font-editorial-body text-brand-charcoal/85 text-base sm:text-lg leading-[1.75] max-w-2xl font-normal">
-                Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
+                Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
               {/* Architectural Credential Ribbon */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-6 pt-1 text-xs text-brand-forest font-medium">
                 <div className="flex items-center gap-1.5">
                   <Award className="w-4 h-4 text-brand-gold shrink-0" />
-                  <span className="font-editorial-meta tracking-wider uppercase text-[11px] font-bold">ICAI Mem. 252985</span>
+                  <span className="font-editorial-meta tracking-wider uppercase text-[11px] font-bold">ICAI Mem. [REDACTED_MEMBERSHIP_NO]</span>
                 </div>
                 <span className="text-brand-gold/60">•</span>
                 <div className="flex items-center gap-1.5">
@@ -362,7 +362,7 @@ if (marqueeIdx !== -1) {
                     Senior Partner
                   </span>
                   <span className="text-[10px] text-emerald-200 font-medium">
-                    ICAI Mem. 252985 • CMA AIR 49
+                    ICAI Mem. [REDACTED_MEMBERSHIP_NO] • CMA AIR 49
                   </span>
                 </div>
                 <h4 className="font-editorial-h3 text-xl font-bold text-white mt-1">

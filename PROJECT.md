@@ -23,7 +23,7 @@
 | 10 | Homepage Governance & Philosophy | Dual CA+CMA advantage, partner profile preview, and ICAI ethical standards section | M2 | ORIGINAL_REQUEST §R1, §R2.1, §R3 |
 | 11 | Homepage Industries & Geographic Reach | 10 industry profiles summary and 5-location footprint showcase | M2 | ORIGINAL_REQUEST §R1, §R2.1 |
 | 12 | Homepage Statutory FAQ & Consultation CTA | Accordion FAQ and consultation intake section with embedded ContactForm | M2 | ORIGINAL_REQUEST §R1, §R2.1, §R4 |
-| 13 | About Page Redesign | Complete `/about` with verified bio for CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49, Deloitte/Ford/MCA, Move/Live the Dot awards) | M3 | ORIGINAL_REQUEST §R2.2, §R3 |
+| 13 | About Page Redesign | Complete `/about` with verified bio for CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49, Deloitte/Ford/MCA, Move/Live the Dot awards) | M3 | ORIGINAL_REQUEST §R2.2, §R3 |
 | 14 | Services Page Redesign | Complete `/services` with 5 practice areas, 34 services, and statutory citations | M3 | ORIGINAL_REQUEST §R2.2 |
 | 15 | Audit Spotlight Page Redesign | Complete `/services/audit-assurance` with 9 statutory audit streams and ICAI auditing standards | M3 | ORIGINAL_REQUEST §R2.2 |
 | 16 | Industries Page Redesign | Complete `/industries` with 10 detailed sector profiles, regulatory focal points, and tax benefits | M3 | ORIGINAL_REQUEST §R2.2 |

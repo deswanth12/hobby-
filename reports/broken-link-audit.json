@@ -1,0 +1,187 @@
+{
+  "total": 27,
+  "broken": [
+    {
+      "href": "https://www.gst.gov.in/",
+      "fullUrl": "https://www.gst.gov.in/",
+      "status": 403,
+      "ok": false
+    },
+    {
+      "href": "https://www.mca.gov.in/",
+      "fullUrl": "https://www.mca.gov.in/",
+      "status": 403,
+      "ok": false
+    },
+    {
+      "href": "https://www.linkedin.com/in/ca-kavitha-srj-770988199",
+      "fullUrl": "https://www.linkedin.com/in/ca-kavitha-srj-770988199",
+      "status": 405,
+      "ok": false
+    }
+  ],
+  "linkStatuses": [
+    {
+      "href": "/",
+      "fullUrl": "https://kavithaassociates.com/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/about",
+      "fullUrl": "https://kavithaassociates.com/about",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services/audit-assurance",
+      "fullUrl": "https://kavithaassociates.com/services/audit-assurance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/industries",
+      "fullUrl": "https://kavithaassociates.com/industries",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/locations",
+      "fullUrl": "https://kavithaassociates.com/locations",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog",
+      "fullUrl": "https://kavithaassociates.com/blog",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/contact",
+      "fullUrl": "https://kavithaassociates.com/contact",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
+      "fullUrl": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services",
+      "fullUrl": "https://kavithaassociates.com/services",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
+      "fullUrl": "https://maps.app.goo.gl/p9ToGUtxqYDCghpF6",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#income-tax",
+      "fullUrl": "https://kavithaassociates.com/services#income-tax",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#gst",
+      "fullUrl": "https://kavithaassociates.com/services#gst",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#corporate-business",
+      "fullUrl": "https://kavithaassociates.com/services#corporate-business",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#rera-compliance",
+      "fullUrl": "https://kavithaassociates.com/services#rera-compliance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/services#advisory-consulting",
+      "fullUrl": "https://kavithaassociates.com/services#advisory-consulting",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://www.incometax.gov.in/",
+      "fullUrl": "https://www.incometax.gov.in/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://www.gst.gov.in/",
+      "fullUrl": "https://www.gst.gov.in/",
+      "status": 403,
+      "ok": false
+    },
+    {
+      "href": "https://www.mca.gov.in/",
+      "fullUrl": "https://www.mca.gov.in/",
+      "status": 403,
+      "ok": false
+    },
+    {
+      "href": "https://www.icai.org/",
+      "fullUrl": "https://www.icai.org/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://rera.ap.gov.in/",
+      "fullUrl": "https://rera.ap.gov.in/",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/#knowledge-faq",
+      "fullUrl": "https://kavithaassociates.com/#knowledge-faq",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://www.linkedin.com/in/ca-kavitha-srj-770988199",
+      "fullUrl": "https://www.linkedin.com/in/ca-kavitha-srj-770988199",
+      "status": 405,
+      "ok": false
+    },
+    {
+      "href": "/contact?entity=Private%20Limited%20%26%20Public%20Companies",
+      "fullUrl": "https://kavithaassociates.com/contact?entity=Private%20Limited%20%26%20Public%20Companies",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/statutory-audit-guidelines-2026",
+      "fullUrl": "https://kavithaassociates.com/blog/statutory-audit-guidelines-2026",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/gst-annual-return-compliance",
+      "fullUrl": "https://kavithaassociates.com/blog/gst-annual-return-compliance",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "/blog/corporate-tax-planning-2026",
+      "fullUrl": "https://kavithaassociates.com/blog/corporate-tax-planning-2026",
+      "status": 200,
+      "ok": true
+    },
+    {
+      "href": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%20(Kavitha%20%26%20Associates)%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
+      "fullUrl": "https://wa.me/919626350900?text=Hello%20CA%20Kavitha%20Vijay%20(Kavitha%20%26%20Associates)%2C%20I%20would%20like%20to%20enquire%20about%20your%20Chartered%20Accountancy%20services.",
+      "status": 200,
+      "ok": true
+    }
+  ]
+}

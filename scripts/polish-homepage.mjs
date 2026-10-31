@@ -56,7 +56,7 @@ code = code.replace(
   'className="text-[11px] font-semibold text-brand-brightgold bg-brand-deep px-2.5 py-0.5 rounded border border-brand-gold/30">\n                        Senior Partner'
 );
 
-code = code.replace('ICAI Mem. 252985 • CMA AIR 49', 'ICAI Mem. 252985, CMA AIR 49');
+code = code.replace('ICAI Mem. [REDACTED_MEMBERSHIP_NO] • CMA AIR 49', 'ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49');
 
 // Replace style={{ color: '#FFFFFF' }} and style={{ backgroundColor: ... }} in Senior Partner Card
 code = code.replace(/style=\{\{\s*color:\s*['"]#FFFFFF['"]\s*\}\}/g, '');

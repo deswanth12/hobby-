@@ -185,7 +185,7 @@ console.log('\n--- 5. Page-Specific Credential & Statutory Verification ---');
 console.log('-> Auditing AboutPage.tsx credentials & institutional journey...');
 assert(aboutCode.includes('CA Kavitha Vijay'), 'AboutPage references verified partner CA Kavitha Vijay');
 assert(!aboutCode.includes('CA KavithaVijay SRJ'), 'AboutPage does NOT use unverified name variant CA KavithaVijay SRJ');
-assert(aboutCode.includes('252985'), 'AboutPage references ICAI Mem. 252985');
+assert(aboutCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'AboutPage references ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(aboutCode.includes('AIR 49'), 'AboutPage references CMA AIR 49');
 assert(aboutCode.includes('Deloitte'), 'AboutPage references Deloitte Big 4 audit tenure');
 assert(aboutCode.includes('Ford Motor Company'), 'AboutPage references Ford Motor Company audit leadership');
@@ -231,7 +231,7 @@ assert(servicesCode.includes('GST') || servicesCode.includes('CGST'), 'ServicesP
 // 5.3 AuditAssurancePage.tsx
 console.log('-> Auditing AuditAssurancePage.tsx 9 statutory audit streams...');
 assert(auditCode.includes('CA Kavitha Vijay'), 'AuditAssurancePage references verified partner CA Kavitha Vijay');
-assert(auditCode.includes('252985'), 'AuditAssurancePage references ICAI Mem. 252985');
+assert(auditCode.includes('[REDACTED_MEMBERSHIP_NO]'), 'AuditAssurancePage references ICAI Mem. [REDACTED_MEMBERSHIP_NO]');
 assert(auditCode.includes('Standards on Auditing') || auditCode.includes('SAs'), 'AuditAssurancePage cites ICAI Standards on Auditing (SAs)');
 assert(auditCode.includes('Substantive Testing'), 'AuditAssurancePage cites Evidence-Based Substantive Testing');
 
