@@ -202,7 +202,7 @@ A total of **11 functional bugs and operational defects** (9 previously remediat
 - **Defect ID**: `BUG-017`
 - **Severity**: MEDIUM (Credential Exposure in Source Code)
 - **Affected File**: `src/components/admin/AdminProtectedRoute.tsx`
-- **Description**: The headless QA bypass (`?qa_auth=true`) called `adminStorage.authenticate('kavitha', 'Tirupati@CA2026')`, leaving the plaintext password in the source file.
+- **Description**: The headless QA bypass (`?qa_auth=true`) called `adminStorage.authenticate('kavitha', '[REDACTED_COMPROMISED_CREDENTIAL]')`, leaving the plaintext password in the source file.
 - **Remediation**: Added `adminStorage.createDevSession()` which manufactures a session directly in `sessionStorage` in DEV mode without referencing or storing the administrative password string.
 - **Status**: **RESOLVED & VERIFIED**
 

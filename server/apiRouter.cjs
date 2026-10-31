@@ -1,4 +1,4 @@
-const { readDb, writeDb, AUTHORIZED_USERS, hashPassword, BASELINE_DATA, SESSION_SECRET } = require('./db.cjs');
+const { readDb, writeDb, AUTHORIZED_USERS, getAuthorizedUsers, setUserPassword, hashPassword, verifyPassword, BASELINE_DATA, SESSION_SECRET } = require('./db.cjs');
 const crypto = require('crypto');
 
 const MAX_BODY_SIZE = 1024 * 1024; // 1MB payload ceiling
@@ -121,9 +121,11 @@ function extractSessionToken(req) {
 }
 
 // Sign a stateless cryptographic session token (HMAC-SHA256 JWT)
-function signSessionToken(user) {
+function signSessionToken(user, db) {
   const jti = crypto.randomBytes(16).toString('hex');
-  const iat = Math.floor(Date.now() / 1000);
+  const nowSec = Math.floor(Date.now() / 1000);
+  const userEpoch = db?.userRevocationEpochs?.[user.username] || 0;
+  const iat = Math.max(nowSec, userEpoch + 1);
   const exp = iat + 3600; // 1 hour expiration
   const payload = {
     jti,
@@ -181,7 +183,7 @@ function verifySessionToken(token, db) {
     // 5. User-level revocation epoch
     db.userRevocationEpochs = db.userRevocationEpochs || {};
     const userEpoch = db.userRevocationEpochs[payload.sub] || 0;
-    if (payload.iat < userEpoch) {
+    if (payload.iat <= userEpoch) {
       return null; // User sessions invalidated
     }
 
@@ -405,18 +407,36 @@ async function handleApiRequest(req, res) {
       });
     }
 
-    const candidateHash = hashPassword(password);
-    const candidateBuffer = Buffer.from(candidateHash, 'hex');
-
-    const matchUser = AUTHORIZED_USERS.find(u => {
-      const isUser = (u.username === username || u.username === username.split('@')[0]);
-      if (!isUser) return false;
-      const expectedBuffer = Buffer.from(u.passwordHash, 'hex');
-      return candidateBuffer.length === expectedBuffer.length &&
-             crypto.timingSafeEqual(candidateBuffer, expectedBuffer);
+    const authorizedUsers = getAuthorizedUsers(db);
+    const matchUser = authorizedUsers.find(u => {
+      return (u.username === username || u.username === username.split('@')[0]);
     });
 
     if (!matchUser) {
+      rateInfo.attempts += 1;
+      if (rateInfo.attempts >= 5) {
+        rateInfo.lockoutUntil = Date.now() + 15 * 60 * 1000; // 15 mins
+      }
+      db.rateLimits[rateKey] = rateInfo;
+      writeDb(db);
+
+      const remaining = Math.max(0, 5 - rateInfo.attempts);
+      return sendJson(res, 401, {
+        success: false,
+        error: `Invalid credentials. (${remaining} attempts remaining before security lockout)`
+      });
+    }
+
+    // Fail-Closed Enforcement: If account credentials are not configured in environment or database, deny login
+    if (!matchUser.isConfigured || !matchUser.passwordHash || !matchUser.salt) {
+      return sendJson(res, 503, {
+        success: false,
+        error: 'Administrative access for this account has not been configured in server environment. Authentication failed closed.'
+      }, req);
+    }
+
+    const isValid = verifyPassword(password, matchUser.passwordHash, matchUser.salt, matchUser.iterations);
+    if (!isValid) {
       rateInfo.attempts += 1;
       if (rateInfo.attempts >= 5) {
         rateInfo.lockoutUntil = Date.now() + 15 * 60 * 1000; // 15 mins
@@ -435,7 +455,7 @@ async function handleApiRequest(req, res) {
     delete db.rateLimits[rateKey];
 
     // Issue stateless cryptographic token with embedded claims and HMAC signature
-    const { token, payload } = signSessionToken(matchUser);
+    const { token, payload } = signSessionToken(matchUser, db);
     const session = {
       token,
       user: {
@@ -521,7 +541,7 @@ async function handleApiRequest(req, res) {
     }, req);
   }
 
-  // Anti-CSRF Protection for State-Changing Administrative Requests
+  // Anti-CSRF Protection for State-Changing Administrative Requests (Enforced on ALL mutations)
   if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
     const origin = req.headers['origin'];
     if (origin && !isOriginAllowed(origin)) {
@@ -538,6 +558,83 @@ async function handleApiRequest(req, res) {
         return sendJson(res, 403, { success: false, error: 'Forbidden: Malformed referer header.' }, req);
       }
     }
+  }
+
+  // --- A0. Password Change Endpoint ---
+  if (method === 'POST' && pathname === '/api/admin/auth/change-password') {
+    const body = await parseJsonBody(req);
+    if (body === null) {
+      return sendJson(res, 413, { success: false, error: 'Payload too large.' }, req);
+    }
+    const currentPassword = (body.currentPassword || '').trim();
+    const newPassword = (body.newPassword || '').trim();
+
+    if (!currentPassword || !newPassword) {
+      return sendJson(res, 400, { success: false, error: 'Both current password and new password are required.' }, req);
+    }
+
+    if (newPassword.length < 12) {
+      return sendJson(res, 400, { success: false, error: 'New password must be at least 12 characters long.' }, req);
+    }
+
+    const hasUpper = /[A-Z]/.test(newPassword);
+    const hasLower = /[a-z]/.test(newPassword);
+    const hasNumber = /[0-9]/.test(newPassword);
+    const hasSpecial = /[^A-Za-z0-9]/.test(newPassword);
+
+    if (!hasUpper || !hasLower || !hasNumber || !hasSpecial) {
+      return sendJson(res, 400, { success: false, error: 'Password must include uppercase, lowercase, numbers, and special characters.' }, req);
+    }
+
+    const authorizedUsers = getAuthorizedUsers(db);
+    const currentUser = authorizedUsers.find(u => u.username === authenticatedSession.user.username);
+
+    if (!currentUser || !currentUser.passwordHash || !currentUser.salt) {
+      return sendJson(res, 404, { success: false, error: 'User not found or unconfigured in practice directory.' }, req);
+    }
+
+    const isValidCurrent = verifyPassword(currentPassword, currentUser.passwordHash, currentUser.salt, currentUser.iterations);
+    if (!isValidCurrent) {
+      return sendJson(res, 401, { success: false, error: 'Incorrect current password.' }, req);
+    }
+
+    setUserPassword(authenticatedSession.user.username, newPassword);
+
+    res.setHeader('Set-Cookie', [
+      'ka_admin_session=',
+      'Path=/',
+      'HttpOnly',
+      'SameSite=Strict',
+      'Max-Age=0'
+    ].join('; '));
+
+    return sendJson(res, 200, {
+      success: true,
+      message: 'Password updated successfully with PBKDF2-SHA512. All existing sessions have been terminated. Please log in with your new password.'
+    }, req);
+  }
+
+  // --- A1. Global Session Revocation Endpoint ---
+  if (method === 'POST' && pathname === '/api/admin/auth/revoke-all') {
+    const epoch = Math.floor(Date.now() / 1000) + 1;
+    db.userRevocationEpochs = db.userRevocationEpochs || {};
+    db.userRevocationEpochs['kavitha'] = epoch;
+    db.userRevocationEpochs['admin'] = epoch;
+    db.sessions = {};
+    writeDb(db);
+
+    res.setHeader('Set-Cookie', [
+      'ka_admin_session=',
+      'Path=/',
+      'HttpOnly',
+      'SameSite=Strict',
+      'Max-Age=0'
+    ].join('; '));
+
+    return sendJson(res, 200, {
+      success: true,
+      message: 'All administrative sessions and tokens across all users have been revoked.'
+    }, req);
   }
 
   // --- A. Enquiries Management ---

@@ -179,6 +179,8 @@ assert(
 console.log('\n--- 5. Stateless Session Tokens & Persistent Revocation ---');
 
 async function testServerSecurity() {
+  const TEST_ENV_PASSWORD = 'TestFixtureEphemeralEnv!2026';
+  process.env.ADMIN_KAVITHA_PASSWORD = TEST_ENV_PASSWORD;
   const server = http.createServer((req, res) => {
     handleApiRequest(req, res);
   });
@@ -209,7 +211,7 @@ async function testServerSecurity() {
         'x-forwarded-host': 'kavithaassociates.com',
         'x-forwarded-proto': 'https'
       },
-      body: JSON.stringify({ username: 'kavitha', password: 'Tirupati@CA2026' })
+      body: JSON.stringify({ username: 'kavitha', password: TEST_ENV_PASSWORD })
     });
     assert(validLogin.status === 200, 'Valid credentials return HTTP 200 OK');
     const loginData = await validLogin.json();

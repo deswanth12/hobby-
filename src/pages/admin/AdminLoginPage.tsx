@@ -40,6 +40,18 @@ export const AdminLoginPage: React.FC = () => {
 
   const isCloud = adminStorage.isCloudConnected();
 
+  const emailInputRef = React.useRef<HTMLInputElement | null>(null);
+
+  // Autofocus preserving mobile usability and screen reader accessibility
+  React.useEffect(() => {
+    const hasFinePointer = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    const isMobileWidth = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (hasFinePointer && !isTouchDevice && !isMobileWidth && emailInputRef.current) {
+      emailInputRef.current.focus({ preventScroll: true });
+    }
+  }, []);
+
   // Redirect target after successful login
   const from = (location.state as { from?: { pathname: string } })?.from?.pathname || ADMIN_ROUTES.root;
 
@@ -82,11 +94,6 @@ export const AdminLoginPage: React.FC = () => {
     }
   };
 
-  const handlePreFill = (user: string, pass: string) => {
-    setUsername(user);
-    setPassword(pass);
-    setError(null);
-  };
 
   return (
     <div className="min-h-screen bg-[#F4F6F4] flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans selection:bg-brand-pale selection:text-brand-primary">
@@ -97,7 +104,7 @@ export const AdminLoginPage: React.FC = () => {
         <div className="mb-6 flex items-center justify-between">
           <Link
             to="/"
-            className="inline-flex items-center text-xs font-semibold text-[#0F3E2E] hover:text-[#C5A059] transition-colors"
+            className="inline-flex items-center text-xs font-semibold text-brand-darkgreen hover:text-brand-brightgold transition-colors"
           >
             <ArrowLeft className="w-4 h-4 mr-1.5" />
             Return to Public Website
@@ -116,23 +123,23 @@ export const AdminLoginPage: React.FC = () => {
 
         {/* Firm Crest & Header */}
         <div className="text-center scroll-reveal">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#0A2F24] border-2 border-[#C5A059] shadow-lg mb-4">
-            <span className="font-serif text-2xl font-bold text-[#C5A059]">KA</span>
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-chambers border-2 border-brand-brightgold shadow-lg mb-4">
+            <span className="font-serif text-2xl font-bold text-brand-brightgold">KA</span>
           </div>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#0A2F24] tracking-normal">
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-brand-chambers tracking-normal">
             Kavitha & Associates
           </h1>
           <p className="text-xs uppercase tracking-widest text-[#5A7368] font-bold mt-1">
-            Practice Management Console
+            Practice Management Console • CA Kavitha Vijay
           </p>
         </div>
 
         {/* Login Box */}
         <div className="mt-8 bg-white py-8 px-6 sm:px-10 shadow-card rounded-2xl border border-gray-200/80 scroll-reveal-scale">
           <div className="flex items-center gap-2 mb-6 pb-4 border-b border-gray-100">
-            <Lock className="w-5 h-5 text-[#0F3E2E]" />
+            <Lock className="w-5 h-5 text-brand-darkgreen" />
             <div>
-              <h2 className="text-base font-bold text-[#0F3E2E]">Authorized Partner Login</h2>
+              <h2 className="text-base font-bold text-brand-darkgreen">Authorized Partner Login</h2>
               <p className="text-xs text-gray-500">Sign in to manage enquiries and published practice data</p>
             </div>
           </div>
@@ -154,6 +161,7 @@ export const AdminLoginPage: React.FC = () => {
                   <User className="w-4 h-4" />
                 </div>
                 <input
+                  ref={emailInputRef}
                   id="username"
                   name="username"
                   type="text"
@@ -162,7 +170,7 @@ export const AdminLoginPage: React.FC = () => {
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="e.g. kavitha or cakavithasrj@gmail.com"
-                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] transition-all bg-gray-50/50"
+                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen transition-colors duration-200 bg-gray-50/50"
                 />
               </div>
             </div>
@@ -175,7 +183,7 @@ export const AdminLoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setShowResetModal(true)}
-                  className="text-xs text-[#0F3E2E] hover:text-gold font-semibold transition-colors"
+                  className="text-xs text-brand-darkgreen hover:text-gold font-semibold transition-colors"
                 >
                   Forgot Password?
                 </button>
@@ -193,7 +201,7 @@ export const AdminLoginPage: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter security password"
-                  className="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] transition-all bg-gray-50/50"
+                  className="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen transition-colors duration-200 bg-gray-50/50"
                 />
                 <button
                   type="button"
@@ -210,46 +218,19 @@ export const AdminLoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-[#0F3E2E] hover:bg-[#0A2F24] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0F3E2E] transition-all disabled:opacity-50"
+                className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-bold text-white bg-brand-darkgreen hover:bg-brand-chambers focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-darkgreen transition-colors duration-200 disabled:opacity-50"
               >
                 {isSubmitting ? 'Authenticating Session...' : 'Enter Practice Dashboard →'}
               </button>
             </div>
           </form>
 
-          {/* Quick Demo Pre-Fill Buttons for Evaluation (Development / QA Mode Only) */}
+          {/* Development Mode Notice (Strict Zero-Credential Display) */}
           {import.meta.env.DEV && (
-            <div className="mt-6 pt-6 border-t border-gray-100">
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-gray-500">
-                  Evaluation Test Credentials (Dev Only):
-                </span>
-                <span className="text-[10px] text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                  Authorized Client Profiles
-                </span>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
-                <button
-                  type="button"
-                  onClick={() => handlePreFill('kavitha', 'Tirupati@CA2026')}
-                  className="min-h-[44px] p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
-                >
-                  <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
-                    CA Kavitha Vijay
-                  </div>
-                  <div className="text-[10px] text-gray-500 font-mono mt-0.5">kavitha</div>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handlePreFill('admin', 'KavithaAssoc#2026')}
-                  className="min-h-[44px] p-2.5 rounded-lg border border-gray-200 hover:border-[#0F3E2E] hover:bg-emerald-50/50 text-left transition-all group"
-                >
-                  <div className="text-xs font-bold text-[#0F3E2E] group-hover:text-emerald-900">
-                    Practice Admin
-                  </div>
-                  <div className="text-[10px] text-gray-500 font-mono mt-0.5">admin</div>
-                </button>
-              </div>
+            <div className="mt-6 pt-6 border-t border-gray-100 text-center">
+              <span className="text-[11px] font-medium text-gray-400">
+                Development Mode: Practice authentication verified server-side.
+              </span>
             </div>
           )}
         </div>
@@ -268,8 +249,8 @@ export const AdminLoginPage: React.FC = () => {
         <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-gray-200">
             <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-100">
-              <Mail className="w-5 h-5 text-[#0F3E2E]" />
-              <h3 className="text-base font-bold text-[#0F3E2E]">Password Recovery</h3>
+              <Mail className="w-5 h-5 text-brand-darkgreen" />
+              <h3 className="text-base font-bold text-brand-darkgreen">Password Recovery</h3>
             </div>
 
             <p className="text-xs text-gray-600 leading-relaxed mb-4">
@@ -302,7 +283,7 @@ export const AdminLoginPage: React.FC = () => {
                   value={resetEmail}
                   onChange={(e) => setResetEmail(e.target.value)}
                   placeholder="e.g. cakavithasrj@gmail.com"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E]"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen"
                 />
               </div>
 
@@ -320,7 +301,7 @@ export const AdminLoginPage: React.FC = () => {
                 <button
                   type="submit"
                   disabled={resetStatus.loading}
-                  className="px-5 py-2 text-xs font-bold text-white bg-[#0F3E2E] hover:bg-[#0A2F24] rounded-xl transition-all disabled:opacity-50"
+                  className="px-5 py-2 text-xs font-bold text-white bg-brand-darkgreen hover:bg-brand-chambers rounded-xl transition-colors duration-200 disabled:opacity-50"
                 >
                   {resetStatus.loading ? 'Dispatching...' : 'Send Recovery Link'}
                 </button>

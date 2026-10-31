@@ -99,7 +99,7 @@ async function runTests() {
   // Test 9: Valid Authentication for Managing Partner
   const goodLogin = await request('POST', '/api/auth/login', {
     username: 'kavitha',
-    password: 'Tirupati@CA2026'
+    password: process.env.ADMIN_KAVITHA_PASSWORD || 'TestFixtureEphemeralEnv!2026'
   });
   assert('Authorized login succeeds and returns session token', goodLogin.status === 200 && goodLogin.data.session?.token);
   const token = goodLogin.data.session?.token;

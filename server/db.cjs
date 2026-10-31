@@ -171,33 +171,118 @@ function writeDb(data) {
   }
 }
 
-// Hash password with salt
-const DEFAULT_SALT = process.env.SESSION_SECRET || 'ka_salt_tirupati_ca';
+// Cryptographically secure password hashing using PBKDF2-HMAC-SHA512 with unique per-credential salt
+const PBKDF2_ITERATIONS = 100000;
+const PBKDF2_KEY_LEN = 64;
+const PBKDF2_DIGEST = 'sha512';
 
-function hashPassword(password, salt = DEFAULT_SALT) {
-  return crypto.createHmac('sha256', salt).update(password).digest('hex');
+function generateSalt() {
+  return crypto.randomBytes(16).toString('hex');
 }
 
-const AUTHORIZED_USERS = [
-  {
-    username: 'kavitha',
-    passwordHash: hashPassword(process.env.ADMIN_KAVITHA_PASSWORD || 'Tirupati@CA2026', DEFAULT_SALT),
-    displayName: 'CA Kavitha Vijay',
-    role: 'Managing Partner'
-  },
-  {
-    username: 'admin',
-    passwordHash: hashPassword(process.env.ADMIN_PASSWORD || 'KavithaAssoc#2026', DEFAULT_SALT),
-    displayName: 'Practice Administrator',
-    role: 'Practice Administrator'
+function hashPassword(password, salt, iterations = PBKDF2_ITERATIONS) {
+  return crypto.pbkdf2Sync(password, salt, iterations, PBKDF2_KEY_LEN, PBKDF2_DIGEST).toString('hex');
+}
+
+function verifyPassword(candidatePassword, storedHash, salt, iterations = PBKDF2_ITERATIONS) {
+  if (!candidatePassword || !storedHash || !salt) return false;
+  try {
+    const candidateHash = hashPassword(candidatePassword, salt, iterations);
+    const candidateBuf = Buffer.from(candidateHash, 'hex');
+    const expectedBuf = Buffer.from(storedHash, 'hex');
+    if (candidateBuf.length !== expectedBuf.length) return false;
+    return crypto.timingSafeEqual(candidateBuf, expectedBuf);
+  } catch {
+    return false;
   }
-];
+}
+
+// Session signing secret (server-side only, rotated per process if missing in environment)
+const SESSION_SECRET = process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex');
+
+// Process-stable unique salts for environment variable credentials
+const PROCESS_KAVITHA_SALT = crypto.randomBytes(16).toString('hex');
+const PROCESS_ADMIN_SALT = crypto.randomBytes(16).toString('hex');
+
+function getAuthorizedUsers(db) {
+  const currentDb = db || readDb();
+  const dbUsers = currentDb && currentDb.userCredentials;
+
+  const kavithaEnvPass = process.env.ADMIN_KAVITHA_PASSWORD;
+  const adminEnvPass = process.env.ADMIN_PASSWORD;
+
+  // 1. Managing Partner Account
+  let kavithaHash = dbUsers?.kavitha?.passwordHash || null;
+  let kavithaSalt = dbUsers?.kavitha?.salt || null;
+  let kavithaIterations = dbUsers?.kavitha?.iterations || PBKDF2_ITERATIONS;
+
+  if (!kavithaHash && kavithaEnvPass) {
+    kavithaSalt = PROCESS_KAVITHA_SALT;
+    kavithaHash = hashPassword(kavithaEnvPass, kavithaSalt, kavithaIterations);
+  }
+
+  // 2. Practice Administrator Account
+  let adminHash = dbUsers?.admin?.passwordHash || null;
+  let adminSalt = dbUsers?.admin?.salt || null;
+  let adminIterations = dbUsers?.admin?.iterations || PBKDF2_ITERATIONS;
+
+  if (!adminHash && adminEnvPass) {
+    adminSalt = PROCESS_ADMIN_SALT;
+    adminHash = hashPassword(adminEnvPass, adminSalt, adminIterations);
+  }
+
+  return [
+    {
+      username: 'kavitha',
+      passwordHash: kavithaHash,
+      salt: kavithaSalt,
+      iterations: kavithaIterations,
+      isConfigured: Boolean(kavithaHash),
+      displayName: 'CA Kavitha Vijay',
+      role: 'Managing Partner'
+    },
+    {
+      username: 'admin',
+      passwordHash: adminHash,
+      salt: adminSalt,
+      iterations: adminIterations,
+      isConfigured: Boolean(adminHash),
+      displayName: 'Practice Administrator',
+      role: 'Practice Administrator'
+    }
+  ];
+}
+
+const AUTHORIZED_USERS = getAuthorizedUsers();
+
+function setUserPassword(username, newPassword) {
+  const db = readDb();
+  db.userCredentials = db.userCredentials || {};
+  const salt = generateSalt();
+  const iterations = PBKDF2_ITERATIONS;
+  db.userCredentials[username] = {
+    salt,
+    passwordHash: hashPassword(newPassword, salt, iterations),
+    iterations,
+    algorithm: 'pbkdf2-sha512',
+    updatedAt: new Date().toISOString()
+  };
+  // Immediately invalidate all existing sessions and tokens for this user
+  db.userRevocationEpochs = db.userRevocationEpochs || {};
+  db.userRevocationEpochs[username] = Math.floor(Date.now() / 1000);
+  writeDb(db);
+  return true;
+}
 
 module.exports = {
   readDb,
   writeDb,
   BASELINE_DATA,
   AUTHORIZED_USERS,
+  getAuthorizedUsers,
+  setUserPassword,
   hashPassword,
-  SESSION_SECRET: DEFAULT_SALT
+  verifyPassword,
+  generateSalt,
+  SESSION_SECRET
 };

@@ -707,62 +707,15 @@ export const adminStorage = {
     };
   },
 
-  authenticate(username: string, password: string): { success: boolean; error?: string; session?: AdminSession } {
-    // In production environments, client-side fallback authentication is disabled to prevent credential leakage in bundle
-    if (!import.meta.env.DEV) {
-      return {
-        success: false,
-        error: 'Direct client-side authentication is disabled in production. Authentication must be verified server-side.'
-      };
-    }
-
-    const cleanUser = username.trim().toLowerCase();
-    const cleanPass = password.trim();
-
-    const validCredentials = [
-      {
-        user: 'kavitha',
-        pass: 'Tirupati@CA2026',
-        displayName: 'CA Kavitha Vijay',
-        role: 'Managing Partner' as const
-      },
-      {
-        user: 'admin',
-        pass: 'KavithaAssoc#2026',
-        displayName: 'Practice Administrator',
-        role: 'Practice Administrator' as const
-      }
-    ];
-
-    const match = validCredentials.find(c => c.user === cleanUser && c.pass === cleanPass);
-
-    if (!match) {
-      return { 
-        success: false, 
-        error: 'Invalid credentials. Please verify your username and security password.' 
-      };
-    }
-
-    const session: AdminSession = {
-      token: `sess_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
-      user: {
-        username: match.user,
-        displayName: match.displayName,
-        role: match.role,
-        lastLogin: new Date().toISOString()
-      },
-      expiresAt: Date.now() + 60 * 60 * 1000
+  authenticate(_username: string, _password: string): { success: boolean; error?: string; session?: AdminSession } {
+    // Direct client-side authentication is strictly disabled across all environments to prevent credential leakage in bundle
+    return {
+      success: false,
+      error: 'Direct client-side authentication is disabled. Authentication must be verified securely via server-side endpoints.'
     };
-
-    try {
-      sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
-      return { success: true, session };
-    } catch {
-      return { success: false, error: 'Failed to initialize session storage.' };
-    }
   },
 
-  createDevSession(): AdminSession | null {
+    createDevSession(): AdminSession | null {
     if (!import.meta.env.DEV) return null;
     const session: AdminSession = {
       token: `sess_dev_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`,
