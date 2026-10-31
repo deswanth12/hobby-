@@ -409,7 +409,21 @@ async function handleApiRequest(req, res) {
 
     const authorizedUsers = getAuthorizedUsers(db);
     const matchUser = authorizedUsers.find(u => {
-      return (u.username === username || u.username === username.split('@')[0]);
+      const uName = u.username.toLowerCase();
+            const input = username.toLowerCase();
+            const inputPrefix = input.split('@')[0];
+            if (uName === 'kavitha') {
+              return (
+                input === 'kavitha' || 
+                inputPrefix === 'kavitha' || 
+                input === 'cakavithasrj@gmail.com' || 
+                inputPrefix === 'cakavithasrj'
+              );
+            }
+            if (uName === 'admin') {
+              return input === 'admin' || inputPrefix === 'admin';
+            }
+            return uName === input || uName === inputPrefix;
     });
 
     if (!matchUser) {
