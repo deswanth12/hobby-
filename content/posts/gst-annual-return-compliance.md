@@ -135,3 +135,7 @@ To ensure zero post-filing audit queries, taxpayers should execute the following
 ## Regulatory Compliance & Ethics Disclosure
 
 *This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+
+---
+
+*To resolve GSTR-2B vs. 3B reconciliation mismatches, ITC disallowances, or departmental notices under Form DRC-01A, review our [GST Services Spectrum](/services#gst) or [connect directly with our practice chambers](/contact).*

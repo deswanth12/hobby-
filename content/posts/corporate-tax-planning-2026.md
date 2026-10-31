@@ -71,3 +71,7 @@ To avert mandatory compensatory interest under **Section 234B** and **Section 23
 ## Regulatory Compliance & Ethics Disclosure
 
 *This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+
+---
+
+*For corporate tax planning, advance tax forecasting, or faceless assessment defense, explore our verified [Income Tax Services](/services#income-tax) or [schedule a confidential consultation](/contact) with CA Kavitha Vijay at our Tirupati practice chambers.*

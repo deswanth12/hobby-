@@ -1,5 +1,10 @@
 import { useEffect } from 'react';
 
+export interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
 export interface SEOProps {
   title: string;
   description: string;
@@ -13,7 +18,8 @@ export interface SEOProps {
     dateModified?: string;
     tags?: string[];
   };
-  jsonLd?: Record<string, any>;
+  jsonLd?: Record<string, any> | Array<Record<string, any>>;
+  breadcrumbs?: BreadcrumbItem[];
 }
 
 export const SEOHead = ({
@@ -25,8 +31,11 @@ export const SEOHead = ({
   image,
   article,
   jsonLd,
+  breadcrumbs,
 }: SEOProps) => {
   useEffect(() => {
+    const productionDomain = 'https://kavithaassociates.com';
+
     // 1. Update Document Title
     const fullTitle = title.includes('Kavitha & Associates')
       ? title
@@ -61,7 +70,6 @@ export const SEOHead = ({
     }
 
     // 4. Update Open Graph Meta Tags (og:title, og:description, og:type, og:url, og:image)
-    const productionDomain = 'https://kavithaassociates.com';
     const currentUrl = canonicalPath ? `${productionDomain}${canonicalPath}` : window.location.href;
 
     const ogTitle = getOrCreateMeta('property', 'og:title');
@@ -82,9 +90,11 @@ export const SEOHead = ({
       ogImageMeta.setAttribute('content', fullImageUrl);
     }
 
-    // 5. Update Canonical Tag if path specified
-    if (canonicalPath) {
-      let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    // 5. Update Canonical Tag
+    let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (noIndex) {
+      if (canonical) canonical.remove();
+    } else if (canonicalPath) {
       if (!canonical) {
         canonical = document.createElement('link');
         canonical.setAttribute('rel', 'canonical');
@@ -94,13 +104,19 @@ export const SEOHead = ({
     }
 
     // 6. Schema.org JSON-LD Structured Data Injection
-    // Inject <script type="application/ld+json" id="seo-jsonld"> rendering Schema.org BlogPosting
     let scriptTag = document.getElementById('seo-jsonld') as HTMLScriptElement | null;
 
-    let structuredData: Record<string, any> | null = jsonLd || null;
+    const schemasToRender: Array<Record<string, any>> = [];
 
-    if (!structuredData && ogType === 'article') {
-      structuredData = {
+    // Custom or article structured data
+    if (jsonLd) {
+      if (Array.isArray(jsonLd)) {
+        schemasToRender.push(...jsonLd);
+      } else {
+        schemasToRender.push(jsonLd);
+      }
+    } else if (ogType === 'article') {
+      schemasToRender.push({
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         headline: title,
@@ -115,7 +131,7 @@ export const SEOHead = ({
           name: 'Kavitha & Associates',
           logo: {
             '@type': 'ImageObject',
-            url: `${productionDomain}/favicon.svg`,
+            url: `${productionDomain}/favicon-512x512.png`,
           },
         },
         datePublished: article?.datePublished,
@@ -126,21 +142,50 @@ export const SEOHead = ({
         },
         ...(image ? { image: image.startsWith('http') ? image : `${productionDomain}${image}` } : {}),
         ...(article?.tags ? { keywords: article.tags.join(', ') } : {}),
-      };
+      });
     }
 
-    if (structuredData) {
+    // BreadcrumbList Structured Data
+    if (breadcrumbs && breadcrumbs.length > 0) {
+      schemasToRender.push({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: breadcrumbs.map((crumb, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: crumb.name,
+          item: crumb.path.startsWith('http') ? crumb.path : `${productionDomain}${crumb.path}`,
+        })),
+      });
+    }
+
+    if (schemasToRender.length === 1) {
       if (!scriptTag) {
         scriptTag = document.createElement('script');
         scriptTag.type = 'application/ld+json';
         scriptTag.id = 'seo-jsonld';
         document.head.appendChild(scriptTag);
       }
-      scriptTag.textContent = JSON.stringify(structuredData, null, 2);
+      scriptTag.textContent = JSON.stringify(schemasToRender[0], null, 2);
+    } else if (schemasToRender.length > 1) {
+      if (!scriptTag) {
+        scriptTag = document.createElement('script');
+        scriptTag.type = 'application/ld+json';
+        scriptTag.id = 'seo-jsonld';
+        document.head.appendChild(scriptTag);
+      }
+      const graphData = {
+        '@context': 'https://schema.org',
+        '@graph': schemasToRender.map((schema) => {
+          const { '@context': _ctx, ...rest } = schema;
+          return rest;
+        }),
+      };
+      scriptTag.textContent = JSON.stringify(graphData, null, 2);
     } else if (scriptTag) {
       scriptTag.remove();
     }
-  }, [title, description, canonicalPath, noIndex, ogType, image, article, jsonLd]);
+  }, [title, description, canonicalPath, noIndex, ogType, image, article, jsonLd, breadcrumbs]);
 
   return null;
 };

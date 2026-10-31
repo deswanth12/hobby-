@@ -103,9 +103,66 @@ export const HomePage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal">
       <SEOHead
-        title="Chartered Accountants & Cost Accountants | Tirupati & Pan India"
-        description="Independent Chartered Accountancy practice led by CA Kavitha Vijay (ICAI Mem. 252985, B.Com, CA, CMA AIR 49). Ex-Deloitte Big 4 & Ford Motor Company auditor. Professional support across Statutory Audit, Income Tax, GST, and Corporate Governance."
+        title="Chartered Accountant in Tirupati | CA Kavitha & Associates"
+        description="Leading Chartered Accountant in Tirupati. CA Kavitha & Associates provides expert Statutory Audit, Income Tax Return filing, GST, ROC compliance & CFO advisory."
         canonicalPath="/"
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'AccountingService',
+            name: 'Kavitha & Associates',
+            legalName: 'Kavitha & Associates Chartered Accountants',
+            url: 'https://kavithaassociates.com/',
+            logo: 'https://kavithaassociates.com/favicon-512x512.png',
+            image: 'https://kavithaassociates.com/favicon-512x512.png',
+            telephone: '+919626350900',
+            email: 'cakavithasrj@gmail.com',
+            priceRange: '₹₹',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda',
+              addressLocality: 'Tirupati',
+              addressRegion: 'Andhra Pradesh',
+              postalCode: '517501',
+              addressCountry: 'IN'
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 13.6192242,
+              longitude: 79.418046
+            },
+            hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
+            openingHoursSpecification: {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+              opens: '09:30',
+              closes: '18:30'
+            },
+            founder: {
+              '@type': 'Person',
+              name: 'CA Kavitha Vijay',
+              jobTitle: 'Practicing Chartered Accountant & Cost Accountant',
+              honorificPrefix: 'CA',
+              description: 'B.Com, CA, CMA (AIR 49) | ICAI Mem. 252985'
+            },
+            areaServed: ['Tirupati', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'India'],
+            knowsAbout: [
+              'Statutory Audit',
+              'Internal Audit',
+              'Income Tax Return Filing',
+              'GST Compliance & Litigation',
+              'ROC & MCA Filings',
+              'RERA Certifications',
+              'Virtual CFO Services'
+            ]
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Kavitha & Associates',
+            url: 'https://kavithaassociates.com/'
+          }
+        ]}
       />
 
       {/* =========================================================================

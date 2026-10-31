@@ -84,8 +84,8 @@ export const NotFoundPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal min-h-[90vh] py-14 sm:py-20 border-b border-brand-border">
       <SEOHead
-        title="404 — Page Not Located in Practice Registry | Kavitha & Associates"
-        description="The requested document could not be located in the Kavitha & Associates directory. Explore our verified practice areas or contact our chambers directly."
+        title="404 — Page Not Found | Kavitha & Associates"
+        description="The requested page could not be located in our practice registry. Browse our verified practice areas or contact our Tirupati chambers."
         noIndex={true}
       />
 

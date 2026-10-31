@@ -20,9 +20,35 @@ export const ServicesPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
-        title="Comprehensive Accounting, Audit & Tax Services | Kavitha & Associates"
-        description="Explore the full spectrum of Chartered Accountancy services: Statutory Audit, Income Tax Return filing, GST compliance, ROC corporate secretarial, and RERA certifications in Tirupati."
+        title="Accounting & Tax Services in Tirupati | Kavitha & Associates"
+        description="Comprehensive CA services in Tirupati: Statutory Audit, Income Tax Return (ITR) filing, GST compliance, Company Incorporation, ROC filings & Virtual CFO advisory."
         canonicalPath="/services"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' }
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Chartered Accountancy & Advisory Services',
+          provider: {
+            '@type': 'AccountingService',
+            name: 'Kavitha & Associates',
+            url: 'https://kavithaassociates.com/'
+          },
+          areaServed: 'Tirupati, Andhra Pradesh, India',
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog',
+            name: 'CA Services Spectrum',
+            itemListElement: [
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Income Tax Return (ITR) Filing & Scrutiny Defense' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'GST Registration, Monthly Returns & ITC Reconciliation' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Company Incorporation & MCA / ROC Annual Filings' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'RERA Compliance & Chartered Accountant Certification' } },
+              { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Virtual CFO & Strategic Financial Governance' } }
+            ]
+          }
+        }}
       />
 
       {/* =========================================================================

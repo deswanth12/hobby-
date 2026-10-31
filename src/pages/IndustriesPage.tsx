@@ -169,9 +169,13 @@ export const IndustriesPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
-        title="Industry Expertise | Startups, MSMEs, Manufacturing, Healthcare"
-        description="Sector-specific Chartered Accountancy expertise across 10 commercial sectors: Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, Education, and NGOs."
+        title="Industry Accounting & Tax Solutions in Tirupati | Kavitha & Associates"
+        description="Sector-specific Chartered Accountancy expertise in Tirupati for Startups, MSMEs, Manufacturing, Real Estate, Retail, Healthcare, and Education sectors."
         canonicalPath="/industries"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Industries', path: '/industries' }
+        ]}
       />
 
       {/* =========================================================================

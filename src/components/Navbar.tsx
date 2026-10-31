@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Mail, Menu, X, ChevronDown, ShieldCheck, MapPin, ChevronRight } from 'lucide-react';
@@ -178,10 +178,10 @@ export const Navbar: React.FC = () => {
         {/* Typographic Brand Mark & Monogram Badge */}
         <Link
           to="/"
-          className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-1 btn-tactile"
+          className="flex items-center gap-2 xl:gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-1 btn-tactile shrink-0"
         >
           {/* Refined Monogram Badge with Master Vector Emblem */}
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 xl:w-12 xl:h-12 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
             <img
               src="/brand/ka-monogram-flat.svg"
               alt="Kavitha &amp; Associates Official Practice Monogram"
@@ -190,7 +190,7 @@ export const Navbar: React.FC = () => {
             <span className="sr-only font-serif font-bold text-xl tracking-wider text-brand-gold">KA</span>
           </div>
           <div>
-            <span className="block font-serif text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-snug group-hover:text-brand-deep transition-colors">
+            <span className="block font-serif text-lg sm:text-xl xl:text-2xl font-bold tracking-normal text-brand-forest leading-snug group-hover:text-brand-deep transition-colors whitespace-nowrap">
               Kavitha & Associates
             </span>
             <span className="block text-xs font-semibold text-gold-dark mt-0.5">
@@ -200,7 +200,7 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Restrained Desktop Navigation Links */}
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3.5 2xl:gap-5">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-3 2xl:gap-5">
           <Link
             to="/"
             className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
@@ -328,7 +328,7 @@ export const Navbar: React.FC = () => {
             href={FIRM_DATA.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-50/80 hover:bg-emerald-100 text-emerald-900 border border-emerald-600/30 hover:border-emerald-600/60 shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-[background-color,border-color,box-shadow] duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
+            className="hidden xl:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-50/80 hover:bg-emerald-100 text-emerald-900 border border-emerald-600/30 hover:border-emerald-600/60 shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-[background-color,border-color,box-shadow] duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
             title="Chat directly with chambers on WhatsApp"
           >
             <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
@@ -342,9 +342,9 @@ export const Navbar: React.FC = () => {
           {/* Primary Consultation CTA */}
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 duration-200 btn-tactile min-h-[44px] group"
+            className="inline-flex items-center gap-1.5 py-2 px-3 sm:px-4 xl:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 btn-tactile min-h-[44px] group"
           >
-            <span>Schedule Consultation</span>
+            <span><span className="hidden xl:inline">Schedule </span>Consultation</span>
             <ChevronRight className="w-3.5 h-3.5 text-brand-gold transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" aria-hidden="true" />
           </Link>
         </div>

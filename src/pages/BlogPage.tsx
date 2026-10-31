@@ -50,9 +50,24 @@ export const BlogPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory text-brand-charcoal min-h-screen page-reveal">
       <SEOHead
-        title="Regulatory Insights & Technical Commentary | Kavitha & Associates"
-        description="Authoritative tax, audit, GST, and corporate governance commentary prepared by CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49). Factual analysis for growing enterprises."
+        title="Tax & Regulatory Insights | CA Kavitha & Associates Tirupati"
+        description="Authoritative Indian direct tax, GST compliance, and statutory audit insights by CA Kavitha Vijay (ICAI Mem. 252985, CMA AIR 49) for businesses and founders."
         canonicalPath="/blog"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Regulatory Insights', path: '/blog' }
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'Kavitha & Associates Regulatory Insights',
+          url: 'https://kavithaassociates.com/blog',
+          description: 'Technical commentary on Direct Taxation, GST Compliance, Corporate Governance, and ICAI Auditing Standards.',
+          publisher: {
+            '@type': 'Organization',
+            name: 'Kavitha & Associates'
+          }
+        }}
       />
 
       {/* =========================================================================

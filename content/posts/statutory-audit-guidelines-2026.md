@@ -133,3 +133,7 @@ A foundational principle of statutory assurance is the separation of responsibil
 ## Regulatory Compliance & Ethics Disclosure
 
 *This technical commentary is prepared by **CA Kavitha Vijay (ICAI Mem. 252985 | B.Com, CA, CMA AIR 49)**, Managing Partner at **Kavitha & Associates**, Chartered Accountants, Tirupati, Andhra Pradesh. This publication is provided strictly for educational and statutory awareness purposes in compliance with the **Code of Ethics** issued by the **Institute of Chartered Accountants of India (ICAI)**. Nothing contained herein constitutes professional solicitation or commercial advertisement.*
+
+---
+
+*For comprehensive statutory, internal, or tax audits conducted strictly under ICAI Auditing Standards, visit our [Audit & Assurance Practice](/services/audit-assurance) or [request an audit engagement consultation](/contact).*

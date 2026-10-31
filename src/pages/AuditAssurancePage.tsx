@@ -23,9 +23,27 @@ export const AuditAssurancePage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
-        title="Audit & Assurance Practice | Statutory, Tax & Internal Audits | Kavitha & Associates"
-        description="Dedicated Audit & Assurance practice: Statutory Audits under Companies Act, Tax Audits under Sec 44AB, Internal Audits, Concurrent Audits, and Due Diligence in Tirupati, AP."
+        title="Statutory Audit in Tirupati | Tax & Internal Audits | Kavitha & Associates"
+        description="Independent Statutory Audit under Companies Act 2013, Tax Audit under Sec 44AB, Internal Audit, Concurrent Audit & Stock Verification in Tirupati, AP."
         canonicalPath="/services/audit-assurance"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Services', path: '/services' },
+          { name: 'Audit & Assurance', path: '/services/audit-assurance' }
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: 'Statutory, Tax & Internal Audit Services',
+          serviceType: 'Audit and Assurance',
+          provider: {
+            '@type': 'AccountingService',
+            name: 'Kavitha & Associates',
+            url: 'https://kavithaassociates.com/'
+          },
+          areaServed: 'Tirupati, Andhra Pradesh, India',
+          description: 'Comprehensive audit practice supervised by CA Kavitha Vijay, ensuring independent statutory opinions, IFC evaluations, and Sec 44AB tax audit certifications.'
+        }}
       />
 
       {/* =========================================================================

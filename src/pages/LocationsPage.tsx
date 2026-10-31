@@ -48,9 +48,32 @@ export const LocationsPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
-        title="Service Footprint & Regional Presence | Tirupati & South India"
-        description="Principal practice chambers located in Tirupati, Andhra Pradesh, with active regional client coverage across Chennai, Bengaluru, Hyderabad, and Coimbatore."
+        title="CA Chambers in Tirupati & Regional Client Coverage | Kavitha & Associates"
+        description="Principal practice chambers located at Bairagi Patteda, Tirupati, Andhra Pradesh, with verified regional client coverage across Chennai, Bengaluru, and Hyderabad."
         canonicalPath="/locations"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Locations', path: '/locations' }
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Place',
+          name: 'Kavitha & Associates Chambers',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda',
+            addressLocality: 'Tirupati',
+            addressRegion: 'Andhra Pradesh',
+            postalCode: '517501',
+            addressCountry: 'IN'
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 13.6192242,
+            longitude: 79.418046
+          },
+          hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6'
+        }}
       />
 
       {/* =========================================================================

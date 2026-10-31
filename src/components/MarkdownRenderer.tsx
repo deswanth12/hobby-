@@ -3,6 +3,7 @@ import { isSafeUrl, sanitizeMarkdown } from '../lib/markdown';
 
 interface MarkdownRendererProps {
   content: string;
+  demoteHeadings?: boolean;
 }
 
 /**
@@ -10,7 +11,7 @@ interface MarkdownRendererProps {
  * Renders structured semantic HTML without raw innerHTML evaluation,
  * ensuring complete mathematical immunity against stored XSS and arbitrary script execution.
  */
-export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
+export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content, demoteHeadings = false }) => {
   if (!content) return null;
 
   const sanitized = sanitizeMarkdown(content);
@@ -116,11 +117,20 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
 
     // Headings (H1 - H6)
     if (trimmed.startsWith('# ')) {
-      elements.push(
-        <h1 key={`h1-${index++}`} className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary mt-10 mb-4 leading-tight">
-          {renderFormattedInline(trimmed.slice(2))}
-        </h1>
-      );
+      const headingText = renderFormattedInline(trimmed.slice(2));
+      if (demoteHeadings) {
+        elements.push(
+          <h2 key={`h2-${index++}`} className="font-serif text-2xl sm:text-3xl font-bold text-brand-primary mt-8 mb-3.5 border-b border-border/80 pb-2">
+            {headingText}
+          </h2>
+        );
+      } else {
+        elements.push(
+          <h1 key={`h1-${index++}`} className="font-serif text-3xl sm:text-4xl font-bold text-brand-primary mt-10 mb-4 leading-tight">
+            {headingText}
+          </h1>
+        );
+      }
       i++;
       continue;
     }

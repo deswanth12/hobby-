@@ -81,6 +81,11 @@ export const BlogArticlePage: React.FC = () => {
           datePublished: post.date,
           tags: post.tags,
         }}
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Regulatory Insights', path: '/blog' },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ]}
       />
 
       {/* =========================================================================
@@ -271,7 +276,7 @@ export const BlogArticlePage: React.FC = () => {
 
           {/* Render Markdown Article Body */}
           <article className="bg-white rounded-2xl border border-border p-6 sm:p-12 shadow-card font-editorial-body text-charcoal scroll-reveal">
-            <MarkdownRenderer content={post.content} />
+            <MarkdownRenderer content={post.content} demoteHeadings={true} />
           </article>
 
           {/* ICAI Professional Standards Notice & Regulatory Ethics Disclaimer */}

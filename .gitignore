@@ -30,8 +30,3 @@ dist-ssr
 reports/edge-profile*
 reports/lighthouse-*.html
 reports/lighthouse-*.json
-
-data/backups/
-reports/final-audit/
-reports/lighthouse/
-reports/polish/

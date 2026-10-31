@@ -9,9 +9,41 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal min-h-screen">
       <SEOHead
-        title="Contact CA Kavitha Vijay | Tirupati Practice Chambers"
-        description="Schedule a consultation with CA Kavitha Vijay (ICAI Mem. 252985). Call +91 96263 50900 or connect via official WhatsApp for audit, corporate advisory, and tax compliance inquiries."
+        title="Contact Chartered Accountant in Tirupati | Kavitha & Associates"
+        description="Schedule a consultation with CA Kavitha Vijay in Tirupati. Call +91 96263 50900 or WhatsApp for statutory audit, income tax filing, and GST advisory inquiries."
         canonicalPath="/contact"
+        breadcrumbs={[
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' }
+        ]}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'AccountingService',
+          name: 'Kavitha & Associates',
+          url: 'https://kavithaassociates.com/contact',
+          telephone: '+919626350900',
+          email: 'cakavithasrj@gmail.com',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda',
+            addressLocality: 'Tirupati',
+            addressRegion: 'Andhra Pradesh',
+            postalCode: '517501',
+            addressCountry: 'IN'
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 13.6192242,
+            longitude: 79.418046
+          },
+          hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
+          openingHoursSpecification: {
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+            opens: '09:30',
+            closes: '18:30'
+          }
+        }}
       />
       {/* Header Banner */}
       <section className="bg-brand-surface py-20 sm:py-24 border-b border-brand-border">
