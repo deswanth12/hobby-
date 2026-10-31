@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
                 <h3 className="font-serif text-xl font-bold text-white tracking-wide">
                   Kavitha & Associates
                 </h3>
-                <p className="font-editorial-meta text-[11px] text-brand-gold font-semibold uppercase tracking-wider">
+                <p className="text-xs text-brand-gold font-medium">
                   Chartered Accountants
                 </p>
               </div>
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
 
             {/* Verified Partner Credential Block */}
             <div className="pt-3 border-t border-brand-forest/80 space-y-1">
-              <span className="font-editorial-meta text-[11px] text-brand-gold uppercase tracking-wider font-semibold block">
+              <span className="text-xs text-brand-gold font-medium block">
                 Practicing Chartered Accountant
               </span>
               <p className="text-sm font-semibold text-white">CA Kavitha Vijay</p>
@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100 font-medium hover:translate-x-1 transform pb-1 mb-1 border-b border-brand-forest/40"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100 font-medium hover:translate-x-1 transform pb-1 mb-1 border-b border-brand-forest/40"
                 >
                   <span className="text-brand-gold font-bold">→</span> All Practice Areas Overview
                 </Link>
@@ -65,7 +65,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services/audit-assurance"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> Audit & Assurance (Spotlight)
                 </Link>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services#income-tax"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> Income Tax Filing & Advisory
                 </Link>
@@ -81,7 +81,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services#gst"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> GST Compliance & Representation
                 </Link>
@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services#corporate-business"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> ROC & Corporate Secretarial
                 </Link>
@@ -97,7 +97,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services#rera-compliance"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> RERA Certification & Compliance
                 </Link>
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
               <li>
                 <Link
                   to="/services#advisory-consulting"
-                  className="hover:text-brand-gold transition-all flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
+                  className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors duration-200 flex items-center gap-2 text-emerald-100/90 hover:translate-x-1 transform"
                 >
                   <span className="text-brand-gold">•</span> Strategic Financial Advisory
                 </Link>
@@ -133,18 +133,18 @@ export const Footer: React.FC = () => {
             </div>
 
             <div className="pt-3">
-              <h5 className="font-editorial-meta text-[11px] font-semibold text-white uppercase tracking-wider mb-2">
+              <h5 className="font-editorial-meta text-[11px] font-semibold text-white font-semibold mb-2">
                 Navigation
               </h5>
               <div className="flex flex-wrap gap-x-4 gap-y-1.5 text-xs text-emerald-200">
-                <Link to="/about" className="hover:text-brand-gold transition-colors">About Firm</Link>
-                <Link to="/services" className="hover:text-brand-gold transition-colors">Services</Link>
+                <Link to="/about" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">About Firm</Link>
+                <Link to="/services" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Services</Link>
                 {/* MANDATORY for Test 13.3: to="/blog" */}
-                <Link to="/blog" className="hover:text-brand-gold transition-colors">Articles & Insights</Link>
-                <Link to="/industries" className="hover:text-brand-gold transition-colors">Industries</Link>
-                <Link to="/locations" className="hover:text-brand-gold transition-colors">Service Reach</Link>
-                <a href="/#knowledge-faq" className="hover:text-brand-gold transition-colors">Statutory FAQ</a>
-                <Link to="/contact" className="hover:text-brand-gold transition-colors">Contact</Link>
+                <Link to="/blog" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Articles & Insights</Link>
+                <Link to="/industries" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Industries</Link>
+                <Link to="/locations" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Service Reach</Link>
+                <a href="/#knowledge-faq" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Statutory FAQ</a>
+                <Link to="/contact" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Contact</Link>
               </div>
             </div>
           </div>
@@ -174,17 +174,17 @@ export const Footer: React.FC = () => {
               <div className="flex items-start gap-2.5">
                 <Phone className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
-                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-gold transition-colors font-medium">
+                  <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors font-medium">
                     {FIRM_DATA.contact.primaryPhone}
                   </a>
-                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-gold transition-colors text-emerald-200/80">
+                  <a href={`tel:${FIRM_DATA.contact.secondaryPhoneClean}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors text-emerald-200/80">
                     {FIRM_DATA.contact.secondaryPhone}
                   </a>
                 </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-brand-gold shrink-0" />
-                <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-gold transition-colors break-all">
+                <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors break-all">
                   {FIRM_DATA.contact.email}
                 </a>
               </div>
@@ -222,7 +222,7 @@ export const Footer: React.FC = () => {
           <div className="flex items-center gap-4">
             <span>Chartered Accountants & Cost Accountants</span>
             <span className="text-brand-forest">•</span>
-            <Link to="/contact" className="hover:text-brand-gold transition-colors">Client Support</Link>
+            <Link to="/contact" className="hover:text-brand-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand-gold transition-colors">Client Support</Link>
           </div>
         </div>
       </div>

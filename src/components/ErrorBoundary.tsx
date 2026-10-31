@@ -71,7 +71,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={this.handleReload}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-all shadow-sm btn-tactile"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-brand-primary text-white text-xs font-semibold hover:bg-brand-deep transition-colors duration-200 shadow-sm btn-tactile"
               >
                 <RotateCcw className="w-4 h-4 text-gold" />
                 <span>Reload Page</span>
@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <button
                 type="button"
                 onClick={this.handleGoHome}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border text-charcoal text-xs font-semibold hover:bg-brand-pale transition-all shadow-subtle btn-tactile"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-border text-charcoal text-xs font-semibold hover:bg-brand-pale transition-colors duration-200 shadow-subtle btn-tactile"
               >
                 <Home className="w-4 h-4 text-brand-primary" />
                 <span>Return to Homepage</span>

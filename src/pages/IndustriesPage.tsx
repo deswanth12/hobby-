@@ -412,7 +412,7 @@ export const IndustriesPage: React.FC = () => {
             </Link>
             <a
               href={`tel:${firm.contact.primaryPhoneClean}`}
-              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-all active:scale-[0.98] btn-tactile"
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-colors duration-200 active:scale-[0.98] btn-tactile"
             >
               <Phone className="w-4 h-4 text-brand-gold" />
               <span>Call Senior Partner</span>

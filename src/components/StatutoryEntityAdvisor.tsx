@@ -9,7 +9,8 @@ import {
   Scale, 
   ShieldCheck, 
   Calendar, 
-  CheckCircle2 
+  CheckCircle2,
+  Check
 } from 'lucide-react';
 import { DualArrowButton } from './animations/DualArrowButton';
 
@@ -189,7 +190,7 @@ export const StatutoryEntityAdvisor: React.FC = () => {
         
         {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 scroll-reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 border border-brand-forest/20 text-brand-forest text-xs font-editorial-meta uppercase tracking-wider mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 border border-brand-forest/20 text-brand-forest text-xs text-xs font-semibold mb-3">
             <FileCheck2 className="w-3.5 h-3.5 text-brand-gold shrink-0" />
             <span>Interactive Governance Framework</span>
           </div>
@@ -211,7 +212,7 @@ export const StatutoryEntityAdvisor: React.FC = () => {
                 key={entity.id}
                 type="button"
                 onClick={() => setActiveEntityId(entity.id)}
-                className={`flex flex-col items-center text-center p-3 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer btn-tactile ${
+                className={`flex flex-col items-center text-center p-3 sm:p-4 rounded-xl border transition-colors duration-200 duration-200 cursor-pointer btn-tactile ${
                   isSelected
                     ? 'bg-brand-forest text-white border-brand-gold shadow-md scale-[1.02]'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:bg-brand-surface hover:border-brand-gold/50 shadow-xs'
@@ -318,7 +319,7 @@ export const StatutoryEntityAdvisor: React.FC = () => {
               <ul className="space-y-3">
                 {activeEntity.partnerDeliverables.map((item, idx) => (
                   <li key={idx} className="font-editorial-body text-xs text-brand-charcoal/90 leading-relaxed flex items-start gap-2.5">
-                    <span className="text-brand-gold shrink-0 text-xs">✔</span>
+                    <span className="text-brand-gold shrink-0 text-xs"><Check className="w-3.5 h-3.5 text-brand-gold shrink-0 inline" aria-hidden="true" /></span>
                     <span>{item}</span>
                   </li>
                 ))}

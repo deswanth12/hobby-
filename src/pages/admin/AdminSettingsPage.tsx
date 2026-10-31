@@ -106,7 +106,7 @@ export const AdminSettingsPage: React.FC = () => {
 
         {/* Success Notification */}
         {saveSuccess && (
-          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#0F3E2E] flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-brand-darkgreen flex items-center justify-between shadow-sm animate-in fade-in">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Practice settings saved successfully! Live changes now active across public header, footer, and contact channels.</span>
@@ -138,7 +138,7 @@ export const AdminSettingsPage: React.FC = () => {
           <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
             <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between flex-wrap gap-2">
               <div>
-                <h2 className="text-base font-bold text-[#0F3E2E]">Official Contact Channels</h2>
+                <h2 className="text-base font-bold text-brand-darkgreen">Official Contact Channels</h2>
                 <p className="text-xs text-gray-500 mt-0.5">
                   These channels appear across the public navbar, footer, contact page, and WhatsApp button
                 </p>
@@ -166,7 +166,7 @@ export const AdminSettingsPage: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-[#0F3E2E]" />
+                    <Phone className="w-3.5 h-3.5 text-brand-darkgreen" />
                     Primary Phone Channel
                   </label>
                   <input
@@ -175,14 +175,14 @@ export const AdminSettingsPage: React.FC = () => {
                     value={primaryPhone}
                     onChange={(e) => setPrimaryPhone(e.target.value)}
                     placeholder="+91 96263 50900"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-medium"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-medium"
                   />
                   <span className="text-[10px] text-gray-400 mt-1 block">Displayed on public header and quick call</span>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-[#0F3E2E]" />
+                    <Phone className="w-3.5 h-3.5 text-brand-darkgreen" />
                     Secondary Phone Channel
                   </label>
                   <input
@@ -190,7 +190,7 @@ export const AdminSettingsPage: React.FC = () => {
                     value={secondaryPhone}
                     onChange={(e) => setSecondaryPhone(e.target.value)}
                     placeholder="+91 94443 89800"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-medium"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-medium"
                   />
                   <span className="text-[10px] text-gray-400 mt-1 block">Alternative office landline or mobile</span>
                 </div>
@@ -198,7 +198,7 @@ export const AdminSettingsPage: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
-                  <Mail className="w-3.5 h-3.5 text-[#0F3E2E]" />
+                  <Mail className="w-3.5 h-3.5 text-brand-darkgreen" />
                   Practice Official Email
                 </label>
                 <input
@@ -207,13 +207,13 @@ export const AdminSettingsPage: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="cakavithasrj@gmail.com"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-medium"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-medium"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
-                  <Clock className="w-3.5 h-3.5 text-[#0F3E2E]" />
+                  <Clock className="w-3.5 h-3.5 text-brand-darkgreen" />
                   Chambers Working Hours & Appointments
                 </label>
                 <input
@@ -222,14 +222,14 @@ export const AdminSettingsPage: React.FC = () => {
                   value={openingHours}
                   onChange={(e) => setOpeningHours(e.target.value)}
                   placeholder="Mon - Sat: 9:30 AM - 7:30 PM | Sun: Closed / Prior Appointment Only"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-medium"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-medium"
                 />
                 <span className="text-[10px] text-gray-400 mt-1 block">Standard consultation timings in Tirupati chambers</span>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-gray-700 mb-1.5 uppercase tracking-wider flex items-center gap-1.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#0F3E2E]" />
+                  <MapPin className="w-3.5 h-3.5 text-brand-darkgreen" />
                   Chambers Physical Address
                 </label>
                 <textarea
@@ -238,7 +238,7 @@ export const AdminSettingsPage: React.FC = () => {
                   value={primaryLocation}
                   onChange={(e) => setPrimaryLocation(e.target.value)}
                   placeholder="19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, Andhra Pradesh 517501, India"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed font-medium"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed font-medium"
                 />
               </div>
 
@@ -252,7 +252,7 @@ export const AdminSettingsPage: React.FC = () => {
                   value={googleMapsUrl}
                   onChange={(e) => setGoogleMapsUrl(e.target.value)}
                   placeholder="https://maps.google.com/..."
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-mono text-[11px]"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-mono text-[11px]"
                 />
               </div>
 
@@ -266,7 +266,7 @@ export const AdminSettingsPage: React.FC = () => {
                   value={whatsappLink}
                   onChange={(e) => setWhatsappLink(e.target.value)}
                   placeholder="https://wa.me/919626350900"
-                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-mono text-[11px]"
+                  className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-mono text-[11px]"
                 />
               </div>
 
@@ -282,7 +282,7 @@ export const AdminSettingsPage: React.FC = () => {
 
                 <button
                   type="submit"
-                  className="inline-flex items-center px-5 py-2.5 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
+                  className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
                 >
                   <Save className="w-3.5 h-3.5 mr-1.5" />
                   Save Practice Settings
@@ -300,8 +300,8 @@ export const AdminSettingsPage: React.FC = () => {
             {/* System Specs Card */}
             <div className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm space-y-4">
               <div className="flex items-center gap-2 pb-3 border-b border-gray-100">
-                <Shield className="w-5 h-5 text-[#0F3E2E]" />
-                <h3 className="text-sm font-bold text-[#0F3E2E]">Security & Session Specs</h3>
+                <Shield className="w-5 h-5 text-brand-darkgreen" />
+                <h3 className="text-sm font-bold text-brand-darkgreen">Security & Session Specs</h3>
               </div>
 
               <div className="space-y-3 text-xs">
@@ -343,7 +343,7 @@ export const AdminSettingsPage: React.FC = () => {
             </div>
 
             {/* Production Supabase Roadmap */}
-            <div className="bg-[#0A2F24] text-white p-6 rounded-2xl border border-emerald-900 shadow-sm space-y-4">
+            <div className="bg-brand-chambers text-white p-6 rounded-2xl border border-emerald-900 shadow-sm space-y-4">
               <div className="flex items-center gap-2 pb-3 border-b border-emerald-800/80">
                 <Database className="w-5 h-5 text-gold" />
                 <h3 className="text-sm font-bold text-white">Database Migration & Config</h3>

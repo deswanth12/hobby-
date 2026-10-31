@@ -151,9 +151,9 @@ export const AdminContentPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveTab('services')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors duration-200 flex items-center gap-2 ${
                 activeTab === 'services'
-                  ? 'bg-[#0F3E2E] text-white shadow-sm'
+                  ? 'bg-brand-darkgreen text-white shadow-sm'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -163,9 +163,9 @@ export const AdminContentPage: React.FC = () => {
             <button
               type="button"
               onClick={() => setActiveTab('faqs')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors duration-200 flex items-center gap-2 ${
                 activeTab === 'faqs'
-                  ? 'bg-[#0F3E2E] text-white shadow-sm'
+                  ? 'bg-brand-darkgreen text-white shadow-sm'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -205,7 +205,7 @@ export const AdminContentPage: React.FC = () => {
 
         {/* Success Toast Banner */}
         {saveMessage && (
-          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#0F3E2E] flex items-center justify-between shadow-sm animate-in fade-in">
+          <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-brand-darkgreen flex items-center justify-between shadow-sm animate-in fade-in">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{saveMessage}</span>
@@ -241,9 +241,9 @@ export const AdminContentPage: React.FC = () => {
                     key={service.id}
                     type="button"
                     onClick={() => handleSelectService(service.id)}
-                    className={`w-full text-left p-4 rounded-xl border transition-all flex flex-col justify-between ${
+                    className={`w-full text-left p-4 rounded-xl border transition-colors duration-200 flex flex-col justify-between ${
                       isSelected
-                        ? 'bg-white border-[#0F3E2E] ring-2 ring-[#0F3E2E]/10 shadow-sm'
+                        ? 'bg-white border-brand-darkgreen ring-2 ring-brand-darkgreen/10 shadow-sm'
                         : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white'
                     }`}
                   >
@@ -258,13 +258,13 @@ export const AdminContentPage: React.FC = () => {
                           {status}
                         </span>
                         {isSelected && (
-                          <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] bg-emerald-100 text-brand-darkgreen font-bold px-2 py-0.5 rounded-full">
                             Editing
                           </span>
                         )}
                       </div>
                     </div>
-                    <div className="font-bold text-xs text-[#0F3E2E] mt-1 line-clamp-1">
+                    <div className="font-bold text-xs text-brand-darkgreen mt-1 line-clamp-1">
                       {service.title}
                     </div>
                     <div className="text-[11px] text-gray-500 mt-1 line-clamp-2">
@@ -279,7 +279,7 @@ export const AdminContentPage: React.FC = () => {
             <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
               <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between flex-wrap gap-2">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#0F3E2E]">
+                  <h3 className="font-serif text-lg font-bold text-brand-darkgreen">
                     Edit Service: {currentService?.title}
                   </h3>
                   <p className="text-xs text-gray-500 mt-0.5">
@@ -291,7 +291,7 @@ export const AdminContentPage: React.FC = () => {
                     href="/services"
                     target="_blank"
                     rel="noreferrer"
-                    className="text-xs font-bold text-[#0F3E2E] hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                    className="text-xs font-bold text-brand-darkgreen hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
                   >
                     <Eye className="w-3.5 h-3.5 mr-1" />
                     Preview Live <ExternalLink className="w-3 h-3 ml-1" />
@@ -310,7 +310,7 @@ export const AdminContentPage: React.FC = () => {
                       required
                       value={serviceTitle}
                       onChange={(e) => setServiceTitle(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-bold text-gray-900"
                     />
                   </div>
 
@@ -321,7 +321,7 @@ export const AdminContentPage: React.FC = () => {
                     <select
                       value={serviceStatus}
                       onChange={(e) => setServiceStatus(e.target.value as 'published' | 'draft')}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] font-semibold bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-semibold bg-white"
                     >
                       <option value="published">Published (Visible Publicly)</option>
                       <option value="draft">Draft (Practice Internal)</option>
@@ -338,7 +338,7 @@ export const AdminContentPage: React.FC = () => {
                     required
                     value={serviceShortDesc}
                     onChange={(e) => setServiceShortDesc(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed text-gray-800"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
                   />
                 </div>
 
@@ -351,7 +351,7 @@ export const AdminContentPage: React.FC = () => {
                     required
                     value={serviceFullDesc}
                     onChange={(e) => setServiceFullDesc(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed text-gray-800"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
                   />
                 </div>
 
@@ -366,7 +366,7 @@ export const AdminContentPage: React.FC = () => {
                       value={serviceStatutory}
                       onChange={(e) => setServiceStatutory(e.target.value)}
                       placeholder="e.g. Income Tax Act 1961, Section 44AB"
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] text-gray-800"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
                     />
                   </div>
 
@@ -380,7 +380,7 @@ export const AdminContentPage: React.FC = () => {
                       value={serviceTarget}
                       onChange={(e) => setServiceTarget(e.target.value)}
                       placeholder="e.g. Companies, LLPs, High-Net-Worth Individuals"
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] text-gray-800"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
                     />
                   </div>
                 </div>
@@ -388,7 +388,7 @@ export const AdminContentPage: React.FC = () => {
                 <div className="pt-4 border-t border-gray-100 flex items-center justify-end gap-3">
                   <button
                     type="submit"
-                    className="inline-flex items-center px-5 py-2.5 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
+                    className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
                     Save & Publish Changes
@@ -419,9 +419,9 @@ export const AdminContentPage: React.FC = () => {
                     key={faq.id}
                     type="button"
                     onClick={() => handleSelectFaq(faq.id)}
-                    className={`w-full text-left p-4 rounded-xl border transition-all ${
+                    className={`w-full text-left p-4 rounded-xl border transition-colors duration-200 ${
                       isSelected
-                        ? 'bg-white border-[#0F3E2E] ring-2 ring-[#0F3E2E]/10 shadow-sm'
+                        ? 'bg-white border-brand-darkgreen ring-2 ring-brand-darkgreen/10 shadow-sm'
                         : 'bg-white/80 border-gray-200 hover:border-gray-300 hover:bg-white'
                     }`}
                   >
@@ -436,13 +436,13 @@ export const AdminContentPage: React.FC = () => {
                           {status}
                         </span>
                         {isSelected && (
-                          <span className="text-[10px] bg-emerald-100 text-[#0F3E2E] font-bold px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] bg-emerald-100 text-brand-darkgreen font-bold px-2 py-0.5 rounded-full">
                             Selected
                           </span>
                         )}
                       </div>
                     </div>
-                    <div className="font-bold text-xs text-[#0F3E2E] line-clamp-2">
+                    <div className="font-bold text-xs text-brand-darkgreen line-clamp-2">
                       {faq.question}
                     </div>
                   </button>
@@ -454,7 +454,7 @@ export const AdminContentPage: React.FC = () => {
             <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-gray-200/80 shadow-sm">
               <div className="pb-4 border-b border-gray-100 mb-6 flex items-center justify-between">
                 <div>
-                  <h3 className="font-serif text-lg font-bold text-[#0F3E2E]">
+                  <h3 className="font-serif text-lg font-bold text-brand-darkgreen">
                     Edit Statutory FAQ
                   </h3>
                   <p className="text-xs text-gray-500 mt-0.5">
@@ -465,7 +465,7 @@ export const AdminContentPage: React.FC = () => {
                   href="/#knowledge-faq"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-bold text-[#0F3E2E] hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
+                  className="text-xs font-bold text-brand-darkgreen hover:text-gold inline-flex items-center px-3 py-1.5 rounded-lg border border-gray-200 hover:bg-gray-50"
                 >
                   <Eye className="w-3.5 h-3.5 mr-1" />
                   Preview FAQ Section <ExternalLink className="w-3 h-3 ml-1" />
@@ -483,7 +483,7 @@ export const AdminContentPage: React.FC = () => {
                       required
                       value={faqQuestion}
                       onChange={(e) => setFaqQuestion(e.target.value)}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] font-bold text-gray-900"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen font-bold text-gray-900"
                     />
                   </div>
 
@@ -494,7 +494,7 @@ export const AdminContentPage: React.FC = () => {
                     <select
                       value={faqStatus}
                       onChange={(e) => setFaqStatus(e.target.value as 'published' | 'draft')}
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] font-semibold bg-white"
+                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen font-semibold bg-white"
                     >
                       <option value="published">Published</option>
                       <option value="draft">Draft</option>
@@ -511,7 +511,7 @@ export const AdminContentPage: React.FC = () => {
                     required
                     value={faqAnswer}
                     onChange={(e) => setFaqAnswer(e.target.value)}
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0F3E2E]/20 focus:border-[#0F3E2E] leading-relaxed text-gray-800"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed text-gray-800"
                   />
                 </div>
 
@@ -525,14 +525,14 @@ export const AdminContentPage: React.FC = () => {
                     value={faqStatute}
                     onChange={(e) => setFaqStatute(e.target.value)}
                     placeholder="e.g. Section 44AB of Income Tax Act, 1961"
-                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#0F3E2E] text-gray-800"
+                    className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen text-gray-800"
                   />
                 </div>
 
                 <div className="pt-4 border-t border-gray-100 flex items-center justify-end">
                   <button
                     type="submit"
-                    className="inline-flex items-center px-5 py-2.5 bg-[#0F3E2E] hover:bg-[#0A2F24] text-white text-xs font-bold rounded-xl transition-all shadow-sm"
+                    className="inline-flex items-center px-5 py-2.5 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
                     Save & Publish FAQ

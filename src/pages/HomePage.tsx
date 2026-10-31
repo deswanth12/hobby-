@@ -6,7 +6,8 @@ import {
   Building2, 
   BarChart3, 
   MapPin, 
-  ArrowRight, 
+  ArrowRight,
+  ArrowUpRight, 
   Users, 
   Phone, 
   Mail, 
@@ -111,27 +112,27 @@ export const HomePage: React.FC = () => {
           SECTION 1: HERO & PRACTICE REGISTRY PLAQUE (Asymmetric 7:5 Split)
           Canvas: Warm Ivory #F5F1E8 (bg-brand-ivory)
           ========================================================================= */}
-      <section className="bg-brand-ivory pt-16 sm:pt-24 lg:pt-32 pb-20 sm:pb-28 lg:pb-32 border-b border-brand-border relative overflow-hidden min-h-[85dvh] flex items-center">
+      <section className="bg-brand-ivory pt-12 sm:pt-16 lg:pt-16 xl:pt-14 pb-14 sm:pb-20 lg:pb-16 xl:pb-14 border-b border-brand-border relative overflow-hidden min-h-0 flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left 7 Columns: Editorial Narrative & Action Cluster */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8 scroll-reveal-left">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-5 scroll-reveal-left">
               
               {/* Institutional Practice Kicker */}
               <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-brand-surface border border-brand-border/80 shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                <span className="font-editorial-meta text-brand-forest uppercase tracking-kicker">
-                  Independent Chartered Accountancy Practice • Tirupati, AP
+                <span className="w-2 h-2 rounded-full bg-brand-gold motion-safe:animate-pulse" />
+                <span className="text-xs font-semibold text-brand-forest">
+                  Independent Chartered Accountancy Practice, Tirupati
                 </span>
               </div>
 
               {/* Master Headline (Cormorant Garamond Monumental Serif) */}
               <div className="space-y-1">
-                <h1 className="font-editorial-h1 text-brand-forest">
+                <h1 className="font-editorial-h1 text-brand-forest leading-[1.15]">
                   Statutory Rigor.
                 </h1>
-                <h1 className="font-editorial-h1 text-brand-gold">
+                <h1 className="font-editorial-h1 text-brand-gold leading-[1.15]">
                   Practical Commercial Counsel.
                 </h1>
               </div>
@@ -161,7 +162,7 @@ export const HomePage: React.FC = () => {
 
                 <a
                   href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                  className="w-full sm:w-auto justify-center inline-flex items-center gap-2 text-xs font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile min-h-[44px]"
+                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-forest w-full sm:w-auto justify-center inline-flex items-center gap-2 text-xs font-semibold text-brand-charcoal hover:text-brand-forest py-2.5 px-3.5 rounded-full hover:bg-brand-surface transition-colors btn-tactile min-h-[44px]"
                   title="Direct telephone line"
                 >
                   <Phone className="w-4 h-4 text-gold-dark" />
@@ -170,14 +171,14 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Trust Creed Strip */}
-              <div className="pt-4 border-t border-brand-border/60 flex flex-wrap items-center gap-3 font-editorial-meta text-brand-muted tracking-widest uppercase">
-                <span className="text-brand-forest font-bold">TRUST</span>
-                <span className="text-brand-gold">•</span>
-                <span className="text-brand-forest font-bold">EXPERTISE</span>
-                <span className="text-brand-gold">•</span>
-                <span className="text-brand-forest font-bold">YOUR GROWTH PARTNER</span>
-                <span className="text-brand-gold hidden sm:inline">•</span>
-                <span className="text-emerald-800 hidden sm:inline font-semibold">ESTABLISHED PRACTICE</span>
+              <div className="pt-4 border-t border-brand-border/60 flex flex-wrap items-center gap-3 text-xs text-brand-muted">
+                <span className="text-brand-forest font-semibold">Trust</span>
+                <span className="text-brand-gold/60" aria-hidden="true">,</span>
+                <span className="text-brand-forest font-semibold">Expertise</span>
+                <span className="text-brand-gold/60" aria-hidden="true">,</span>
+                <span className="text-brand-forest font-semibold">Strategic Counsel</span>
+                <span className="text-brand-gold/60 hidden sm:inline" aria-hidden="true">,</span>
+                <span className="text-brand-forest hidden sm:inline font-semibold">Established Practice</span>
               </div>
             </div>
 
@@ -187,11 +188,11 @@ export const HomePage: React.FC = () => {
               {/* Executive Practice Registry Plaque (Double-Bezel Architecture) */}
               <div 
                 className="double-bezel-dark animate-fade-up rounded-3xl p-1.5"
-                style={{ backgroundColor: '#102D25', borderColor: 'rgba(195, 166, 107, 0.45)', borderWidth: '1px', borderStyle: 'solid', boxShadow: '0 12px 36px -4px rgba(16, 45, 37, 0.45)' }}
+                
               >
                 <div 
                   className="double-bezel-inner-dark bg-brand-deep text-brand-white p-6 sm:p-8 relative overflow-hidden rounded-2xl"
-                  style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+                  
                 >
                   
                   {/* Subtle decorative seal watermark */}
@@ -209,14 +210,12 @@ export const HomePage: React.FC = () => {
                       </div>
                       <div>
                         <span 
-                          className="font-editorial-meta text-[11px] font-bold uppercase tracking-widest text-brand-gold block"
-                          style={{ color: '#C3A66B' }}
-                        >
-                          PRACTICE REGISTER • ESTD. TIRUPATI
+                          className="text-xs font-semibold text-brand-brightgold block">
+                          Practice Register , Estd. Tirupati
                         </span>
                         <h3 
                           className="font-editorial-h3 text-2xl font-bold text-white tracking-wide"
-                          style={{ color: '#FFFFFF' }}
+                          
                         >
                           Kavitha & Associates
                         </h3>
@@ -227,31 +226,29 @@ export const HomePage: React.FC = () => {
                   {/* Senior Partner Credential Block */}
                   <div 
                     className="bg-brand-forest/90 rounded-xl p-4 border border-brand-gold/30 mb-5 space-y-1"
-                    style={{ backgroundColor: 'rgba(21, 63, 50, 0.95)' }}
+                    
                   >
                     <div className="flex items-center justify-between">
                       <span 
-                        className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-light bg-brand-deep px-2 py-0.5 rounded border border-brand-gold/20"
-                        style={{ color: '#D8C296', backgroundColor: '#102D25' }}
-                      >
+                        className="text-[11px] font-semibold text-brand-brightgold bg-brand-deep px-2.5 py-0.5 rounded border border-brand-gold/30">
                         Senior Partner
                       </span>
                       <span 
                         className="text-[10px] text-emerald-200 font-medium"
-                        style={{ color: '#A7F3D0' }}
+                        
                       >
-                        ICAI Mem. 252985 • CMA AIR 49
+                        ICAI Mem. 252985, CMA AIR 49
                       </span>
                     </div>
                     <h4 
                       className="font-editorial-h3 text-xl font-bold text-white mt-1"
-                      style={{ color: '#FFFFFF' }}
+                      
                     >
                       {FIRM_DATA.partner.name}
                     </h4>
                     <p 
                       className="text-xs text-brand-gold font-semibold tracking-wide"
-                      style={{ color: '#C3A66B' }}
+                      
                     >
                       {FIRM_DATA.partner.qualifications} (Dual Qualifications)
                     </p>
@@ -263,19 +260,19 @@ export const HomePage: React.FC = () => {
                     {/* Chambers & GPS Coordinates */}
                     <div className="flex items-start justify-between gap-3 pt-2">
                       <div className="flex items-start gap-2.5">
-                        <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
+                        <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5"  />
                         <div>
                           <strong 
                             className="text-white block text-xs font-semibold"
-                            style={{ color: '#FFFFFF' }}
+                            
                           >
                             Principal Chambers:
                           </strong>
                           <span 
                             className="text-emerald-100 text-xs font-normal"
-                            style={{ color: '#D1FAE5' }}
+                            
                           >
-                            19-12-46, Near Bairagipetteda Arch, Tirupati – 517501, AP
+                            19-12-46, Near Bairagipetteda Arch, Tirupati 517501, AP
                           </span>
                         </div>
                       </div>
@@ -284,25 +281,25 @@ export const HomePage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs font-semibold text-brand-gold hover:text-white hover:underline shrink-0 mt-0.5"
-                        style={{ color: '#C3A66B' }}
+                        
                       >
-                        Map Pin →
+                        <span>Map Pin</span><ArrowUpRight className="w-3.5 h-3.5 ml-1 inline text-brand-gold" aria-hidden="true" />
                       </a>
                     </div>
 
                     {/* Dual Strategic Competence */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
+                      <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5"  />
                       <div>
                         <strong 
                           className="text-white block text-xs font-semibold"
-                          style={{ color: '#FFFFFF' }}
+                          
                         >
                           Dual Strategic Advantage:
                         </strong>
                         <span 
                           className="text-emerald-100 text-xs font-normal"
-                          style={{ color: '#D1FAE5' }}
+                          
                         >
                           External Statutory Audit + Internal Cost Accounting (CMA)
                         </span>
@@ -311,17 +308,17 @@ export const HomePage: React.FC = () => {
 
                     {/* Regional Service Corridors */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <Compass className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
+                      <Compass className="w-4 h-4 text-brand-gold shrink-0 mt-0.5"  />
                       <div>
                         <strong 
                           className="text-white block text-xs font-semibold"
-                          style={{ color: '#FFFFFF' }}
+                          
                         >
                           Regional Service Corridors:
                         </strong>
                         <span 
                           className="text-emerald-100 text-xs font-normal"
-                          style={{ color: '#D1FAE5' }}
+                          
                         >
                           Tirupati, Chennai, Bengaluru, Hyderabad & Coimbatore
                         </span>
@@ -330,17 +327,17 @@ export const HomePage: React.FC = () => {
 
                     {/* Partner Supervision Guarantee */}
                     <div className="flex items-start gap-2.5 pt-3">
-                      <UserCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" style={{ color: '#C3A66B' }} />
+                      <UserCheck className="w-4 h-4 text-brand-gold shrink-0 mt-0.5"  />
                       <div>
                         <strong 
                           className="text-white block text-xs font-semibold"
-                          style={{ color: '#FFFFFF' }}
+                          
                         >
                           Partner-Supervised Accountability:
                         </strong>
                         <span 
                           className="text-emerald-100 text-xs font-normal"
-                          style={{ color: '#D1FAE5' }}
+                          
                         >
                           Every file reviewed directly by CA Kavitha Vijay
                         </span>
@@ -353,9 +350,9 @@ export const HomePage: React.FC = () => {
                   <div className="mt-5 pt-4 border-t border-brand-forest flex items-center justify-between text-xs">
                     <div 
                       className="flex items-center gap-1.5 text-emerald-300 text-[11px] font-medium"
-                      style={{ color: '#6EE7B7' }}
+                      
                     >
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 motion-safe:animate-pulse" />
                       <span>Practice Chambers Open</span>
                     </div>
                     <a
@@ -363,7 +360,7 @@ export const HomePage: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-brand-gold hover:text-white font-semibold text-xs transition-colors"
-                      style={{ color: '#C3A66B' }}
+                      
                     >
                       <span>Direct WhatsApp Desk</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -387,7 +384,7 @@ export const HomePage: React.FC = () => {
       {/* Infinite Sector Marquee Engine with Left & Right Gradient Masks */}
       <div className="bg-brand-ivory py-4 border-b border-brand-border/60 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
-          <div className="flex items-center justify-between text-xs font-editorial-meta text-gold-dark tracking-wider uppercase">
+          <div className="flex items-center justify-between text-xs text-xs font-medium text-gold-dark">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-brand-gold" />
               <span>Verified Industry Sectors Under Coverage</span>
@@ -408,14 +405,14 @@ export const HomePage: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
           <div className="flex items-center justify-between gap-4 overflow-x-auto no-scrollbar py-0.5 w-full min-w-0">
-            <span className="font-editorial-meta text-xs font-bold text-gold-dark uppercase tracking-wider shrink-0 flex items-center gap-1.5">
+            <span className="text-xs font-medium text-gold-dark shrink-0 flex items-center gap-1.5">
               <Compass className="w-3.5 h-3.5 text-gold-dark" />
               <span>Practice Disciplines:</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
               <a
                 href="#audit-spotlight"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'audit-spotlight'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -425,7 +422,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#income-tax"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'income-tax'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -435,7 +432,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#gst"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'gst'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -445,7 +442,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#corporate-business"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'corporate-business'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -455,7 +452,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#rera-compliance"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'rera-compliance'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -465,7 +462,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#advisory-consulting"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'advisory-consulting'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -475,7 +472,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#knowledge-faq"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'knowledge-faq'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-white text-brand-forest border-brand-border hover:border-brand-gold'
@@ -485,7 +482,7 @@ export const HomePage: React.FC = () => {
               </a>
               <a
                 href="#contact-section"
-                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all shadow-xs btn-tactile ${
+                className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors duration-200 shadow-xs btn-tactile ${
                   activeSection === 'contact-section'
                     ? 'bg-brand-forest text-brand-white border-brand-gold'
                     : 'bg-brand-pale text-emerald-800 border-emerald-300 hover:bg-emerald-100'
@@ -513,21 +510,21 @@ export const HomePage: React.FC = () => {
             {/* Left Column: Sticky Assurance Briefing & Standards Guarantee (4 cols) */}
             <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6 scroll-reveal-left">
               <div>
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-forest text-brand-gold text-xs font-bold uppercase tracking-wider mb-3 shadow-xs">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-brand-forest text-brand-gold text-xs font-semibold mb-3 shadow-xs">
                   <ShieldCheck className="w-3.5 h-3.5 text-brand-gold" />
-                  <span className="font-editorial-meta">Assurance Spotlight</span>
+                  <span>Assurance Spotlight</span>
                 </div>
-                <h2 className="font-editorial-h2 text-brand-forest leading-tight">
+                <h2 className="font-editorial-h2 text-brand-forest leading-tight mt-6 mb-3">
                   Statutory, Tax & Operational Audit Schedule
                 </h2>
                 <p className="mt-3 font-editorial-body text-sm text-brand-muted leading-relaxed">
-                  Independent, thorough, and compliant audits that foster trust with lenders, investors, regulatory bodies, and corporate boards — delivered under the personal oversight of CA Kavitha Vijay.
+                  Independent, thorough, and compliant audits that foster trust with lenders, investors, regulatory bodies, and corporate boards , delivered under the personal oversight of CA Kavitha Vijay.
                 </p>
               </div>
 
               {/* ICAI Standards Guarantee Card */}
               <div className="bg-brand-surface rounded-xl p-5 border border-brand-border shadow-card space-y-3">
-                <span className="font-editorial-meta text-[11px] font-bold uppercase tracking-wider text-gold-dark block">
+                <span className="text-xs font-semibold text-gold-dark block">
                   Methodology & Professional Standards
                 </span>
                 <div className="space-y-2 text-xs font-editorial-body text-brand-muted">
@@ -574,7 +571,7 @@ export const HomePage: React.FC = () => {
                   >
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <span className="font-editorial-meta text-[10px] font-bold text-emerald-800 uppercase tracking-wider bg-brand-pale px-2.5 py-0.5 rounded border border-emerald-200">
+                        <span className="text-xs font-semibold text-emerald-800 bg-brand-pale px-2.5 py-0.5 rounded border border-emerald-200">
                           {service.statute}
                         </span>
                         <span className="font-serif text-xs font-bold text-charcoal-light">
@@ -615,7 +612,7 @@ export const HomePage: React.FC = () => {
                         rel="noopener noreferrer"
                         className="text-gold-dark hover:underline font-semibold"
                       >
-                        Inquire Audit →
+                        <span>Inquire Audit</span><ArrowRight className="w-3.5 h-3.5 ml-1 inline text-brand-gold" aria-hidden="true" />
                       </a>
                     </div>
                   </div>
@@ -635,7 +632,7 @@ export const HomePage: React.FC = () => {
       <section className="py-20 sm:py-28 lg:py-32 bg-brand-ivory border-b border-brand-border" id="services-overview">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
-            <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+            <span className="text-xs font-semibold text-gold-dark block mb-2">
               Our Practice Areas
             </span>
             <h2 className="font-editorial-h2 text-brand-forest">
@@ -683,7 +680,7 @@ export const HomePage: React.FC = () => {
 
                     {category.targetClients && (
                       <div className="mb-4 p-2.5 rounded-lg bg-brand-surface/70 border border-brand-border/60 text-xs">
-                        <span className="font-semibold text-brand-forest block font-editorial-meta text-[11px] uppercase tracking-wider text-gold-dark mb-0.5">
+                        <span className="font-semibold text-brand-forest block text-xs font-semibold text-gold-dark mb-0.5">
                           Target Entities:
                         </span>
                         <p className="font-editorial-body text-brand-muted text-[11px] leading-relaxed">
@@ -693,7 +690,7 @@ export const HomePage: React.FC = () => {
                     )}
 
                     <div className="border-t border-brand-border/60 pt-4">
-                      <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block mb-2.5">
+                      <span className="text-xs font-semibold text-gold-dark block mb-2.5">
                         Key Engagements:
                       </span>
                       <ul className="space-y-2">
@@ -711,7 +708,7 @@ export const HomePage: React.FC = () => {
                       <div className="service-curtain-inner pt-3 border-t border-brand-gold/30 space-y-3">
                         {category.typicalScenarios && category.typicalScenarios.length > 0 && (
                           <div className="p-3 rounded-lg bg-brand-surface/90 border border-brand-border/80 text-xs">
-                            <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-1.5">
+                            <span className="text-[11px] font-semibold text-gold-dark block mb-1.5">
                               Typical Statutory Scenarios:
                             </span>
                             <ul className="space-y-1.5">
@@ -726,7 +723,7 @@ export const HomePage: React.FC = () => {
                         )}
                         {category.services.length > 5 && (
                           <div className="text-[11px] text-brand-forest font-medium pt-1">
-                            <span className="font-semibold text-gold-dark uppercase text-[10px] tracking-wider block mb-1">Additional Engagements:</span>
+                            <span className="text-[11px] font-semibold text-gold-dark block mb-1">Additional Engagements:</span>
                             <span>{category.services.slice(5).join(' • ')}</span>
                           </div>
                         )}
@@ -794,7 +791,7 @@ export const HomePage: React.FC = () => {
                     </p>
 
                     <div className="mb-4 p-2.5 rounded-lg bg-brand-forest/80 border border-brand-gold/20 text-xs">
-                      <span className="font-editorial-meta font-semibold text-brand-gold block text-[11px] uppercase tracking-wider mb-0.5">
+                      <span className="text-xs font-semibold text-brand-gold block mb-0.5">
                         Target Entities:
                       </span>
                       <p className="font-editorial-body text-emerald-200/90 text-[11px] leading-relaxed">
@@ -803,7 +800,7 @@ export const HomePage: React.FC = () => {
                     </div>
 
                     <div className="border-t border-brand-forest pt-4">
-                      <span className="font-editorial-meta text-xs font-semibold text-brand-gold uppercase tracking-wider block mb-2.5">
+                      <span className="text-xs font-semibold text-brand-gold block mb-2.5">
                         Retainer Scope:
                       </span>
                       <ul className="space-y-2">
@@ -830,7 +827,7 @@ export const HomePage: React.FC = () => {
                     <div id="curtain-virtual-cfo" className="service-curtain-body mt-3">
                       <div className="service-curtain-inner pt-3 border-t border-brand-gold/20 space-y-2.5">
                         <div className="p-3 rounded-lg bg-brand-forest/90 border border-brand-gold/20 text-xs text-emerald-100">
-                          <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-brand-gold block mb-1">
+                          <span className="text-[11px] font-semibold text-brand-gold block mb-1">
                             Executive Oversight:
                           </span>
                           <p className="text-[11px] text-emerald-200/90 leading-relaxed">
@@ -882,7 +879,7 @@ export const HomePage: React.FC = () => {
       <section className="py-20 sm:py-28 bg-brand-surface border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
-            <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+            <span className="text-xs font-semibold text-gold-dark block mb-2">
               Our Methodology
             </span>
             <h2 className="font-editorial-h2 text-brand-forest">
@@ -904,7 +901,7 @@ export const HomePage: React.FC = () => {
       <section className="py-20 sm:py-28 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16 scroll-reveal">
-            <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+            <span className="text-xs font-semibold text-gold-dark block mb-2">
               Practice Philosophy & Governance
             </span>
             <h2 className="font-editorial-h2 text-brand-forest">
@@ -945,7 +942,7 @@ export const HomePage: React.FC = () => {
                   <h3 className="font-editorial-h3 text-lg font-bold text-brand-forest">
                     Dual FCA & CMA Qualification
                   </h3>
-                  <span className="font-editorial-meta px-2 py-0.5 rounded bg-brand-pale text-emerald-800 text-[10px] font-bold uppercase tracking-wider border border-emerald-200">
+                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-brand-pale text-emerald-800 border border-emerald-200">
                     Key Advantage
                   </span>
                 </div>
@@ -981,7 +978,7 @@ export const HomePage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4 scroll-reveal">
             <div>
-              <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+              <span className="text-xs font-semibold text-gold-dark block mb-2">
                 Industry Capabilities
               </span>
               <h2 className="font-editorial-h2 text-brand-forest">
@@ -1021,7 +1018,7 @@ export const HomePage: React.FC = () => {
       <section className="py-20 sm:py-28 bg-brand-ivory border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
-            <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+            <span className="text-xs font-semibold text-gold-dark block mb-2">
               Geographic Presence
             </span>
             <h2 className="font-editorial-h2 text-brand-forest">
@@ -1060,7 +1057,7 @@ export const HomePage: React.FC = () => {
                 </div>
                 <div>
                   <span
-                    className={`inline-block mt-3 px-2 py-0.5 rounded font-editorial-meta text-[11px] font-semibold uppercase tracking-wider ${
+                    className={`inline-block mt-3 px-2 py-0.5 rounded text-[11px] font-semibold ${
                       loc.type === 'Primary Chambers'
                         ? 'bg-brand-forest text-brand-white'
                         : 'bg-brand-pale text-brand-forest border border-emerald-100'
@@ -1075,7 +1072,7 @@ export const HomePage: React.FC = () => {
                       rel="noopener noreferrer"
                       className="block mt-2 text-[11px] text-gold-dark hover:underline font-semibold"
                     >
-                      View on Map →
+                      <span>View on Map</span><ArrowUpRight className="w-3.5 h-3.5 ml-1 inline text-brand-gold" aria-hidden="true" />
                     </a>
                   )}
                 </div>
@@ -1110,7 +1107,7 @@ export const HomePage: React.FC = () => {
             {/* Left 5 Columns: Chambers Contact Information */}
             <div className="lg:col-span-5 space-y-6 scroll-reveal-left">
               <div>
-                <span className="font-editorial-meta text-xs uppercase tracking-wider text-gold-dark block mb-2">
+                <span className="text-xs font-semibold text-gold-dark block mb-2">
                   Connect With CA Kavitha & Associates
                 </span>
                 <h2 className="font-editorial-h2 text-brand-forest">
@@ -1131,7 +1128,7 @@ export const HomePage: React.FC = () => {
                     <Phone className="w-5 h-5 text-brand-gold" />
                   </div>
                   <div>
-                    <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark block">
                       Direct Telephone Line
                     </span>
                     <span className="font-editorial-body text-sm font-bold text-brand-forest group-hover:text-brand-deep">
@@ -1151,7 +1148,7 @@ export const HomePage: React.FC = () => {
                     <Mail className="w-5 h-5 text-brand-gold" />
                   </div>
                   <div>
-                    <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark block">
                       Official Practice Email
                     </span>
                     <span className="font-editorial-body text-sm font-bold text-brand-forest group-hover:text-brand-deep break-all">
@@ -1168,7 +1165,7 @@ export const HomePage: React.FC = () => {
                     <MapPin className="w-5 h-5 text-brand-gold" />
                   </div>
                   <div>
-                    <span className="font-editorial-meta text-xs font-semibold text-gold-dark uppercase tracking-wider block">
+                    <span className="text-xs font-semibold text-gold-dark block">
                       Principal Practice Chambers
                     </span>
                     <span className="font-editorial-body text-sm font-bold text-brand-forest">

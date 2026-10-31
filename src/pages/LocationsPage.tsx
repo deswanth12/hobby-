@@ -183,7 +183,7 @@ export const LocationsPage: React.FC = () => {
                   <div className="pt-2">
                     <Link
                       to="/contact"
-                      className="min-h-[44px] w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-gold hover:bg-brand-gold/90 text-brand-deep font-editorial-meta text-xs font-bold uppercase tracking-wider transition-all shadow-md btn-tactile"
+                      className="min-h-[44px] w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-gold hover:bg-brand-gold/90 text-brand-deep font-editorial-meta text-xs font-bold uppercase tracking-wider transition-colors duration-200 shadow-md btn-tactile"
                     >
                       <span>Schedule Chambers Appointment</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -340,7 +340,7 @@ export const LocationsPage: React.FC = () => {
             </Link>
             <a
               href={`tel:${firm.contact.primaryPhoneClean}`}
-              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-all active:scale-[0.98] btn-tactile"
+              className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full border border-brand-border bg-brand-white text-brand-forest font-editorial-meta text-xs hover:bg-brand-surface shadow-subtle transition-colors duration-200 active:scale-[0.98] btn-tactile"
             >
               <Phone className="w-4 h-4 text-brand-gold" />
               <span>Call Chambers</span>

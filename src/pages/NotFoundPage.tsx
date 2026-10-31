@@ -204,7 +204,7 @@ export const NotFoundPage: React.FC = () => {
         {/* =========================================================================
             3. URGENT STATUTORY AUDIT & TAX FILING ASSISTANCE DESK
             ========================================================================= */}
-        <div className="mt-12 bg-[#0A2F24] text-white rounded-2xl p-6 sm:p-8 border border-emerald-900 shadow-card flex flex-col md:flex-row items-center justify-between gap-6 scroll-reveal">
+        <div className="mt-12 bg-brand-chambers text-white rounded-2xl p-6 sm:p-8 border border-emerald-900 shadow-card flex flex-col md:flex-row items-center justify-between gap-6 scroll-reveal">
           <div className="space-y-1 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-2 text-gold text-xs font-bold uppercase tracking-wider">
               <ShieldCheck className="w-4 h-4 text-gold" />

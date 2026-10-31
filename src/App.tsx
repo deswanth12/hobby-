@@ -56,9 +56,15 @@ const ScrollRevealInit: React.FC = () => {
 const PublicLayout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-brand-chambers focus:text-brand-tintedwhite focus:border focus:border-brand-gold focus:rounded-full focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-gold text-xs font-semibold tracking-wide transition-all"
+      >
+        Skip to main content
+      </a>
       <ScrollProgress />
       <Navbar />
-      <main className="flex-grow">
+      <main id="main-content" tabIndex={-1} className="flex-grow outline-none">
         <Outlet />
       </main>
       <Footer />

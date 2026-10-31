@@ -235,7 +235,7 @@ export const BlogArticlePage: React.FC = () => {
           <div className="double-bezel mb-10 card-tactile scroll-reveal scroll-reveal-left">
             <div className="double-bezel-inner bg-white p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="flex items-start sm:items-center gap-4">
-                <div className="w-14 h-14 rounded-xl bg-[#0F3E2E] border border-gold/40 flex items-center justify-center font-serif text-xl font-bold text-gold shrink-0 shadow-sm">
+                <div className="w-14 h-14 rounded-xl bg-brand-darkgreen border border-gold/40 flex items-center justify-center font-serif text-xl font-bold text-gold shrink-0 shadow-sm">
                   KV
                 </div>
                 <div>

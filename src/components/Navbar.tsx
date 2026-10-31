@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-brand-ivory/95 backdrop-blur-md border-b transition-all duration-200 ${
+    <header className={`sticky top-0 z-50 bg-brand-ivory/95 backdrop-blur-md border-b transition-[box-shadow,border-color] duration-200 ${
       isScrolled ? 'shadow-editorial py-0 border-brand-gold/40' : 'shadow-subtle py-0 border-brand-border'
     }`}>
       {/* Top Utility Bar */}
@@ -132,9 +132,9 @@ export const Navbar: React.FC = () => {
             <span className="flex items-center gap-1.5 text-emerald-100/90 font-medium tracking-normal">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" aria-hidden="true" />
               <span>Chartered Accountants &amp; Cost Accountants</span>
-              <span className="hidden sm:inline text-brand-gold/60">•</span>
+              <span className="hidden sm:inline text-brand-gold/60" aria-hidden="true">|</span>
               <span className="hidden sm:inline text-brand-gold font-medium">CA Kavitha Vijay</span>
-              <span className="hidden xl:inline text-brand-gold/60">•</span>
+              <span className="hidden xl:inline text-brand-gold/60" aria-hidden="true">|</span>
               <span className="hidden xl:inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span>FY 2026-27 Compliances Active</span>
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
               <Phone className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
               <span className="font-medium">{FIRM_DATA.contact.primaryPhone}</span>
             </a>
-            <span className="hidden md:inline text-brand-gold/60">•</span>
+            <span className="hidden md:inline text-brand-gold/60" aria-hidden="true">|</span>
             <a
               href={`mailto:${FIRM_DATA.contact.email}`}
               className="hidden md:flex items-center gap-1.5 hover:text-brand-gold transition-colors focus:outline-none focus:ring-1 focus:ring-brand-gold py-0.5"
@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
               <Mail className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
               <span>{FIRM_DATA.contact.email}</span>
             </a>
-            <span className="hidden lg:inline text-brand-gold/60">•</span>
+            <span className="hidden lg:inline text-brand-gold/60" aria-hidden="true">|</span>
             <span className="hidden lg:flex items-center gap-1 text-emerald-200/90">
               <MapPin className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
               <span>Tirupati & Pan-India</span>
@@ -170,7 +170,7 @@ export const Navbar: React.FC = () => {
 
       {/* Main Navbar */}
       <nav
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-200 ${
+        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-[padding] duration-200 ${
           isScrolled ? 'py-2.5' : 'py-3.5'
         }`}
         aria-label="Main Navigation"
@@ -181,11 +181,11 @@ export const Navbar: React.FC = () => {
           className="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-1 btn-tactile"
         >
           {/* Refined Monogram Badge with Master Vector Emblem */}
-          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-all shrink-0 p-1 relative overflow-hidden">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
             <img
               src="/brand/ka-monogram-flat.svg"
               alt="Kavitha &amp; Associates Official Practice Monogram"
-              className="w-full h-full object-contain drop-shadow-xs transition-transform duration-300 group-hover:scale-105"
+              className="w-full h-full object-contain drop-shadow-xs "
             />
             <span className="sr-only font-serif font-bold text-xl tracking-wider text-brand-gold">KA</span>
           </div>
@@ -193,7 +193,7 @@ export const Navbar: React.FC = () => {
             <span className="block font-serif text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-snug group-hover:text-brand-deep transition-colors">
               Kavitha & Associates
             </span>
-            <span className="block font-editorial-meta text-[11px] tracking-wider uppercase font-semibold text-gold-dark mt-0.5">
+            <span className="block text-xs font-semibold text-gold-dark mt-0.5">
               Chartered Accountants
             </span>
           </div>
@@ -328,12 +328,12 @@ export const Navbar: React.FC = () => {
             href={FIRM_DATA.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-50/80 hover:bg-emerald-100 text-emerald-900 border border-emerald-600/30 hover:border-emerald-600/60 shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-all duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-50/80 hover:bg-emerald-100 text-emerald-900 border border-emerald-600/30 hover:border-emerald-600/60 shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-[background-color,border-color,box-shadow] duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
             title="Chat directly with chambers on WhatsApp"
           >
             <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
               <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#25D366]" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
             </span>
             <WhatsAppNavIcon className="w-4 h-4 text-emerald-700 transition-transform duration-200 group-hover:scale-110 shrink-0" />
             <span className="font-semibold">WhatsApp</span>
@@ -342,10 +342,10 @@ export const Navbar: React.FC = () => {
           {/* Primary Consultation CTA */}
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-[#0A241D] hover:bg-[#12382C] text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-all duration-200 btn-tactile min-h-[44px] group"
+            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 duration-200 btn-tactile min-h-[44px] group"
           >
             <span>Schedule Consultation</span>
-            <ChevronRight className="w-3.5 h-3.5 text-brand-gold transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" />
+            <ChevronRight className="w-3.5 h-3.5 text-brand-gold transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" aria-hidden="true" />
           </Link>
         </div>
 
@@ -381,7 +381,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Responsive Slide-In Drawer */}
           <div
             ref={drawerRef}
-            className={`fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm h-full max-h-[100dvh] bg-brand-ivory z-[100] shadow-2xl lg:hidden flex flex-col justify-between overflow-hidden transition-all duration-300 ease-in-out border-l border-brand-border ${
+            className={`fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm h-full max-h-[100dvh] bg-brand-ivory z-[100] shadow-2xl lg:hidden flex flex-col justify-between overflow-hidden transition-transform duration-300 ease-in-out border-l border-brand-border ${
               isOpen 
                 ? 'translate-x-0 opacity-100 visible pointer-events-auto' 
                 : 'translate-x-full opacity-0 invisible pointer-events-none'
@@ -402,7 +402,7 @@ export const Navbar: React.FC = () => {
                     <span className="block font-serif text-base font-bold text-brand-forest leading-tight">
                       Kavitha & Associates
                     </span>
-                    <span className="block font-editorial-meta text-[10px] uppercase font-semibold text-gold-dark">
+                    <span className="block text-[11px] font-semibold text-gold-dark">
                       Chambers Portal
                     </span>
                   </div>
@@ -421,30 +421,36 @@ export const Navbar: React.FC = () => {
                 </button>
               </div>
 
-              {/* Navigation Links */}
+              {/* Navigation Links with Subtle Gold Active Route Indicators */}
               <div className="space-y-1">
                 <Link
                   to="/"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     location.pathname === '/'
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Home
+                  <span>Home</span>
+                  {location.pathname === '/' && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 <Link
                   to="/about"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/about')
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  About Firm
+                  <span>About Firm</span>
+                  {isActive('/about') && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 {/* Mobile Services Accordion */}
@@ -452,7 +458,11 @@ export const Navbar: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                    className="w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium text-brand-charcoal hover:bg-brand-white min-h-[44px]"
+                    className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] border-l-[3px] transition-colors ${
+                      isActive('/services')
+                        ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                        : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                    }`}
                     aria-expanded={mobileServicesOpen}
                   >
                     <span>Services</span>
@@ -461,17 +471,29 @@ export const Navbar: React.FC = () => {
 
                   {mobileServicesOpen && (
                     <div className="pl-3 pr-2 py-1 space-y-1 bg-brand-white rounded-lg my-1 border border-brand-border">
-                      {serviceSublinks.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.path}
-                          onClick={() => setIsOpen(false)}
-                          className="py-2.5 px-3 text-xs font-medium text-brand-charcoal hover:text-brand-forest flex items-center gap-2 min-h-[44px]"
-                        >
-                          <ChevronRight className="w-3.5 h-3.5 text-gold-dark shrink-0" />
-                          <span>{child.label}</span>
-                        </Link>
-                      ))}
+                      {serviceSublinks.map((child) => {
+                        const childActive = location.pathname === child.path;
+                        return (
+                          <Link
+                            key={child.label}
+                            to={child.path}
+                            onClick={() => setIsOpen(false)}
+                            className={`py-2.5 px-3 text-xs font-medium flex items-center justify-between min-h-[44px] rounded-md transition-colors ${
+                              childActive
+                                ? 'bg-brand-surface text-brand-forest font-semibold'
+                                : 'text-brand-charcoal hover:text-brand-forest'
+                            }`}
+                          >
+                            <span className="flex items-center gap-2">
+                              <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${childActive ? 'text-brand-brightgold' : 'text-gold-dark'}`} />
+                              <span>{child.label}</span>
+                            </span>
+                            {childActive && (
+                              <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                            )}
+                          </Link>
+                        );
+                      })}
                     </div>
                   )}
                 </div>
@@ -479,62 +501,77 @@ export const Navbar: React.FC = () => {
                 <Link
                   to="/services/audit-assurance"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     location.pathname === '/services/audit-assurance'
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Audit Spotlight
+                  <span>Audit Spotlight</span>
+                  {location.pathname === '/services/audit-assurance' && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 <Link
                   to="/industries"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/industries')
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Industries We Serve
+                  <span>Industries We Serve</span>
+                  {isActive('/industries') && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 <Link
                   to="/locations"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/locations')
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Service Reach
+                  <span>Service Reach</span>
+                  {isActive('/locations') && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 {/* MANDATORY for Test 13.2: to="/blog" */}
                 <Link
                   to="/blog"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/blog')
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Publications & Articles
+                  <span>Publications & Articles</span>
+                  {isActive('/blog') && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
 
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center ${
+                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/contact')
-                      ? 'bg-brand-pale text-brand-forest font-semibold'
-                      : 'text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
+                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
                   }`}
                 >
-                  Contact Chambers
+                  <span>Contact Chambers</span>
+                  {isActive('/contact') && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                  )}
                 </Link>
               </div>
             </div>
