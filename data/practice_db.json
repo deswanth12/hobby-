@@ -18,7 +18,7 @@
       "statutoryFramework": "Income Tax Act 1961",
       "targetClients": "Corporates and High Net Worth Taxpayers",
       "status": "published",
-      "updatedAt": "2026-10-30T06:40:59.884Z"
+      "updatedAt": "2026-10-31T15:17:04.950Z"
     },
     {
       "id": "gst",
@@ -111,9 +111,9 @@
   ],
   "enquiries": [
     {
-      "id": "ENQ-MVULSQ1Q-861",
-      "createdAt": "2026-10-30T06:40:59.870Z",
-      "updatedAt": "2026-10-30T06:40:59.881Z",
+      "id": "ENQ-MVWJNQ6U-493",
+      "createdAt": "2026-10-31T15:16:39.894Z",
+      "updatedAt": "2026-10-31T15:17:04.947Z",
       "fullName": "Sreenivas Naidu (Tirupati Agro)",
       "entityType": "Private Limited Company",
       "organization": "Tirupati Agro Processing Pvt Ltd",
@@ -127,9 +127,9 @@
       "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
     },
     {
-      "id": "ENQ-MVULKAM6-694",
-      "createdAt": "2026-10-30T06:34:26.622Z",
-      "updatedAt": "2026-10-30T06:34:26.632Z",
+      "id": "ENQ-MVWJLT9U-248",
+      "createdAt": "2026-10-31T15:15:10.578Z",
+      "updatedAt": "2026-10-31T15:15:10.578Z",
       "fullName": "Sreenivas Naidu (Tirupati Agro)",
       "entityType": "Private Limited Company",
       "organization": "Tirupati Agro Processing Pvt Ltd",
@@ -139,134 +139,50 @@
       "city": "Tirupati",
       "urgency": "statutory-deadline",
       "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVUL5IK4-679",
-      "createdAt": "2026-10-30T06:22:57.076Z",
-      "updatedAt": "2026-10-30T06:22:57.089Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVUL059B-136",
-      "createdAt": "2026-10-30T06:18:46.559Z",
-      "updatedAt": "2026-10-30T06:18:46.571Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVUKTLDN-990",
-      "createdAt": "2026-10-30T06:13:40.859Z",
-      "updatedAt": "2026-10-30T06:13:40.870Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVUKT9LI-195",
-      "createdAt": "2026-10-30T06:13:25.590Z",
-      "updatedAt": "2026-10-30T06:13:25.612Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVUKKP3X-447",
-      "createdAt": "2026-10-30T06:06:45.789Z",
-      "updatedAt": "2026-10-30T06:06:45.801Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVTPD0ZM-200",
-      "createdAt": "2026-10-29T15:32:59.842Z",
-      "updatedAt": "2026-10-29T15:32:59.870Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
-    },
-    {
-      "id": "ENQ-MVTP861K-760",
-      "createdAt": "2026-10-29T15:29:13.112Z",
-      "updatedAt": "2026-10-29T15:29:13.147Z",
-      "fullName": "Sreenivas Naidu (Tirupati Agro)",
-      "entityType": "Private Limited Company",
-      "organization": "Tirupati Agro Processing Pvt Ltd",
-      "phone": "+91 94401 23456",
-      "email": "sreenivas@tirupatiagro.com",
-      "serviceCategory": "Taxation & Statutory Compliances",
-      "city": "Tirupati",
-      "urgency": "statutory-deadline",
-      "message": "Urgent consultation requested for GST annual reconciliation and filing before statutory deadline.",
-      "status": "in-progress",
-      "followUpNotes": "Discussed with CA Kavitha; scheduled chambers audit on Monday."
+      "status": "new",
+      "followUpNotes": ""
     }
   ],
-  "sessions": {},
-  "rateLimits": {},
+  "sessions": {
+    "ka_jwt.eyJqdGkiOiI4YTM1MjBkZTY5YTgwZjM0NjE4ODQ5MzkxZmJhNDI1NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzNDU5NjA2LCJleHAiOjE3OTM0NjMyMDZ9.RNVNLmpbL6ECisZjrmGp5OxeY__AP9o_lG2LncIu-fU": {
+      "token": "ka_jwt.eyJqdGkiOiI4YTM1MjBkZTY5YTgwZjM0NjE4ODQ5MzkxZmJhNDI1NCIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzNDU5NjA2LCJleHAiOjE3OTM0NjMyMDZ9.RNVNLmpbL6ECisZjrmGp5OxeY__AP9o_lG2LncIu-fU",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-31T15:13:26.676Z"
+      },
+      "expiresAt": 1793463206000
+    },
+    "ka_jwt.eyJqdGkiOiJlMDY1NmFlMjYyZjU3MDcyM2YwNTQxMTZhMTA3NmU4MSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzNDU5ODI0LCJleHAiOjE3OTM0NjM0MjR9.vYGdvJzAM7uNl3dSgFwfF0LsKdfuS1Knf-VQ0wQmjLs": {
+      "token": "ka_jwt.eyJqdGkiOiJlMDY1NmFlMjYyZjU3MDcyM2YwNTQxMTZhMTA3NmU4MSIsInN1YiI6Imthdml0aGEiLCJuYW1lIjoiQ0EgS2F2aXRoYSBWaWpheSIsInJvbGUiOiJNYW5hZ2luZyBQYXJ0bmVyIiwiaWF0IjoxNzkzNDU5ODI0LCJleHAiOjE3OTM0NjM0MjR9.vYGdvJzAM7uNl3dSgFwfF0LsKdfuS1Knf-VQ0wQmjLs",
+      "user": {
+        "username": "kavitha",
+        "displayName": "CA Kavitha Vijay",
+        "role": "Managing Partner",
+        "lastLogin": "2026-10-31T15:17:04.938Z"
+      },
+      "expiresAt": 1793463424000
+    }
+  },
+  "rateLimits": {
+    "127.0.0.1_": {
+      "attempts": 2,
+      "lockoutUntil": 0
+    }
+  },
   "revokedTokens": {
-    "8f585d5e49ab14172f15eb11454eb8f7": 1793451149,
-    "eb189e65ef828cc711e88311d4ec061f": 1793451163,
-    "b1380abd292a98464228c55c2d44a5d8": 1793451656,
-    "6788bef0164ba6dfc2fb0179a800df76": 1793451905,
-    "e0911bf99e5d1ffe4d4ef64e3edd60a6": 1793453200
+    "8a3520de69a80f34618849391fba4254": 1793463206
   },
   "userRevocationEpochs": {
     "kavitha": 1793449601,
     "admin": 1793449601
   },
-  "userCredentials": {}
+  "userCredentials": {},
+  "enquiryRateLimits": {
+    "enq_127.0.0.1": {
+      "count": 2,
+      "resetAt": 1793460310578
+    }
+  }
 }

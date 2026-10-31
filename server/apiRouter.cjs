@@ -362,6 +362,22 @@ async function handleApiRequest(req, res) {
     enqInfo.count += 1;
     db.enquiryRateLimits[enqKey] = enqInfo;
 
+    // Deduplication Guard: Check if an identical submission was received within the last 60 seconds
+    const recentDuplicate = (db.enquiries || []).find(e => 
+      e.phone === phone && 
+      e.message === message && 
+      (Date.now() - new Date(e.createdAt).getTime()) < 60000
+    );
+
+    if (recentDuplicate) {
+      return sendJson(res, 200, {
+        success: true,
+        enquiry: recentDuplicate,
+        duplicate: true,
+        message: 'Consultation inquiry registered successfully in practice database.'
+      }, req);
+    }
+
     const newEnquiry = {
       id: `ENQ-${Date.now().toString(36).toUpperCase()}-${Math.floor(Math.random() * 899 + 100)}`,
       createdAt: new Date().toISOString(),
@@ -814,6 +830,7 @@ async function handleApiRequest(req, res) {
   if (method === 'POST' && pathname === '/api/admin/content/reset') {
     db.services = JSON.parse(JSON.stringify(BASELINE_DATA.services));
     db.faqs = JSON.parse(JSON.stringify(BASELINE_DATA.faqs));
+    db.posts = [];
     writeDb(db);
     return sendJson(res, 200, { success: true, message: 'Content restored to baseline.' });
   }

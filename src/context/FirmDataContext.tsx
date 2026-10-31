@@ -51,7 +51,9 @@ export const FirmDataProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     // Merge service content overrides
     if (contentOverrides.services) {
-      base.serviceCategories = base.serviceCategories.map((cat) => {
+      base.serviceCategories = base.serviceCategories
+        .filter((cat) => contentOverrides.services?.[cat.id]?.status !== 'draft')
+        .map((cat) => {
         const override = contentOverrides.services?.[cat.id];
         if (override) {
           return {
@@ -69,7 +71,9 @@ export const FirmDataProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     // Merge FAQ content overrides
     if (contentOverrides.faqs) {
-      base.faqs = base.faqs.map((faq) => {
+      base.faqs = base.faqs
+        .filter((faq) => contentOverrides.faqs?.[faq.id]?.status !== 'draft')
+        .map((faq) => {
         const override = contentOverrides.faqs?.[faq.id];
         if (override) {
           return {

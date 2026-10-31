@@ -225,7 +225,7 @@ export const AdminContentPage: React.FC = () => {
       seo: {
         metaTitle: `${postTitle.trim()} | Kavitha & Associates`,
         metaDescription: postExcerpt.trim() || postTitle.trim(),
-        canonicalUrl: `https://kavithaassociates.com/insights/${cleanSlug}`
+        canonicalUrl: `https://kavithaassociates.com/blog/${cleanSlug}`
       }
     };
 
@@ -341,7 +341,7 @@ export const AdminContentPage: React.FC = () => {
               <span className="font-medium">{saveMessage}</span>
             </div>
             <a
-              href={activeTab === 'posts' ? '/insights' : '/services'}
+              href={activeTab === 'posts' ? '/blog' : '/services'}
               target="_blank"
               rel="noreferrer"
               className="text-[11px] font-medium text-emerald-700 hover:text-emerald-900 inline-flex items-center gap-1 underline"
@@ -744,7 +744,7 @@ export const AdminContentPage: React.FC = () => {
                     {isCreatingNewPost ? 'New Statutory Article' : (postTitle || postSlug)}
                   </h3>
                   <p className="text-[11px] font-mono text-neutral-400 mt-0.5">
-                    Route: /insights/{postSlug || '...'}
+                    Route: /blog/{postSlug || '...'}
                   </p>
                 </div>
 
@@ -774,7 +774,7 @@ export const AdminContentPage: React.FC = () => {
 
                   {!isCreatingNewPost && postSlug && (
                     <a
-                      href={`/insights/${postSlug}`}
+                      href={`/blog/${postSlug}`}
                       target="_blank"
                       rel="noreferrer"
                       className="text-xs text-neutral-600 hover:text-neutral-900 inline-flex items-center gap-1 font-medium px-2.5 py-1 rounded border border-neutral-200 hover:bg-neutral-50"

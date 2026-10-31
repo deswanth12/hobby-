@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Inbox, 
@@ -41,7 +41,12 @@ export const AdminOverviewPage: React.FC = () => {
   const totalEnquiries = enquiries.length;
   const newEnquiries = enquiries.filter(e => e.status === 'new').length;
   const inReviewEnquiries = enquiries.filter(e => e.status === 'in-progress' || e.status === 'in-review').length;
-  const closedEnquiries = enquiries.filter(e => e.status === 'contacted' || e.status === 'closed').length;
+  const contactedEnquiries = enquiries.filter(e => e.status === 'contacted').length;
+  const convertedClients = new Set(
+    enquiries
+      .filter(e => e.status === 'closed')
+      .map(e => (e.phone || e.email || e.fullName).trim().toLowerCase())
+  ).size;
 
   const recentEnquiries = enquiries.slice(0, 5);
 
@@ -59,21 +64,6 @@ export const AdminOverviewPage: React.FC = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
-
-  const handleCreateSampleEnquiry = () => {
-    adminStorage.recordEnquiry({
-      fullName: 'Sreenivasulu Naidu',
-      entityType: 'Private Limited Company',
-      organization: 'Tirupati Agro Processing Pvt Ltd',
-      phone: '+91 94401 23456',
-      email: 'sreenivas@tirupatiagro.com',
-      serviceCategory: 'Taxation & Statutory Compliances',
-      city: 'Tirupati',
-      urgency: 'statutory-deadline',
-      message: 'Urgent consultation requested for GST annual reconciliation and filing before statutory deadline next week.',
-    });
-    loadData();
   };
 
   return (
@@ -124,17 +114,17 @@ export const AdminOverviewPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Under Review */}
+          {/* Under Review & Active Consultations */}
           <div className="bg-white p-5 rounded-2xl border border-blue-200/80 shadow-sm flex items-center justify-between">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
-                Under Review
+                Active Follow-up
               </div>
               <div className="text-3xl font-serif font-bold text-blue-700 mt-1">
-                {inReviewEnquiries}
+                {inReviewEnquiries + contactedEnquiries}
               </div>
               <div className="text-[11px] text-blue-600 mt-0.5">
-                Follow-up in progress
+                {contactedEnquiries} contacted • {inReviewEnquiries} in review
               </div>
             </div>
             <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
@@ -142,17 +132,17 @@ export const AdminOverviewPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Contacted / Completed */}
+          {/* Converted Clients (Deduplicated Closed Engagements) */}
           <div className="bg-white p-5 rounded-2xl border border-emerald-200/80 shadow-sm flex items-center justify-between">
             <div>
               <div className="text-xs font-bold uppercase tracking-wider text-emerald-700">
-                Contacted / Closed
+                Converted Clients
               </div>
               <div className="text-3xl font-serif font-bold text-emerald-700 mt-1">
-                {closedEnquiries}
+                {convertedClients}
               </div>
               <div className="text-[11px] text-emerald-600 mt-0.5">
-                Consultation addressed
+                Closed client engagements
               </div>
             </div>
             <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
@@ -244,13 +234,7 @@ export const AdminOverviewPage: React.FC = () => {
                 Export Enquiries Register (CSV)
               </button>
 
-              <button
-                type="button"
-                onClick={handleCreateSampleEnquiry}
-                className="inline-flex items-center px-3 py-1.5 text-xs text-gray-600 hover:text-brand-darkgreen transition-colors"
-              >
-                + Inject Evaluation Sample Enquiry
-              </button>
+              
             </div>
           </div>
 
@@ -275,7 +259,7 @@ export const AdminOverviewPage: React.FC = () => {
                 {firmData.name}
               </h3>
               <p className="text-xs text-emerald-200/80 mt-1">
-                Chartered Accountants • Tirupati Chambers
+                Chartered Accountants â€¢ Tirupati Chambers
               </p>
 
               <div className="mt-4 space-y-2 text-xs text-gray-200">
@@ -335,19 +319,12 @@ export const AdminOverviewPage: React.FC = () => {
                 Submissions made through the public website contact form will appear here automatically with real-time reactive sync.
               </p>
               <div className="mt-4 flex items-center justify-center gap-3">
-                <button
-                  type="button"
-                  onClick={handleCreateSampleEnquiry}
-                  className="px-4 py-2 text-xs font-bold text-white bg-brand-darkgreen hover:bg-brand-chambers rounded-xl transition-colors duration-200"
-                >
-                  Create Evaluation Sample
-                </button>
                 <Link
                   to="/contact"
                   target="_blank"
-                  className="px-4 py-2 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors duration-200 inline-flex items-center gap-1"
+                  className="px-4 py-2 text-xs font-bold text-white bg-brand-darkgreen hover:bg-brand-chambers rounded-xl transition-colors duration-200 inline-flex items-center gap-1.5"
                 >
-                  Test Public Contact Form <ExternalLink className="w-3 h-3" />
+                  Open Public Contact Form <ExternalLink className="w-3 h-3" />
                 </Link>
               </div>
             </div>
@@ -383,7 +360,7 @@ export const AdminOverviewPage: React.FC = () => {
                     </div>
                     <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
                       <span>{enquiry.phone}</span>
-                      <span>•</span>
+                      <span>â€¢</span>
                       <span>{enquiry.serviceCategory}</span>
                     </div>
                     <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
@@ -398,7 +375,7 @@ export const AdminOverviewPage: React.FC = () => {
                         to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
                         className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-gold"
                       >
-                        Review Enquiry →
+                        Review Enquiry â†’
                       </Link>
                     </div>
                   </div>
@@ -467,7 +444,7 @@ export const AdminOverviewPage: React.FC = () => {
                             to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
                             className="inline-flex items-center font-bold text-brand-darkgreen hover:text-gold transition-colors"
                           >
-                            Review →
+                            Review â†’
                           </Link>
                         </td>
                       </tr>

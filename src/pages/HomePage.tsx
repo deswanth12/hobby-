@@ -128,14 +128,10 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* Master Headline (Cormorant Garamond Monumental Serif) */}
-              <div className="space-y-1">
-                <h1 className="font-editorial-h1 text-brand-forest leading-[1.15]">
-                  Statutory Rigor.
-                </h1>
-                <h1 className="font-editorial-h1 text-brand-gold leading-[1.15]">
-                  Practical Commercial Counsel.
-                </h1>
-              </div>
+              <h1 className="font-editorial-h1 text-brand-forest leading-[1.14] tracking-tight lg:text-[2.85rem] xl:text-[3.35rem]">
+                <span className="block">Statutory Rigor.</span>
+                <span className="block text-brand-forest/90">Practical Commercial Counsel.</span>
+              </h1>
 
               {/* Authoritative Lead Narrative */}
               <p className="font-editorial-body text-brand-charcoal/85 leading-relaxed max-w-2xl font-normal">

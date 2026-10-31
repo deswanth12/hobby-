@@ -107,6 +107,7 @@ export const AdminEnquiriesPage: React.FC = () => {
     const ok = adminStorage.updateEnquiryStatus(selectedEnquiry.id, editStatus, editNotes);
     if (ok) {
       setSaveSuccess(true);
+      setSelectedEnquiry(prev => prev ? { ...prev, status: editStatus, notes: editNotes } : null);
       setTimeout(() => setSaveSuccess(false), 2500);
       loadEnquiries(false);
     }
@@ -147,8 +148,8 @@ export const AdminEnquiriesPage: React.FC = () => {
       (item.organization || '').toLowerCase().includes(query) ||
       item.phone.toLowerCase().includes(query) ||
       (item.email || '').toLowerCase().includes(query) ||
-      item.serviceCategory.toLowerCase().includes(query) ||
-      item.city.toLowerCase().includes(query);
+      (item.serviceCategory || '').toLowerCase().includes(query) ||
+      (item.city || '').toLowerCase().includes(query);
 
     const matchStatus = statusFilter === 'all' || 
       item.status === statusFilter || 
@@ -163,6 +164,12 @@ export const AdminEnquiriesPage: React.FC = () => {
 
   // Calculate pagination
   const totalPages = Math.ceil(filtered.length / pageSize) || 1;
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
   const startIndex = (currentPage - 1) * pageSize;
   const paginatedEnquiries = filtered.slice(startIndex, startIndex + pageSize);
 

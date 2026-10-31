@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ShieldCheck, 
@@ -15,6 +15,7 @@ import {
   Globe2,
   Trophy,
   Languages,
+  ExternalLink,
   Sparkles,
   Building2,
   FileCheck2,
@@ -46,13 +47,13 @@ export const AboutPage: React.FC = () => {
           <div className="max-w-3xl scroll-reveal">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 text-brand-forest font-editorial-meta mb-4 border border-brand-forest/20">
               <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" />
-              <span>Chartered & Cost Accountancy Practice • ICAI Mem. 252985</span>
+              <span>Chartered & Cost Accountancy Practice â€¢ ICAI Mem. 252985</span>
             </div>
             <h1 className="font-editorial-h1 text-brand-forest">
               Institutional Rigor. Independent Counsel.
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
-              MNC Auditor with Big 4 Experience of 10+ Years spanning Deloitte, Ford Motor Company, and public practice. Bringing global audit rigor, ₹1,000 Cr IPO experience, and enterprise risk governance directly to emerging businesses, institutions, and corporations in Tirupati and pan-India.
+              MNC Auditor with Big 4 Experience of 10+ Years spanning Deloitte, Ford Motor Company, and public practice. Bringing global audit rigor, â‚¹1,000 Cr IPO experience, and enterprise risk governance directly to emerging businesses, institutions, and corporations in Tirupati and pan-India.
             </p>
           </div>
         </div>
@@ -109,6 +110,17 @@ export const AboutPage: React.FC = () => {
                       <Globe2 className="w-3.5 h-3.5 text-brand-gold shrink-0" />
                       <span>International Exposure</span>
                     </span>
+                    {partner.linkedinUrl && (
+                      <a 
+                        href={partner.linkedinUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0077b5]/20 border border-[#0077b5]/40 text-xs font-semibold text-sky-200 hover:text-white hover:bg-[#0077b5]/30 transition-colors"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 text-[#00a0dc] shrink-0" />
+                        <span>LinkedIn Profile</span>
+                      </a>
+                    )}
                   </div>
 
                   {/* Focus Domains */}
@@ -118,7 +130,7 @@ export const AboutPage: React.FC = () => {
                       <span>Focus Domains</span>
                     </div>
                     <p className="font-editorial-body text-xs text-emerald-100/90 leading-relaxed">
-                      Audit & Assurance • Enterprise Risk Management • Career Mentorship & Financial Literacy for B2C and B2B
+                      Audit & Assurance â€¢ Enterprise Risk Management â€¢ Career Mentorship & Financial Literacy for B2C and B2B
                     </p>
                   </div>
 
@@ -133,7 +145,7 @@ export const AboutPage: React.FC = () => {
                         <div>
                           <div className="font-semibold text-white text-xs">{edu.degree} ({edu.year})</div>
                           <div className="text-[11px] text-emerald-300/90 font-editorial-body">
-                            {edu.institution} {edu.distinction && `• ${edu.distinction}`}
+                            {edu.institution} {edu.distinction && `â€¢ ${edu.distinction}`}
                           </div>
                         </div>
                       </div>
@@ -144,11 +156,11 @@ export const AboutPage: React.FC = () => {
                   <div className="mt-6 pt-6 border-t border-white/10 space-y-2.5 text-xs text-emerald-200">
                     <div className="flex items-center gap-2">
                       <Languages className="w-4 h-4 text-brand-gold shrink-0" />
-                      <span><strong>Languages:</strong> {partner.languages.join(' • ')}</span>
+                      <span><strong>Languages:</strong> {partner.languages.join(' â€¢ ')}</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <MapPin className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
-                      <span>Chambers: 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati – 517501</span>
+                      <span>Chambers: 19-12-46, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati â€“ 517501</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-brand-gold shrink-0" />
@@ -484,13 +496,13 @@ export const AboutPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12 sm:mb-16 scroll-reveal">
             <span className="badge-gold-pill mb-3">
-              Physical Practice Chambers • Tirupati
+              Physical Practice Chambers â€¢ Tirupati
             </span>
             <h2 className="font-editorial-h2 text-brand-forest mt-2">
               Verified Chambers, Law Library & Audit Desks
             </h2>
             <p className="mt-3 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">
-              Operating from principal chambers at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, our practice combines authentic physical infrastructure—including extensive corporate law digests, legal archives, and dedicated workstations—with modern digital compliance workflows across South India.
+              Operating from principal chambers at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, our practice combines authentic physical infrastructureâ€”including extensive corporate law digests, legal archives, and dedicated workstationsâ€”with modern digital compliance workflows across South India.
             </p>
           </div>
 
