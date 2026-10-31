@@ -1,9 +1,3 @@
-﻿export interface ServiceItem {
-  id: string;
-  name: string;
-  description?: string;
-}
-
 export interface ServiceCategory {
   id: string;
   title: string;

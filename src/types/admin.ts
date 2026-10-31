@@ -1,11 +1,5 @@
 export type EnquiryStatus = 'new' | 'contacted' | 'in-progress' | 'closed' | 'in-review';
 
-export type EnquiryUrgency = 
-  | 'Normal Statutory Cycle'
-  | 'Urgent / Approaching Deadline'
-  | 'Statutory Notice Received'
-  | 'Immediate Incorporation';
-
 export interface EnquiryRecord {
   id: string;
   fullName: string;
