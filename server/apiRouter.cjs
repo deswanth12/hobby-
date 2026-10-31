@@ -270,6 +270,12 @@ async function handleApiRequest(req, res) {
     return res.end();
   }
 
+  // Google Search Console Site Verification
+  if (pathname === '/google66e0145809155f23.html' || pathname === '/api/google66e0145809155f23.html') {
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    return res.end('google-site-verification: google66e0145809155f23.html');
+  }
+
   // 1. Health & Database Mode Endpoint
   if (method === 'GET' && (pathname === '/api/health' || pathname === '/api/status')) {
     const db = readDb();
