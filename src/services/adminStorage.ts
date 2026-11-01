@@ -23,7 +23,7 @@ export const FIRM_DATA_UPDATE_EVENT = 'ka_firm_data_updated';
 
 export const adminStorage = {
   isCloudConnected(): boolean {
-    return isSupabaseConfigured() || true; // Server API is active on port 5173
+    return isSupabaseConfigured();
   },
 
   getEnquiries(): EnquiryRecord[] {

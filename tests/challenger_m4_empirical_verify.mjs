@@ -332,7 +332,9 @@ const resultsObj = {
   verdict: failures.length === 0 ? 'APPROVE' : 'REJECT'
 };
 
-const resultsPath = path.join(ROOT, '.agents', 'teamwork', 'teamwork_explorer_m4_3', 'challenger_m4_empirical_results.json');
+const resultsDir = path.join(ROOT, '.agents', 'teamwork', 'teamwork_explorer_m4_3');
+if (!fs.existsSync(resultsDir)) fs.mkdirSync(resultsDir, { recursive: true });
+const resultsPath = path.join(resultsDir, 'challenger_m4_empirical_results.json');
 fs.writeFileSync(resultsPath, JSON.stringify(resultsObj, null, 2), 'utf8');
 console.log(`Written baseline empirical results to: ${resultsPath}`);
 

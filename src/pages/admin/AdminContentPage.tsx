@@ -252,6 +252,9 @@ export const AdminContentPage: React.FC<AdminContentPageProps> = ({ initialTab }
 
     const ok = adminStorage.savePost(postPayload);
     if (ok) {
+      if (!isCreatingNewPost && selectedPostSlug && selectedPostSlug !== cleanSlug) {
+        adminStorage.deletePost(selectedPostSlug);
+      }
       const updated = BlogService.getAllPosts(true);
       setPosts(updated);
       setSelectedPostSlug(cleanSlug);

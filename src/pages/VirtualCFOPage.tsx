@@ -177,7 +177,7 @@ export const VirtualCFOPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I would like to discuss Virtual CFO and CMA services for my business.')}`}
+                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I would like to discuss Virtual CFO and CMA services for my business.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
@@ -201,9 +201,9 @@ export const VirtualCFOPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Rank Advantage</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   CMA All India Rank 49
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Nationally ranked cost and management accounting competence delivering actionable insights on unit economics and cost optimization.
                 </p>
@@ -216,9 +216,9 @@ export const VirtualCFOPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Credit Readiness</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Bank Loan CMA Reports
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Bank-compliant CMA data packs, DSCR calculations, and project reports designed to secure working capital and term loan approvals.
                 </p>
@@ -231,9 +231,9 @@ export const VirtualCFOPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Executive Clarity</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Monthly Financial MIS
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Structured C-suite dashboards transforming raw general ledger balances into clear revenue, margin, and working capital indicators.
                 </p>
@@ -467,7 +467,7 @@ export const VirtualCFOPage: React.FC = () => {
               className="px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-forest/80 border border-brand-gold/40 transition-colors btn-tactile flex items-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Call +91 96263 50900</span>
+              <span>Call {firm.contact.primaryPhone}</span>
             </a>
           </div>
         </div>

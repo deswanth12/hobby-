@@ -177,7 +177,7 @@ export const IncomeTaxPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding Income Tax filing and planning in Tirupati.')}`}
+                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding Income Tax filing and planning in Tirupati.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
@@ -201,9 +201,9 @@ export const IncomeTaxPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Data Triangulation</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   AIS & 26AS Reconciliation
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Every ITR is audited against Annual Information Statement and 26AS data to eliminate defective return notices under Section 139(9).
                 </p>
@@ -216,9 +216,9 @@ export const IncomeTaxPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Fiscal Optimization</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Legitimate Tax Mitigation
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Maximizing permissible deductions under Chapter VI-A, Section 115BAA, and capital gains exemptions while staying strictly compliant.
                 </p>
@@ -231,9 +231,9 @@ export const IncomeTaxPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Appellate Defense</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Faceless Scrutiny Defense
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Structured submissions citing High Court and ITAT precedents to protect taxpayers from arbitrary additions and penalty notices.
                 </p>
@@ -467,7 +467,7 @@ export const IncomeTaxPage: React.FC = () => {
               className="px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-forest/80 border border-brand-gold/40 transition-colors btn-tactile flex items-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Call +91 96263 50900</span>
+              <span>Call {firm.contact.primaryPhone}</span>
             </a>
           </div>
         </div>

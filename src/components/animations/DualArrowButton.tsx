@@ -34,7 +34,7 @@ export const DualArrowButton: React.FC<DualArrowButtonProps> = ({
       case 'dark':
         return 'btn-pill-primary bg-brand-deep text-white border-brand-gold/60 hover:bg-brand-forest';
       case 'outline':
-        return 'inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full border border-brand-gold/60 text-brand-forest hover:bg-brand-gold/10 font-semibold text-xs tracking-wider uppercase transition-colors duration-200 duration-300';
+        return 'inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full border border-brand-gold/60 text-brand-forest hover:bg-brand-gold/10 font-semibold text-xs tracking-wider uppercase transition-colors duration-300';
       case 'primary':
       default:
         return 'btn-pill-primary bg-brand-forest text-white border-brand-gold/40 hover:bg-brand-deep shadow-card hover:shadow-card-hover';

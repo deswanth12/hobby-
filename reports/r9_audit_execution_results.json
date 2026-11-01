@@ -1,0 +1,133 @@
+{
+  "timestamp": "2026-11-01T05:49:38.599Z",
+  "total": 25,
+  "passed": 25,
+  "failed": 0,
+  "log": [
+    {
+      "title": "Viewport 320px (Compact Mobile): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 360px (Standard Android): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 375px (iPhone SE): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 390px (iPhone 12/13/14): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 412px (Samsung Galaxy / Pixel): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 430px (iPhone Pro Max): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 768px (Tablet Portrait): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 1024px (Tablet Landscape): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "Viewport 1440px (Desktop HiDPI): Zero horizontal overflow on standard routes",
+      "status": "PASS",
+      "extra": "Overflow detected on 0 routes"
+    },
+    {
+      "title": "200% Zoom: Homepage preserves viewport bounds without horizontal scrolling",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "About Page: Principal chambers phone numbers and email links are valid tel/mailto",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Service Page (/services/company-registration): WhatsApp and Tel links use dynamic firm contact",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Service Page (/services/gst-filing-services): WhatsApp and Tel links use dynamic firm contact",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Service Page (/services/income-tax-consultant): WhatsApp and Tel links use dynamic firm contact",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Service Page (/services/rera-consultant): WhatsApp and Tel links use dynamic firm contact",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Service Page (/services/virtual-cfo): WhatsApp and Tel links use dynamic firm contact",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Contact Form: ?entity= parameter automatically sets entityType field",
+      "status": "PASS",
+      "extra": "Got 'Private Limited Company'"
+    },
+    {
+      "title": "Contact Form: Submitting empty form triggers validation alerts and halts submission",
+      "status": "PASS",
+      "extra": "Detected 4 alerts"
+    },
+    {
+      "title": "Contact Form: Malformed email rejected with descriptive feedback",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Unknown URL: Displays canonical 404 page with directory recovery links",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Unknown Blog Slug: Safely quarantined with 404 NotFound page",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Legacy /admin route: Returns 404 or redirects away (fails closed)",
+      "status": "PASS",
+      "extra": ""
+    },
+    {
+      "title": "Server API /api/admin/enquiries without credentials: HTTP 401 Unauthorized",
+      "status": "PASS",
+      "extra": "Status: 401"
+    },
+    {
+      "title": "Server API /api/admin/change-password without credentials: HTTP 401 Unauthorized",
+      "status": "PASS",
+      "extra": "Status: 401"
+    },
+    {
+      "title": "Browser Console: Zero unhandled exceptions or critical React errors",
+      "status": "PASS",
+      "extra": "Errors: "
+    }
+  ]
+}

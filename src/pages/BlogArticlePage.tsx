@@ -33,6 +33,7 @@ import { FIRM_DATA } from '../data/firmData';
 export const BlogArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copied, setCopied] = useState(false);
+  const [coverImageFailed, setCoverImageFailed] = useState(false);
 
   // Retrieve post (strictly published only - drafts quarantined)
   const post = slug ? BlogService.getPostBySlug(slug, false) : undefined;
@@ -43,11 +44,27 @@ export const BlogArticlePage: React.FC = () => {
     return <NotFoundPage />;
   }
 
+  const copyTimerRef = React.useRef<number | null>(null);
+
+  React.useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+    };
+  }, []);
+
   // Social share actions
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    if (typeof window !== 'undefined' && navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(window.location.href)
+        .then(() => {
+          setCopied(true);
+          if (copyTimerRef.current) window.clearTimeout(copyTimerRef.current);
+          copyTimerRef.current = window.setTimeout(() => setCopied(false), 2500);
+        })
+        .catch(() => {
+          setCopied(false);
+        });
+    }
   };
 
   const handleWhatsAppShare = () => {
@@ -225,13 +242,14 @@ export const BlogArticlePage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Accessible Cover Illustration */}
-          {post.coverImage && (
+          {post.coverImage && !coverImageFailed && (
             <div className="mb-10 rounded-2xl overflow-hidden border border-border shadow-card bg-brand-surface scroll-reveal scroll-reveal-image">
               <img
                 src={post.coverImage}
                 alt={post.coverImageAlt || `Cover illustration for ${post.title}`}
                 className="w-full h-auto max-h-[500px] object-cover"
                 loading="lazy"
+                onError={() => setCoverImageFailed(true)}
               />
             </div>
           )}

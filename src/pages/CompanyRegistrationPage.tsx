@@ -176,7 +176,7 @@ export const CompanyRegistrationPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I want to register a new Company / LLP in Tirupati.')}`}
+                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I want to register a new Company / LLP in Tirupati.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
@@ -200,9 +200,9 @@ export const CompanyRegistrationPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Turnaround Speed</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   3 to 7 Days Fast-Track
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Streamlined SPICe+ filing ensuring rapid name approval, DIN allotment, and incorporation certificate delivery.
                 </p>
@@ -215,9 +215,9 @@ export const CompanyRegistrationPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Legal Precision</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Custom MoA & AoA Charters
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Bespoke object clauses and governance agreements tailored to protect founder equity and future venture capital rounds.
                 </p>
@@ -230,9 +230,9 @@ export const CompanyRegistrationPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Annual Shield</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Guaranteed ROC Compliance
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Proactive annual filing of AOC-4, MGT-7, and DIR-3 KYC protecting directors from disqualification and penalties.
                 </p>
@@ -466,7 +466,7 @@ export const CompanyRegistrationPage: React.FC = () => {
               className="px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-forest/80 border border-brand-gold/40 transition-colors btn-tactile flex items-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Call +91 96263 50900</span>
+              <span>Call {firm.contact.primaryPhone}</span>
             </a>
           </div>
         </div>

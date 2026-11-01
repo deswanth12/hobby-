@@ -268,10 +268,12 @@ export const HomePage: React.FC = () => {
                     <div className="flex items-center gap-3.5">
                       <div className="w-14 h-14 flex items-center justify-center shrink-0">
                         <img 
-                          src="/brand/ka-seal-medallion.png" 
+                          src="/brand/ka-seal-medallion.webp" 
                           alt="KA Official Practice Seal" 
                           width="56"
                           height="56"
+                          loading="eager"
+                          fetchPriority="high"
                           className="w-full h-full object-contain drop-shadow-md"
                         />
                       </div>

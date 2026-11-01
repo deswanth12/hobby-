@@ -33,6 +33,10 @@ export const SEOHead = ({
   jsonLd,
   breadcrumbs,
 }: SEOProps) => {
+  const articleStr = JSON.stringify(article);
+  const jsonLdStr = JSON.stringify(jsonLd);
+  const breadcrumbsStr = JSON.stringify(breadcrumbs);
+
   useEffect(() => {
     const productionDomain = 'https://kavithaassociates.com';
 
@@ -200,7 +204,7 @@ export const SEOHead = ({
     } else if (scriptTag) {
       scriptTag.remove();
     }
-  }, [title, description, canonicalPath, noIndex, ogType, image, article, jsonLd, breadcrumbs]);
+  }, [title, description, canonicalPath, noIndex, ogType, image, articleStr, jsonLdStr, breadcrumbsStr]);
 
   return null;
 };

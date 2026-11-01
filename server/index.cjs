@@ -37,6 +37,18 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // Cloudflare Pages _redirects Quarantine: /admin and /admin/* strictly serve SPA 404
+  if (pathname === '/admin' || pathname.startsWith('/admin/')) {
+    const indexPath = path.join(DIST_DIR, 'index.html');
+    res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8', 'X-Content-Type-Options': 'nosniff' });
+    if (fs.existsSync(indexPath)) {
+      fs.createReadStream(indexPath).pipe(res);
+    } else {
+      res.end('<!DOCTYPE html><html><body>404 Not Found</body></html>');
+    }
+    return;
+  }
+
   // Null Byte Defense
   if (pathname.includes('\0')) {
     res.writeHead(400, { 'Content-Type': 'text/plain', 'X-Content-Type-Options': 'nosniff' });

@@ -18,10 +18,11 @@ export const Footer: React.FC = () => {
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 flex items-center justify-center shrink-0">
                 <img 
-                  src="/brand/ka-seal-medallion.png" 
+                  src="/brand/ka-seal-medallion.webp" 
                   alt="Kavitha &amp; Associates Official Practice Seal" 
                   width="48"
                   height="48"
+                  loading="lazy"
                   className="w-full h-full object-contain drop-shadow-sm"
                 />
               </div>

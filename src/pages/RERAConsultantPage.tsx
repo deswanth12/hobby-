@@ -177,7 +177,7 @@ export const RERAConsultantPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding RERA CA certificates and AP RERA compliance.')}`}
+                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding RERA CA certificates and AP RERA compliance.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
@@ -201,9 +201,9 @@ export const RERAConsultantPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Escrow Compliance</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   CA Form 3 Certification
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Verified cost-to-completion calculations ensuring legal fund withdrawals from 70% designated bank escrow accounts.
                 </p>
@@ -216,9 +216,9 @@ export const RERAConsultantPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">AP RERA Alignment</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Quarterly Portal Filings
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Timely financial disclosures and booked unit reporting to keep project registrations active and penalty-free.
                 </p>
@@ -231,9 +231,9 @@ export const RERAConsultantPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Fiscal Security</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   JDA Capital Gains Optimization
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Structuring joint development contracts under Section 45(5A) to defer and minimize capital gains tax for landowners.
                 </p>
@@ -467,7 +467,7 @@ export const RERAConsultantPage: React.FC = () => {
               className="px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-forest/80 border border-brand-gold/40 transition-colors btn-tactile flex items-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Call +91 96263 50900</span>
+              <span>Call {firm.contact.primaryPhone}</span>
             </a>
           </div>
         </div>

@@ -344,7 +344,7 @@ export const Navbar: React.FC = () => {
           {/* Primary Consultation CTA */}
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 duration-200 btn-tactile min-h-[44px] group"
+            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 btn-tactile min-h-[44px] group"
           >
             <span>Schedule Consultation</span>
             <ChevronRight className="w-3.5 h-3.5 text-brand-gold transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" aria-hidden="true" />

@@ -86,7 +86,8 @@ const COMPLIANCE_SCHEDULE: ComplianceEvent[] = [
 ];
 
 export const StatutoryCalendar: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'tax' | 'gst' | 'corporate' | 'audit'>('all');
+  type CalendarFilter = 'all' | 'tax' | 'gst' | 'corporate' | 'audit';
+  const [activeFilter, setActiveFilter] = useState<CalendarFilter>('all');
 
   const filteredEvents = activeFilter === 'all'
     ? COMPLIANCE_SCHEDULE
@@ -111,7 +112,7 @@ export const StatutoryCalendar: React.FC = () => {
     <div className="bg-brand-white rounded-2xl border border-brand-border shadow-card p-6 sm:p-8 lg:p-10 mb-12">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-brand-border mb-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-[11px] text-xs font-semibold text-brand-gold font-bold mb-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-surface border border-brand-border text-xs font-bold text-brand-gold mb-2">
             <Clock className="w-3.5 h-3.5 text-brand-gold shrink-0" />
             <span>Statutory Timeline • FY 2026-27</span>
           </div>
@@ -125,17 +126,17 @@ export const StatutoryCalendar: React.FC = () => {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap items-center gap-1.5 shrink-0">
-          {[
-            { id: 'all', label: 'All Dates' },
-            { id: 'tax', label: 'Income Tax' },
-            { id: 'gst', label: 'GST' },
-            { id: 'audit', label: 'Audits' },
-            { id: 'corporate', label: 'MCA / ROC' }
-          ].map((tab) => (
+          {([
+            { id: 'all' as const, label: 'All Dates' },
+            { id: 'tax' as const, label: 'Income Tax' },
+            { id: 'gst' as const, label: 'GST' },
+            { id: 'audit' as const, label: 'Audits' },
+            { id: 'corporate' as const, label: 'MCA / ROC' }
+          ]).map((tab) => (
             <button
               key={tab.id}
               type="button"
-              onClick={() => setActiveFilter(tab.id as any)}
+              onClick={() => setActiveFilter(tab.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors duration-200 cursor-pointer ${
                 activeFilter === tab.id
                   ? 'bg-brand-forest text-white shadow-xs'

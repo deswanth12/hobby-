@@ -6,11 +6,21 @@ export const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      const element = document.getElementById(hash.replace('#', ''));
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
+      const id = hash.replace('#', '');
+      let attempts = 0;
+      const tryScroll = () => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else if (attempts < 5) {
+          attempts++;
+          requestAnimationFrame(tryScroll);
+        } else {
+          window.scrollTo(0, 0);
+        }
+      };
+      requestAnimationFrame(tryScroll);
+      return;
     }
     window.scrollTo(0, 0);
   }, [pathname, hash]);

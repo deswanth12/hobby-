@@ -1,0 +1,160 @@
+{
+  "testedAt": "2026-10-31T18:56:31.866Z",
+  "viewportsTested": 9,
+  "routesTested": 11,
+  "viewportResults": [
+    {
+      "viewport": "Small Mobile 320x640",
+      "dimensions": "320x640",
+      "passed": true,
+      "scrollWidth": 320,
+      "clientWidth": 320,
+      "screenshot": "homepage-320px.png"
+    },
+    {
+      "viewport": "Android Standard 360x800",
+      "dimensions": "360x800",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360,
+      "screenshot": "homepage-360px.png"
+    },
+    {
+      "viewport": "iPhone SE 375x812",
+      "dimensions": "375x812",
+      "passed": true,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "screenshot": "homepage-375px.png"
+    },
+    {
+      "viewport": "iPhone 14/15 390x844",
+      "dimensions": "390x844",
+      "passed": true,
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "screenshot": "homepage-390px.png"
+    },
+    {
+      "viewport": "Pixel 7 / Galaxy 412x915",
+      "dimensions": "412x915",
+      "passed": true,
+      "scrollWidth": 412,
+      "clientWidth": 412,
+      "screenshot": "homepage-412px.png"
+    },
+    {
+      "viewport": "iPhone Pro Max 430x932",
+      "dimensions": "430x932",
+      "passed": true,
+      "scrollWidth": 430,
+      "clientWidth": 430,
+      "screenshot": "homepage-430px.png"
+    },
+    {
+      "viewport": "iPad Portrait 768x1024",
+      "dimensions": "768x1024",
+      "passed": true,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "screenshot": "homepage-768px.png"
+    },
+    {
+      "viewport": "iPad Landscape 1024x768",
+      "dimensions": "1024x768",
+      "passed": true,
+      "scrollWidth": 1016,
+      "clientWidth": 1016,
+      "screenshot": "homepage-1024px.png"
+    },
+    {
+      "viewport": "Desktop Large 1440x900",
+      "dimensions": "1440x900",
+      "passed": true,
+      "scrollWidth": 1432,
+      "clientWidth": 1432,
+      "screenshot": "homepage-1440px.png"
+    }
+  ],
+  "routeResults": [
+    {
+      "route": "Home",
+      "path": "/",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "About",
+      "path": "/about",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Services",
+      "path": "/services",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Audit & Assurance",
+      "path": "/services/audit-assurance",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Industries",
+      "path": "/industries",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Locations",
+      "path": "/locations",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Blog",
+      "path": "/blog",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Blog Article",
+      "path": "/blog/corporate-tax-planning-2026",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Contact",
+      "path": "/contact",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "404",
+      "path": "/non-existent-route-for-testing-404",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    },
+    {
+      "route": "Admin Login",
+      "path": "/sec-ca-8f2a9c1e7d4b6/login",
+      "passed": true,
+      "scrollWidth": 360,
+      "clientWidth": 360
+    }
+  ],
+  "mobileDrawerVerified": true,
+  "formVerified": false
+}

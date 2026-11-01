@@ -190,7 +190,7 @@ export const StatutoryEntityAdvisor: React.FC = () => {
         
         {/* Section Heading */}
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16 scroll-reveal">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 border border-brand-forest/20 text-brand-forest text-xs text-xs font-semibold mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest/10 border border-brand-forest/20 text-brand-forest text-xs font-semibold mb-3">
             <FileCheck2 className="w-3.5 h-3.5 text-brand-gold shrink-0" />
             <span>Interactive Governance Framework</span>
           </div>

@@ -82,7 +82,7 @@ export const LocationsPage: React.FC = () => {
       <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="font-editorial-meta text-brand-gold block mb-3">
+            <span className="font-editorial-meta text-gold-dark block mb-3">
               Practice Chambers & Regional Corridors • South India Footprint
             </span>
             <h1 className="font-editorial-h1 text-brand-forest">

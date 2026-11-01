@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Send, CheckCircle2, AlertCircle, MessageSquare } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
 import { adminStorage } from '../services/adminStorage';
@@ -26,21 +27,37 @@ interface FormErrors {
 
 export const ContactForm: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
+  const [searchParams] = useSearchParams();
   const formLoadedAt = React.useRef(Date.now());
   const [honeypot, setHoneypot] = useState('');
   const [submissionError, setSubmissionError] = useState<string | null>(null);
 
+  const initialEntity = searchParams.get('entity') || 'Private Limited Company';
+  const initialService = searchParams.get('service') || 'Audit & Assurance Services';
+
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
-    entityType: 'Private Limited Company',
+    entityType: initialEntity,
     organization: '',
     phone: '',
     email: '',
-    serviceCategory: 'Audit & Assurance Services',
+    serviceCategory: initialService,
     city: 'Tirupati',
     urgency: 'Normal Statutory Cycle',
     message: '',
   });
+
+  useEffect(() => {
+    const entityParam = searchParams.get('entity');
+    const serviceParam = searchParams.get('service');
+    if (entityParam || serviceParam) {
+      setFormData(prev => ({
+        ...prev,
+        ...(entityParam ? { entityType: entityParam } : {}),
+        ...(serviceParam ? { serviceCategory: serviceParam } : {}),
+      }));
+    }
+  }, [searchParams]);
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -82,6 +99,9 @@ export const ContactForm: React.FC = () => {
     e.preventDefault();
     setSubmissionError(null);
 
+    // Validate fields first to provide immediate user feedback on invalid inputs
+    if (!validate()) return;
+
     // Spam Guard 1: Honeypot field inspection
     if (honeypot) {
       console.warn('Bot submission blocked via honeypot field.');
@@ -94,8 +114,6 @@ export const ContactForm: React.FC = () => {
       setSubmissionError('Submission received too rapidly. Please review your brief and submit again.');
       return;
     }
-
-    if (!validate()) return;
 
     setIsSubmitting(true);
 
@@ -129,7 +147,8 @@ export const ContactForm: React.FC = () => {
 
   const generateWhatsAppUrl = () => {
     const text = `Hello CA Kavitha Vijay (Kavitha & Associates),\n\nEnquiry Ref: ${savedRecord?.id || 'DIRECT'}\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
-    return `https://wa.me/919626350900?text=${encodeURIComponent(text)}`;
+    const targetNumber = FIRM_DATA.contact.primaryPhoneClean || '919626350900';
+    return `https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`;
   };
 
   const handleReset = () => {

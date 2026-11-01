@@ -178,7 +178,7 @@ export const GSTServicesPage: React.FC = () => {
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <a
-                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need assistance with GST services in Tirupati.')}`}
+                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need assistance with GST services in Tirupati.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
@@ -202,9 +202,9 @@ export const GSTServicesPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Filing Integrity</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   100% Reconciled Returns
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Zero unverified credits. Every GSTR-3B is mathematically matched against GSTR-2B before portal submission.
                 </p>
@@ -217,9 +217,9 @@ export const GSTServicesPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Litigation Shield</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Departmental Scrutiny Defense
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Proactive handling of ASMT-10, DRC-01A, and audit summons with structured legal replies backed by judicial precedents.
                 </p>
@@ -232,9 +232,9 @@ export const GSTServicesPage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Calendar Rigor</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Zero Late Fee Guarantee
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Scheduled monthly accounting cycles ensuring GSTR-1 by 11th and GSTR-3B by 20th to eliminate interest and late fees.
                 </p>
@@ -468,7 +468,7 @@ export const GSTServicesPage: React.FC = () => {
               className="px-6 py-3 rounded-full bg-brand-forest text-white font-editorial-meta text-xs hover:bg-brand-forest/80 border border-brand-gold/40 transition-colors btn-tactile flex items-center gap-2"
             >
               <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Call +91 96263 50900</span>
+              <span>Call {firm.contact.primaryPhone}</span>
             </a>
           </div>
         </div>

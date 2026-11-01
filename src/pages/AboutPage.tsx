@@ -129,8 +129,12 @@ export const AboutPage: React.FC = () => {
                   <div className="flex items-center justify-between pb-6 border-b border-white/10 mb-6">
                     <div className="w-16 h-16 flex items-center justify-center shrink-0">
                       <img 
-                        src="/brand/ka-seal-medallion.png" 
+                        src="/brand/ka-seal-medallion.webp" 
                         alt="KA Official Practice Seal" 
+                        width="64"
+                        height="64"
+                        loading="eager"
+                        fetchPriority="high"
                         className="w-full h-full object-contain drop-shadow-md"
                       />
                     </div>
@@ -168,7 +172,7 @@ export const AboutPage: React.FC = () => {
                         href={partner.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#0077b5]/20 border border-[#0077b5]/40 text-xs font-semibold text-sky-200 hover:text-white hover:bg-[#0077b5]/30 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[44px] rounded-full bg-[#0077b5]/20 border border-[#0077b5]/40 text-xs font-semibold text-sky-200 hover:text-white hover:bg-[#0077b5]/30 transition-colors btn-tactile"
                       >
                         <ExternalLink className="w-3.5 h-3.5 text-[#00a0dc] shrink-0" />
                         <span>LinkedIn Profile</span>
@@ -651,15 +655,15 @@ export const AboutPage: React.FC = () => {
               <div className="pt-2 flex flex-wrap gap-4 text-xs font-editorial-body text-emerald-200">
                 <div>
                   <strong className="text-white block">Primary Desk:</strong>
-                  <a href="tel:+919626350900" className="text-brand-gold hover:underline font-semibold">+91 96263 50900</a>
+                  <a href={`tel:${firm.contact.primaryPhoneClean || firm.contact.primaryPhone.replace(/\s+/g, '')}`} className="text-brand-gold hover:underline font-semibold">{firm.contact.primaryPhone}</a>
                 </div>
                 <div>
                   <strong className="text-white block">Alternative Line:</strong>
-                  <a href="tel:+919542153906" className="text-brand-gold hover:underline font-semibold">+91 95421 53906</a>
+                  <a href={`tel:${firm.contact.secondaryPhoneClean || firm.contact.secondaryPhone.replace(/\s+/g, '')}`} className="text-brand-gold hover:underline font-semibold">{firm.contact.secondaryPhone}</a>
                 </div>
                 <div>
                   <strong className="text-white block">Official Email:</strong>
-                  <a href="mailto:cakavithasrj@gmail.com" className="text-brand-gold hover:underline font-semibold">cakavithasrj@gmail.com</a>
+                  <a href={`mailto:${firm.contact.email}`} className="text-brand-gold hover:underline font-semibold">{firm.contact.email}</a>
                 </div>
               </div>
             </div>

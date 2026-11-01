@@ -93,7 +93,7 @@ export const ContactPage: React.FC = () => {
                       <span className="text-xs text-charcoal-muted">Click to call directly</span>
                     </div>
                   </div>
-                  <div className="pt-2 pl-13 space-y-1 text-sm font-semibold text-brand-primary">
+                  <div className="pt-2 pl-[52px] space-y-1 text-sm font-semibold text-brand-primary">
                     <div>
                       <a href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`} className="hover:text-brand-deep hover:underline btn-tactile inline-block">
                         {FIRM_DATA.contact.primaryPhone}
@@ -122,7 +122,7 @@ export const ContactPage: React.FC = () => {
                       <span className="text-xs text-charcoal-muted">For proposals and documentation</span>
                     </div>
                   </div>
-                  <div className="pt-2 pl-13 text-sm font-semibold text-brand-primary">
+                  <div className="pt-2 pl-[52px] text-sm font-semibold text-brand-primary">
                     <a href={`mailto:${FIRM_DATA.contact.email}`} className="hover:text-brand-deep hover:underline break-all btn-tactile inline-block">
                       {FIRM_DATA.contact.email}
                     </a>
@@ -144,7 +144,7 @@ export const ContactPage: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="pt-2 pl-13">
+                  <div className="pt-2 pl-[52px]">
                     <a
                       href={FIRM_DATA.contact.whatsappLink}
                       target="_blank"
@@ -169,7 +169,7 @@ export const ContactPage: React.FC = () => {
                       <span className="text-xs text-charcoal-muted">Registered Practice Office</span>
                     </div>
                   </div>
-                  <div className="pt-1 pl-13 text-xs text-charcoal leading-relaxed space-y-1">
+                  <div className="pt-1 pl-[52px] text-xs text-charcoal leading-relaxed space-y-1">
                     <strong className="text-brand-primary text-sm block">19-12-46, 1st Floor, Near Bairagipetteda Arch</strong>
                     <p className="text-charcoal-muted">
                       Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India

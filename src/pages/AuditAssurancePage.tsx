@@ -79,9 +79,9 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Methodology Benchmark</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   ICAI Standards on Auditing (SAs)
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Strict adherence to mandatory Indian and international auditing benchmarks (SAs 200–599) and CARO 2020.
                 </p>
@@ -94,9 +94,9 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Assurance Integrity</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Substantive Testing & Evidence
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Rigorous verification, sampling methodology, external confirmations (SA 505), and analytical review procedures.
                 </p>
@@ -109,9 +109,9 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
               <div>
                 <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Direct Partner Sign-Off</span>
-                <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
                   Direct Partner Supervision
-                </h3>
+                </p>
                 <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
                   Supervised and signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49) with mandatory UDIN generation.
                 </p>

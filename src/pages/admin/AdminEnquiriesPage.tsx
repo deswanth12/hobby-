@@ -51,7 +51,7 @@ export const AdminEnquiriesPage: React.FC = () => {
   const isCloud = adminStorage.isCloudConnected();
 
   const loadEnquiries = async (fetchRemote = false) => {
-    if (fetchRemote && isCloud) {
+    if (fetchRemote) {
       setIsLoading(true);
       setFetchError(null);
       const res = await adminStorage.fetchEnquiriesRemote();
@@ -107,7 +107,7 @@ export const AdminEnquiriesPage: React.FC = () => {
     const ok = adminStorage.updateEnquiryStatus(selectedEnquiry.id, editStatus, editNotes);
     if (ok) {
       setSaveSuccess(true);
-      setSelectedEnquiry(prev => prev ? { ...prev, status: editStatus, notes: editNotes } : null);
+      setSelectedEnquiry(prev => prev ? { ...prev, status: editStatus, followUpNotes: editNotes } : null);
       setTimeout(() => setSaveSuccess(false), 2500);
       loadEnquiries(false);
     }
@@ -137,6 +137,7 @@ export const AdminEnquiriesPage: React.FC = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   // Filter enquiries

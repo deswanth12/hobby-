@@ -1,10 +1,27 @@
 {
-  "timestamp": "2026-10-30T15:53:22.647Z",
+  "timestamp": "2026-11-01T05:31:57.680Z",
   "totalAssertions": 68,
-  "passedAssertions": 68,
-  "failedCount": 0,
+  "passedAssertions": 64,
+  "failedCount": 4,
   "warningCount": 0,
-  "failures": [],
+  "failures": [
+    {
+      "message": "HomePage.tsx references verified ICAI Mem. [REDACTED_MEMBERSHIP_NO]",
+      "details": ""
+    },
+    {
+      "message": "Footer.tsx references verified ICAI Mem. [REDACTED_MEMBERSHIP_NO]",
+      "details": ""
+    },
+    {
+      "message": "src/index.css body enforces overflow-x: hidden to prevent horizontal scroll bleed",
+      "details": ""
+    },
+    {
+      "message": "Navbar.tsx cleanly bifurcates mobile drawer (lg:hidden) and desktop navigation (hidden lg:flex)",
+      "details": ""
+    }
+  ],
   "warnings": [],
-  "verdict": "APPROVE"
+  "verdict": "REQUEST_CHANGES"
 }
