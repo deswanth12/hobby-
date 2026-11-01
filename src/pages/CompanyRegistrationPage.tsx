@@ -119,6 +119,7 @@ export const CompanyRegistrationPage: React.FC = () => {
           serviceType: 'Corporate Law and MCA Compliance',
           provider: {
             '@type': 'AccountingService',
+            '@id': 'https://kavithaassociates.com/#organization',
             name: 'Kavitha & Associates',
             url: 'https://kavithaassociates.com/',
             telephone: '+919626350900',

@@ -34,43 +34,62 @@ export const AboutPage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
-        title="About CA Kavitha Vijay | Chartered Accountant in Tirupati"
-        description="Profile of CA Kavitha Vijay (B.Com, CA, CMA AIR 49). 10+ years across Deloitte Big 4 audit, Ford Motor Company internal audit & Tirupati practice."
+        title="About CA Kavitha Vijay | Chartered Accountant in Tirupati | Kavitha & Associates"
+        description="Profile of CA Kavitha Vijay (B.Com, CA, CMA AIR 49), Managing Partner at Kavitha & Associates. 10+ years across Deloitte Big 4 audit, Ford internal audit, and Tirupati practice."
         canonicalPath="/about"
         breadcrumbs={[
           { name: 'Home', path: '/' },
           { name: 'About', path: '/about' }
         ]}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          name: 'CA Kavitha Vijay',
-          jobTitle: 'Practicing Chartered Accountant & Cost Accountant',
-          honorificPrefix: 'CA',
-          description: 'Managing Partner at Kavitha & Associates. B.Com, CA, CMA (AIR 49) with 10+ years experience across Deloitte, Ford Motor Company, and public practice in Tirupati.',
-          worksFor: {
-            '@type': 'AccountingService',
-            name: 'Kavitha & Associates',
-            url: 'https://kavithaassociates.com/'
-          },
-          alumniOf: [
-            {
-              '@type': 'EducationalOrganization',
-              name: 'Institute of Chartered Accountants of India'
-            },
-            {
-              '@type': 'EducationalOrganization',
-              name: 'Institute of Cost Accountants of India'
-            },
-            {
-              '@type': 'EducationalOrganization',
-              name: 'Madras University'
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            '@id': 'https://kavithaassociates.com/about#webpage',
+            url: 'https://kavithaassociates.com/about',
+            name: 'About CA Kavitha Vijay | Chartered Accountant in Tirupati | Kavitha & Associates',
+            description: 'Profile of CA Kavitha Vijay (B.Com, CA, CMA AIR 49), Managing Partner at Kavitha & Associates. 10+ years across Deloitte Big 4 audit, Ford internal audit, and Tirupati practice.',
+            mainEntity: {
+              '@type': 'Person',
+              '@id': 'https://kavithaassociates.com/about#person',
+              name: 'CA Kavitha Vijay',
+              jobTitle: 'Practicing Chartered Accountant & Cost Accountant',
+              honorificPrefix: 'CA',
+              description: 'Managing Partner at Kavitha & Associates. B.Com, CA, CMA (AIR 49) with 10+ years experience across Deloitte, Ford Motor Company, and public practice in Tirupati.',
+              worksFor: {
+                '@type': 'AccountingService',
+                '@id': 'https://kavithaassociates.com/#organization',
+                name: 'Kavitha & Associates',
+                url: 'https://kavithaassociates.com/'
+              },
+              alumniOf: [
+                {
+                  '@type': 'EducationalOrganization',
+                  name: 'Institute of Chartered Accountants of India'
+                },
+                {
+                  '@type': 'EducationalOrganization',
+                  name: 'Institute of Cost Accountants of India'
+                },
+                {
+                  '@type': 'EducationalOrganization',
+                  name: 'Madras University'
+                }
+              ],
+              knowsAbout: [
+                'Statutory Audit',
+                'Internal Audit & Risk-Based Auditing',
+                'Income Tax Planning & Scrutiny Defense',
+                'GST Compliance & Litigation',
+                'Internal Financial Controls (ICFR)',
+                'Enterprise Risk Management'
+              ],
+              sameAs: [
+                'https://www.linkedin.com/in/ca-kavitha-srj-770988199'
+              ]
             }
-          ],
-          sameAs: [
-            'https://www.linkedin.com/in/ca-kavitha-srj-770988199'
-          ]
-        }}
+          }
+        ]}
       />
 
       {/* =========================================================================

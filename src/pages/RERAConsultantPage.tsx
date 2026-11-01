@@ -120,6 +120,7 @@ export const RERAConsultantPage: React.FC = () => {
           serviceType: 'Real Estate Regulatory Advisory',
           provider: {
             '@type': 'AccountingService',
+            '@id': 'https://kavithaassociates.com/#organization',
             name: 'Kavitha & Associates',
             url: 'https://kavithaassociates.com/',
             telephone: '+919626350900',

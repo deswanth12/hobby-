@@ -41,6 +41,7 @@ export const ServicesPage: React.FC = () => {
           name: 'Chartered Accountancy & Advisory Services',
           provider: {
             '@type': 'AccountingService',
+            '@id': 'https://kavithaassociates.com/#organization',
             name: 'Kavitha & Associates',
             url: 'https://kavithaassociates.com/'
           },

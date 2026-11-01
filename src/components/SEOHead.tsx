@@ -36,7 +36,7 @@ export const SEOHead = ({
   useEffect(() => {
     const productionDomain = 'https://kavithaassociates.com';
 
-    // 1. Update Document Title
+    // 1. Update Document Title and Meta Title (strictly identical)
     const fullTitle = title.includes('Kavitha & Associates')
       ? title
       : `${title} | Kavitha & Associates`;
@@ -51,6 +51,10 @@ export const SEOHead = ({
       }
       return meta;
     };
+
+    // Update <meta name="title"> to be identical to document.title
+    const metaTitle = getOrCreateMeta('name', 'title');
+    metaTitle.setAttribute('content', fullTitle);
 
     // 2. Update Primary Meta Description
     const metaDesc = getOrCreateMeta('name', 'description');
@@ -80,18 +84,26 @@ export const SEOHead = ({
     const ogUrlMeta = getOrCreateMeta('property', 'og:url');
     ogUrlMeta.setAttribute('content', currentUrl);
 
-    if (image) {
-      const ogImageMeta = getOrCreateMeta('property', 'og:image');
-      const fullImageUrl = image.startsWith('http') ? image : `${productionDomain}${image}`;
-      ogImageMeta.setAttribute('content', fullImageUrl);
-    }
+    const defaultImage = `${productionDomain}/favicon-512x512.png`;
+    const fullImageUrl = image
+      ? (image.startsWith('http') ? image : `${productionDomain}${image}`)
+      : defaultImage;
 
-    // Twitter Card Meta Tags (twitter:title, twitter:description)
+    const ogImageMeta = getOrCreateMeta('property', 'og:image');
+    ogImageMeta.setAttribute('content', fullImageUrl);
+
+    // Twitter Card Meta Tags (twitter:title, twitter:description, twitter:url, twitter:image)
     const twitterTitle = getOrCreateMeta('name', 'twitter:title');
     twitterTitle.setAttribute('content', fullTitle);
 
     const twitterDesc = getOrCreateMeta('name', 'twitter:description');
     twitterDesc.setAttribute('content', description);
+
+    const twitterUrlMeta = getOrCreateMeta('name', 'twitter:url');
+    twitterUrlMeta.setAttribute('content', currentUrl);
+
+    const twitterImageMeta = getOrCreateMeta('name', 'twitter:image');
+    twitterImageMeta.setAttribute('content', fullImageUrl);
 
     // 5. Update Canonical Tag
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;

@@ -38,6 +38,7 @@ export const AuditAssurancePage: React.FC = () => {
           serviceType: 'Audit and Assurance',
           provider: {
             '@type': 'AccountingService',
+            '@id': 'https://kavithaassociates.com/#organization',
             name: 'Kavitha & Associates',
             url: 'https://kavithaassociates.com/'
           },

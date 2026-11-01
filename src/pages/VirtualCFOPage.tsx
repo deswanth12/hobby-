@@ -120,6 +120,7 @@ export const VirtualCFOPage: React.FC = () => {
           serviceType: 'Outsourced CFO and Cost Management Advisory',
           provider: {
             '@type': 'AccountingService',
+            '@id': 'https://kavithaassociates.com/#organization',
             name: 'Kavitha & Associates',
             url: 'https://kavithaassociates.com/',
             telephone: '+919626350900',
