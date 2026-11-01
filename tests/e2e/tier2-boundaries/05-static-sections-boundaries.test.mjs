@@ -9,12 +9,12 @@ describe('Tier 2 - Boundaries: Feature 5 (Static Sections Schemas)', () => {
     const validateAbout = (data) => {
       if (!data.partnerBio) return false;
       if (!data.partnerBio.name) return false;
-      if (!data.partnerBio.qualifications || !data.partnerBio.qualifications.includes('FCA')) return false;
+      if (!data.partnerBio.qualifications || !data.partnerBio.qualifications.includes('CA')) return false;
       return true;
     };
 
     assert.strictEqual(validateAbout({ partnerBio: { name: 'CA KavithaVijay SRJ', qualifications: '' } }), false);
-    assert.strictEqual(validateAbout({ partnerBio: { name: 'CA KavithaVijay SRJ', qualifications: 'B.Com, FCA, CMA' } }), true);
+    assert.strictEqual(validateAbout({ partnerBio: { name: 'CA KavithaVijay SRJ', qualifications: 'B.Com, CA, CMA' } }), true);
   });
 
   it('B5.2: Contact info with invalid email format or empty phone fails validation', () => {

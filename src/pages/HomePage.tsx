@@ -204,7 +204,7 @@ export const HomePage: React.FC = () => {
 
               {/* Authoritative Lead Narrative */}
               <p className="font-editorial-body text-brand-charcoal/90 max-w-xl font-normal leading-[1.65] sm:leading-[1.7]">
-                Founded by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our practice bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
+                Led by <strong className="text-brand-forest font-semibold">CA Kavitha Vijay (B.Com, CA, CMA AIR 49)</strong>, an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, Kavitha & Associates bridges rigorous statutory assurance with strategic financial governance. We safeguard corporate compliance, navigate complex tax scrutiny, and deliver direct partner-level counsel to enterprises, MSMEs, and institutions across South India.
               </p>
 
               {/* Primary Call to Action Cluster with Dual-Arrow Micro-physics */}
@@ -1007,7 +1007,7 @@ export const HomePage: React.FC = () => {
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <h3 className="font-editorial-h3 text-lg font-bold text-brand-forest">
-                    Dual FCA & CMA Qualification
+                    Dual CA & CMA Qualification
                   </h3>
                   <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-brand-pale text-emerald-800 border border-emerald-200">
                     Key Advantage

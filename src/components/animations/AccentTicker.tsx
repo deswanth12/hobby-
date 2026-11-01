@@ -22,7 +22,7 @@ export const AccentTicker: React.FC<AccentTickerProps> = ({ className = '' }) =>
     'EX-DELOITTE BIG 4 AUDIT',
     'EX-FORD MNC AUDITOR',
     '10+ YEARS EXPERIENCE',
-    'DUAL FCA + CMA CAPABILITY',
+    'DUAL CA + CMA CAPABILITY',
     'TIRUPATI PRINCIPAL CHAMBERS',
     'PAN-SOUTH INDIA COVERAGE'
   ];

@@ -25,7 +25,7 @@ seo:
 
 Internal audit has evolved from a historical transaction-checking mechanism into an active instrument of executive risk management, internal financial control (IFC) testing, and operational value preservation. While statutory audits provide external stakeholders with independent assurance regarding financial statements, the internal audit function acts as an internal diagnostic arm for the Board of Directors, the Audit Committee, and operational management.
 
-This working document examines the legislative mandate under **Section 138** of the **Companies Act, 2013**, the structure of a **Risk-Based Internal Audit (RBIA)** universe, core business cycles, and cost-control integration through the lens of dual Chartered Accountancy (FCA) and Cost & Management Accountancy (CMA) governance.
+This working document examines the legislative mandate under **Section 138** of the **Companies Act, 2013**, the structure of a **Risk-Based Internal Audit (RBIA)** universe, core business cycles, and cost-control integration through the lens of dual Chartered Accountancy (CA) and Cost & Management Accountancy (CMA) governance.
 
 ---
 

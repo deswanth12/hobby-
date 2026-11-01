@@ -195,7 +195,7 @@ collections:
             fields:
               - { label: "Primary Headline", name: "headlinePrimary", widget: "string", default: "Statutory Rigor." }
               - { label: "Accent Headline", name: "headlineAccent", widget: "string", default: "Practical Commercial Counsel." }
-              - { label: "Lead Narrative", name: "leadNarrative", widget: "text", default: "Founded by CA Kavitha Vijay (B.Com, CA, CMA AIR 49), an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, our chambers deliver uncompromising statutory fidelity and strategic commercial counsel." }
+              - { label: "Lead Narrative", name: "leadNarrative", widget: "text", default: "Led by CA Kavitha Vijay (B.Com, CA, CMA AIR 49), an MNC Auditor with 10+ years of Big 4 (Deloitte) and Fortune 50 multinational experience, Kavitha & Associates delivers uncompromising statutory fidelity and strategic commercial counsel." }
               - { label: "Trust Badge Text", name: "badgeText", widget: "string", default: "Chartered Accountancy Chambers — Tirupati" }
           - label: "Practice Pillars"
             name: "pillars"

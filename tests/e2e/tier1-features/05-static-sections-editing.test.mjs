@@ -19,8 +19,8 @@ describe('Tier 1 - Feature 5: Approved Static Sections Editing', () => {
     const data = JSON.parse(fs.readFileSync(aboutPath, 'utf8'));
 
     assert.ok(data.partnerBio, 'About section must define partnerBio');
-    assert.strictEqual(data.partnerBio.name, 'CA KavithaVijay SRJ', 'Partner name must match CA KavithaVijay SRJ');
-    assert.includes(data.partnerBio.qualifications, 'FCA', 'Partner qualifications must include FCA');
+    assert.strictEqual(data.partnerBio.name, 'CA Kavitha Vijay', 'Partner name must match CA Kavitha Vijay');
+    assert.includes(data.partnerBio.qualifications, 'CA', 'Partner qualifications must include CA');
     assert.includes(data.partnerBio.qualifications, 'CMA', 'Partner qualifications must include CMA');
     assert.ok(Array.isArray(data.partnerBio.coreCompetencies), 'Competencies must be an array');
   });
