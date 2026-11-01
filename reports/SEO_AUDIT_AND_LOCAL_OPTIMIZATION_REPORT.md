@@ -1,6 +1,6 @@
 # Production SEO Audit, Local SEO Strategy & Finalization Report
 **Client**: CA Kavitha & Associates  
-**Managing Partner**: CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)  
+**Managing Partner**: CA Kavitha Vijay (Chartered Accountant [REDACTED_MEMBERSHIP_NO] | B.Com, CA, CMA AIR 49)  
 **Primary Location**: 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh 517501, India  
 **Website**: [https://kavithaassociates.com](https://kavithaassociates.com)  
 **Date of Audit**: October 31, 2026  
@@ -112,7 +112,7 @@ To rank organically for specialized commercial search queries without creating t
 
 ### 4.3 Structured Data (JSON-LD) Additions
 1. **Dynamic BreadcrumbList Schema**: Enhanced `SEOHead.tsx` to automatically generate and inject Schema.org `BreadcrumbList` across all inner pages.
-2. **Person Schema**: Injected verified credentials for `CA Kavitha Vijay` on `/about` (ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49, educational institutions, LinkedIn URL).
+2. **Person Schema**: Injected verified credentials for `CA Kavitha Vijay` on `/about` (Chartered Accountant [REDACTED_MEMBERSHIP_NO], CMA AIR 49, educational institutions, LinkedIn URL).
 3. **Service & OfferCatalog Schema**: Implemented catalog of CA services on `/services`, specialized audit assurance on `/services/audit-assurance`, and dedicated `Service` schemas with `offers`, `provider`, and `areaServed` across the 5 new service pages.
 4. **Place & LocalBusiness Schema**: Injected geographic coordinates (`13.6192242, 79.418046`), full postal address, and Google Maps URL on `/locations` and `/contact`.
 5. **WebSite Schema**: Added Schema.org `WebSite` metadata on the homepage.
@@ -163,7 +163,7 @@ Tested against `https://kavithaassociates.com/` using Google Lighthouse 13.6.0:
 
 ### 6.1 Verified Business Profile
 - **Official Name**: Kavitha & Associates | Chartered Accountants
-- **Lead Partner**: CA Kavitha Vijay (ICAI Mem. [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49)
+- **Lead Partner**: CA Kavitha Vijay (Chartered Accountant [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49)
 - **Principal Chambers Address**: 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh 517501, India
 - **Primary Telephone**: `+91 96263 50900`
 - **Secondary Telephone**: `+91 95421 53906`
@@ -230,7 +230,7 @@ flowchart TD
 
 ### Week 2: Local Citation & NAP Consistency
 - Verify and standardize NAP across reputable Indian professional directories:
-  - ICAI Member Directory (verify Membership No. [REDACTED_MEMBERSHIP_NO]).
+  - ICAI Member Directory (verify ICAI Member [REDACTED_MEMBERSHIP_NO]).
   - Justdial, IndiaMART, Sulekha, and Google Business Profile.
   - Ensure exact address: `19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati – 517501`.
 - Add official chambers photos and reception plaque images to Google Business Profile.

@@ -34,7 +34,7 @@ Every operational component has been evaluated and classified into one of five c
 | **Edge Headers (`_headers`)** | **Verified Secure** | Strict CSP, HSTS with preload, `X-Frame-Options: SAMEORIGIN`, `nosniff`, `Permissions-Policy`. |
 | **Static Server Confinement (`server/index.cjs`)** | **Verified Secure** | Confinement checks, null-byte defense, malformed URI error handling, security headers. |
 | **API Router Security (`server/apiRouter.cjs`)** | **Verified Secure** | 1MB payload ceiling, rate-limiting, timing-safe auth comparison, origin allowlist CORS. |
-| **Statutory Credentials & Disclaimers** | **Verified Secure** | CA Kavitha Vijay credentials (ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49, ex-Deloitte Big 4, Ford MNC) verified; ICAI ethics disclaimers present. |
+| **Statutory Credentials & Disclaimers** | **Verified Secure** | CA Kavitha Vijay credentials (Chartered Accountant [REDACTED_MEMBERSHIP_NO], CMA AIR 49, ex-Deloitte Big 4, Ford MNC) verified; ICAI ethics disclaimers present. |
 | **OAuth Proxy Handshake (`callback.js`)** | **Tested but not fully verified on live Cloudflare** | Unit and integration tests pass 100% in local and simulated runtimes; requires final live validation with production client secrets. |
 | **Supabase PostgreSQL RLS Policies** | **Tested but not fully verified on live Supabase** | SQL schema contains complete RLS policies and constraints; verified against local and mock runners. Live Supabase project connection requires production credentials. |
 | **GitHub OAuth App Credentials** | **Requires Production Credentials** | `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` must be provisioned in GitHub Developer Settings and set in Cloudflare Pages. |
@@ -216,7 +216,7 @@ Before taking live client traffic, perform these manual verification checks:
   - Verify inquiry appears in Supabase `enquiries` table (or Admin Console).
 - [ ] **ICAI Compliance Spot Check:**
   - Confirm no self-promotional "ICAI Compliant" badges exist in live rendered HTML.
-  - Confirm partner profile accurately reflects verified credentials (ICAI Mem. [REDACTED_MEMBERSHIP_NO], CMA AIR 49, ex-Deloitte, Ford MNC).
+  - Confirm partner profile accurately reflects verified credentials (Chartered Accountant [REDACTED_MEMBERSHIP_NO], CMA AIR 49, ex-Deloitte, Ford MNC).
 
 ---
 

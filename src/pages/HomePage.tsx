@@ -103,8 +103,8 @@ export const HomePage: React.FC = () => {
   return (
     <div className="bg-brand-ivory page-reveal">
       <SEOHead
-        title="Chartered Accountant in Tirupati | CA Kavitha & Associates"
-        description="Leading Chartered Accountant in Tirupati. CA Kavitha & Associates provides expert Statutory Audit, Income Tax Return filing, GST, ROC compliance & CFO advisory."
+        title="Chartered Accountant in Tirupati | Kavitha & Associates"
+        description="Kavitha & Associates, led by CA Kavitha Vijay, provides professional accounting, taxation, audit and business compliance services in Tirupati, Andhra Pradesh."
         canonicalPath="/"
         jsonLd={[
           {

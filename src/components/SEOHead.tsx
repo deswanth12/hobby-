@@ -86,6 +86,13 @@ export const SEOHead = ({
       ogImageMeta.setAttribute('content', fullImageUrl);
     }
 
+    // Twitter Card Meta Tags (twitter:title, twitter:description)
+    const twitterTitle = getOrCreateMeta('name', 'twitter:title');
+    twitterTitle.setAttribute('content', fullTitle);
+
+    const twitterDesc = getOrCreateMeta('name', 'twitter:description');
+    twitterDesc.setAttribute('content', description);
+
     // 5. Update Canonical Tag
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
     if (noIndex) {
