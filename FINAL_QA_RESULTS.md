@@ -5,7 +5,7 @@
 **QA Lead & Implementation Worker:** Senior QA Automation Lead (`teamwork_worker`)  
 **Git Branch:** `audit/production-handover-remediation` (Derived from deployment commit `8f82d5a`)  
 **Target Domain:** https://kavithaassociates.com/  
-**Overall QA Status:** **100% PASSED (407 / 407 Automated & Empirical Assertions)**  
+**Overall QA Status:** **100% PASSED (407 / 407 Automated & Empirical Assertions on Remediation Branch with `config.yml` Restored)**  
 
 ---
 
@@ -31,6 +31,9 @@ A comprehensive, multi-layer quality assurance evaluation was performed covering
  TOTAL QUALITY ASSURANCE ASSERTIONS           407         407       0       100.0%
 ===================================================================================
 ```
+
+> **Forensic Audit & Branch Reconciliation Note:**  
+> The 100% pass rate (407/407 assertions, 167/167 E2E tests) is verified on branch `audit/production-handover-remediation` and `master` where `public/admin/config.yml` and `public/admin/index.html` are intact. On `master` at commit `8fac467`, 10 Tier 1 tests temporarily failed because `public/admin/config.yml` was deleted. Cleanly reverting `8fac467` on `master` (commit `a4c0371`) resolved all 10 failures, returning the full automated suite to 167/167 passed (100.0%) across all tracking branches.
 
 ---
 
@@ -119,16 +122,16 @@ Horizontal overflow was evaluated using formula `scrollWidth - clientWidth <= 1p
 
 ---
 
-## 6. E2E Test Suites Breakdown (167 / 167 Passed)
+## 6. E2E Test Suites Breakdown (167 / 167 Passed on Remediation Branch & Master)
 
-- **Tier 1 (Feature Coverage):**
+- **Tier 1 (Feature Coverage - 77/77 Passed with `config.yml` Restored):**
   - Feature 1: Server-Side Auth & OAuth Proxy (7/7 passed)
-  - Feature 2: Zero Hosting Cost Boundary (5/5 passed)
-  - Feature 3: Blog Post Management Schema (5/5 passed)
-  - Feature 4: Duplicate Slug & URL Validation (5/5 passed)
-  - Feature 5: Approved Static Sections Editing (5/5 passed)
-  - Feature 6: Media Upload & Size/Format Rules (5/5 passed)
-  - Feature 7: Multi-Layer Draft Exclusion (5/5 passed)
+  - Feature 2: Zero Hosting Cost Boundary (5/5 passed) — *Assertion 2.3 verifies Git-backed CMS config*
+  - Feature 3: Blog Post Management Schema (5/5 passed) — *Assertions 3.1–3.4 verify `config.yml` schema contract*
+  - Feature 4: Duplicate Slug & URL Validation (5/5 passed) — *Assertion 4.1 verifies slug pattern in `config.yml`*
+  - Feature 5: Approved Static Sections Editing (5/5 passed) — *Assertion 5.1 verifies file collections in `config.yml`*
+  - Feature 6: Media Upload & Size/Format Rules (5/5 passed) — *Assertions 6.1–6.2 verify upload paths and 2MB cap in `config.yml`*
+  - Feature 7: Multi-Layer Draft Exclusion (5/5 passed) — *Assertion 7.1 verifies `draft: true` default widget in `config.yml`*
   - Feature 8: Public Blog Hub `/blog` (5/5 passed)
   - Feature 9: Article Viewer `/blog/:slug` (6/6 passed)
   - Feature 10: Markdown AST Parser & XSS Neutralization (5/5 passed)
@@ -137,6 +140,7 @@ Horizontal overflow was evaluated using formula `scrollWidth - clientWidth <= 1p
   - Feature 13: Core Navigation & Page Continuity (5/5 passed)
   - Feature 14: Edge Security Headers & Cache Directives (5/5 passed)
   - Feature 15: Zero-Secret Leakage & Entropy Scan (4/4 passed)
+  *(Note: On `master` at commit `8fac467`, tests 2.3, 3.1–3.4, 4.1, 5.1, 6.1–6.2, and 7.1 failed due to the deletion of `public/admin/config.yml`. With commit `8fac467` cleanly reverted via `a4c0371`, `config.yml` is restored and all 77/77 Tier 1 tests pass).*
 - **Tier 2 (Boundary & Corner Cases):** 15 Suites (75/75 passed)
 - **Tier 3 (Pairwise Cross-Feature Combinations):** 10/10 passed
 - **Tier 4 (Real-World Operational Scenarios):** 5/5 passed
@@ -145,4 +149,4 @@ Horizontal overflow was evaluated using formula `scrollWidth - clientWidth <= 1p
 
 ## 7. QA Verdict
 
-The application exhibits 100% test passage, zero console errors, zero layout overflows, and robust security protections. The software is verified **PRODUCTION READY**.
+With `public/admin/config.yml` and `public/admin/index.html` fully restored and verified across both `master` and `audit/production-handover-remediation`, the application demonstrates 100% test passage (167/167 E2E tests, 53/53 secret route assertions, 37/37 challenger assertions, 180 CDP route/viewport tests), zero console errors, zero layout overflows, and verified security posture. The software is verified **PRODUCTION READY**, subject to client sign-off on the Git remote commit history.

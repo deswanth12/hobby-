@@ -68,10 +68,17 @@ Your platform includes:
 
 ## 4. Domain, Hosting & Edge Infrastructure
 
-### 4.1 Production Hosting Architecture
-The website is architected with dual-hosting support:
-- **Vercel Production Deployment:** Currently serving `https://kavithaassociates.com/` with automated SSL certificates, global edge routing, and Node.js serverless API routes (`/api/*`). Comprehensive security headers (CSP, HSTS, X-Frame-Options) are configured in `vercel.json`.
-- **Cloudflare Pages Edge Compatibility:** The repository includes full edge function support (`functions/api/auth.js`, `public/_headers`, `public/_redirects`), enabling one-click migration to Cloudflare Pages if desired.
+### 4.1 Production Hosting Architecture & Hosting Duality
+The website platform is architected with dual-hosting capability:
+- **Vercel Production Deployment (Current Live Host):**
+  - Serves live domain `https://kavithaassociates.com/` with automated SSL certificates, global edge routing, and Node.js serverless API routes (`/api/*`).
+  - Security headers (CSP, HSTS, X-Frame-Options) and caching rules are declared in `vercel.json`.
+  - Node API routing in `server/apiRouter.cjs` handles OAuth proxy endpoints (`/api/auth`, `/api/callback`) and enquiry management.
+- **Cloudflare Pages Edge Deployment (Alternate High-Performance Host):**
+  - The repository contains complete, native Cloudflare Pages configuration: `functions/api/auth.js`, `functions/api/callback.js`, `public/_headers`, `public/_redirects`, and `public/_routes.json`.
+  - Cloudflare Pages Functions run on V8 edge isolates, offering sub-millisecond cold starts and zero hosting cost.
+- **Hosting Portability:**
+  - The client may choose to remain on Vercel or switch DNS to Cloudflare Pages at any time with zero code modifications.
 
 ### 4.2 Custom Domain & DNS Records
 - **Primary Domain:** `kavithaassociates.com`
@@ -95,27 +102,45 @@ The website is architected with dual-hosting support:
 
 ## 6. Content Publishing & CMS Authoring Instructions
 
-The platform supports Git-backed CMS authoring via **Sveltia / Decap CMS**:
+The platform includes a modern, Git-backed Content Management System (**Sveltia CMS** as primary, with **Decap CMS** as fallback), powered by serverless GitHub OAuth proxy functions:
 
-### 6.1 Publishing an Article via CMS
-1. Access the administrative content manager via your designated login URL.
-2. Under **Collections**, click **Publications**.
-3. Click **New Publication** and fill in:
-   - **Title:** e.g., *"Statutory Audit Guidelines FY 2026-27"*.
-   - **Slug:** Auto-generated from title or custom (e.g. `statutory-audit-guidelines-2027`).
-   - **Draft:** Set to `true` while drafting; toggle to `false` when ready to go live.
-   - **Excerpt:** Brief 2-sentence summary for search snippets and blog cards.
-   - **Category Tags:** Select relevant tax/audit disciplines.
-   - **Cover Image:** Upload an image to `/uploads/blog/`. Recommended resolution: 1200x630 pixels.
-   - **Body:** Compose your commentary using standard Markdown.
-4. Click **Publish**. When connected to GitHub, the CMS automatically commits the change to your repository, triggering an automated production build in ~3 minutes.
+### 6.1 CMS Architecture & Setup
+- **Administrative Entrypoint:** `https://kavithaassociates.com/admin/` (serves `public/admin/index.html`).
+- **Configuration Contract:** `public/admin/config.yml` defines the content collections, fields, media storage (`/public/uploads`), and editorial validation rules.
+- **Primary Engine (Sveltia CMS):** An ultra-fast, mobile-friendly (~350 KB) Git-based CMS that runs entirely in the browser and connects directly to your GitHub repository.
+- **Fallback Engine (Decap CMS):** Can be activated by switching a single `<script>` tag in `public/admin/index.html`.
+- **Authentication Proxy:**
+  - Cloudflare Pages Functions: `functions/api/auth.js` and `functions/api/callback.js`.
+  - Vercel API Route: `server/apiRouter.cjs` (`/api/auth` and `/api/callback`).
+  - Enforces two-tier security: 24-byte cryptographic anti-CSRF state tokens and a server-side `ALLOWED_USERS` whitelist (e.g. `deswanth12`, `cakavitha`). Only authorized GitHub accounts can log in.
 
-### 6.2 Draft Quarantine Rule
-Any article with `draft: true` is **strictly excluded** from:
-- The public `/blog` listing page.
-- The XML sitemap (`https://kavithaassociates.com/sitemap.xml`).
-- Direct URL requests (returns the canonical 404 page).
-You can safely keep draft working papers in the system without risk of premature client viewing.
+### 6.2 Step-by-Step Publishing Workflow
+1. **Access the Console:**
+   - Navigate to `https://kavithaassociates.com/admin/`.
+   - Click **"Login with GitHub"**. A secure OAuth window will open.
+   - Authorize the application. The system validates your GitHub username against the authorized users whitelist and opens the content editor.
+2. **Navigate to Collections:**
+   - In the left sidebar under **Collections**, select **Blog Articles** (maps to `content/posts/`).
+3. **Create a New Article:**
+   - Click **"New Blog Article"** and fill in the editorial fields:
+     - **Article Title:** e.g., *"Statutory Audit Guidelines FY 2026-27"*.
+     - **URL Slug:** Auto-generated from title or custom lowercase alphanumeric hyphen string (e.g., `statutory-audit-guidelines-2027`).
+     - **Publication Date:** Selected date (YYYY-MM-DD).
+     - **Author:** Defaults to `"CA Kavitha Vijay"`.
+     - **Author Role:** Defaults to `"Managing Partner"`.
+     - **Executive Summary / Excerpt:** 1–2 sentence summary displayed on blog cards and search snippets (max 200 characters).
+     - **Cover Image:** Upload a WebP, PNG, or JPEG image (max 2 MB cap) to `/uploads/blog/`. Recommended resolution: 1200x630 pixels.
+     - **Cover Image Alt Text:** Descriptive accessibility text for screen readers.
+     - **Draft Status (Toggle):** Defaults to `true`.
+     - **Practice Categories / Tags:** Select relevant disciplines (e.g., *Statutory Audit*, *Tax Advisory*, *GST*).
+     - **SEO Metadata:** Optional custom `metaTitle` and `metaDescription`.
+     - **Article Content:** Compose your article body using the rich Markdown editor.
+4. **Draft Quarantine vs. Going Live:**
+   - **While Drafting (`draft: true`):** The article is safely saved in the repository but **strictly quarantined** from the public website, search engines, and `sitemap.xml`. Direct URL visits return a canonical 404.
+   - **Publishing (`draft: false`):** When your review is complete, toggle Draft Status to `false` and click **Publish**.
+5. **Automated Production Release:**
+   - Upon clicking Publish, the CMS commits the markdown file directly to `content/posts/<slug>.md` in your GitHub repository.
+   - The hosting platform (Vercel or Cloudflare Pages) automatically detects the commit, regenerates the XML sitemap, and deploys the update within 2–3 minutes.
 
 ---
 
@@ -145,9 +170,9 @@ In strict accordance with security protocols, **zero plaintext passwords or secr
 | Service / Platform | Purpose | Ownership / Access Details | Action Required by Client |
 | :--- | :--- | :--- | :--- |
 | **Domain Registrar** | `kavithaassociates.com` DNS | Managed by Client | Maintain active annual renewal |
-| **Hosting Account** | Vercel / Cloudflare Pages | Connected to Client GitHub | Ensure build environment variables are set |
+| **Hosting Account** | Vercel / Cloudflare Pages | Connected to Client GitHub | Ensure build environment variables (`GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `ALLOWED_USERS`) are set in host dashboard |
 | **Admin Portal Passwords** | Private Practice Console | Controlled via `ADMIN_KAVITHA_PASSWORD` env var | Configure strong private password (min 12 chars) |
-| **GitHub OAuth App** | CMS Content Manager Login | GitHub Developer Settings | Register Client ID and Secret in hosting dashboard |
+| **GitHub OAuth App** | Sveltia / Decap CMS Login | GitHub Developer Settings | Register Client ID and Secret in hosting dashboard with callback `https://kavithaassociates.com/api/callback` |
 | **Supabase Cloud (Optional)** | Multi-device cloud sync | Supabase Project Settings | Add URL and Anon Key if multi-device sync is desired |
 | **Google Search Console** | Search Ranking & Indexing | Google Account | Claim ownership via HTML verification tag |
 | **Google Business Profile** | Local Maps & Client Reviews | Google Account | Monitor client reviews and update chambers hours |

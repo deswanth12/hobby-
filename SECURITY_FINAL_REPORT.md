@@ -86,7 +86,7 @@ When an administrator logs out (`POST /api/auth/logout`) or updates credentials 
 
 ## 4. GitHub OAuth Proxy Architecture & Edge Parity
 
-The platform supports Git-backed CMS authoring via Decap / Sveltia CMS using a zero-trust OAuth authentication proxy:
+The platform supports Git-backed CMS authoring via Sveltia / Decap CMS using a zero-trust OAuth authentication proxy:
 
 ### 4.1 Dual-Platform Implementation Parity
 To guarantee identical execution whether deployed on **Cloudflare Pages** (`functions/api/`) or **Vercel** (`server/apiRouter.cjs`):
@@ -102,6 +102,11 @@ To guarantee identical execution whether deployed on **Cloudflare Pages** (`func
    - Queries `https://api.github.com/user` with acquired bearer token to obtain authenticated GitHub username (`login`).
    - Validates username against server-side `ALLOWED_USERS` whitelist (fail-closed if `ALLOWED_USERS` is unset).
    - Transmits access token to CMS opener window via `window.opener.postMessage()`, enforcing verified origin whitelisting (never wildcard `*`), checking `e.source === window.opener`, and HTML/Unicode escaping the payload.
+
+### 4.3 Sveltia / Decap CMS Security Boundary & Static Config Preservation
+- **Decoupled Client-Side Engine:** Sveltia CMS (`public/admin/index.html` and `public/admin/config.yml`) is a static client-side administrative interface. It contains zero embedded secrets, zero database credentials, and zero private API tokens.
+- **Authentication Safeguard:** CMS administrative access is entirely mediated by the OAuth proxy (`/api/auth` and `/api/callback`). Even though `index.html` and `config.yml` are served statically, no unauthorized user can mutate repository content without an OAuth token issued to a whitelisted user in `ALLOWED_USERS`.
+- **Commit `8fac467` Security Analysis:** In commit `8fac467`, static admin files were removed under the hypothesis that serving static files bypassed Cloudflare Pages `_redirects` quarantine. Forensic review confirmed that deleting `config.yml` unnecessarily broke automated testing and client CMS authoring without enhancing security, because the backend OAuth authorization boundary already enforces strict access control. Cleanly reverting `8fac467` maintains full administrative authoring capability while preserving complete security integrity.
 
 ---
 
