@@ -39,6 +39,10 @@ export const WhyChooseUsSection: React.FC = () => {
       {/* Anchor Aliases for Deep Linking and Test Continuity */}
       <div id="why-choose-us" className="scroll-mt-28" />
 
+      {/* Editorial Luxury Atmosphere Lighting */}
+      <div className="absolute top-1/2 -right-40 w-96 h-96 bg-[#183529]/60 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#B49A64]/10 rounded-full blur-[100px] pointer-events-none" aria-hidden="true" />
+
       {/* Ambient Decorative Layer */}
       <DecorativeLayer>
         <DotGrid

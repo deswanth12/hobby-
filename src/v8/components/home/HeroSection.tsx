@@ -15,6 +15,11 @@ export const HeroSection: React.FC = () => {
     >
       <div id="hero-section" className="scroll-mt-28" />
 
+      {/* Editorial Luxury Atmosphere Lighting */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#183529]/60 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
+      <div className="absolute top-1/3 -right-32 w-[420px] h-[420px] bg-[#B49A64]/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#0B241C]/80 rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+
       {/* Ambient Decorative System */}
       <DecorativeLayer>
         {/* Subtle Dotted Pattern in Top Corner */}
@@ -170,20 +175,20 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Compact Partner Credential Strip */}
-                <div className="mt-2.5 bg-[#071B14] rounded-xl p-3 text-white border border-[#B49A64]/30 flex items-center justify-between shadow-md hover:-translate-y-0.5 hover:border-[#B49A64] transition-all duration-200 cursor-default">
+                <div className="mt-2.5 bg-[#071B14]/95 backdrop-blur-xs rounded-xl p-3 text-white border border-[#B49A64]/30 flex items-center justify-between shadow-md hover:-translate-y-0.5 hover:border-[#B49A64] transition-all duration-200 cursor-default">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 motion-safe:animate-pulse shrink-0" />
                     <div className="min-w-0">
-                      <p className="font-serif text-sm font-bold text-white tracking-wide leading-tight truncate">
+                      <p className="font-serif text-sm font-bold text-[#F1EBDD] tracking-wide leading-tight truncate">
                         {firmProfile.partner.name}
                       </p>
-                      <p className="text-[11px] text-[#B49A64] truncate">
-                        {firmProfile.partner.qualifications} (ICMAI AIR 49) • Managing Partner
+                      <p className="text-[11px] text-[#B49A64] truncate mt-0.5 font-medium">
+                        Managing Partner · Senior Statutory Auditor
                       </p>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-[#0B241C] text-[#B49A64] border border-[#B49A64]/30 shrink-0 ml-2">
-                    AIR 49
+                  <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-[#0B241C] text-[#B49A64] border border-[#B49A64]/40 shrink-0 ml-3 shadow-xs whitespace-nowrap">
+                    AIR 49 (ICMAI)
                   </span>
                 </div>
 
