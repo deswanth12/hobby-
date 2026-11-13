@@ -41,6 +41,8 @@ export const STATIC_ROUTES = [
   { path: '/services/company-registration-tirupati', priority: '0.9', changefreq: 'monthly' },
   { path: '/services/virtual-cfo-tirupati', priority: '0.9', changefreq: 'monthly' },
   { path: '/services/rera-consultant-tirupati', priority: '0.9', changefreq: 'monthly' },
+  { path: '/services/project-finance', priority: '0.9', changefreq: 'monthly' },
+  { path: '/services/strategic-advisory', priority: '0.9', changefreq: 'monthly' },
   { path: '/industries', priority: '0.7', changefreq: 'monthly' },
   { path: '/locations', priority: '0.7', changefreq: 'monthly' },
   { path: '/contact', priority: '0.8', changefreq: 'monthly' },

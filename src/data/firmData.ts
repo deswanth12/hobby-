@@ -614,6 +614,34 @@ export const FIRM_DATA: FirmProfile = {
       question: "How does CA Kavitha & Associates conduct consultations and maintain client data security?",
       answer: "Initial discussions can be conducted either in person at our practice chambers at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Tirupati, or through encrypted remote video/WhatsApp channels. In strict accordance with the Institute of Chartered Accountants of India (ICAI) Code of Ethics, all financial records, audit workpapers, and corporate disclosures are maintained under total professional confidentiality.",
       statuteReference: "ICAI Code of Ethics (Chartered Accountants Act, 1949)"
+    },
+    {
+      id: "project-finance-dpr-requirements",
+      category: "Audit & Assurance",
+      question: "What documentation is required to prepare a bankable Detailed Project Report (DPR)?",
+      answer: "A bankable Detailed Project Report (DPR) requires project cost breakdowns, civil and machinery supplier quotations, promoter equity contribution proof, 5-to-7 year revenue and cash flow projections, Debt Service Coverage Ratio (DSCR) analysis, break-even computations, and sensitivity testing aligned with RBI and commercial bank credit appraisal standards.",
+      statuteReference: "RBI Master Directions on Commercial Lending & Credit Appraisal"
+    },
+    {
+      id: "cma-data-working-capital",
+      category: "Audit & Assurance",
+      question: "How does CMA data affect working capital loan sanctions and CC limit renewals?",
+      answer: "Credit Monitoring Arrangement (CMA) data provides commercial lenders with a multi-year comparative analysis of operating statements, balance sheets, fund flow, and Maximum Permissible Bank Finance (MPBF) calculations. Professionally modeled CMA data ensures optimum cash credit (CC) limits with favorable margins and prevents cash flow bottlenecks.",
+      statuteReference: "Tandon & Nayak Committee MPBF Guidelines / RBI Lending Framework"
+    },
+    {
+      id: "family-business-succession-planning",
+      category: "Corporate & RERA",
+      question: "When should an enterprise execute formal succession planning and family trust structuring?",
+      answer: "Succession planning should be instituted proactively before generational transitions or significant commercial expansions occur. Structuring a private family trust or formal settlement deed protects family business assets, prevents costly inheritance or probate disputes, maintains operational continuity, and provides tax-efficient asset holding under the Indian Trusts Act, 1882.",
+      statuteReference: "Indian Trusts Act, 1882 & Companies Act, 2013"
+    },
+    {
+      id: "business-valuation-statutory-standards",
+      category: "Corporate & RERA",
+      question: "What valuation methodologies does the firm employ for statutory and transaction compliance?",
+      answer: "We adhere strictly to ICAI Valuation Standards (IVS), applying Discounted Cash Flow (DCF), Net Asset Value (NAV), and Market Multiples depending on the statutory mandate—whether required under the Companies Act 2013 (Section 247), Income Tax Act (Section 56(2)(x) / Rule 11UA), or Foreign Exchange Management Act (FEMA).",
+      statuteReference: "Section 247, Companies Act, 2013 & Rule 11UA, Income Tax Rules"
     }
   ],
   officialPortals: [

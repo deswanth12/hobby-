@@ -19,6 +19,8 @@ const DEDICATED_PRACTICE_PAGES: Record<string, { path: string; label: string }> 
   'corporate-business': { path: '/services/company-registration-tirupati', label: 'Explore Company Registration Practice' },
   'rera-compliance': { path: '/services/rera-consultant-tirupati', label: 'Explore Dedicated RERA Advisory' },
   'advisory-consulting': { path: '/services/virtual-cfo-tirupati', label: 'Explore Virtual CFO Practice' },
+  'project-finance': { path: '/services/project-finance', label: 'Explore Project Finance & Banking Practice' },
+  'strategic-advisory': { path: '/services/strategic-advisory', label: 'Explore Strategic Corporate Advisory' },
 };
 
 export const ServicesPage: React.FC = () => {

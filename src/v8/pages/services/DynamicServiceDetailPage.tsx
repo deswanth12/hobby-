@@ -10,7 +10,9 @@ import {
   CheckCircle2, 
   ArrowLeft,
   ChevronRight,
-  Home
+  Home,
+  TrendingUp,
+  Compass
 } from 'lucide-react';
 import { getServiceBySlug, getPublishedFaqs } from '../../adapters/contentAdapter';
 import { useFirmProfile } from '../../adapters/backendAdapter';
@@ -52,6 +54,12 @@ const getServiceIcon = (name?: string) => {
     case 'landmark':
     case 'rera':
       return <Landmark className="w-8 h-8 text-[#B49A64]" />;
+    case 'trendingup':
+    case 'finance':
+      return <TrendingUp className="w-8 h-8 text-[#B49A64]" />;
+    case 'compass':
+    case 'strategic':
+      return <Compass className="w-8 h-8 text-[#B49A64]" />;
     default:
       return <Briefcase className="w-8 h-8 text-[#B49A64]" />;
   }

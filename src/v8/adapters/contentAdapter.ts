@@ -118,6 +118,16 @@ const CANONICAL_CORRIDOR_SLUGS: Record<string, { id: string; code: string; route
     code: 'PRAC-06',
     route: '/services/rera-consultant-tirupati',
   },
+  'project-finance': {
+    id: 'project-finance',
+    code: 'PRAC-07',
+    route: '/services/project-finance',
+  },
+  'strategic-advisory': {
+    id: 'strategic-advisory',
+    code: 'PRAC-08',
+    route: '/services/strategic-advisory',
+  },
 };
 
 // ---------------------------------------------------------------------------
@@ -307,6 +317,68 @@ function getAuditAssuranceService(): ServiceCategory {
 }
 
 /**
+ * Synthesizes an independent ServiceCategory representation for Project Finance & Banking
+ */
+export function getProjectFinanceService(): ServiceCategory {
+  return {
+    id: 'project-finance',
+    title: 'Project Finance & Banking Syndication',
+    shortDescription: 'Detailed project reports (DPR), bank consortium debt syndication, working capital limits, and capital restructuring.',
+    fullDescription: 'Senior partner-supervised project finance and commercial banking advisory. We formulate bankable Detailed Project Reports (DPR), conduct Techno-Economic Viability (TEV) assessments, prepare Credit Monitoring Arrangement (CMA) data for CC/OD limits, and execute debt syndication with commercial banks and NBFC consortiums for industrial, infrastructure, and healthcare ventures.',
+    iconName: 'TrendingUp',
+    statutoryFramework: 'RBI Prudential Framework | Commercial Banking Credit Norms | SIDBI MSME Guidelines',
+    targetClients: 'Industrial Manufacturers, Infrastructure Developers, Hospitals & Healthcare Institutions, Commercial Real Estate Developers & High-Growth MSMEs',
+    typicalScenarios: [
+      'Formulating bankable Detailed Project Reports (DPR) for greenfield industrial units or brownfield capacity expansions',
+      'Preparation and defense of Credit Monitoring Arrangement (CMA) data for annual working capital (CC/OD) renewals and limits enhancement',
+      'Term loan debt syndication and consortium structuring with nationalized banks, private financial institutions, and NBFCs',
+      'Financial structuring, techno-economic feasibility appraisal, and government interest subsidy scheme documentation'
+    ],
+    services: [
+      'Bankable Detailed Project Reports (DPR) Formulation',
+      'CMA Data Modeling & Multi-Year Financial Projections',
+      'Working Capital Assessment (Cash Credit / Overdraft / LC / BG)',
+      'Term Loan Syndication & Consortium Debt Structuring',
+      'Techno-Economic Viability (TEV) & Financial Appraisal',
+      'Credit Rating Advisory & Score Optimization',
+      'MSME Subsidy Documentation & Government Scheme Approvals',
+      'Bank Representation & Credit Sanction Coordination'
+    ],
+  };
+}
+
+/**
+ * Synthesizes an independent ServiceCategory representation for Strategic Advisory & Succession
+ */
+export function getStrategicAdvisoryService(): ServiceCategory {
+  return {
+    id: 'strategic-advisory',
+    title: 'Strategic Corporate Advisory & Succession',
+    shortDescription: 'Institutional succession planning, business valuation, promoter advisory, and cross-border regulatory structuring.',
+    fullDescription: 'Bespoke executive counsel for family-owned business conglomerates, corporate boards, and promoter-led enterprises. Our advisory encompasses institutional succession planning, family settlement deeds, DCF and net asset business valuations, cross-border remittance and FEMA compliance, joint venture structuring, and statutory reorganization under the Companies Act 2013.',
+    iconName: 'Compass',
+    statutoryFramework: 'Companies Act 2013 | ICAI Valuation Standards | FEMA 1999 & SEBI Regulations',
+    targetClients: 'Family Business Groups, Corporate Boards, Promoters, Angel/PE Backed Ventures & High-Net-Worth Business Families',
+    typicalScenarios: [
+      'Structuring generational succession plans, family trusts, and inter-generational wealth transfer instruments',
+      'Independent business valuation (DCF / Market Multiples) for equity issuance, promoter buyouts, or statutory filings',
+      'Advisory on cross-border transactions, inbound FDI / outbound ODI, and FEMA regulatory compliance',
+      'Commercial due diligence, joint venture negotiation, and shareholder agreement (SHA) financial review'
+    ],
+    services: [
+      'Institutional Succession Planning & Private Family Trusts',
+      'Business Valuation & DCF Financial Modeling',
+      'Promoter Capital Restructuring & Shareholding Realignment',
+      'FEMA & Cross-Border Inbound/Outbound Regulatory Structuring',
+      'Joint Venture Advisory & Shareholder Agreement Review',
+      'Mergers, Acquisitions & Buyout Financial Due Diligence',
+      'Corporate Reorganization & Capital Reduction Schemes',
+      'Board Governance & Independent Advisory Retainership'
+    ],
+  };
+}
+
+/**
  * Retrieves a service category by its URL slug or canonical alias.
  * Returns `undefined` if the service does not exist or is marked as draft.
  */
@@ -317,6 +389,16 @@ export function getServiceBySlug(slug: string): ServiceCategory | undefined {
   // Special case: Audit & Assurance corridor
   if (cleanSlug === 'audit-assurance') {
     return getAuditAssuranceService();
+  }
+
+  // Special case: Project Finance corridor (PRAC-07)
+  if (cleanSlug === 'project-finance') {
+    return getProjectFinanceService();
+  }
+
+  // Special case: Strategic Advisory corridor (PRAC-08)
+  if (cleanSlug === 'strategic-advisory') {
+    return getStrategicAdvisoryService();
   }
 
   // Resolve canonical alias if applicable
@@ -504,6 +586,13 @@ export function getPublishedFaqs(serviceId?: string): FAQItem[] {
     // Filter matching category or service association
     return faqs.filter(f => {
       const catLower = f.category.toLowerCase();
+      const qLower = f.question.toLowerCase();
+      if (cleanId.includes('project-finance') || cleanId.includes('finance')) {
+        return qLower.includes('dpr') || qLower.includes('cma') || qLower.includes('project') || qLower.includes('finance') || qLower.includes('bank') || catLower.includes('audit');
+      }
+      if (cleanId.includes('strategic-advisory') || cleanId.includes('strategic') || cleanId.includes('succession')) {
+        return qLower.includes('succession') || qLower.includes('valuation') || qLower.includes('trust') || qLower.includes('advisory') || catLower.includes('corporate');
+      }
       if (cleanId.includes('tax') && catLower.includes('tax')) return true;
       if (cleanId.includes('gst') && catLower.includes('gst')) return true;
       if (cleanId.includes('audit') && catLower.includes('audit')) return true;
