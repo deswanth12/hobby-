@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { X, ChevronDown, Phone, MessageSquare, ShieldCheck, ArrowRight } from 'lucide-react';
 import { CrestMonogram } from '../common/CrestMonogram';
 import { useFirmData } from '../../../context/FirmDataContext';
+import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export interface MobileDrawerProps {
   isOpen: boolean;
@@ -265,7 +266,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               <span>Call Chambers</span>
             </a>
             <a
-              href={FIRM_DATA.contact.whatsappLink}
+              href={getRouteWhatsAppUrl(location.pathname)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 inline-flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-[#183529] text-[#F1EBDD] border border-emerald-500/40 text-xs font-semibold hover:border-emerald-400 transition-colors min-h-[44px]"

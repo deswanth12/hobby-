@@ -52,8 +52,12 @@ export const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="pointer-events-auto group relative flex items-center justify-center gap-2.5 min-w-[48px] min-h-[48px] w-12 h-12 sm:w-auto sm:h-auto bg-[#183529] hover:bg-[#071B14] text-[#F1EBDD] sm:px-4 sm:py-3 rounded-full shadow-lg border border-[#B49A64]/50 transition-[transform,box-shadow,background-color] duration-200 hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#B49A64] focus:ring-offset-2"
-        aria-label="Connect with Practice Chambers on WhatsApp"
+        aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
+        <span className="relative flex h-2.5 w-2.5 mr-0.5">
+          <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+        </span>
         <WhatsAppIcon className="w-5 h-5 text-emerald-400 transition-transform duration-300 group-hover:scale-105 shrink-0" />
         <span className="font-semibold text-xs tracking-wide hidden sm:inline whitespace-nowrap">
           Connect via WhatsApp

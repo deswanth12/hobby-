@@ -91,6 +91,8 @@ export interface WhatsAppUrlOptions {
   urgency?: string;
   message?: string;
   directServiceName?: string;
+  pathname?: string;
+  customMessage?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -193,6 +195,14 @@ export function generateWhatsAppUrl(options: WhatsAppUrlOptions = {}): string {
   const rawNumber = firmProfile.contact?.whatsappNumber || '+91 96263 50900';
   const cleanPhone = rawNumber.replace(/[^0-9]/g, '');
 
+  if (options.customMessage) {
+    return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(options.customMessage)}`;
+  }
+
+  if (options.pathname) {
+    return getRouteWhatsAppUrl(options.pathname);
+  }
+
   if (options.directServiceName) {
     const directText = `Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to enquire about your ${options.directServiceName} practice.`;
     return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(directText)}`;
@@ -219,6 +229,47 @@ export function generateWhatsAppUrl(options: WhatsAppUrlOptions = {}): string {
 
   const defaultText = 'Hello CA Kavitha Vijay (Kavitha & Associates), I would like to enquire about your Chartered Accountancy services.';
   return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(defaultText)}`;
+}
+
+/**
+ * Maps any website route/page to a tailored, high-intent consultation message targeting CA Kavitha Vijay's chambers desk.
+ */
+export function getRouteWhatsAppUrl(pathname: string = '', extraContext?: string): string {
+  const firmProfile = getFirmProfile();
+  const rawNumber = firmProfile.contact?.whatsappNumber || '+91 96263 50900';
+  const cleanPhone = rawNumber.replace(/[^0-9]/g, '');
+  const path = (pathname || '').toLowerCase().trim();
+
+  let text = '';
+
+  if (path.includes('income-tax')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on Income Tax Return (ITR) Filing / Scrutiny Notice (Sec 143(2)/148) / Corporate Tax Advisory.';
+  } else if (path.includes('gst')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on GST Notice Scrutiny (ASMT-10/DRC-01) / 2B ITC Reconciliation / GSTR-9/9C Filings.';
+  } else if (path.includes('company-registration') || path.includes('corporate')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on Private Limited Incorporation / LLP Registration / ROC Compliance (SPICe+).';
+  } else if (path.includes('virtual-cfo')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to enquire about Virtual CFO Retainership / CMA Cost Modeling (AIR 49 {ICMAI}) / Working Capital Advisory.';
+  } else if (path.includes('project-finance')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on Bankable Detailed Project Reports (DPR) / CMA Data / Term Loan Debt Syndication.';
+  } else if (path.includes('rera')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on AP RERA Project Registration / Form 3 Escrow Certificates / Form 5 Annual Audits.';
+  } else if (path.includes('audit-assurance') || path.includes('audit')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on Statutory Audit (Companies Act 2013) / Section 44AB Tax Audit / Internal Assurance.';
+  } else if (path.includes('strategic-advisory')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on Institutional Succession Planning / Business Valuation (DCF) / Family Trusts.';
+  } else if (path.includes('locations')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI am reaching out regarding industrial accounting / statutory compliance in Sri City SEZ / Renigunta EMC / Tirupati Chambers.';
+  } else if (path.includes('industries')) {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to consult on sector-specific regulatory compliance and statutory accounting for our enterprise.';
+  } else if (path.includes('insights') || path.includes('blog')) {
+    const titleText = extraContext ? ` on "${extraContext}"` : '';
+    text = `Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI was reviewing your statutory insight publication${titleText} and would like to schedule a consultation.`;
+  } else {
+    text = 'Hello CA Kavitha Vijay (Kavitha & Associates),\n\nI would like to schedule a confidential statutory consultation at your Tirupati chambers.';
+  }
+
+  return `https://wa.me/${cleanPhone}?text=${encodeURIComponent(text)}`;
 }
 
 // ---------------------------------------------------------------------------

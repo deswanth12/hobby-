@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   FileSpreadsheet, 
@@ -9,16 +9,21 @@ import {
   MapPin,
   Calendar,
   ChevronRight,
-  Home
+  Home,
+  MessageSquare,
+  CheckSquare
 } from 'lucide-react';
 import { FIRM_DATA } from '../../../data/firmData';
 import { SEOHead } from '../../../components/SEOHead';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
+import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const IncomeTaxPage: React.FC = () => {
   const firm = FIRM_DATA;
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   const taxStreams = [
     {
@@ -415,16 +420,39 @@ export const IncomeTaxPage: React.FC = () => {
           <p className="font-editorial-body text-xs sm:text-sm text-[#525954] max-w-xl mx-auto leading-relaxed">
             Ensure complete compliance with the Income Tax Department while optimizing tax liabilities legitimately through proactive planning.
           </p>
-          <div className="pt-4 flex justify-center gap-4 flex-wrap">
+          <div className="pt-4 flex justify-center gap-3 flex-wrap">
             <Button to="/contact" variant="primary" size="md" dualArrow>
               Schedule Tax Appointment
             </Button>
+            <a
+              href={getRouteWhatsAppUrl('/services/income-tax-consultant-tirupati')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
+            >
+              <MessageSquare className="w-4 h-4 text-white" />
+              <span>WhatsApp Tax Counsel</span>
+            </a>
+            <button
+              type="button"
+              onClick={() => setChecklistOpen(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#B49A64] border border-[#B49A64]/50 text-xs font-semibold transition-all hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
+            >
+              <CheckSquare className="w-4 h-4 text-[#B49A64]" />
+              <span>FY 26-27 Tax Checklist</span>
+            </button>
             <Button href={`tel:${firm.contact.primaryPhoneClean}`} variant="outline" size="md" leftIcon={<Phone className="w-4 h-4 text-[#B49A64]" />}>
               Call Senior Partner
             </Button>
           </div>
         </div>
       </section>
+
+      <StatutoryChecklistModal
+        isOpen={checklistOpen}
+        onClose={() => setChecklistOpen(false)}
+        defaultTab="tax"
+      />
     </div>
   );
 };

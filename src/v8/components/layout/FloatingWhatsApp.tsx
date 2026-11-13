@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useFirmData } from '../../../context/FirmDataContext';
+import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -9,7 +11,27 @@ const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = 'w-5 h-5' 
 
 export const FloatingWhatsApp: React.FC = () => {
   const { data: FIRM_DATA } = useFirmData();
+  const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
+
+  // Dynamic context-aware WhatsApp click-to-chat URL based on active route
+  const dynamicWhatsAppUrl = useMemo(() => {
+    return getRouteWhatsAppUrl(location.pathname);
+  }, [location.pathname]);
+
+  // Contextual helper badge text
+  const contextLabel = useMemo(() => {
+    const p = location.pathname.toLowerCase();
+    if (p.includes('income-tax')) return 'Inquire: Income Tax & ITR';
+    if (p.includes('gst')) return 'Inquire: GST Notice & Filing';
+    if (p.includes('company-registration')) return 'Inquire: Incorporation';
+    if (p.includes('virtual-cfo')) return 'Inquire: Virtual CFO Retainer';
+    if (p.includes('project-finance')) return 'Inquire: Bank DPR & Syndication';
+    if (p.includes('rera')) return 'Inquire: RERA Registration';
+    if (p.includes('audit')) return 'Inquire: Statutory Audit';
+    if (p.includes('locations')) return 'Inquire: Sri City & Tirupati';
+    return 'Chat with Chambers Desk';
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,22 +52,31 @@ export const FloatingWhatsApp: React.FC = () => {
 
   return (
     <aside
-      aria-label="WhatsApp Contact"
-      className={`fixed bottom-4 right-3.5 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-30 flex flex-col items-end transition-all duration-300 ${
+      aria-label="Direct WhatsApp Consultation"
+      className={`fixed bottom-20 right-3.5 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-30 flex flex-col items-end transition-all duration-300 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
       }`}
     >
-      {/* Compact, Unsolicited-Free WhatsApp Action */}
+      {/* Dynamic Contextual Tooltip Pill on Hover (Desktop) */}
+      <div className="hidden lg:block mb-2 px-3 py-1 rounded-full bg-[#071B14]/95 text-[#B49A64] text-[11px] font-semibold border border-[#B49A64]/40 shadow-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+        {contextLabel}
+      </div>
+
+      {/* Dynamic Route-Aware WhatsApp Action */}
       <a
-        href={FIRM_DATA.contact.whatsappLink}
+        href={dynamicWhatsAppUrl || FIRM_DATA.contact.whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
         className="pointer-events-auto group relative flex items-center justify-center gap-2.5 min-w-[48px] min-h-[48px] px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-full bg-[#183529] hover:bg-[#071B14] text-[#F1EBDD] border border-[#B49A64]/60 shadow-editorial transition-all duration-200 hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#B49A64] focus:ring-offset-2 focus:ring-offset-[#F1EBDD]"
-        aria-label="Connect with Practice Chambers on WhatsApp"
+        aria-label="Chat directly with CA Kavitha Vijay on WhatsApp"
       >
+        <span className="relative flex h-3 w-3">
+          <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+        </span>
         <WhatsAppIcon className="w-5 h-5 text-emerald-400 transition-transform group-hover:scale-105" />
         <span className="text-xs font-semibold tracking-wider hidden sm:inline whitespace-nowrap">
-          Connect via WhatsApp
+          {contextLabel}
         </span>
       </a>
     </aside>

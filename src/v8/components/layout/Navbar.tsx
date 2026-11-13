@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, ChevronDown, Menu, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 import { CrestMonogram } from '../common/CrestMonogram';
 import { useFirmData } from '../../../context/FirmDataContext';
+import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export interface NavbarProps {
   onOpenMobileDrawer?: () => void;
@@ -218,7 +219,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
           {/* Desktop Right CTAs */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href={FIRM_DATA.contact.whatsappLink}
+              href={getRouteWhatsAppUrl(location.pathname)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#F1EBDD] border border-emerald-500/40 text-xs font-medium transition-colors min-h-[44px]"

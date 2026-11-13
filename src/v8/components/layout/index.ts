@@ -6,3 +6,4 @@ export * from './SkipToContent';
 export * from './ScrollProgress';
 export * from './BackToTop';
 export * from './FloatingWhatsApp';
+export * from './MobileActionBar';

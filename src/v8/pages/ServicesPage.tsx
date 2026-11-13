@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   ShieldCheck, 
   Compass, 
   CheckCircle2, 
-  Phone
+  Phone,
+  MessageSquare,
+  CheckSquare
 } from 'lucide-react';
 import { SEOHead } from '../../components/SEOHead';
 import { getAllServices, getAuditSpotlightServices } from '../adapters/contentAdapter';
-import { useFirmProfile } from '../adapters/backendAdapter';
+import { useFirmProfile, getRouteWhatsAppUrl } from '../adapters/backendAdapter';
 import { Button } from '../components/common/Button';
 import { SectionAccent, DotGrid, ArchitecturalLines, DecorativeLayer } from '../components/decorative';
 import { Badge } from '../components/common/Badge';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
+import { StatutoryChecklistModal } from '../components/common/StatutoryChecklistModal';
 
 const DEDICATED_PRACTICE_PAGES: Record<string, { path: string; label: string }> = {
   'income-tax': { path: '/services/income-tax-consultant-tirupati', label: 'Explore Dedicated Income Tax Practice' },
@@ -27,6 +30,7 @@ export const ServicesPage: React.FC = () => {
   const firmProfile = useFirmProfile();
   const services = getAllServices();
   const auditServices = getAuditSpotlightServices();
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   return (
     <div className="bg-[#F1EBDD] text-[#071B14] min-h-screen page-reveal">
@@ -436,10 +440,27 @@ export const ServicesPage: React.FC = () => {
               <p className="font-editorial-body text-xs sm:text-sm text-[#525954] max-w-xl mx-auto leading-relaxed">
                 We structure annual compliance calendars, virtual CFO retainerships, and multi-state GST reconciliations tailored to your operating scale.
               </p>
-              <div className="pt-4 flex justify-center gap-4 flex-wrap">
+              <div className="pt-4 flex justify-center gap-3 flex-wrap">
                 <Button to="/contact" variant="primary" size="md" dualArrow>
                   Schedule a Discussion
                 </Button>
+                <a
+                  href={getRouteWhatsAppUrl('/services')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-md hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
+                >
+                  <MessageSquare className="w-4 h-4 text-white" />
+                  <span>Quick WhatsApp Query</span>
+                </a>
+                <button
+                  type="button"
+                  onClick={() => setChecklistOpen(true)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#B49A64] border border-[#B49A64]/50 text-xs font-semibold transition-all hover:-translate-y-0.5 active:scale-95 min-h-[44px]"
+                >
+                  <CheckSquare className="w-4 h-4 text-[#B49A64]" />
+                  <span>Statutory Checklists</span>
+                </button>
                 <Button href={`tel:${firmProfile.contact.primaryPhoneClean}`} variant="outline" size="md" leftIcon={<Phone className="w-4 h-4 text-[#B49A64]" />}>
                   Call Senior Partner
                 </Button>
@@ -448,6 +469,12 @@ export const ServicesPage: React.FC = () => {
           </Reveal>
         </div>
       </section>
+
+      <StatutoryChecklistModal
+        isOpen={checklistOpen}
+        onClose={() => setChecklistOpen(false)}
+        defaultTab="tax"
+      />
     </div>
   );
 };

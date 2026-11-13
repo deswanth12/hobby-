@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { 
   Briefcase, 
@@ -22,6 +22,8 @@ import { NotFoundPage } from '../NotFoundPage';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
+import { CorridorConversionPlaque } from '../../components/common/CorridorConversionPlaque';
+import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
 
 const CANONICAL_MAP: Record<string, string> = {
   'audit-assurance': '/services/audit-assurance',
@@ -69,6 +71,7 @@ export const DynamicServiceDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const firmProfile = useFirmProfile();
   const cleanSlug = (slug || '').toLowerCase().trim();
+  const [checklistOpen, setChecklistOpen] = useState(false);
 
   // 1. Canonical corridors redirection
   if (CANONICAL_MAP[cleanSlug]) {
@@ -266,6 +269,19 @@ export const DynamicServiceDetailPage: React.FC = () => {
                   <Accordion items={faqItems} />
                 </div>
               )}
+
+              {/* Direct Partner Consultation & Statutory Plaque */}
+              <CorridorConversionPlaque 
+                serviceTitle={service.title}
+                disciplineCode={service.id.toUpperCase().slice(0, 7)}
+                onOpenChecklist={() => setChecklistOpen(true)}
+              />
+
+              <StatutoryChecklistModal
+                isOpen={checklistOpen}
+                onClose={() => setChecklistOpen(false)}
+                defaultTab={cleanSlug.includes('gst') ? 'gst' : cleanSlug.includes('company') || cleanSlug.includes('corporate') ? 'incorporation' : 'tax'}
+              />
             </div>
 
             {/* Right 4 Columns: Metadata Sidebar */}

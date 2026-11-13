@@ -62,6 +62,26 @@ class CDP {
 }
 
 async function main() {
+  console.log('Spawning Vite preview server on port 4173...');
+  const previewProc = spawn('npx.cmd', ['vite', 'preview', '--port', '4173'], {
+    shell: true,
+    stdio: 'ignore'
+  });
+
+  // Wait for preview server to be responsive
+  for (let i = 0; i < 30; i++) {
+    try {
+      await new Promise((res, rej) => {
+        const req = http.get(BASE_URL, (r) => res(r.statusCode));
+        req.on('error', rej);
+        req.setTimeout(500, () => { req.destroy(); rej(new Error('timeout')); });
+      });
+      break;
+    } catch {
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+
   console.log('Spawning Edge for multi-device responsive verification...');
   const edgeProc = spawn(EDGE_PATH, [
     `--remote-debugging-port=${REMOTE_PORT}`,
@@ -126,6 +146,22 @@ async function main() {
 
       console.log(`[${vp.name}] metrics:`, metrics.result.value);
 
+      if (metrics.result.value.hasOverflow) {
+        const offList = await pageCdp.send('Runtime.evaluate', {
+          expression: `Array.from(document.querySelectorAll('*')).filter(el => {
+            const r = el.getBoundingClientRect();
+            return r.right > (document.documentElement.clientWidth + 2);
+          }).slice(0, 5).map(el => ({
+            tag: el.tagName,
+            id: el.id,
+            class: (el.className ? String(el.className) : '').slice(0, 80),
+            right: Math.round(el.getBoundingClientRect().right)
+          }))`,
+          returnByValue: true
+        });
+        console.log(`[${vp.name}] Overflowing elements:`, offList.result.value);
+      }
+
       const { data: b64 } = await pageCdp.send('Page.captureScreenshot', {
         format: 'png',
         fromSurface: true,
@@ -140,7 +176,8 @@ async function main() {
     pageCdp.close();
     browserCdp.close();
   } finally {
-    edgeProc.kill('SIGKILL');
+    try { edgeProc.kill('SIGKILL'); } catch {}
+    try { previewProc.kill('SIGKILL'); } catch {}
   }
 }
 

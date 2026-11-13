@@ -7,3 +7,5 @@ export * from './Tabs';
 export * from './LoadingSkeleton';
 export * from './ErrorBoundary';
 export * from './NotFoundPage';
+export * from './StatutoryChecklistModal';
+export * from './CorridorConversionPlaque';
