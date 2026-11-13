@@ -90,13 +90,13 @@ export const MethodologySection: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Connecting Track Line Between Steps (Desktop Only) */}
-        <div className="hidden md:flex items-center justify-between absolute top-1/2 left-[18%] right-[18%] -translate-y-20 pointer-events-none z-0 opacity-40" aria-hidden="true">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64]" />
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-[#B49A64]/40 via-[#B49A64]/60 to-[#B49A64]/40 transition-transform duration-900 origin-left" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64]" />
-          <div className="flex-1 h-[1px] bg-gradient-to-r from-[#B49A64]/40 via-[#B49A64]/60 to-[#B49A64]/40 transition-transform duration-900 origin-left" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64]" />
+        {/* Connecting Track Line Between Steps (Desktop Only) with Glowing Nodes */}
+        <div className="hidden md:flex items-center justify-between absolute top-1/2 left-[18%] right-[18%] -translate-y-20 pointer-events-none z-0 opacity-60" aria-hidden="true">
+          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[#B49A64]/30 via-[#B49A64] to-[#B49A64]/30 transition-transform duration-900 origin-left" />
+          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
+          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[#B49A64]/30 via-[#B49A64] to-[#B49A64]/30 transition-transform duration-900 origin-left" />
+          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
         </div>
 
         {/* Exactly 3 Chronological Steps Grid */}
@@ -107,17 +107,17 @@ export const MethodologySection: React.FC = () => {
             return (
               <StaggerItem key={item.step} index={idx} distance={20} durationMs={600} className="h-full flex">
                 <div 
-                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative flex flex-col justify-between group"
+                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
                 >
-                  {/* Corner Brass Accents */}
-                  <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
-                  <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
+                  {/* Dynamic Corner Brass Accents (Expand on Hover) */}
+                  <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
                   <div>
                     {/* Badge & Partner Supervised Tag */}
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs">
-                        <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E]" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs group-hover:bg-[#7E5E1E] group-hover:text-white transition-colors duration-300">
+                        <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E] group-hover:text-white transition-colors" />
                         <span>{item.badge}</span>
                       </span>
                       <span className="text-[11px] font-semibold text-[#35271F] flex items-center gap-1">

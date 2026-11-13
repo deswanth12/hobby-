@@ -4,21 +4,35 @@ import { useFirmProfile } from '../../adapters/backendAdapter';
 import { Button } from '../common/Button';
 import { Badge } from '../common/Badge';
 import { DotGrid, OrbitalSphere, FlowingCurves, ArchitecturalLines, DecorativeLayer } from '../decorative';
+import { CountUp } from '../animation/CountUp';
 
 export const HeroSection: React.FC = () => {
   const firmProfile = useFirmProfile();
 
+  const TICKER_ITEMS = [
+    'Statutory Audit & Assurance',
+    'Direct Tax Litigation & Advisory',
+    'GST Compliance & Audit Defense',
+    'MCA Corporate Governance & ROC',
+    'RERA Certifications & Assurance',
+    'Virtual CFO Services',
+    'Internal Financial Controls (ICFR)',
+    'Transfer Pricing & International Tax',
+  ];
+  // 4x duplication guarantees mathematically seamless loop with animate-marquee-track
+  const repeatedTicker = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS];
+
   return (
     <section
       id="hero"
-      className="bg-[#071B14] text-[#F1EBDD] pt-10 sm:pt-14 lg:pt-16 pb-12 sm:pb-16 lg:pb-20 border-b border-[#B49A64]/20 relative overflow-hidden texture-architectural-lines scroll-mt-28"
+      className="bg-[#071B14] text-[#F1EBDD] pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 border-b border-[#B49A64]/20 relative overflow-hidden texture-architectural-lines scroll-mt-28"
     >
       <div id="hero-section" className="scroll-mt-28" />
 
-      {/* Editorial Luxury Atmosphere Lighting */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#183529]/60 rounded-full blur-3xl pointer-events-none" aria-hidden="true" />
-      <div className="absolute top-1/3 -right-32 w-[420px] h-[420px] bg-[#B49A64]/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
-      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#0B241C]/80 rounded-full blur-2xl pointer-events-none" aria-hidden="true" />
+      {/* Editorial Luxury Atmosphere Lighting with Subtle Organic Breathing */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#183529]/60 rounded-full blur-3xl pointer-events-none animate-pulse-slow" aria-hidden="true" />
+      <div className="absolute top-1/3 -right-32 w-[420px] h-[420px] bg-[#B49A64]/10 rounded-full blur-[120px] pointer-events-none animate-float-subtle" aria-hidden="true" />
+      <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#0B241C]/80 rounded-full blur-2xl pointer-events-none animate-pulse-slow" aria-hidden="true" />
 
       {/* Ambient Decorative System */}
       <DecorativeLayer>
@@ -93,7 +107,7 @@ export const HeroSection: React.FC = () => {
                 to="#practice-areas"
                 variant="primary-bronze"
                 size="md"
-                className="w-full sm:w-auto text-xs sm:text-sm font-semibold justify-center py-2.5 px-6 min-h-[46px] whitespace-nowrap shadow-md inline-flex items-center"
+                className="w-full sm:w-auto text-xs sm:text-sm font-semibold justify-center py-2.5 px-6 min-h-[46px] whitespace-nowrap shadow-md inline-flex items-center hover:scale-[1.02] active:scale-[0.98] transition-all"
                 showArrow
               >
                 Explore Practice Areas
@@ -103,14 +117,42 @@ export const HeroSection: React.FC = () => {
                 to="/contact"
                 variant="secondary-outline"
                 size="md"
-                className="w-full sm:w-auto text-xs sm:text-sm font-semibold justify-center py-2.5 px-6 min-h-[46px] whitespace-nowrap inline-flex items-center"
+                className="w-full sm:w-auto text-xs sm:text-sm font-semibold justify-center py-2.5 px-6 min-h-[46px] whitespace-nowrap inline-flex items-center hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 Contact the Firm
               </Button>
             </div>
 
+            {/* Live Interactive Institutional Metric Strip */}
+            <div className="v8-hero-cascade grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-3 border-t border-[#B49A64]/20" style={{ animationDelay: '420ms' }}>
+              <div className="bg-[#0B241C]/80 border border-[#B49A64]/25 rounded-xl p-2.5 text-center group hover:border-[#B49A64]/70 hover:-translate-y-0.5 transition-all duration-200">
+                <div className="font-serif text-lg sm:text-xl font-bold text-[#F1EBDD] flex items-center justify-center">
+                  <CountUp value={10} suffix="+" durationMs={1200} />
+                </div>
+                <div className="text-[10px] text-[#B49A64] font-medium tracking-wide uppercase mt-0.5">Years Rigor</div>
+              </div>
+              <div className="bg-[#0B241C]/80 border border-[#B49A64]/25 rounded-xl p-2.5 text-center group hover:border-[#B49A64]/70 hover:-translate-y-0.5 transition-all duration-200">
+                <div className="font-serif text-lg sm:text-xl font-bold text-[#F1EBDD] flex items-center justify-center">
+                  <CountUp value={1500} suffix="+" durationMs={1400} />
+                </div>
+                <div className="text-[10px] text-[#B49A64] font-medium tracking-wide uppercase mt-0.5">Corporate Audits</div>
+              </div>
+              <div className="bg-[#0B241C]/80 border border-[#B49A64]/25 rounded-xl p-2.5 text-center group hover:border-[#B49A64]/70 hover:-translate-y-0.5 transition-all duration-200">
+                <div className="font-serif text-lg sm:text-xl font-bold text-[#F1EBDD] flex items-center justify-center">
+                  <span>AIR 49</span>
+                </div>
+                <div className="text-[10px] text-[#B49A64] font-medium tracking-wide uppercase mt-0.5">ICMAI Merit</div>
+              </div>
+              <div className="bg-[#0B241C]/80 border border-[#B49A64]/25 rounded-xl p-2.5 text-center group hover:border-[#B49A64]/70 hover:-translate-y-0.5 transition-all duration-200">
+                <div className="font-serif text-lg sm:text-xl font-bold text-[#F1EBDD] flex items-center justify-center">
+                  <CountUp value={100} suffix="%" durationMs={1000} />
+                </div>
+                <div className="text-[10px] text-[#B49A64] font-medium tracking-wide uppercase mt-0.5">Partner Supervised</div>
+              </div>
+            </div>
+
             {/* Institutional Credentials Footnote */}
-            <div className="v8-hero-cascade pt-2 flex items-center gap-4 text-xs text-[#AAB4A0] flex-wrap" style={{ animationDelay: '420ms' }}>
+            <div className="v8-hero-cascade pt-1 flex items-center gap-4 text-xs text-[#AAB4A0] flex-wrap" style={{ animationDelay: '480ms' }}>
               <span className="inline-flex items-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-[#B49A64]" />
                 <span>ICAI &amp; ICMAI Dual Credentials</span>
@@ -132,11 +174,11 @@ export const HeroSection: React.FC = () => {
               aria-hidden="true" 
             />
 
-            {/* Ambient Orbital Sphere Frame Accent */}
+            {/* Ambient Orbital Sphere Frame Accent with Timeless Rotation */}
             <OrbitalSphere
               size={360}
               variant="bronze"
-              className="absolute -top-12 -right-12 lg:-top-14 lg:-right-14 opacity-25 hidden sm:block pointer-events-none z-0"
+              className="absolute -top-12 -right-12 lg:-top-14 lg:-right-14 opacity-25 hidden sm:block pointer-events-none z-0 animate-orbital-slow"
             />
 
             <div className="v8-hero-cascade w-full relative z-10" style={{ animationDelay: '200ms' }}>
@@ -197,6 +239,23 @@ export const HeroSection: React.FC = () => {
 
           </div>
 
+        </div>
+      </div>
+
+      {/* Infinite Gliding Statutory Disciplines Ticker (V8.2 Kinetic Horizon) */}
+      <div 
+        className="w-full mt-8 sm:mt-12 pt-3.5 border-t border-[#B49A64]/20 overflow-hidden relative marquee-container select-none" 
+        aria-label="Practice Disciplines Ticker"
+      >
+        <div className="marquee-mask relative w-full overflow-hidden">
+          <div className="animate-marquee-track flex items-center gap-6 py-1 whitespace-nowrap text-[11px] sm:text-xs font-mono tracking-widest text-[#B49A64]/85 uppercase font-semibold">
+            {repeatedTicker.map((item, idx) => (
+              <span key={idx} className="inline-flex items-center gap-4 shrink-0 hover:text-[#F1EBDD] transition-colors cursor-default">
+                <span>{item}</span>
+                <span className="text-[#B49A64]/40 text-[9px]" aria-hidden="true">✦</span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

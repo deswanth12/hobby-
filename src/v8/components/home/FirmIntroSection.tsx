@@ -40,9 +40,9 @@ export const FirmIntroSection: React.FC = () => {
               />
 
               <div className="relative p-2 sm:p-2.5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-card group">
-                {/* Corner Brass Accents */}
-                <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B49A64]/50 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
-                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#B49A64]/50 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
+                {/* Dynamic Corner Brass Accents (Expand on Hover) */}
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/50 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/50 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
                 {/* Dominant Professional Consultation Photograph */}
                 <div className="relative z-10 rounded-xl overflow-hidden border border-[#D8D0BE] aspect-[16/10] bg-[#FAF7F0]">
@@ -52,7 +52,7 @@ export const FirmIntroSection: React.FC = () => {
                     width="1376"
                     height="768"
                     loading="lazy"
-                    className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700"
+                    className="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                   />
 
                   <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full bg-[#183529] border border-[#B49A64]/40 text-white flex items-center gap-2 text-[11px] font-semibold shadow-xs">
@@ -62,7 +62,7 @@ export const FirmIntroSection: React.FC = () => {
                 </div>
 
                 {/* Floating Partner Credential Plaque */}
-                <div className="absolute -bottom-5 right-2 sm:right-6 z-20 bg-[#183529] rounded-2xl p-3.5 sm:p-4 text-white border border-[#B49A64]/50 shadow-2xl max-w-[290px] sm:max-w-sm hover:-translate-y-1 hover:border-[#B49A64] transition-all duration-300">
+                <div className="absolute -bottom-5 right-2 sm:right-6 z-20 bg-[#183529] rounded-2xl p-3.5 sm:p-4 text-white border border-[#B49A64]/50 shadow-2xl max-w-[290px] sm:max-w-sm hover:-translate-y-1.5 hover:scale-[1.02] hover:border-[#B49A64] hover:shadow-[0_16px_36px_rgba(11,36,28,0.45)] transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#0B241C] border-2 border-[#B49A64] flex items-center justify-center shadow-md shrink-0">
                       <img 

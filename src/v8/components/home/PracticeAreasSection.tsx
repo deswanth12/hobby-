@@ -156,11 +156,11 @@ export const PracticeAreasSection: React.FC = () => {
               <StaggerItem key={cat.code} index={idx} distance={18} durationMs={550} className="h-full flex">
                 <div
                   id={cat.anchorId}
-                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card overflow-hidden flex flex-col justify-between group hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative"
+                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card overflow-hidden flex flex-col justify-between group hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative"
                 >
-                  {/* Corner Brass Brackets */}
-                  <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
-                  <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
+                  {/* Dynamic Corner Brass Brackets (Expand on Hover) */}
+                  <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
                   <div className="p-5 sm:p-6 flex flex-col h-full justify-between">
                     <div>
@@ -176,7 +176,7 @@ export const PracticeAreasSection: React.FC = () => {
 
                       {/* Icon and Title */}
                       <div className="flex items-start gap-3 mb-2.5">
-                        <div className="w-9 h-9 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/40 shadow-xs group-hover:bg-[#071B14] transition-colors">
+                        <div className="w-9 h-9 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/40 shadow-xs group-hover:bg-[#071B14] group-hover:scale-105 group-hover:shadow-[0_0_12px_rgba(180,154,100,0.25)] transition-all duration-300">
                           <Icon className="w-4.5 h-4.5 text-[#B49A64]" aria-hidden="true" />
                         </div>
                         <h3 className="font-serif text-base sm:text-lg font-bold text-[#35271F] group-hover:text-[#183529] transition-colors leading-snug pt-0.5">
@@ -190,8 +190,8 @@ export const PracticeAreasSection: React.FC = () => {
                       </p>
                     </div>
 
-                    {/* Small Bronze Endpoint Accent */}
-                    <div className="h-[2px] w-6 bg-[#B49A64]/40 rounded-full group-hover:w-10 group-hover:bg-[#B49A64] transition-all duration-300 mt-3" />
+                    {/* Smooth Kinetic Bronze Endpoint Accent */}
+                    <div className="h-[2px] w-6 bg-[#B49A64]/40 rounded-full group-hover:w-14 group-hover:bg-[#B49A64] transition-all duration-300 mt-3" />
 
                     {/* Direct Dedicated Page Link */}
                     <div className="mt-2 pt-2.5 border-t border-[#D8D0BE]/60 flex items-center justify-between">
