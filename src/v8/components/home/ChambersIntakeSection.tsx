@@ -131,15 +131,15 @@ export const ChambersIntakeSection: React.FC = () => {
                     <div>
                       <div className="flex items-center gap-1.5">
                         <span className="text-amber-400 text-sm tracking-wider font-bold">★★★★★</span>
-                        <span className="font-mono text-xs font-bold text-[#F1EBDD] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">4.9 / 5.0</span>
+                        <span className="font-mono text-xs font-bold text-[#F1EBDD] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">5.0 / 5.0</span>
                       </div>
                       <span className="text-xs text-[#D8D0BE] mt-0.5 block">
-                        58+ Verified Client Reviews on Google • Tirupati Chambers
+                        Five-Star Rated Practice on Google • Tirupati Chambers
                       </span>
                     </div>
                   </div>
                   <span className="text-xs text-[#B49A64] font-semibold flex items-center gap-1 shrink-0 group-hover:translate-x-0.5 transition-transform">
-                    Reviews →
+                    Google Reviews →
                   </span>
                 </a>
 

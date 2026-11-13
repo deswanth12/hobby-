@@ -211,10 +211,10 @@ export const Footer: React.FC = () => {
                 >
                   <div className="flex items-center gap-2">
                     <span className="text-amber-400 font-bold text-xs">★★★★★</span>
-                    <span className="font-semibold text-[#F1EBDD] text-[11px]">4.9 / 5.0 Rating</span>
+                    <span className="font-semibold text-[#F1EBDD] text-[11px]">5.0 / 5.0 Rating</span>
                   </div>
                   <span className="text-[#B49A64] text-[10px] font-semibold">
-                    58 Reviews →
+                    Five-Star Rated on Google →
                   </span>
                 </a>
               </div>

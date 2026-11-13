@@ -106,8 +106,8 @@ export const LocationsPage: React.FC = () => {
             openingHours: 'Mo-Sa 09:30-19:00',
             aggregateRating: {
               '@type': 'AggregateRating',
-              ratingValue: '4.9',
-              reviewCount: '58',
+              ratingValue: '5.0',
+              reviewCount: '50',
               bestRating: '5',
               worstRating: '1'
             },
@@ -403,15 +403,15 @@ export const LocationsPage: React.FC = () => {
                           <div>
                             <div className="flex items-center gap-1.5">
                               <span className="text-amber-500 font-bold text-xs">★★★★★</span>
-                              <span className="font-bold text-[#183529] font-mono text-xs">4.9 / 5.0</span>
+                              <span className="font-bold text-[#183529] font-mono text-xs">5.0 / 5.0</span>
                             </div>
                             <span className="text-[11px] text-[#525954] block">
-                              58+ Verified Client Reviews on Google Maps
+                              Five-Star Rated Practice on Google Maps
                             </span>
                           </div>
                         </div>
                         <span className="font-semibold text-xs text-[#7E5E1E] flex items-center gap-1">
-                          View Reviews →
+                          Google Reviews →
                         </span>
                       </a>
                     </div>
