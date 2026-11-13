@@ -251,12 +251,6 @@ async function runSuite() {
     });
     check('Token immediately rejected after revoke-all (HTTP 401)', postRevokeReq.status === 401);
 
-    // Cleanup test credentials in temp db
-    const finalDb = readDb();
-    delete finalDb.userCredentials?.kavitha;
-    delete finalDb.userCredentials?.admin;
-    writeDb(finalDb);
-
     console.log('\n================================================================');
     console.log(`TOTAL REMEDIATION ASSERTIONS: ${total}`);
     console.log(`PASSED: ${passed}`);
@@ -264,7 +258,15 @@ async function runSuite() {
     console.log('================================================================');
 
   } finally {
-    server.close();
+    await new Promise(resolve => server.close(resolve));
+    const finalDb = readDb();
+    if (finalDb.userCredentials) {
+      delete finalDb.userCredentials.kavitha;
+      delete finalDb.userCredentials.admin;
+    }
+    finalDb.rateLimits = {};
+    finalDb.sessions = {};
+    writeDb(finalDb);
   }
 }
 

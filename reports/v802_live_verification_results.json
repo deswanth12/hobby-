@@ -1,0 +1,233 @@
+{
+  "timestamp": "2026-11-10T18:08:19+0530",
+  "port": 5230,
+  "baseUrl": "http://127.0.0.1:5230",
+  "checks": [
+    {
+      "name": "Public Route: /",
+      "passed": true,
+      "details": "Contains 'Kavitha & Associates'"
+    },
+    {
+      "name": "Public Route: /about",
+      "passed": true,
+      "details": "Contains 'Chartered Accountants'"
+    },
+    {
+      "name": "Public Route: /services",
+      "passed": true,
+      "details": "Contains 'Practice Areas'"
+    },
+    {
+      "name": "Public Route: /services/audit-assurance",
+      "passed": true,
+      "details": "Contains 'Audit'"
+    },
+    {
+      "name": "Public Route: /services/gst-consultant-tirupati",
+      "passed": true,
+      "details": "Contains 'GST'"
+    },
+    {
+      "name": "Public Route: /services/income-tax-consultant-tirupati",
+      "passed": true,
+      "details": "Contains 'Income Tax'"
+    },
+    {
+      "name": "Public Route: /services/company-registration-tirupati",
+      "passed": true,
+      "details": "Contains 'Registration'"
+    },
+    {
+      "name": "Public Route: /services/virtual-cfo-tirupati",
+      "passed": true,
+      "details": "Contains 'Virtual CFO'"
+    },
+    {
+      "name": "Public Route: /services/rera-consultant-tirupati",
+      "passed": true,
+      "details": "Contains 'RERA'"
+    },
+    {
+      "name": "Public Route: /industries",
+      "passed": true,
+      "details": "Contains 'Industries'"
+    },
+    {
+      "name": "Public Route: /locations",
+      "passed": true,
+      "details": "Contains 'Tirupati'"
+    },
+    {
+      "name": "Public Route: /blog",
+      "passed": true,
+      "details": "Contains 'Regulatory Insights'"
+    },
+    {
+      "name": "Public Route: /contact",
+      "passed": true,
+      "details": "Contains 'Connect With'"
+    },
+    {
+      "name": "Public Route: /nonexistent-route-for-testing-404",
+      "passed": true,
+      "details": "Contains '404'"
+    },
+    {
+      "name": "Insights Section Element (#insights-overview)",
+      "passed": true,
+      "details": "Element present on homepage"
+    },
+    {
+      "name": "Lead Article Link exists",
+      "passed": true,
+      "details": "Links to /blog/statutory-audit-guidelines-2026"
+    },
+    {
+      "name": "Lead Article Navigation",
+      "passed": true,
+      "details": "Current URL: http://127.0.0.1:5230/blog/statutory-audit-guidelines-2026"
+    },
+    {
+      "name": "Full Article Markdown Rendering",
+      "passed": true,
+      "details": "Headings count: 14, Author present: True, CARO 2020 present: True"
+    },
+    {
+      "name": "GST Article Content",
+      "passed": true,
+      "details": "Contains statutory GSTR-9 technical analysis"
+    },
+    {
+      "name": "Corporate Tax Article Content",
+      "passed": true,
+      "details": "Contains Section 115BAA analysis"
+    },
+    {
+      "name": "Draft Quarantine on Public Route (/blog/internal-audit-best-practices)",
+      "passed": true,
+      "details": "Returns 404 NotFoundPage"
+    },
+    {
+      "name": "Public /api/content excludes draft",
+      "passed": true,
+      "details": "Published posts count: 0, draft present: False"
+    },
+    {
+      "name": "Legacy /admin Route Quarantine",
+      "passed": true,
+      "details": "Standard /admin yields 404 NotFoundPage"
+    },
+    {
+      "name": "Unauthenticated Protected Admin Route Redirection",
+      "passed": true,
+      "details": "Redirected to http://127.0.0.1:5230/sec-ca-50e0e5eed471/login"
+    },
+    {
+      "name": "Invalid Admin Login Attempt",
+      "passed": true,
+      "details": "Error displayed: 'Return to Public Website\nLocal Storage Mode\nKavitha & Associates\n\nPRACTICE MANAGEMENT CONSOLE \u2022 CA KAVITHA VIJAY\n\nAuthorized Partner Login\n\nSign in to manage enquiries and published practice data\n\nInvalid credentials. (4 attempts remaining before security lockout)\nUSERNAME / EMAIL ID\nACCESS PASSWORD\nForgot Password?\nEnter Practice Dashboard \u2192\nRestricted Portal \u2022 Row Level Security \u2022 15-Min Lockout Protection'"
+    },
+    {
+      "name": "Valid Admin Login & Dashboard Navigation",
+      "passed": true,
+      "details": "Authenticated URL: http://127.0.0.1:5230/sec-ca-50e0e5eed471"
+    },
+    {
+      "name": "Admin Enquiries View Loaded",
+      "passed": true,
+      "details": "Heading: Client Enquiries Register"
+    },
+    {
+      "name": "Admin Content Management View Loaded",
+      "passed": true,
+      "details": "Heading: Content Management"
+    },
+    {
+      "name": "Admin Settings View Loaded",
+      "passed": true,
+      "details": "Heading: Practice Settings & Channels"
+    },
+    {
+      "name": "Contact Form Submission Client Feedback",
+      "passed": true,
+      "details": "Success acknowledgement displayed"
+    },
+    {
+      "name": "Backend Enquiry Persistence Verification",
+      "passed": true,
+      "details": "Persisted ID: ENQ-MWAOF505-829"
+    },
+    {
+      "name": "Mobile Navigation Menu Open & Links",
+      "passed": true,
+      "details": "Mobile navigation overlay contains primary links"
+    },
+    {
+      "name": "Mobile Navigation Menu Close",
+      "passed": true,
+      "details": "Menu closes cleanly"
+    },
+    {
+      "name": "Mobile Floating WhatsApp CTA",
+      "passed": true,
+      "details": "WhatsApp CTA button is present and clickable"
+    },
+    {
+      "name": "Direct API Negative Auth: /api/admin/enquiries",
+      "passed": true,
+      "details": "HTTP status: 401"
+    },
+    {
+      "name": "Direct API Negative Auth: /api/admin/content/services",
+      "passed": true,
+      "details": "HTTP status: 401"
+    },
+    {
+      "name": "Direct API Negative Auth: /api/admin/content/faqs",
+      "passed": true,
+      "details": "HTTP status: 401"
+    },
+    {
+      "name": "Direct API Negative Auth: /api/admin/settings",
+      "passed": true,
+      "details": "HTTP status: 401"
+    },
+    {
+      "name": "Direct API Negative Auth: /api/auth/session",
+      "passed": true,
+      "details": "HTTP status: 401"
+    }
+  ],
+  "consoleErrors": [
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+    }
+  ],
+  "networkFailures": [
+    {
+      "url": "http://127.0.0.1:5230/blog/internal-audit-best-practices",
+      "status": 404,
+      "statusText": "Not Found"
+    },
+    {
+      "url": "http://127.0.0.1:5230/admin",
+      "status": 404,
+      "statusText": "Not Found"
+    },
+    {
+      "url": "http://127.0.0.1:5230/api/auth/login",
+      "status": 401,
+      "statusText": "Unauthorized"
+    }
+  ]
+}

@@ -1,0 +1,338 @@
+{
+  "homepage": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_homepage_wide_1920.png"
+    }
+  },
+  "about": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_about_wide_1920.png"
+    }
+  },
+  "services": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_services_wide_1920.png"
+    }
+  },
+  "insights": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_insights_wide_1920.png"
+    }
+  },
+  "article": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_article_wide_1920.png"
+    }
+  },
+  "contact": {
+    "compact_mobile_320": {
+      "width": 320,
+      "height": 640,
+      "scrollWidth": 320,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_compact_mobile_320.png"
+    },
+    "mobile_390": {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_mobile_390.png"
+    },
+    "tablet_768": {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_tablet_768.png"
+    },
+    "laptop_1024": {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_laptop_1024.png"
+    },
+    "desktop_1440": {
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_desktop_1440.png"
+    },
+    "wide_1920": {
+      "width": 1920,
+      "height": 1080,
+      "scrollWidth": 1920,
+      "horizontalOverflow": false,
+      "brokenImagesCount": 0,
+      "consoleErrorsCount": 0,
+      "file": "v70_contact_wide_1920.png"
+    }
+  }
+}

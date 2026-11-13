@@ -1,0 +1,68 @@
+{
+  "viewports": [
+    {
+      "name": "320px Compact Mobile",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "390px Mobile",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "768px Tablet",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1024px Small Desktop",
+      "width": 1024,
+      "height": 800,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1440px Standard Desktop",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1920px Wide Desktop",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "hasOverflow": false
+    }
+  ],
+  "contactExperience": {
+    "atHero": {
+      "exists": false
+    },
+    "atContact": {
+      "exists": false,
+      "isSuppressed": true
+    },
+    "restoredAtTop": {
+      "exists": false
+    }
+  },
+  "images": {
+    "total": 0,
+    "broken": 0
+  },
+  "reducedMotion": {
+    "matchesQuery": true,
+    "bodyVisible": true
+  },
+  "consoleErrors": [],
+  "network404s": []
+}

@@ -1,0 +1,320 @@
+{
+  "blog_listing": {
+    "mobile": {
+      "title": "Tax & Regulatory Insights | CA Kavitha & Associates Tirupati",
+      "scrollWidth": 390,
+      "viewport": 390,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "a",
+        "a",
+        "div.p-4",
+        "div.flex",
+        "div.flex"
+      ],
+      "pageHeight": 5435,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Regulatory Insights & Technical Commentary",
+        "fontSize": "33.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "tablet": {
+      "title": "Tax & Regulatory Insights | CA Kavitha & Associates Tirupati",
+      "scrollWidth": 768,
+      "viewport": 768,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "a",
+        "a",
+        "div.p-4",
+        "div.flex",
+        "div.flex"
+      ],
+      "pageHeight": 4432,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Regulatory Insights & Technical Commentary",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "laptop": {
+      "title": "Tax & Regulatory Insights | CA Kavitha & Associates Tirupati",
+      "scrollWidth": 1024,
+      "viewport": 1024,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.p-4",
+        "div.flex",
+        "div.flex",
+        "div.w-9",
+        "img.w-full"
+      ],
+      "pageHeight": 3287,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Regulatory Insights & Technical Commentary",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "desktop": {
+      "title": "Tax & Regulatory Insights | CA Kavitha & Associates Tirupati",
+      "scrollWidth": 1440,
+      "viewport": 1440,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "pageHeight": 3087,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Regulatory Insights & Technical Commentary",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    }
+  },
+  "blog_article_statutory": {
+    "mobile": {
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "scrollWidth": 390,
+      "viewport": 390,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "code",
+        "table.w-full",
+        "thead.bg-brand-surface",
+        "tr",
+        "th.py-3"
+      ],
+      "pageHeight": 12935,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and",
+        "fontSize": "33.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "tablet": {
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "scrollWidth": 768,
+      "viewport": 768,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "a",
+        "a",
+        "div.p-4",
+        "div.flex",
+        "div.flex"
+      ],
+      "pageHeight": 9550,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "laptop": {
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "scrollWidth": 1024,
+      "viewport": 1024,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.p-4",
+        "div.flex",
+        "div.flex",
+        "div.w-9",
+        "img.w-full"
+      ],
+      "pageHeight": 8889,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "desktop": {
+      "title": "Statutory Audit Guidelines FY 2025-26 | Kavitha & Associates",
+      "scrollWidth": 1440,
+      "viewport": 1440,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "pageHeight": 8781,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    }
+  },
+  "homepage": {
+    "mobile": {
+      "title": "Chartered Accountant in Tirupati | Kavitha & Associates",
+      "scrollWidth": 390,
+      "viewport": 390,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.hero-step-1",
+        "div.absolute",
+        "div.relative",
+        "div.animate-marquee-track",
+        "div.inline-flex"
+      ],
+      "pageHeight": 22351,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Clarity in Finance. Confidence in Every Decision.\nClarity in Finance.\nClarityinF",
+        "fontSize": "33.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "tablet": {
+      "title": "Chartered Accountant in Tirupati | Kavitha & Associates",
+      "scrollWidth": 768,
+      "viewport": 768,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.hero-step-1",
+        "div.hero-step-10",
+        "svg",
+        "path",
+        "path"
+      ],
+      "pageHeight": 16349,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Clarity in Finance. Confidence in Every Decision.\nClarity in Finance.\nClarityinF",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "laptop": {
+      "title": "Chartered Accountant in Tirupati | Kavitha & Associates",
+      "scrollWidth": 1024,
+      "viewport": 1024,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.hero-step-1",
+        "div.hero-step-10",
+        "svg",
+        "path",
+        "path"
+      ],
+      "pageHeight": 12804,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Clarity in Finance. Confidence in Every Decision.\nClarity in Finance.\nClarityinF",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    },
+    "desktop": {
+      "title": "Chartered Accountant in Tirupati | Kavitha & Associates",
+      "scrollWidth": 1440,
+      "viewport": 1440,
+      "horizontalOverflow": false,
+      "overflowingElements": [
+        "div.hero-step-1",
+        "div.hero-step-10",
+        "svg",
+        "path",
+        "path"
+      ],
+      "pageHeight": 11780,
+      "videos": [],
+      "brokenImages": [],
+      "fontsLoaded": [
+        "Cormorant Garamond",
+        "Inter"
+      ],
+      "h1": {
+        "text": "Clarity in Finance. Confidence in Every Decision.\nClarity in Finance.\nClarityinF",
+        "fontSize": "49.6px",
+        "font": "\"Cormorant Garamond\", Georgia, serif"
+      },
+      "consoleErrors": [],
+      "failedRequests": []
+    }
+  }
+}

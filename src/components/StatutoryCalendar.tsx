@@ -96,13 +96,13 @@ export const StatutoryCalendar: React.FC = () => {
   const getCategoryBadge = (cat: string) => {
     switch (cat) {
       case 'tax':
-        return 'bg-amber-100 text-amber-900 border-amber-300';
+        return 'bg-brand-gold/15 text-gold-dark border-brand-gold/40';
       case 'gst':
-        return 'bg-blue-100 text-blue-900 border-blue-300';
+        return 'bg-brand-surface text-brand-forest border-brand-border';
       case 'corporate':
-        return 'bg-purple-100 text-purple-900 border-purple-300';
+        return 'bg-brand-deep/10 text-brand-deep border-brand-forest/20';
       case 'audit':
-        return 'bg-emerald-100 text-emerald-900 border-emerald-300';
+        return 'bg-brand-gold/25 text-brand-forest border-brand-gold/60';
       default:
         return 'bg-brand-pale text-brand-forest border-brand-border';
     }

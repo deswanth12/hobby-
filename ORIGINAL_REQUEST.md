@@ -79,3 +79,102 @@ Work directly inside the existing project (`c:\kavitha ca`). Do not interpret "c
 - [ ] TypeScript check (`tsc -b`) compiles with zero errors.
 - [ ] Production build (`npm run build`) succeeds with zero errors.
 - [ ] Interactive elements support keyboard navigation and pass accessibility contrast/focus requirements.
+
+
+## Follow-up — 2026-11-11T15:48:42Z
+
+Conduct a comprehensive final audit execution control, testing reconciliation, screenshot capture, and defect resolution on the Kavitha CA website (V8.2 baseline) while adhering to strict local-only execution and pentrare security research guidelines, culminating in a final audit report with release decision READY FOR CLIENT REVIEW.
+
+Working directory: C:\kavatha ca
+Integrity mode: development
+
+## Verification Resources
+- Dev server: http://localhost:5173
+- Production build: `npm run build`
+- Baseline test suites:
+  - `tests/tax-calculators.test.mjs` (23 assertions)
+  - `tests/e2e/run-e2e.mjs` (187 assertions)
+  - `tests/v8-design-system.test.mjs` (16 assertions)
+  - `tests/v8-milestone3.test.mjs` (16 assertions)
+  - `tests/v8-milestone4.test.mjs` (58 assertions)
+  - `tests/v8-milestone5.test.mjs` (24 assertions)
+  - `tests/v8-assistant-rag.test.mjs` (55 assertions, 6 suites, 50 golden dataset queries)
+- Partner portrait assets: `public/images/partner/ca-kavitha-vijay-official.webp` and `.jpg`
+- Brand assets: `public/brand/ca-india-logo.webp` and `.png`
+
+## Requirements
+
+### R1. Pre-execution Baseline and Environment Verification
+Before beginning:
+1. Record the current Git branch and working-tree status.
+2. Identify and protect the V8.2 rollback baseline.
+3. Confirm the local development server (http://localhost:5173) is responding.
+4. Inventory existing screenshots, tests, and reports.
+5. Record initial production build and test results.
+
+### R2. Audit Execution and Safety Constraints
+During execution:
+- Use only local or explicitly authorized staging environments.
+- Never perform external exploitation.
+- Never send real enquiries.
+- Never expose secrets or personal identifiers in evidence.
+- Do not assume an asset is approved merely because it exists in the repository.
+- Confirm written authorization before publishing the supplied partner portrait.
+- Keep every code change traceable to a BUG_REGISTER issue ID.
+- Preserve existing functionality and backend behavior.
+- Do not deploy, push Git, modify production data, or change database schemas.
+
+### R3. Test Suite Execution and Screenshot Verification
+Testing requirements:
+- Run each of the 7 active baseline test suites separately:
+  1. `tests/tax-calculators.test.mjs`
+  2. `tests/e2e/run-e2e.mjs`
+  3. `tests/v8-design-system.test.mjs`
+  4. `tests/v8-milestone3.test.mjs`
+  5. `tests/v8-milestone4.test.mjs`
+  6. `tests/v8-milestone5.test.mjs`
+  7. `tests/v8-assistant-rag.test.mjs`
+- Record the exact command, exit code, and assertion count for each suite.
+- Reconcile test totals mathematically against the baseline (totaling 379 assertions).
+- Run `npm run build` after code modifications.
+- Capture actual browser screenshots at all nine requested viewport widths: 320px, 360px, 390px, 430px, 768px, 1024px, 1280px, 1440px, and 1920px.
+- Clearly distinguish automated checks from manual inspections.
+- Record unavailable browser engines and inaccessible backend environments as untested.
+
+### R4. Final Audit Reporting and Release Gate
+Compile a final audit report summarizing:
+- Initial findings.
+- Confirmed bugs.
+- Fixes applied.
+- Regression results.
+- Remaining risks.
+- Client approval requirements.
+- Deployment blockers.
+Do not claim an audit domain passed when it was not tested. Release decision must remain READY FOR CLIENT REVIEW if professional approval, deployment authorization, or other client decisions are outstanding.
+
+## Acceptance Criteria
+
+### Baseline and Pre-execution Checks
+- [ ] Current Git branch, working-tree status, and V8.2 rollback baseline are recorded and protected before modifications.
+- [ ] Local Vite development server response on http://localhost:5173 is confirmed.
+- [ ] Existing screenshots, tests, and reports are inventoried.
+- [ ] Initial production build status and test results are recorded prior to any code changes.
+
+### Execution Safety Guardrails
+- [ ] Execution occurs strictly within local or authorized staging environments with zero external exploitation.
+- [ ] No real enquiries are sent, and no secrets or personal identifiers are exposed in evidence.
+- [ ] Written authorization is verified before any partner portrait is published.
+- [ ] All code modifications map directly to a BUG_REGISTER issue ID while preserving existing functionality and backend behavior.
+- [ ] No remote Git push, deployment, production data modification, or database schema change occurs.
+
+### Testing and Reconciliation
+- [ ] All 7 baseline test suites (`tax-calculators`, `run-e2e`, `v8-design-system`, `v8-milestone3`, `v8-milestone4`, `v8-milestone5`, `v8-assistant-rag`) are executed individually.
+- [ ] Exact command, exit code, and assertion count are recorded for each suite, and total assertions are reconciled mathematically against the 379 assertion baseline.
+- [ ] Browser screenshots are captured at all 9 specified viewport widths (320px, 360px, 390px, 430px, 768px, 1024px, 1280px, 1440px, 1920px).
+- [ ] Production build (`npm run build`) executes cleanly with zero errors after code changes.
+- [ ] Automated checks are explicitly distinguished from manual inspections, and unavailable environments/engines are marked as untested.
+
+### Final Audit Report
+- [ ] Final audit report covers initial findings, confirmed bugs, fixes applied, regression results, remaining risks, client approval requirements, and deployment blockers.
+- [ ] No untested audit domain is claimed as passed.
+- [ ] Release decision is explicitly recorded as READY FOR CLIENT REVIEW.

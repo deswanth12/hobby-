@@ -1,0 +1,434 @@
+{
+  "viewports": {
+    "320px-mobile-compact": {
+      "width": 320,
+      "height": 568,
+      "overflow": {
+        "docW": 320,
+        "bodyW": 320,
+        "winW": 320,
+        "maxScrollW": 320,
+        "diff": 0,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 22,
+      "loadedVisibleImages": 22,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    },
+    "390px-mobile": {
+      "width": 390,
+      "height": 844,
+      "overflow": {
+        "docW": 390,
+        "bodyW": 390,
+        "winW": 390,
+        "maxScrollW": 390,
+        "diff": 0,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 22,
+      "loadedVisibleImages": 22,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    },
+    "768px-tablet": {
+      "width": 768,
+      "height": 1024,
+      "overflow": {
+        "docW": 768,
+        "bodyW": 768,
+        "winW": 768,
+        "maxScrollW": 768,
+        "diff": 0,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 22,
+      "loadedVisibleImages": 22,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    },
+    "1024px-desktop-small": {
+      "width": 1024,
+      "height": 768,
+      "overflow": {
+        "docW": 1016,
+        "bodyW": 1016,
+        "winW": 1024,
+        "maxScrollW": 1016,
+        "diff": -8,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 22,
+      "loadedVisibleImages": 22,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    },
+    "1440px-desktop": {
+      "width": 1440,
+      "height": 900,
+      "overflow": {
+        "docW": 1432,
+        "bodyW": 1432,
+        "winW": 1440,
+        "maxScrollW": 1432,
+        "diff": -8,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 21,
+      "loadedVisibleImages": 21,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    },
+    "1920px-desktop-wide": {
+      "width": 1920,
+      "height": 1080,
+      "overflow": {
+        "docW": 1912,
+        "bodyW": 1912,
+        "winW": 1920,
+        "maxScrollW": 1912,
+        "diff": -8,
+        "hasOverflow": false
+      },
+      "totalImages": 26,
+      "visibleImages": 21,
+      "loadedVisibleImages": 21,
+      "brokenVisibleImages": 0,
+      "allVisiblePassed": true
+    }
+  },
+  "images": [
+    {
+      "src": "http://127.0.0.1:4210/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo - Chartered Accountants",
+      "loading": "auto",
+      "w": 34,
+      "h": 34,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/hero/hero-consultation.webp",
+      "naturalWidth": 1376,
+      "naturalHeight": 768,
+      "complete": true,
+      "alt": "Senior corporate accounting and statutory audit consultation session",
+      "loading": "eager",
+      "w": 445,
+      "h": 250,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/brand/ka-seal-medallion.webp",
+      "naturalWidth": 512,
+      "naturalHeight": 443,
+      "complete": true,
+      "alt": "KA Official Practice Seal",
+      "loading": "auto",
+      "w": 24,
+      "h": 24,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/services/audit.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Statutory and tax audit verification schedule",
+      "loading": "eager",
+      "w": 242,
+      "h": 135,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/services/taxation.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Corporate taxation and statutory tax planning",
+      "loading": "eager",
+      "w": 242,
+      "h": 135,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/services/advisory.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Corporate structuring and statutory advisory session",
+      "loading": "eager",
+      "w": 242,
+      "h": 135,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/services/virtual-cfo.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Virtual CFO financial leadership and strategic planning",
+      "loading": "eager",
+      "w": 242,
+      "h": 135,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/about/consultation-main.webp",
+      "naturalWidth": 1376,
+      "naturalHeight": 768,
+      "complete": true,
+      "alt": "Senior corporate chartered accountant in strategic consultation with enterprise client",
+      "loading": "eager",
+      "w": 556,
+      "h": 320,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/about/document-review.webp",
+      "naturalWidth": 1264,
+      "naturalHeight": 848,
+      "complete": true,
+      "alt": "Statutory audit working papers and financial document examination",
+      "loading": "eager",
+      "w": 270,
+      "h": 160,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/about/office-space.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Executive corporate financial advisory and boardroom strategy session",
+      "loading": "eager",
+      "w": 270,
+      "h": 160,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/why-choose-us/consultation.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Chartered accountant in executive business advisory consultation",
+      "loading": "lazy",
+      "w": 578,
+      "h": 320,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/why-choose-us/analysis.webp",
+      "naturalWidth": 1200,
+      "naturalHeight": 800,
+      "complete": true,
+      "alt": "Financial scrutiny and working papers review",
+      "loading": "lazy",
+      "w": 230,
+      "h": 154,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/understanding.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Chartered accountant consultation desk and business needs assessment",
+      "loading": "lazy",
+      "w": 450,
+      "h": 253,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/planning.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+      "loading": "lazy",
+      "w": 450,
+      "h": 253,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/execution.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+      "loading": "lazy",
+      "w": 450,
+      "h": 253,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/ongoing-support.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Continuous business advisory and dedicated professional audit team",
+      "loading": "lazy",
+      "w": 450,
+      "h": 253,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/understanding.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": false,
+      "alt": "Chartered accountant consultation desk and business needs assessment",
+      "loading": "lazy",
+      "w": 0,
+      "h": 0,
+      "visible": false,
+      "hasLoadedProperly": false
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/planning.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": false,
+      "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+      "loading": "lazy",
+      "w": 0,
+      "h": 0,
+      "visible": false,
+      "hasLoadedProperly": false
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/execution.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": false,
+      "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+      "loading": "lazy",
+      "w": 0,
+      "h": 0,
+      "visible": false,
+      "hasLoadedProperly": false
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/process/ongoing-support.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": false,
+      "alt": "Continuous business advisory and dedicated professional audit team",
+      "loading": "lazy",
+      "w": 0,
+      "h": 0,
+      "visible": false,
+      "hasLoadedProperly": false
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/industries/manufacturing.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Manufacturing and industrial enterprise financial management",
+      "loading": "lazy",
+      "w": 387,
+      "h": 218,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/industries/technology.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Technology startups and financial modeling advisory",
+      "loading": "lazy",
+      "w": 387,
+      "h": 218,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/industries/corporate.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Corporate and commercial enterprise governance",
+      "loading": "lazy",
+      "w": 387,
+      "h": 218,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/images/ai-generated/contact/consultation.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Senior chartered accountant in corporate client consultation at Tirupati practice chambers",
+      "loading": "lazy",
+      "w": 450,
+      "h": 252,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo",
+      "loading": "eager",
+      "w": 34,
+      "h": 34,
+      "visible": true,
+      "hasLoadedProperly": true
+    },
+    {
+      "src": "http://127.0.0.1:4210/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo",
+      "loading": "auto",
+      "w": 0,
+      "h": 0,
+      "visible": false,
+      "hasLoadedProperly": true
+    }
+  ],
+  "reducedMotion": {
+    "mediaQueryMatches": true,
+    "statCounterCount": 4,
+    "statTexts": [
+      "10+10+",
+      "100+100+",
+      "50+50+",
+      "5+5+"
+    ]
+  },
+  "clsScore": 0,
+  "network404s": [],
+  "networkFailures": [],
+  "consoleErrors": []
+}

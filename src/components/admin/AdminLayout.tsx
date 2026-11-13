@@ -12,6 +12,7 @@ import {
   ExternalLink,
   BookOpen,
   PenTool,
+  KeyRound,
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { ADMIN_ROUTES } from '../../config/adminConfig';
@@ -77,8 +78,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
         {/* Brand Header */}
         <div className="p-5 border-b border-[#F0F0F0]">
           <Link to={ADMIN_ROUTES.root} className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center font-serif text-sm font-bold text-amber-300 shrink-0">
-              KA
+            <div className="w-8 h-8 rounded-lg bg-white border border-[#EAEAEA] flex items-center justify-center p-0.5 shrink-0 shadow-xs">
+              <img src="/brand/ca-india-logo.png" alt="CA India" className="w-full h-full object-contain" />
             </div>
             <div className="min-w-0">
               <span className="font-serif text-sm font-bold text-neutral-900 block leading-tight truncate group-hover:text-neutral-700 transition-colors">
@@ -153,6 +154,14 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 </span>
               </div>
             </div>
+            <Link
+              to={`${ADMIN_ROUTES.settings}?tab=security`}
+              className="p-1.5 rounded-md hover:bg-neutral-200 text-neutral-500 hover:text-neutral-900 transition-colors shrink-0"
+              title="Account Security & Password"
+              aria-label="Account Security & Password"
+            >
+              <KeyRound className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
           <div className="grid grid-cols-2 gap-1.5 pt-1">
@@ -184,8 +193,8 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
           ========================================================================= */}
       <div className="md:hidden bg-white text-neutral-900 p-3.5 flex items-center justify-between border-b border-[#EAEAEA]">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-7 h-7 rounded-lg bg-neutral-900 flex items-center justify-center font-serif font-bold text-amber-300 text-xs shrink-0">
-            KA
+          <div className="w-7 h-7 rounded-lg bg-white border border-[#EAEAEA] flex items-center justify-center p-0.5 shrink-0">
+            <img src="/brand/ca-india-logo.png" alt="CA India" className="w-full h-full object-contain" />
           </div>
           <span className="font-serif text-sm font-bold text-neutral-900 truncate">
             Kavitha & Associates

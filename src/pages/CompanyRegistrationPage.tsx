@@ -14,6 +14,9 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { LetterReveal, WordReveal, TextHighlight } from '../components/animations';
+import { EditorialMarker } from '../components/architectural';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export const CompanyRegistrationPage: React.FC = () => {
   const { data } = useFirmData();
@@ -43,7 +46,7 @@ export const CompanyRegistrationPage: React.FC = () => {
       id: 'startup-india',
       title: 'DPIIT Startup India Recognition & 80-IAC Exemptions',
       statute: 'Department for Promotion of Industry and Internal Trade (DPIIT) Norms',
-      scope: 'Securing official Startup India recognition for innovation-driven enterprises in Tirupati. Assistance with Inter-Ministerial Board (IMB) application for 3-consecutive-year 100% tax holiday under Section 80-IAC and Angel Tax relief under Section 56(2)(viib).',
+      scope: 'Securing official Startup India recognition for innovation-driven enterprises in Tirupati. Assistance with Inter-Ministerial Board (IMB) application for 3-consecutive-year 100% tax holiday under Section 80-IAC and Section 80-IAC Tax Holiday Certification & Cap Table Valuation Advisory.',
       deliverable: 'DPIIT Recognition Certificate, Startup India Portal Registration & Section 80-IAC Application Dossier',
       threshold: 'Private Limited or LLP incorporated within last 10 years with annual turnover not exceeding ₹100 Crores',
       documents: ['Certificate of Incorporation & MoA/AoA', 'Pitch Deck / Business Model Explaining Innovation & Scalability', 'Website / App Link or Prototype Demonstration', 'Financial Statements or Projected Financials']
@@ -100,17 +103,19 @@ export const CompanyRegistrationPage: React.FC = () => {
     }
   ];
 
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Company Registration in Tirupati', path: '/services/company-registration-tirupati' }
+  ];
+
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
         title="Company Registration in Tirupati | ROC | Kavitha & Associates"
         description="Expert company registration in Tirupati. CA Kavitha & Associates provides Private Limited, LLP, OPC incorporation, DPIIT Startup India & annual ROC compliance."
         canonicalPath="/services/company-registration-tirupati"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-          { name: 'Company Registration in Tirupati', path: '/services/company-registration-tirupati' }
-        ]}
+        breadcrumbs={breadcrumbs}
         jsonLd={[
           {
           '@context': 'https://schema.org',
@@ -153,33 +158,37 @@ export const CompanyRegistrationPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-deep text-white py-20 sm:py-24 lg:py-28 border-b border-brand-gold/30">
+      <section className="bg-gradient-to-b from-[#F8EFDF] via-[#F5EAD8] to-[#EFE0C7] py-12 sm:py-16 md:py-20 lg:py-24 border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbs} className="mb-6 sm:mb-8" />
           <div className="max-w-3xl scroll-reveal">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
-              <Building2 className="w-4 h-4 text-brand-gold shrink-0" />
-              <span>Corporate Secretarial Practice • MCA 21</span>
+            <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+              <EditorialMarker number="04" label="CORPORATE & ROC" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DDE8D9] text-[#153F32] font-editorial-meta border border-[#153F32]/25 shadow-xs">
+                <Building2 className="w-4 h-4 text-[#153F32] shrink-0" />
+                <span><LetterReveal text="Corporate Secretarial Practice • MCA 21" /></span>
+              </div>
             </div>
-            <h1 className="font-editorial-h1 text-white">
-              Company Registration in Tirupati
+            <h1 className="font-editorial-h1 text-[#153F32] font-serif font-bold">
+              <WordReveal text="Company Registration in Tirupati" />
             </h1>
-            <p className="mt-4 font-editorial-body text-emerald-100/90 leading-relaxed text-base sm:text-lg">
-              Incorporate your Private Limited Company, LLP, or One Person Company with precision. Partner-led business formation, DPIIT Startup India registration, and annual ROC filing management supervised directly by CA Kavitha Vijay from our Tirupati chambers.
+            <p className="mt-4 font-editorial-body text-[#525954] leading-relaxed text-base sm:text-lg">
+              Incorporate your Private Limited Company, LLP, or One Person Company with precision. Partner-led business formation, DPIIT Startup India registration, and annual ROC filing management supervised directly by <TextHighlight>CA Kavitha Vijay</TextHighlight> from our Tirupati chambers.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gold text-brand-deep font-editorial-meta text-xs font-semibold hover:bg-brand-gold/90 transition-colors btn-tactile shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#153F32] hover:bg-[#102D25] text-white font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors shadow-sm hover:shadow-md border border-[#C3A66B]/50 btn-tactile"
               >
                 <span>Start Company Incorporation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
               </Link>
               <a
-                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I want to register a new Company / LLP in Tirupati.')}`}
+                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I want to register a new Company / LLP in Tirupati.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFFFF] hover:bg-[#FFF9EE] text-[#153F32] font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors border border-[#E8D5B5] hover:border-[#C3A66B] shadow-card btn-tactile"
               >
                 <span>WhatsApp Incorporation Query</span>
               </a>
@@ -191,49 +200,49 @@ export const CompanyRegistrationPage: React.FC = () => {
       {/* =========================================================================
           2. METHODOLOGY & ASSURANCE STRIP
           ========================================================================= */}
-      <section className="py-12 bg-brand-surface border-b border-brand-border">
+      <section className="py-12 bg-[#FFFDF7] border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-stagger">
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <Rocket className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <Rocket className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Turnaround Speed</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Turnaround Speed</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   3 to 7 Days Fast-Track
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Streamlined SPICe+ filing ensuring rapid name approval, DIN allotment, and incorporation certificate delivery.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <Scale className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <Scale className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Legal Precision</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Legal Precision</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Custom MoA & AoA Charters
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Bespoke object clauses and governance agreements tailored to protect founder equity and future venture capital rounds.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <FileCheck className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <FileCheck className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Annual Shield</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
-                  Guaranteed ROC Compliance
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Annual Shield</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
+                  Diligent Annual ROC Secretarial Compliance
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Proactive annual filing of AOC-4, MGT-7, and DIR-3 KYC protecting directors from disqualification and penalties.
                 </p>
               </div>
@@ -249,10 +258,10 @@ export const CompanyRegistrationPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Practice Spectrum
+              <LetterReveal text="Practice Spectrum" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Corporate & Business Formation Solutions
+              <WordReveal text="Corporate & Business Formation Solutions" />
             </h2>
             <p className="font-editorial-body text-sm text-brand-muted mt-2 leading-relaxed">
               From early-stage entity structuring and incorporation to ongoing secretarial compliance and capital table modifications.
@@ -401,10 +410,10 @@ export const CompanyRegistrationPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Statutory Clarifications
+              <LetterReveal text="Statutory Clarifications" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Frequently Asked Questions on Company Registration
+              <WordReveal text="Frequently Asked Questions on Company Registration" />
             </h2>
             <p className="font-editorial-body text-xs sm:text-sm text-brand-muted mt-2">
               Corporate governance guidance grounded in the Companies Act, 2013 and MCA rules.
@@ -442,15 +451,15 @@ export const CompanyRegistrationPage: React.FC = () => {
       {/* =========================================================================
           6. INTAKE BANNER
           ========================================================================= */}
-      <section className="py-16 bg-brand-deep text-white border-t border-brand-gold/30">
+      <section className="py-16 bg-brand-surface text-brand-charcoal border-t border-brand-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold text-xs uppercase tracking-wider block">
-            Partner-Led Corporate Services
+            <LetterReveal text="Partner-Led Corporate Services" />
           </span>
-          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">
-            Establish Your Enterprise on Sound Statutory Foundations
+          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-brand-forest max-w-2xl mx-auto">
+            <WordReveal text="Establish Your Enterprise on Sound Statutory Foundations" />
           </h2>
-          <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 max-w-xl mx-auto leading-relaxed">
+          <p className="font-editorial-body text-xs sm:text-sm text-brand-muted max-w-xl mx-auto leading-relaxed">
             From company formation to post-incorporation bank account opening and annual ROC filings, work directly with CA Kavitha Vijay in Tirupati.
           </p>
 

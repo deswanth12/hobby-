@@ -1,0 +1,156 @@
+{
+  "viewports": {},
+  "overflowPassed": true,
+  "consoleErrorsCount": 0,
+  "reducedMotionVerified": true,
+  "details": [
+    {
+      "viewport": "1440px",
+      "page": "homepage",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "working_process",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "why_choose_us",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "about",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "services",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "audit_spotlight",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "1440px",
+      "page": "contact",
+      "hasOverflow": false,
+      "scrollWidth": 1432,
+      "clientWidth": 1432
+    },
+    {
+      "viewport": "768px",
+      "page": "homepage",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "working_process",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "why_choose_us",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "about",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "services",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "audit_spotlight",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "768px",
+      "page": "contact",
+      "hasOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768
+    },
+    {
+      "viewport": "390px",
+      "page": "homepage",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "working_process",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "why_choose_us",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "about",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "services",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "audit_spotlight",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    {
+      "viewport": "390px",
+      "page": "contact",
+      "hasOverflow": false,
+      "scrollWidth": 390,
+      "clientWidth": 390
+    }
+  ],
+  "consoleErrors": []
+}

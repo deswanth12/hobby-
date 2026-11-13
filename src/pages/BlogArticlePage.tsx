@@ -86,7 +86,7 @@ export const BlogArticlePage: React.FC = () => {
   const metaDescription = post.seo?.metaDescription || post.excerpt;
 
   return (
-    <div className="bg-brand-warm page-reveal min-h-screen">
+    <div className="bg-[#F1EBDD] text-[#35271F] page-reveal min-h-screen texture-warm-ivory">
       <SEOHead
         title={metaTitle}
         description={metaDescription}
@@ -157,24 +157,24 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Article Title */}
-          <h1 className="font-editorial-h1 text-brand-forest leading-[1.22]">
+          <h1 className="font-editorial-h1 text-[#35271F] leading-[1.22]">
             {post.title}
           </h1>
 
           {/* Metadata Row */}
-          <div className="mt-6 pt-6 border-t border-brand-border flex flex-wrap items-center justify-between gap-4 text-xs font-editorial-meta text-brand-muted">
+          <div className="mt-6 pt-6 border-t border-[#D8D0BE] flex flex-wrap items-center justify-between gap-4 text-xs font-editorial-meta text-[#525954]">
             <div className="flex items-center gap-4 flex-wrap">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-brand-gold" />
+                <Calendar className="w-4 h-4 text-[#B49A64]" />
                 <span>{new Date(post.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5">
-                <Clock className="w-4 h-4 text-brand-gold" />
+                <Clock className="w-4 h-4 text-[#B49A64]" />
                 <span>{post.readingTime} min read</span>
               </span>
               <span>•</span>
-              <span className="text-brand-forest font-semibold">
+              <span className="text-[#35271F] font-semibold">
                 Authored by {post.author}
               </span>
             </div>
@@ -292,6 +292,18 @@ export const BlogArticlePage: React.FC = () => {
             </div>
           </div>
 
+          {/* Full Introductory Lead Paragraph (MotionSites Executive Summary) */}
+          {post.excerpt && (
+            <div className="mb-8 p-6 sm:p-8 rounded-2xl bg-white border border-[#D8D0BE] border-l-4 border-l-brand-gold shadow-card scroll-reveal">
+              <span className="font-editorial-meta text-[11px] font-bold text-[#B49A64] uppercase tracking-wider block mb-2">
+                Executive Statutory Summary &amp; Scope
+              </span>
+              <p className="font-editorial-body text-base sm:text-lg text-[#35271F] font-medium leading-relaxed italic">
+                {post.excerpt}
+              </p>
+            </div>
+          )}
+
           {/* Render Markdown Article Body */}
           <article className="bg-white rounded-2xl border border-border p-6 sm:p-12 shadow-card font-editorial-body text-charcoal scroll-reveal">
             <MarkdownRenderer content={post.content} demoteHeadings={true} />
@@ -302,7 +314,7 @@ export const BlogArticlePage: React.FC = () => {
             className="mt-10 p-6 sm:p-8 rounded-2xl bg-brand-deep text-white border border-brand-gold/30 shadow-card flex items-start gap-4 scroll-reveal"
             style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
           >
-            <ShieldCheck className="w-6 h-6 text-brand-gold shrink-0 mt-0.5" />
+            <ShieldCheck className="w-6 h-6 text-[#B49A64] shrink-0 mt-0.5" />
             <div className="text-xs text-emerald-100/90 leading-relaxed space-y-1">
               <strong className="text-white block font-editorial-meta text-sm font-semibold tracking-wide">
                 ICAI Professional Standards & Statutory Disclaimer
@@ -314,14 +326,14 @@ export const BlogArticlePage: React.FC = () => {
           </div>
 
           {/* Technical Advisory & Consultation Intake CTA Banner */}
-          <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-brand-surface border border-brand-border text-center space-y-4 scroll-reveal scroll-reveal-scale">
-            <span className="font-editorial-meta text-xs font-bold uppercase tracking-wider text-brand-gold block">
+          <div className="mt-12 p-8 sm:p-10 rounded-2xl bg-brand-surface border border-[#D8D0BE] text-center space-y-4 scroll-reveal scroll-reveal-scale">
+            <span className="font-editorial-meta text-xs font-bold uppercase tracking-wider text-[#B49A64] block">
               PROFESSIONAL ADVISORY & STATUTORY REVIEW
             </span>
-            <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
+            <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-[#35271F]">
               Require Technical Advisory on this Matter?
             </h2>
-            <p className="font-editorial-body text-xs sm:text-sm text-brand-muted max-w-lg mx-auto leading-relaxed">
+            <p className="font-editorial-body text-xs sm:text-sm text-[#525954] max-w-lg mx-auto leading-relaxed">
               Schedule a confidential chambers consultation with CA Kavitha Vijay to evaluate your organization's statutory audit schedules, tax filing positions, or internal controls framework.
             </p>
             <div className="pt-2 flex justify-center items-center gap-3 flex-wrap">
@@ -370,30 +382,52 @@ export const BlogArticlePage: React.FC = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 scroll-stagger">
                 {relatedPosts.map((rel) => (
-                  <Link
+                  <article
                     key={rel.slug}
-                    to={`/blog/${rel.slug}`}
-                    className="p-6 rounded-2xl bg-white border border-border shadow-subtle card-tactile flex flex-col justify-between group min-h-[44px] scroll-reveal"
+                    className="rounded-2xl bg-white border border-border shadow-subtle hover:shadow-card card-tactile flex flex-col justify-between overflow-hidden group scroll-reveal relative transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div>
-                      <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-gold-dark block mb-2">
-                        {rel.tags[0] || 'Regulatory'}
-                      </span>
-                      <h3 className="font-editorial-h3 text-base font-bold text-brand-primary group-hover:text-emerald-800 transition-colors leading-snug line-clamp-2">
-                        {rel.title}
-                      </h3>
-                      <p className="font-editorial-body mt-2.5 text-xs text-charcoal-muted line-clamp-3 leading-relaxed">
-                        {rel.excerpt}
-                      </p>
+                    {/* Invisible Full-Card Stretched Link (MotionSites Recipe) */}
+                    <Link
+                      to={`/blog/${rel.slug}`}
+                      className="absolute inset-0 z-10"
+                      aria-label={`Read article: ${rel.title}`}
+                    />
+
+                    {/* Featured Cover Image */}
+                    <div className="block relative aspect-[16/10] w-full overflow-hidden bg-brand-surface border-b border-[#D8D0BE]">
+                      <img
+                        src={rel.coverImage || '/uploads/blog/corporate-tax-planning-2026.webp'}
+                        alt={rel.coverImageAlt || rel.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
+                        <span className="font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-[#B49A64] bg-brand-forest/90 backdrop-blur-sm px-2.5 py-0.5 rounded border border-brand-gold/30 shadow-sm">
+                          {rel.tags[0] || 'Regulatory'}
+                        </span>
+                      </div>
                     </div>
-                    <div className="mt-5 pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-editorial-meta text-charcoal-muted">
-                      <span>{rel.readingTime} min read</span>
-                      <span className="text-emerald-800 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                        <span>Read</span>
-                        <ArrowRight className="w-3 h-3" />
-                      </span>
+
+                    {/* Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <h3 className="font-editorial-h3 text-sm sm:text-base font-bold text-[#35271F] group-hover:text-emerald-800 group-hover:underline transition-colors leading-snug line-clamp-2">
+                          {rel.title}
+                        </h3>
+                        <p className="mt-2 font-editorial-body text-xs text-[#525954] group-hover:text-[#35271F] line-clamp-2 leading-relaxed">
+                          {rel.excerpt}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-border/60 flex items-center justify-between text-[11px] font-editorial-meta text-[#525954]">
+                        <span>{rel.readingTime} min read</span>
+                        <div className="text-[#35271F] font-semibold group-hover:text-emerald-800 transition-colors inline-flex items-center gap-1 min-h-[36px]">
+                          <span>Read Analysis</span>
+                          <ArrowRight className="w-3.5 h-3.5 text-[#B49A64] group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      </div>
                     </div>
-                  </Link>
+                  </article>
                 ))}
               </div>
             </div>

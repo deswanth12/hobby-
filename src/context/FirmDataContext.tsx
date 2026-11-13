@@ -51,40 +51,96 @@ export const FirmDataProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     // Merge service content overrides
     if (contentOverrides.services) {
-      base.serviceCategories = base.serviceCategories
-        .filter((cat) => contentOverrides.services?.[cat.id]?.status !== 'draft')
+      const deletedIds = new Set((contentOverrides.deletedServices || []).map(d => d.id));
+      const existingIds = new Set(base.serviceCategories.map(c => c.id));
+
+      // 1. Update existing baseline services
+      const mergedExisting = base.serviceCategories
+        .filter((cat) => {
+          if (deletedIds.has(cat.id)) return false;
+          const override = contentOverrides.services?.[cat.id];
+          return override ? override.status !== 'draft' : true;
+        })
         .map((cat) => {
-        const override = contentOverrides.services?.[cat.id];
-        if (override) {
-          return {
-            ...cat,
-            title: override.title || cat.title,
-            shortDescription: override.shortDescription || cat.shortDescription,
-            fullDescription: override.fullDescription || cat.fullDescription,
-            statutoryFramework: override.statutoryFramework || cat.statutoryFramework,
-            targetClients: override.targetClients || cat.targetClients,
-          };
-        }
-        return cat;
-      });
+          const override = contentOverrides.services?.[cat.id];
+          if (override) {
+            return {
+              ...cat,
+              title: override.title || cat.title,
+              shortDescription: override.shortDescription || cat.shortDescription,
+              fullDescription: override.fullDescription || cat.fullDescription,
+              statutoryFramework: override.statutoryFramework ?? cat.statutoryFramework,
+              targetClients: override.targetClients ?? cat.targetClients,
+              typicalScenarios: override.typicalScenarios ?? cat.typicalScenarios,
+              services: override.services ?? cat.services,
+              iconName: override.iconName ?? cat.iconName,
+              order: override.order ?? 999,
+            };
+          }
+          return { ...cat, order: 999 };
+        });
+
+      // 2. Add new dynamically created published services
+      const dynamicNew = Object.values(contentOverrides.services)
+        .filter(s => s && s.id && !existingIds.has(s.id) && !deletedIds.has(s.id) && s.status === 'published')
+        .map(s => ({
+          id: s.id,
+          title: s.title || s.id,
+          shortDescription: s.shortDescription || '',
+          fullDescription: s.fullDescription || '',
+          iconName: s.iconName || 'Briefcase',
+          statutoryFramework: s.statutoryFramework,
+          targetClients: s.targetClients,
+          typicalScenarios: s.typicalScenarios || [],
+          services: s.services || [],
+          order: s.order ?? 999,
+        }));
+
+      base.serviceCategories = [...mergedExisting, ...dynamicNew].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
     }
 
     // Merge FAQ content overrides
     if (contentOverrides.faqs) {
-      base.faqs = base.faqs
-        .filter((faq) => contentOverrides.faqs?.[faq.id]?.status !== 'draft')
+      const deletedFaqIds = new Set((contentOverrides.deletedFaqs || []).map(d => d.id));
+      const existingFaqIds = new Set(base.faqs.map(f => f.id));
+
+      // 1. Update existing baseline FAQs
+      const mergedExistingFaqs = base.faqs
+        .filter((faq) => {
+          if (deletedFaqIds.has(faq.id)) return false;
+          const override = contentOverrides.faqs?.[faq.id];
+          return override ? override.status !== 'draft' : true;
+        })
         .map((faq) => {
-        const override = contentOverrides.faqs?.[faq.id];
-        if (override) {
-          return {
-            ...faq,
-            question: override.question || faq.question,
-            answer: override.answer || faq.answer,
-            statuteReference: override.statuteReference || faq.statuteReference,
-          };
-        }
-        return faq;
-      });
+          const override = contentOverrides.faqs?.[faq.id];
+          if (override) {
+            return {
+              ...faq,
+              question: override.question || faq.question,
+              answer: override.answer || faq.answer,
+              statuteReference: override.statuteReference ?? faq.statuteReference,
+              category: (override.category || faq.category) as any,
+              serviceIds: override.serviceIds,
+              order: override.order ?? 999,
+            };
+          }
+          return { ...faq, order: 999 };
+        });
+
+      // 2. Add new dynamically created published FAQs
+      const dynamicNewFaqs = Object.values(contentOverrides.faqs)
+        .filter(f => f && f.id && !existingFaqIds.has(f.id) && !deletedFaqIds.has(f.id) && f.status === 'published')
+        .map(f => ({
+          id: f.id,
+          category: (f.category || 'Audit & Assurance') as any,
+          question: f.question || '',
+          answer: f.answer || '',
+          statuteReference: f.statuteReference || '',
+          serviceIds: f.serviceIds,
+          order: f.order ?? 999,
+        }));
+
+      base.faqs = [...mergedExistingFaqs, ...dynamicNewFaqs].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
     }
 
     return { merged: base, modified: isModified };

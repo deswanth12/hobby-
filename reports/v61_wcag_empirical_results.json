@@ -1,0 +1,237 @@
+{
+  "totalInteractives": 108,
+  "positiveTabindex": 0,
+  "missingAccessibleNameCount": 1,
+  "missingAccessibleName": [
+    {
+      "tag": "input",
+      "outerHTML": "<input id=\"website_fax_hp\" name=\"website_fax_hp\" type=\"text\" tabindex=\"-1\" autocomplete=\"off\" value="
+    }
+  ],
+  "sub24TargetsCount": 29,
+  "sub44TargetsCount": 13,
+  "sub44Targets": [
+    {
+      "tag": "A",
+      "text": "Audit Spotlight",
+      "w": 98.265625,
+      "h": 32
+    },
+    {
+      "tag": "A",
+      "text": "Industries",
+      "w": 66.078125,
+      "h": 32
+    },
+    {
+      "tag": "A",
+      "text": "Articles",
+      "w": 51.25,
+      "h": 32
+    },
+    {
+      "tag": "A",
+      "text": "Contact",
+      "w": 52.015625,
+      "h": 32
+    },
+    {
+      "tag": "A",
+      "text": "About Us",
+      "w": 79.5625,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Practice Disciplines",
+      "w": 140.09375,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Audit & Assurance",
+      "w": 133.09375,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Why Choose Us",
+      "w": 118.421875,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Working Process",
+      "w": 124.5625,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Industries",
+      "w": 84,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Insights",
+      "w": 71.984375,
+      "h": 30
+    },
+    {
+      "tag": "A",
+      "text": "Direct Consultation",
+      "w": 137.625,
+      "h": 30
+    },
+    {
+      "tag": "INPUT",
+      "text": "",
+      "w": 215,
+      "h": 25.59375
+    }
+  ],
+  "totalImages": 26,
+  "missingAlt": 0,
+  "h1Count": 1,
+  "headingCount": 49,
+  "contrastSamples": [
+    {
+      "text": "Skip to main content",
+      "ratio": "12.30",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "+91 96263 50900",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "cakavithasrj@gmail.com",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "KA\nKavitha & Associates\nCHARTE",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Home",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "About",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Audit Spotlight",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Industries",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Articles",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Contact",
+      "ratio": "13.79",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "WhatsApp",
+      "ratio": "10.61",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Schedule Consultation",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Clarity in Finance. Confidence",
+      "ratio": "12.30",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Led by CA Kavitha Vijay (B.Com",
+      "ratio": "12.30",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Request Consultation",
+      "ratio": "10.29",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Explore Practice Disciplines",
+      "ratio": "10.29",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Call +91 96263 50900",
+      "ratio": "13.40",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "CA Kavitha Vijay",
+      "ratio": "11.74",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "B.Com, CA, CMA (AIR 49) (Dual ",
+      "ratio": "5.02",
+      "passAA": true,
+      "passAAA": false
+    },
+    {
+      "text": "Desk Direct",
+      "ratio": "5.02",
+      "passAA": true,
+      "passAAA": false
+    },
+    {
+      "text": "Assurance Leadership",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "Statutory audit senior at Delo",
+      "ratio": "7.08",
+      "passAA": true,
+      "passAAA": true
+    },
+    {
+      "text": "All India Rank in CMA",
+      "ratio": "11.80",
+      "passAA": true,
+      "passAAA": true
+    }
+  ]
+}

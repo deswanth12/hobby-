@@ -82,15 +82,15 @@ const ENTITY_PROFILES: EntityProfile[] = [
     name: 'Startups & Emerging Tech Ventures',
     tagline: 'DPIIT Recognition, Sec 80-IAC & Cap Table Structuring',
     icon: Rocket,
-    statuteBadges: ['DPIIT Recognition', 'Sec 80-IAC Tax Holiday', 'Sec 56(2)(viib)', 'ESOP Structuring'],
+    statuteBadges: ['DPIIT Recognition', 'Sec 80-IAC Tax Holiday', 'Cap Table Advisory', 'ESOP Structuring'],
     mandatoryAudits: [
       'Section 80-IAC 3-consecutive-year 100% tax holiday eligibility certification',
-      'Valuation Report for Angel Tax exemption under Section 56(2)(viib)',
+      'Section 80-IAC 3-year tax holiday application support and documentation',
       'Transfer Pricing audit in Form 3CEB if engaging in international SaaS/R&D transactions',
       'Cap table accuracy and share allotment documentation review'
     ],
     statutoryFilings: [
-      'Form 1 DPIIT Angel Tax Exemption application and documentation',
+      'DPIIT Startup Recognition filing and annual compliance advisory',
       'Form PAS-3 return of share allotment within 15 days of funding rounds',
       'Form FC-GPR filing with Reserve Bank of India (RBI) via FIRMS portal for FDI',
       'Annual corporate tax return and director compliances'

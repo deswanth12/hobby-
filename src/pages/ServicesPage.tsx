@@ -10,8 +10,13 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
-import { StatutoryEntityAdvisor } from '../components/StatutoryEntityAdvisor';
-import { DualArrowButton } from '../components/animations/DualArrowButton';
+import { DualArrowButton, LetterReveal, WordReveal, AnimatedDotPattern } from '../components/animations';
+import { 
+  CornerBrackets, 
+  EditorialMarker, 
+  PrecisionDotMatrix, 
+  GeometricSymbol 
+} from '../components/architectural';
 
 const DEDICATED_PRACTICE_PAGES: Record<string, { path: string; label: string }> = {
   'income-tax': { path: '/services/income-tax-consultant-tirupati', label: 'Explore Dedicated Income Tax Practice' },
@@ -63,17 +68,30 @@ export const ServicesPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-28 border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="bg-brand-surface py-10 sm:py-14 md:py-16 lg:py-18 border-b border-brand-border relative overflow-hidden texture-champagne-grain">
+        {/* Luminous Ambient Background Lighting */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-ambient-radial-gold pointer-events-none -z-0" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-ambient-radial-sage pointer-events-none -z-0" />
+
+        {/* Decorative Top-Right Dot Pattern */}
+        <div className="absolute top-6 right-8 pointer-events-none -z-0 opacity-20 hidden lg:block">
+          <AnimatedDotPattern rows={3} cols={5} variant="gold" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl scroll-reveal">
-            <span className="font-editorial-meta text-gold-dark block mb-3">
-              Practice Areas & Disciplines
-            </span>
+            <div className="flex items-center gap-2.5 mb-3 flex-wrap">
+              <EditorialMarker number="02" label="PRACTICE AREAS & DISCIPLINES" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-white border border-brand-border shadow-xs">
+                <span className="text-brand-gold font-mono font-bold">//</span>
+                <LetterReveal text="FULL PRACTICE SPECTRUM • PARTNER-SUPERVISED" as="span" className="tracking-widest uppercase font-semibold text-brand-forest text-xs" />
+              </div>
+            </div>
             <h1 className="font-editorial-h1 text-brand-forest">
-              Statutory Rigor. Multi-Disciplinary Counsel.
+              <WordReveal text="Statutory Rigor. Multi-Disciplinary Counsel." as="span" />
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed">
-              End-to-end professional support executed under the direct supervision of CA Kavitha Vijay (B.Com, CA, CMA AIR 49). 5 Practice Areas • 34 Specialized Services • 100% Partner-Led for emerging ventures, established enterprises, and institutions.
+              End-to-end professional support executed under the direct supervision of CA Kavitha Vijay (B.Com, CA, CMA AIR 49). 5 Practice Areas • 34 Specialized Services • Partner-Supervised for emerging ventures, established enterprises, and institutions.
             </p>
           </div>
         </div>
@@ -93,12 +111,6 @@ export const ServicesPage: React.FC = () => {
               <span>Jump to Area:</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
-              <a 
-                href="#statutory-advisor" 
-                className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-gold/15 border border-brand-gold/40 text-xs font-semibold text-brand-forest hover:bg-brand-gold/25 hover:text-brand-deep transition-colors shadow-xs btn-tactile"
-              >
-                Entity Advisor
-              </a>
               <a 
                 href="#audit-spotlight-banner" 
                 className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-full bg-brand-white border border-brand-border text-xs font-semibold text-brand-forest hover:border-brand-gold hover:text-brand-deep transition-colors shadow-xs btn-tactile"
@@ -151,7 +163,8 @@ export const ServicesPage: React.FC = () => {
           ========================================================================= */}
       <section className="py-12 bg-brand-surface/70 border-b border-brand-border scroll-mt-32" id="audit-spotlight-banner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-white p-7 sm:p-9 rounded-2xl border border-brand-border shadow-card card-tactile scroll-reveal">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-brand-white p-7 sm:p-9 rounded-2xl border border-brand-border shadow-card card-tactile scroll-reveal relative card-v4-inner-border">
+            <CornerBrackets size={14} variant="gold" />
             <div className="flex items-start gap-5">
               <div className="w-14 h-14 rounded-xl bg-brand-forest text-brand-gold flex items-center justify-center shrink-0 border border-brand-gold/40 shadow-inner">
                 <ShieldCheck className="w-7 h-7" />
@@ -180,10 +193,6 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* =========================================================================
-          INTERACTIVE STATUTORY SCOPE & ENTITY ADVISOR
-          ========================================================================= */}
-      <StatutoryEntityAdvisor />
 
       {/* =========================================================================
           4. THE 5 PRACTICE DISCIPLINES (Asymmetric 5:7 Grid Ledgers)
@@ -194,8 +203,10 @@ export const ServicesPage: React.FC = () => {
             <div
               key={category.id}
               id={category.id}
-              className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal"
+              className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal relative card-v4-inner-border"
             >
+              <CornerBrackets size={16} variant="gold" />
+              <PrecisionDotMatrix rows={2} cols={3} variant="gold" className="absolute top-4 right-4 opacity-20 hidden sm:block" />
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                 
                 {/* Left 5 Columns: Discipline Overview */}
@@ -234,8 +245,9 @@ export const ServicesPage: React.FC = () => {
                   {/* Common Practice Triggers */}
                   {category.typicalScenarios && (
                     <div className="pt-2">
-                      <strong className="block font-editorial-meta text-brand-forest mb-2.5 text-xs">
-                        Common Practice Triggers:
+                      <strong className="flex items-center gap-1.5 font-editorial-meta text-brand-forest mb-2.5 text-xs">
+                        <GeometricSymbol type="diamond" />
+                        <span>Common Practice Triggers:</span>
                       </strong>
                       <ul className="space-y-2 text-xs font-editorial-body text-brand-muted">
                         {category.typicalScenarios.map((scen) => (

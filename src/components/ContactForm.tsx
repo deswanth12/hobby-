@@ -105,7 +105,7 @@ export const ContactForm: React.FC = () => {
     // Spam Guard 1: Honeypot field inspection
     if (honeypot) {
       console.warn('Bot submission blocked via honeypot field.');
-      setSubmitted(true);
+      setSubmissionError('Security verification failed. Automated submission detected.');
       return;
     }
 
@@ -132,14 +132,14 @@ export const ContactForm: React.FC = () => {
 
       const res = await adminStorage.recordEnquiryAsync(sanitized);
 
-      if (res.data) {
+      if (res.success && res.data && res.data.id) {
         setSavedRecord(res.data);
         setSubmitted(true);
       } else {
         setSubmissionError(res.error || 'Failed to record consultation inquiry in practice register. Please contact our chambers directly.');
       }
     } catch {
-      setSubmissionError('A network error occurred while recording your inquiry. Please reach us directly via telephone or WhatsApp.');
+      setSubmissionError('Chambers consultation server is currently unreachable. Please connect directly via WhatsApp or telephone (+91 96263 50900).');
     } finally {
       setIsSubmitting(false);
     }
@@ -147,8 +147,7 @@ export const ContactForm: React.FC = () => {
 
   const generateWhatsAppUrl = () => {
     const text = `Hello CA Kavitha Vijay (Kavitha & Associates),\n\nEnquiry Ref: ${savedRecord?.id || 'DIRECT'}\nName: ${formData.fullName}\nEntity Type: ${formData.entityType}\nOrganization: ${formData.organization || 'Individual'}\nPhone: ${formData.phone}\nService Required: ${formData.serviceCategory}\nLocation: ${formData.city}\nUrgency: ${formData.urgency}\n\nRequirement Summary:\n${formData.message}`;
-    const targetNumber = FIRM_DATA.contact.primaryPhoneClean || '919626350900';
-    return `https://wa.me/${targetNumber}?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/919626350900?text=${encodeURIComponent(text)}`;
   };
 
   const handleReset = () => {
@@ -169,7 +168,7 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-card border border-border p-6 sm:p-8 lg:p-10 transition-[border-color,box-shadow] duration-200">
+    <div data-contact-section="true" className="contact-form-container bg-[#FFF9EF] rounded-3xl shadow-editorial border border-[#DEC8A4] p-6 sm:p-8 lg:p-10 transition-[border-color,box-shadow] duration-200">
       {submitted ? (
         <div className="text-center py-8 space-y-5 motion-safe:animate-fadeIn">
           <div className="w-16 h-16 bg-brand-pale text-brand-primary rounded-full flex items-center justify-center mx-auto border border-emerald-200">
@@ -222,7 +221,7 @@ export const ContactForm: React.FC = () => {
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-5">
+        <form onSubmit={handleSubmit} noValidate aria-label="Statutory Consultation & Advisory Intake Form" className="space-y-5">
           {/* Honeypot field for bot suppression */}
           <div className="opacity-0 absolute -left-[9999px] pointer-events-none" aria-hidden="true">
             <label htmlFor="website_fax_hp">Leave empty</label>
@@ -244,22 +243,22 @@ export const ContactForm: React.FC = () => {
             </div>
           )}
 
-          <div className="border-b border-border pb-4">
-            <span className="text-xs font-semibold text-gold-dark block mb-1">
-              Direct Enquiry
+          <div className="border-b border-[#E8D5B5] pb-5">
+            <span className="font-editorial-meta text-xs uppercase tracking-wider text-[#7E5E1E] font-semibold block mb-1">
+              Direct Practice Intake
             </span>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-primary">
-              Request a Professional Consultation
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#153F32]">
+              Request a Consultation
             </h3>
-            <p className="text-xs sm:text-sm text-charcoal-muted mt-1">
-              Connect directly with our practice for audit, corporate advisory, or tax compliance requirements.
+            <p className="font-editorial-body text-xs sm:text-sm text-[#525954] mt-1.5 leading-relaxed">
+              Connect directly with our practice for statutory audit, taxation, corporate advisory, or compliance across India.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Full Name */}
             <div>
-              <label htmlFor="fullName" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="fullName" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Full Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -269,8 +268,8 @@ export const ContactForm: React.FC = () => {
                 autoComplete="name"
                 value={formData.fullName}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.fullName ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs ${
+                  errors.fullName ? 'border-red-400 bg-red-50/40' : 'border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20'
                 }`}
                 placeholder="e.g. S. Ramanathan"
                 aria-required="true"
@@ -286,7 +285,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Organization / Entity */}
             <div>
-              <label htmlFor="organization" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="organization" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Company / Organization <span className="text-xs font-normal text-charcoal-light">(Optional)</span>
               </label>
               <input
@@ -296,14 +295,14 @@ export const ContactForm: React.FC = () => {
                 autoComplete="organization"
                 value={formData.organization}
                 onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20 text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs"
                 placeholder="e.g. Enterprise / LLP / Individual"
               />
             </div>
 
             {/* Phone */}
             <div>
-              <label htmlFor="phone" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="phone" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Phone Number <span className="text-red-500">*</span>
               </label>
               <input
@@ -314,8 +313,8 @@ export const ContactForm: React.FC = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.phone ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs ${
+                  errors.phone ? 'border-red-400 bg-red-50/40' : 'border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20'
                 }`}
                 placeholder="+91 98765 43210"
                 aria-required="true"
@@ -331,7 +330,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="email" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Email Address <span className="text-red-500">*</span>
               </label>
               <input
@@ -342,8 +341,8 @@ export const ContactForm: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                  errors.email ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
+                className={`w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs ${
+                  errors.email ? 'border-red-400 bg-red-50/40' : 'border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20'
                 }`}
                 placeholder="client@domain.com"
                 aria-required="true"
@@ -359,7 +358,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Service Category */}
             <div>
-              <label htmlFor="serviceCategory" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="serviceCategory" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Service Category <span className="text-red-500">*</span>
               </label>
               <select
@@ -367,7 +366,7 @@ export const ContactForm: React.FC = () => {
                 name="serviceCategory"
                 value={formData.serviceCategory}
                 onChange={(e) => setFormData({ ...formData, serviceCategory: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20 text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs"
               >
                 <option value="Audit & Assurance Services">Audit & Assurance (Statutory, Internal, Tax Audit)</option>
                 <option value="Income Tax Services">Income Tax (Filing, Planning, Scrutiny, Appeals)</option>
@@ -381,7 +380,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Client Location */}
             <div>
-              <label htmlFor="city" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="city" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Your Location
               </label>
               <select
@@ -389,7 +388,7 @@ export const ContactForm: React.FC = () => {
                 name="city"
                 value={formData.city}
                 onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20 text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs"
               >
                 <option value="Tirupati">Tirupati (Principal Chambers)</option>
                 <option value="Chennai">Chennai</option>
@@ -402,7 +401,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Entity Type (NSKA Structure) */}
             <div>
-              <label htmlFor="entityType" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="entityType" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Entity Type
               </label>
               <select
@@ -410,7 +409,7 @@ export const ContactForm: React.FC = () => {
                 name="entityType"
                 value={formData.entityType}
                 onChange={(e) => setFormData({ ...formData, entityType: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20 text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs"
               >
                 <option value="Private Limited Company">Private Limited Company</option>
                 <option value="Partnership / LLP">Limited Liability Partnership (LLP) / Firm</option>
@@ -423,7 +422,7 @@ export const ContactForm: React.FC = () => {
 
             {/* Urgency / Timeline */}
             <div>
-              <label htmlFor="urgency" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+              <label htmlFor="urgency" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
                 Timeline / Urgency
               </label>
               <select
@@ -431,7 +430,7 @@ export const ContactForm: React.FC = () => {
                 name="urgency"
                 value={formData.urgency}
                 onChange={(e) => setFormData({ ...formData, urgency: e.target.value })}
-                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-lg border border-border bg-brand-surface hover:bg-white text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none"
+                className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl border border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20 text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs"
               >
                 <option value="Normal Statutory Cycle">Normal Statutory Cycle / Planning</option>
                 <option value="Urgent / Approaching Deadline">Urgent / Approaching Filing Deadline</option>
@@ -443,7 +442,7 @@ export const ContactForm: React.FC = () => {
 
           {/* Message / Requirement */}
           <div>
-            <label htmlFor="message" className="block text-xs font-semibold text-brand-primary uppercase tracking-wider mb-1.5">
+            <label htmlFor="message" className="block text-xs font-semibold text-[#153F32] tracking-wider mb-1.5">
               Enquiry Summary <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -452,8 +451,8 @@ export const ContactForm: React.FC = () => {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-base sm:text-sm text-charcoal transition-colors focus:ring-2 focus:ring-brand-primary focus:outline-none ${
-                errors.message ? 'border-red-400 bg-red-50/30' : 'border-border bg-brand-surface hover:bg-white'
+              className={`w-full px-3.5 py-2.5 rounded-xl border text-base sm:text-sm text-[#252B27] transition-colors focus:ring-2 focus:ring-[#153F32] focus:border-[#153F32] focus:outline-none input-v4-focus shadow-xs ${
+                errors.message ? 'border-red-400 bg-red-50/40' : 'border-[#D8C29D] bg-white hover:border-[#153F32]/60 focus:bg-white focus:border-[#153F32] focus:ring-2 focus:ring-[#153F32]/20'
               }`}
               placeholder="Please describe your specific requirements (e.g., upcoming statutory audit deadline, GST dispute notice, company incorporation, or tax advisory)..."
               aria-required="true"
@@ -468,9 +467,9 @@ export const ContactForm: React.FC = () => {
           </div>
 
           {/* Direct Communication & Privacy Notice */}
-          <div className="text-xs text-charcoal-muted leading-relaxed bg-brand-surface p-4 rounded-xl border border-border">
+          <div className="text-xs text-[#525954] leading-relaxed bg-[#F8EFDF] p-4 rounded-xl border border-[#E8D5B5]">
             <p>
-              <strong className="text-brand-primary">Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA Kavitha Vijay via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this website.
+              <strong className="text-[#153F32]">Direct Communication Notice:</strong> Submitting this form formats your consultation inquiry so you can review and send it directly to CA Kavitha Vijay via WhatsApp or telephone. We do not solicit or store PAN, Aadhaar numbers, or financial files through this website.
             </p>
           </div>
 
@@ -479,10 +478,15 @@ export const ContactForm: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto min-h-[48px] btn-pill-action bg-brand-primary text-white hover:bg-brand-deep shadow-sm hover:shadow-md border border-gold/40 group text-xs sm:text-sm focus:ring-2 focus:ring-brand-primary focus:outline-none disabled:opacity-50"
+              aria-disabled={isSubmitting}
+              aria-busy={isSubmitting}
+              className="w-full sm:w-auto min-h-[48px] btn-pill-action bg-[#153F32] text-white hover:bg-[#102D25] transition-colors shadow-sm hover:shadow-md border border-[#C3A66B]/50 group text-xs sm:text-sm font-semibold focus:ring-2 focus:ring-[#153F32] focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
-                <span>Formatting Inquiry...</span>
+                <>
+                  <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <span>Formatting Inquiry...</span>
+                </>
               ) : (
                 <>
                   <span>Prepare Consultation Inquiry</span>

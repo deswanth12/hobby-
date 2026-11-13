@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160">
+  <filter id="geom-grain" x="0%" y="0%" width="100%" height="100%">
+    <!-- Subtle low-frequency modulation for tactile architectural depth -->
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" stitchTiles="stitch" result="lowNoise"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" stitchTiles="stitch" result="highNoise"/>
+    <feComposite in="lowNoise" in2="highNoise" operator="arithmetic" k1="0" k2="0.30" k3="0.70" k4="0" result="compositeNoise"/>
+    <feColorMatrix in="compositeNoise" type="matrix" values="0 0 0 0 0.20  0 0 0 0 0.18  0 0 0 0 0.15  0 0 0 0.035 0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#geom-grain)"/>
+  <defs>
+    <pattern id="geom-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 40 M 0 0 L 40 40" stroke="#C3A66B" stroke-width="0.5" stroke-opacity="0.035" fill="none"/>
+      <rect width="40" height="40" fill="none" stroke="#302B24" stroke-width="0.5" stroke-opacity="0.02"/>
+      <circle cx="20" cy="20" r="0.75" fill="#C3A66B" fill-opacity="0.04"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#geom-grid)"/>
+</svg>

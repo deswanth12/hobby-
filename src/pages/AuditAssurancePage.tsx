@@ -15,10 +15,24 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { AnimatedDotPattern, LetterReveal, WordReveal, TextHighlight } from '../components/animations';
+import { 
+  CornerBrackets, 
+  EditorialMarker, 
+  PrecisionDotMatrix, 
+  GeometricSymbol 
+} from '../components/architectural';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export const AuditAssurancePage: React.FC = () => {
   const { data } = useFirmData();
   const firm = data || FIRM_DATA;
+
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Audit & Assurance', path: '/services/audit-assurance' }
+  ];
 
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
@@ -26,11 +40,7 @@ export const AuditAssurancePage: React.FC = () => {
         title="Statutory Audit in Tirupati | Tax & Internal Audits | Kavitha & Associates"
         description="Independent Statutory Audit under Companies Act 2013, Tax Audit under Sec 44AB, Internal Audit, Concurrent Audit & Stock Verification in Tirupati, AP."
         canonicalPath="/services/audit-assurance"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-          { name: 'Audit & Assurance', path: '/services/audit-assurance' }
-        ]}
+        breadcrumbs={breadcrumbs}
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'Service',
@@ -50,18 +60,22 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-deep text-white py-10 sm:py-16 md:py-20 lg:py-28 border-b border-brand-gold/30">
+      <section className="bg-[#F8EFDF] py-10 sm:py-16 md:py-20 lg:py-28 border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbs} className="mb-6 sm:mb-8" />
           <div className="max-w-3xl scroll-reveal">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
-              <ShieldCheck className="w-4 h-4 text-brand-gold shrink-0" />
-              <span>Dedicated Audit Practice • Tirupati Chambers</span>
+            <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+              <EditorialMarker number="01" label="AUDIT & ASSURANCE" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DDE8D9] text-[#153F32] font-editorial-meta border border-[#153F32]/30 shadow-xs">
+                <ShieldCheck className="w-4 h-4 text-[#153F32] shrink-0" />
+                <LetterReveal text="Dedicated Audit Practice • Tirupati Chambers" as="span" />
+              </div>
             </div>
-            <h1 className="font-editorial-h1 text-white">
-              Evidence-Based Rigor. Institutional Trust.
+            <h1 className="font-editorial-h1 text-[#153F32] font-serif font-bold">
+              <WordReveal text="Evidence-Based Rigor. Institutional Trust." as="span" />
             </h1>
-            <p className="mt-4 font-editorial-body text-emerald-100/90 leading-relaxed text-base sm:text-lg">
-              Independent, rigorous, and compliant audits that foster trust with lenders, investors, regulatory bodies, and boards of directors. Directly led by CA Kavitha Vijay (ex-Deloitte Big 4 field senior on ₹1,000 Cr IPO, Ford MNC internal auditor, and CMA AIR 49).
+            <p className="mt-4 font-editorial-body text-[#525954] leading-relaxed text-base sm:text-lg">
+              Independent, rigorous, and compliant audits that foster trust with lenders, investors, regulatory bodies, and boards of directors. Directly led by <TextHighlight>CA Kavitha Vijay</TextHighlight> (ex-Deloitte Big 4 field senior on ₹1,000 Cr IPO, Ford MNC internal auditor, and CMA AIR 49).
             </p>
           </div>
         </div>
@@ -70,50 +84,50 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           2. STANDARDS ON AUDITING (SAs) GOVERNANCE STRIP
           ========================================================================= */}
-      <section className="py-12 bg-brand-surface border-b border-brand-border">
+      <section className="py-12 bg-[#FFFDF7] border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-stagger">
             <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
                 <FileCheck className="w-6 h-6 text-brand-forest" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Methodology Benchmark</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Methodology Benchmark</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   ICAI Standards on Auditing (SAs)
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Strict adherence to mandatory Indian and international auditing benchmarks (SAs 200–599) and CARO 2020.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
                 <Search className="w-6 h-6 text-brand-forest" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Assurance Integrity</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Assurance Integrity</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Substantive Testing & Evidence
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Rigorous verification, sampling methodology, external confirmations (SA 505), and analytical review procedures.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
                 <Scale className="w-6 h-6 text-brand-forest" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Direct Partner Sign-Off</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Direct Partner Sign-Off</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Direct Partner Supervision
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
-                  Supervised and signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49) with mandatory UDIN generation.
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
+                  Supervised and signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49, Chartered Accountant (ICAI Member)) with mandatory UDIN generation.
                 </p>
               </div>
             </div>
@@ -124,25 +138,30 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           3. THE 4-PHASE AUDIT LIFECYCLE
           ========================================================================= */}
-      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-ivory border-b border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-[#F8EFDF] border-b border-[#E8D5B5] relative overflow-hidden">
+        {/* Decorative Animated Dot Pattern */}
+        <div className="absolute top-8 right-8 pointer-events-none -z-0 opacity-45 hidden md:block">
+          <AnimatedDotPattern rows={4} cols={6} variant="forest" />
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 scroll-reveal">
-            <span className="font-editorial-meta text-brand-gold block mb-2.5">
+            <span className="inline-block px-3 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold mb-3">
               Systematic Assurance Workflow
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest">
+            <h2 className="font-editorial-h2 text-[#153F32] font-serif font-bold">
               The 4-Phase Audit Lifecycle
             </h2>
-            <p className="font-editorial-body text-sm sm:text-base text-brand-muted mt-3 leading-relaxed">
+            <p className="font-editorial-body text-sm sm:text-base text-[#525954] mt-3 leading-relaxed">
               Every audit engagement is managed through a structured, 4-phase audit lifecycle adhering to the ICAI quality control guidelines (SQC 1).
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 scroll-stagger">
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal relative card-v4-inner-border">
+              <CornerBrackets size={12} variant="gold" />
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-editorial-meta text-brand-gold text-base">Phase 01</span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold">Phase 01</span>
                   <BookOpen className="w-4 h-4 text-brand-forest" />
                 </div>
                 <h3 className="font-editorial-h3 text-lg text-brand-forest mb-2">
@@ -154,10 +173,11 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal relative card-v4-inner-border">
+              <CornerBrackets size={12} variant="gold" />
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-editorial-meta text-brand-gold text-base">Phase 02</span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold">Phase 02</span>
                   <Layers className="w-4 h-4 text-brand-forest" />
                 </div>
                 <h3 className="font-editorial-h3 text-lg text-brand-forest mb-2">
@@ -169,10 +189,11 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal relative card-v4-inner-border">
+              <CornerBrackets size={12} variant="gold" />
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-editorial-meta text-brand-gold text-base">Phase 03</span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold">Phase 03</span>
                   <FileSignature className="w-4 h-4 text-brand-forest" />
                 </div>
                 <h3 className="font-editorial-h3 text-lg text-brand-forest mb-2">
@@ -184,10 +205,11 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal">
+            <div className="bg-brand-white p-7 rounded-2xl border border-brand-border shadow-card card-tactile flex flex-col justify-between scroll-reveal relative card-v4-inner-border">
+              <CornerBrackets size={12} variant="gold" />
               <div>
                 <div className="flex items-center justify-between mb-4">
-                  <span className="font-editorial-meta text-brand-gold text-base">Phase 04</span>
+                  <span className="px-2.5 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold">Phase 04</span>
                   <Award className="w-4 h-4 text-brand-forest" />
                 </div>
                 <h3 className="font-editorial-h3 text-lg text-brand-forest mb-2">
@@ -205,13 +227,14 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           4. THE 9 STATUTORY AUDIT STREAMS (Asymmetric Catalog)
           ========================================================================= */}
-      <section className="py-10 sm:py-16 md:py-20 lg:py-24">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-[#FFFDF7] border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14 scroll-reveal">
-            <span className="font-editorial-meta text-brand-gold block mb-2.5">
-              Statutory Scope & Assurance Streams
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold mb-3">
+              <GeometricSymbol type="diamond" />
+              <span>Statutory Scope &amp; Assurance Streams</span>
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest">
+            <h2 className="font-editorial-h2 text-[#153F32] font-serif font-bold">
               The 9 Disciplines of Our Audit Practice
             </h2>
             <p className="font-editorial-body text-sm sm:text-base text-brand-muted mt-3">
@@ -230,63 +253,64 @@ export const AuditAssurancePage: React.FC = () => {
                     className="double-bezel-dark scroll-reveal-scale"
                   >
                     <div 
-                      className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-8 sm:p-10 lg:p-12 text-white border border-white/10 shadow-editorial-lg"
-                      style={{ backgroundColor: '#102D25', color: '#FFFFFF' }}
+                      className="bg-white rounded-2xl p-8 sm:p-10 lg:p-12 text-[#252B27] border-2 border-[#E8D5B5] shadow-editorial-lg relative card-v4-inner-border"
                     >
-                      <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-white/10 mb-6 gap-4">
+                      <CornerBrackets size={16} variant="gold" />
+                      <PrecisionDotMatrix rows={2} cols={3} variant="gold" className="absolute top-4 right-4 opacity-20 hidden sm:block" />
+                      <div className="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-[#E8D5B5] mb-6 gap-4">
                         <div>
                           <div className="flex items-center gap-3 mb-2 flex-wrap">
-                            <span className="font-editorial-meta text-brand-gold bg-brand-forest px-3 py-1 rounded-full border border-brand-gold/40 text-xs">
+                            <span className="font-editorial-meta text-[#153F32] bg-[#DDE8D9] px-3 py-1 rounded-full border border-[#153F32]/30 text-xs font-semibold">
                               {audit.statute}
                             </span>
-                            <span className="font-editorial-meta text-emerald-300 bg-black/40 px-3 py-1 rounded-full border border-white/10 text-xs">
+                            <span className="font-editorial-meta text-[#7E5E1E] bg-[#E8D5B5] px-3 py-1 rounded-full border border-[#E8D5B5] text-xs font-semibold">
                               Featured Flagship Audit Stream 01
                             </span>
                           </div>
-                          <h3 className="font-editorial-h2 text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+                          <h3 className="font-editorial-h2 text-2xl sm:text-3xl lg:text-4xl font-bold text-[#153F32]">
                             {audit.name}
                           </h3>
                         </div>
-                        <span className="font-editorial-meta text-brand-gold bg-black/30 px-3 py-1.5 rounded-full border border-white/10 text-xs self-start lg:self-center">
+                        <span className="font-editorial-meta text-[#153F32] bg-[#DDE8D9] px-3 py-1.5 rounded-full border border-[#153F32]/20 text-xs font-semibold self-start lg:self-center">
                           Mandatory Annual Filing
                         </span>
                       </div>
 
-                      <p className="font-editorial-body text-sm sm:text-base text-emerald-100/90 leading-relaxed max-w-4xl mb-8">
+                      <p className="font-editorial-body text-sm sm:text-base text-[#525954] leading-relaxed max-w-4xl mb-8">
                         {audit.scope}
                       </p>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-xl bg-brand-forest/60 border border-brand-forest">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 rounded-xl bg-[#F8EFDF] border border-[#E8D5B5]">
                         <div>
-                          <span className="font-editorial-meta text-brand-gold block mb-1 text-[11px]">
+                          <span className="font-editorial-meta text-[#7E5E1E] block mb-1 text-[11px] font-semibold">
                             Formal Deliverable:
                           </span>
-                          <p className="font-editorial-body text-sm text-white font-medium">
+                          <p className="font-editorial-body text-sm text-[#153F32] font-semibold">
                             {audit.deliverable}
                           </p>
                         </div>
                         <div>
-                          <span className="font-editorial-meta text-emerald-200 block mb-1 text-[11px]">
+                          <span className="font-editorial-meta text-[#7E5E1E] block mb-1 text-[11px] font-semibold">
                             Applicable Entities:
                           </span>
-                          <p className="font-editorial-body text-xs text-emerald-100/90">
+                          <p className="font-editorial-body text-xs text-[#525954] leading-relaxed">
                             {audit.applicableEntity}
                           </p>
                         </div>
                       </div>
 
-                      <div className="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                        <span className="font-editorial-meta text-brand-gold text-xs">
-                          Supervised & Signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49)
+                      <div className="mt-8 pt-6 border-t border-[#E8D5B5] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <span className="font-editorial-meta text-[#153F32] text-xs font-semibold">
+                          Supervised & Signed by CA Kavitha Vijay (B.Com, CA, CMA AIR 49, Chartered Accountant (ICAI Member))
                         </span>
                         <a
                           href={firm.contact.whatsappLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gold hover:bg-brand-gold/90 text-brand-deep font-editorial-meta text-xs font-bold transition-colors duration-200 shadow-md btn-tactile"
+                          className="min-h-[44px] inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#153F32] hover:bg-[#102D25] text-white font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors shadow-sm hover:shadow-md border border-[#C3A66B]/50 btn-tactile"
                         >
                           <span>Inquire Statutory Audit</span>
-                          <ArrowRight className="w-3.5 h-3.5" />
+                          <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
                         </a>
                       </div>
                     </div>
@@ -374,16 +398,16 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           5. DUAL CA + CMA AUDIT ADVANTAGE
           ========================================================================= */}
-      <section className="py-10 sm:py-16 md:py-20 bg-brand-surface border-y border-brand-border">
+      <section className="py-10 sm:py-16 md:py-20 bg-[#DDE8D9] border-y border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
               Defensible Assurance
             </span>
-            <h2 className="font-editorial-h2 text-brand-forest">
+            <h2 className="font-editorial-h2 text-[#153F32] font-serif font-bold">
               The Dual CA + CMA Audit Advantage
             </h2>
-            <p className="font-editorial-body text-sm sm:text-base text-brand-muted mt-3 leading-relaxed">
+            <p className="font-editorial-body text-sm sm:text-base text-[#525954] mt-3 leading-relaxed">
               Why commercial lenders, boards of directors, and institutional investors place higher trust in audits led by a dual Chartered Accountant & Cost Accountant.
             </p>
           </div>
@@ -411,12 +435,12 @@ export const AuditAssurancePage: React.FC = () => {
       {/* =========================================================================
           6. STATUTORY TIMELINES & AUDIT READINESS CTA
           ========================================================================= */}
-      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface text-center">
+      <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-[#E8D5B5] text-center border-b border-[#E8D5B5]">
         <div className="max-w-3xl mx-auto px-4 scroll-reveal">
-          <span className="font-editorial-meta text-brand-gold block mb-2.5">
+          <span className="inline-block px-3 py-1 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-xs font-semibold mb-3">
             Statutory Timelines & Readiness
           </span>
-          <h2 className="font-editorial-h2 text-brand-forest">
+          <h2 className="font-editorial-h2 text-[#153F32] font-serif font-bold">
             Plan Your Upcoming Financial Year Audit Cycle
           </h2>
           <p className="mt-4 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">

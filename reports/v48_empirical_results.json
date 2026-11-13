@@ -1,0 +1,942 @@
+{
+  "viewports": {
+    "390px": {
+      "overflow": {
+        "docW": 390,
+        "winW": 390,
+        "diff": 0,
+        "hasOverflow": false
+      },
+      "touchTargets": {
+        "total": 117,
+        "violations": 1,
+        "samples": [
+          {
+            "tag": "A",
+            "text": "Skip to main content",
+            "w": 1,
+            "h": 1
+          }
+        ]
+      },
+      "imageCount": 17,
+      "visibleImageCount": 13,
+      "allVisibleComplete": true
+    },
+    "768px": {
+      "overflow": {
+        "docW": 768,
+        "winW": 768,
+        "diff": 0,
+        "hasOverflow": false
+      },
+      "touchTargets": {
+        "total": 117,
+        "violations": 1,
+        "samples": [
+          {
+            "tag": "A",
+            "text": "Skip to main content",
+            "w": 1,
+            "h": 1
+          }
+        ]
+      },
+      "imageCount": 17,
+      "visibleImageCount": 13,
+      "allVisibleComplete": true
+    },
+    "1024px": {
+      "overflow": {
+        "docW": 1016,
+        "winW": 1024,
+        "diff": -8,
+        "hasOverflow": false
+      },
+      "touchTargets": {
+        "total": 117,
+        "violations": 1,
+        "samples": [
+          {
+            "tag": "A",
+            "text": "Skip to main content",
+            "w": 1,
+            "h": 1
+          }
+        ]
+      },
+      "imageCount": 17,
+      "visibleImageCount": 13,
+      "allVisibleComplete": true
+    },
+    "1440px": {
+      "overflow": {
+        "docW": 1432,
+        "winW": 1440,
+        "diff": -8,
+        "hasOverflow": false
+      },
+      "touchTargets": {
+        "total": 117,
+        "violations": 1,
+        "samples": [
+          {
+            "tag": "A",
+            "text": "Skip to main content",
+            "w": 1,
+            "h": 1
+          }
+        ]
+      },
+      "imageCount": 17,
+      "visibleImageCount": 12,
+      "allVisibleComplete": true
+    }
+  },
+  "images": {
+    "390px": [
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo - Chartered Accountants",
+        "loading": "auto",
+        "w": 30,
+        "h": 30,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ka-seal-medallion.webp",
+        "naturalWidth": 512,
+        "naturalHeight": 443,
+        "complete": true,
+        "alt": "KA Official Practice Seal",
+        "loading": "eager",
+        "w": 56,
+        "h": 56,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/consultation-main.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Senior Chartered Accountant CA Kavitha Vijay in consultation with enterprise client",
+        "loading": "eager",
+        "w": 338,
+        "h": 256,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/document-review.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Statutory audit working papers and financial document examination",
+        "loading": "eager",
+        "w": 162,
+        "h": 128,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/office-space.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Executive corporate financial strategy and boardroom advisory session",
+        "loading": "eager",
+        "w": 162,
+        "h": 128,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/consultation.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Kavitha & Associates Senior Advisory Consultation",
+        "loading": "lazy",
+        "w": 356,
+        "h": 256,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/analysis.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Financial scrutiny and working papers review",
+        "loading": "lazy",
+        "w": 356,
+        "h": 128,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 286,
+        "h": 161,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 286,
+        "h": 161,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 286,
+        "h": 161,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 286,
+        "h": 161,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "eager",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "auto",
+        "w": 26,
+        "h": 26,
+        "visible": true
+      }
+    ],
+    "768px": [
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo - Chartered Accountants",
+        "loading": "auto",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ka-seal-medallion.webp",
+        "naturalWidth": 512,
+        "naturalHeight": 443,
+        "complete": true,
+        "alt": "KA Official Practice Seal",
+        "loading": "eager",
+        "w": 56,
+        "h": 56,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/consultation-main.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Senior Chartered Accountant CA Kavitha Vijay in consultation with enterprise client",
+        "loading": "eager",
+        "w": 696,
+        "h": 288,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/document-review.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Statutory audit working papers and financial document examination",
+        "loading": "eager",
+        "w": 340,
+        "h": 144,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/office-space.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Executive corporate financial strategy and boardroom advisory session",
+        "loading": "eager",
+        "w": 340,
+        "h": 144,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/consultation.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Kavitha & Associates Senior Advisory Consultation",
+        "loading": "lazy",
+        "w": 510,
+        "h": 288,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/analysis.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Financial scrutiny and working papers review",
+        "loading": "lazy",
+        "w": 202,
+        "h": 173,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 624,
+        "h": 351,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 624,
+        "h": 351,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 624,
+        "h": 351,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 624,
+        "h": 351,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "eager",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "auto",
+        "w": 26,
+        "h": 26,
+        "visible": true
+      }
+    ],
+    "1024px": [
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo - Chartered Accountants",
+        "loading": "auto",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ka-seal-medallion.webp",
+        "naturalWidth": 512,
+        "naturalHeight": 443,
+        "complete": true,
+        "alt": "KA Official Practice Seal",
+        "loading": "eager",
+        "w": 56,
+        "h": 56,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/consultation-main.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Senior Chartered Accountant CA Kavitha Vijay in consultation with enterprise client",
+        "loading": "eager",
+        "w": 424,
+        "h": 320,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/document-review.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Statutory audit working papers and financial document examination",
+        "loading": "eager",
+        "w": 204,
+        "h": 160,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/office-space.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Executive corporate financial strategy and boardroom advisory session",
+        "loading": "eager",
+        "w": 204,
+        "h": 160,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/consultation.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Kavitha & Associates Senior Advisory Consultation",
+        "loading": "lazy",
+        "w": 446,
+        "h": 320,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/analysis.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Financial scrutiny and working papers review",
+        "loading": "lazy",
+        "w": 175,
+        "h": 188,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 340,
+        "h": 191,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 340,
+        "h": 191,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 340,
+        "h": 191,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 340,
+        "h": 191,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "eager",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "auto",
+        "w": 26,
+        "h": 26,
+        "visible": true
+      }
+    ],
+    "1440px": [
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo - Chartered Accountants",
+        "loading": "auto",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ka-seal-medallion.webp",
+        "naturalWidth": 512,
+        "naturalHeight": 443,
+        "complete": true,
+        "alt": "KA Official Practice Seal",
+        "loading": "eager",
+        "w": 56,
+        "h": 56,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/consultation-main.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Senior Chartered Accountant CA Kavitha Vijay in consultation with enterprise client",
+        "loading": "eager",
+        "w": 556,
+        "h": 320,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/document-review.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Statutory audit working papers and financial document examination",
+        "loading": "eager",
+        "w": 270,
+        "h": 160,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/about/office-space.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Executive corporate financial strategy and boardroom advisory session",
+        "loading": "eager",
+        "w": 270,
+        "h": 160,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/consultation.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Kavitha & Associates Senior Advisory Consultation",
+        "loading": "lazy",
+        "w": 578,
+        "h": 320,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/why-choose-us/analysis.webp",
+        "naturalWidth": 1200,
+        "naturalHeight": 800,
+        "complete": true,
+        "alt": "Financial scrutiny and working papers review",
+        "loading": "lazy",
+        "w": 230,
+        "h": 154,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 450,
+        "h": 253,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 450,
+        "h": 253,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 450,
+        "h": 253,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": true,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 450,
+        "h": 253,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/understanding.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Chartered accountant consultation desk and business needs assessment",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/planning.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Financial planning, corporate tax roadmap and strategic analysis",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/execution.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Rigorous statutory audit and tax filing execution at active workstations",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/images/working-process/ongoing-support.webp",
+        "naturalWidth": 1280,
+        "naturalHeight": 720,
+        "complete": false,
+        "alt": "Continuous business advisory and dedicated professional audit team",
+        "loading": "lazy",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "eager",
+        "w": 34,
+        "h": 34,
+        "visible": true
+      },
+      {
+        "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+        "naturalWidth": 1024,
+        "naturalHeight": 762,
+        "complete": true,
+        "alt": "Official CA India Logo",
+        "loading": "auto",
+        "w": 0,
+        "h": 0,
+        "visible": false
+      }
+    ]
+  },
+  "reducedMotion": {
+    "total": 70,
+    "visibleStatic": 70
+  },
+  "networkFailures": [],
+  "consoleErrors": [],
+  "aboutPageImages": [
+    {
+      "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo - Chartered Accountants",
+      "w": 34,
+      "h": 34,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/images/about/consultation-main.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Senior Chartered Accountant CA Kavitha Vijay in consultation with enterprise client",
+      "w": 556,
+      "h": 320,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/images/about/document-review.webp",
+      "naturalWidth": 1200,
+      "naturalHeight": 800,
+      "complete": true,
+      "alt": "Statutory audit working papers and financial document examination",
+      "w": 270,
+      "h": 160,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/images/about/office-space.webp",
+      "naturalWidth": 1200,
+      "naturalHeight": 800,
+      "complete": true,
+      "alt": "Executive corporate financial strategy and boardroom advisory session",
+      "w": 270,
+      "h": 160,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Emblem - Chartered Accountants",
+      "w": 42,
+      "h": 42,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/images/about/leadership-space.webp",
+      "naturalWidth": 1280,
+      "naturalHeight": 720,
+      "complete": true,
+      "alt": "Executive corporate leadership and remote client consultation environment",
+      "w": 429,
+      "h": 224,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo",
+      "w": 34,
+      "h": 34,
+      "visible": true
+    },
+    {
+      "src": "http://127.0.0.1:4199/brand/ca-india-logo.png",
+      "naturalWidth": 1024,
+      "naturalHeight": 762,
+      "complete": true,
+      "alt": "Official CA India Logo",
+      "w": 0,
+      "h": 0,
+      "visible": false
+    }
+  ]
+}

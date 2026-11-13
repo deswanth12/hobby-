@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kavitha & Associates | Chartered Accountants — Concept D: Architectural Slate & Royal Cognac</title>
+  <meta name="description" content="Kavitha & Associates — Chartered Accountants and Cost Accountants. 10+ years corporate experience, Big 4 & MNC background. Dual CA & CMA leadership.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Outfit:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-canvas: #F6F7F9;
+      --bg-card: #FFFFFF;
+      --text-primary: #1A222D;
+      --text-muted: #556272;
+      --brand-primary: #1A222D;
+      --brand-secondary: #A65D37;
+      --accent-primary: #A65D37;
+      --accent-badge-bg: rgba(166, 93, 55, 0.08);
+      --accent-badge-border: rgba(166, 93, 55, 0.25);
+      --border-subtle: #E2E6EC;
+      --btn-primary-bg: #1A222D;
+      --btn-primary-text: #FFFFFF;
+      --btn-primary-hover: #273444;
+      --btn-secondary-bg: #A65D37;
+      --btn-secondary-text: #FFFFFF;
+      --btn-secondary-border: #A65D37;
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --card-shadow: 0 4px 20px rgba(26, 34, 45, 0.04);
+      --card-shadow-hover: 0 10px 28px rgba(26, 34, 45, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    /* Global Layout Utility */
+    .container {
+      width: 100%;
+      max-width: 1220px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Section Structure */
+    section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 64px 0;
+      }
+    }
+
+    /* Eyebrow Pill Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 0.75rem; /* 12px min floor */
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--accent-badge-bg);
+      color: var(--brand-primary);
+      border: 1px solid var(--accent-badge-border);
+      margin-bottom: 20px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--accent-primary);
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--text-primary);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 2.375rem; /* 38px */
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 1.0625rem; /* 17px */
+      color: var(--text-muted);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .center-block {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      font-size: 0.9375rem; /* 15px */
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid transparent;
+      min-height: 48px;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--brand-primary);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--btn-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--btn-secondary-bg);
+      color: var(--btn-secondary-text);
+      border-color: var(--btn-secondary-border);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+      transform: translateY(-1px);
+    }
+
+    /* Concept Header Banner */
+    .concept-indicator {
+      background: var(--brand-primary);
+      color: #FFFFFF;
+      font-size: 0.75rem; /* 12px */
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    /* 1. Header & Navigation */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 1.3125rem; /* 21px */
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .brand-sub {
+      font-size: 0.75rem; /* 12px */
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-primary);
+      font-weight: 700;
+    }
+
+    nav.desktop-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav.desktop-nav a {
+      font-size: 0.875rem; /* 14px */
+      font-weight: 600;
+      color: var(--text-primary);
+      padding: 8px 0;
+      position: relative;
+    }
+
+    nav.desktop-nav a:hover {
+      color: var(--brand-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .desk-phone {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+
+    .desk-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .desk-number {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+    }
+
+    /* 2. Hero Section */
+    .hero {
+      padding: 100px 0 80px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      background: linear-gradient(180deg, var(--bg-canvas) 0%, rgba(255, 255, 255, 0.4) 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-h1 {
+      font-size: 3.125rem; /* 50px */
+      letter-spacing: -0.025em;
+      margin-bottom: 24px;
+      line-height: 1.16;
+      color: var(--text-primary);
+    }
+
+    .hero-lead {
+      font-size: 1.1875rem; /* 19px */
+      color: var(--text-muted);
+      line-height: 1.68;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .metric-value {
+      font-family: var(--font-heading);
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      margin-bottom: 4px;
+    }
+
+    .metric-label {
+      font-size: 0.8125rem; /* 13px */
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Neutral Editorial Portrait Placeholder (No Unconsented Photos / No Fake AI) */
+    .partner-hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .partner-hero-card::before {
+      content: '';
+      position: absolute;
+      top: -6px;
+      left: 24px;
+      right: 24px;
+      height: 6px;
+      background: var(--brand-primary);
+      border-radius: 6px 6px 0 0;
+    }
+
+    .partner-placeholder-wrapper {
+      width: 100%;
+      height: 380px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-canvas) 0%, rgba(255, 255, 255, 0.9) 100%);
+      border: 1px dashed var(--border-subtle);
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .placeholder-crest {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--brand-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.625rem;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(22, 66, 47, 0.08);
+    }
+
+    .placeholder-title {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .placeholder-desc {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 14px;
+      max-width: 260px;
+    }
+
+    .placeholder-status {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--accent-badge-bg);
+      color: var(--brand-primary);
+      border: 1px solid var(--accent-badge-border);
+    }
+
+    .partner-meta-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .partner-meta-creds {
+      font-size: 0.8125rem;
+      color: var(--brand-primary);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .partner-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .partner-pill {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* 3. Short Firm Introduction */
+    .firm-intro {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 80px 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .intro-quote {
+      font-family: var(--font-heading);
+      font-size: 1.625rem;
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--text-primary);
+      border-left: 3px solid var(--brand-primary);
+      padding-left: 24px;
+    }
+
+    .intro-body p {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .intro-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 4. Core Practice Areas (5 Pillars) */
+    .practice-areas {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .practice-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 32px 28px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .practice-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: var(--brand-primary);
+    }
+
+    .practice-num {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--brand-primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .practice-title {
+      font-size: 1.375rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .practice-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .practice-list {
+      list-style: none;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 16px;
+    }
+
+    .practice-list li {
+      font-size: 0.8125rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .practice-list li::before {
+      content: '•';
+      color: var(--brand-primary);
+      font-weight: bold;
+    }
+
+    /* 5. Why Choose Us (4 Pillars) */
+    .why-us {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .why-card {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 28px 24px;
+      transition: all 0.2s ease;
+    }
+
+    .why-card:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+
+    .why-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--brand-primary);
+      font-weight: 700;
+    }
+
+    .why-title {
+      font-size: 1.125rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .why-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* 6. Working Approach (3 Steps) */
+    .approach {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 48px;
+      position: relative;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 36px 30px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+    }
+
+    .step-badge {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.875rem;
+      margin-bottom: 20px;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* 7. Leadership Section */
+    .leadership {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .leader-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 48px;
+    }
+
+    .leader-placeholder-frame {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px dashed var(--border-subtle);
+      box-shadow: var(--card-shadow);
+      background: linear-gradient(135deg, var(--bg-canvas) 0%, #FFFFFF 100%);
+      height: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .leader-bio-col h3 {
+      font-size: 2.125rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .leader-qualification {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--brand-primary);
+      margin-bottom: 24px;
+    }
+
+    .leader-narrative {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .leader-quote-box {
+      background: var(--bg-card);
+      border-left: 3px solid var(--brand-primary);
+      padding: 18px 24px;
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    /* 8. Contact & Consultation Desk */
+    .contact {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .chamber-title {
+      font-size: 1.375rem;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .chamber-address {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .contact-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 24px;
+      margin-bottom: 28px;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.9375rem;
+    }
+
+    .channel-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-primary);
+    }
+
+    .corridor-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .corridor-pill {
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Consultation Form Card */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px var(--accent-badge-bg);
+    }
+
+    /* 9. Statutory Footer */
+    footer.site-footer {
+      background: var(--brand-secondary);
+      color: #F8F9FA;
+      padding: 64px 0 32px 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer-brand h4 {
+      color: #FFFFFF;
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .footer-col h5 {
+      color: #FFFFFF;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.875rem;
+    }
+
+    .footer-col a:hover {
+      color: #FFFFFF;
+    }
+
+    .footer-statutory {
+      padding-top: 32px;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.6;
+    }
+
+    .footer-statutory p {
+      margin-bottom: 12px;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1024px) {
+      .hero-grid, .intro-grid, .leader-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .practice-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-h1 {
+        font-size: 2.5rem;
+      }
+      .partner-placeholder-wrapper {
+        height: 320px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-nav, .desk-phone {
+        display: none;
+      }
+      .practice-grid, .step-grid, .why-grid, .contact-grid, .footer-top {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .hero-metrics {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .hero-h1 {
+        font-size: 2.125rem;
+      }
+      .section-title {
+        font-size: 1.875rem;
+      }
+      .leader-grid {
+        padding: 24px;
+      }
+      .leader-placeholder-frame {
+        height: 320px;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Concept Identification Banner -->
+  <div class="concept-indicator">
+    <span>KAVITHA & ASSOCIATES — Concept D: Architectural Slate & Royal Cognac (Slate #1A222D & Cognac #A65D37)</span>
+    <span>Prototype Preview • Streamlined 9-Section Architecture</span>
+  </div>
+
+  <!-- 1. Header & Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" aria-label="Kavitha & Associates Home">
+        <span class="brand-name">KAVITHA & ASSOCIATES</span>
+        <span class="brand-sub">Chartered Accountants • Cost Accountants</span>
+      </a>
+
+      <nav class="desktop-nav" role="navigation" aria-label="Primary Navigation">
+        <ul>
+          <li><a href="#intro">About Firm</a></li>
+          <li><a href="#practice">Practice Pillars</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#contact">Chambers</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <div class="desk-phone">
+          <span class="desk-label">Consultation Desk</span>
+          <a href="tel:+919626350900" class="desk-number">+91 96263 50900</a>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; min-height: 42px; font-size: 0.875rem;">Enquire Direct</a>
+      </div>
+    </div>
+  </header>
+
+  <main role="main">
+    <!-- 2. Executive Hero Section -->
+    <section class="hero" id="hero" aria-label="Executive Hero Section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Chartered Accountants • Tirupati & Pan-India
+          </div>
+          <h1 class="hero-h1">Precision Financial Governance & Strategic Tax Advisory</h1>
+          <p class="hero-lead">
+            Led by CA Kavitha Vijay (B.Com, CA, CMA) with 10+ years of progressive Big 4 and multinational corporate audit leadership. Dual qualified under ICAI and ICMAI (All India Rank 49 in CMA Intermediate), delivering rigorous statutory assurance, tax optimization, and regulatory compliance.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#contact" class="btn btn-primary">Schedule Confidential Consultation</a>
+            <a href="#practice" class="btn btn-secondary">Explore Practice Pillars</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-value">10+ Yrs</div>
+              <div class="metric-label">Corporate & Big 4 Experience</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">Pan-India</div>
+              <div class="metric-label">Client Advisory Coverage</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">100%</div>
+              <div class="metric-label">Partner-Supervised Reviews</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card-col">
+          <div class="partner-hero-card">
+            <div class="partner-placeholder-wrapper">
+              <div class="placeholder-crest">KA</div>
+              <div class="placeholder-title">LEADERSHIP CREST</div>
+              <div class="placeholder-desc">Reserved for Client-Approved Partner Photography</div>
+              <div class="placeholder-status">Portrait Held Pending Client Consent</div>
+            </div>
+            <div class="partner-meta-name">CA Kavitha Vijay</div>
+            <div class="partner-meta-creds">B.Com, CA (ICAI), CMA (ICMAI)</div>
+            <div class="partner-pill-row">
+              <span class="partner-pill">Deloitte Ex-Auditor</span>
+              <span class="partner-pill">Ford Motor MNC Audit</span>
+              <span class="partner-pill">AIR 49 (ICMAI)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Short Firm Introduction -->
+    <section class="firm-intro" id="intro" aria-label="Firm Introduction">
+      <div class="container intro-grid">
+        <div class="intro-quote">
+          "True financial governance goes beyond ticking regulatory boxes. It provides business leaders the clarity and confidence to expand."
+        </div>
+        <div class="intro-body">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Our Ethos & Commitment
+          </div>
+          <p>
+            Kavitha & Associates is a professionally operated Chartered Accountancy firm with operating chambers in Tirupati, serving corporate entities, MSMEs, startups, and individuals across India. Rooted in more than ten years of robust corporate experience, the firm delivers dependable, compliant, and growth-oriented advisory.
+          </p>
+          <p>
+            Every client mandate is supervised personally by the lead partner—guaranteeing strict confidentiality, zero work outsourcing, and uncompromising technical precision under ICAI standards.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Core Practice Areas (5 Pillars) -->
+    <section class="practice-areas" id="practice" aria-label="Core Practice Areas">
+      <div class="container">
+        <div class="text-center center-block">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Practice Portfolio
+          </div>
+          <h2 class="section-title">Core Practice Pillars</h2>
+          <p class="section-desc center-block">
+            End-to-end statutory audit, direct taxation, GST advisory, and corporate governance solutions delivered with executive rigor.
+          </p>
+        </div>
+
+        <div class="practice-grid">
+          <!-- Pillar 1 -->
+          <article class="practice-card">
+            <div class="practice-num">PILLAR 01</div>
+            <h3 class="practice-title">Statutory & Internal Audit</h3>
+            <p class="practice-desc">
+              Independent, rigorous audits that build unquestioned credibility with banks, institutional lenders, and regulatory boards.
+            </p>
+            <ul class="practice-list">
+              <li>Companies Act 2013 Statutory Audits</li>
+              <li>Section 44AB Tax Audit & 3CD Verification</li>
+              <li>Internal Financial Controls (IFC) Testing</li>
+              <li>Concurrent & Banking Loan Monitoring</li>
+              <li>Physical Stock & Inventory Valuation</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="practice-card">
+            <div class="practice-num">PILLAR 02</div>
+            <h3 class="practice-title">Corporate & International Tax</h3>
+            <p class="practice-desc">
+              Strategic direct tax advisory, annual ITR filing, cross-border restructuring, and high-stakes departmental scrutiny defense.
+            </p>
+            <ul class="practice-list">
+              <li>Corporate & HNI Tax Planning</li>
+              <li>Scrutiny Handling & Faceless Assessments</li>
+              <li>Appellate Advocacy before CIT(A)</li>
+              <li>TDS Compliance & Exemption Certification</li>
+              <li>Capital Gains Structuring & Advisory</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="practice-card">
+            <div class="practice-num">PILLAR 03</div>
+            <h3 class="practice-title">Goods & Services Tax (GST)</h3>
+            <p class="practice-desc">
+              Comprehensive indirect tax lifecycle management, ITC reconciliation, annual GSTR-9/9C certifications, and departmental audit defense.
+            </p>
+            <ul class="practice-list">
+              <li>Monthly GSTR-1 & 3B Reconciliations</li>
+              <li>Annual GST Audit & GSTR-9C Reconciliation</li>
+              <li>Input Tax Credit (ITC) Optimization</li>
+              <li>Departmental Show Cause Notice Defense</li>
+              <li>GST Health Checks & Risk Reviews</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 4 -->
+          <article class="practice-card">
+            <div class="practice-num">PILLAR 04</div>
+            <h3 class="practice-title">Corporate & MCA Services</h3>
+            <p class="practice-desc">
+              Company and LLP incorporations, secretarial compliance under MCA21, director restructuring, and venture startup structuring.
+            </p>
+            <ul class="practice-list">
+              <li>Private Limited & LLP Incorporations</li>
+              <li>Annual ROC Statutory Filings</li>
+              <li>Director Appointments & Share Capital Changes</li>
+              <li>Virtual CFO & Financial Controllership</li>
+              <li>Startup Structuring & DPIIT Recognition</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 5 -->
+          <article class="practice-card">
+            <div class="practice-num">PILLAR 05</div>
+            <h3 class="practice-title">RERA & Strategic Advisory</h3>
+            <p class="practice-desc">
+              Specialized real estate regulatory certification, project cost utilization reviews, and management risk consulting.
+            </p>
+            <ul class="practice-list">
+              <li>RERA Registration & Quarterly Filings</li>
+              <li>CA Fund Utilization Certificates</li>
+              <li>Working Capital & Project Feasibility</li>
+              <li>Internal Risk & Fraud Prevention Reviews</li>
+              <li>Business Process Improvement Studies</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Why Choose the Firm (4 Pillars) -->
+    <section class="why-us" id="why-us" aria-label="Why Choose the Firm">
+      <div class="container">
+        <div class="text-center center-block">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Institutional Distinction
+          </div>
+          <h2 class="section-title">Why Kavitha & Associates?</h2>
+          <p class="section-desc center-block">
+            Our firm bridges the institutional rigor of Big 4 auditing with the dedicated personal attention of a boutique advisory.
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">01</div>
+            <h3 class="why-title">100% Partner Supervised</h3>
+            <p class="why-desc">
+              Zero work outsourcing. Every audit schedule, tax return, and compliance review is analyzed directly by CA Kavitha Vijay.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">02</div>
+            <h3 class="why-title">Big 4 & MNC Experience</h3>
+            <p class="why-desc">
+              Over a decade of enterprise audit experience with Deloitte Haskins & Sells and Ford Motor Company brings world-class controls to your business.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">03</div>
+            <h3 class="why-title">Dual CA & CMA Vision</h3>
+            <p class="why-desc">
+              Qualified as Chartered Accountant (ICAI) and Cost Accountant (ICMAI AIR 49 in Intermediate), balancing statutory compliance with operational efficiency.
+            </p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">04</div>
+            <h3 class="why-title">Proactive Timeliness</h3>
+            <p class="why-desc">
+              Disciplined regulatory calendar tracking that adheres strictly to statutory due dates and facilitates orderly compliance filings.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Working Approach (3 Steps) -->
+    <section class="approach" id="approach" aria-label="Our Working Approach">
+      <div class="container">
+        <div class="text-center center-block">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Engagement Methodology
+          </div>
+          <h2 class="section-title">Our Working Approach</h2>
+          <p class="section-desc center-block">
+            A transparent, three-stage engagement framework designed for corporate certainty and zero compliance friction.
+          </p>
+        </div>
+
+        <div class="step-grid">
+          <div class="step-card">
+            <div class="step-badge">1</div>
+            <h3 class="step-title">Diagnostic Assessment</h3>
+            <p class="step-desc">
+              We conduct a thorough review of your existing financial records, operational workflows, and historical filings to identify latent tax exposures and compliance gaps.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">2</div>
+            <h3 class="step-title">Technical Execution</h3>
+            <p class="step-desc">
+              Our audit and taxation protocols are deployed with rigorous cross-statute reconciliations (TDS, GST, MCA, and Income Tax) to ensure total consistency.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">3</div>
+            <h3 class="step-title">Partner Review & Delivery</h3>
+            <p class="step-desc">
+              CA Kavitha Vijay conducts the final partner-level review, verifies statutory documentation, and delivers comprehensive technical findings directly to client leadership.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Leadership Spotlight -->
+    <section class="leadership" id="leadership" aria-label="Leadership Spotlight">
+      <div class="container">
+        <div class="leader-grid">
+          <div class="leader-image-col">
+            <div class="leader-placeholder-frame">
+              <div class="placeholder-crest" style="width: 80px; height: 80px; font-size: 1.875rem;">KA</div>
+              <div class="placeholder-title" style="font-size: 1.25rem;">LEADERSHIP CREST</div>
+              <div class="placeholder-desc" style="font-size: 0.875rem; max-width: 280px; margin-top: 8px;">
+                Reserved for Client-Approved Professional Photography of CA Kavitha Vijay
+              </div>
+              <div class="placeholder-status" style="margin-top: 16px;">
+                Portrait Held Pending Explicit Client Publication Consent
+              </div>
+            </div>
+          </div>
+          <div class="leader-bio-col">
+            <div class="badge">
+              <span class="badge-dot"></span>
+              Lead Partner Profile
+            </div>
+            <h3>CA Kavitha Vijay</h3>
+            <div class="leader-qualification">B.Com, CA (ICAI), CMA (ICMAI, All India Rank 49 in CMA Intermediate)</div>
+            <p class="leader-narrative">
+              CA Kavitha Vijay brings more than a decade of progressive corporate experience spanning Big 4 external audit (Deloitte Haskins & Sells), multinational enterprise risk audit (Ford Motor Company), and specialized public practice.
+            </p>
+            <p class="leader-narrative">
+              Holding dual professional qualifications as Chartered Accountant (ICAI) and Cost & Management Accountant (ICMAI), she has participated in complex statutory audits, IPO internal control reviews, and cross-border risk assessments across the Asia-Pacific region.
+            </p>
+            <div class="leader-quote-box">
+              "Our practice was established on a single unwavering principle: to deliver multinational audit rigor with genuine, accessible personal accountability for every entrepreneur and corporate board we serve."
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact & Consultation Desk -->
+    <section class="contact" id="contact" aria-label="Contact and Consultation Desk">
+      <div class="container">
+        <div class="text-center center-block">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Direct Access
+          </div>
+          <h2 class="section-title">Consultation & Operating Chambers</h2>
+          <p class="section-desc center-block">
+            Connect directly with our primary operating chambers in Tirupati or schedule a confidential advisory discussion across our regional coverage corridors.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info-card">
+            <h3 class="chamber-title">Primary Operating Chambers</h3>
+            <p class="chamber-address">
+              Bairagi Patteda,<br>
+              Tirupati, Andhra Pradesh — 517501<br>
+              <span style="font-size: 0.8125rem; color: var(--text-muted);">Serving clients across Pan-India</span>
+            </p>
+
+            <div class="contact-links-list">
+              <div class="contact-channel">
+                <div class="channel-icon">📞</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Direct Partner Line</div>
+                  <a href="tel:+919626350900" style="font-weight: 700; color: var(--brand-primary);">+91 96263 50900</a>
+                </div>
+              </div>
+
+              <div class="contact-channel">
+                <div class="channel-icon">📱</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Secondary Practice Desk</div>
+                  <a href="tel:+919542153906" style="font-weight: 700; color: var(--brand-primary);">+91 95421 53906</a>
+                </div>
+              </div>
+
+              <div class="contact-channel">
+                <div class="channel-icon">✉️</div>
+                <div>
+                  <div style="font-size: 0.75rem; color: var(--text-muted);">Official Email Desk</div>
+                  <a href="mailto:cakavithasrj@gmail.com" style="font-weight: 700; color: var(--brand-primary);">cakavithasrj@gmail.com</a>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size: 0.8125rem; font-weight: 600; margin-bottom: 8px;">Active Regional Client Service Corridors:</div>
+              <div class="corridor-pills">
+                <span class="corridor-pill">Tirupati Chambers</span>
+                <span class="corridor-pill">Chennai</span>
+                <span class="corridor-pill">Bengaluru</span>
+                <span class="corridor-pill">Hyderabad</span>
+                <span class="corridor-pill">Coimbatore</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card">
+            <h3 class="chamber-title" style="margin-bottom: 8px;">Schedule a Consultation</h3>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 24px;">
+              Please provide your details below. All consultations are strictly confidential under ICAI ethical guidelines.
+            </p>
+
+            <form action="#contact" method="GET" onsubmit="event.preventDefault(); alert('Consultation request received. Our partner office will connect with you shortly.');">
+              <div class="form-group">
+                <label for="name-concept_d" class="form-label">Full Name *</label>
+                <input type="text" id="name-concept_d" class="form-input" placeholder="e.g. Ramesh Varma" required>
+              </div>
+
+              <div class="form-group">
+                <label for="phone-concept_d" class="form-label">Contact Telephone *</label>
+                <input type="tel" id="phone-concept_d" class="form-input" placeholder="+91 98765 43210" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email-concept_d" class="form-label">Official Email Address *</label>
+                <input type="email" id="email-concept_d" class="form-input" placeholder="ramesh@company.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="service-concept_d" class="form-label">Practice Area Needed *</label>
+                <select id="service-concept_d" class="form-select" required>
+                  <option value="">Select Service Stream...</option>
+                  <option value="audit">Statutory & Internal Audit</option>
+                  <option value="tax">Corporate & Direct Taxation</option>
+                  <option value="gst">GST Advisory & Litigation</option>
+                  <option value="mca">Corporate & MCA Services</option>
+                  <option value="rera">RERA & Strategic Financial Advisory</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                Request Confidential Partner Consultation
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 9. Statutory Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4>KAVITHA & ASSOCIATES</h4>
+          <p>
+            Chartered Accountants & Cost Accountants providing specialized statutory audit, direct tax litigation, GST compliance, and enterprise governance.
+          </p>
+          <div style="margin-top: 16px; font-size: 0.8125rem; color: rgba(255, 255, 255, 0.8);">
+            Operating Chambers: Bairagi Patteda, Tirupati, AP — 517501
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h5>Core Pillars</h5>
+          <ul>
+            <li><a href="#practice">Statutory Audit</a></li>
+            <li><a href="#practice">Corporate Income Tax</a></li>
+            <li><a href="#practice">GST Audit & Reconciliations</a></li>
+            <li><a href="#practice">ROC & MCA Compliance</a></li>
+            <li><a href="#practice">RERA Certifications</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Regional Corridors</h5>
+          <ul>
+            <li><a href="#contact">Tirupati Chambers</a></li>
+            <li><a href="#contact">Chennai Corridor</a></li>
+            <li><a href="#contact">Bengaluru Corridor</a></li>
+            <li><a href="#contact">Hyderabad Corridor</a></li>
+            <li><a href="#contact">Coimbatore Corridor</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-statutory">
+        <p>
+          <strong>ICAI Regulatory Notice:</strong> As per the Chartered Accountants Act, 1949 and guidelines issued by the Institute of Chartered Accountants of India (ICAI), this website is maintained for informational purposes only upon specific request from the client or visitor. It does not constitute an advertisement, personal communication, solicitation, or invitation to secure professional engagements.
+        </p>
+        <p>
+          © 2026 Kavitha & Associates, Chartered Accountants. All rights reserved. Zero Work Outsourcing • 100% Partner Supervision.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

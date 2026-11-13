@@ -1,18 +1,40 @@
 const { readDb, writeDb, AUTHORIZED_USERS, getAuthorizedUsers, setUserPassword, hashPassword, verifyPassword, BASELINE_DATA, SESSION_SECRET } = require('./db.cjs');
+const durable = require('./durableStorage.cjs');
 const crypto = require('crypto');
+const assistant = require('./assistant/assistantController.cjs');
 
 const MAX_BODY_SIZE = 1024 * 1024; // 1MB payload ceiling
 
+// Strict Origin Allowlist:
+// 1. Local development: localhost & loopback IP on any port
+// 2. Production: canonical root and www domains
+// 3. Staging/Preview (Cloudflare Pages): project-scoped deployments & branch previews
+// 4. Staging/Preview (Vercel): project-scoped deployments & branch previews (no arbitrary wildcard)
+// 5. Explicit Environment Variable: ALLOWED_ORIGINS (comma-separated list for custom preview domains)
 const ALLOWED_ORIGIN_PATTERNS = [
+  // Local development
   /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/,
-  /^https:\/\/(?:[a-z0-9-]+\.)?kavitha-and-associates\.pages\.dev$/,
+  // Production canonical custom domains
   /^https:\/\/(?:www\.)?kavithaassociates\.com$/,
-  /^https:\/\/(?:[a-z0-9-]+\.)?vercel\.app$/
+  // Cloudflare Pages project deployments & branch previews
+  /^https:\/\/(?:[a-z0-9-]+\.)?kavitha-and-associates\.pages\.dev$/,
+  // Scoped Vercel firm project deployment
+  /^https:\/\/kavithaassociates\.vercel\.app$/,
+  // Scoped Vercel firm team deployments and verified branch previews
+  /^https:\/\/kavitha(?:-[a-z0-9-]+)?-deswanth12s-projects\.vercel\.app$/
 ];
 
 function isOriginAllowed(origin) {
   if (!origin || typeof origin !== 'string') return false;
-  return ALLOWED_ORIGIN_PATTERNS.some(p => p.test(origin.trim()));
+  const normalized = origin.trim().replace(/\/+$/, '');
+
+  // Support explicit comma-separated runtime environment variable
+  if (process.env.ALLOWED_ORIGINS) {
+    const extraAllowed = process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim().replace(/\/+$/, '')).filter(Boolean);
+    if (extraAllowed.includes(normalized)) return true;
+  }
+
+  return ALLOWED_ORIGIN_PATTERNS.some(p => p.test(normalized));
 }
 
 function escapeHtml(str) {
@@ -60,12 +82,36 @@ function isValidIp(ip) {
 }
 
 function getClientIp(req) {
+  // 1. Prioritize Cloudflare edge header if present
   const cfIp = req.headers['cf-connecting-ip'];
   if (typeof cfIp === 'string' && cfIp.trim()) {
     let ip = cfIp.trim();
     if (ip.startsWith('::ffff:')) ip = ip.slice(7);
     if (isValidIp(ip)) return ip;
   }
+
+  // 2. Direct socket remote address (prioritized when not behind trusted proxy)
+  const rawSocket = req.socket?.remoteAddress;
+  let socketIp = rawSocket ? (rawSocket.startsWith('::ffff:') ? rawSocket.slice(7) : rawSocket) : null;
+
+  // If running behind a verified reverse proxy (Vercel or explicit TRUST_PROXY=true)
+  if (process.env.VERCEL || process.env.TRUST_PROXY === 'true') {
+    const rawForwarded = req.headers['x-forwarded-for'];
+    if (typeof rawForwarded === 'string') {
+      const parts = rawForwarded.split(',').map(s => s.trim()).filter(Boolean);
+      for (const part of parts) {
+        let candidate = part.startsWith('::ffff:') ? part.slice(7) : part;
+        if (isValidIp(candidate)) return candidate;
+      }
+    }
+  }
+
+  // If socket remote address is a valid non-empty address, prioritize it over untrusted X-Forwarded-For
+  if (socketIp && isValidIp(socketIp)) {
+    return socketIp;
+  }
+
+  // Fallback for mock requests in unit tests where socket is omitted
   const rawForwarded = req.headers['x-forwarded-for'];
   if (typeof rawForwarded === 'string') {
     const parts = rawForwarded.split(',').map(s => s.trim()).filter(Boolean);
@@ -74,11 +120,8 @@ function getClientIp(req) {
       if (isValidIp(candidate)) return candidate;
     }
   }
-  let ip = req.socket?.remoteAddress || '127.0.0.1';
-  if (ip.startsWith('::ffff:')) {
-    ip = ip.slice(7);
-  }
-  return ip;
+
+  return '127.0.0.1';
 }
 
 function parseJsonBody(req) {
@@ -180,7 +223,7 @@ function signSessionToken(user, db) {
 }
 
 // Verify a stateless cryptographic session token against signature, expiry & persistent revocation ledger
-function verifySessionToken(token, db) {
+async function verifySessionToken(token, db) {
   if (!token || typeof token !== 'string') return null;
 
   if (token.startsWith('ka_jwt.')) {
@@ -223,6 +266,12 @@ function verifySessionToken(token, db) {
       return null; // User sessions invalidated
     }
 
+    // 6. Durable revocation check in Supabase across serverless instances
+    const isRevoked = await durable.isTokenRevokedDurable(payload.jti, payload.sub, payload.iat);
+    if (isRevoked) {
+      return null;
+    }
+
     return {
       token,
       user: {
@@ -236,8 +285,16 @@ function verifySessionToken(token, db) {
   }
 
   // Fallback for legacy local development tokens
-  const session = db.sessions?.[token];
-  if (!session) return null;
+  if (typeof token !== 'string' || ['constructor', '__proto__', 'prototype', 'toString', 'valueOf', 'toLocaleString', 'isPrototypeOf', 'propertyIsEnumerable', 'hasOwnProperty'].includes(token.trim())) {
+    return null;
+  }
+  if (!db.sessions || typeof db.sessions !== 'object') return null;
+  if (!Object.prototype.hasOwnProperty.call(db.sessions, token)) return null;
+
+  const session = db.sessions[token];
+  if (!session || typeof session !== 'object' || typeof session.expiresAt !== 'number') {
+    return null;
+  }
   if (Date.now() > session.expiresAt) {
     delete db.sessions[token];
     writeDb(db);
@@ -261,7 +318,7 @@ function revokeSessionToken(token, db) {
     } catch {
       // ignore
     }
-  } else if (db.sessions && db.sessions[token]) {
+  } else if (db.sessions && Object.prototype.hasOwnProperty.call(db.sessions, token)) {
     delete db.sessions[token];
   }
 
@@ -275,13 +332,29 @@ function revokeSessionToken(token, db) {
   writeDb(db);
 }
 
+// In-memory short-term deduplication cache for submissions across warm/cold serverless handlers
+const recentSubmissionsCache = new Map();
+
+function canonicalizeUsername(input) {
+  if (!input || typeof input !== 'string') return '';
+  const trimmed = input.trim().toLowerCase();
+  const prefix = trimmed.split('@')[0].trim();
+  if (trimmed === 'cakavithasrj@gmail.com' || prefix === 'cakavithasrj' || prefix === 'kavitha') {
+    return 'kavitha';
+  }
+  if (prefix === 'admin') {
+    return 'admin';
+  }
+  return prefix || trimmed;
+}
+
 // Token Verification Middleware
-function authenticateRequest(req, db) {
+async function authenticateRequest(req, db) {
   const token = extractSessionToken(req);
   if (!token) {
     return null;
   }
-  return verifySessionToken(token, db);
+  return await verifySessionToken(token, db);
 }
 
 async function handleApiRequest(req, res) {
@@ -315,12 +388,16 @@ async function handleApiRequest(req, res) {
   // 1. Health & Database Mode Endpoint
   if (method === 'GET' && (pathname === '/api/health' || pathname === '/api/status')) {
     const db = readDb();
+    const durableStatus = durable.getDurableStatus();
+    const isConfigured = durable.isDurableConfigured();
+    const allEnqs = await durable.readAllEnquiries();
     return sendJson(res, 200, {
-      status: 'connected',
-      engine: 'shared-database',
-      database: 'PostgreSQL / Shared Database Active',
-      synchronized: true,
-      totalEnquiries: db.enquiries.length,
+      status: isConfigured ? 'connected' : 'local-fallback',
+      engine: isConfigured ? 'shared-database' : 'local-file',
+      database: isConfigured ? 'PostgreSQL / Shared Database Active' : 'Local File System / Development Fallback',
+      synchronized: isConfigured,
+      storage: durableStatus,
+      totalEnquiries: allEnqs.length,
       timestamp: new Date().toISOString()
     });
   }
@@ -328,19 +405,62 @@ async function handleApiRequest(req, res) {
   // 2. Public Content Endpoint (Returns published items)
   if (method === 'GET' && pathname === '/api/content') {
     const db = readDb();
+    const session = await authenticateRequest(req, db);
+    const { active: services, deleted: deletedServices } = await durable.readAllServices();
+    const { active: faqs, deleted: deletedFaqs } = await durable.readAllFaqs();
+    const slugRedirects = await durable.readSlugRedirects();
+    const settings = await durable.readSettings();
+    const posts = typeof durable.readAllPosts === 'function' ? await durable.readAllPosts() : (db.posts || []);
+
+    const publishedServices = (services || db.services || []).filter(s => s.status === 'published' && !s.deletedAt).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    const publishedFaqs = (faqs || db.faqs || []).filter(f => f.status === 'published' && !f.deletedAt).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    const publishedPosts = (posts || db.posts || []).filter(p => !p.draft && !p.deletedAt);
+
+    if (session) {
+      // Authenticated admin: include full administrative management datasets
+      return sendJson(res, 200, {
+        services: publishedServices,
+        allServices: (services || db.services || []).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
+        deletedServices: deletedServices || db.deletedServices || [],
+        faqs: publishedFaqs,
+        allFaqs: (faqs || db.faqs || []).sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
+        deletedFaqs: deletedFaqs || db.deletedFaqs || [],
+        slugRedirects: slugRedirects || db.slugRedirects || {},
+        settings: settings || db.settings,
+        posts: publishedPosts,
+        allPosts: posts || db.posts || []
+      });
+    }
+
+    // Unauthenticated caller: return ONLY published, non-deleted items (zero draft or deleted leaks)
     return sendJson(res, 200, {
-      services: db.services.filter(s => s.status === 'published'),
-      allServices: db.services,
-      faqs: db.faqs.filter(f => f.status === 'published'),
-      allFaqs: db.faqs,
-      settings: db.settings
+      services: publishedServices,
+      faqs: publishedFaqs,
+      slugRedirects: slugRedirects || db.slugRedirects || {},
+      settings: settings || db.settings,
+      posts: publishedPosts
     });
   }
 
   // 3. Public Practice Settings Endpoint
   if (method === 'GET' && pathname === '/api/settings') {
-    const db = readDb();
-    return sendJson(res, 200, db.settings);
+    const settings = await durable.readSettings();
+    return sendJson(res, 200, settings);
+  }
+
+  // 3b. Public Assistant Status Endpoint
+  if (method === 'GET' && (pathname === '/api/public/assistant/status' || pathname === '/api/assistant/status')) {
+    return assistant.handleAssistantStatus(req, res, { sendJson });
+  }
+
+  // 3c. Public Assistant Chat Endpoint
+  if (method === 'POST' && (pathname === '/api/public/assistant/chat' || pathname === '/api/assistant/chat')) {
+    return assistant.handleAssistantChat(req, res, { parseJsonBody, sendJson, getClientIp });
+  }
+
+  // 3d. Authenticated Assistant Reindex Endpoint
+  if (method === 'POST' && (pathname === '/api/admin/assistant/reindex' || pathname === '/api/assistant/reindex')) {
+    return assistant.handleAssistantReindex(req, res, { sendJson, authenticateRequest, readDb });
   }
 
   // 4. Public Contact Form Submission Endpoint
@@ -399,11 +519,12 @@ async function handleApiRequest(req, res) {
     db.enquiryRateLimits[enqKey] = enqInfo;
 
     // Deduplication Guard: Check if an identical submission was received within the last 60 seconds
+    const dedupeKey = `${phone}_${message}`;
     const recentDuplicate = (db.enquiries || []).find(e => 
       e.phone === phone && 
       e.message === message && 
       (Date.now() - new Date(e.createdAt).getTime()) < 60000
-    );
+    ) || (recentSubmissionsCache.has(dedupeKey) && (Date.now() - recentSubmissionsCache.get(dedupeKey).timestamp < 60000) ? recentSubmissionsCache.get(dedupeKey).enquiry : null);
 
     if (recentDuplicate) {
       return sendJson(res, 200, {
@@ -431,8 +552,15 @@ async function handleApiRequest(req, res) {
       followUpNotes: ''
     };
 
-    db.enquiries.unshift(newEnquiry);
-    writeDb(db);
+    const saveRes = await durable.saveEnquiry(newEnquiry);
+    if (!saveRes.success) {
+      return sendJson(res, 500, {
+        success: false,
+        error: saveRes.error || 'Failed to save enquiry in durable storage.'
+      }, req);
+    }
+
+    recentSubmissionsCache.set(dedupeKey, { timestamp: Date.now(), enquiry: newEnquiry });
 
     return sendJson(res, 201, {
       success: true,
@@ -447,14 +575,15 @@ async function handleApiRequest(req, res) {
     if (body === null) {
       return sendJson(res, 413, { success: false, error: 'Payload too large.' }, req);
     }
-    const username = (body.username || '').trim().toLowerCase();
+    const rawUsername = (body.username || '').trim();
+    const canonicalUser = canonicalizeUsername(rawUsername);
     const password = (body.password || '').trim();
 
     const db = readDb();
     db.rateLimits = db.rateLimits || {};
 
     const ip = getClientIp(req);
-    const rateKey = `${ip}_${username}`;
+    const rateKey = `${ip}_${canonicalUser}`;
     const rateInfo = db.rateLimits[rateKey] || { attempts: 0, lockoutUntil: 0 };
 
     if (rateInfo.lockoutUntil && Date.now() < rateInfo.lockoutUntil) {
@@ -465,34 +594,24 @@ async function handleApiRequest(req, res) {
       });
     }
 
-    const authorizedUsers = getAuthorizedUsers(db);
+    // Distributed Rate Limiting Check (Across Serverless Containers)
+    const durableRate = await durable.checkLoginRateLimit(rateKey);
+    if (durableRate.locked) {
+      return sendJson(res, 429, {
+        success: false,
+        error: `Account locked due to consecutive failed attempts. Please retry in ${durableRate.remainingMinutes} minute(s).`
+      });
+    }
+
+    const authorizedUsers = await durable.readAuthorizedUsers();
     const matchUser = authorizedUsers.find(u => {
       const uName = u.username.toLowerCase();
-            const input = username.toLowerCase();
-            const inputPrefix = input.split('@')[0];
-            if (uName === 'kavitha') {
-              return (
-                input === 'kavitha' || 
-                inputPrefix === 'kavitha' || 
-                input === 'cakavithasrj@gmail.com' || 
-                inputPrefix === 'cakavithasrj'
-              );
-            }
-            if (uName === 'admin') {
-              return input === 'admin' || inputPrefix === 'admin';
-            }
-            return uName === input || uName === inputPrefix;
+      return uName === canonicalUser;
     });
 
     if (!matchUser) {
-      rateInfo.attempts += 1;
-      if (rateInfo.attempts >= 5) {
-        rateInfo.lockoutUntil = Date.now() + 15 * 60 * 1000; // 15 mins
-      }
-      db.rateLimits[rateKey] = rateInfo;
-      writeDb(db);
-
-      const remaining = Math.max(0, 5 - rateInfo.attempts);
+      const updatedRate = await durable.recordFailedLoginAttempt(rateKey);
+      const remaining = Math.max(0, 5 - updatedRate.attempts);
       return sendJson(res, 401, {
         success: false,
         error: `Invalid credentials. (${remaining} attempts remaining before security lockout)`
@@ -509,22 +628,18 @@ async function handleApiRequest(req, res) {
 
     const isValid = verifyPassword(password, matchUser.passwordHash, matchUser.salt, matchUser.iterations);
     if (!isValid) {
-      rateInfo.attempts += 1;
-      if (rateInfo.attempts >= 5) {
-        rateInfo.lockoutUntil = Date.now() + 15 * 60 * 1000; // 15 mins
-      }
-      db.rateLimits[rateKey] = rateInfo;
-      writeDb(db);
-
-      const remaining = Math.max(0, 5 - rateInfo.attempts);
+      const updatedRate = await durable.recordFailedLoginAttempt(rateKey);
+      const remaining = Math.max(0, 5 - updatedRate.attempts);
       return sendJson(res, 401, {
         success: false,
         error: `Invalid credentials. (${remaining} attempts remaining before security lockout)`
       });
     }
 
-    // Success: Reset rate limits
+    // Success: Reset rate limits across local and distributed stores
     delete db.rateLimits[rateKey];
+    writeDb(db);
+    await durable.clearLoginRateLimit(rateKey);
 
     // Issue stateless cryptographic token with embedded claims and HMAC signature
     const { token, payload } = signSessionToken(matchUser, db);
@@ -570,6 +685,15 @@ async function handleApiRequest(req, res) {
     if (token) {
       const db = readDb();
       revokeSessionToken(token, db);
+      if (token.startsWith('ka_jwt.')) {
+        try {
+          const parts = token.split('.');
+          const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+          if (payload.jti) {
+            await durable.revokeTokenDurable(payload.jti, payload.exp || (Math.floor(Date.now() / 1000) + 3600));
+          }
+        } catch {}
+      }
     }
     const origin = req.headers['origin'] || '';
     const forwardedHost = req.headers['x-forwarded-host'] || req.headers['host'] || '';
@@ -593,7 +717,7 @@ async function handleApiRequest(req, res) {
   // 7. Authentication: Check Session
   if (method === 'GET' && pathname === '/api/auth/session') {
     const db = readDb();
-    const session = authenticateRequest(req, db);
+    const session = await authenticateRequest(req, db);
     if (!session) {
       return sendJson(res, 401, { success: false, error: 'Unauthorized or expired session.' }, req);
     }
@@ -749,7 +873,8 @@ async function handleApiRequest(req, res) {
         if (allowedOrigins.indexOf(normalized) !== -1) return true;
         if (/^https?:\\/\\/(localhost|127\\.0\\.0\\.1)(:\\d+)?$/.test(normalized)) return true;
         if (/^https?:\\/\\/(?:[a-z0-9-]+\\.)?kavitha-and-associates\\.pages\\.dev$/.test(normalized)) return true;
-        if (/^https?:\\/\\/(?:[a-z0-9-]+\\.)?vercel\\.app$/.test(normalized)) return true;
+        if (/^https?:\\/\\/kavithaassociates\\.vercel\\.app$/.test(normalized)) return true;
+        if (/^https?:\\/\\/kavitha(?:-[a-z0-9-]+)?-deswanth12s-projects\\.vercel\\.app$/.test(normalized)) return true;
         return false;
       }
 
@@ -906,7 +1031,7 @@ async function handleApiRequest(req, res) {
   // PROTECTED ADMIN ENDPOINTS (Require Authorization: Bearer <token> or ka_admin_session cookie)
   // ===========================================================================
   const db = readDb();
-  const authenticatedSession = authenticateRequest(req, db);
+  const authenticatedSession = await authenticateRequest(req, db);
 
   if (!authenticatedSession) {
     return sendJson(res, 401, {
@@ -960,7 +1085,7 @@ async function handleApiRequest(req, res) {
       return sendJson(res, 400, { success: false, error: 'Password must include uppercase, lowercase, numbers, and special characters.' }, req);
     }
 
-    const authorizedUsers = getAuthorizedUsers(db);
+    const authorizedUsers = await durable.readAuthorizedUsers();
     const currentUser = authorizedUsers.find(u => u.username === authenticatedSession.user.username);
 
     if (!currentUser || !currentUser.passwordHash || !currentUser.salt) {
@@ -972,7 +1097,10 @@ async function handleApiRequest(req, res) {
       return sendJson(res, 401, { success: false, error: 'Incorrect current password.' }, req);
     }
 
-    setUserPassword(authenticatedSession.user.username, newPassword);
+    const updateRes = await durable.updateUserPassword(authenticatedSession.user.username, newPassword);
+    if (!updateRes.success) {
+      return sendJson(res, 500, { success: false, error: updateRes.error || 'Failed to persist password update in durable store.' }, req);
+    }
 
     res.setHeader('Set-Cookie', [
       'ka_admin_session=',
@@ -990,12 +1118,8 @@ async function handleApiRequest(req, res) {
 
   // --- A1. Global Session Revocation Endpoint ---
   if (method === 'POST' && pathname === '/api/admin/auth/revoke-all') {
-    const epoch = Math.floor(Date.now() / 1000) + 1;
-    db.userRevocationEpochs = db.userRevocationEpochs || {};
-    db.userRevocationEpochs['kavitha'] = epoch;
-    db.userRevocationEpochs['admin'] = epoch;
-    db.sessions = {};
-    writeDb(db);
+    await durable.revokeAllUserSessionsDurable('kavitha');
+    await durable.revokeAllUserSessionsDurable('admin');
 
     res.setHeader('Set-Cookie', [
       'ka_admin_session=',
@@ -1019,7 +1143,7 @@ async function handleApiRequest(req, res) {
     const page = parseInt(url.searchParams.get('page') || '1', 10);
     const limit = parseInt(url.searchParams.get('limit') || '8', 10);
 
-    let list = db.enquiries || [];
+    let list = await durable.readAllEnquiries();
 
     if (search) {
       list = list.filter(e =>
@@ -1060,70 +1184,304 @@ async function handleApiRequest(req, res) {
   if (method === 'PATCH' && pathname.startsWith('/api/admin/enquiries/')) {
     const id = pathname.replace('/api/admin/enquiries/', '');
     const body = await parseJsonBody(req);
-    const enquiry = db.enquiries.find(e => e.id === id);
+    const ALLOWED_STATUSES = ['new', 'contacted', 'in-progress', 'closed'];
+    if (body.status !== undefined && !ALLOWED_STATUSES.includes(body.status)) {
+      return sendJson(res, 400, {
+        success: false,
+        error: `Invalid status '${body.status}'. Status must be one of: ${ALLOWED_STATUSES.join(', ')}.`
+      });
+    }
 
+    const updateRes = await durable.updateEnquiryStatus(id, body.status, body.followUpNotes);
+
+    if (!updateRes.success) {
+      return sendJson(res, 500, { success: false, error: updateRes.error || 'Failed to update enquiry in durable storage.' });
+    }
+
+    const allEnqs = await durable.readAllEnquiries();
+    const enquiry = allEnqs.find(e => e.id === id);
     if (!enquiry) {
       return sendJson(res, 404, { success: false, error: 'Enquiry record not found.' });
     }
 
-    if (body.status) enquiry.status = body.status;
-    if (body.followUpNotes !== undefined) enquiry.followUpNotes = body.followUpNotes;
-    enquiry.updatedAt = new Date().toISOString();
-
-    writeDb(db);
     return sendJson(res, 200, { success: true, enquiry });
   }
 
   // --- C. Delete Enquiry ---
   if (method === 'DELETE' && pathname.startsWith('/api/admin/enquiries/')) {
     const id = pathname.replace('/api/admin/enquiries/', '');
-    db.enquiries = db.enquiries.filter(e => e.id !== id);
-    writeDb(db);
+    const delRes = await durable.deleteEnquiry(id);
+    if (!delRes.success) {
+      return sendJson(res, 500, { success: false, error: delRes.error || 'Failed to delete enquiry from durable storage.' });
+    }
     return sendJson(res, 200, { success: true, message: `Enquiry ${id} deleted.` });
   }
 
-  // --- D. Update Service Content ---
+  // --- D. Service Management (CRUD, Reorder, Recovery) ---
+  
+  // Reorder Services
+  if (method === 'PUT' && pathname === '/api/admin/content/services-reorder') {
+    const body = await parseJsonBody(req);
+    const orderedIds = Array.isArray(body?.orderedIds) ? body.orderedIds : [];
+    if (!orderedIds.length) {
+      return sendJson(res, 400, { success: false, error: 'orderedIds array required' });
+    }
+    const reorderRes = await durable.reorderServices(orderedIds);
+    if (!reorderRes.success) {
+      return sendJson(res, 500, { success: false, error: reorderRes.error || 'Failed to reorder services in durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, services: reorderRes.services });
+  }
+
+  // Create Service
+  if (method === 'POST' && pathname === '/api/admin/content/services') {
+    const body = await parseJsonBody(req);
+    const title = (body?.title || '').trim();
+    if (!title || title.length < 2 || title.length > 150) {
+      return sendJson(res, 400, { success: false, error: 'Service title must be between 2 and 150 characters.' });
+    }
+
+    let slug = (body?.slug || '').trim().toLowerCase();
+    if (!slug) {
+      slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      return sendJson(res, 400, { success: false, error: 'Invalid slug format. Use lowercase letters, numbers, and single hyphens.' });
+    }
+
+    const { active: existingServices } = await durable.readAllServices();
+    if (existingServices.some(s => s.id === slug)) {
+      return sendJson(res, 400, { success: false, error: `Service slug "${slug}" already exists.` });
+    }
+
+    const maxOrder = existingServices.reduce((max, s) => Math.max(max, s.order || 0), 0);
+    const newService = {
+      id: slug,
+      title,
+      shortDescription: (body?.shortDescription || '').trim(),
+      fullDescription: (body?.fullDescription || '').trim(),
+      statutoryFramework: (body?.statutoryFramework || '').trim(),
+      targetClients: (body?.targetClients || '').trim(),
+      typicalScenarios: Array.isArray(body?.typicalScenarios) ? body.typicalScenarios.filter(Boolean) : [],
+      services: Array.isArray(body?.services) ? body.services.filter(Boolean) : [],
+      iconName: (body?.iconName || 'Briefcase').trim(),
+      status: body?.status === 'draft' ? 'draft' : 'published',
+      order: typeof body?.order === 'number' ? body.order : maxOrder + 1,
+      seo: {
+        metaTitle: (body?.seo?.metaTitle || `${title} in Tirupati | CA Kavitha & Associates`).trim(),
+        metaDescription: (body?.seo?.metaDescription || body?.shortDescription || `Professional ${title} services in Tirupati, AP.`).trim(),
+        canonicalUrl: (body?.seo?.canonicalUrl || `https://kavithaassociates.com/services/${slug}`).trim()
+      },
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    const saveRes = await durable.saveService(newService);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to save service in durable storage.' });
+    }
+    return sendJson(res, 201, { success: true, service: newService });
+  }
+
+  // Recover Service
+  if (method === 'POST' && pathname.startsWith('/api/admin/content/services/') && pathname.endsWith('/recover')) {
+    const id = pathname.replace('/api/admin/content/services/', '').replace('/recover', '');
+    const { active, deleted } = await durable.readAllServices();
+    if (!deleted.some(s => s.id === id)) {
+      return sendJson(res, 404, { success: false, error: `Service ${id} not found in recovery store.` });
+    }
+    if (active.some(s => s.id === id)) {
+      return sendJson(res, 400, { success: false, error: `An active service with slug "${id}" already exists.` });
+    }
+    const recRes = await durable.recoverService(id);
+    if (!recRes.success) {
+      return sendJson(res, 500, { success: false, error: recRes.error || 'Failed to recover service from durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, service: recRes.service });
+  }
+
+  // Update Service
   if (method === 'PUT' && pathname.startsWith('/api/admin/content/services/')) {
     const id = pathname.replace('/api/admin/content/services/', '');
     const body = await parseJsonBody(req);
-    let service = db.services.find(s => s.id === id);
+    const { active: services } = await durable.readAllServices();
+    let service = services.find(s => s.id === id);
 
     if (!service) {
-      service = { id };
-      db.services.push(service);
+      return sendJson(res, 404, { success: false, error: `Service ${id} not found.` });
     }
 
-    if (body.title) service.title = body.title.trim();
-    if (body.shortDescription) service.shortDescription = body.shortDescription.trim();
-    if (body.fullDescription) service.fullDescription = body.fullDescription.trim();
+    if (body.slug && body.slug !== id) {
+      const newSlug = body.slug.trim().toLowerCase();
+      if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(newSlug)) {
+        return sendJson(res, 400, { success: false, error: 'Invalid slug format.' });
+      }
+      if (services.some(s => s.id === newSlug && s.id !== id)) {
+        return sendJson(res, 400, { success: false, error: `Slug "${newSlug}" is already in use by another service.` });
+      }
+      await durable.recordSlugRedirect(id, newSlug);
+      await durable.deleteService(id);
+      service.id = newSlug;
+    }
+
+    if (body.title !== undefined) service.title = body.title.trim();
+    if (body.shortDescription !== undefined) service.shortDescription = body.shortDescription.trim();
+    if (body.fullDescription !== undefined) service.fullDescription = body.fullDescription.trim();
     if (body.statutoryFramework !== undefined) service.statutoryFramework = body.statutoryFramework.trim();
     if (body.targetClients !== undefined) service.targetClients = body.targetClients.trim();
-    if (body.status) service.status = body.status;
+    if (Array.isArray(body.typicalScenarios)) service.typicalScenarios = body.typicalScenarios.filter(Boolean);
+    if (Array.isArray(body.services)) service.services = body.services.filter(Boolean);
+    if (body.iconName !== undefined) service.iconName = body.iconName.trim();
+    if (body.status !== undefined) service.status = body.status === 'draft' ? 'draft' : 'published';
+    if (typeof body.order === 'number') service.order = body.order;
+    if (body.seo) {
+      service.seo = {
+        metaTitle: (body.seo.metaTitle || service.title || '').trim(),
+        metaDescription: (body.seo.metaDescription || service.shortDescription || '').trim(),
+        canonicalUrl: (body.seo.canonicalUrl || `https://kavithaassociates.com/services/${service.id}`).trim()
+      };
+    }
     service.updatedAt = new Date().toISOString();
 
-    writeDb(db);
+    const saveRes = await durable.saveService(service);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to update service in durable storage.' });
+    }
     return sendJson(res, 200, { success: true, service });
   }
 
-  // --- E. Update FAQ Content ---
+  // Delete Service (Safe archive)
+  if (method === 'DELETE' && pathname.startsWith('/api/admin/content/services/')) {
+    const id = pathname.replace('/api/admin/content/services/', '');
+    const { active: services } = await durable.readAllServices();
+    const service = services.find(s => s.id === id);
+    if (!service) {
+      return sendJson(res, 404, { success: false, error: `Service ${id} not found.` });
+    }
+    const delRes = await durable.deleteService(id);
+    if (!delRes.success) {
+      return sendJson(res, 500, { success: false, error: delRes.error || 'Failed to delete service from durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, message: `Service ${id} archived to recovery store.` });
+  }
+
+  // --- E. FAQ Management (CRUD, Reorder, Recovery) ---
+
+  // Reorder FAQs
+  if (method === 'PUT' && pathname === '/api/admin/content/faqs-reorder') {
+    const body = await parseJsonBody(req);
+    const orderedIds = Array.isArray(body?.orderedIds) ? body.orderedIds : [];
+    if (!orderedIds.length) {
+      return sendJson(res, 400, { success: false, error: 'orderedIds array required' });
+    }
+    const reorderRes = await durable.reorderFaqs(orderedIds);
+    if (!reorderRes.success) {
+      return sendJson(res, 500, { success: false, error: reorderRes.error || 'Failed to reorder FAQs in durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, faqs: reorderRes.faqs });
+  }
+
+  // Create FAQ
+  if (method === 'POST' && pathname === '/api/admin/content/faqs') {
+    const body = await parseJsonBody(req);
+    const question = (body?.question || '').trim();
+    const answer = (body?.answer || '').trim();
+    if (!question) {
+      return sendJson(res, 400, { success: false, error: 'FAQ question is required and cannot be empty.' });
+    }
+    if (!answer) {
+      return sendJson(res, 400, { success: false, error: 'FAQ answer is required and cannot be empty.' });
+    }
+
+    const { active: existingFaqs } = await durable.readAllFaqs();
+    const id = (body?.id || `faq-${Date.now().toString(36)}-${Math.floor(Math.random() * 899 + 100)}`).trim();
+    const maxOrder = existingFaqs.reduce((max, f) => Math.max(max, f.order || 0), 0);
+    const newFaq = {
+      id,
+      question,
+      answer,
+      statuteReference: (body?.statuteReference || '').trim(),
+      category: (body?.category || 'General Practice').trim(),
+      serviceIds: Array.isArray(body?.serviceIds) ? body.serviceIds.filter(Boolean) : [],
+      status: body?.status === 'draft' ? 'draft' : 'published',
+      order: typeof body?.order === 'number' ? body.order : maxOrder + 1,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+
+    const saveRes = await durable.saveFaq(newFaq);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to save FAQ in durable storage.' });
+    }
+    return sendJson(res, 201, { success: true, faq: newFaq });
+  }
+
+  // Recover FAQ
+  if (method === 'POST' && pathname.startsWith('/api/admin/content/faqs/') && pathname.endsWith('/recover')) {
+    const id = pathname.replace('/api/admin/content/faqs/', '').replace('/recover', '');
+    const { deleted } = await durable.readAllFaqs();
+    if (!deleted.some(f => f.id === id)) {
+      return sendJson(res, 404, { success: false, error: `FAQ ${id} not found in recovery store.` });
+    }
+    const recRes = await durable.recoverFaq(id);
+    if (!recRes.success) {
+      return sendJson(res, 500, { success: false, error: recRes.error || 'Failed to recover FAQ from durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, faq: recRes.faq });
+  }
+
+  // Update FAQ
   if (method === 'PUT' && pathname.startsWith('/api/admin/content/faqs/')) {
     const id = pathname.replace('/api/admin/content/faqs/', '');
     const body = await parseJsonBody(req);
-    let faq = db.faqs.find(f => f.id === id);
+    const { active: faqs } = await durable.readAllFaqs();
+    let faq = faqs.find(f => f.id === id);
 
     if (!faq) {
-      faq = { id };
-      db.faqs.push(faq);
+      return sendJson(res, 404, { success: false, error: `FAQ ${id} not found.` });
     }
 
-    if (body.question) faq.question = body.question.trim();
-    if (body.answer) faq.answer = body.answer.trim();
+    if (body.question !== undefined) {
+      const q = body.question.trim();
+      if (!q) {
+        return sendJson(res, 400, { success: false, error: 'FAQ question cannot be empty.' });
+      }
+      faq.question = q;
+    }
+    if (body.answer !== undefined) {
+      const a = body.answer.trim();
+      if (!a) {
+        return sendJson(res, 400, { success: false, error: 'FAQ answer cannot be empty.' });
+      }
+      faq.answer = a;
+    }
     if (body.statuteReference !== undefined) faq.statuteReference = body.statuteReference.trim();
-    if (body.status) faq.status = body.status;
+    if (body.category !== undefined) faq.category = body.category.trim();
+    if (Array.isArray(body.serviceIds)) faq.serviceIds = body.serviceIds.filter(Boolean);
+    if (body.status !== undefined) faq.status = body.status === 'draft' ? 'draft' : 'published';
+    if (typeof body.order === 'number') faq.order = body.order;
     faq.updatedAt = new Date().toISOString();
 
-    writeDb(db);
+    const saveRes = await durable.saveFaq(faq);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to update FAQ in durable storage.' });
+    }
     return sendJson(res, 200, { success: true, faq });
+  }
+
+  // Delete FAQ (Safe archive)
+  if (method === 'DELETE' && pathname.startsWith('/api/admin/content/faqs/')) {
+    const id = pathname.replace('/api/admin/content/faqs/', '');
+    const { active: faqs } = await durable.readAllFaqs();
+    const faq = faqs.find(f => f.id === id);
+    if (!faq) {
+      return sendJson(res, 404, { success: false, error: `FAQ ${id} not found.` });
+    }
+    const delRes = await durable.deleteFaq(id);
+    if (!delRes.success) {
+      return sendJson(res, 500, { success: false, error: delRes.error || 'Failed to delete FAQ from durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, message: `FAQ ${id} archived to recovery store.` });
   }
 
   // --- E2. Update / Create Post Content ---
@@ -1131,7 +1489,7 @@ async function handleApiRequest(req, res) {
     const slug = pathname.replace('/api/admin/content/posts/', '').toLowerCase().trim();
     const body = await parseJsonBody(req);
     db.posts = db.posts || [];
-    let post = db.posts.find(p => p.slug.toLowerCase().trim() === slug);
+    let post = db.posts.find(p => p.slug && p.slug.toLowerCase().trim() === slug);
 
     if (!post) {
       post = { slug };
@@ -1152,15 +1510,20 @@ async function handleApiRequest(req, res) {
     if (!post.date) post.date = new Date().toISOString();
     post.updatedAt = new Date().toISOString();
 
-    writeDb(db);
-    return sendJson(res, 200, { success: true, post });
+    const saveRes = await durable.savePost(post);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to save post in durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, post: saveRes.post || post });
   }
 
   // --- E3. Delete Post Content ---
   if (method === 'DELETE' && pathname.startsWith('/api/admin/content/posts/')) {
     const slug = pathname.replace('/api/admin/content/posts/', '').toLowerCase().trim();
-    db.posts = (db.posts || []).filter(p => p.slug.toLowerCase().trim() !== slug);
-    writeDb(db);
+    const delRes = await durable.deletePost(slug);
+    if (!delRes.success) {
+      return sendJson(res, 500, { success: false, error: delRes.error || 'Failed to delete post from durable storage.' });
+    }
     return sendJson(res, 200, { success: true, message: `Post ${slug} removed.` });
   }
 
@@ -1168,6 +1531,9 @@ async function handleApiRequest(req, res) {
   if (method === 'POST' && pathname === '/api/admin/content/reset') {
     db.services = JSON.parse(JSON.stringify(BASELINE_DATA.services));
     db.faqs = JSON.parse(JSON.stringify(BASELINE_DATA.faqs));
+    db.deletedServices = [];
+    db.deletedFaqs = [];
+    db.slugRedirects = {};
     db.posts = [];
     writeDb(db);
     return sendJson(res, 200, { success: true, message: 'Content restored to baseline.' });
@@ -1176,20 +1542,20 @@ async function handleApiRequest(req, res) {
   // --- G. Update Practice Settings ---
   if (method === 'PUT' && pathname === '/api/admin/settings') {
     const body = await parseJsonBody(req);
-    db.settings = {
-      ...db.settings,
-      ...body,
-      updatedAt: new Date().toISOString()
-    };
-    writeDb(db);
-    return sendJson(res, 200, { success: true, settings: db.settings });
+    const saveRes = await durable.saveSettings(body);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to update settings in durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, settings: saveRes.settings });
   }
 
   // --- H. Reset Settings to Baseline ---
   if (method === 'POST' && pathname === '/api/admin/settings/reset') {
-    db.settings = JSON.parse(JSON.stringify(BASELINE_DATA.settings));
-    writeDb(db);
-    return sendJson(res, 200, { success: true, settings: db.settings });
+    const saveRes = await durable.saveSettings(BASELINE_DATA.settings);
+    if (!saveRes.success) {
+      return sendJson(res, 500, { success: false, error: saveRes.error || 'Failed to reset settings in durable storage.' });
+    }
+    return sendJson(res, 200, { success: true, settings: saveRes.settings });
   }
 
   return sendJson(res, 404, { error: `Endpoint ${pathname} not found.` });

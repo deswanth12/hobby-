@@ -1,0 +1,98 @@
+[
+  {
+    "route": "/",
+    "viewport": "mobile",
+    "width": 390,
+    "overflowPx": 0
+  },
+  {
+    "route": "/about",
+    "viewport": "mobile",
+    "width": 390,
+    "overflowPx": 0
+  },
+  {
+    "route": "/services",
+    "viewport": "mobile",
+    "width": 390,
+    "overflowPx": 0
+  },
+  {
+    "route": "/contact",
+    "viewport": "mobile",
+    "width": 390,
+    "overflowPx": 0
+  },
+  {
+    "route": "/",
+    "viewport": "tablet",
+    "width": 768,
+    "overflowPx": 0
+  },
+  {
+    "route": "/about",
+    "viewport": "tablet",
+    "width": 768,
+    "overflowPx": 0
+  },
+  {
+    "route": "/services",
+    "viewport": "tablet",
+    "width": 768,
+    "overflowPx": 0
+  },
+  {
+    "route": "/contact",
+    "viewport": "tablet",
+    "width": 768,
+    "overflowPx": 0
+  },
+  {
+    "route": "/",
+    "viewport": "laptop",
+    "width": 1024,
+    "overflowPx": 0
+  },
+  {
+    "route": "/about",
+    "viewport": "laptop",
+    "width": 1024,
+    "overflowPx": 0
+  },
+  {
+    "route": "/services",
+    "viewport": "laptop",
+    "width": 1024,
+    "overflowPx": 0
+  },
+  {
+    "route": "/contact",
+    "viewport": "laptop",
+    "width": 1024,
+    "overflowPx": 0
+  },
+  {
+    "route": "/",
+    "viewport": "desktop",
+    "width": 1440,
+    "overflowPx": 0
+  },
+  {
+    "route": "/about",
+    "viewport": "desktop",
+    "width": 1440,
+    "overflowPx": 0
+  },
+  {
+    "route": "/services",
+    "viewport": "desktop",
+    "width": 1440,
+    "overflowPx": 0
+  },
+  {
+    "route": "/contact",
+    "viewport": "desktop",
+    "width": 1440,
+    "overflowPx": 0
+  }
+]

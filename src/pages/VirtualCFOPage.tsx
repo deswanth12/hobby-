@@ -15,6 +15,9 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { LetterReveal, WordReveal, TextHighlight } from '../components/animations';
+import { EditorialMarker } from '../components/architectural';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export const VirtualCFOPage: React.FC = () => {
   const { data } = useFirmData();
@@ -101,17 +104,19 @@ export const VirtualCFOPage: React.FC = () => {
     }
   ];
 
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Virtual CFO Services in Tirupati', path: '/services/virtual-cfo-tirupati' }
+  ];
+
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
         title="Virtual CFO Services in Tirupati | CMA | Kavitha & Associates"
         description="Strategic Virtual CFO services in Tirupati. CA Kavitha & Associates provides bank loan CMA data, cost governance, cash flow forecasting & accounting advisory."
         canonicalPath="/services/virtual-cfo-tirupati"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-          { name: 'Virtual CFO Services in Tirupati', path: '/services/virtual-cfo-tirupati' }
-        ]}
+        breadcrumbs={breadcrumbs}
         jsonLd={[
           {
           '@context': 'https://schema.org',
@@ -154,33 +159,37 @@ export const VirtualCFOPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-deep text-white py-20 sm:py-24 lg:py-28 border-b border-brand-gold/30">
+      <section className="bg-gradient-to-b from-[#F8EFDF] via-[#F5EAD8] to-[#EFE0C7] py-12 sm:py-16 md:py-20 lg:py-24 border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbs} className="mb-6 sm:mb-8" />
           <div className="max-w-3xl scroll-reveal">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
-              <LineChart className="w-4 h-4 text-brand-gold shrink-0" />
-              <span>CFO &amp; Cost Advisory • Dual CA + CMA Competence</span>
+            <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+              <EditorialMarker number="06" label="VIRTUAL CFO" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DDE8D9] text-[#153F32] font-editorial-meta border border-[#153F32]/25 shadow-xs">
+                <LineChart className="w-4 h-4 text-[#153F32] shrink-0" />
+                <span><LetterReveal text="CFO & Cost Advisory • Dual CA + CMA Competence" /></span>
+              </div>
             </div>
-            <h1 className="font-editorial-h1 text-white">
-              Virtual CFO Services in Tirupati
+            <h1 className="font-editorial-h1 text-[#153F32] font-serif font-bold">
+              <WordReveal text="Virtual CFO Services in Tirupati" />
             </h1>
-            <p className="mt-4 font-editorial-body text-emerald-100/90 leading-relaxed text-base sm:text-lg">
-              Outsourced financial leadership, bank loan CMA project reports, cash flow forecasting, and operational cost governance. Directly supervised by CA Kavitha Vijay (B.Com, CA, CMA All India Rank 49, ex-Deloitte &amp; Ford auditor) for ambitious enterprises in Tirupati and Rayalaseema.
+            <p className="mt-4 font-editorial-body text-[#525954] leading-relaxed text-base sm:text-lg">
+              Outsourced financial leadership, bank loan CMA project reports, cash flow forecasting, and operational cost governance. Directly supervised by <TextHighlight>CA Kavitha Vijay</TextHighlight> (B.Com, CA, CMA All India Rank 49, ex-Deloitte &amp; Ford auditor) for ambitious enterprises in Tirupati and Rayalaseema.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gold text-brand-deep font-editorial-meta text-xs font-semibold hover:bg-brand-gold/90 transition-colors btn-tactile shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#153F32] hover:bg-[#102D25] text-white font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors shadow-sm hover:shadow-md border border-[#C3A66B]/50 btn-tactile"
               >
                 <span>Engage Virtual CFO Advisory</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
               </Link>
               <a
-                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I would like to discuss Virtual CFO and CMA services for my business.')}`}
+                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I would like to discuss Virtual CFO and CMA services for my business.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFFFF] hover:bg-[#FFF9EE] text-[#153F32] font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors border border-[#E8D5B5] hover:border-[#C3A66B] shadow-card btn-tactile"
               >
                 <span>WhatsApp CFO Inquiry</span>
               </a>
@@ -192,49 +201,49 @@ export const VirtualCFOPage: React.FC = () => {
       {/* =========================================================================
           2. THE CA + CMA DUAL COMPETENCE STRIP
           ========================================================================= */}
-      <section className="py-12 bg-brand-surface border-b border-brand-border">
+      <section className="py-12 bg-[#FFFDF7] border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-stagger">
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <Award className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <Award className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Rank Advantage</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Rank Advantage</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   CMA All India Rank 49
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Nationally ranked cost and management accounting competence delivering actionable insights on unit economics and cost optimization.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <Coins className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <Coins className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Credit Readiness</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Credit Readiness</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Bank Loan CMA Reports
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Bank-compliant CMA data packs, DSCR calculations, and project reports designed to secure working capital and term loan approvals.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <BarChart3 className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <BarChart3 className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Executive Clarity</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Executive Clarity</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Monthly Financial MIS
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Structured C-suite dashboards transforming raw general ledger balances into clear revenue, margin, and working capital indicators.
                 </p>
               </div>
@@ -250,10 +259,10 @@ export const VirtualCFOPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Practice Spectrum
+              <LetterReveal text="Practice Spectrum" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Strategic Financial Governance for Growing Businesses
+              <WordReveal text="Strategic Financial Governance for Growing Businesses" />
             </h2>
             <p className="font-editorial-body text-sm text-brand-muted mt-2 leading-relaxed">
               We bridge statutory compliance with commercial profitability, providing leadership across credit syndication, cost reduction, and internal controls.
@@ -402,10 +411,10 @@ export const VirtualCFOPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Strategic Clarifications
+              <LetterReveal text="Strategic Clarifications" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Frequently Asked Questions on Virtual CFO & CMA Services
+              <WordReveal text="Frequently Asked Questions on Virtual CFO & CMA Services" />
             </h2>
             <p className="font-editorial-body text-xs sm:text-sm text-brand-muted mt-2">
               Management accounting guidance based on professional ICMAI standards.
@@ -443,15 +452,15 @@ export const VirtualCFOPage: React.FC = () => {
       {/* =========================================================================
           6. INTAKE BANNER
           ========================================================================= */}
-      <section className="py-16 bg-brand-deep text-white border-t border-brand-gold/30">
+      <section className="py-16 bg-brand-surface text-brand-charcoal border-t border-brand-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold text-xs uppercase tracking-wider block">
-            C-Suite Financial Advisory
+            <LetterReveal text="C-Suite Financial Advisory" />
           </span>
-          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">
-            Strengthen Financial Controls & Working Capital
+          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-brand-forest max-w-2xl mx-auto">
+            <WordReveal text="Strengthen Financial Controls & Working Capital" />
           </h2>
-          <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 max-w-xl mx-auto leading-relaxed">
+          <p className="font-editorial-body text-xs sm:text-sm text-brand-muted max-w-xl mx-auto leading-relaxed">
             Partner with CA Kavitha Vijay to prepare bank loan CMA reports, streamline accounting systems, and gain visibility over business margins.
           </p>
 

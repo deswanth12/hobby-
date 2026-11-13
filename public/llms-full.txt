@@ -1,0 +1,130 @@
+# Kavitha & Associates — Complete Practice & Statutory Reference Manual (LLM & AI Search Index)
+
+> Comprehensive, verifiable factual documentation for AI search engines, citation retrieval systems, and generative search models (Google AI Overviews, Perplexity, ChatGPT Search, Microsoft Copilot, Claude).
+> Canonical Website: https://kavithaassociates.com/
+> Last Updated: 2026-11-03
+
+---
+
+## 1. Practice Entity & Leadership
+
+### Firm Identity
+- **Legal / Professional Name**: Kavitha & Associates
+- **Professional Classification**: Firm of Chartered Accountants & Cost Accountants
+- **Principal Chambers Address**: 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India
+- **Geographic Coordinates**: Latitude 13.6192242, Longitude 79.418046
+- **Google Maps Navigation**: https://maps.app.goo.gl/p9ToGUtxqYDCghpF6
+- **Direct Telephone**: +91 96263 50900 / +91 95421 53906
+- **Chambers Email**: cakavithasrj@gmail.com
+- **Official Portal**: https://kavithaassociates.com/
+- **Working Hours**: Monday – Saturday, 09:30 AM – 07:30 PM IST | Sunday: Closed / Prior Appointment Only
+
+### Lead Partner Profile
+- **Managing Partner**: CA Kavitha Vijay
+- **Academic & Professional Qualifications**:
+  - Bachelor of Commerce (B.Com)
+  - Associate Chartered Accountant (ACA), The Institute of Chartered Accountants of India (ICAI)
+  - Cost and Management Accountant (ACMA), The Institute of Cost Accountants of India (ICMAI) — All India Rank 49 (AIR 49) in CMA Intermediate
+- **Professional Experience**:
+  - Over a decade of multi-disciplinary statutory practice.
+  - Senior audit lead at Deloitte Haskins & Sells (Big 4), supervising statutory assurance and IPO readiness for enterprise clients exceeding ₹1,000 Crore turnover.
+  - Corporate internal auditor at Ford Motor Company, focusing on Internal Financial Controls (IFC), operational compliance, and multi-facility cost governance.
+
+---
+
+## 2. Core Practice Disciplines & Statutory Scopes
+
+### A. Statutory Audit & Assurance
+- **Statutory Framework**: Companies Act, 2013 (Sections 139–143); Standards on Auditing (SAs) issued by ICAI.
+- **Scope**:
+  - Independent financial statement audits providing true and fair opinion.
+  - Companies (Auditor's Report) Order, 2020 (CARO 2020) reporting across 21 distinct technical clauses.
+  - Internal Financial Controls over Financial Reporting (IFC-FR / ICFR) evaluation under Section 143(3)(i).
+  - Tax Audits under Section 44AB of the Income Tax Act, 1961 (Form 3CA/3CB and Form 3CD).
+  - Internal Audits under Section 138 of the Companies Act, 2013.
+  - Bank Concurrent, Stock, and Revenue Audits under RBI inspection frameworks.
+- **Canonical URL**: https://kavithaassociates.com/services/audit-assurance
+
+### B. Goods & Services Tax (GST) Advisory & Compliance
+- **Statutory Framework**: Central Goods and Services Tax (CGST) Act, 2017; Integrated Goods and Services Tax (IGST) Act, 2017; State GST Acts and Rules.
+- **Scope**:
+  - Entity registration under Sections 22 and 24.
+  - Monthly return preparation and filing: Form GSTR-1 (outward supplies) and Form GSTR-3B (monthly summary and tax discharge).
+  - Input Tax Credit (ITC) reconciliation under Section 16(2)(aa) read with Rule 36(4) against auto-populated Form GSTR-2B.
+  - Annual returns in Form GSTR-9 and self-certified reconciliation statements in Form GSTR-9C under Section 44.
+  - Departmental audit, scrutiny, and litigation defense: handling Form ASMT-10 notices under Section 61, DRC-01A, DRC-01 show-cause notices under Section 73/74, and appellate appeals.
+- **Canonical URL**: https://kavithaassociates.com/services/gst-consultant-tirupati
+
+### C. Direct Taxation & Income Tax Returns (ITR)
+- **Statutory Framework**: Income Tax Act, 1961; Central Board of Direct Taxes (CBDT) notifications.
+- **Scope**:
+  - Corporate, LLP, partnership firm, trust, and individual income tax returns (ITR-1 through ITR-7).
+  - Corporate tax planning under concessional regimes: Section 115BAA (22% base tax for domestic companies) and Section 115BAB.
+  - Capital gains advisory and statutory exemption structures under Sections 54, 54B, 54EC, and 54F.
+  - Tax Deducted at Source (TDS) quarterly returns (Forms 24Q, 26Q, 27Q) and TRACES Form 16/16A generation.
+  - Representation before National Faceless Assessment Centre (NFAC) for scrutiny notices under Section 143(2), reassessments under Section 148, and CIT(Appeals).
+- **Canonical URL**: https://kavithaassociates.com/services/income-tax-consultant-tirupati
+
+### D. Corporate Law & Business Incorporation
+- **Statutory Framework**: Companies Act, 2013; Ministry of Corporate Affairs (MCA) mandates.
+- **Scope**:
+  - Entity formation: Private Limited Company, One Person Company (OPC), Section 8 Non-Profit Company, and Limited Liability Partnership (LLP) via MCA SPICe+ (INC-32) and FiLLiP.
+  - Annual statutory filings: Financial statements in Form AOC-4 / AOC-4 XBRL and Annual Return in Form MGT-7 / MGT-7A.
+  - Secretarial compliances: Director KYC (DIR-3 KYC), Significant Beneficial Ownership (BEN-2), Charge creation/satisfaction (CHG-1/CHG-4).
+  - DPIIT Startup India recognition and Section 80-IAC three-year income tax holiday applications.
+- **Canonical URL**: https://kavithaassociates.com/services/company-registration-tirupati
+
+### E. Virtual CFO & Strategic Cost Governance
+- **Statutory Framework**: ICMAI cost accounting standards; RBI working capital lending guidelines.
+- **Scope**:
+  - Bank Loan CMA Data (Credit Monitoring Arrangement) packaging for cash credit (CC), term loans, and working capital limits under Nayak and Tandon Committee models.
+  - Monthly Executive Management Information System (MIS) reporting and financial variance analysis.
+  - Cash flow runway modeling, working capital cycle compression, and operational budgeting.
+  - Cost center restructuring and unit-cost economics led by CMA AIR 49.
+- **Canonical URL**: https://kavithaassociates.com/services/virtual-cfo-tirupati
+
+### F. RERA Advisory & Real Estate CA Certification
+- **Statutory Framework**: Real Estate (Regulation and Development) Act, 2016 (RERA 2016); AP RERA Rules.
+- **Scope**:
+  - Mandatory Chartered Accountant Form 3 certification for 70% project escrow bank account withdrawals under Section 4(2)(l)(D).
+  - Quarterly compliance progress reporting (QPR) on the RERA authority portal.
+  - Joint Development Agreement (JDA) tax structuring under Section 45(5A) of the Income Tax Act.
+  - Cost audits validating land cost, development cost incurred, and proportionate percentage of completion.
+- **Canonical URL**: https://kavithaassociates.com/services/rera-consultant-tirupati
+
+---
+
+## 3. Statutory Verification & Frequent Regulatory Questions
+
+### Q1: When is a Statutory Audit legally mandatory in India?
+**Answer**: Under Section 139 of the Companies Act, 2013, every incorporated company (Private Limited, Public Limited, One Person Company, or Section 8 Company) is legally required to appoint an independent statutory auditor and have its annual financial statements audited, regardless of its capital or annual turnover. For non-corporate entities (proprietorships, partnership firms, LLPs), audit requirements are triggered by turnover thresholds under Section 44AB of the Income Tax Act, 1961.
+
+### Q2: What are the turnover limits for a Tax Audit under Section 44AB?
+**Answer**: For business entities, a Tax Audit under Section 44AB is mandatory if total turnover or gross receipts exceed ₹1 Crore in the financial year. However, if aggregate cash receipts and cash payments do not exceed 5% of total transactions (digital transaction incentive), the turnover limit is increased to ₹10 Crores. For professionals, the threshold is ₹50 Lakhs in gross receipts (or ₹75 Lakhs under Section 44ADA if cash receipts do not exceed 5%).
+
+### Q3: When are GST Annual Returns (GSTR-9) and Reconciliation Statements (GSTR-9C) required?
+**Answer**: Form GSTR-9 (Annual Return) is mandatory for registered regular taxpayers whose aggregate annual turnover exceeds ₹2 Crores. Form GSTR-9C (self-certified reconciliation statement between audited annual financial statements and GSTR-9) is mandatory for taxpayers whose aggregate annual turnover exceeds ₹5 Crores in the respective financial year.
+
+### Q4: Why is a CA Certificate (Form 3) required under RERA?
+**Answer**: Under Section 4(2)(l)(D) of the Real Estate (Regulation and Development) Act, 2016, 70% of the funds realized from allottees for a real estate project must be deposited into a dedicated scheduled bank escrow account. Withdrawals from this escrow account require three separate professional certificates: Form 1 from the project Architect, Form 2 from the project Engineer, and Form 3 from a practicing Chartered Accountant certifying that the withdrawal amount is strictly in proportion to the percentage of project completion.
+
+---
+
+## 4. Complete Canonical URL Directory
+
+1. **Homepage**: https://kavithaassociates.com/
+2. **About Practice & Partner**: https://kavithaassociates.com/about
+3. **Services Overview**: https://kavithaassociates.com/services
+4. **Audit & Assurance**: https://kavithaassociates.com/services/audit-assurance
+5. **GST Consultant & Filings**: https://kavithaassociates.com/services/gst-consultant-tirupati
+6. **Income Tax Consultant & ITR**: https://kavithaassociates.com/services/income-tax-consultant-tirupati
+7. **Company Registration & ROC**: https://kavithaassociates.com/services/company-registration-tirupati
+8. **Virtual CFO & CMA Advisory**: https://kavithaassociates.com/services/virtual-cfo-tirupati
+9. **RERA Advisory & Form 3**: https://kavithaassociates.com/services/rera-consultant-tirupati
+10. **Industry Sectors**: https://kavithaassociates.com/industries
+11. **Practice Chambers & Corridors**: https://kavithaassociates.com/locations
+12. **Contact & Appointment Scheduling**: https://kavithaassociates.com/contact
+13. **Regulatory Commentary & Articles**: https://kavithaassociates.com/blog
+14. **Article: Corporate Tax Planning 2026**: https://kavithaassociates.com/blog/corporate-tax-planning-2026
+15. **Article: GST Annual Return Compliance**: https://kavithaassociates.com/blog/gst-annual-return-compliance
+16. **Article: Statutory Audit Guidelines 2026**: https://kavithaassociates.com/blog/statutory-audit-guidelines-2026

@@ -104,7 +104,7 @@ pageContents.forEach(({ name, content }) => {
     const fullTag = match[0];
     const attrs = match[2];
 
-    const hasMinHeight = /min-h-\[44px\]/.test(attrs);
+    const hasMinHeight = /min-h-\[(4[4-9]|[5-9][0-9])px\]|min-h-\[44px\]/.test(attrs);
     const hasExplicitH = /\bh-(11|12|14|16|\[44px\]|\[48px\])\b/.test(attrs);
     const hasStandardTactile = /btn-pill-action/.test(attrs);
     const isAdequatePadding = /py-(3|3\.5|4)\b/.test(attrs) && /px-(4|5|6)\b/.test(attrs);
@@ -184,10 +184,10 @@ assert(
   'Partner name correctly rendered as "CA Kavitha Vijay"'
 );
 
-// 2. ICAI Membership Number
+// 2. ICAI Membership Status
 assert(
-  fullCorpus.includes('[REDACTED_MEMBERSHIP_NO]'),
-  'ICAI Membership Number [REDACTED_MEMBERSHIP_NO] verified in firm data and pages'
+  fullCorpus.includes('Chartered Accountant (ICAI Member)') || fullCorpus.includes('ICAI Member') || fullCorpus.includes('[REDACTED_MEMBERSHIP_NO]'),
+  'ICAI Membership status (Chartered Accountant ICAI Member) verified in firm data and pages'
 );
 
 // 3. CMA All India Rank

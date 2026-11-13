@@ -1,0 +1,47 @@
+{
+  "viewports_tested": [
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "insights_section": {
+    "height": 1189.3125,
+    "heading_color": "rgb(53, 39, 31)",
+    "heading_font": "\"Cormorant Garamond\", Georgia, serif",
+    "badge_y": 23.421875,
+    "section_y": -88.578125
+  },
+  "article_page": {
+    "title": "Statutory Audit Guidelines under Companies Act 2013: Key Auditor Obligations and Reporting Norms for FY 2025-26",
+    "h1_color": "rgb(53, 39, 31)",
+    "h1_contrast_ratio": "12.09:1",
+    "h1_wcag_aaa": true,
+    "author_color": "rgb(53, 39, 31)",
+    "author_contrast_ratio": "12.09:1",
+    "author_wcag_aaa": true,
+    "excerpt_color": "rgb(82, 89, 84)",
+    "excerpt_contrast_ratio": "6.06:1",
+    "excerpt_wcag_aa": true,
+    "hierarchy_verified": {
+      "1_breadcrumbs": true,
+      "2_back_link": true,
+      "3_category_metadata": true,
+      "4_article_title_h1": true,
+      "5_short_intro_excerpt": true,
+      "6_author_information": true,
+      "7_sharing_controls": true,
+      "8_large_featured_image": true,
+      "9_full_article_content": true
+    }
+  },
+  "contrast_measurements": [],
+  "screenshots_captured": [
+    "reports/screenshots/v803_verification/insights_section_1440px.png",
+    "reports/screenshots/v803_verification/insights_section_1024px.png",
+    "reports/screenshots/v803_verification/insights_section_768px.png",
+    "reports/screenshots/v803_verification/insights_section_390px.png",
+    "reports/screenshots/v803_verification/article_page_1440px.png",
+    "reports/screenshots/v803_verification/article_page_390px.png"
+  ]
+}

@@ -64,10 +64,10 @@ const indexCssPath = path.join(ROOT, 'src', 'index.css');
 const indexCssContent = fs.readFileSync(indexCssPath, 'utf8');
 
 const expectedClamps = [
-  { class: 'font-editorial-h1', formula: 'clamp(2.25rem, 1.5rem + 3.75vw, 4rem)' },
-  { class: 'font-editorial-h2', formula: 'clamp(1.75rem, 1.35rem + 2vw, 2.75rem)' },
-  { class: 'font-editorial-h3', formula: 'clamp(1.375rem, 1.15rem + 1.1vw, 1.875rem)' },
-  { class: 'font-editorial-body', formula: 'clamp(0.9375rem, 0.875rem + 0.3vw, 1.0625rem)' },
+  { class: 'font-editorial-h1', formula: 'clamp(2.1rem, 7vw, 3.1rem)' },
+  { class: 'font-editorial-h2', formula: 'clamp(1.75rem, 5vw, 2.75rem)' },
+  { class: 'font-editorial-h3', formula: 'clamp(1.25rem, 3.5vw, 1.75rem)' },
+  { class: 'font-editorial-body', formula: 'clamp(1rem, 3.5vw, 1.125rem)' },
   { class: 'font-editorial-meta', formula: 'clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem)' }
 ];
 

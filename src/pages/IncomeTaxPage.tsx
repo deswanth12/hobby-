@@ -15,6 +15,9 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { LetterReveal, WordReveal, TextHighlight } from '../components/animations';
+import { EditorialMarker } from '../components/architectural';
+import { Breadcrumb } from '../components/Breadcrumb';
 
 export const IncomeTaxPage: React.FC = () => {
   const { data } = useFirmData();
@@ -101,17 +104,19 @@ export const IncomeTaxPage: React.FC = () => {
     }
   ];
 
+  const breadcrumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Income Tax Services in Tirupati', path: '/services/income-tax-consultant-tirupati' }
+  ];
+
   return (
     <div className="bg-brand-ivory page-reveal text-brand-charcoal min-h-screen">
       <SEOHead
         title="Income Tax Consultant in Tirupati | ITR | Kavitha & Associates"
         description="Expert Income Tax consultant in Tirupati. CA Kavitha & Associates provides corporate tax planning, Section 44AB tax audit, capital gains advisory & ITR filing."
         canonicalPath="/services/income-tax-consultant-tirupati"
-        breadcrumbs={[
-          { name: 'Home', path: '/' },
-          { name: 'Services', path: '/services' },
-          { name: 'Income Tax Services in Tirupati', path: '/services/income-tax-consultant-tirupati' }
-        ]}
+        breadcrumbs={breadcrumbs}
         jsonLd={[
           {
           '@context': 'https://schema.org',
@@ -154,33 +159,37 @@ export const IncomeTaxPage: React.FC = () => {
       {/* =========================================================================
           1. HEADER BANNER
           ========================================================================= */}
-      <section className="bg-brand-deep text-white py-20 sm:py-24 lg:py-28 border-b border-brand-gold/30">
+      <section className="bg-gradient-to-b from-[#F8EFDF] via-[#F5EAD8] to-[#EFE0C7] py-12 sm:py-16 md:py-20 lg:py-24 border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumb items={breadcrumbs} className="mb-6 sm:mb-8" />
           <div className="max-w-3xl scroll-reveal">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-forest text-brand-gold font-editorial-meta mb-4 border border-brand-gold/40 shadow-inner">
-              <FileSpreadsheet className="w-4 h-4 text-brand-gold shrink-0" />
-              <span>Direct Tax Practice • Tirupati Chambers</span>
+            <div className="flex items-center gap-2.5 mb-4 flex-wrap">
+              <EditorialMarker number="02" label="DIRECT TAXATION" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#DDE8D9] text-[#153F32] font-editorial-meta border border-[#153F32]/25 shadow-xs">
+                <FileSpreadsheet className="w-4 h-4 text-[#153F32] shrink-0" />
+                <span><LetterReveal text="Direct Tax Practice • Tirupati Chambers" /></span>
+              </div>
             </div>
-            <h1 className="font-editorial-h1 text-white">
-              Income Tax Consultant in Tirupati
+            <h1 className="font-editorial-h1 text-[#153F32] font-serif font-bold">
+              <WordReveal text="Income Tax Consultant in Tirupati" />
             </h1>
-            <p className="mt-4 font-editorial-body text-emerald-100/90 leading-relaxed text-base sm:text-lg">
-              Strategic direct tax planning, corporate return filing, Section 44AB tax audits, and faceless scrutiny representation. Directly supervised by CA Kavitha Vijay (B.Com, CA, CMA AIR 49, ex-Deloitte Big 4 auditor) from our practice chambers at Bairagi Patteda, Tirupati.
+            <p className="mt-4 font-editorial-body text-[#525954] leading-relaxed text-base sm:text-lg">
+              Strategic direct tax planning, corporate return filing, Section 44AB tax audits, and faceless scrutiny representation. Directly supervised by <TextHighlight>CA Kavitha Vijay</TextHighlight> (B.Com, CA, CMA AIR 49, ex-Deloitte Big 4 auditor) from our practice chambers at Bairagi Patteda, Tirupati.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-gold text-brand-deep font-editorial-meta text-xs font-semibold hover:bg-brand-gold/90 transition-colors btn-tactile shadow-md"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#153F32] hover:bg-[#102D25] text-white font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors shadow-sm hover:shadow-md border border-[#C3A66B]/50 btn-tactile"
               >
                 <span>Book Tax Consultation</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
               </Link>
               <a
-                href={`https://wa.me/?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding Income Tax filing and planning in Tirupati.')}`}
+                href={`https://wa.me/919626350900?text=${encodeURIComponent('Hello CA Kavitha Vijay, I need consultation regarding Income Tax filing and planning in Tirupati.')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-forest/60 text-white font-editorial-meta text-xs hover:bg-brand-forest border border-brand-gold/40 transition-colors btn-tactile"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#FFFFFF] hover:bg-[#FFF9EE] text-[#153F32] font-editorial-meta text-xs font-semibold tracking-wider uppercase transition-colors border border-[#E8D5B5] hover:border-[#C3A66B] shadow-card btn-tactile"
               >
                 <span>WhatsApp Tax Query</span>
               </a>
@@ -192,49 +201,49 @@ export const IncomeTaxPage: React.FC = () => {
       {/* =========================================================================
           2. STANDARDS & INTEGRITY STRIP
           ========================================================================= */}
-      <section className="py-12 bg-brand-surface border-b border-brand-border">
+      <section className="py-12 bg-[#FFFDF7] border-b border-[#E8D5B5]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 scroll-stagger">
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <FileCheck className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <FileCheck className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Data Triangulation</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Data Triangulation</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   AIS & 26AS Reconciliation
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Every ITR is audited against Annual Information Statement and 26AS data to eliminate defective return notices under Section 139(9).
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <TrendingDown className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <TrendingDown className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Fiscal Optimization</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Fiscal Optimization</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Legitimate Tax Mitigation
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Maximizing permissible deductions under Chapter VI-A, Section 115BAA, and capital gains exemptions while staying strictly compliant.
                 </p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-white border border-brand-border shadow-subtle card-tactile scroll-reveal">
-              <div className="w-12 h-12 rounded-xl bg-brand-forest/10 text-brand-forest flex items-center justify-center shrink-0 border border-brand-forest/20">
-                <Scale className="w-6 h-6 text-brand-forest" />
+            <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-[#E8D5B5] shadow-subtle card-tactile scroll-reveal">
+              <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] text-[#153F32] flex items-center justify-center shrink-0 border border-[#153F32]/20">
+                <Scale className="w-6 h-6 text-[#153F32]" />
               </div>
               <div>
-                <span className="font-editorial-meta text-brand-gold text-[10px] block mb-1">Appellate Defense</span>
-                <p className="font-editorial-h3 text-base font-bold text-brand-forest">
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#E8D5B5] text-[#7E5E1E] font-editorial-meta text-[10px] font-semibold mb-2">Appellate Defense</span>
+                <p className="font-serif text-lg font-bold text-[#153F32]">
                   Faceless Scrutiny Defense
                 </p>
-                <p className="font-editorial-body text-xs text-brand-muted mt-1 leading-relaxed">
+                <p className="font-editorial-body text-xs text-[#525954] mt-1 leading-relaxed">
                   Structured submissions citing High Court and ITAT precedents to protect taxpayers from arbitrary additions and penalty notices.
                 </p>
               </div>
@@ -250,10 +259,10 @@ export const IncomeTaxPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="max-w-3xl scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Practice Spectrum
+              <LetterReveal text="Practice Spectrum" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Direct Tax Solutions for Individuals & Corporate Entities
+              <WordReveal text="Direct Tax Solutions for Individuals & Corporate Entities" />
             </h2>
             <p className="font-editorial-body text-sm text-brand-muted mt-2 leading-relaxed">
               From routine annual return filing to complex enterprise restructuring and Section 44AB audits, our direct tax engagements deliver rigorous compliance.
@@ -402,10 +411,10 @@ export const IncomeTaxPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12 scroll-reveal">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Statutory Clarifications
+              <LetterReveal text="Statutory Clarifications" />
             </span>
             <h2 className="font-editorial-h2 text-2xl sm:text-3xl font-bold text-brand-forest">
-              Frequently Asked Questions on Income Tax
+              <WordReveal text="Frequently Asked Questions on Income Tax" />
             </h2>
             <p className="font-editorial-body text-xs sm:text-sm text-brand-muted mt-2">
               Legal guidance based strictly on the provisions of the Income Tax Act, 1961.
@@ -443,15 +452,15 @@ export const IncomeTaxPage: React.FC = () => {
       {/* =========================================================================
           6. INTAKE BANNER
           ========================================================================= */}
-      <section className="py-16 bg-brand-deep text-white border-t border-brand-gold/30">
+      <section className="py-16 bg-brand-surface text-brand-charcoal border-t border-brand-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 scroll-reveal">
           <span className="font-editorial-meta text-brand-gold text-xs uppercase tracking-wider block">
-            Partner-Led Advisory
+            <LetterReveal text="Partner-Led Advisory" />
           </span>
-          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-white max-w-2xl mx-auto">
-            Plan Your Direct Tax Strategy with CA Kavitha Vijay
+          <h2 className="font-editorial-h2 text-2xl sm:text-4xl font-bold text-brand-forest max-w-2xl mx-auto">
+            <WordReveal text="Plan Your Direct Tax Strategy with CA Kavitha Vijay" />
           </h2>
-          <p className="font-editorial-body text-xs sm:text-sm text-emerald-100/90 max-w-xl mx-auto leading-relaxed">
+          <p className="font-editorial-body text-xs sm:text-sm text-brand-muted max-w-xl mx-auto leading-relaxed">
             Ensure complete compliance with the Income Tax Department while optimizing tax liabilities legitimately through proactive planning.
           </p>
 

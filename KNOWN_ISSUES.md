@@ -85,7 +85,7 @@ In strict accordance with development integrity mandates, **we never invent clie
 
 | Item Code | Practice Area | Current Code State | Client Decision Needed |
 | :--- | :--- | :--- | :--- |
-| **PC-01** | **ICAI Membership Number** | Real verified number is **252985** (from CV). Withheld from public footer per `firmData.ts:652`. | Confirm whether CA Kavitha Vijay desires her 6-digit membership number displayed in the website footer colophon. |
+| **PC-01** | **ICAI Membership Number** | Real verified number is **[REDACTED_MRN]** (from CV). Withheld from public footer per `firmData.ts:652`. | Confirm whether CA Kavitha Vijay desires her 6-digit membership number displayed in the website footer colophon. |
 | **PC-02** | **Official Contact Inbox** | Code uses verified working email `cakavithasrj@gmail.com`. | When Google Workspace / custom domain email (`info@kavithaassociates.com`) is activated, update `firmData.ts:302`. |
 | **PC-03** | **Firm Registration (FRN)** | No FRN is displayed on the public site, complying with ICAI Council regulations pending written client sign-off. | Confirm if FRN should be added to the colophon once ICAI firm registration certificate is finalized. |
 | **PC-04** | **Cloud Supabase Sync** | System operates in self-contained local persistence mode. | Provide cloud Supabase URL and Anon Key if multi-device real-time sync across multiple practice PCs is desired. |

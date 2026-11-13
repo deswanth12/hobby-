@@ -174,7 +174,7 @@ Empirically inspected across 9 viewports (**180 route/viewport combinations**):
 - **Source Documents Inspected:** `Kavitha_and_Associates_Firm_Profile.pdf`, `KavithaVijay_CV Updated 0105-1.pdf`, `reviewqr.png`.
 - **Verified Credentials:**
   - Lead Partner: **CA Kavitha Vijay (B.Com, CA, CMA AIR 49)**
-  - Real ICAI Membership Number: **252985** (Correctly withheld from public footer pending written client sign-off)
+  - Real ICAI Membership Number: **[REDACTED_MRN]** (Correctly withheld from public footer pending written client sign-off)
   - Prior Experience: Ford Motor Company (Business Auditor 2022–2026), Deloitte Haskins & Sells (Deputy Manager Assurance 2020–2022), Manohar Chowdhry & Associates (Articleship 2016–2019)
   - Practice Chambers: 19-12-46, Bairagi Patteda, Tirupati, AP 517501 (GPS: 13.6192242, 79.418046)
 - **External Test Query Discrepancies Repelled:** The website correctly omitted test prompt claims (such as fake MRN 228020, invented FRN 016147S, unverified DISA credential, and Bangalore chambers address), maintaining strict ICAI regulatory compliance.
@@ -226,4 +226,4 @@ Prior to making live DNS changes, the following client-side action items are rea
 4. **Supabase Cloud Centralized Persistence (Optional):**
    - If real-time cloud synchronization across multiple office devices is desired, set `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in environment variables. Currently, the platform runs in self-contained local persistence mode.
 5. **ICAI Membership Number Sign-off:**
-   - Confirm whether CA Kavitha Vijay wishes to display her verified ICAI Membership Number (**252985**) in the website footer colophon.
+   - Confirm whether CA Kavitha Vijay wishes to display her verified ICAI Membership Number (**[REDACTED_MRN]**) in the website footer colophon.

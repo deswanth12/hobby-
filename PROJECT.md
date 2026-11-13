@@ -1,116 +1,175 @@
-# Project: Kavitha & Associates Luxury Editorial Redesign
+# Project: Kavitha & Associates — Frontend Redesign & Rebuild V8.0
 
 ## Architecture
-- **Framework & Core**: React 18.3.1 (SPA), TypeScript 5.6.3 (strict), Vite 5.4.11, Tailwind CSS 3.4.16.
-- **Routing**: `react-router-dom` v6.28.0 with `PublicLayout` (`Navbar`, `Outlet`, `Footer`, `FloatingWhatsApp`).
-- **Design System**: Luxury Editorial Aesthetic (Primary Forest Green `#153F32`, Deep Green `#102D25`, Warm Ivory `#F5F1E8`, Pure White `#FFFFFF`, Muted Gold `#C3A66B`, Charcoal `#252B27`, Secondary Text `#747A73`, Borders `#E5E1D8`).
-- **Typography**: Cormorant Garamond (headings, display serifs), Inter (body, UI, metadata, navigation), uppercase spaced tracking for metadata, responsive `clamp()` scaling.
-- **Zero-Cost Edge Infrastructure**: Cloudflare Pages (`_routes.json`, `_redirects`, `_headers`), Cloudflare Pages Functions (`functions/api/auth.js`, `callback.js` for secure GitHub OAuth proxy), Sveltia CMS (`public/admin/config.yml`).
-- **State & Content**: Centralized immutable practice registry in `src/data/firmData.ts`, reactive `FirmDataContext.tsx`, and Markdown CMS posts in `content/posts/`.
+- **Framework & Bundler**: React 18.3.1 (SPA), Vite 5.4.11, TypeScript 5.6.3 (strict mode), Tailwind CSS 3.4.16.
+- **Visual Identity & Creative Direction**:
+  - The Botanical Ledger brand identity.
+  - Architectural editorial aesthetic influenced by Laperruta & Associates.
+  - Palette: Deep Evergreen (`#071B14`), Forest Green (`#183529`), Botanical Green (`#294B39`), Antique Bronze (`#B49A64`), Warm Ivory (`#F1EBDD`), Walnut Brown (`#35271F`), Soft Sage (`#AAB4A0`), WCAG AA Dark Bronze (`#7E5E1E`).
+  - Typography: Editorial serif display headlines (`Cormorant Garamond`), clean modern body sans (`Inter`).
+  - Architectural composition: Asymmetric layouts, double-bezel photo frames, hairline brass dividers, architectural corner brackets, generous balanced whitespace, purposeful subtle micro-motion.
+  - Explicit prohibitions: Generic AI templates, repetitive card grids, random gradients, floating disconnected decorations, and excessive animations.
+- **Backend Preservation & Integration Layer**:
+  - Strict preservation of existing Supabase PostgreSQL schema, tables, relationships, and RLS policies (`profiles`, `enquiries`, `content_services`, `content_faqs`, `content_posts`, `practice_settings`).
+  - Strict preservation of server routes and middleware in `server/apiRouter.cjs`, `server/db.cjs`, `server/durableStorage.cjs`.
+  - Zero database reset, deletion, or destructive migration.
+  - Secret admin route obfuscation via `VITE_ADMIN_SECRET_PATH` (`/sec-ca-50e0e5eed471`), quarantining public `/admin` and `/admin/*` to 404.
+  - Integration adapter layer connecting new frontend components to `FirmDataContext`, `BlogService`, `adminStorage`, and `/api/*`.
+- **Content Security, Privacy & Regulatory Compliance**:
+  - ICMAI attribution for CMA AIR 49 (All India Rank 49 in CMA Intermediate explicitly attributed to ICMAI).
+  - Absolute privacy quarantine: Zero personal tax identifiers (PAN, Aadhaar), individual ICAI membership numbers, or unapproved FRNs.
+  - Partner portrait quarantined without explicit consent; neutral crest monogram `KV / KA` and practice medallion used.
+  - Zero fabricated testimonials, client reviews, ratings, awards, or statistics.
+  - Exclusion of rejected public tax calculators and Knowledge Bank from public navigation.
+  - Triple-layer blog draft protection: SQL RLS (`draft = false`), server 404 handler, and client router/service 404.
+
+---
 
 ## Feature Inventory
+Every feature from user requirements (R1–R5) and the Survey phase is mapped to a milestone:
+
 | # | Feature | Description | Milestone | Source |
 |---|---------|-------------|-----------|--------|
-| 1 | Dedicated Git Redesign Branch | Create `redesign/editorial-luxury` branch, preserving uncommitted files and forbidding automatic pushes | M1 | ORIGINAL_REQUEST §R5 |
-| 2 | Luxury Editorial Color Tokens | Implement palette: `#153F32`, `#102D25`, `#F5F1E8`, `#FFFFFF`, `#C3A66B`, `#252B27`, `#747A73`, `#E5E1D8` in `tailwind.config.js` | M1 | ORIGINAL_REQUEST §R1 |
-| 3 | Editorial Typography & Clamp Scales | Integrate Cormorant Garamond & Inter with responsive clamp() scaling in `index.html`, Tailwind, and `src/index.css` | M1 | ORIGINAL_REQUEST §R1 |
-| 4 | Editorial Utility Classes & Micro-Physics | Refine `.card-tactile`, `.btn-tactile`, editorial borders, bento grids, and `@media (prefers-reduced-motion)` | M1 | ORIGINAL_REQUEST §R1 |
-| 5 | Package.json Test Script | Add `"test": "node tests/e2e/run-e2e.mjs"` to package.json | M1 | Survey Finding |
-| 6 | Site-Wide Navigation Header | Redesign `Navbar.tsx` with top utility strip, verified phone/email, monogram badge, responsive drawer, keyboard accessibility | M2 | ORIGINAL_REQUEST §R1, §R2.1 |
-| 7 | Site-Wide Editorial Footer | Redesign `Footer.tsx` with verified CA credentials, practice columns, regional corridor badges, and verbatim ICAI disclaimer | M2 | ORIGINAL_REQUEST §R1, §R2.1, §R3 |
-| 8 | Homepage Hero & Practice Plaque | Redesign hero section with Cormorant Garamond typography and double-bezel practice credentials plaque | M2 | ORIGINAL_REQUEST §R1, §R2.1 |
-| 9 | Homepage Audit Spotlight & Services | Asymmetric audit assurance showcase and structured service spectrum on homepage | M2 | ORIGINAL_REQUEST §R1, §R2.1 |
-| 10 | Homepage Governance & Philosophy | Dual CA+CMA advantage, partner profile preview, and ICAI ethical standards section | M2 | ORIGINAL_REQUEST §R1, §R2.1, §R3 |
-| 11 | Homepage Industries & Geographic Reach | 10 industry profiles summary and 5-location footprint showcase | M2 | ORIGINAL_REQUEST §R1, §R2.1 |
-| 12 | Homepage Statutory FAQ & Consultation CTA | Accordion FAQ and consultation intake section with embedded ContactForm | M2 | ORIGINAL_REQUEST §R1, §R2.1, §R4 |
-| 13 | About Page Redesign | Complete `/about` with verified bio for CA Kavitha Vijay (Chartered Accountant [REDACTED_MEMBERSHIP_NO], B.Com, CA, CMA AIR 49, Deloitte/Ford/MCA, Move/Live the Dot awards) | M3 | ORIGINAL_REQUEST §R2.2, §R3 |
-| 14 | Services Page Redesign | Complete `/services` with 5 practice areas, 34 services, and statutory citations | M3 | ORIGINAL_REQUEST §R2.2 |
-| 15 | Audit Spotlight Page Redesign | Complete `/services/audit-assurance` with 9 statutory audit streams and ICAI auditing standards | M3 | ORIGINAL_REQUEST §R2.2 |
-| 16 | Industries Page Redesign | Complete `/industries` with 10 detailed sector profiles, regulatory focal points, and tax benefits | M3 | ORIGINAL_REQUEST §R2.2 |
-| 17 | Locations Page Redesign | Complete `/locations` with Tirupati principal chambers (GPS: 13°37'09.3"N 79°25'04.9"E) and 4 regional corridors | M3 | ORIGINAL_REQUEST §R2.2 |
-| 18 | Blog Listing Page Redesign | Complete `/blog` with editorial cards, search, category pills, reading time, and published post isolation | M4 | ORIGINAL_REQUEST §R2.2, §R4 |
-| 19 | Blog Article Page Redesign | Complete `/blog/:slug` with breadcrumbs, hero header, author bio card, social sharing, and related articles | M4 | ORIGINAL_REQUEST §R2.2 |
-| 20 | Pure React Markdown Renderer | Retain zero-dangerouslySetInnerHTML virtual DOM markdown renderer in `MarkdownRenderer.tsx` | M4 | Survey Finding |
-| 21 | Strict 4-Layer Draft Quarantine | Quarantines drafts across BlogService, listing page, `/blog/:slug` 404 fallback, and sitemap generation | M4 | ORIGINAL_REQUEST §R4 |
-| 22 | Blog Component Re-Export / Alias | Ensure `src/pages/BlogPostPage.tsx` re-exports `BlogArticlePage.tsx` for E2E test harness compatibility | M4 | Survey Finding |
-| 23 | Bespoke Editorial 404 Page | Redesign `NotFoundPage.tsx` (`*`) with directory recovery grid, search links, and assistance contacts | M4 | ORIGINAL_REQUEST §R2.2 |
-| 24 | Client Data & Name Uniformity | Align all occurrences of partner name to verified `CA Kavitha Vijay` across `firmData.ts`, `index.html`, and `about.json` | M5 | ORIGINAL_REQUEST §R3 |
-| 25 | Contact Form Submission Mechanism | Honeypot field, 1500ms velocity check, local enquiry registration (`ENQ-...`), instant WhatsApp handoff | M5 | ORIGINAL_REQUEST §R4 |
-| 26 | WhatsApp Integration & Deep Links | Floating widget and button links with verified phone `+91 96263 50900` and prefilled message templates | M5 | ORIGINAL_REQUEST §R4 |
-| 27 | Sveltia CMS & Edge Auth Security | Verify `public/admin/config.yml`, `functions/api/auth.js`, `callback.js` with fail-closed user whitelist | M5 | ORIGINAL_REQUEST §R4 |
-| 28 | Cloudflare Pages Routing & Headers | Verify `_routes.json`, `_redirects`, and `_headers` (HSTS, strict CSP without unsafe-eval, 1-yr asset cache) | M5 | ORIGINAL_REQUEST §R4 |
-| 29 | Comprehensive SEO & JSON-LD | Update `SEOHead.tsx` with `og:type` support, Schema.org `BlogPosting` JSON-LD, sitemap generator with 11 URLs | M5 | ORIGINAL_REQUEST §R4 |
-| 30 | E2E Test Suite 100% Pass (Tiers 1-4) | Resolve fixture mismatches and pass all 167 tests in `tests/e2e/run-e2e.mjs` | M6 | ORIGINAL_REQUEST §R5 |
-| 31 | Challenger Security Suites 100% Pass | Pass all 528 assertions across 5 challenger security and stress test harnesses | M6 | Survey Finding |
-| 32 | TypeScript & Production Build Verification | Zero errors in `tsc -b` and `npm run build` | M6 | ORIGINAL_REQUEST Acceptance Criteria |
-| 33 | Accessibility & Responsive Viewport Audit | Audit WCAG contrast, keyboard navigation, focus indicators, and 375px/768px/1280px+ viewports without overflow | M6 | ORIGINAL_REQUEST Acceptance Criteria |
+| 1 | Baseline Isolation & Snapshot | Immutable filesystem backup in `backup_v70_baseline/` and local git reference tracking | M1 | R5, Survey |
+| 2 | Backend Integration Map | Formal documentation of all 30 endpoints, schemas, RLS, and contracts in `V80_BACKEND_INTEGRATION_MAP.md` | M1 | R2, Deliverables |
+| 3 | Backend Adapter Layer | Unified frontend integration adapter connecting to `FirmDataContext`, `BlogService`, `adminStorage`, `/api/*` | M1 | R2 |
+| 4 | The Botanical Ledger Color System | Centralized CSS variables & Tailwind tokens: Deep Evergreen, Forest Green, Botanical Green, Antique Bronze, Warm Ivory, Walnut Brown, Soft Sage, Dark Bronze | M2 | R3 |
+| 5 | Architectural Typography System | Paired Cormorant Garamond display serif & Inter sans body with CSS clamp fluid scales | M2 | R3 |
+| 6 | Shared Layout Components | Reusable `PublicLayout`, sticky `Navbar`, 4-column ledger `Footer`, accessibility Skip-to-Content, scroll progress, neutral `CrestMonogram` | M2 | R1, R3, R4 |
+| 7 | Reusable Form & Intake Components | `ContactForm` with honeypot (`website_fax_hp`), velocity check (>= 1500ms), input sanitization, WhatsApp URL generator | M2 | R1, R2 |
+| 8 | Interaction, Loading & Error States | Accessible buttons, accordions, tabs, mobile drawer with focus trap, loading skeletons, dignified 404 `NotFoundPage`, ErrorBoundary | M2 | R1 |
+| 9 | Frontend Architecture Specification | Publication of `V80_FRONTEND_ARCHITECTURE.md` and `V80_DESIGN_SYSTEM.md` | M2 | R1, R3, Deliverables |
+| 10 | Homepage: 30-Second Architecture | 7 essential sections (Hero, About, Practice Areas, Professional Approach, Working Methodology, Featured Insights, Contact) | M3 | R1 |
+| 11 | Homepage: Section 1 Hero | Two-column architectural composition, verified headline, supporting copy, dual CTAs, double-bezel consultation frame, credential strip | M3 | R1, R3 |
+| 12 | Homepage: Section 2 Firm Introduction | Concise overview (~64 words) on Warm Ivory canvas with single clean CTA linking to `/about` | M3 | R1 |
+| 13 | Homepage: Section 3 Core Practice Areas | Exactly 5 distinct practice disciplines with discipline codes, badges, icons, direct links to practice corridors | M3 | R1 |
+| 14 | Homepage: Section 4 Why Choose Us | 4 verified institutional strengths (Deloitte Big 4 audit, dual CA & CMA AIR 49 ICMAI, partner supervision, ethical compliance) on Deep Evergreen canvas | M3 | R1, R4 |
+| 15 | Homepage: Section 5 Working Methodology | 3 chronological steps (Assessment, Technical Execution, Ongoing Compliance) on Warm Ivory canvas | M3 | R1 |
+| 16 | Homepage: Section 6 Featured Insights | Asymmetric editorial grid (1 primary 16:10 lead + 2 companions) labeled "REGULATORY INSIGHTS" with strict draft exclusion | M3 | R1 |
+| 17 | Homepage: Section 7 Chambers Intake | Physical coordinates, 17-word invitation, embedded `ContactForm` with spam guards | M3 | R1 |
+| 18 | Dedicated About Page (`/about`) | Institutional history, dual competence model, verified career bio of CA Kavitha Vijay, education, awards, chambers coordinates | M3 | R1, R4 |
+| 19 | Dedicated Leadership Section | Verified professional profiles, career history (Deloitte, Ford, Manohar Chowdhry), neutral monogram `KV / KA` | M3 | R1, R4 |
+| 20 | Dedicated Contact Page (`/contact`) | Chambers address in Bairagi Patteda, Tirupati, phone desk, email, business hours, interactive intake form, WhatsApp handoff | M3 | R1 |
+| 21 | Page and Route Plan Documentation | Publication of `V80_PAGE_AND_ROUTE_PLAN.md` | M3 | R1, Deliverables |
+| 22 | Services Overview Page (`/services`) | Directory of practice areas, statutory frameworks, 34 sub-service scopes, target client segments, typical engagement scenarios | M4 | R1 |
+| 23 | Dedicated Service Detail Corridors | 6 dedicated static pages: `/services/audit-assurance`, `/services/income-tax-consultant-tirupati`, `/services/gst-consultant-tirupati`, `/services/company-registration-tirupati`, `/services/virtual-cfo-tirupati`, `/services/rera-consultant-tirupati` | M4 | R1 |
+| 24 | Dynamic Service Detail (`/services/:slug`) | Dynamic practice area rendering for custom CMS services with statutory frameworks and FAQs | M4 | R1, R2 |
+| 25 | Secondary Corridor Pages | Dedicated `/industries` and `/locations` pages maintaining existing route continuity | M4 | R1, R5 |
+| 26 | Insights / Blog Hub (`/blog`) | Image-first listing cards featuring large photographs, category tags, article title, excerpt, publication date, 100% clickable card overlays, search & tag filters | M4 | R1 |
+| 27 | Individual Article Reading Experience (`/blog/:slug`) | Dedicated reading experience, large cover image, heading hierarchy, executive summary, AST MarkdownRenderer, author plaque with neutral `KV` monogram, related articles, comfortable width | M4 | R1 |
+| 28 | Strict Blog Draft Protection | Triple-layer draft isolation: SQL RLS, server HTTP 404, client service/route 404; public visitors cannot access drafts; zero duplicate CMS/DB | M4 | R1, R2 |
+| 29 | Blog & Core Implementation Reports | Publication of `V80_BLOG_IMPLEMENTATION_REPORT.md` and `V80_IMPLEMENTATION_REPORT.md` | M4 | R1, Deliverables |
+| 30 | Admin Route Preservation & Role Auth | Preserve `VITE_ADMIN_SECRET_PATH` portal, PBKDF2 auth, session tokens, CSRF protection, and public `/admin` 404 quarantine | M5 | R1, R2 |
+| 31 | Multi-Viewport Visual QA & Screenshots | Actual browser screenshot captures across 320px, 390px, 768px, 1024px, 1440px, and 1920px demonstrating flawless responsive layout | M5 | R5, Deliverables |
+| 32 | Security Hardening & Audit | Edge security headers, XSS sanitization, anti-CSRF, rate limiting, zero secret leakage, honeypot spam defense; publish `V80_SECURITY_REPORT.md` | M5 | R4, R5, Deliverables |
+| 33 | WCAG AA Accessibility Audit | Contrast ratios (>= 4.5:1 text, >= 3:1 UI), keyboard navigation, focus management, ARIA roles, screen reader testing; publish `V80_ACCESSIBILITY_REPORT.md` | M5 | R5, Deliverables |
+| 34 | Performance & Core Web Vitals Audit | LCP optimization, responsive image sizing, font display swap, clean bundling (< 4s build); publish `V80_PERFORMANCE_REPORT.md` and `V80_RESPONSIVE_QA.md` | M5 | R5, Deliverables |
+| 35 | Automated Test Suite Validation | 100% pass rate on 210 existing automated tests (23 statutory + 187 E2E) with zero regressions; publish `V80_TEST_RESULTS.md` | M6 | R5, Deliverables |
+| 36 | Production Build Verification | Zero errors on `npm run build`, clean TypeScript compilation (`tsc -b`), 16 canonical sitemap URLs | M6 | R5 |
+| 37 | Migration & Rollback Strategy Verification | Verified local-only migration, tested rollback from `backup_v70_baseline/`, zero remote git push; publish `V80_MIGRATION_AND_ROLLBACK_REPORT.md` and `V80_IMPLEMENTATION_CHANGELOG.md` | M6 | R5, Deliverables |
+| 38 | Final Acceptance Verification | Verification of all 13 required V80 markdown deliverables against user acceptance criteria | M6 | R5 |
+
+---
 
 ## Milestones
+
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| M1 | Git Branch & Luxury Editorial Design System Foundation | Features 1, 2, 3, 4, 5 | none | DONE |
-| M2 | Navigation, Footer & Homepage Redesign (`/`) | Features 6, 7, 8, 9, 10, 11, 12 | M1 | DONE |
-| M3 | Core Practice & Firm Public Routes Redesign | Features 13, 14, 15, 16, 17 | M2 | DONE |
-| M4 | Editorial Blog Engine, Article Experience & 404 Route | Features 18, 19, 20, 21, 22, 23 | M2, M3 | DONE |
-| M5 | Integrations, Data Alignment, WhatsApp, CMS & SEO | Features 24, 25, 26, 27, 28, 29 | M3, M4 | DONE |
-| M6 | Full Test Suite Pass & Production Validation | Features 30, 31, 32, 33 | M5 | IN_PROGRESS |
+| M1 | Baseline Isolation & Backend Integration Layer | Create `backup_v70_baseline/`, local git reference; implement backend adapter layer in `src/v8/adapters/`; produce `V80_BACKEND_INTEGRATION_MAP.md`; copy `PROJECT.md` to root | none | DONE |
+| M2 | The Botanical Ledger Design System & Shared Components | Reusable design tokens, Tailwind config, Cormorant Garamond & Inter typography, `PublicLayout`, `Navbar`, `Footer`, `CrestMonogram`, `ContactForm`, states; produce `V80_DESIGN_SYSTEM.md` and `V80_FRONTEND_ARCHITECTURE.md` | M1 | DONE |
+| M3 | Public Pages Rebuild: Homepage & Institutional Corridors | Rebuild Homepage (7 essential sections in ~30s), `/about`, Leadership, `/contact`; produce `V80_PAGE_AND_ROUTE_PLAN.md` | M2 | DONE |
+| M4 | Practice Areas & Regulatory Insights (Blog Engine) | Rebuild `/services` & 6 dedicated corridors, dynamic `/services/:slug`, `/industries`, `/locations`, `/blog` hub, `/blog/:slug` reader with triple-layer draft quarantine; produce `V80_BLOG_IMPLEMENTATION_REPORT.md` and `V80_IMPLEMENTATION_REPORT.md` | M3 | DONE |
+| M5 | Admin Preservation, Multi-Viewport QA & Quality Audits | Preserve secret admin portal & CMS; capture screenshots across 320px, 390px, 768px, 1024px, 1440px, 1920px; produce `V80_SECURITY_REPORT.md`, `V80_ACCESSIBILITY_REPORT.md`, `V80_PERFORMANCE_REPORT.md`, `V80_RESPONSIVE_QA.md` | M4 | DONE |
+| M6 | Final Verification, Rollback Audit & Deliverables Synthesis | Validate 210/210 tests pass, clean build, rollback test, produce `V80_TEST_RESULTS.md`, `V80_MIGRATION_AND_ROLLBACK_REPORT.md`, `V80_IMPLEMENTATION_CHANGELOG.md`, verify all 13 reports | M5 | DONE |
+
+---
 
 ## Interface Contracts
-### Design Tokens ↔ Component Layer
-- Color tokens exported in `tailwind.config.js`:
-  - `brand-forest`: `#153F32`
-  - `brand-deep`: `#102D25`
-  - `brand-ivory`: `#F5F1E8`
-  - `brand-white`: `#FFFFFF`
-  - `brand-gold`: `#C3A66B`
-  - `brand-charcoal`: `#252B27`
-  - `brand-muted`: `#747A73`
-  - `brand-border`: `#E5E1D8`
-- Font families:
-  - `font-serif`: `"Cormorant Garamond", Georgia, serif`
-  - `font-sans`: `"Inter", system-ui, sans-serif`
 
-### Data Layer ↔ Page Components
-- `src/data/firmData.ts` provides immutable constants:
-  - `FIRM_DETAILS`: verified firm name, registration details, lead partner (`CA Kavitha Vijay`).
-  - `AUDIT_SERVICES`: 9 statutory audit streams.
-  - `PRACTICE_AREAS`: 5 practice categories (34 services).
-  - `INDUSTRIES`: 10 industry profiles.
-  - `LOCATIONS`: 1 principal practice center (Tirupati) + 4 regional coverage hubs.
-  - `FAQS`: 6 statutory compliance questions with legal citations.
+### 1. Backend Adapter Layer (`src/v8/adapters/`)
+- `getFirmProfile()`: returns `FirmProfile` with verified firm coordinates, phones, emails, and credentials from `FirmDataContext`.
+- `getPublishedArticles()`: calls `BlogService.getAllPosts(false)`, returning strictly published articles.
+- `getArticleBySlug(slug: string)`: calls `BlogService.getPostBySlug(slug, false)`. Returns `undefined` if slug not found or is draft.
+- `submitEnquiry(payload: EnquiryPayload)`: validates fields, passes through honeypot (`website_fax_hp`) and velocity check (>= 1500ms), calls `adminStorage.recordEnquiryAsync`, returns `{ success: boolean, referenceId: string, whatsappUrl: string }`.
 
-### Blog Service ↔ Markdown Rendering
-- `src/services/blogService.ts`:
-  - `getAllPosts(includeDrafts: boolean = false): BlogPost[]`
-  - `getPostBySlug(slug: string, includeDrafts: boolean = false): BlogPost | undefined`
-- `src/components/MarkdownRenderer.tsx`:
-  - Props: `{ content: string }`
-  - Output: Pure React JSX virtual DOM nodes (Zero raw HTML).
+### 2. Design System Tokens ↔ Components
+- Palette Tokens:
+  - Deep Evergreen: `#071B14` (dark container canvases, hero, footer, dark cards)
+  - Forest Green: `#183529` (card backgrounds, elevated containers, dark badges)
+  - Botanical Green: `#294B39` (accent pills, secondary badges, active borders)
+  - Antique Bronze: `#B49A64` (refined accents, icons, medals, corner brackets)
+  - Dark Bronze: `#7E5E1E` (WCAG AA compliant text on light surfaces >= 4.5:1)
+  - Warm Ivory: `#F1EBDD` (light section canvases, about, practice areas, methodology)
+  - Walnut Brown: `#35271F` (body text on ivory canvases >= 9:1 contrast)
+  - Soft Sage: `#AAB4A0` (subtle borders, muted tags, secondary meta text)
+- Typography Classes:
+  - Display Serif: `font-serif` (`Cormorant Garamond`) with fluid clamp sizing
+  - Body Sans: `font-sans` (`Inter`, `system-ui`) with 1.6 line height
 
-### Form Service ↔ Inquiries & WhatsApp
-- `src/components/ContactForm.tsx`:
-  - Honeypot: `<input name="website_fax_hp" ... tabIndex={-1} />`
-  - Timing check: `Date.now() - formMountedAt >= 1500`
-  - Storage: `adminStorage.recordEnquiryAsync(payload)` -> returns `referenceId: "ENQ-..."`
-  - WhatsApp redirect: `https://wa.me/919626350900?text=${encodeURIComponent(brief)}`
+### 3. Route & Component Architecture (`src/App.tsx`)
+- Public Routes wrapped in `PublicLayout`:
+  - `/` -> `HomePage`
+  - `/about` -> `AboutPage`
+  - `/services` -> `ServicesPage`
+  - `/services/audit-assurance` -> `AuditAssurancePage`
+  - `/services/income-tax-consultant-tirupati` -> `IncomeTaxPage`
+  - `/services/gst-consultant-tirupati` -> `GSTServicesPage`
+  - `/services/company-registration-tirupati` -> `CompanyRegistrationPage`
+  - `/services/virtual-cfo-tirupati` -> `VirtualCFOPage`
+  - `/services/rera-consultant-tirupati` -> `RERAConsultantPage`
+  - `/services/:slug` -> `DynamicServiceDetailPage`
+  - `/industries` -> `IndustriesPage`
+  - `/locations` -> `LocationsPage`
+  - `/blog` -> `BlogPage`
+  - `/blog/:slug` -> `BlogArticlePage`
+  - `/contact` -> `ContactPage`
+  - `*` -> `NotFoundPage`
+- Quarantined Route:
+  - `/admin` & `/admin/*` -> `<NotFoundPage />` (404)
+- Secret Admin Portal:
+  - `VITE_ADMIN_SECRET_PATH` (`/sec-ca-50e0e5eed471/*`) mounts `AdminLayout` and protected admin pages.
+
+---
 
 ## Code Layout
-- `src/data/firmData.ts`: Central verified client data repository.
-- `src/components/`: Reusable UI components (`Navbar.tsx`, `Footer.tsx`, `SEOHead.tsx`, `ContactForm.tsx`, `FloatingWhatsApp.tsx`, `MarkdownRenderer.tsx`, `KnowledgeFAQ.tsx`).
-- `src/pages/`:
-  - `HomePage.tsx` (`/`)
-  - `AboutPage.tsx` (`/about`)
-  - `ServicesPage.tsx` (`/services`)
-  - `AuditAssurancePage.tsx` (`/services/audit-assurance`)
-  - `IndustriesPage.tsx` (`/industries`)
-  - `LocationsPage.tsx` (`/locations`)
-  - `BlogPage.tsx` (`/blog`)
-  - `BlogArticlePage.tsx` (`/blog/:slug`) & `BlogPostPage.tsx` (alias)
-  - `ContactPage.tsx` (`/contact`)
-  - `NotFoundPage.tsx` (`*`)
-- `tailwind.config.js` & `src/index.css`: Design system definitions.
-- `content/posts/`: Markdown articles with frontmatter.
-- `content/sections/`: Sveltia CMS JSON singleton files.
-- `public/`: Static assets, `_routes.json`, `_redirects`, `_headers`, `robots.txt`, and `admin/`.
-- `functions/api/`: Cloudflare Pages Functions (`auth.js`, `callback.js`).
-- `tests/`: Automated E2E runner (`tests/e2e/run-e2e.mjs`) and 5 challenger test suites.
+```
+C:\kavatha ca\
+├── backup_v70_baseline/          # Immutable V7.0 baseline snapshot
+├── src/
+│   ├── v8/                       # Clean V8.0 architectural tree
+│   │   ├── components/           # Reusable V8.0 design components
+│   │   │   ├── layout/           # Navbar, Footer, PublicLayout, SkipToContent
+│   │   │   ├── home/             # 7 Essential Homepage sections
+│   │   │   ├── forms/            # ContactForm with honeypot & velocity guards
+│   │   │   ├── common/           # CrestMonogram, Badge, Button, Frame, Card
+│   │   │   └── blog/             # ArticleCard, ArticleReader, MarkdownAST
+│   │   ├── pages/                # V8.0 page implementations
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── AboutPage.tsx
+│   │   │   ├── ServicesPage.tsx
+│   │   │   ├── ServiceDetailPage.tsx
+│   │   │   ├── BlogPage.tsx
+│   │   │   ├── BlogArticlePage.tsx
+│   │   │   ├── ContactPage.tsx
+│   │   │   └── NotFoundPage.tsx
+│   │   └── adapters/             # Backend integration adapters
+│   │       ├── backendAdapter.ts
+│   │       └── contentAdapter.ts
+│   ├── components/               # Legacy & shared components
+│   ├── pages/                    # Active route page entrypoints
+│   ├── context/                  # FirmDataContext
+│   ├── services/                 # adminStorage, blogService
+│   ├── data/                     # firmData.ts
+│   ├── lib/                      # supabase.ts
+│   ├── App.tsx                   # Central router & layout configuration
+│   ├── main.tsx                  # React DOM bootstrap
+│   └── index.css                 # The Botanical Ledger design tokens & utility styles
+├── public/
+│   ├── brand/                    # CA India logos, seal medallions, monograms
+│   ├── images/                   # Curated WebP photography
+│   └── uploads/                  # CMS media uploads
+├── tests/
+│   ├── tax-calculators.test.mjs  # 23 statutory calculation tests
+│   └── e2e/                      # 187 E2E tests across Tiers 1-4
+└── package.json                  # Scripts and dependencies
+```

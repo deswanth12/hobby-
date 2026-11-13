@@ -18,6 +18,13 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { LetterReveal, WordReveal } from '../components/animations';
+import { 
+  CornerBrackets, 
+  EditorialMarker, 
+  PrecisionDotMatrix, 
+  GeometricSymbol 
+} from '../components/architectural';
 
 export const IndustriesPage: React.FC = () => {
   const { data } = useFirmData();
@@ -30,10 +37,10 @@ export const IndustriesPage: React.FC = () => {
       sectorKicker: "Venture & Tech",
       icon: Rocket,
       statuteBadge: "Sec 80-IAC • DPIIT",
-      focus: "Entity incorporation (Pvt Ltd / LLP), DPIIT startup recognition, Section 80-IAC three-year income tax holiday, Angel Tax valuation under Section 56(2)(viib), cap table advisory, ESOP structuring, and investor due diligence readiness.",
+      focus: "Entity incorporation (Pvt Ltd / LLP), DPIIT startup recognition, Section 80-IAC three-year income tax holiday, Section 80-IAC Tax Holiday Certification & Cap Table Valuation Advisory, ESOP structuring, and investor due diligence readiness.",
       statutoryFoci: [
         "Section 80-IAC 100% Tax Holiday Certification",
-        "DPIIT Recognition & Form 1 Angel Tax Exemption",
+        "DPIIT Recognition & Section 80-IAC Tax Holiday",
         "Cap Table Structuring & ESOP Plan Governance",
         "Pre-Series A / Series A Financial Due Diligence"
       ]
@@ -184,14 +191,18 @@ export const IndustriesPage: React.FC = () => {
       <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl scroll-reveal">
-            <span className="font-editorial-meta text-gold-dark block mb-3">
-              Commercial Verticals • Specialized Statutory Frameworks
-            </span>
+            <div className="flex items-center gap-2.5 mb-3 flex-wrap">
+              <EditorialMarker number="05" label="COMMERCIAL VERTICALS" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-white border border-brand-border shadow-xs">
+                <span className="text-brand-gold font-mono font-bold">//</span>
+                <LetterReveal text="SPECIALIZED STATUTORY FRAMEWORKS • 10 COMMERCIAL DOMAINS" as="span" className="tracking-widest uppercase font-semibold text-brand-forest text-xs" />
+              </div>
+            </div>
             <h1 className="font-editorial-h1 text-brand-forest">
-              Tailored Statutory Governance. Sector-Specific Precision.
+              <WordReveal text="Tailored Statutory Governance. Sector-Specific Precision." as="span" />
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed text-base sm:text-lg">
-              Every industry operates under distinct tax incentive codes, regulatory scrutiny thresholds, and accounting standards. We configure custom audit procedures and compliance calendars tailored to your specific commercial vertical.
+              We provide tailored statutory audit, tax planning, and regulatory compliance aligned with the specific operational demands of your sector.
             </p>
           </div>
         </div>
@@ -238,8 +249,10 @@ export const IndustriesPage: React.FC = () => {
               <div
                 key={ind.id}
                 id={ind.id}
-                className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal"
+                className="scroll-mt-32 p-5 sm:p-10 lg:p-12 rounded-2xl border border-brand-border bg-brand-white shadow-card card-tactile scroll-reveal relative card-v4-inner-border"
               >
+                <CornerBrackets size={16} variant="gold" />
+                <PrecisionDotMatrix rows={2} cols={3} variant="gold" className="absolute top-4 right-4 opacity-20 hidden sm:block" />
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
                   
                   {/* Left Column: Sector Header & Core Focus */}
@@ -280,8 +293,9 @@ export const IndustriesPage: React.FC = () => {
                   {/* Right Column: Key Statutory Compliance Foci */}
                   <div className={`lg:col-span-6 bg-brand-surface rounded-2xl p-5 sm:p-8 border border-brand-border scroll-reveal-right ${isEven ? '' : 'lg:order-1'}`}>
                     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-brand-border pb-4 mb-5">
-                      <h3 className="font-editorial-h3 text-base font-bold text-brand-forest">
-                        Critical Statutory & Tax Foci
+                      <h3 className="font-editorial-h3 text-base font-bold text-brand-forest flex items-center gap-1.5">
+                        <GeometricSymbol type="diamond" />
+                        <span>Critical Statutory &amp; Tax Foci</span>
                       </h3>
                       <span className="font-editorial-meta text-brand-gold text-[10px]">
                         Regulatory Mandates

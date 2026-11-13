@@ -1,0 +1,112 @@
+{
+  "viewports": [
+    {
+      "name": "320px Compact Mobile",
+      "width": 320,
+      "height": 640,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "390px Mobile",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "768px Tablet",
+      "width": 768,
+      "height": 1024,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1024px Small Desktop",
+      "width": 1024,
+      "height": 800,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1440px Standard Desktop",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "hasOverflow": false
+    },
+    {
+      "name": "1920px Wide Desktop",
+      "width": 1920,
+      "height": 1080,
+      "overflow": 0,
+      "hasOverflow": false
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "homepage-hero-320px.png",
+      "width": 320,
+      "height": 640
+    },
+    {
+      "filename": "homepage-hero-390px.png",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "filename": "homepage-hero-768px.png",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "filename": "homepage-hero-1024px.png",
+      "width": 1024,
+      "height": 800
+    },
+    {
+      "filename": "homepage-hero-1440px.png",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "filename": "homepage-hero-1920px.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "filename": "section-about-collage-1440px.png",
+      "selector": "#about-us"
+    },
+    {
+      "filename": "section-services-bento-1440px.png",
+      "selector": "#services-overview"
+    },
+    {
+      "filename": "section-why-choose-us-1440px.png",
+      "selector": "#why-choose-us"
+    },
+    {
+      "filename": "section-working-process-1440px.png",
+      "selector": "#working-process"
+    },
+    {
+      "filename": "section-industries-grid-1440px.png",
+      "selector": "#industries-overview"
+    },
+    {
+      "filename": "section-insights-blog-1440px.png",
+      "selector": "#insights-overview"
+    },
+    {
+      "filename": "section-final-cta-1440px.png",
+      "selector": "#consultation-cta"
+    },
+    {
+      "filename": "section-chambers-contact-1440px.png",
+      "selector": "#contact-section"
+    }
+  ],
+  "consoleErrors": [],
+  "network404s": []
+}

@@ -4,7 +4,9 @@ import {
   AdminSession, 
   ContentOverrides, 
   SettingsOverrides,
-  AdminPost
+  AdminPost,
+  AdminService,
+  AdminFaq
 } from '../types/admin';
 import { supabase, isSupabaseConfigured, DbEnquiry, DbContentService, DbContentFaq } from '../lib/supabase';
 import { ADMIN_ROUTES } from '../config/adminConfig';
@@ -43,6 +45,7 @@ export const adminStorage = {
     const session = this.getSession();
 
     // 1. Try Shared Server API
+    let serverRecords: EnquiryRecord[] | null = null;
     try {
       const res = await fetch('/api/admin/enquiries', {
         headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
@@ -51,17 +54,14 @@ export const adminStorage = {
       if (res.ok) {
         const body = await res.json();
         if (body.allEnquiries || body.enquiries) {
-          const records: EnquiryRecord[] = body.allEnquiries || body.enquiries;
-          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
-          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-          return { success: true, data: records };
+          serverRecords = body.allEnquiries || body.enquiries;
         }
       }
     } catch {
       // Fall through to Supabase or cache
     }
 
-    // 2. Try Supabase if configured
+    // 2. Try Supabase if configured (especially if server returned empty array on cold container start)
     if (isSupabaseConfigured() && supabase) {
       try {
         const { data, error } = await supabase
@@ -69,8 +69,8 @@ export const adminStorage = {
           .select('*')
           .order('created_at', { ascending: false });
 
-        if (!error && data) {
-          const records: EnquiryRecord[] = data.map((d: DbEnquiry) => ({
+        if (!error && data && data.length > 0) {
+          const supabaseRecords: EnquiryRecord[] = data.map((d: DbEnquiry) => ({
             id: d.id,
             fullName: d.full_name,
             entityType: d.entity_type || '',
@@ -87,13 +87,36 @@ export const adminStorage = {
             updatedAt: d.updated_at,
           }));
 
-          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(records));
+          const localRecords = this.getEnquiries();
+          const supabaseIds = new Set(supabaseRecords.map(r => r.id));
+          const unsynced = localRecords.filter(r => !supabaseIds.has(r.id));
+          const merged = [...supabaseRecords, ...unsynced];
+
+          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(merged));
           window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-          return { success: true, data: records };
+          return { success: true, data: merged };
         }
       } catch (err) {
         console.warn('Supabase fetch fallback:', err);
       }
+    }
+
+    // 3. Fallback / Safe Merge with Server Records: Never overwrite local data with empty array
+    if (serverRecords) {
+      const localRecords = this.getEnquiries();
+      let finalRecords = serverRecords;
+      if (serverRecords.length === 0 && localRecords.length > 0) {
+        // Retain existing local enquiries rather than clobbering with empty serverless baseline
+        finalRecords = localRecords;
+      } else if (serverRecords.length > 0 && localRecords.length > 0) {
+        const serverIds = new Set(serverRecords.map(r => r.id));
+        const unsynced = localRecords.filter(r => !serverIds.has(r.id));
+        finalRecords = [...serverRecords, ...unsynced];
+      }
+
+      localStorage.setItem(ENQUIRIES_KEY, JSON.stringify(finalRecords));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      return { success: true, data: finalRecords };
     }
 
     return { success: true, data: this.getEnquiries() };
@@ -143,8 +166,9 @@ export const adminStorage = {
     return newRecord;
   },
 
-  async recordEnquiryAsync(enquiry: Omit<EnquiryRecord, 'id' | 'createdAt' | 'status'>): Promise<{ success: boolean; data: EnquiryRecord; error?: string }> {
+  async recordEnquiryAsync(enquiry: Omit<EnquiryRecord, 'id' | 'createdAt' | 'status'>): Promise<{ success: boolean; data?: EnquiryRecord; error?: string }> {
     // 1. Send to Shared Server API
+    let rec: EnquiryRecord | null = null;
     try {
       const res = await fetch('/api/enquiries', {
         method: 'POST',
@@ -155,19 +179,52 @@ export const adminStorage = {
       if (res.ok) {
         const json = await res.json();
         if (json.enquiry) {
-          const rec: EnquiryRecord = json.enquiry;
-          const existing = this.getEnquiries();
-          localStorage.setItem(ENQUIRIES_KEY, JSON.stringify([rec, ...existing.filter(e => e.id !== rec.id)]));
-          window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
-          return { success: true, data: rec };
+          rec = json.enquiry;
         }
+      } else {
+        const errJson = await res.json().catch(() => ({}));
+        return { 
+          success: false, 
+          error: errJson.error || 'Chambers consultation server is currently unreachable. Please connect directly via WhatsApp or telephone (+91 96263 50900).' 
+        };
       }
     } catch {
-      // Fall through to local fallback
+      return {
+        success: false,
+        error: 'Chambers consultation server is currently unreachable. Please connect directly via WhatsApp or telephone (+91 96263 50900).'
+      };
     }
 
-    const local = this.recordEnquiry(enquiry);
-    return { success: true, data: local };
+    if (!rec || !rec.id) {
+      return {
+        success: false,
+        error: 'Chambers consultation server did not return a valid consultation reference. Please connect directly via WhatsApp or telephone (+91 96263 50900).'
+      };
+    }
+
+    const savedRec: EnquiryRecord = rec;
+    const existing = this.getEnquiries();
+    localStorage.setItem(ENQUIRIES_KEY, JSON.stringify([savedRec, ...existing.filter(e => e.id !== savedRec.id)]));
+    window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+    // 2. Also persist to Supabase if configured
+    if (isSupabaseConfigured() && supabase) {
+      supabase.from('enquiries').insert({
+        id: savedRec.id,
+        full_name: savedRec.fullName,
+        entity_type: savedRec.entityType || null,
+        organization: savedRec.organization || null,
+        phone: savedRec.phone,
+        email: savedRec.email || null,
+        service_category: savedRec.serviceCategory,
+        city: savedRec.city,
+        urgency: savedRec.urgency === 'Urgent / Approaching Deadline' ? 'statutory-deadline' : 'routine',
+        message: savedRec.message,
+        status: 'new',
+      }).then();
+    }
+
+    return { success: true, data: rec };
   },
 
   updateEnquiryStatus(id: string, status: EnquiryStatus, followUpNotes?: string): boolean {
@@ -266,20 +323,30 @@ export const adminStorage = {
       'Follow-Up Notes'
     ];
 
+    const sanitizeCSVField = (val: unknown): string => {
+      if (val === null || val === undefined) return '""';
+      let str = String(val);
+      // Neutralize spreadsheet formula injection (CWE-1236) for =, +, -, @, %, \t, \r
+      if (/^[=+\-@%\t\r]/.test(str)) {
+        str = "'" + str;
+      }
+      return `"${str.replace(/"/g, '""')}"`;
+    };
+
     const rows = enquiries.map(e => [
-      `"${e.id}"`,
-      `"${new Date(e.createdAt).toLocaleString('en-IN')}"`,
-      `"${e.status.toUpperCase()}"`,
-      `"${(e.fullName || '').replace(/"/g, '""')}"`,
-      `"${(e.entityType || '').replace(/"/g, '""')}"`,
-      `"${(e.organization || '').replace(/"/g, '""')}"`,
-      `"${(e.phone || '').replace(/"/g, '""')}"`,
-      `"${(e.email || '').replace(/"/g, '""')}"`,
-      `"${(e.serviceCategory || '').replace(/"/g, '""')}"`,
-      `"${(e.city || '').replace(/"/g, '""')}"`,
-      `"${(e.urgency || '').replace(/"/g, '""')}"`,
-      `"${(e.message || '').replace(/"/g, '""')}"`,
-      `"${(e.followUpNotes || '').replace(/"/g, '""')}"`
+      sanitizeCSVField(e.id),
+      sanitizeCSVField(new Date(e.createdAt).toLocaleString('en-IN')),
+      sanitizeCSVField(e.status.toUpperCase()),
+      sanitizeCSVField(e.fullName),
+      sanitizeCSVField(e.entityType),
+      sanitizeCSVField(e.organization),
+      sanitizeCSVField(e.phone),
+      sanitizeCSVField(e.email),
+      sanitizeCSVField(e.serviceCategory),
+      sanitizeCSVField(e.city),
+      sanitizeCSVField(e.urgency),
+      sanitizeCSVField(e.message),
+      sanitizeCSVField(e.followUpNotes)
     ]);
 
     return [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
@@ -302,21 +369,33 @@ export const adminStorage = {
 
   async fetchContentRemote(): Promise<ContentOverrides> {
     const current = this.getContentOverrides();
+    const session = this.getSession();
 
     // 1. Fetch from Shared Server API
     try {
-      const res = await fetch('/api/content');
+      const res = await fetch('/api/content', {
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
       if (res.ok) {
         const body = await res.json();
         current.services = current.services || {};
-        (body.allServices || body.services || []).forEach((s: { id: string; title: string; shortDescription: string; fullDescription: string; statutoryFramework?: string; targetClients?: string; status: 'published' | 'draft' }) => {
+        (body.allServices || body.services || []).forEach((s: AdminService) => {
           current.services![s.id] = {
+            id: s.id,
             title: s.title,
             shortDescription: s.shortDescription,
             fullDescription: s.fullDescription,
             statutoryFramework: s.statutoryFramework || '',
             targetClients: s.targetClients || '',
+            typicalScenarios: s.typicalScenarios || [],
+            services: s.services || [],
+            iconName: s.iconName || 'Briefcase',
             status: s.status,
+            order: s.order,
+            seo: s.seo,
+            createdAt: s.createdAt,
+            updatedAt: s.updatedAt,
+            deletedAt: s.deletedAt
           };
         });
 
@@ -328,14 +407,31 @@ export const adminStorage = {
         });
 
         current.faqs = current.faqs || {};
-        (body.allFaqs || body.faqs || []).forEach((f: { id: string; question: string; answer: string; statuteReference?: string; status: 'published' | 'draft' }) => {
+        (body.allFaqs || body.faqs || []).forEach((f: AdminFaq) => {
           current.faqs![f.id] = {
+            id: f.id,
             question: f.question,
             answer: f.answer,
             statuteReference: f.statuteReference || '',
+            category: f.category || 'General Practice',
+            serviceIds: f.serviceIds || [],
             status: f.status,
+            order: f.order,
+            createdAt: f.createdAt,
+            updatedAt: f.updatedAt,
+            deletedAt: f.deletedAt
           };
         });
+
+        if (body.deletedServices) {
+          current.deletedServices = body.deletedServices;
+        }
+        if (body.deletedFaqs) {
+          current.deletedFaqs = body.deletedFaqs;
+        }
+        if (body.slugRedirects) {
+          current.slugRedirects = body.slugRedirects;
+        }
 
         localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
         window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
@@ -357,6 +453,7 @@ export const adminStorage = {
           current.services = current.services || {};
           servicesRes.data.forEach((s: DbContentService) => {
             current.services![s.id] = {
+              id: s.id,
               title: s.title,
               shortDescription: s.short_description,
               fullDescription: s.full_description,
@@ -371,9 +468,11 @@ export const adminStorage = {
           current.faqs = current.faqs || {};
           faqsRes.data.forEach((f: DbContentFaq) => {
             current.faqs![f.id] = {
+              id: f.id,
               question: f.question,
               answer: f.answer,
               statuteReference: f.statute_reference || '',
+              category: 'General Practice',
               status: f.status,
             };
           });
@@ -490,6 +589,335 @@ export const adminStorage = {
     }
 
     return true;
+  },
+
+  // --- Enhanced Service Management ---
+
+  getAllServices(): AdminService[] {
+    const current = this.getContentOverrides();
+    const servicesObj = current.services || {};
+    return Object.values(servicesObj)
+      .filter(s => !s.deletedAt)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  },
+
+  getPublishedServices(): AdminService[] {
+    return this.getAllServices().filter(s => s.status === 'published');
+  },
+
+  getServiceById(id: string): AdminService | undefined {
+    const current = this.getContentOverrides();
+    return current.services?.[id];
+  },
+
+  getDeletedServices(): AdminService[] {
+    const current = this.getContentOverrides();
+    return current.deletedServices || [];
+  },
+
+  async saveService(service: AdminService, isNew = false): Promise<{ success: boolean; service?: AdminService; error?: string }> {
+    const session = this.getSession();
+    const endpoint = isNew 
+      ? '/api/admin/content/services' 
+      : `/api/admin/content/services/${service.id}`;
+    const method = isNew ? 'POST' : 'PUT';
+
+    try {
+      const res = await fetch(endpoint, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+        },
+        body: JSON.stringify(service)
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to save service' };
+      }
+
+      const saved: AdminService = data.service || service;
+      const current = this.getContentOverrides();
+      current.services = current.services || {};
+      current.services[saved.id] = saved;
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      // Sync to Supabase if configured
+      if (isSupabaseConfigured() && supabase) {
+        supabase.from('content_services').upsert({
+          id: saved.id,
+          title: saved.title || '',
+          short_description: saved.shortDescription || '',
+          full_description: saved.fullDescription || '',
+          statutory_framework: saved.statutoryFramework,
+          target_clients: saved.targetClients,
+          status: saved.status || 'published',
+          display_order: saved.order || 1,
+        }).then();
+      }
+
+      return { success: true, service: saved };
+    } catch (err: unknown) {
+      const errorMsg = err instanceof Error ? err.message : 'Network error saving service';
+      return { success: false, error: errorMsg };
+    }
+  },
+
+  async deleteService(id: string): Promise<{ success: boolean; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch(`/api/admin/content/services/${id}`, {
+        method: 'DELETE',
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to delete service' };
+      }
+
+      const current = this.getContentOverrides();
+      if (current.services && current.services[id]) {
+        const removed = { ...current.services[id], deletedAt: new Date().toISOString() };
+        delete current.services[id];
+        current.deletedServices = current.deletedServices || [];
+        current.deletedServices = current.deletedServices.filter(s => s.id !== id);
+        current.deletedServices.push(removed);
+        localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      }
+
+      return { success: true };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
+  },
+
+  async recoverService(id: string): Promise<{ success: boolean; service?: AdminService; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch(`/api/admin/content/services/${id}/recover`, {
+        method: 'POST',
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to recover service' };
+      }
+
+      const current = this.getContentOverrides();
+      current.services = current.services || {};
+      if (data.service) {
+        current.services[id] = data.service;
+      }
+      current.deletedServices = (current.deletedServices || []).filter(s => s.id !== id);
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      return { success: true, service: data.service };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
+  },
+
+  async reorderServices(orderedIds: string[]): Promise<{ success: boolean; services?: AdminService[]; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch('/api/admin/content/services-reorder', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+        },
+        body: JSON.stringify({ orderedIds })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to reorder services' };
+      }
+
+      const current = this.getContentOverrides();
+      current.services = current.services || {};
+      orderedIds.forEach((id, idx) => {
+        if (current.services![id]) {
+          current.services![id].order = idx + 1;
+        }
+      });
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      return { success: true, services: data.services };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
+  },
+
+  // --- Enhanced FAQ Management ---
+
+  getAllFaqs(): AdminFaq[] {
+    const current = this.getContentOverrides();
+    const faqsObj = current.faqs || {};
+    return Object.values(faqsObj)
+      .filter(f => !f.deletedAt)
+      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  },
+
+  getPublishedFaqs(serviceId?: string): AdminFaq[] {
+    return this.getAllFaqs()
+      .filter(f => f.status === 'published')
+      .filter(f => !serviceId || (Array.isArray(f.serviceIds) && f.serviceIds.includes(serviceId)));
+  },
+
+  getFaqById(id: string): AdminFaq | undefined {
+    const current = this.getContentOverrides();
+    return current.faqs?.[id];
+  },
+
+  getDeletedFaqs(): AdminFaq[] {
+    const current = this.getContentOverrides();
+    return current.deletedFaqs || [];
+  },
+
+  async saveFaq(faq: AdminFaq, isNew = false): Promise<{ success: boolean; faq?: AdminFaq; error?: string }> {
+    const session = this.getSession();
+    const endpoint = isNew 
+      ? '/api/admin/content/faqs' 
+      : `/api/admin/content/faqs/${faq.id}`;
+    const method = isNew ? 'POST' : 'PUT';
+
+    try {
+      const res = await fetch(endpoint, {
+        method,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+        },
+        body: JSON.stringify(faq)
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to save FAQ' };
+      }
+
+      const saved: AdminFaq = data.faq || faq;
+      const current = this.getContentOverrides();
+      current.faqs = current.faqs || {};
+      current.faqs[saved.id] = saved;
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      // Sync to Supabase if configured
+      if (isSupabaseConfigured() && supabase) {
+        supabase.from('content_faqs').upsert({
+          id: saved.id,
+          question: saved.question || '',
+          answer: saved.answer || '',
+          statute_reference: saved.statuteReference,
+          status: saved.status || 'published',
+          display_order: saved.order || 1,
+        }).then();
+      }
+
+      return { success: true, faq: saved };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error saving FAQ' };
+    }
+  },
+
+  async deleteFaq(id: string): Promise<{ success: boolean; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch(`/api/admin/content/faqs/${id}`, {
+        method: 'DELETE',
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to delete FAQ' };
+      }
+
+      const current = this.getContentOverrides();
+      if (current.faqs && current.faqs[id]) {
+        const removed = { ...current.faqs[id], deletedAt: new Date().toISOString() };
+        delete current.faqs[id];
+        current.deletedFaqs = current.deletedFaqs || [];
+        current.deletedFaqs = current.deletedFaqs.filter(f => f.id !== id);
+        current.deletedFaqs.push(removed);
+        localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+        window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+      }
+
+      return { success: true };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
+  },
+
+  async recoverFaq(id: string): Promise<{ success: boolean; faq?: AdminFaq; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch(`/api/admin/content/faqs/${id}/recover`, {
+        method: 'POST',
+        headers: session ? { 'Authorization': `Bearer ${session.token}` } : {}
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to recover FAQ' };
+      }
+
+      const current = this.getContentOverrides();
+      current.faqs = current.faqs || {};
+      if (data.faq) {
+        current.faqs[id] = data.faq;
+      }
+      current.deletedFaqs = (current.deletedFaqs || []).filter(f => f.id !== id);
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      return { success: true, faq: data.faq };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
+  },
+
+  async reorderFaqs(orderedIds: string[]): Promise<{ success: boolean; faqs?: AdminFaq[]; error?: string }> {
+    const session = this.getSession();
+    try {
+      const res = await fetch('/api/admin/content/faqs-reorder', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(session ? { 'Authorization': `Bearer ${session.token}` } : {})
+        },
+        body: JSON.stringify({ orderedIds })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        return { success: false, error: data.error || 'Failed to reorder FAQs' };
+      }
+
+      const current = this.getContentOverrides();
+      current.faqs = current.faqs || {};
+      orderedIds.forEach((id, idx) => {
+        if (current.faqs![id]) {
+          current.faqs![id].order = idx + 1;
+        }
+      });
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(current));
+      window.dispatchEvent(new CustomEvent(FIRM_DATA_UPDATE_EVENT));
+
+      return { success: true, faqs: data.faqs };
+    } catch (err: unknown) {
+      return { success: false, error: err instanceof Error ? err.message : 'Network error' };
+    }
   },
 
   getPosts(): AdminPost[] {
@@ -845,6 +1273,47 @@ export const adminStorage = {
       success: true,
       message: `Password recovery request logged for ${cleanEmail}. In production, an authorized password reset link is securely dispatched to registered chambers accounts.`
     };
+  },
+
+  async changePassword(currentPassword: string, newPassword: string): Promise<{ success: boolean; message?: string; error?: string }> {
+    const session = this.getSession();
+    if (!session || !session.token) {
+      return { success: false, error: 'Unauthorized: Active administrative session required.' };
+    }
+
+    try {
+      const res = await fetch('/api/admin/auth/change-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${session.token}`
+        },
+        body: JSON.stringify({
+          currentPassword,
+          newPassword
+        })
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data?.success) {
+        this.logout();
+        return {
+          success: true,
+          message: data.message || 'Password updated successfully. All existing sessions have been terminated. Please log in with your new password.'
+        };
+      }
+
+      return {
+        success: false,
+        error: data?.error || `Failed to update password (HTTP ${res.status}).`
+      };
+    } catch (err) {
+      return {
+        success: false,
+        error: (err as Error).message || 'Network error while attempting to update password.'
+      };
+    }
   },
 
   getSession(): AdminSession | null {

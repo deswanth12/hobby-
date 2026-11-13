@@ -1,0 +1,25 @@
+{
+  "desktop": {
+    "ttfb": 375.20000000298023,
+    "domInteractive": 389.3999999985099,
+    "domContentLoaded": 0,
+    "loadComplete": 0,
+    "firstPaint": 0,
+    "firstContentfulPaint": 0,
+    "lcp": 0,
+    "lcpElement": "",
+    "cls": 0,
+    "longTasksCount": 0,
+    "totalLongTaskDuration": 0,
+    "measuredFps": 61.21038602020257,
+    "totalJankFrames": 0,
+    "frameCount": 62
+  },
+  "mobile": {
+    "fcp": 1428,
+    "cls": 0,
+    "measuredFps": 56.36867088590982,
+    "totalJankFrames": 1,
+    "frameCount": 57
+  }
+}

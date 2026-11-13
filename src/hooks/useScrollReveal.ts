@@ -4,6 +4,9 @@ import { useLocation } from 'react-router-dom';
 export const REVEAL_SELECTOR =
   '.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale, .scroll-reveal-image, [data-reveal]';
 
+export const CONTINUOUS_MOTION_SELECTOR =
+  '.motion-spin-mesh, .motion-spin-mesh-reverse, .motion-spin-mesh-organic, .motion-dot-pulse, .motion-dot-pulse-delayed, .motion-dot-pulse-alt, .motion-dot-wave-1, .motion-dot-wave-2, .motion-dot-wave-3, .motion-dot-wave-4, .animate-ambient-drift, .animate-ambient-pulse, .motion-path-reveal-loop, .motion-pulse-ring, .motion-float-subtle, .motion-float-hero, [data-continuous-motion]';
+
 /**
  * useScrollReveal Hook
  * Production-grade IntersectionObserver scroll entrance engine for Kavitha & Associates.
@@ -12,6 +15,7 @@ export const REVEAL_SELECTOR =
  * - Above-the-fold content smoothly animates into view on page mount.
  * - Below-the-fold content stays concealed until scrolled into the viewport.
  * - Already-passed content (e.g. on anchor jump or refresh) is immediately revealed.
+ * - Continuous animations (spin, wave, pulse) pause when off-screen to preserve CPU/GPU battery.
  * - Passive rAF scroll listener catches fast fling scrolls and guarantees bottom-of-page reveals.
  * - MutationObserver dynamically registers new elements without arbitrary delays.
  * - Accessible: respects prefers-reduced-motion: reduce, keyboard focusin, and beforeprint.
@@ -37,6 +41,7 @@ export function useScrollReveal() {
     // Set of observed elements to prevent duplicate observers
     const observedSet = new WeakSet<Element>();
 
+    // 1. Entrance Reveal Observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -52,6 +57,24 @@ export function useScrollReveal() {
         root: null,
         rootMargin: '0px 0px -60px 0px',
         threshold: 0.05,
+      }
+    );
+
+    // 2. Offscreen Continuous Motion Pausing Observer
+    const offscreenObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('is-offscreen');
+          } else {
+            entry.target.classList.add('is-offscreen');
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '120px 0px 120px 0px',
+        threshold: 0,
       }
     );
 
@@ -89,6 +112,11 @@ export function useScrollReveal() {
     const scanAndObserve = () => {
       const targets = document.querySelectorAll(REVEAL_SELECTOR);
       targets.forEach(observeElement);
+
+      const continuousTargets = document.querySelectorAll(CONTINUOUS_MOTION_SELECTOR);
+      continuousTargets.forEach((el) => {
+        offscreenObserver.observe(el);
+      });
     };
 
     // Initial scan after frame
@@ -159,6 +187,7 @@ export function useScrollReveal() {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('beforeprint', handleBeforePrint);
       observer.disconnect();
+      offscreenObserver.disconnect();
     };
   }, [pathname]);
 }

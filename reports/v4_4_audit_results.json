@@ -1,0 +1,124 @@
+{
+  "auditResults": [
+    {
+      "route": "homepage",
+      "viewport": "390px-mobile",
+      "width": 390,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "about",
+      "viewport": "390px-mobile",
+      "width": 390,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "services",
+      "viewport": "390px-mobile",
+      "width": 390,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "contact",
+      "viewport": "390px-mobile",
+      "width": 390,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "homepage",
+      "viewport": "768px-tablet",
+      "width": 768,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "about",
+      "viewport": "768px-tablet",
+      "width": 768,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "services",
+      "viewport": "768px-tablet",
+      "width": 768,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "contact",
+      "viewport": "768px-tablet",
+      "width": 768,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "homepage",
+      "viewport": "1024px-laptop",
+      "width": 1024,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "about",
+      "viewport": "1024px-laptop",
+      "width": 1024,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "services",
+      "viewport": "1024px-laptop",
+      "width": 1024,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "contact",
+      "viewport": "1024px-laptop",
+      "width": 1024,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "homepage",
+      "viewport": "1440px-desktop",
+      "width": 1440,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "about",
+      "viewport": "1440px-desktop",
+      "width": 1440,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "services",
+      "viewport": "1440px-desktop",
+      "width": 1440,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "route": "contact",
+      "viewport": "1440px-desktop",
+      "width": 1440,
+      "overflow": 0,
+      "passed": true
+    }
+  ],
+  "domCheck": {
+    "hero": true,
+    "whyChooseUs": true,
+    "services": true,
+    "process": true,
+    "contact": true,
+    "about": true
+  }
+}

@@ -1,10 +1,14 @@
 {
-  "timestamp": "2026-11-01T05:31:57.680Z",
+  "timestamp": "2026-11-03T14:38:44.277Z",
   "totalAssertions": 68,
-  "passedAssertions": 64,
-  "failedCount": 4,
+  "passedAssertions": 62,
+  "failedCount": 6,
   "warningCount": 0,
   "failures": [
+    {
+      "message": "npm run build completed in 13.80s (< 10.0s threshold)",
+      "details": "Duration: 13.801273000000002s"
+    },
     {
       "message": "HomePage.tsx references verified ICAI Mem. [REDACTED_MEMBERSHIP_NO]",
       "details": ""
@@ -19,6 +23,10 @@
     },
     {
       "message": "Navbar.tsx cleanly bifurcates mobile drawer (lg:hidden) and desktop navigation (hidden lg:flex)",
+      "details": ""
+    },
+    {
+      "message": "HomePage.tsx contains mandatory anchor section id=\"knowledge-faq\"",
       "details": ""
     }
   ],

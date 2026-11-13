@@ -1,0 +1,706 @@
+{
+  "network_leaks": [],
+  "dom_leaks": [],
+  "seal_medallion_visibility": [
+    {
+      "route": "/about",
+      "passed": true,
+      "data": [
+        {
+          "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+          "alt": "ICAI Practice Credential Seal",
+          "naturalWidth": 512,
+          "naturalHeight": 443,
+          "offsetWidth": 48,
+          "offsetHeight": 48,
+          "rectWidth": 48,
+          "rectHeight": 48,
+          "rectTop": -2033.875,
+          "rectBottom": -1985.875,
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "parentHidden": false,
+          "isGenuinelyVisible": true
+        }
+      ]
+    },
+    {
+      "route": "/leadership",
+      "passed": true,
+      "data": [
+        {
+          "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+          "alt": "ICAI Practice Credential Seal",
+          "naturalWidth": 512,
+          "naturalHeight": 443,
+          "offsetWidth": 48,
+          "offsetHeight": 48,
+          "rectWidth": 48,
+          "rectHeight": 48,
+          "rectTop": -702.21875,
+          "rectBottom": -654.21875,
+          "display": "block",
+          "visibility": "visible",
+          "opacity": "1",
+          "parentHidden": false,
+          "isGenuinelyVisible": true
+        }
+      ]
+    }
+  ],
+  "hidden_facades": [],
+  "horizontal_overflows": [
+    {
+      "viewport": {
+        "name": "compact_mobile_320",
+        "width": 320,
+        "height": 640
+      },
+      "route": "/about",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "innerWidth": 320,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "compact_mobile_320",
+        "width": 320,
+        "height": 640
+      },
+      "route": "/leadership",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 320,
+        "docClientWidth": 320,
+        "bodyScrollWidth": 320,
+        "bodyClientWidth": 320,
+        "innerWidth": 320,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "android_std_360",
+        "width": 360,
+        "height": 800
+      },
+      "route": "/about",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "innerWidth": 360,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "android_std_360",
+        "width": 360,
+        "height": 800
+      },
+      "route": "/leadership",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 360,
+        "docClientWidth": 360,
+        "bodyScrollWidth": 360,
+        "bodyClientWidth": 360,
+        "innerWidth": 360,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "iphone_std_390",
+        "width": 390,
+        "height": 844
+      },
+      "route": "/about",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 390,
+        "docClientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390,
+        "innerWidth": 390,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "iphone_std_390",
+        "width": 390,
+        "height": 844
+      },
+      "route": "/leadership",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 390,
+        "docClientWidth": 390,
+        "bodyScrollWidth": 390,
+        "bodyClientWidth": 390,
+        "innerWidth": 390,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "iphone_max_430",
+        "width": 430,
+        "height": 932
+      },
+      "route": "/about",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 430,
+        "docClientWidth": 430,
+        "bodyScrollWidth": 430,
+        "bodyClientWidth": 430,
+        "innerWidth": 430,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    },
+    {
+      "viewport": {
+        "name": "iphone_max_430",
+        "width": 430,
+        "height": 932
+      },
+      "route": "/leadership",
+      "passed": true,
+      "metrics": {
+        "docScrollWidth": 430,
+        "docClientWidth": 430,
+        "bodyScrollWidth": 430,
+        "bodyClientWidth": 430,
+        "innerWidth": 430,
+        "hasDocOverflow": false,
+        "uncontainedOverflowingElements": []
+      }
+    }
+  ],
+  "deep_scroll_evaluations": [
+    {
+      "route": "/about",
+      "scrollY": 0,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": 2557.125,
+            "rectBottom": 2605.125,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 1000,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": 1549.125,
+            "rectBottom": 1597.125,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 2000,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": 549.125,
+            "rectBottom": 597.125,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 2500,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": 49.125,
+            "rectBottom": 97.125,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 3000,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -450.875,
+            "rectBottom": -402.875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 3500,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -950.875,
+            "rectBottom": -902.875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 4000,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -1450.875,
+            "rectBottom": -1402.875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 4500,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -1950.875,
+            "rectBottom": -1902.875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/about",
+      "scrollY": 4591,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -2033.875,
+            "rectBottom": -1985.875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 0,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": 728.78125,
+            "rectBottom": 776.78125,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1000,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -279.21875,
+            "rectBottom": -231.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    },
+    {
+      "route": "/leadership",
+      "scrollY": 1431,
+      "eval": {
+        "leakedImages": [],
+        "sealCount": 1,
+        "sealData": [
+          {
+            "src": "http://localhost:5173/brand/ka-seal-medallion.webp",
+            "alt": "ICAI Practice Credential Seal",
+            "naturalWidth": 512,
+            "naturalHeight": 443,
+            "offsetWidth": 48,
+            "offsetHeight": 48,
+            "rectWidth": 48,
+            "rectHeight": 48,
+            "rectTop": -702.21875,
+            "rectBottom": -654.21875,
+            "display": "block",
+            "visibility": "visible",
+            "opacity": "1",
+            "parentHidden": false,
+            "isGenuinelyVisible": true
+          }
+        ],
+        "suspectedFacades": []
+      }
+    }
+  ],
+  "all_passed": true
+}

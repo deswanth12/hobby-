@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240">
+  <filter id="paper-grain" x="0%" y="0%" width="100%" height="100%">
+    <!-- Low-frequency organic turbulence for natural handmade paper fiber density variation -->
+    <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="3" stitchTiles="stitch" result="fiberVariation"/>
+    <!-- Fine tactile paper grain -->
+    <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="3" stitchTiles="stitch" result="fineGrain"/>
+    <!-- Composite blend balancing organic tonal variation with tactile grain -->
+    <feComposite in="fiberVariation" in2="fineGrain" operator="arithmetic" k1="0" k2="0.32" k3="0.68" k4="0" result="handmadePaper"/>
+    <feColorMatrix in="handmadePaper" type="matrix" values="0 0 0 0 0.22  0 0 0 0 0.19  0 0 0 0 0.14  0 0 0 0.042 0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#paper-grain)"/>
+</svg>

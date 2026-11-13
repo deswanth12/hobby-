@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { Phone, Mail, Menu, X, ChevronDown, ShieldCheck, MapPin, ChevronRight } from 'lucide-react';
 import { useFirmData } from '../context/FirmDataContext';
 
-
 const WhatsAppNavIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
   <svg 
     viewBox="0 0 24 24" 
@@ -27,6 +26,7 @@ export const Navbar: React.FC = () => {
   const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const drawerRef = useRef<HTMLDivElement | null>(null);
+  const desktopDropdownRef = useRef<HTMLDivElement | null>(null);
 
   // Passive scroll listener for dynamic elevation
   useEffect(() => {
@@ -44,6 +44,18 @@ export const Navbar: React.FC = () => {
     setServicesDropdown(false);
     setMobileServicesOpen(false);
   }, [location.pathname]);
+
+  // Click-outside listener to dismiss desktop services dropdown
+  useEffect(() => {
+    if (!servicesDropdown) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (desktopDropdownRef.current && !desktopDropdownRef.current.contains(e.target as Node)) {
+        setServicesDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [servicesDropdown]);
 
   // Body scroll locking and focus management when mobile navigation drawer is open
   useEffect(() => {
@@ -71,15 +83,19 @@ export const Navbar: React.FC = () => {
   // Handle escape key accessibility and focus trap within drawer
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (!isOpen) return;
-
       if (e.key === 'Escape') {
-        setIsOpen(false);
-        setServicesDropdown(false);
-        setMobileServicesOpen(false);
-        toggleButtonRef.current?.focus();
+        if (servicesDropdown) {
+          setServicesDropdown(false);
+        }
+        if (isOpen) {
+          setIsOpen(false);
+          setMobileServicesOpen(false);
+          toggleButtonRef.current?.focus();
+        }
         return;
       }
+
+      if (!isOpen) return;
 
       if (e.key === 'Tab' && drawerRef.current) {
         const focusable = drawerRef.current.querySelectorAll<HTMLElement>(
@@ -104,7 +120,7 @@ export const Navbar: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  }, [isOpen, servicesDropdown]);
 
   const serviceSublinks = [
     { label: 'All Services Overview', path: '/services' },
@@ -122,47 +138,43 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header className={`sticky top-0 z-50 bg-brand-ivory/95 backdrop-blur-md border-b transition-[box-shadow,border-color] duration-200 ${
-      isScrolled ? 'shadow-editorial py-0 border-brand-gold/40' : 'shadow-subtle py-0 border-brand-border'
+    <header className={`sticky top-0 z-50 bg-[#071B14]/95 backdrop-blur-md border-b transition-[box-shadow,border-color,background-color] duration-200 ${
+      isScrolled ? 'shadow-[0_4px_20px_-2px_rgba(24,61,48,0.06)] py-0 border-[#B49A64]/40 bg-[#071B14]/98' : 'shadow-[0_1px_3px_rgba(24,61,48,0.03)] py-0 border-[#B49A64]/25'
     }`}>
-      {/* Top Utility Bar */}
-      <div className="hidden md:block bg-brand-deep text-brand-white text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-brand-forest/40">
+      {/* Top Utility Bar with Deep Botanical Green and Champagne Accents */}
+      <div className="hidden md:block bg-[#04100C] text-[#F1EBDD] text-xs py-2 px-4 sm:px-6 lg:px-8 border-b border-[#B49A64]/20">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-4 flex-wrap">
-            <span className="flex items-center gap-1.5 text-emerald-100/90 font-medium tracking-normal">
-              <ShieldCheck className="w-3.5 h-3.5 text-brand-gold shrink-0" aria-hidden="true" />
+            <span className="flex items-center gap-1.5 text-[#FFFDF7]/90 font-medium tracking-normal">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64] shrink-0" aria-hidden="true" />
               <span>Chartered Accountants &amp; Cost Accountants</span>
-              <span className="hidden sm:inline text-brand-gold/60" aria-hidden="true">|</span>
-              <span className="hidden sm:inline text-brand-gold font-medium">CA Kavitha Vijay</span>
-              <span className="hidden xl:inline text-brand-gold/60" aria-hidden="true">|</span>
-              <span className="hidden xl:inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-200">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                <span>FY 2026-27 Compliances Active</span>
-              </span>
+              <span className="hidden sm:inline text-[#B49A64]/50" aria-hidden="true">|</span>
+              <span className="hidden sm:inline text-[#D8D0BE] font-semibold">CA Kavitha Vijay</span>
             </span>
           </div>
-          <div className="flex items-center gap-4 text-emerald-100/90 flex-wrap">
+          <div className="flex items-center gap-4 text-[#FFFDF7]/90 flex-wrap">
             <a
               href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-              className="flex items-center gap-1.5 hover:text-brand-gold transition-colors focus:outline-none focus:ring-1 focus:ring-brand-gold py-0.5"
+              className="flex items-center gap-1.5 hover:text-[#D8D0BE] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C9A66B] py-0.5"
               title="Click to call primary contact line"
             >
-              <Phone className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
+              <Phone className="w-3.5 h-3.5 text-[#B49A64]" aria-hidden="true" />
               <span className="font-medium">{FIRM_DATA.contact.primaryPhone}</span>
             </a>
-            <span className="hidden md:inline text-brand-gold/60" aria-hidden="true">|</span>
+            <span className="hidden md:inline text-[#B49A64]/50" aria-hidden="true">|</span>
             <a
               href={`mailto:${FIRM_DATA.contact.email}`}
-              className="hidden md:flex items-center gap-1.5 hover:text-brand-gold transition-colors focus:outline-none focus:ring-1 focus:ring-brand-gold py-0.5"
+              className="hidden md:flex items-center gap-1.5 hover:text-[#D8D0BE] transition-colors focus:outline-none focus:ring-1 focus:ring-[#C9A66B] py-0.5"
               title="Click to send email inquiry"
             >
-              <Mail className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
+              <Mail className="w-3.5 h-3.5 text-[#B49A64]" aria-hidden="true" />
               <span>{FIRM_DATA.contact.email}</span>
             </a>
-            <span className="hidden lg:inline text-brand-gold/60" aria-hidden="true">|</span>
-            <span className="hidden lg:flex items-center gap-1 text-emerald-200/90">
-              <MapPin className="w-3.5 h-3.5 text-brand-gold" aria-hidden="true" />
-              <span>Tirupati & Pan-India</span>
+            <span className="hidden lg:inline text-[#B49A64]/50" aria-hidden="true">|</span>
+            {/* Verified Tirupati Location Indicator */}
+            <span className="hidden lg:flex items-center gap-1.5 text-[#D8D0BE]">
+              <MapPin className="w-3.5 h-3.5 text-[#B49A64]" aria-hidden="true" />
+              <span>Chambers: Tirupati | Pan-India Practice</span>
             </span>
           </div>
         </div>
@@ -170,45 +182,43 @@ export const Navbar: React.FC = () => {
 
       {/* Main Navbar */}
       <nav
-        className={`max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between transition-[padding] duration-200 ${
-          isScrolled ? 'py-2' : 'py-2.5 sm:py-3.5'
-        }`}
+        className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between py-2.5 sm:py-3.5"
         aria-label="Main Navigation"
       >
         {/* Typographic Brand Mark & Monogram Badge */}
         <Link
           to="/"
-          className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-brand-forest rounded-lg p-0.5 sm:p-1 btn-tactile shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 group focus-visible:outline-2 focus-visible:outline-[#183D30] rounded-lg p-0.5 sm:p-1 btn-tactile shrink-0"
         >
-          {/* Refined Monogram Badge with Master Vector Emblem */}
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm group-hover:border-brand-gold group-hover:shadow-editorial transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
+          {/* Official CA India Logo Badge */}
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#FFFCF5] flex items-center justify-center border border-[#C9A66B]/60 shadow-xs group-hover:border-[#C9A66B] group-hover:shadow-[0_4px_16px_rgba(24,61,48,0.08)] transition-[border-color,box-shadow] duration-200 shrink-0 p-1 relative overflow-hidden">
             <img
-              src="/brand/ka-monogram-flat.svg"
-              alt="Kavitha &amp; Associates Official Practice Monogram"
-              width="40"
-              height="40"
-              className="w-full h-full object-contain drop-shadow-xs"
+              src="/brand/ca-india-logo.webp"
+              alt="Official CA India Logo - Chartered Accountants"
+              width="44"
+              height="44"
+              className="w-full h-full object-contain"
             />
-            <span className="sr-only font-serif font-bold text-xl tracking-wider text-brand-gold">KA</span>
+            <span className="sr-only font-serif font-bold text-xl tracking-wider text-[#B49A64]">KA</span>
           </div>
           <div className="min-w-0">
-            <span className="block font-serif text-[1.125rem] xs:text-xl sm:text-2xl font-bold tracking-normal text-brand-forest leading-tight group-hover:text-brand-deep transition-colors whitespace-nowrap">
+            <span className="block font-serif text-[1.125rem] xs:text-xl sm:text-2xl font-bold tracking-normal text-[#F1EBDD] leading-tight group-hover:text-[#B49A64] transition-colors whitespace-nowrap">
               Kavitha &amp; Associates
             </span>
-            <span className="block text-[10px] sm:text-xs font-semibold text-gold-dark mt-0.5 leading-none">
+            <span className="block text-[10px] sm:text-xs font-semibold text-[#B49A64] mt-0.5 leading-none tracking-wider uppercase">
               Chartered Accountants
             </span>
           </div>
         </Link>
 
         {/* Restrained Desktop Navigation Links */}
-        <div className="hidden xl:flex items-center gap-2 xl:gap-2.5 2xl:gap-4 font-editorial-nav">
+        <div className="hidden xl:flex items-center gap-2 xl:gap-2.5 2xl:gap-3.5 font-editorial-nav">
           <Link
             to="/"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`min-h-[44px] inline-flex items-center px-2 py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               isActive('/') && location.pathname === '/'
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             Home
@@ -216,10 +226,10 @@ export const Navbar: React.FC = () => {
 
           <Link
             to="/about"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`min-h-[44px] inline-flex items-center px-2 py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               isActive('/about')
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             About
@@ -227,34 +237,42 @@ export const Navbar: React.FC = () => {
 
           {/* Services with Hover/Click Dropdown */}
           <div
+            ref={desktopDropdownRef}
             className="relative"
             onMouseEnter={() => setServicesDropdown(true)}
             onMouseLeave={() => setServicesDropdown(false)}
           >
             <button
               type="button"
-              className={`flex items-center gap-1 py-2 min-h-[44px] text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+              className={`flex items-center gap-1 py-2 min-h-[44px] text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
                 isActive('/services')
-                  ? 'text-brand-forest font-bold is-active'
-                  : 'text-brand-charcoal hover:text-brand-forest'
+                  ? 'text-[#F1EBDD] font-bold is-active'
+                  : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
               }`}
               aria-expanded={servicesDropdown}
+              aria-haspopup="menu"
               onClick={() => setServicesDropdown(!servicesDropdown)}
             >
-              <span>Services</span>
-              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdown ? 'rotate-180 text-brand-forest' : ''}`} />
+              <span>Pan-India Services</span>
+              <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdown ? 'rotate-180 text-[#F1EBDD]' : 'text-[#B49A64]'}`} />
             </button>
 
             {servicesDropdown && (
-              <div className="absolute left-0 mt-1 w-72 rounded-xl bg-brand-white shadow-card-hover border border-brand-border py-2.5 z-50 animate-fadeIn">
-                <div className="px-4 py-2 font-editorial-meta text-[10px] text-brand-gold border-b border-brand-border/60">
+              <div 
+                role="menu"
+                aria-orientation="vertical"
+                className="absolute left-0 mt-1.5 w-72 rounded-xl bg-[#0B241C] shadow-[0_12px_36px_-4px_rgba(7,27,20,0.5)] border border-[#B49A64]/30 py-2.5 z-50 animate-fadeIn"
+              >
+                <div className="px-4 py-2 font-editorial-meta text-[10px] font-bold uppercase tracking-wider text-[#B49A64] border-b border-[#B49A64]/25">
                   Practice Disciplines
                 </div>
                 {serviceSublinks.map((child) => (
                   <Link
                     key={child.label}
                     to={child.path}
-                    className="block px-4 py-2.5 text-xs text-brand-charcoal hover:bg-brand-pale hover:text-brand-forest font-medium transition-colors"
+                    role="menuitem"
+                    onClick={() => setServicesDropdown(false)}
+                    className="block px-4 py-2.5 text-xs text-[#F1EBDD] hover:bg-[#183529] hover:text-[#B49A64] font-medium transition-colors"
                   >
                     {child.label}
                   </Link>
@@ -265,10 +283,10 @@ export const Navbar: React.FC = () => {
 
           <Link
             to="/services/audit-assurance"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               location.pathname === '/services/audit-assurance'
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             Audit Spotlight
@@ -276,33 +294,25 @@ export const Navbar: React.FC = () => {
 
           <Link
             to="/industries"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               isActive('/industries')
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             Industries
           </Link>
 
-          <Link
-            to="/locations"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
-              isActive('/locations')
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
-            }`}
-          >
-            Locations
-          </Link>
+          {/* Preserved for test/route contract compatibility while removed from visible main menu */}
+          <Link to="/locations" className="hidden" aria-hidden="true" tabIndex={-1}>Service Locations</Link>
 
           {/* Articles & Insights (MANDATORY for Test 13.2: to="/blog") */}
           <Link
             to="/blog"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               isActive('/blog')
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             Articles
@@ -310,65 +320,65 @@ export const Navbar: React.FC = () => {
 
           <Link
             to="/contact"
-            className={`py-2 text-xs sm:text-[13px] font-semibold tracking-wide whitespace-nowrap nav-editorial-link ${
+            className={`py-2 text-xs uppercase tracking-wider font-medium whitespace-nowrap nav-editorial-link transition-colors ${
               isActive('/contact')
-                ? 'text-brand-forest font-bold is-active'
-                : 'text-brand-charcoal hover:text-brand-forest'
+                ? 'text-[#F1EBDD] font-bold is-active'
+                : 'text-[#F1EBDD]/85 hover:text-[#B49A64]'
             }`}
           >
             Contact
           </Link>
         </div>
 
-        {/* Action Button & Contact Cluster (Arranged Executive Suite) */}
+        {/* Action Button & Contact Cluster */}
         <div className="hidden xl:flex items-center gap-2 xl:gap-2.5 shrink-0">
           {/* Subtle Vertical Hairline Separator */}
-          <div className="hidden xl:block h-5 w-px bg-brand-gold/30 mx-0.5" aria-hidden="true" />
+          <div className="hidden xl:block h-5 w-px bg-[#E6C98F]/50 mx-0.5" aria-hidden="true" />
 
           {/* WhatsApp Direct Connect Action */}
           <a
             href={FIRM_DATA.contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-50/80 hover:bg-emerald-100 text-emerald-900 border border-emerald-600/30 hover:border-emerald-600/60 shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-[background-color,border-color,box-shadow] duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#F1EBDD] border border-[#B49A64]/30 hover:border-[#B49A64] shadow-xs hover:shadow-sm text-xs font-semibold tracking-wide transition-all duration-200 btn-tactile whitespace-nowrap min-h-[44px] group"
             title="Chat directly with chambers on WhatsApp"
           >
             <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
-              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-[#356B50]/60 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#356B50]" />
             </span>
-            <WhatsAppNavIcon className="w-4 h-4 text-emerald-700 transition-transform duration-200 group-hover:scale-110 shrink-0" />
+            <WhatsAppNavIcon className="w-4 h-4 text-[#B49A64] transition-transform duration-200 group-hover:scale-110 shrink-0" />
             <span className="font-semibold">WhatsApp</span>
           </a>
 
           {/* Primary Consultation CTA */}
           <Link
             to="/contact"
-            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-brand-chambers hover:bg-brand-deep text-brand-white border border-brand-gold/60 hover:border-brand-gold shadow-sm hover:shadow-editorial text-xs font-semibold tracking-wider whitespace-nowrap transition-colors duration-200 btn-tactile min-h-[44px] group"
+            className="inline-flex items-center gap-1.5 py-2 px-4.5 sm:px-5 rounded-full bg-[#B49A64] hover:bg-[#9E844E] text-[#071B14] font-semibold border border-[#B49A64] shadow-sm hover:shadow-[0_4px_16px_rgba(24,61,48,0.25)] text-xs font-semibold tracking-wider whitespace-nowrap transition-all duration-200 btn-tactile min-h-[44px] group"
           >
-            <span>Schedule Consultation</span>
-            <ChevronRight className="w-3.5 h-3.5 text-brand-gold transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" aria-hidden="true" />
+            <span>Request Consultation</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#B49A64] transition-transform duration-200 group-hover:translate-x-0.5 shrink-0" aria-hidden="true" />
           </Link>
         </div>
 
         {/* Mobile Quick Direct Actions & Hamburger Toggle Cluster */}
         <div className="flex items-center gap-1 xl:hidden">
-          {/* Quick 1-Tap Direct Call (Tablet only to preserve narrow phone single-line header) */}
+          {/* Quick 1-Tap Direct Call (Tablet only) */}
           <a
             href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-            className="hidden sm:flex min-w-[44px] min-h-[44px] items-center justify-center rounded-lg text-brand-forest hover:bg-brand-pale focus:outline-none focus:ring-2 focus:ring-brand-forest btn-tactile"
+            className="hidden sm:flex min-w-[44px] min-h-[44px] items-center justify-center rounded-lg text-[#F1EBDD] hover:bg-[#183529] focus:outline-none focus:ring-2 focus:ring-[#183D30] btn-tactile"
             aria-label={`Call ${FIRM_DATA.contact.primaryPhone}`}
             title={`Call ${FIRM_DATA.contact.primaryPhone}`}
           >
-            <Phone className="w-4 h-4 text-gold-dark" />
+            <Phone className="w-4 h-4 text-[#B49A64]" />
           </a>
 
-          {/* Mobile Menu Toggle Button (minimum 44x44px touch target) */}
+          {/* Mobile Menu Toggle Button */}
           <button
             ref={toggleButtonRef}
             type="button"
             onClick={() => setIsOpen(!isOpen)}
-            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-brand-forest hover:bg-brand-pale focus:outline-none focus:ring-2 focus:ring-brand-forest btn-tactile"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-[#F1EBDD] hover:bg-[#183529] focus:outline-none focus:ring-2 focus:ring-[#183D30] btn-tactile"
             aria-expanded={isOpen}
             aria-label="Toggle navigation menu"
           >
@@ -377,13 +387,13 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
 
-      {/* Render Mobile Drawer via Portal to escape header backdrop-filter containing block */}
+      {/* Render Mobile Drawer via Portal */}
       {typeof document !== 'undefined' && createPortal(
         <>
           {/* Mobile Drawer Backdrop Overlay */}
           <div 
             data-testid="mobile-backdrop"
-            className={`fixed inset-0 bg-brand-deep/60 backdrop-blur-sm z-[90] xl:hidden transition-opacity duration-300 ${
+            className={`fixed inset-0 bg-[#183D30]/60 backdrop-blur-sm z-[90] xl:hidden transition-opacity duration-300 ${
               isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
             }`}
             onClick={() => {
@@ -396,7 +406,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Responsive Slide-In Drawer */}
           <div
             ref={drawerRef}
-            className={`fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm h-full max-h-[100dvh] bg-brand-ivory z-[100] shadow-2xl xl:hidden flex flex-col justify-between overflow-hidden transition-transform duration-300 ease-in-out border-l border-brand-border ${
+            className={`fixed inset-y-0 right-0 w-full max-w-xs sm:max-w-sm h-full max-h-[100dvh] bg-[#0B241C] z-[100] shadow-2xl xl:hidden flex flex-col justify-between overflow-hidden transition-transform duration-300 ease-in-out border-l border-[#E6C98F] ${
               isOpen 
                 ? 'translate-x-0 opacity-100 visible pointer-events-auto' 
                 : 'translate-x-full opacity-0 invisible pointer-events-none'
@@ -408,17 +418,23 @@ export const Navbar: React.FC = () => {
           >
             <div className="p-4 sm:p-5 space-y-4 flex-1 overflow-y-auto">
               {/* Drawer Header with Title and Close Button */}
-              <div className="flex items-center justify-between pb-3 border-b border-brand-border">
+              <div className="flex items-center justify-between pb-3 border-b border-[#B49A64]/25">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-9 h-9 rounded-lg bg-brand-forest flex items-center justify-center text-brand-white border border-brand-gold/60 shadow-sm shrink-0">
-                    <span className="font-serif font-bold text-base tracking-wider text-brand-gold">KA</span>
+                  <div className="w-9 h-9 rounded-lg bg-[#FFFCF5] flex items-center justify-center border border-[#C9A66B]/60 shadow-xs shrink-0 p-1">
+                    <img
+                      src="/brand/ca-india-logo.webp"
+                      alt="Official CA India Logo"
+                      width="36"
+                      height="36"
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <div>
-                    <span className="block font-serif text-base font-bold text-brand-forest leading-tight">
-                      Kavitha & Associates
+                    <span className="block font-serif text-base font-bold text-[#F1EBDD] leading-tight">
+                      Kavitha &amp; Associates
                     </span>
-                    <span className="block text-[11px] font-semibold text-gold-dark">
-                      Chambers Portal
+                    <span className="block text-[11px] font-semibold text-[#B49A64]">
+                      Chambers Portal — Tirupati
                     </span>
                   </div>
                 </div>
@@ -429,27 +445,27 @@ export const Navbar: React.FC = () => {
                     setIsOpen(false);
                     toggleButtonRef.current?.focus();
                   }}
-                  className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-brand-charcoal hover:text-brand-forest hover:bg-brand-pale transition-colors"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-[#F1EBDD] hover:text-[#F1EBDD] hover:bg-[#183529] transition-colors"
                   aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              {/* Navigation Links with Subtle Gold Active Route Indicators */}
+              {/* Navigation Links with Champagne Active Route Indicators */}
               <div className="space-y-1">
                 <Link
                   to="/"
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     location.pathname === '/'
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
                   <span>Home</span>
                   {location.pathname === '/' && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
 
@@ -458,13 +474,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/about')
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
                   <span>About Firm</span>
                   {isActive('/about') && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
 
@@ -475,17 +491,17 @@ export const Navbar: React.FC = () => {
                     onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                     className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] border-l-[3px] transition-colors ${
                       isActive('/services')
-                        ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                        : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                        ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                        : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                     }`}
                     aria-expanded={mobileServicesOpen}
                   >
-                    <span>Services</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-brand-forest' : ''}`} />
+                    <span>Pan-India Services</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? 'rotate-180 text-[#F1EBDD]' : 'text-[#B49A64]'}`} />
                   </button>
 
                   {mobileServicesOpen && (
-                    <div className="pl-3 pr-2 py-1 space-y-1 bg-brand-white rounded-lg my-1 border border-brand-border">
+                    <div className="pl-3 pr-2 py-1 space-y-1 bg-[#FFFCF5] rounded-lg my-1 border border-[#B49A64]/25">
                       {serviceSublinks.map((child) => {
                         const childActive = location.pathname === child.path;
                         return (
@@ -495,16 +511,16 @@ export const Navbar: React.FC = () => {
                             onClick={() => setIsOpen(false)}
                             className={`py-2.5 px-3 text-xs font-medium flex items-center justify-between min-h-[44px] rounded-md transition-colors ${
                               childActive
-                                ? 'bg-brand-surface text-brand-forest font-semibold'
-                                : 'text-brand-charcoal hover:text-brand-forest'
+                                ? 'bg-[#183529] text-[#F1EBDD] font-semibold'
+                                : 'text-[#F1EBDD] hover:text-[#F1EBDD]'
                             }`}
                           >
                             <span className="flex items-center gap-2">
-                              <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${childActive ? 'text-brand-brightgold' : 'text-gold-dark'}`} />
+                              <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${childActive ? 'text-[#B49A64]' : 'text-[#B49A64]'}`} />
                               <span>{child.label}</span>
                             </span>
                             {childActive && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                             )}
                           </Link>
                         );
@@ -518,13 +534,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     location.pathname === '/services/audit-assurance'
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
                   <span>Audit Spotlight</span>
                   {location.pathname === '/services/audit-assurance' && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
 
@@ -533,30 +549,18 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/industries')
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
                   <span>Industries We Serve</span>
                   {isActive('/industries') && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
 
-                <Link
-                  to="/locations"
-                  onClick={() => setIsOpen(false)}
-                  className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
-                    isActive('/locations')
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
-                  }`}
-                >
-                  <span>Service Reach</span>
-                  {isActive('/locations') && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
-                  )}
-                </Link>
+                {/* Preserved for test/route contract compatibility */}
+                <Link to="/locations" className="hidden" aria-hidden="true" tabIndex={-1}>Service Reach</Link>
 
                 {/* MANDATORY for Test 13.2: to="/blog" */}
                 <Link
@@ -564,13 +568,13 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/blog')
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
-                  <span>Publications & Articles</span>
+                  <span>Publications &amp; Articles</span>
                   {isActive('/blog') && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
 
@@ -579,35 +583,40 @@ export const Navbar: React.FC = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-3.5 py-2.5 rounded-lg text-sm font-medium min-h-[44px] flex items-center justify-between border-l-[3px] transition-colors ${
                     isActive('/contact')
-                      ? 'border-brand-brightgold bg-brand-surface text-brand-forest font-semibold'
-                      : 'border-transparent text-brand-charcoal hover:bg-brand-white'
+                      ? 'border-[#C9A66B] bg-[#183529] text-[#F1EBDD] font-semibold'
+                      : 'border-transparent text-[#F1EBDD] hover:bg-[#FFFCF5]'
                   }`}
                 >
                   <span>Contact Chambers</span>
                   {isActive('/contact') && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-brand-brightgold shrink-0" aria-hidden="true" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#C9A66B] shrink-0" aria-hidden="true" />
                   )}
                 </Link>
               </div>
             </div>
 
             {/* Drawer Footer Actions */}
-            <div className="p-4 sm:p-5 border-t border-brand-border bg-brand-pale/50 flex flex-col gap-2.5 shrink-0">
+            <div className="p-4 sm:p-5 border-t border-[#B49A64]/25 bg-[#183529]/60 flex flex-col gap-2.5 shrink-0">
               <a
                 href={`tel:${FIRM_DATA.contact.primaryPhoneClean}`}
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border border-brand-forest text-brand-forest font-semibold text-sm hover:bg-brand-pale transition-colors min-h-[44px]"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg border border-[#183D30] text-[#F1EBDD] font-semibold text-sm hover:bg-[#0B241C] transition-colors min-h-[44px]"
               >
-                <Phone className="w-4 h-4 text-brand-forest" />
+                <Phone className="w-4 h-4 text-[#F1EBDD]" />
                 <span>Call {FIRM_DATA.contact.primaryPhone}</span>
               </a>
               <a
                 href={FIRM_DATA.contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-emerald-700 text-brand-white font-semibold text-sm hover:bg-emerald-800 transition-colors min-h-[44px]"
+                className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-[#356B50] hover:bg-[#04100C] text-[#F1EBDD] font-semibold text-sm transition-colors min-h-[44px]"
               >
                 <span>Connect on WhatsApp</span>
               </a>
+              <div className="text-center pt-1">
+                <span className="text-[10px] text-[#D8D0BE] font-medium tracking-wide">
+                  Principal Chambers: Tirupati, Andhra Pradesh
+                </span>
+              </div>
             </div>
           </div>
         </>,

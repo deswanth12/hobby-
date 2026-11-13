@@ -1,31 +1,31 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ScrollToTop } from './components/ScrollToTop';
-import { ScrollProgress } from './components/ScrollProgress';
-import { BackToTop } from './components/BackToTop';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { FirmDataProvider } from './context/FirmDataContext';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
-// Public Pages
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { ServicesPage } from './pages/ServicesPage';
-import { AuditAssurancePage } from './pages/AuditAssurancePage';
-import { GSTServicesPage } from './pages/GSTServicesPage';
-import { IncomeTaxPage } from './pages/IncomeTaxPage';
-import { CompanyRegistrationPage } from './pages/CompanyRegistrationPage';
-import { VirtualCFOPage } from './pages/VirtualCFOPage';
-import { RERAConsultantPage } from './pages/RERAConsultantPage';
-import { IndustriesPage } from './pages/IndustriesPage';
-import { LocationsPage } from './pages/LocationsPage';
-import { ContactPage } from './pages/ContactPage';
-import { BlogPage } from './pages/BlogPage';
-import { BlogArticlePage } from './pages/BlogArticlePage';
-import { NotFoundPage } from './pages/NotFoundPage';
+// V8.0 Architecture Layout & Public Pages
+import { PublicLayout } from './v8/components/layout/PublicLayout';
+import {
+  HomePage,
+  AboutPage,
+  LeadershipPage,
+  ServicesPage,
+  AuditAssurancePage,
+  GSTServicesPage,
+  IncomeTaxPage,
+  CompanyRegistrationPage,
+  VirtualCFOPage,
+  RERAConsultantPage,
+  DynamicServiceDetailPage,
+  IndustriesPage,
+  LocationsPage,
+  BlogPage,
+  BlogArticlePage,
+  NotFoundPage,
+  ContactPage,
+} from './v8/pages';
 
 // Admin Pages (Code-split for optimized initial page load)
 import { AdminProtectedRoute } from './components/admin/AdminProtectedRoute';
@@ -53,32 +53,6 @@ const ScrollRevealInit: React.FC = () => {
   return null;
 };
 
-/**
- * Public Layout Wrapper:
- * Includes public top navigation bar, scroll progress tracker, footer,
- * floating WhatsApp consultation button, and back-to-top button.
- */
-const PublicLayout: React.FC = () => {
-  return (
-    <div className="flex flex-col min-h-screen bg-brand-warm selection:bg-brand-pale selection:text-brand-primary relative overflow-x-hidden w-full max-w-full">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-5 focus:py-2.5 focus:bg-brand-chambers focus:text-brand-tintedwhite focus:border focus:border-brand-gold focus:rounded-full focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-gold text-xs font-semibold tracking-wide transition-all"
-      >
-        Skip to main content
-      </a>
-      <ScrollProgress />
-      <Navbar />
-      <main id="main-content" tabIndex={-1} className="flex-grow outline-none">
-        <Outlet />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-      <BackToTop />
-    </div>
-  );
-};
-
 export const App: React.FC = () => {
   return (
     <ErrorBoundary>
@@ -87,10 +61,11 @@ export const App: React.FC = () => {
           <ScrollToTop />
           <ScrollRevealInit />
           <Routes>
-            {/* Public Routes with public chrome */}
+            {/* V8.0 Public Routes with Botanical Ledger Chrome */}
             <Route element={<PublicLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/leadership" element={<LeadershipPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/services/audit-assurance" element={<AuditAssurancePage />} />
               <Route path="/services/gst-consultant-tirupati" element={<GSTServicesPage />} />
@@ -98,6 +73,7 @@ export const App: React.FC = () => {
               <Route path="/services/company-registration-tirupati" element={<CompanyRegistrationPage />} />
               <Route path="/services/virtual-cfo-tirupati" element={<VirtualCFOPage />} />
               <Route path="/services/rera-consultant-tirupati" element={<RERAConsultantPage />} />
+              <Route path="/services/:slug" element={<DynamicServiceDetailPage />} />
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/locations" element={<LocationsPage />} />
               <Route path="/blog" element={<BlogPage />} />

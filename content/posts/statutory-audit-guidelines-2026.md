@@ -59,7 +59,7 @@ The statutory audit mandate applies universally, but specific reporting tiers de
 | Corporate Category | Statutory Audit Mandate | CARO 2020 Applicability | IFC Reporting Obligation |
 | :--- | :--- | :--- | :--- |
 | **Public Limited Companies** | Mandatory for all entities | Mandatory without exception | Mandatory under Sec 143(3)(i) |
-| **Private Limited Companies (Large)** | Mandatory for all entities | Applicable if Turnover > ₹50 Cr or Borrowings > ₹10 Cr | Mandatory |
+| **Private Limited Companies** | Mandatory for all entities | Applicable if Turnover > ₹10 Cr, Borrowings > ₹1 Cr, or Capital+Reserves > ₹1 Cr | Applicable only if Turnover ≥ ₹50 Cr or Borrowings ≥ ₹25 Cr |
 | **Small Companies (Sec 2(85))** | Mandatory | Explicitly Exempt | Exempted via MCA Notification |
 | **One Person Companies (OPCs)** | Mandatory | Explicitly Exempt | Exempted via MCA Notification |
 | **Section 8 Companies (Non-Profit)**| Mandatory | Explicitly Exempt | Exempted if criteria met |

@@ -15,7 +15,11 @@ export default defineConfig({
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.startsWith('/api/')) {
             try {
-              delete require.cache[require.resolve('./server/apiRouter.cjs')];
+              Object.keys(require.cache).forEach(k => {
+                if (k.includes('/server/') || k.includes('\\server\\')) {
+                  delete require.cache[k];
+                }
+              });
               const { handleApiRequest: freshHandler } = require('./server/apiRouter.cjs');
               freshHandler(req, res);
             } catch {
@@ -30,7 +34,11 @@ export default defineConfig({
         server.middlewares.use((req, res, next) => {
           if (req.url && req.url.startsWith('/api/')) {
             try {
-              delete require.cache[require.resolve('./server/apiRouter.cjs')];
+              Object.keys(require.cache).forEach(k => {
+                if (k.includes('/server/') || k.includes('\\server\\')) {
+                  delete require.cache[k];
+                }
+              });
               const { handleApiRequest: freshHandler } = require('./server/apiRouter.cjs');
               freshHandler(req, res);
             } catch {
@@ -46,16 +54,33 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
+    watch: {
+      ignored: ["**/reports/**", "**/backup/**", "**/tests/**", "**/tmp/**", "**/.temp*/**"],
+    },
+  },
+  optimizeDeps: {
+    entries: ['index.html'],
   },
   build: {
     sourcemap: false,
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-icons': ['lucide-react'],
-          'vendor-supabase': ['@supabase/supabase-js'],
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
+              return 'vendor-react';
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons';
+            }
+            if (id.includes('@supabase')) {
+              return 'vendor-supabase';
+            }
+          }
+          if (id.includes('src/components/knowledge-bank') || id.includes('src\\components\\knowledge-bank')) {
+            return 'feature-calculators';
+          }
         }
       }
     }

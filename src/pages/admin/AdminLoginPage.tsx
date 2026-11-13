@@ -123,8 +123,8 @@ export const AdminLoginPage: React.FC = () => {
 
         {/* Firm Crest & Header */}
         <div className="text-center scroll-reveal">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-brand-chambers border-2 border-brand-brightgold shadow-lg mb-4">
-            <span className="font-serif text-2xl font-bold text-brand-brightgold">KA</span>
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white border border-brand-brightgold/60 shadow-lg mb-4 p-1.5">
+            <img src="/brand/ca-india-logo.png" alt="Official CA India Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="font-serif text-2xl sm:text-3xl font-bold text-brand-chambers tracking-normal">
             Kavitha & Associates

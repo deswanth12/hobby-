@@ -76,9 +76,29 @@ export const AdminEnquiriesPage: React.FC = () => {
 
   useEffect(() => {
     loadEnquiries(true);
-    window.addEventListener(FIRM_DATA_UPDATE_EVENT, () => loadEnquiries(false));
-    return () => window.removeEventListener(FIRM_DATA_UPDATE_EVENT, () => loadEnquiries(false));
+    const handleFirmDataUpdate = () => loadEnquiries(false);
+    window.addEventListener(FIRM_DATA_UPDATE_EVENT, handleFirmDataUpdate);
+    return () => window.removeEventListener(FIRM_DATA_UPDATE_EVENT, handleFirmDataUpdate);
   }, []);
+
+  // Modal overlay hardening: body scroll locking and Escape key dismissal for enquiry drawer
+  useEffect(() => {
+    if (!selectedEnquiry) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeEnquiryDrawer();
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedEnquiry]);
 
   // Reset pagination to page 1 on search or filter change
   useEffect(() => {
@@ -514,7 +534,10 @@ export const AdminEnquiriesPage: React.FC = () => {
             3. ENQUIRY DETAIL MODAL / DRAWER
             ========================================================================= */}
         {selectedEnquiry && (
-          <div className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex justify-end animate-in fade-in duration-200">
+          <div 
+            className="fixed inset-0 z-50 overflow-y-auto bg-black/50 backdrop-blur-sm flex justify-end animate-in fade-in duration-200"
+            onClick={closeEnquiryDrawer}
+          >
             <div 
               className="bg-white w-full max-w-xl min-h-screen p-6 sm:p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}

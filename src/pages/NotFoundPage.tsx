@@ -119,7 +119,7 @@ export const NotFoundPage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
             <Link
               to="/"
-              className="btn-pill-primary"
+              className="btn-pill-primary min-h-[44px]"
             >
               <Home className="w-4 h-4 text-brand-gold" />
               <span>Return to Practice Homepage</span>
@@ -128,7 +128,7 @@ export const NotFoundPage: React.FC = () => {
             <button
               type="button"
               onClick={() => navigate(-1)}
-              className="btn-pill-secondary"
+              className="btn-pill-secondary min-h-[44px]"
             >
               <ArrowLeft className="w-4 h-4 text-brand-muted" />
               <span>Previous Directory View</span>
@@ -136,7 +136,7 @@ export const NotFoundPage: React.FC = () => {
 
             <Link
               to="/contact"
-              className="btn-pill-secondary"
+              className="btn-pill-secondary min-h-[44px]"
             >
               <Phone className="w-4 h-4 text-brand-forest" />
               <span>Contact Tirupati Chambers</span>

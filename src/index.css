@@ -1,18 +1,67 @@
 /* Hallmark · v2.0.0 · Polish · Editorial */
 :root {
+  /* V8.1 Botanical Ledger Design Tokens */
+  --evergreen: #071B14;
+  --forest: #183529;
+  --botanical: #294B39;
+  --bronze: #B49A64;
+  --ivory: #F1EBDD;
+  --walnut: #35271F;
+  --sage: #AAB4A0;
+  --muted-border: #D8D0BE;
+
+  --surface-dark: #071B14;
+  --surface-dark-secondary: #183529;
+  --surface-light: #F1EBDD;
+  --surface-light-alt: #FAF7F0;
+
+  --text-dark: #35271F;
+  --text-light: #F1EBDD;
+  --text-muted: #525954;
+
+  --radius-small: 4px;
+  --radius-medium: 10px;
+
+  --page-gutter: clamp(20px, 5vw, 80px);
+  --content-max-width: 1440px;
+
+  --section-space-desktop: 112px;
+  --section-space-tablet: 80px;
+  --section-space-mobile: 56px;
+
+  --transition-fast: 180ms ease;
+  --transition-normal: 350ms cubic-bezier(.22,1,.36,1);
+  --transition-slow: 700ms cubic-bezier(.22,1,.36,1);
+
+  --brand-forest-canonical: #153f32;
+  --brand-deep-canonical: #102d25;
+  --brand-gold-canonical: #c3a66b;
+  --brand-ivory-canonical: #f5f1e8;
+  --brand-charcoal-canonical: #252b27;
+  --brand-secondary-canonical: #747a73;
+  --brand-border-canonical: #e5e1d8;
   --color-forest: #153F32;
+  --color-forest-vibrant: #1B4D3E;
   --color-deep: #102D25;
-  --color-chambers: #0A2F24;
-  --color-darkgreen: #0F3E2E;
-  --color-ivory: #F5F1E8;
-  --color-tintedwhite: #FAF8F5;
+  --color-chambers: #102D25;
+  --color-darkgreen: #102D25;
+  --color-warmwhite: #FFF9EF;
+  --color-ivory: #F8EFDF;
+  --color-cream: #F5EAD8;
+  --color-softivory: #FFF9EF;
+  --color-tintedwhite: #F8EFDF;
+  --color-champagne: #E8D5B5;
+  --color-softgoldcream: #EFE0C7;
+  --color-sage: #DDE8D9;
   --color-gold: #C3A66B;
-  --color-brightgold: #C5A059;
-  --color-goldhover: #D4B26F;
-  --color-charcoal: #252B27;
-  --color-muted: #4A524D;
-  --color-border: #E5E1D8;
-  --color-surface: #EDE8DF;
+  --color-brightgold: #D4AF37;
+  --color-softgold: #E8CD96;
+  --color-goldhover: #DAB876;
+  --color-charcoal: #302B24;
+  --color-secondary: #525954;
+  --color-muted: #68706A;
+  --color-border: #E8D5B5;
+  --color-surface: #FFF9EF;
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --color-gold-border: rgba(195, 166, 107, 0.4);
@@ -38,10 +87,67 @@
   --color-white-subtle: rgba(255, 255, 255, 0.08);
   --color-white-glow: rgba(255, 255, 255, 0.12);
   --color-charcoal-shadow: rgba(37, 43, 39, 0.1);
-  --color-parchment-glass: rgba(245, 241, 232, 0.94);
-  --color-border-glass: rgba(229, 225, 216, 0.8);
+  --color-parchment-glass: rgba(248, 239, 223, 0.94);
+  --color-border-glass: rgba(232, 213, 181, 0.8);
   --color-scrollbar-thumb: rgba(21, 63, 50, 0.25);
   --color-scrollbar-hover: rgba(21, 63, 50, 0.45);
+
+  /* CARVI-Inspired Warm Ivory & Champagne Palette (Milestone 1) */
+  --color-ivory-light: #FFFDF7;
+  --color-ivory-foundation: #FFFCF5;
+  --color-champagne-warm: #FFF6E8;
+  --color-champagne-border: #E6C98F;
+  --color-champagne-gold: #C9A66B;
+
+  /* CARVI-Inspired Deep Botanical Green Accents (Milestone 1) */
+  --color-botanical: #356B50;
+  --color-botanical-deep: #183D30;
+
+  /* Botanical and Champagne Alpha Shadows & Borders */
+  --color-botanical-shadow-xs: rgba(53, 107, 80, 0.04);
+  --color-botanical-shadow-sm: rgba(53, 107, 80, 0.08);
+  --color-botanical-shadow-md: rgba(24, 61, 48, 0.16);
+  --color-botanical-border: rgba(53, 107, 80, 0.25);
+  --color-champagne-border-subtle: rgba(230, 201, 143, 0.4);
+  --color-champagne-border-strong: rgba(201, 166, 107, 0.65);
+  --color-champagne-glow: rgba(201, 166, 107, 0.25);
+
+  /* Canonical CARVI Tokens (V6.4) */
+  --color-carvi-forest: #0F3E2E;
+  --color-carvi-deep: #0A2F24;
+  --color-carvi-champagne: #C5A059;
+  --color-carvi-bronze: #7E5E1E;
+
+  /* V8.0 The Botanical Ledger Centralized Design Tokens (Laperruta Aesthetic) */
+  --color-deep-evergreen: #071B14;
+  --color-forest-green: #183529;
+  --color-botanical-green: #294B39;
+  --color-evergreen-surface: #0B241C;
+  --color-antique-bronze: #B49A64;
+  --color-antique-bronze-hover: #9E844E;
+  --color-antique-bronze-dark: #7E5E1E;
+  --color-antique-bronze-light: #C8B282;
+  --color-warm-ivory: #F1EBDD;
+  --color-warm-ivory-card: #FAF7F0;
+  --color-walnut-brown: #35271F;
+  --color-walnut-muted: #4D3B32;
+  --color-soft-sage: #AAB4A0;
+  --color-soft-sage-light: #C5CDC0;
+  --color-muted-border: #D8D0BE;
+
+  /* Typography Families */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Shadows & Easing */
+  --shadow-subtle: 0 1px 3px rgba(7, 27, 20, 0.04);
+  --shadow-card: 0 2px 8px -1px rgba(7, 27, 20, 0.05), 0 1px 3px rgba(7, 27, 20, 0.03);
+  --shadow-card-hover: 0 12px 28px -4px rgba(7, 27, 20, 0.12), 0 4px 8px -2px rgba(180, 154, 100, 0.1);
+  --shadow-editorial: 0 4px 20px -2px rgba(7, 27, 20, 0.06);
+  --shadow-editorial-lg: 0 16px 40px -4px rgba(7, 27, 20, 0.18);
+  --shadow-bronze-glow: 0 0 18px rgba(180, 154, 100, 0.25);
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @tailwind base;
@@ -128,6 +234,18 @@
     letter-spacing: 0;
   }
 
+  .font-editorial-body.text-xs {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  @media (min-width: 640px) {
+    .font-editorial-body.text-xs.sm\:text-\[13px\] {
+      font-size: 13px;
+      line-height: 1.35;
+    }
+  }
+
   .font-editorial-nav {
     font-family: var(--font-sans);
     font-size: 0.9rem;
@@ -203,12 +321,12 @@
     transform: translate(0, 0);
     opacity: 1;
   }
-  .js .dual-arrow-badge .arrow-secondary {
+  .dual-arrow-badge .arrow-secondary {
     position: absolute;
     transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
     transform: translate(-120%, 120%);
-    display: none;
-    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
   .group:hover .dual-arrow-badge,
   .btn-pill-action:hover .dual-arrow-badge,
@@ -447,6 +565,205 @@
     box-shadow: inset 0 1px 0 var(--color-white-subtle);
   }
 
+    /* =========================================================================
+     Reusable Luxury Design System Tokens (CARVI-Inspired CA Refinements)
+     ========================================================================= */
+  .card-editorial {
+    background-color: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px -1px rgba(21, 63, 50, 0.04), 0 1px 3px rgba(21, 63, 50, 0.02);
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 280ms ease;
+    will-change: transform, box-shadow;
+  }
+  .card-editorial:hover {
+    border-color: rgba(195, 166, 107, 0.65);
+    box-shadow: 0 14px 34px -4px rgba(21, 63, 50, 0.1), 0 0 16px rgba(195, 166, 107, 0.15);
+    transform: translateY(-3px);
+  }
+
+  .card-editorial-featured {
+    background: linear-gradient(135deg, var(--color-deep) 0%, var(--color-chambers) 100%);
+    color: var(--color-tintedwhite);
+    border: 1px solid var(--color-gold-border);
+    border-radius: 1.25rem;
+    box-shadow: 0 16px 40px -4px var(--color-deep-shadow);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 300ms ease,
+                border-color 300ms ease;
+  }
+  .card-editorial-featured:hover {
+    border-color: var(--color-gold);
+    box-shadow: 0 20px 48px -4px var(--color-deep-shadow), 0 0 20px rgba(195, 166, 107, 0.25);
+    transform: translateY(-3px);
+  }
+
+  .badge-editorial-forest {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background-color: var(--color-surface);
+    color: var(--color-forest);
+    border: 1px solid var(--color-border);
+  }
+
+  .badge-editorial-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    background-color: rgba(195, 166, 107, 0.15);
+    color: #73561E;
+    border: 1px solid rgba(195, 166, 107, 0.4);
+  }
+
+  .badge-editorial-neutral {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background-color: var(--color-tintedwhite);
+    color: var(--color-charcoal);
+    border: 1px solid var(--color-border);
+  }
+
+  .btn-pill-gold {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.5rem;
+    background-color: var(--color-gold);
+    color: var(--color-deep);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.01em;
+    border: 1px solid var(--color-goldhover);
+    box-shadow: 0 4px 16px rgba(195, 166, 107, 0.25);
+    transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 260ms ease,
+                background-color 200ms ease;
+    will-change: transform;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .btn-pill-gold:hover {
+    background-color: var(--color-goldhover);
+    box-shadow: 0 8px 24px rgba(195, 166, 107, 0.4);
+    transform: translateY(-1px);
+  }
+  .btn-pill-gold:active {
+    transform: scale(0.98);
+  }
+
+  .statutory-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .statutory-table th {
+    background-color: var(--color-surface);
+    color: var(--color-forest);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .statutory-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--color-charcoal);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .statutory-table tr:last-child td {
+    border-bottom: none;
+  }
+  .statutory-table tr:nth-child(even) td {
+    background-color: var(--color-tintedwhite);
+  }
+
+  /* =========================================================================
+     CARVI-Inspired Editorial Corporate Utilities (Milestone 1)
+     ========================================================================= */
+  .card-carvi-editorial {
+    background-color: var(--color-ivory-light);
+    border: 1px solid var(--color-champagne-border);
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px -1px var(--color-botanical-shadow-xs), 0 1px 3px rgba(201, 166, 107, 0.04);
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 280ms ease;
+    will-change: transform, box-shadow;
+  }
+  .card-carvi-editorial:hover {
+    border-color: var(--color-champagne-gold);
+    box-shadow: 0 14px 34px -4px var(--color-botanical-shadow-sm), 0 0 16px var(--color-champagne-glow);
+    transform: translateY(-3px);
+  }
+
+  .btn-pill-botanical {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--color-botanical-deep);
+    color: var(--color-ivory-light);
+    border: 1px solid var(--color-champagne-border);
+    font-weight: 600;
+    font-size: 0.8125rem;
+    box-shadow: 0 4px 16px var(--color-botanical-shadow-md);
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 300ms ease,
+                background-color 300ms ease,
+                border-color 300ms ease;
+    will-change: transform;
+    min-height: 44px;
+    cursor: pointer;
+  }
+  .btn-pill-botanical:hover {
+    background-color: #102D25;
+    border-color: var(--color-champagne-gold);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px var(--color-botanical-shadow-md);
+  }
+
+  .bg-carvi-canvas {
+    background-color: var(--color-ivory-light);
+  }
+  .bg-carvi-foundation {
+    background-color: var(--color-ivory-foundation);
+  }
+  .bg-carvi-champagne {
+    background-color: var(--color-champagne-warm);
+  }
+  .bg-carvi-dark {
+    background-color: var(--color-botanical-deep);
+    color: var(--color-ivory-light);
+  }
+
   /* =========================================================================
      Fluid Scroll Progress Indicator
      ========================================================================= */
@@ -456,7 +773,7 @@
     left: 0;
     width: 100%;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-forest) 0%, var(--color-gold) 50%, var(--color-gold-progress) 100%);
+    background: linear-gradient(90deg, #183D30 0%, #356B50 50%, #C9A66B 100%);
     transform-origin: 0% 50%;
     transform: scaleX(0);
     z-index: 100;
@@ -788,6 +1105,851 @@
 }
 
 /* =========================================================================
+   Premium Motion Design System (Kavitha & Associates)
+   GPU-Accelerated, Accessible, Lightweight CSS Keyframes
+   ========================================================================= */
+
+/* 1. Animated Dot Pattern: Gentle Opacity Variation & Subtle Micro-Drift */
+@keyframes motionDotPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translateY(-2px) scale(1.08);
+  }
+}
+
+.motion-dot-pulse {
+  animation: motionDotPulse 4.5s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.motion-dot-pulse-delayed {
+  animation: motionDotPulse 4.5s ease-in-out infinite;
+  animation-delay: 2.25s;
+  will-change: opacity, transform;
+}
+
+.motion-dot-pulse-alt {
+  animation: motionDotPulse 5.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+  will-change: opacity, transform;
+}
+
+/* 2. Rotating Geometric Mesh: Slow, Continuous 38s & 44s Linear Cycles */
+@keyframes motionSpinMesh {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.motion-spin-mesh {
+  animation: motionSpinMesh 38s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.motion-spin-mesh-reverse {
+  animation: motionSpinMesh 44s linear infinite reverse;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* 3. Floating Geometric Shapes: Restrained Organic Vertical Drift */
+@keyframes motionFloatSubtle {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1.5deg);
+  }
+}
+
+.motion-float-subtle {
+  animation: motionFloatSubtle 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.motion-float-subtle-reverse {
+  animation: motionFloatSubtle 8s ease-in-out infinite reverse;
+  will-change: transform;
+}
+
+/* 4. Curved Path Reveal: Stroke-Dash Animation for Decorative Arcs */
+@keyframes motionPathRevealLoop {
+  0% {
+    stroke-dashoffset: 700;
+    opacity: 0.2;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.75;
+  }
+  100% {
+    stroke-dashoffset: -700;
+    opacity: 0.2;
+  }
+}
+
+.motion-path-reveal-loop {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  animation: motionPathRevealLoop 14s ease-in-out infinite;
+  will-change: stroke-dashoffset, opacity;
+}
+
+/* Staggered Dot Wave Animation */
+@keyframes motionDotWave {
+  0%, 100% {
+    opacity: 0.25;
+    transform: translateY(0) scale(0.95);
+  }
+  50% {
+    opacity: 0.95;
+    transform: translateY(-3px) scale(1.12);
+  }
+}
+.motion-dot-wave-1 { animation: motionDotWave 3.5s ease-in-out infinite; will-change: opacity, transform; }
+.motion-dot-wave-2 { animation: motionDotWave 3.5s ease-in-out infinite; animation-delay: 0.7s; will-change: opacity, transform; }
+.motion-dot-wave-3 { animation: motionDotWave 3.5s ease-in-out infinite; animation-delay: 1.4s; will-change: opacity, transform; }
+.motion-dot-wave-4 { animation: motionDotWave 3.5s ease-in-out infinite; animation-delay: 2.1s; will-change: opacity, transform; }
+
+/* Organic Rotating Mesh with Scale Breathing */
+@keyframes motionSpinMeshOrganic {
+  0% { transform: rotate(0deg) scale(0.98); }
+  50% { transform: rotate(180deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(0.98); }
+}
+.motion-spin-mesh-organic {
+  animation: motionSpinMeshOrganic 36s linear infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Hero Section Subtle Floating Vertical Movement */
+@keyframes motionFloatHero {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.motion-float-hero {
+  animation: motionFloatHero 6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  will-change: transform;
+}
+
+/* Thin Pulsing Circular Outline */
+@keyframes motionPulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.04); opacity: 0.65; }
+}
+.motion-pulse-ring {
+  animation: motionPulseRing 8s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform, opacity;
+}
+
+/* Process Timeline Connecting Line Reveal */
+@keyframes motionLineDraw {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+.motion-timeline-spine {
+  transform-origin: top center;
+  animation: motionLineDraw 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+/* Architectural Line Drawing: Vertical & Horizontal Hairlines */
+@keyframes lineDrawVertical {
+  0% { transform: scaleY(0); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes lineDrawHorizontal {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.motion-line-draw-vertical {
+  transform-origin: top center;
+  animation: lineDrawVertical 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+.motion-line-draw-horizontal {
+  transform-origin: left center;
+  animation: lineDrawHorizontal 1.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform;
+}
+
+/* Offscreen Animation Pausing (IntersectionObserver Controlled) */
+.is-offscreen,
+.is-offscreen .motion-spin-mesh,
+.is-offscreen .motion-spin-mesh-reverse,
+.is-offscreen .motion-spin-mesh-organic,
+.is-offscreen .motion-dot-pulse,
+.is-offscreen .motion-dot-pulse-delayed,
+.is-offscreen .motion-dot-pulse-alt,
+.is-offscreen .motion-dot-wave-1,
+.is-offscreen .motion-dot-wave-2,
+.is-offscreen .motion-dot-wave-3,
+.is-offscreen .motion-dot-wave-4,
+.is-offscreen .animate-ambient-drift,
+.is-offscreen .animate-ambient-pulse,
+.is-offscreen .motion-path-reveal-loop,
+.is-offscreen .motion-pulse-ring,
+.is-offscreen .motion-float-subtle,
+.is-offscreen .motion-float-hero,
+.is-offscreen .animate-marquee-track,
+.is-offscreen .animate-marquee-track-reverse {
+  animation-play-state: paused !important;
+}
+
+/* 5. Restrained Card Hover & Micro-Interactions */
+.card-border-draw {
+  position: relative;
+}
+.card-border-draw::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C5A059, transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 380ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 10;
+}
+.card-border-draw:hover::after,
+.group:hover .card-border-draw::after {
+  transform: scaleX(1);
+}
+
+.icon-stroke-interactive {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), stroke-width 260ms ease;
+  will-change: transform;
+}
+.group:hover .icon-stroke-interactive {
+  transform: scale(1.08) rotate(3deg);
+  stroke-width: 2.25px;
+}
+
+.motion-card-lift {
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 280ms ease;
+  will-change: transform, box-shadow;
+}
+.motion-card-lift:hover {
+  transform: translateY(-4px);
+  border-color: #C9A66B;
+  box-shadow: 0 14px 28px -8px rgba(37, 75, 56, 0.12), 0 6px 12px -4px rgba(201, 166, 107, 0.15);
+}
+
+.motion-icon-hover {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.group:hover .motion-icon-hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.motion-arrow-hover {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.group:hover .motion-arrow-hover {
+  transform: translate(3px, -3px);
+}
+
+.motion-dot-wave-1,
+  .motion-dot-wave-2,
+  .motion-dot-wave-3,
+  .motion-dot-wave-4,
+  .motion-spin-mesh-organic,
+  .motion-float-hero,
+  .motion-pulse-ring,
+  .motion-timeline-spine,
+  .motion-card-lift,
+  .motion-icon-hover,
+  .motion-arrow-hover,
+  .motion-card-hover {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 320ms ease;
+  will-change: transform, box-shadow;
+}
+
+.motion-card-hover:hover {
+  transform: translateY(-3px);
+  border-color: #C9A66B;
+  box-shadow: 0 10px 24px -6px rgba(53, 107, 80, 0.08), 0 4px 8px -2px rgba(201, 166, 107, 0.12);
+}
+
+/* Pause continuous rotations on mobile (< 768px) */
+@media (max-width: 767px) {
+  .motion-spin-mesh,
+  .motion-spin-mesh-reverse {
+    animation-play-state: paused !important;
+  }
+}
+
+/* =========================================================================
+   Kinetic Typography & Advanced Text Animations
+   ========================================================================= */
+.kinetic-letter {
+  will-change: transform, opacity, filter;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-word-inner {
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-blur-reveal {
+  will-change: transform, opacity, filter;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.kinetic-highlight-sweep {
+  will-change: background-size;
+}
+
+@keyframes kineticTickerScroll {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes kineticTickerScrollReverse {
+  0% { transform: translate3d(-50%, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+.kinetic-ticker-track {
+  display: flex;
+  width: max-content;
+  animation: kineticTickerScroll 28s linear infinite;
+  will-change: transform;
+}
+
+.kinetic-ticker-track-reverse {
+  display: flex;
+  width: max-content;
+  animation: kineticTickerScrollReverse 28s linear infinite;
+  will-change: transform;
+}
+
+.kinetic-ticker-container:hover .kinetic-ticker-track,
+.kinetic-ticker-container:hover .kinetic-ticker-track-reverse,
+.kinetic-ticker-container:focus-within .kinetic-ticker-track,
+.kinetic-ticker-container:focus-within .kinetic-ticker-track-reverse {
+  animation-play-state: paused;
+}
+
+/* Disable expensive blur filters on mobile (< 768px) per Requirement 10 */
+@media (max-width: 767px) {
+  .kinetic-letter,
+  .kinetic-blur-reveal {
+    filter: none !important;
+  }
+}
+
+/* =========================================================================
+   PROJECT V4: PREMIUM VISUAL EXPERIENCE & ADVANCED MOTION UPGRADE
+   ========================================================================= */
+
+/* 1. Ambient Lighting & Layered Background System */
+@keyframes ambientLightDrift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.38;
+  }
+  50% {
+    transform: translate3d(24px, -16px, 0) scale(1.06);
+    opacity: 0.58;
+  }
+}
+
+.animate-ambient-drift {
+  animation: ambientLightDrift 22s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes ambientGlowPulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
+  }
+}
+
+.animate-ambient-pulse {
+  animation: ambientGlowPulse 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Background Gradients & Ambient Tones (Derived purely from canonical brand colors) */
+.bg-ambient-radial-gold {
+  background: radial-gradient(ellipse 70% 60% at 50% 20%, rgba(212, 175, 55, 0.16) 0%, rgba(255, 243, 220, 0.08) 50%, transparent 80%);
+}
+
+.bg-ambient-radial-forest {
+  background: radial-gradient(ellipse 65% 55% at 85% 15%, rgba(27, 77, 62, 0.09) 0%, rgba(16, 45, 37, 0.03) 50%, transparent 75%);
+}
+
+.bg-ambient-radial-sage {
+  background: radial-gradient(circle at 15% 85%, rgba(237, 247, 238, 0.8) 0%, transparent 60%);
+}
+
+.bg-pattern-architectural-dots {
+  background-image: radial-gradient(rgba(195, 166, 107, 0.25) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-pattern-architectural-grid {
+  background-image: linear-gradient(to right, rgba(195, 166, 107, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(195, 166, 107, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Section Boundary Blends */
+.section-blend-ivory-champagne {
+  background: linear-gradient(180deg, #F8EFDF 0%, #F5EAD8 60%, #E8D5B5 100%);
+}
+
+.section-blend-champagne-ivory {
+  background: linear-gradient(180deg, #E8D5B5 0%, #F5EAD8 50%, #F8EFDF 100%);
+}
+
+/* =========================================================================
+   PROJECT V6.8: DEEP EVERGREEN & ANTIQUE BRONZE ARCHITECTURAL TEXTURES
+   ========================================================================= */
+.texture-architectural-lines {
+  background-color: #071B14;
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(24, 53, 41, 0.55) 0%, transparent 75%),
+    repeating-linear-gradient(to right, rgba(180, 154, 100, 0.035) 0px, rgba(180, 154, 100, 0.035) 1px, transparent 1px, transparent 100px);
+}
+
+.texture-warm-ivory {
+  background-color: #F1EBDD;
+  background-image: radial-gradient(circle at 100% 0%, rgba(180, 154, 100, 0.05) 0%, transparent 50%);
+}
+
+/* =========================================================================
+   PROJECT V4.3: LUXURY CREAM TEXTURED BACKGROUND SYSTEM
+   Architectural & Tactile Textures (Subtle 2–5% Opacity, Pointer-Events None)
+   ========================================================================= */
+.texture-paper-grain {
+  position: relative;
+  isolation: isolate;
+}
+.texture-paper-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/paper-grain.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-warm-plaster {
+  position: relative;
+  isolation: isolate;
+}
+.texture-warm-plaster::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/warm-plaster.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-geometric-paper {
+  position: relative;
+  isolation: isolate;
+}
+.texture-geometric-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/geometric-paper.svg');
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-champagne-grain {
+  position: relative;
+  isolation: isolate;
+}
+.texture-champagne-grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/champagne-grain.svg');
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-linen {
+  position: relative;
+  isolation: isolate;
+}
+.texture-linen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/linen-weave.svg');
+  background-repeat: repeat;
+  background-size: 32px 32px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-ivory-paper {
+  position: relative;
+  isolation: isolate;
+}
+.texture-ivory-paper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/textures/ivory-paper.svg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.texture-layer-paper-grain {
+  background-image: url('/textures/paper-grain.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  pointer-events: none;
+}
+.texture-layer-warm-plaster {
+  background-image: url('/textures/warm-plaster.svg');
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  pointer-events: none;
+}
+.texture-layer-geometric-paper {
+  background-image: url('/textures/geometric-paper.svg');
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  pointer-events: none;
+}
+.texture-layer-champagne-grain {
+  background-image: url('/textures/champagne-grain.svg');
+  background-repeat: repeat;
+  background-size: 180px 180px;
+  pointer-events: none;
+}
+.texture-layer-linen {
+  background-image: url('/textures/linen-weave.svg');
+  background-repeat: repeat;
+  background-size: 32px 32px;
+  pointer-events: none;
+}
+.texture-layer-ivory-paper {
+  background-image: url('/textures/ivory-paper.svg');
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+}
+
+/* Print Stylesheet: Suppress background texture layers to save physical ink */
+@media print {
+  .texture-paper-grain::before,
+  .texture-warm-plaster::before,
+  .texture-geometric-paper::before,
+  .texture-champagne-grain::before,
+  .texture-linen::before,
+  .texture-ivory-paper::before,
+  .texture-layer-paper-grain,
+  .texture-layer-warm-plaster,
+  .texture-layer-geometric-paper,
+  .texture-layer-champagne-grain,
+  .texture-layer-linen,
+  .texture-layer-ivory-paper {
+    display: none !important;
+    background-image: none !important;
+  }
+}
+
+/* 2. Coordinated Hero Entrance Timing Utility Classes */
+.hero-entrance-fade {
+  opacity: 0;
+  animation: heroFadeEntrance 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes heroFadeEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-delay-1 { animation-delay: 80ms; }
+.hero-delay-2 { animation-delay: 220ms; }
+.hero-delay-3 { animation-delay: 380ms; }
+.hero-delay-4 { animation-delay: 520ms; }
+.hero-delay-5 { animation-delay: 680ms; }
+.hero-delay-6 { animation-delay: 840ms; }
+
+/* =========================================================================
+   V6.4 COORDINATED 10-STEP HERO ENTRANCE SEQUENCE (R2, R3)
+   1. Ambient light wash fade-in
+   2. Dot grid pattern appearance
+   3. Eyebrow badge entrance
+   4. Headline word-by-word reveal (kinetic typography)
+   5. Supporting text reveal
+   6. Rotating credential badge reveal
+   7. Staggered CTA buttons (7a, 7b, 7c)
+   8. Masked hero image unmasking (clip-path reveal)
+   9. Official credential plaque reveal with gold medallion
+   10. Decorative rings and subtle geometric accents
+   ========================================================================= */
+
+@keyframes heroStepAmbientLight {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes heroStepDotGrid {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  100% {
+    opacity: 0.35;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroStepSlideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroStepFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroStepImageClip {
+  0% {
+    opacity: 0;
+    clip-path: inset(8% 8% 8% 8% round 1.5rem);
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(0% 0% 0% 0% round 1.5rem);
+    transform: scale(1);
+  }
+}
+
+@keyframes heroStepPlaque {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroStepRings {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) rotate(-15deg);
+  }
+  100% {
+    opacity: 0.35;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.hero-step-1 {
+  animation: heroStepAmbientLight 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0ms;
+}
+
+.hero-step-2 {
+  animation: heroStepDotGrid 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 100ms;
+}
+
+.hero-step-3 {
+  animation: heroStepSlideDown 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 200ms;
+}
+
+.hero-step-4 {
+  animation: heroStepFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 320ms;
+}
+
+.hero-step-5 {
+  animation: heroStepFadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 440ms;
+}
+
+.hero-step-6 {
+  animation: heroStepFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 560ms;
+}
+
+.hero-step-7a {
+  animation: heroStepFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 680ms;
+}
+
+.hero-step-7b {
+  animation: heroStepFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 740ms;
+}
+
+.hero-step-7c {
+  animation: heroStepFadeUp 650ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 800ms;
+}
+
+.hero-step-8 {
+  animation: heroStepImageClip 950ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 840ms;
+  will-change: clip-path, transform, opacity;
+}
+
+.hero-step-9 {
+  animation: heroStepPlaque 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 960ms;
+  will-change: transform, opacity;
+}
+
+.hero-step-10 {
+  animation: heroStepRings 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 1080ms;
+  will-change: transform, opacity;
+}
+
+/* 3. V4.1 Luxury Card Elevate & Interactive Physics */
+.card-v4-luxury {
+  background-color: #FFF9EF;
+  border: 1px solid #E8D5B5;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px -2px rgba(21, 63, 50, 0.04), 0 1px 3px rgba(195, 166, 107, 0.03);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 260ms ease,
+              background-color 260ms ease;
+  will-change: transform, box-shadow;
+}
+
+.card-v4-luxury:hover {
+  transform: translateY(-4px);
+  border-color: #C3A66B;
+  box-shadow: 0 16px 36px -4px rgba(21, 63, 50, 0.08), 0 0 20px rgba(195, 166, 107, 0.2);
+}
+
+.card-v4-inner-border {
+  position: relative;
+}
+.card-v4-inner-border::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(1.25rem - 1px);
+  border: 1px solid rgba(195, 166, 107, 0.15);
+  pointer-events: none;
+  transition: border-color 280ms ease;
+}
+.card-v4-luxury:hover .card-v4-inner-border::after {
+  border-color: rgba(195, 166, 107, 0.45);
+}
+
+/* Image Subtle Zoom & Unmask */
+.image-v4-zoom {
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.group:hover .image-v4-zoom {
+  transform: scale(1.03);
+}
+
+/* Icon Subtle Rotate & Scale */
+.icon-v4-interactive {
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1), background-color 200ms ease;
+  will-change: transform;
+}
+.group:hover .icon-v4-interactive {
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* Input Focus Ring V4 */
+.input-v4-focus {
+  transition: border-color 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.input-v4-focus:focus {
+  border-color: #153F32 !important;
+  box-shadow: 0 0 0 3px rgba(21, 63, 50, 0.15), 0 0 12px rgba(195, 166, 107, 0.2) !important;
+  outline: none;
+}
+
+/* =========================================================================
    Accessibility: Reduced Motion Overrides
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
@@ -804,11 +1966,38 @@
   .scroll-reveal-right,
   .scroll-reveal-scale,
   .scroll-reveal-image,
-  [data-reveal] {
+  [data-reveal],
+  .hero-entrance-fade,
+  .hero-step-1,
+  .hero-step-2,
+  .hero-step-3,
+  .hero-step-4,
+  .hero-step-5,
+  .hero-step-6,
+  .hero-step-7a,
+  .hero-step-7b,
+  .hero-step-7c,
+  .hero-step-8,
+  .hero-step-9,
+  .hero-step-10,
+  .motion-line-draw-vertical,
+  .motion-line-draw-horizontal,
+  .card-v4-luxury,
+  .card-border-draw::after,
+  .image-v4-zoom,
+  .icon-v4-interactive,
+  .icon-stroke-interactive {
     opacity: 1 !important;
     transform: none !important;
     clip-path: none !important;
     transition: none !important;
+    animation: none !important;
+  }
+  .animate-ambient-drift,
+  .animate-ambient-pulse {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.45 !important;
   }
   .animate-marquee-track,
   .animate-marquee-track-reverse {
@@ -825,6 +2014,71 @@
     grid-template-rows: 1fr !important;
     opacity: 1 !important;
     transition: none !important;
+  }
+  .motion-dot-pulse,
+  .motion-dot-pulse-delayed,
+  .motion-dot-pulse-alt,
+  .motion-dot-wave-1,
+  .motion-dot-wave-2,
+  .motion-dot-wave-3,
+  .motion-dot-wave-4,
+  .motion-spin-mesh,
+  .motion-spin-mesh-reverse,
+  .motion-spin-mesh-organic,
+  .motion-float-subtle,
+  .motion-float-subtle-reverse,
+  .motion-float-hero,
+  .motion-pulse-ring,
+  .motion-timeline-spine,
+  .motion-path-reveal-loop,
+  .motion-card-lift,
+  .motion-icon-hover,
+  .motion-arrow-hover,
+  .motion-card-hover {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+    stroke-dashoffset: 0 !important;
+    opacity: 0.6 !important;
+  }
+  .kinetic-letter,
+  .kinetic-word-inner,
+  .kinetic-blur-reveal {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  .kinetic-highlight-sweep {
+    transition: none !important;
+    background-size: 100% 100% !important;
+  }
+  .kinetic-ticker-track,
+  .kinetic-ticker-track-reverse {
+    animation: none !important;
+    transform: none !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .kinetic-ticker-track .kinetic-ticker-duplicate,
+  .kinetic-ticker-track-reverse .kinetic-ticker-duplicate {
+    display: none !important;
+  }
+}
+
+/* =========================================================================
+   Accessibility: High Contrast / Forced Colors Mode
+   ========================================================================= */
+@media (forced-colors: active) {
+  .card-v4-luxury {
+    border: 2px solid ButtonBorder !important;
+    forced-color-adjust: auto;
+  }
+  .card-v4-luxury:hover,
+  .card-v4-luxury:focus-visible {
+    border-color: Highlight !important;
+    outline: 2px solid Highlight !important;
   }
 }
 
@@ -854,3 +2108,413 @@
     font-size: 16px !important;
   }
 }
+
+/* =========================================================================
+   THE BOTANICAL LEDGER — ARCHITECTURAL UTILITY SUITE (M2)
+   ========================================================================= */
+
+/* Double-Bezel Frame (Dark Evergreen Variant) */
+.double-bezel-evergreen {
+  border-radius: 1.5rem;
+  padding: 0.375rem;
+  background-color: #071B14;
+  border: 1px solid rgba(180, 154, 100, 0.35);
+  box-shadow: 0 12px 36px -4px rgba(7, 27, 20, 0.5);
+  overflow: hidden;
+}
+
+.double-bezel-evergreen-inner {
+  border-radius: calc(1.5rem - 0.375rem);
+  background-color: #071B14;
+  border: 1px solid rgba(180, 154, 100, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Double-Bezel Frame (Light Warm Ivory Variant) */
+.double-bezel-ivory {
+  border-radius: 1.5rem;
+  padding: 0.375rem;
+  background-color: #FAF7F0;
+  border: 1px solid #D8D0BE;
+  box-shadow: 0 8px 30px rgba(7, 27, 20, 0.06);
+  overflow: hidden;
+}
+
+.double-bezel-ivory-inner {
+  border-radius: calc(1.5rem - 0.375rem);
+  background-color: #FAF7F0;
+  border: 1px solid rgba(180, 154, 100, 0.18);
+  box-shadow: inset 0 1px 2px rgba(180, 154, 100, 0.08);
+}
+
+/* Hairline Brass & Muted Dividers */
+.hairline-divider-bronze {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(180, 154, 100, 0.35), transparent);
+}
+
+.hairline-divider-bronze-v {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(180, 154, 100, 0.35), transparent);
+}
+
+.hairline-divider-muted {
+  border-top: 1px solid #D8D0BE;
+}
+
+/* Dual-Arrow Button Micro-Physics */
+.dual-arrow-badge {
+  position: relative;
+  overflow: hidden;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(180, 154, 100, 0.15);
+  color: #B49A64;
+  transition: background-color 220ms ease, color 220ms ease, transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.dual-arrow-badge .arrow-primary {
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.dual-arrow-badge .arrow-secondary {
+  position: absolute;
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), opacity 240ms ease;
+  transform: translate(-120%, 120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.group:hover .dual-arrow-badge,
+button:hover .dual-arrow-badge,
+a:hover .dual-arrow-badge {
+  background: #B49A64;
+  color: #071B14;
+  transform: translateX(2px) translateY(-1px);
+}
+
+.group:hover .dual-arrow-badge .arrow-primary,
+button:hover .dual-arrow-badge .arrow-primary,
+a:hover .dual-arrow-badge .arrow-primary {
+  transform: translate(120%, -120%);
+  opacity: 0;
+}
+
+.group:hover .dual-arrow-badge .arrow-secondary,
+button:hover .dual-arrow-badge .arrow-secondary,
+a:hover .dual-arrow-badge .arrow-secondary {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* Tactile Button Press Physics */
+.btn-tactile {
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 180ms ease-out,
+              border-color 180ms ease-out;
+  will-change: transform;
+}
+
+.btn-tactile:active {
+  transform: scale(0.98);
+}
+
+/* Architectural Corner Brackets */
+.corner-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.corner-bracket-tl {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-top: 1.5px solid rgba(180, 154, 100, 0.7);
+  border-left: 1.5px solid rgba(180, 154, 100, 0.7);
+}
+
+.corner-bracket-tr {
+  top: 0.75rem;
+  right: 0.75rem;
+  border-top: 1.5px solid rgba(180, 154, 100, 0.7);
+  border-right: 1.5px solid rgba(180, 154, 100, 0.7);
+}
+
+.corner-bracket-bl {
+  bottom: 0.75rem;
+  left: 0.75rem;
+  border-bottom: 1.5px solid rgba(180, 154, 100, 0.7);
+  border-left: 1.5px solid rgba(180, 154, 100, 0.7);
+}
+
+.corner-bracket-br {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-bottom: 1.5px solid rgba(180, 154, 100, 0.7);
+  border-right: 1.5px solid rgba(180, 154, 100, 0.7);
+}
+
+/* =========================================================================
+   V8.2 Premium Ambient Decorative & Motion System
+   Restrained, editorial-grade ambient physics for Botanical Ledger identity
+   ========================================================================= */
+
+@keyframes orbital-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbital-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes ambient-pulse-slow {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.24;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes ambient-float-subtle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(0.4deg);
+  }
+}
+
+.animate-orbital-slow {
+  animation: orbital-spin-slow 75s linear infinite;
+  will-change: transform;
+}
+
+.animate-orbital-reverse {
+  animation: orbital-spin-reverse 90s linear infinite;
+  will-change: transform;
+}
+
+.animate-pulse-slow {
+  animation: ambient-pulse-slow 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-float-subtle {
+  animation: ambient-float-subtle 18s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Reduced Motion Safety */
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbital-slow,
+  .animate-orbital-reverse,
+  .animate-pulse-slow,
+  .animate-float-subtle {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* =========================================================================
+   V8.2 Botanical Ledger Animation Engine & Utility Classes
+   Strict adherence to Botanical Ledger design system, timings, and easing
+   ========================================================================= */
+
+@keyframes v8LineDrawHorizontal {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes v8LineDrawVertical {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes v8TextRevealUp {
+  from {
+    transform: translate3d(0, 105%, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes v8FadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes v8SlideUp {
+  from {
+    transform: translate3d(0, 24px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes v8ScaleIn {
+  from {
+    transform: scale3d(0.96, 0.96, 1);
+    opacity: 0;
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+  }
+}
+
+/* Botanical Ledger Motion Helper Classes */
+.v8-motion-standard {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.v8-motion-editorial {
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.v8-reveal {
+  contain: layout style;
+}
+
+.v8-stagger-container {
+  contain: layout style;
+}
+
+.v8-count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth Accordion Curtain Expander (WCAG 2.2 Fluid Expansion) */
+.accordion-curtain {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 280ms cubic-bezier(0.22, 1, 0.36, 1), opacity 200ms ease;
+  opacity: 0;
+}
+
+.accordion-curtain[data-expanded="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.accordion-curtain-inner {
+  overflow: hidden;
+}
+
+/* Form Micro-Interactions (V8.2) */
+@keyframes v8FormErrorIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.v8-form-error {
+  animation: v8FormErrorIn 160ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes v8SuccessCardIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.98, 0.98, 1);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.v8-form-success {
+  animation: v8SuccessCardIn 280ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Hero Section Immediate Mount Cascade (V8.2 - Non-blocking LCP) */
+@keyframes v8HeroCascade {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.v8-hero-cascade {
+  animation: v8HeroCascade 650ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* V8.2 Master Reduced-Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .v8-reveal,
+  .v8-fade-in,
+  .v8-slide-up,
+  .v8-stagger-container,
+  .v8-stagger-item,
+  .v8-text-reveal,
+  .v8-text-reveal span,
+  .v8-count-up,
+  .v8-magnetic-button,
+  .v8-page-transition,
+  .v8-parallax-layer,
+  .v8-animated-divider,
+  .accordion-curtain,
+  .v8-form-error,
+  .v8-form-success,
+  .v8-hero-cascade {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .accordion-curtain {
+    grid-template-rows: 1fr !important;
+  }
+}
+
+
+

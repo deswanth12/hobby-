@@ -20,6 +20,16 @@ export const PUBLIC_SITEMAP = path.resolve('public/sitemap.xml');
 export const DIST_DIR = path.resolve('dist');
 export const DIST_SITEMAP = path.resolve('dist/sitemap.xml');
 
+// Core service mapping to canonical static routes
+const CORE_SERVICE_CANONICALS = new Set([
+  'income-tax',
+  'gst',
+  'corporate-business',
+  'rera-compliance',
+  'advisory-consulting',
+  'audit-assurance'
+]);
+
 // Verified Static Website Routes
 export const STATIC_ROUTES = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
@@ -199,7 +209,7 @@ export function escapeXml(str) {
  * @param {string} [today] 
  * @returns {{ xml: string, urlCount: number, publishedCount: number, draftsSkipped: number }}
  */
-export function generateSitemapXml(posts = [], today = new Date().toISOString().split('T')[0]) {
+export function generateSitemapXml(posts = [], today = new Date().toISOString().split('T')[0], dynamicServices = []) {
   const urlEntries = [];
   const registeredSlugs = new Set();
 
@@ -214,6 +224,32 @@ export function generateSitemapXml(posts = [], today = new Date().toISOString().
       lastmod: today,
       changefreq: route.changefreq,
       priority: route.priority,
+    });
+  }
+
+  // 1b. Dynamic Published Services (Custom/New practice areas only)
+  for (const service of dynamicServices) {
+    if (!service || service.status !== 'published') continue;
+    const cleanId = (service.id || '').trim().toLowerCase();
+    if (!cleanId || CORE_SERVICE_CANONICALS.has(cleanId)) continue;
+    const routePath = `/services/${cleanId}`;
+    
+    // Skip if route or canonical URL is already published in STATIC_ROUTES
+    let canonicalPath = routePath;
+    if (service.seo?.canonicalUrl) {
+      try {
+        canonicalPath = new URL(service.seo.canonicalUrl, BASE_URL).pathname;
+      } catch {
+        canonicalPath = routePath;
+      }
+    }
+    if (STATIC_ROUTES.some(r => r.path === routePath || r.path === canonicalPath)) continue;
+
+    urlEntries.push({
+      loc: `${BASE_URL}${routePath}`,
+      lastmod: formatLastmod(service.updatedAt || service.createdAt, today),
+      changefreq: 'monthly',
+      priority: '0.9',
     });
   }
 
@@ -304,7 +340,22 @@ export function generateSitemap() {
     console.warn(`[sitemap] ${POSTS_DIR} does not exist. Generating static routes only.`);
   }
 
-  const { xml, urlCount, publishedCount, draftsSkipped } = generateSitemapXml(posts, today);
+  // Read published dynamic services from practice_db.json
+  const dynamicServices = [];
+  const dbPath = path.resolve('data/practice_db.json');
+  if (fs.existsSync(dbPath)) {
+    try {
+      const db = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+      if (Array.isArray(db.services)) {
+        const deletedIds = new Set((db.deletedServices || []).map(d => d.id));
+        dynamicServices.push(...db.services.filter(s => s.status === 'published' && !deletedIds.has(s.id)));
+      }
+    } catch (e) {
+      console.warn(`[sitemap] Could not parse practice_db.json: ${e.message}`);
+    }
+  }
+
+  const { xml, urlCount, publishedCount, draftsSkipped } = generateSitemapXml(posts, today, dynamicServices);
 
   // Ensure public directory exists and write public/sitemap.xml
   if (!fs.existsSync(PUBLIC_DIR)) {

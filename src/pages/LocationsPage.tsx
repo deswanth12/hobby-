@@ -13,6 +13,8 @@ import {
 import { useFirmData } from '../context/FirmDataContext';
 import { FIRM_DATA } from '../data/firmData';
 import { SEOHead } from '../components/SEOHead';
+import { LetterReveal, WordReveal, TextHighlight } from '../components/animations';
+import { EditorialMarker } from '../components/architectural';
 
 export const LocationsPage: React.FC = () => {
   const { data } = useFirmData();
@@ -82,14 +84,18 @@ export const LocationsPage: React.FC = () => {
       <section className="bg-brand-surface py-10 sm:py-16 md:py-20 lg:py-24 lg:py-28 border-b border-brand-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="font-editorial-meta text-gold-dark block mb-3">
-              Practice Chambers & Regional Corridors • South India Footprint
-            </span>
+            <div className="flex items-center gap-2.5 mb-3 flex-wrap">
+              <EditorialMarker number="08" label="PRACTICE CHAMBERS" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-white border border-brand-border shadow-xs">
+                <span className="text-brand-gold font-mono font-bold">//</span>
+                <LetterReveal text="REGIONAL CORRIDORS • SOUTH INDIA FOOTPRINT" as="span" className="tracking-widest uppercase font-semibold text-brand-forest text-xs" />
+              </div>
+            </div>
             <h1 className="font-editorial-h1 text-brand-forest">
-              Principal Chambers in Tirupati. Active Regional Coverage.
+              <WordReveal text="Principal Chambers in Tirupati. Active Regional Coverage." />
             </h1>
             <p className="mt-4 font-editorial-body text-brand-muted leading-relaxed text-base sm:text-lg">
-              Operating with our primary practice chambers in Tirupati, Andhra Pradesh, under the leadership of CA Kavitha Vijay, and providing scheduled client consultations, statutory audit representations, and advisory engagements across major commercial corridors in South India.
+              Headquartered at our registered chambers in Tirupati, Andhra Pradesh, under the leadership of <TextHighlight>CA Kavitha Vijay</TextHighlight> (B.Com, CA, CMA AIR 49), we deliver partner-supervised statutory audit, tax counsel, and corporate advisory services to clients nationwide.
             </p>
           </div>
         </div>
@@ -114,7 +120,7 @@ export const LocationsPage: React.FC = () => {
               </h2>
 
               <p className="font-editorial-body text-base text-brand-muted leading-relaxed">
-                Headquarters for Kavitha & Associates under the direction of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (B.Com, CA, CMA AIR 49), located at <strong className="text-brand-forest font-semibold">19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India</strong>. In-person client consultations, physical documentation reviews, audit workpaper archives, and core audit planning are coordinated directly from our Tirupati chambers.
+                Headquarters for Kavitha & Associates under the leadership of <strong className="text-brand-forest font-semibold">CA Kavitha Vijay</strong> (B.Com, CA, CMA AIR 49, Chartered Accountant (ICAI Member)), located at <strong className="text-brand-forest font-semibold">19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati, Andhra Pradesh – 517501, India</strong>. In-person consultations, physical documentation reviews, and core audit planning are coordinated directly from our Tirupati chambers.
               </p>
 
               {/* Verified GPS & Navigation Box */}
@@ -129,7 +135,7 @@ export const LocationsPage: React.FC = () => {
                   </span>
                 </div>
                 <div className="font-mono text-xs text-brand-charcoal bg-brand-surface p-3 rounded-xl border border-brand-border/60">
-                  GPS DMS: 13°37'09.2"N 79°25'05.0"E • Decimal: 13.6192242, 79.418046
+                  GPS DMS: 13°37'09.3"N 79°25'04.9"E • Decimal: 13.6192242, 79.418046
                 </div>
                 <div className="pt-1">
                   <a
@@ -163,42 +169,42 @@ export const LocationsPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Right 5 Columns: Double-Bezel Dark Plaque */}
+            {/* Right 5 Columns: Pure White Practice Plaque */}
             <div className="lg:col-span-5">
-              <div className="double-bezel-dark animate-fade-up">
-                <div className="double-bezel-inner-dark bg-brand-deep rounded-2xl p-7 sm:p-8 text-white border border-white/10 shadow-editorial-lg space-y-6">
-                  <div className="flex items-center justify-between pb-5 border-b border-white/10">
-                    <div className="w-12 h-12 rounded-xl bg-brand-forest border border-brand-gold/40 flex items-center justify-center font-serif text-xl font-bold text-brand-gold shadow-inner">
+              <div className="animate-fade-up">
+                <div className="bg-white rounded-2xl p-7 sm:p-8 text-[#252B27] border border-[#E8D5B5] shadow-card space-y-6">
+                  <div className="flex items-center justify-between pb-5 border-b border-[#E8D5B5]">
+                    <div className="w-12 h-12 rounded-xl bg-[#DDE8D9] border border-[#153F32]/25 flex items-center justify-center font-serif text-xl font-bold text-[#153F32] shadow-xs">
                       KA
                     </div>
-                    <span className="font-editorial-meta text-brand-gold bg-black/40 px-3 py-1 rounded-full border border-brand-gold/30 text-[10px]">
+                    <span className="font-editorial-meta text-[#7E5E1E] bg-[#E8D5B5] px-3 py-1 rounded-full border border-[#C3A66B]/40 text-[10px] font-semibold">
                       Principal Practice Register
                     </span>
                   </div>
 
                   <div>
-                    <span className="font-editorial-meta text-brand-gold block mb-1 text-xs">
+                    <span className="font-editorial-meta text-[#7E5E1E] block mb-1 text-xs font-semibold">
                       In-Person Chambers Consultations
                     </span>
-                    <h3 className="font-editorial-h3 text-xl font-bold text-white">
+                    <h3 className="font-editorial-h3 text-xl font-bold text-[#153F32]">
                       Direct Senior Partner Review
                     </h3>
-                    <p className="font-editorial-body text-xs text-emerald-100/90 mt-2 leading-relaxed">
+                    <p className="font-editorial-body text-xs text-[#525954] mt-2 leading-relaxed">
                       Available by prior appointment for founders, directors, builders, and taxpayers seeking authoritative statutory audit, direct tax defense, or strategic corporate counsel.
                     </p>
                   </div>
 
-                  <div className="space-y-3 pt-4 border-t border-white/10 text-xs font-editorial-body text-emerald-200">
+                  <div className="space-y-3 pt-4 border-t border-[#E8D5B5] text-xs font-editorial-body text-[#525954]">
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C3A66B] shrink-0" />
                       <span>Chambers Hours: Mon – Sat (9:30 AM – 7:00 PM)</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C3A66B] shrink-0" />
                       <span>Dedicated Confidential Consultation Room</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#C3A66B] shrink-0" />
                       <span>Complete Working Paper Document Archival</span>
                     </div>
                   </div>
@@ -206,10 +212,10 @@ export const LocationsPage: React.FC = () => {
                   <div className="pt-2">
                     <Link
                       to="/contact"
-                      className="min-h-[44px] w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-brand-gold hover:bg-brand-gold/90 text-brand-deep font-editorial-meta text-xs font-bold uppercase tracking-wider transition-colors duration-200 shadow-md btn-tactile"
+                      className="min-h-[44px] w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#153F32] hover:bg-[#102D25] text-white font-editorial-meta text-xs font-bold uppercase tracking-wider transition-colors duration-200 shadow-sm hover:shadow-md border border-[#C3A66B]/50 btn-tactile"
                     >
                       <span>Schedule Chambers Appointment</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 text-[#D4AF37]" />
                     </Link>
                   </div>
                 </div>
@@ -227,10 +233,10 @@ export const LocationsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-14">
             <span className="font-editorial-meta text-brand-gold block mb-2">
-              Active Regional Client Coverage Corridors
+              <LetterReveal text="Active Regional Client Coverage Corridors" />
             </span>
             <h2 className="font-editorial-h2 text-brand-forest">
-              Metropolitan Client Engagements
+              <WordReveal text="Metropolitan Client Engagements" />
             </h2>
             <p className="font-editorial-body text-sm sm:text-base text-brand-muted mt-3">
               We represent corporations, emerging tech startups, and institutions across South India through dedicated on-site audit visits, department representations, and regional client corridors.
@@ -343,10 +349,10 @@ export const LocationsPage: React.FC = () => {
       <section className="py-10 sm:py-16 md:py-20 lg:py-24 bg-brand-surface text-center border-t border-brand-border">
         <div className="max-w-3xl mx-auto px-4">
           <span className="font-editorial-meta text-brand-gold block mb-2.5">
-            Chambers & Virtual Meetings
+            <LetterReveal text="Chambers & Virtual Meetings" />
           </span>
           <h2 className="font-editorial-h2 text-brand-forest">
-            Schedule a Direct Chambers or Regional Session
+            <WordReveal text="Schedule a Direct Chambers or Regional Session" />
           </h2>
           <p className="mt-4 font-editorial-body text-sm sm:text-base text-brand-muted leading-relaxed">
             Whether visiting our Tirupati chambers in person or coordinating an on-site corporate audit in Chennai, Bengaluru, Hyderabad, or Coimbatore, our team provides seamless statutory execution.
