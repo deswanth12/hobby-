@@ -45,7 +45,7 @@ export const CrestMonogram: React.FC<CrestMonogramProps> = ({
           />
         </picture>
         {/* Semantic fallback and test invariant retention */}
-        <span className="sr-only">KA - Kavitha &amp; Associates Chartered Accountants</span>
+        <span className="sr-only">KA &amp; KV - Kavitha &amp; Associates Chartered Accountants | CA Kavitha Vijay</span>
       </div>
     );
   }
