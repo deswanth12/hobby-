@@ -191,13 +191,31 @@ export const Footer: React.FC = () => {
                   <span>WhatsApp Desk</span>
                 </a>
                 <a
-                  href="https://maps.google.com/?q=Tirupati+Andhra+Pradesh"
+                  href={FIRM_DATA.contact.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-[#0B241C] hover:bg-[#183529] text-[#AAB4A0] hover:text-[#F1EBDD] border border-[#B49A64]/30 text-xs transition-colors min-h-[40px]"
                 >
                   <ExternalLink className="w-3.5 h-3.5 text-[#B49A64]" />
-                  <span>Directions</span>
+                  <span>Google Maps</span>
+                </a>
+              </div>
+
+              {/* Google Review Strip */}
+              <div className="pt-1">
+                <a
+                  href={FIRM_DATA.contact.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-2.5 rounded-lg bg-[#0B241C] border border-[#B49A64]/30 text-xs hover:border-[#B49A64]/60 transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <span className="text-amber-400 font-bold text-xs">★★★★★</span>
+                    <span className="font-semibold text-[#F1EBDD] text-[11px]">4.9 / 5.0 Rating</span>
+                  </div>
+                  <span className="text-[#B49A64] text-[10px] font-semibold">
+                    58 Reviews →
+                  </span>
                 </a>
               </div>
             </div>

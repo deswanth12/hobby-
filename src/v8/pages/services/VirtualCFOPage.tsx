@@ -120,6 +120,13 @@ export const VirtualCFOPage: React.FC = () => {
     }
   ];
 
+  const cfoFaqAnswers: Record<string, string> = {
+    'faq-what-is-vcfo': 'A Virtual CFO (Chief Financial Officer) provides high-level financial leadership, cash flow planning, cost governance, and strategic advisory on an outsourced, fractional basis. Rather than incurring the heavy cost of a full-time executive, growing businesses in Tirupati access senior CA and CMA competence tailored to their exact scale.',
+    'faq-cma-benefit': 'CA Kavitha Vijay holds dual qualifications as a Chartered Accountant (ICAI) and a Cost & Management Accountant (specifically attributed to ICMAI), securing All India Rank 49 in the CMA examination. A Cost Accountant provides forward-looking operational cost accounting: analyzing raw material yield, standard costing variances, break-even thresholds, and unit profitability.',
+    'faq-bank-cma-report': 'A CMA (Credit Monitoring Arrangement) report is a standardized multi-year financial document mandated by banks to evaluate loan applications for Cash Credit (CC) limits, Overdraft (OD), and Term Loans. It analyzes past, current, and projected operating statements, working capital cycles, and DSCR.',
+    'faq-fractional-scope': 'We integrate directly with your accounting team. Your in-house accountants handle daily voucher entry while our team reviews reconciliations weekly, closes monthly MIS by the 5th of every month, monitors cash flow runways, and coordinates monthly board-level strategy reviews.'
+  };
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -146,7 +153,7 @@ export const VirtualCFOPage: React.FC = () => {
               url: 'https://kavithaassociates.com/',
               telephone: firm.contact.primaryPhone,
             },
-            areaServed: 'Tirupati, Andhra Pradesh, India',
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
             description: 'Outsourced financial controllership, bank CMA data syndication, unit cost modeling, and executive MIS advisory led by CA Kavitha Vijay (CMA AIR 49 ICMAI).'
           },
           {
@@ -157,7 +164,7 @@ export const VirtualCFOPage: React.FC = () => {
               name: f.title,
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: typeof f.content === 'string' ? f.content : 'Management accounting guidance based on professional ICMAI standards.'
+                text: cfoFaqAnswers[f.id] || (typeof f.content === 'string' ? f.content : 'Management accounting guidance based on professional ICMAI standards.')
               }
             }))
           }

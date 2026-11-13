@@ -130,6 +130,14 @@ export const IncomeTaxPage: React.FC = () => {
     }
   ];
 
+  const taxFaqAnswers: Record<string, string> = {
+    'faq-44ab': 'Under Section 44AB of the Income Tax Act, a Tax Audit by an independent practicing Chartered Accountant is mandatory if: (1) business turnover exceeds ₹1 Crore (or ₹10 Crores where aggregate cash receipts and payments do not exceed 5% of total turnover); (2) professional gross receipts exceed ₹50 Lakhs (or ₹75 Lakhs under presumptive Section 44ADA if cash receipts are <= 5%); or (3) a taxpayer opts out of presumptive taxation while earning income above the basic exemption threshold.',
+    'faq-54-54ec': 'Long-term capital gains arising from the sale of residential property can be exempted under Section 54 by purchasing another residential property within 1 year before or 2 years after the transfer (or constructing within 3 years). Alternatively, under Section 54EC, gains up to ₹50 Lakhs can be invested in specified infrastructure bonds (REC, NHAI, PFC, IRFC) within 6 months from the date of transfer. If funds are not reinvested prior to the ITR filing due date, they must be deposited into a Capital Gains Account Scheme (CGAS) with an authorized bank in Tirupati.',
+    'faq-115baa': 'Section 115BAA offers domestic companies a reduced base corporate tax rate of 22% (effective tax rate of 25.168% inclusive of 10% surcharge and 4% cess) compared to the standard 30% slab. Crucially, companies electing Section 115BAA are completely exempt from Minimum Alternate Tax (MAT under Section 115JB). However, brought-forward MAT credits cannot be set off and certain deductions (like accelerated depreciation or Section 80-IA) must be foregone. We prepare comparative models before submitting irrevocable Form 10-IC.',
+    'faq-faceless-scrutiny': 'Faceless scrutiny requires strictly electronic, document-backed responses with zero physical hearings. We analyze the specific questionnaire issued by the Assessment Unit, cross-reference transactions against bank statements, purchase bills, and TDS credits, draft legal arguments citing relevant High Court and Supreme Court precedents, and upload structured PDF annexures via the e-Filing portal well within statutory response deadlines.',
+    'faq-87a-rebate': 'Under the new tax regime (Section 115BAC), resident individuals with total taxable income up to ₹7,00,000 are eligible for a complete tax rebate up to ₹25,000, resulting in zero tax liability. In contrast, under the old tax regime, the Section 87A rebate is capped at ₹12,500 for total income up to ₹5,00,000. Marginal relief is also provided where income marginally exceeds ₹7,00,000.'
+  };
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -156,7 +164,7 @@ export const IncomeTaxPage: React.FC = () => {
               url: 'https://kavithaassociates.com/',
               telephone: firm.contact.primaryPhone,
             },
-            areaServed: 'Tirupati, Andhra Pradesh, India',
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
             description: 'Comprehensive direct tax services, Section 44AB tax audits, Section 115BAA corporate planning, and faceless scrutiny defense supervised by CA Kavitha Vijay.'
           },
           {
@@ -167,7 +175,7 @@ export const IncomeTaxPage: React.FC = () => {
               name: f.title,
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: typeof f.content === 'string' ? f.content : 'Direct tax guidance governed by the Income Tax Act, 1961.'
+                text: taxFaqAnswers[f.id] || (typeof f.content === 'string' ? f.content : 'Direct tax guidance governed by the Income Tax Act, 1961.')
               }
             }))
           }

@@ -42,6 +42,14 @@ export const HomePage: React.FC = () => {
               longitude: 79.418046,
             },
             hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
+            priceRange: '₹₹',
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.9',
+              reviewCount: '58',
+              bestRating: '5',
+              worstRating: '1',
+            },
             openingHoursSpecification: [
               {
                 '@type': 'OpeningHoursSpecification',
@@ -63,7 +71,7 @@ export const HomePage: React.FC = () => {
               honorificPrefix: 'CA',
               description: 'B.Com, CA, CMA (AIR 49, ICMAI)',
             },
-            areaServed: ['Tirupati', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'India'],
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Kadapa', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'Andhra Pradesh', 'India'],
             knowsAbout: [
               'Statutory Audit',
               'Internal Audit',
@@ -72,6 +80,44 @@ export const HomePage: React.FC = () => {
               'ROC & MCA Filings',
               'RERA Certifications',
               'Virtual CFO Services',
+            ],
+          },
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Which entities require an independent Statutory Audit in India?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Under Section 139 of the Companies Act 2013, all incorporated Private Limited and Public Limited companies must conduct an annual statutory audit by an independent practicing Chartered Accountant.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'When is a Tax Audit under Section 44AB mandatory?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'A tax audit under Section 44AB of the Income Tax Act 1961 is mandatory for businesses with turnover exceeding ₹1 Crore (or ₹10 Crore if digital transactions exceed 95%), and professionals with gross receipts over ₹50 Lakhs.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'Where are Kavitha & Associates chambers located in Tirupati?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Our principal practice chambers are located at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati – 517501, Andhra Pradesh.',
+                },
+              },
+              {
+                '@type': 'Question',
+                name: 'What qualifications and experience does managing partner CA Kavitha Vijay hold?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'CA Kavitha Vijay is a dual-qualified Chartered Accountant (ICAI) and Cost Accountant with All India Rank 49 (AIR 49, ICMAI), with over 10 years of experience including Big 4 tenure at Deloitte Haskins & Sells and Ford Motor Company.',
+                },
+              },
             ],
           },
           {

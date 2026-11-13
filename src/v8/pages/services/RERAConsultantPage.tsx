@@ -111,6 +111,13 @@ export const RERAConsultantPage: React.FC = () => {
     }
   ];
 
+  const reraFaqAnswers: Record<string, string> = {
+    'faq-form3-why': 'Under Section 4(2)(l)(D) of the Real Estate (Regulation and Development) Act, 2016, promoters must deposit 70% of realized amounts into a designated separate account. Funds can be withdrawn strictly in proportion to project percentage completion. A CA Form 3 certificate is statutory proof that withdrawals match verified expenditure.',
+    'faq-thresholds': 'Under Section 3 of the RERA Act, registration with AP RERA is mandatory for any project where land area exceeds 500 square meters or apartments exceed 8 units. Plotted layouts meeting size criteria must also be registered prior to marketing or sale.',
+    'faq-independent-auditor': 'Under the third proviso to Section 4(2)(l)(D), the annual RERA audit of the separate account must be conducted by a practicing Chartered Accountant. Independent CA verification ensures objective assurance and conflict-free verification of escrow fund utilization.',
+    'faq-escrow-penalties': 'Non-compliance with escrow account mandates attracts penalties up to 5% of estimated project cost under Section 61, or up to 10% under Section 60. The Authority can freeze accounts and revoke registration.'
+  };
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -137,7 +144,7 @@ export const RERAConsultantPage: React.FC = () => {
               url: 'https://kavithaassociates.com/',
               telephone: firm.contact.primaryPhone,
             },
-            areaServed: 'Tirupati, Andhra Pradesh, India',
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
             description: 'AP RERA project registration, Section 4(2)(l)(D) CA Form 3 escrow certificates, quarterly progress filings, and Form 5 annual audits led by CA Kavitha Vijay.'
           },
           {
@@ -148,7 +155,7 @@ export const RERAConsultantPage: React.FC = () => {
               name: f.title,
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: typeof f.content === 'string' ? f.content : 'RERA guidance based on the Real Estate (Regulation and Development) Act, 2016.'
+                text: reraFaqAnswers[f.id] || (typeof f.content === 'string' ? f.content : 'RERA guidance based on the Real Estate (Regulation and Development) Act, 2016.')
               }
             }))
           }

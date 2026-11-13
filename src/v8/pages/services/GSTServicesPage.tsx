@@ -132,6 +132,14 @@ export const GSTServicesPage: React.FC = () => {
     }
   ];
 
+  const gstFaqAnswers: Record<string, string> = {
+    'faq-gst-reg': 'Under Section 22 of the CGST/APGST Act, GST registration is legally mandatory if your aggregate annual turnover exceeds ₹40 Lakhs for businesses exclusively engaged in the supply of goods, or ₹20 Lakhs for service providers. However, registration is compulsory irrespective of turnover threshold for inter-state taxable supplies, e-commerce sellers, casual taxable persons, and reverse charge mechanisms.',
+    'faq-itc-2b': 'Under Section 16(2)(aa) of the CGST Act, ITC can strictly be claimed only if the invoice has been uploaded by the supplier and is reflected in auto-generated GSTR-2B. We execute automated and manual reconciliations to identify non-compliant suppliers, incorrect GSTIN entries, timing differences, and ineligible credits under Section 17(5).',
+    'faq-asmt-10': 'Form ASMT-10 is a notice pointing out discrepancies under return scrutiny (Section 61), while Form DRC-01A is an intimation of tax ascertained prior to demand. We prepare comprehensive factual replies in Form ASMT-11 within 30 days, backed by purchase invoices, bank statements, and reconciliations to close the scrutiny cleanly.',
+    'faq-sec-50': 'Under the retrospective proviso to Section 50(1), interest at 18% per annum is payable strictly on the net cash liability discharged via the Electronic Cash Ledger. Zero interest is levied on the portion of tax settled using eligible Input Tax Credit.',
+    'faq-composition': 'A taxpayer can opt out of the composition scheme voluntarily by filing Form CMP-04, or automatically if turnover exceeds statutory limits. Taxpayers switching to the regular scheme can claim Input Tax Credit on input stock held on the switch date by filing Form ITC-01.'
+  };
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -158,7 +166,7 @@ export const GSTServicesPage: React.FC = () => {
               url: 'https://kavithaassociates.com/',
               telephone: firm.contact.primaryPhone,
             },
-            areaServed: 'Tirupati, Andhra Pradesh, India',
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
             description: 'Comprehensive GST advisory, monthly return preparation, annual GSTR-9/9C audits, and departmental representation led by CA Kavitha Vijay.'
           },
           {
@@ -169,7 +177,7 @@ export const GSTServicesPage: React.FC = () => {
               name: f.title,
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: typeof f.content === 'string' ? f.content : 'GST advisory grounded in the Central and Andhra Pradesh GST Acts.'
+                text: gstFaqAnswers[f.id] || (typeof f.content === 'string' ? f.content : 'GST advisory grounded in the Central and Andhra Pradesh GST Acts.')
               }
             }))
           }

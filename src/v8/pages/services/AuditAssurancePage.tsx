@@ -16,11 +16,13 @@ import {
 } from 'lucide-react';
 import { FIRM_DATA } from '../../../data/firmData';
 import { SEOHead } from '../../../components/SEOHead';
+import { getPublishedFaqs } from '../../adapters/contentAdapter';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 
 export const AuditAssurancePage: React.FC = () => {
   const firm = FIRM_DATA;
+  const auditFaqs = getPublishedFaqs('audit-assurance');
 
   const breadcrumbs = [
     { name: 'Home', path: '/' },
@@ -35,20 +37,35 @@ export const AuditAssurancePage: React.FC = () => {
         description="Independent Statutory Audit under Companies Act 2013, Tax Audit under Sec 44AB, Internal Audit, Concurrent Audit & Stock Verification in Tirupati, AP."
         canonicalPath="/services/audit-assurance"
         breadcrumbs={breadcrumbs}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'Service',
-          name: 'Statutory, Tax & Internal Audit Services',
-          serviceType: 'Audit and Assurance',
-          provider: {
-            '@type': 'AccountingService',
-            '@id': 'https://kavithaassociates.com/#organization',
-            name: 'Kavitha & Associates',
-            url: 'https://kavithaassociates.com/'
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            name: 'Statutory, Tax & Internal Audit Services in Tirupati',
+            serviceType: 'Audit and Assurance',
+            provider: {
+              '@type': 'AccountingService',
+              '@id': 'https://kavithaassociates.com/#organization',
+              name: 'Kavitha & Associates',
+              url: 'https://kavithaassociates.com/',
+              telephone: firm.contact.primaryPhone,
+            },
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Andhra Pradesh', 'India'],
+            description: 'Comprehensive audit practice supervised by CA Kavitha Vijay, ensuring independent statutory opinions, IFC evaluations, and Sec 44AB tax audit certifications.'
           },
-          areaServed: 'Tirupati, Andhra Pradesh, India',
-          description: 'Comprehensive audit practice supervised by CA Kavitha Vijay, ensuring independent statutory opinions, IFC evaluations, and Sec 44AB tax audit certifications.'
-        }}
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: auditFaqs.map(f => ({
+              '@type': 'Question',
+              name: f.question,
+              acceptedAnswer: {
+                '@type': 'Answer',
+                text: f.answer,
+              },
+            })),
+          },
+        ]}
       />
 
       {/* 1. Header Banner */}

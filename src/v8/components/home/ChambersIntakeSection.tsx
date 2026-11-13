@@ -117,6 +117,32 @@ export const ChambersIntakeSection: React.FC = () => {
                   </div>
                 </a>
 
+                {/* Google Verified Reviews Trust Card */}
+                <a
+                  href={firmProfile.contact.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 rounded-2xl border border-[#B49A64]/40 bg-[#0B241C] group hover:border-[#B49A64] hover:-translate-y-0.5 transition-all duration-300 btn-tactile min-h-[44px]"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors font-serif font-black text-lg">
+                      G
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="text-amber-400 text-sm tracking-wider font-bold">★★★★★</span>
+                        <span className="font-mono text-xs font-bold text-[#F1EBDD] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">4.9 / 5.0</span>
+                      </div>
+                      <span className="text-xs text-[#D8D0BE] mt-0.5 block">
+                        58+ Verified Client Reviews on Google • Tirupati Chambers
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-xs text-[#B49A64] font-semibold flex items-center gap-1 shrink-0 group-hover:translate-x-0.5 transition-transform">
+                    Reviews →
+                  </span>
+                </a>
+
                 {/* Working Hours & Ethics Guarantee */}
                 <div className="p-4 rounded-2xl border border-[#B49A64]/20 bg-[#0B241C] flex items-center justify-between text-xs text-[#AAB4A0] flex-wrap gap-2">
                   <span className="flex items-center gap-1.5">

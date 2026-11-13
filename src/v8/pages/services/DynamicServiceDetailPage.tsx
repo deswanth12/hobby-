@@ -103,6 +103,45 @@ export const DynamicServiceDetailPage: React.FC = () => {
   const pageTitle = rawService?.seo?.metaTitle || `${service.title} in Tirupati | CA Kavitha & Associates`;
   const pageDescription = rawService?.seo?.metaDescription || service.shortDescription || `Professional ${service.title} services in Tirupati by Kavitha & Associates.`;
 
+  const serviceSchemas: Record<string, any>[] = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: service.title,
+      description: service.shortDescription,
+      url: `https://kavithaassociates.com/services/${service.id}`,
+      provider: {
+        '@type': 'AccountingService',
+        name: firmProfile.name,
+        telephone: firmProfile.contact.primaryPhone,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: firmProfile.contact.streetAddress,
+          addressLocality: firmProfile.contact.locality,
+          addressRegion: 'Andhra Pradesh',
+          postalCode: firmProfile.contact.postalCode,
+          addressCountry: 'IN',
+        },
+      },
+      areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
+    },
+  ];
+
+  if (relatedFaqs && relatedFaqs.length > 0) {
+    serviceSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: relatedFaqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    });
+  }
+
   return (
     <div className="bg-[#F1EBDD] text-[#35271F] min-h-screen page-reveal">
       <SEOHead
@@ -114,21 +153,7 @@ export const DynamicServiceDetailPage: React.FC = () => {
           { name: 'Services', path: '/services' },
           { name: service.title, path: `/services/${service.id}` }
         ]}
-        jsonLd={[
-          {
-            '@context': 'https://schema.org',
-            '@type': 'ProfessionalService',
-            name: service.title,
-            description: service.shortDescription,
-            url: `https://kavithaassociates.com/services/${service.id}`,
-            provider: {
-              '@type': 'AccountingService',
-              name: firmProfile.name,
-              telephone: firmProfile.contact.primaryPhone,
-            },
-            areaServed: 'Tirupati, Andhra Pradesh, India'
-          }
-        ]}
+        jsonLd={serviceSchemas}
       />
 
       {/* Header Banner */}

@@ -82,26 +82,68 @@ export const LocationsPage: React.FC = () => {
           { name: 'Home', path: '/' },
           { name: 'Locations & Chambers', path: '/locations' }
         ]}
-        jsonLd={{
-          '@context': 'https://schema.org',
-          '@type': 'Place',
-          name: 'Kavitha & Associates Chartered Accountants - Principal Chambers',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda',
-            addressLocality: 'Tirupati',
-            addressRegion: 'Andhra Pradesh',
-            postalCode: '517501',
-            addressCountry: 'IN'
+        jsonLd={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'AccountingService',
+            name: 'Kavitha & Associates Chartered Accountants - Principal Chambers',
+            url: 'https://kavithaassociates.com/locations',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: '19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda',
+              addressLocality: 'Tirupati',
+              addressRegion: 'Andhra Pradesh',
+              postalCode: '517501',
+              addressCountry: 'IN'
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: 13.6192242,
+              longitude: 79.418046
+            },
+            hasMap: 'https://maps.app.goo.gl/p9ToGUtxqYDCghpF6',
+            telephone: '+919626350900',
+            openingHours: 'Mo-Sa 09:30-19:00',
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '4.9',
+              reviewCount: '58',
+              bestRating: '5',
+              worstRating: '1'
+            },
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Kadapa', 'Chennai', 'Bengaluru', 'Hyderabad', 'Coimbatore', 'Andhra Pradesh', 'India']
           },
-          geo: {
-            '@type': 'GeoCoordinates',
-            latitude: 13.6192242,
-            longitude: 79.418046
-          },
-          telephone: '+919626350900',
-          openingHours: 'Mo-Sa 09:30-19:00'
-        }}
+          {
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: [
+              {
+                '@type': 'Question',
+                name: 'Where is CA Kavitha & Associates located in Tirupati?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'The principal practice chambers are situated at 19-12-46, 1st Floor, Near Bairagipetteda Arch, Bairagi Patteda, Tirupati – 517501, Andhra Pradesh.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: 'Does Kavitha & Associates provide audit and compliance services for companies in Sri City SEZ?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Yes, our practice provides full statutory audit, internal controls, SEZ regulatory compliance, transfer pricing, and customs duty advisory for manufacturing units operating in the Sri City Special Economic Zone.'
+                }
+              },
+              {
+                '@type': 'Question',
+                name: 'What are the consultation hours at Tirupati Chambers?',
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: 'Chambers consultation hours are Monday through Saturday from 9:30 AM to 7:00 PM. Prior appointment booking is recommended.'
+                }
+              }
+            ]
+          }
+        ]}
       />
 
       {/* 1. EDITORIAL HEADER BANNER */}
@@ -347,6 +389,32 @@ export const LocationsPage: React.FC = () => {
                         <span>Live Location on WhatsApp</span>
                       </a>
                     </div>
+
+                    {/* Google Reviews Trust Strip */}
+                    <div className="pt-2">
+                      <a
+                        href={firm.contact.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-3 rounded-lg bg-[#FAF7F0] border border-[#D8D0BE] text-xs hover:border-[#B49A64] transition-all min-h-[44px]"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <span className="font-serif font-black text-[#183529] text-base">G</span>
+                          <div>
+                            <div className="flex items-center gap-1.5">
+                              <span className="text-amber-500 font-bold text-xs">★★★★★</span>
+                              <span className="font-bold text-[#183529] font-mono text-xs">4.9 / 5.0</span>
+                            </div>
+                            <span className="text-[11px] text-[#525954] block">
+                              58+ Verified Client Reviews on Google Maps
+                            </span>
+                          </div>
+                        </div>
+                        <span className="font-semibold text-xs text-[#7E5E1E] flex items-center gap-1">
+                          View Reviews →
+                        </span>
+                      </a>
+                    </div>
                   </div>
 
                 </div>
@@ -437,6 +505,50 @@ export const LocationsPage: React.FC = () => {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Hyperlocal Industrial & SEZ Manufacturing Hubs */}
+          <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#F1EBDD] border border-[#B49A64]/40 shadow-xs">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="font-mono text-xs font-bold text-[#7E5E1E] bg-[#FAF7F0] px-2.5 py-1 rounded border border-[#D8D0BE]">
+                HYPERLOCAL INDUSTRIAL HUBS
+              </span>
+              <span className="text-xs font-semibold text-[#183529] font-mono">
+                Tirupati District &amp; SEZ Border Corridors
+              </span>
+            </div>
+            <h3 className="font-editorial-h3 text-xl font-serif font-bold text-[#35271F] mb-2">
+              Sri City SEZ, Renigunta EMC &amp; Rayalaseema Industrial Clusters
+            </h3>
+            <p className="font-editorial-body text-xs sm:text-sm text-[#525954] leading-relaxed max-w-4xl mb-6">
+              In addition to regional metros, our practice chambers provide on-site statutory auditing, cost verification, and regulatory compliance counsel for industrial plants, multinational manufacturing facilities, and technology assemblies located within 50 km of Tirupati.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="p-4 rounded-xl bg-[#FAF7F0] border border-[#D8D0BE]">
+                <strong className="block text-xs font-serif font-bold text-[#183529] mb-1">
+                  Sri City Multi-Product SEZ &amp; DTA
+                </strong>
+                <p className="text-[11px] text-[#525954] leading-relaxed">
+                  Transfer pricing studies, SEZ annual APR filings, bonded warehouse customs reconciliation, and multinational subsidiary statutory audit.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl bg-[#FAF7F0] border border-[#D8D0BE]">
+                <strong className="block text-xs font-serif font-bold text-[#183529] mb-1">
+                  Renigunta Electronics Manufacturing Cluster
+                </strong>
+                <p className="text-[11px] text-[#525954] leading-relaxed">
+                  Electronics hardware component inventory valuation under Ind AS 2, Section 43B(h) MSME compliance, and bank CMA debt syndication.
+                </p>
+              </div>
+              <div className="p-4 rounded-xl bg-[#FAF7F0] border border-[#D8D0BE]">
+                <strong className="block text-xs font-serif font-bold text-[#183529] mb-1">
+                  Tirupati Municipal &amp; Healthcare Hub
+                </strong>
+                <p className="text-[11px] text-[#525954] leading-relaxed">
+                  Hospital and healthcare institution cost controls, real estate RERA Form 3 escrow certifications, and 12A/80G charitable trust audits.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </section>

@@ -131,6 +131,14 @@ export const CompanyRegistrationPage: React.FC = () => {
     }
   ];
 
+  const corpFaqAnswers: Record<string, string> = {
+    'faq-pvt-vs-llp': 'A Private Limited Company is the standard legal structure for venture capital investment, angel funding, employee stock options (ESOPs), and DPIIT startup tax exemptions (under Section 80-IAC). An LLP provides corporate limited liability with lower mandatory secretarial filing burdens and no dividend distribution tax complexities.',
+    'faq-incorporation-speed': 'Under the integrated SPICe+ MCA-21 platform, incorporation typically takes 3 to 7 business days once all required identity documents, DSCs (Digital Signature Certificates), and registered office proofs are assembled. The process includes name approval, DIN generation, certificate of incorporation, PAN, TAN, and bank account opening.',
+    'faq-annual-roc-penalties': 'Under Section 403 of the Companies Act, 2013, a mandatory additional fee of ₹100 per day per form is levied without any upper cap for delayed ROC filings (AOC-4, MGT-7). Continuous default for two consecutive years can result in director disqualification under Section 164(2) for 5 years.',
+    'faq-min-capital': 'There is no statutory minimum paid-up capital requirement to incorporate a Private Limited Company or LLP in India. Promoters can start with any nominal capital, such as ₹10,000 or ₹1,00,000, deposited post-incorporation.',
+    'faq-post-incorporation': 'Following incorporation, every company must: (1) Appoint first statutory auditor via Board Resolution within 30 days and file Form ADT-1; (2) Deposit paid-up subscription capital; (3) File Form INC-20A within 180 days; and (4) Issue stamped share certificates.'
+  };
+
   const breadcrumbs = [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
@@ -157,7 +165,7 @@ export const CompanyRegistrationPage: React.FC = () => {
               url: 'https://kavithaassociates.com/',
               telephone: firm.contact.primaryPhone,
             },
-            areaServed: 'Tirupati, Andhra Pradesh, India',
+            areaServed: ['Tirupati', 'Sri City', 'Renigunta', 'Chittoor', 'Nellore', 'Andhra Pradesh', 'India'],
             description: 'Fast-track corporate registration, LLP incorporation, ROC annual secretarial compliance, and Startup India DPIIT recognition led by CA Kavitha Vijay.'
           },
           {
@@ -168,7 +176,7 @@ export const CompanyRegistrationPage: React.FC = () => {
               name: f.title,
               acceptedAnswer: {
                 '@type': 'Answer',
-                text: typeof f.content === 'string' ? f.content : 'Corporate secretarial guidance governed by the Companies Act, 2013.'
+                text: corpFaqAnswers[f.id] || (typeof f.content === 'string' ? f.content : 'Corporate secretarial guidance governed by the Companies Act, 2013.')
               }
             }))
           }
