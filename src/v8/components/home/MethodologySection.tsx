@@ -59,7 +59,7 @@ export const MethodologySection: React.FC = () => {
         
         {/* Section Header */}
         <Reveal delay={60} duration={650}>
-          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-2.5 mb-2.5 flex-wrap">
               <span className="font-mono text-xs font-bold text-[#7E5E1E] bg-[#FAF7F0] px-2.5 py-1 rounded-md border border-[#D8D0BE]">
                 04 / METHODOLOGY
@@ -90,13 +90,38 @@ export const MethodologySection: React.FC = () => {
           </div>
         </Reveal>
 
-        {/* Connecting Track Line Between Steps (Desktop Only) with Glowing Nodes */}
-        <div className="hidden md:flex items-center justify-between absolute top-1/2 left-[18%] right-[18%] -translate-y-20 pointer-events-none z-0 opacity-60" aria-hidden="true">
-          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
-          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[#B49A64]/30 via-[#B49A64] to-[#B49A64]/30 transition-transform duration-900 origin-left" />
-          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
-          <div className="flex-1 h-[1.5px] bg-gradient-to-r from-[#B49A64]/30 via-[#B49A64] to-[#B49A64]/30 transition-transform duration-900 origin-left" />
-          <span className="w-3 h-3 rounded-full bg-[#B49A64] motion-safe:animate-pulse ring-4 ring-[#B49A64]/20 shadow-xs" />
+        {/* Horizontal Connecting Track Line with 3 Glowing Circular Nodes (Desktop/Tablet) */}
+        <div 
+          className="hidden md:block relative pointer-events-none" 
+          aria-hidden="true"
+        >
+          <div className="grid grid-cols-3 gap-6 sm:gap-8 relative z-10">
+            {/* Step 01 Node & Track Line to Step 02 */}
+            <div className="relative flex flex-col items-center">
+              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[1.5px] bg-gradient-to-r from-[#B49A64] via-[#B49A64] to-[#B49A64]/70 z-0" />
+              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              </span>
+              <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
+            </div>
+
+            {/* Step 02 Node & Track Line to Step 03 */}
+            <div className="relative flex flex-col items-center">
+              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[1.5px] bg-gradient-to-r from-[#B49A64]/70 via-[#B49A64] to-[#B49A64] z-0" />
+              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              </span>
+              <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
+            </div>
+
+            {/* Step 03 Node (Terminal Step) */}
+            <div className="relative flex flex-col items-center">
+              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              </span>
+              <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
+            </div>
+          </div>
         </div>
 
         {/* Exactly 3 Chronological Steps Grid */}
@@ -107,21 +132,34 @@ export const MethodologySection: React.FC = () => {
             return (
               <StaggerItem key={item.step} index={idx} distance={20} durationMs={600} className="h-full flex">
                 <div 
-                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
+                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover md:hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
                 >
                   {/* Dynamic Corner Brass Accents (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                   <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
+                  {/* Mobile Vertical Timeline Step Connector (Between Cards) */}
+                  {idx < METHODOLOGY_STEPS.length - 1 && (
+                    <div 
+                      className="md:hidden absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 h-6 sm:h-8 w-6 flex flex-col items-center justify-center z-20 pointer-events-none" 
+                      aria-hidden="true"
+                    >
+                      <div className="absolute -top-px -bottom-px left-1/2 -translate-x-1/2 w-[1.5px] bg-gradient-to-b from-[#B49A64]/60 via-[#B49A64] to-[#B49A64]/60" />
+                      <span className="relative z-10 w-4 h-4 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-2 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+                      </span>
+                    </div>
+                  )}
+
                   <div>
                     {/* Badge & Partner Supervised Tag */}
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs group-hover:bg-[#7E5E1E] group-hover:text-white transition-colors duration-300">
-                        <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E] group-hover:text-white transition-colors" />
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs group-hover:bg-[#7E5E1E] group-hover:text-white transition-colors duration-300 shrink-0">
+                        <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E] group-hover:text-white transition-colors shrink-0" />
                         <span>{item.badge}</span>
                       </span>
-                      <span className="text-[11px] font-semibold text-[#35271F] flex items-center gap-1">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64]" />
+                      <span className="text-[11px] font-semibold text-[#35271F] flex items-center gap-1 shrink-0">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
                         <span>Partner-Supervised</span>
                       </span>
                     </div>
