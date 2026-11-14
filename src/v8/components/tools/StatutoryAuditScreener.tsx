@@ -476,7 +476,7 @@ export const StatutoryAuditScreener: React.FC = () => {
               {result.keyDeadlines.map((dl, idx) => (
                 <div key={idx} className="flex items-center justify-between p-2 rounded-lg bg-[#071B14] border border-[#B49A64]/20 text-xs">
                   <span className="text-[#D8D0BE] text-[11px] truncate mr-2">{dl.label}</span>
-                  <span className="font-mono text-[#B49A64] font-bold shrink-0">{dl.date}</span>
+                  <span className="font-mono text-[#B49A64] font-bold shrink-0 tabular-nums">{dl.date}</span>
                 </div>
               ))}
             </div>
@@ -492,7 +492,7 @@ export const StatutoryAuditScreener: React.FC = () => {
             <button
               type="button"
               onClick={handleInitiateScoping}
-              className="flex-1 py-3 px-4 rounded-xl bg-[#B49A64] hover:bg-[#F1EBDD] text-[#071B14] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 shadow-md min-h-[44px] group"
+              className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] font-bold text-xs uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1.5 shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 min-h-[44px] group"
             >
               <span>Schedule Partner Scoping</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

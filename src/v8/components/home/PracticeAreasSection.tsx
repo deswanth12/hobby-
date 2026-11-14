@@ -156,7 +156,7 @@ export const PracticeAreasSection: React.FC = () => {
               <StaggerItem key={cat.code} index={idx} distance={18} durationMs={550} className="h-full flex">
                 <div
                   id={cat.anchorId}
-                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card overflow-hidden flex flex-col justify-between group hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative"
+                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel overflow-hidden flex flex-col justify-between group hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative"
                 >
                   {/* Dynamic Corner Brass Brackets (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />

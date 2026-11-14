@@ -107,7 +107,7 @@ export const MethodologySection: React.FC = () => {
             return (
               <StaggerItem key={item.step} index={idx} distance={20} durationMs={600} className="h-full flex">
                 <div 
-                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
+                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
                 >
                   {/* Dynamic Corner Brass Accents (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />

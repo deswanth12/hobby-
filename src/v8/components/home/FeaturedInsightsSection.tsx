@@ -150,7 +150,7 @@ export const FeaturedInsightsSection: React.FC = () => {
             {companionArticles.map((article, idx) => (
               <article
                 key={article.slug}
-                className="bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group p-5 sm:p-6 flex flex-col justify-between flex-1"
+                className="bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group p-5 sm:p-6 flex flex-col justify-between flex-1"
               >
                 {/* Full-Surface Stretched Overlay Link */}
                 <Link

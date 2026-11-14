@@ -236,7 +236,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
 
             <Link
               to="/contact"
-              className="consultation-cta inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-[#B49A64] hover:bg-[#F1EBDD] text-[#071B14] text-xs font-semibold uppercase tracking-wider transition-all shadow-md hover:shadow-lg min-h-[44px] group"
+              className="consultation-cta inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] text-xs font-semibold uppercase tracking-wider transition-all shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 min-h-[44px] group"
             >
               <span>Request Consultation</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 text-[#071B14]" />
