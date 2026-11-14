@@ -18,6 +18,8 @@ import {
   getRelatedArticles, 
   BlogPost 
 } from '../adapters/contentAdapter';
+import { BlogService } from '../../services/blogService';
+import { adminStorage } from '../../services/adminStorage';
 import { MarkdownRenderer } from '../../components/MarkdownRenderer';
 import { SEOHead } from '../../components/SEOHead';
 import { NotFoundPage } from './NotFoundPage';
@@ -41,8 +43,15 @@ export const BlogArticlePage: React.FC = () => {
   const [coverImageFailed, setCoverImageFailed] = useState(false);
   const copyTimerRef = useRef<number | null>(null);
 
-  // Layer 3 Draft Quarantine: Returns undefined if post is draft: true
-  const post: BlogPost | undefined = slug ? getArticleBySlug(slug) : undefined;
+  // Layer 3 Draft Quarantine: Returns undefined if post is draft: true unless authenticated admin preview
+  const isPreviewParam = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true';
+  const hasAdminSession = typeof window !== 'undefined' && Boolean(adminStorage.getSession());
+
+  const post: BlogPost | undefined = slug 
+    ? (isPreviewParam && hasAdminSession 
+        ? BlogService.getPostBySlug(slug, true) 
+        : getArticleBySlug(slug)) 
+    : undefined;
   const relatedPosts: BlogPost[] = post ? getRelatedArticles(post.slug, 3) : [];
 
   useEffect(() => {
@@ -105,6 +114,32 @@ export const BlogArticlePage: React.FC = () => {
           { name: post.title, path: `/blog/${post.slug}` },
         ]}
       />
+
+      {/* Admin Draft Preview Notification Banner */}
+      {post.draft && (
+        <aside 
+          role="status" 
+          aria-label="Admin draft preview indicator"
+          className="bg-[#0B241C] text-[#F1EBDD] border-b border-[#B49A64]/40 py-2.5 px-4 text-xs font-editorial-body shadow-inner sticky top-0 z-30"
+        >
+          <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className="font-mono text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-[#B49A64]/20 text-[#F1EBDD] border border-[#B49A64]/40">
+                Draft Preview Mode
+              </span>
+              <span className="text-[#D8D0BE] text-xs">
+                This publication is in draft quarantine and is invisible to public visitors and search engine crawlers.
+              </span>
+            </div>
+            <Link 
+              to="/sec-ca-50e0e5eed471/articles" 
+              className="font-mono text-[11px] text-[#B49A64] hover:text-[#F1EBDD] font-bold underline transition-colors shrink-0"
+            >
+              ← Back to Editor
+            </Link>
+          </div>
+        </aside>
+      )}
 
       {/* ARTICLE READING SURFACE */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-16 sm:pb-24">
