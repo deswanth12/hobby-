@@ -20,6 +20,7 @@ import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorag
 import { EnquiryRecord } from '../../types/admin';
 import { useFirmData } from '../../context/FirmDataContext';
 import { ADMIN_ROUTES } from '../../config/adminConfig';
+import { getUrgencyBadge } from './AdminEnquiriesPage';
 
 export const AdminOverviewPage: React.FC = () => {
   const [enquiries, setEnquiries] = useState<EnquiryRecord[]>([]);
@@ -49,6 +50,19 @@ export const AdminOverviewPage: React.FC = () => {
       .map(e => (e.phone || e.email || e.fullName).trim().toLowerCase())
   ).size;
 
+  const urgentEnquiries = enquiries.filter(e => {
+    const u = (e.urgency || '').toLowerCase();
+    return (
+      u.includes('urgent') || 
+      u.includes('deadline') || 
+      u.includes('demand') || 
+      u.includes('notice') || 
+      u.includes('statutory-deadline') || 
+      u.includes('priority') || 
+      u.includes('48')
+    ) && e.status !== 'closed';
+  }).length;
+
   const recentEnquiries = enquiries.slice(0, 5);
 
   const handleExportCSV = () => {
@@ -76,6 +90,37 @@ export const AdminOverviewPage: React.FC = () => {
       <div className="space-y-8">
         
         {/* =========================================================================
+            0. HIGH-URGENCY STATUTORY NOTICE RADAR BANNER
+            ========================================================================= */}
+        {urgentEnquiries > 0 && (
+          <div className="bg-red-50 border-l-4 border-l-red-600 border-y border-r border-red-200 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-3 w-3 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+              </span>
+              <div>
+                <div className="text-xs font-bold text-red-900 flex items-center gap-1.5">
+                  <span>⚡ Priority Action Radar:</span>
+                  <span className="bg-red-600 text-white text-[10px] px-2 py-0.5 rounded-full font-mono font-bold">
+                    {urgentEnquiries} Critical {urgentEnquiries === 1 ? 'Matter' : 'Matters'}
+                  </span>
+                </div>
+                <div className="text-[11px] text-red-700 mt-0.5">
+                  High-intent regulatory notices or statutory deadline enquiries require partner review within 24h/48h SLA.
+                </div>
+              </div>
+            </div>
+            <Link
+              to={`${ADMIN_ROUTES.enquiries}?urgency=urgent`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-lg transition-colors shrink-0 shadow-sm min-h-[44px]"
+            >
+              Review Urgent Enquiries <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        )}
+
+        {/* =========================================================================
             1. KPI SUMMARY CARDS (Genuine Data Only)
             ========================================================================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -101,8 +146,13 @@ export const AdminOverviewPage: React.FC = () => {
           {/* New / Action Required */}
           <div className="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm flex items-center justify-between">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-amber-700">
-                New Action Required
+              <div className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+                <span>New Action Required</span>
+                {urgentEnquiries > 0 && (
+                  <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 border border-red-200 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                    ⚡ {urgentEnquiries} Urgent
+                  </span>
+                )}
               </div>
               <div className="text-3xl font-serif font-bold text-amber-700 mt-1">
                 {newEnquiries}
@@ -356,10 +406,13 @@ export const AdminOverviewPage: React.FC = () => {
               <div className="md:hidden divide-y divide-gray-100">
                 {recentEnquiries.map((enquiry) => (
                   <div key={enquiry.id} className="p-4 space-y-2 hover:bg-gray-50/60 transition-colors">
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono font-bold text-xs text-brand-darkgreen">
-                        {enquiry.id}
-                      </span>
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-mono font-bold text-xs text-brand-darkgreen">
+                          {enquiry.id}
+                        </span>
+                        {getUrgencyBadge(enquiry.urgency, 'sm')}
+                      </div>
                       <span
                         className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
                           enquiry.status === 'new'
@@ -414,6 +467,7 @@ export const AdminOverviewPage: React.FC = () => {
                       <th className="py-3 px-4">Client / Entity</th>
                       <th className="py-3 px-4">Contact</th>
                       <th className="py-3 px-4">Service Category</th>
+                      <th className="py-3 px-4">Urgency</th>
                       <th className="py-3 px-4">Status</th>
                       <th className="py-3 px-4 text-right">Action</th>
                     </tr>
@@ -445,6 +499,9 @@ export const AdminOverviewPage: React.FC = () => {
                         </td>
                         <td className="py-3.5 px-4 text-gray-700 font-medium">
                           {enquiry.serviceCategory}
+                        </td>
+                        <td className="py-3.5 px-4">
+                          {getUrgencyBadge(enquiry.urgency, 'sm')}
                         </td>
                         <td className="py-3.5 px-4">
                           <span

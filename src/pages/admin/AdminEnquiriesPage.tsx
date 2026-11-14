@@ -27,6 +27,62 @@ import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { EnquiryRecord, EnquiryStatus } from '../../types/admin';
 
+export type UrgencyTier = 'urgent' | 'priority' | 'routine';
+
+export const getUrgencyTier = (urgency?: string): UrgencyTier => {
+  if (!urgency) return 'routine';
+  const u = urgency.toLowerCase();
+  if (
+    u.includes('urgent') || 
+    u.includes('deadline') || 
+    u.includes('demand') || 
+    u.includes('notice') || 
+    u.includes('statutory-deadline')
+  ) {
+    return 'urgent';
+  }
+  if (
+    u.includes('priority') || 
+    u.includes('48') || 
+    u.includes('high')
+  ) {
+    return 'priority';
+  }
+  return 'routine';
+};
+
+export const getUrgencyBadge = (urgency?: string, size: 'sm' | 'md' = 'sm') => {
+  const tier = getUrgencyTier(urgency);
+  switch (tier) {
+    case 'urgent':
+      return (
+        <span className={`inline-flex items-center gap-1 font-bold uppercase tracking-wider rounded-full bg-red-100 text-red-800 border border-red-300 shadow-[0_0_8px_rgba(239,68,68,0.25)] ${
+          size === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'
+        }`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
+          <span>⚡ Urgent Notice</span>
+        </span>
+      );
+    case 'priority':
+      return (
+        <span className={`inline-flex items-center gap-1 font-bold uppercase tracking-wider rounded-full bg-amber-100 text-amber-800 border border-amber-300 ${
+          size === 'sm' ? 'px-2 py-0.5 text-[10px]' : 'px-2.5 py-1 text-xs'
+        }`}>
+          <span>⏱️ 48h Priority</span>
+        </span>
+      );
+    case 'routine':
+    default:
+      return (
+        <span className={`inline-flex items-center gap-1 font-medium text-gray-500 ${
+          size === 'sm' ? 'text-[11px]' : 'text-xs'
+        }`}>
+          <span>Routine</span>
+        </span>
+      );
+  }
+};
+
 export const AdminEnquiriesPage: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [enquiries, setEnquiries] = useState<EnquiryRecord[]>([]);
@@ -37,6 +93,7 @@ export const AdminEnquiriesPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [urgencyFilter, setUrgencyFilter] = useState<string>('all');
+  const [sortByUrgency, setSortByUrgency] = useState<boolean>(false);
   
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,6 +106,14 @@ export const AdminEnquiriesPage: React.FC = () => {
   const [saveSuccess, setSaveSuccess] = useState(false);
 
   const isCloud = adminStorage.isCloudConnected();
+
+  // Initialize filters from URL search params
+  useEffect(() => {
+    if (searchParams.get('urgency') === 'urgent') {
+      setUrgencyFilter('urgent');
+      setSortByUrgency(true);
+    }
+  }, [searchParams]);
 
   const loadEnquiries = async (fetchRemote = false) => {
     if (fetchRemote) {
@@ -176,15 +241,35 @@ export const AdminEnquiriesPage: React.FC = () => {
       item.status === statusFilter || 
       (statusFilter === 'in-progress' && item.status === 'in-review');
 
+    const tier = getUrgencyTier(item.urgency);
     const matchUrgency = urgencyFilter === 'all' || 
-      item.urgency === urgencyFilter ||
-      (urgencyFilter === 'statutory-deadline' && item.urgency === 'Urgent / Approaching Deadline');
+      (urgencyFilter === 'urgent' && (tier === 'urgent' || tier === 'priority')) ||
+      (urgencyFilter === 'statutory-deadline' && (tier === 'urgent' || tier === 'priority' || item.urgency === 'Urgent / Approaching Deadline')) ||
+      (urgencyFilter === 'priority' && tier === 'priority') ||
+      (urgencyFilter === 'routine' && tier === 'routine') ||
+      item.urgency === urgencyFilter;
 
     return matchQuery && matchStatus && matchUrgency;
   });
 
+  // Urgency priority sorting & pagination
+  const sorted = [...filtered].sort((a, b) => {
+    if (sortByUrgency) {
+      const weight: Record<UrgencyTier, number> = { urgent: 2, priority: 1, routine: 0 };
+      const diff = weight[getUrgencyTier(b.urgency)] - weight[getUrgencyTier(a.urgency)];
+      if (diff !== 0) return diff;
+    }
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+
+  // Calculate urgent count
+  const urgentCount = enquiries.filter(e => {
+    const tier = getUrgencyTier(e.urgency);
+    return (tier === 'urgent' || tier === 'priority') && e.status !== 'closed';
+  }).length;
+
   // Calculate pagination
-  const totalPages = Math.ceil(filtered.length / pageSize) || 1;
+  const totalPages = Math.ceil(sorted.length / pageSize) || 1;
 
   useEffect(() => {
     if (currentPage > totalPages) {
@@ -192,7 +277,7 @@ export const AdminEnquiriesPage: React.FC = () => {
     }
   }, [currentPage, totalPages]);
   const startIndex = (currentPage - 1) * pageSize;
-  const paginatedEnquiries = filtered.slice(startIndex, startIndex + pageSize);
+  const paginatedEnquiries = sorted.slice(startIndex, startIndex + pageSize);
 
   const getStatusBadge = (status: EnquiryStatus) => {
     switch (status) {
@@ -248,6 +333,38 @@ export const AdminEnquiriesPage: React.FC = () => {
           </div>
         )}
 
+        {/* High-Urgency Regulatory Action Alert Banner */}
+        {urgentCount > 0 && (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-xl bg-gradient-to-r from-red-50 via-amber-50 to-red-50 border border-red-300 shadow-xs text-xs">
+            <div className="flex items-center gap-2.5 text-red-900 font-medium">
+              <span className="flex h-3 w-3 relative shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+              </span>
+              <span>
+                <strong>{urgentCount} High-Urgency Statutory Brief{urgentCount > 1 ? 's' : ''}</strong> {urgentCount > 1 ? 'require' : 'requires'} priority action under regulatory response SLA.
+              </span>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  setUrgencyFilter(urgencyFilter === 'urgent' ? 'all' : 'urgent');
+                  setSortByUrgency(true);
+                  setCurrentPage(1);
+                }}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all min-h-[36px] ${
+                  urgencyFilter === 'urgent'
+                    ? 'bg-red-800 text-white shadow-xs'
+                    : 'bg-red-600 hover:bg-red-700 text-white shadow-xs'
+                }`}
+              >
+                {urgencyFilter === 'urgent' ? '✓ Showing Urgent Only' : 'Filter Urgent Only →'}
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* =========================================================================
             1. FILTER & SEARCH TOOLBAR
             ========================================================================= */}
@@ -297,19 +414,39 @@ export const AdminEnquiriesPage: React.FC = () => {
             {/* Urgency Filter */}
             <select
               value={urgencyFilter}
-              onChange={(e) => setUrgencyFilter(e.target.value)}
-              className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white text-gray-600"
+              onChange={(e) => {
+                setUrgencyFilter(e.target.value);
+                setCurrentPage(1);
+              }}
+              className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white text-gray-700"
             >
-              <option value="all">All Urgencies</option>
-              <option value="statutory-deadline">Statutory Deadline</option>
-              <option value="routine">Routine</option>
+              <option value="all">All Urgencies ({enquiries.length})</option>
+              <option value="urgent">⚡ Urgent / Deadline ({enquiries.filter(e => getUrgencyTier(e.urgency) === 'urgent' || getUrgencyTier(e.urgency) === 'priority').length})</option>
+              <option value="routine">Routine Cycle ({enquiries.filter(e => getUrgencyTier(e.urgency) === 'routine').length})</option>
             </select>
+
+            {/* Priority Sort Toggle */}
+            <button
+              type="button"
+              onClick={() => {
+                setSortByUrgency(!sortByUrgency);
+                setCurrentPage(1);
+              }}
+              className={`min-h-[44px] px-3.5 rounded-lg border text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
+                sortByUrgency 
+                  ? 'bg-amber-100/90 text-amber-900 border-amber-300 shadow-xs' 
+                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+              }`}
+              title="Toggle priority sorting: brings urgent notices to the top"
+            >
+              <span>⚡ {sortByUrgency ? 'Urgent First' : 'Sort: Date'}</span>
+            </button>
 
             {/* CSV Export */}
             <button
               type="button"
               onClick={handleExportCSV}
-              className="inline-flex items-center px-3.5 py-1.5 text-xs font-bold text-brand-darkgreen bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70 rounded-lg transition-colors"
+              className="inline-flex items-center px-3.5 py-1.5 text-xs font-bold text-brand-darkgreen bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70 rounded-lg transition-colors min-h-[44px]"
             >
               <Download className="w-3.5 h-3.5 mr-1.5" />
               Export CSV
@@ -337,54 +474,62 @@ export const AdminEnquiriesPage: React.FC = () => {
             <>
               {/* Mobile Responsive Cards (< md) */}
               <div className="md:hidden divide-y divide-gray-100">
-                {paginatedEnquiries.map((enquiry) => (
-                  <div
-                    key={enquiry.id}
-                    onClick={() => openEnquiryDrawer(enquiry)}
-                    className={`p-4 space-y-2.5 transition-colors cursor-pointer ${
-                      selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60' : 'hover:bg-gray-50/60'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between">
-                      <span className="font-mono font-bold text-xs text-brand-darkgreen">
-                        {enquiry.id}
-                      </span>
-                      {getStatusBadge(enquiry.status)}
+                {paginatedEnquiries.map((enquiry) => {
+                  const tier = getUrgencyTier(enquiry.urgency);
+                  const isUrgent = tier === 'urgent';
+                  const isPriority = tier === 'priority';
+                  return (
+                    <div
+                      key={enquiry.id}
+                      onClick={() => openEnquiryDrawer(enquiry)}
+                      className={`p-4 space-y-2.5 transition-colors cursor-pointer ${
+                        selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60' : 'hover:bg-gray-50/60'
+                      } ${isUrgent ? 'border-l-4 border-l-red-500 bg-red-50/20' : isPriority ? 'border-l-4 border-l-amber-400 bg-amber-50/15' : ''}`}
+                    >
+                      <div className="flex items-center justify-between gap-2 flex-wrap">
+                        <div className="flex items-center gap-2">
+                          <span className="font-mono font-bold text-xs text-brand-darkgreen">
+                            {enquiry.id}
+                          </span>
+                          {getUrgencyBadge(enquiry.urgency)}
+                        </div>
+                        {getStatusBadge(enquiry.status)}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-sm text-gray-900">{enquiry.fullName}</h4>
+                        {enquiry.organization && (
+                          <p className="text-xs text-gray-500">{enquiry.organization}</p>
+                        )}
+                      </div>
+                      <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
+                        <span>{enquiry.phone}</span>
+                        <span>•</span>
+                        <span>{enquiry.city}</span>
+                        <span>•</span>
+                        <span>{enquiry.serviceCategory}</span>
+                      </div>
+                      <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
+                        <span className="text-[11px] text-gray-400">
+                          {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
+                            day: 'numeric',
+                            month: 'short',
+                            year: 'numeric'
+                          })}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openEnquiryDrawer(enquiry);
+                          }}
+                          className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-brand-brightgold"
+                        >
+                          Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                        </button>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="font-bold text-sm text-gray-900">{enquiry.fullName}</h4>
-                      {enquiry.organization && (
-                        <p className="text-xs text-gray-500">{enquiry.organization}</p>
-                      )}
-                    </div>
-                    <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
-                      <span>{enquiry.phone}</span>
-                      <span>•</span>
-                      <span>{enquiry.city}</span>
-                      <span>•</span>
-                      <span>{enquiry.serviceCategory}</span>
-                    </div>
-                    <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
-                      <span className="text-[11px] text-gray-400">
-                        {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
-                          day: 'numeric',
-                          month: 'short',
-                          year: 'numeric'
-                        })}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openEnquiryDrawer(enquiry);
-                        }}
-                        className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-brand-brightgold"
-                      >
-                        Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
-                      </button>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Desktop Table (>= md) */}
@@ -404,77 +549,76 @@ export const AdminEnquiriesPage: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {paginatedEnquiries.map((enquiry) => (
-                      <tr 
-                        key={enquiry.id} 
-                        className={`hover:bg-emerald-50/30 transition-colors cursor-pointer ${
-                          selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60 font-semibold' : ''
-                        }`}
-                        onClick={() => openEnquiryDrawer(enquiry)}
-                      >
-                        <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
-                          {enquiry.id}
-                        </td>
-                        <td className="py-3.5 px-4 text-gray-600 whitespace-nowrap">
-                          {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
-                            day: 'numeric',
-                            month: 'short',
-                          })}{' '}
-                          <span className="text-[10px] text-gray-400">
-                            {new Date(enquiry.createdAt).toLocaleTimeString('en-IN', {
-                              hour: '2-digit',
-                              minute: '2-digit'
-                            })}
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-gray-900">{enquiry.fullName}</div>
-                          {enquiry.organization && (
-                            <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
-                              {enquiry.organization}
-                            </div>
-                          )}
-                        </td>
-                        <td className="py-3.5 px-4 whitespace-nowrap">
-                          <div className="text-gray-900 font-medium">{enquiry.phone}</div>
-                          {enquiry.email && (
-                            <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
-                              {enquiry.email}
-                            </div>
-                          )}
-                        </td>
-                        <td className="py-3.5 px-4 text-gray-700 font-medium max-w-[160px] truncate">
-                          {enquiry.serviceCategory}
-                        </td>
-                        <td className="py-3.5 px-4 text-gray-600">
-                          {enquiry.city}
-                        </td>
-                        <td className="py-3.5 px-4">
-                          {enquiry.urgency === 'statutory-deadline' || enquiry.urgency === 'Urgent / Approaching Deadline' ? (
-                            <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-800">
-                              Deadline
+                    {paginatedEnquiries.map((enquiry) => {
+                      const tier = getUrgencyTier(enquiry.urgency);
+                      const isUrgent = tier === 'urgent';
+                      const isPriority = tier === 'priority';
+                      return (
+                        <tr 
+                          key={enquiry.id} 
+                          className={`hover:bg-emerald-50/30 transition-colors cursor-pointer ${
+                            selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60 font-semibold' : ''
+                          } ${isUrgent ? 'border-l-4 border-l-red-500 bg-red-50/25' : isPriority ? 'border-l-4 border-l-amber-400 bg-amber-50/15' : ''}`}
+                          onClick={() => openEnquiryDrawer(enquiry)}
+                        >
+                          <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
+                            {enquiry.id}
+                          </td>
+                          <td className="py-3.5 px-4 text-gray-600 whitespace-nowrap">
+                            {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
+                              day: 'numeric',
+                              month: 'short',
+                            })}{' '}
+                            <span className="text-[10px] text-gray-400">
+                              {new Date(enquiry.createdAt).toLocaleTimeString('en-IN', {
+                                hour: '2-digit',
+                                minute: '2-digit'
+                              })}
                             </span>
-                          ) : (
-                            <span className="text-gray-500 text-[11px]">Routine</span>
-                          )}
-                        </td>
-                        <td className="py-3.5 px-4">
-                          {getStatusBadge(enquiry.status)}
-                        </td>
-                        <td className="py-3.5 px-4 text-right whitespace-nowrap">
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              openEnquiryDrawer(enquiry);
-                            }}
-                            className="text-brand-darkgreen hover:text-brand-brightgold font-bold inline-flex items-center"
-                          >
-                            Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            <div className="font-bold text-gray-900">{enquiry.fullName}</div>
+                            {enquiry.organization && (
+                              <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
+                                {enquiry.organization}
+                              </div>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4 whitespace-nowrap">
+                            <div className="text-gray-900 font-medium">{enquiry.phone}</div>
+                            {enquiry.email && (
+                              <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
+                                {enquiry.email}
+                              </div>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-4 text-gray-700 font-medium max-w-[160px] truncate">
+                            {enquiry.serviceCategory}
+                          </td>
+                          <td className="py-3.5 px-4 text-gray-600">
+                            {enquiry.city}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            {getUrgencyBadge(enquiry.urgency)}
+                          </td>
+                          <td className="py-3.5 px-4">
+                            {getStatusBadge(enquiry.status)}
+                          </td>
+                          <td className="py-3.5 px-4 text-right whitespace-nowrap">
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                openEnquiryDrawer(enquiry);
+                              }}
+                              className="text-brand-darkgreen hover:text-brand-brightgold font-bold inline-flex items-center min-h-[44px]"
+                            >
+                              Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -624,6 +768,34 @@ export const AdminEnquiriesPage: React.FC = () => {
                       <MessageSquare className="w-3.5 h-3.5 mr-1.5" />
                       WhatsApp Client
                     </a>
+                  </div>
+                </div>
+
+                {/* Engagement Urgency & Statutory SLA Card */}
+                <div className="mt-4 p-3.5 rounded-xl bg-gray-50 border border-gray-200/80 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                      Statutory Urgency & SLA
+                    </span>
+                    {getUrgencyBadge(selectedEnquiry.urgency, 'sm')}
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-700 font-medium">
+                      Declared by Assessee: <strong className="text-gray-900">{selectedEnquiry.urgency || 'Routine Statutory Cycle'}</strong>
+                    </span>
+                    {getUrgencyTier(selectedEnquiry.urgency) === 'urgent' ? (
+                      <span className="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded border border-red-200">
+                        ⚡ 24h Action SLA
+                      </span>
+                    ) : getUrgencyTier(selectedEnquiry.urgency) === 'priority' ? (
+                      <span className="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded border border-amber-200">
+                        ⏱️ 48h Follow-up SLA
+                      </span>
+                    ) : (
+                      <span className="text-[10px] text-gray-500 font-medium">
+                        Routine Turnaround
+                      </span>
+                    )}
                   </div>
                 </div>
 
