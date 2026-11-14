@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Mail, MapPin, ChevronDown, Menu, MessageSquare, ArrowRight, ShieldCheck } from 'lucide-react';
 import { CrestMonogram } from '../common/CrestMonogram';
+import { ChambersStatusIndicator } from '../common/ChambersStatusIndicator';
+import { ScrollProgress } from './ScrollProgress';
 import { useFirmData } from '../../../context/FirmDataContext';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
@@ -76,6 +78,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
               <MapPin className="w-3 h-3 text-[#B49A64]" />
               <span>Tirupati Chambers</span>
             </span>
+
+            <span className="text-[#B49A64]/40" aria-hidden="true">|</span>
+
+            <ChambersStatusIndicator variant="compact" theme="dark" showDetail={true} />
           </div>
         </div>
       </div>
@@ -248,6 +254,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
           </button>
         </div>
       </nav>
+      {/* Pinned Page Reading Progress Indicator */}
+      <ScrollProgress />
     </header>
   );
 };

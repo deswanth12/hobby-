@@ -20,6 +20,7 @@ import {
 import { FIRM_DATA } from '../../data/firmData';
 import { SEOHead } from '../../components/SEOHead';
 import { Badge } from '../components/common/Badge';
+import { ChambersStatusIndicator } from '../components/common/ChambersStatusIndicator';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
 
 export const LocationsPage: React.FC = () => {
@@ -218,6 +219,7 @@ export const LocationsPage: React.FC = () => {
                       <span className="font-mono text-[10px] font-bold text-[#7E5E1E] bg-[#F1EBDD] px-2.5 py-0.5 rounded border border-[#D8D0BE]">
                         REGISTERED HEAD OFFICE
                       </span>
+                      <ChambersStatusIndicator variant="badge" theme="light" showDetail={true} />
                     </div>
                     <h3 className="font-editorial-h3 text-xl font-serif font-bold text-[#35271F] mt-1">
                       Kavitha &amp; Associates
@@ -268,9 +270,12 @@ export const LocationsPage: React.FC = () => {
                   <div className="flex items-start gap-3.5">
                     <Clock className="w-5 h-5 text-[#7E5E1E] shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-[#7E5E1E] font-mono block">
-                        Consultation &amp; Filing Hours
-                      </span>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xs font-bold uppercase tracking-wider text-[#7E5E1E] font-mono block">
+                          Consultation &amp; Filing Hours
+                        </span>
+                        <ChambersStatusIndicator variant="compact" theme="light" showDetail={false} />
+                      </div>
                       <p className="font-editorial-body text-sm text-[#35271F] mt-0.5 font-medium">
                         Monday – Saturday: 9:30 AM – 7:00 PM
                       </p>

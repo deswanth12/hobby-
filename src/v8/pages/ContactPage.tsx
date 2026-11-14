@@ -17,6 +17,7 @@ import { ContactForm } from '../components/forms/ContactForm';
 import { DotGrid, ArchitecturalLines, DecorativeLayer } from '../components/decorative';
 import { ArchitecturalFrame } from '../components/common/ArchitecturalFrame';
 import { Badge } from '../components/common/Badge';
+import { ChambersStatusIndicator } from '../components/common/ChambersStatusIndicator';
 import { useFirmProfile } from '../adapters/backendAdapter';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
 
@@ -120,6 +121,7 @@ export const ContactPage: React.FC = () => {
                     DIRECT PARTNER ACCESS • TIRUPATI
                   </span>
                 </div>
+                <ChambersStatusIndicator variant="pill" theme="dark" showDetail={true} />
               </div>
 
               <h1 className="font-editorial-h1 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#F1EBDD] leading-[1.15]">
@@ -299,10 +301,13 @@ export const ContactPage: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0">
                       <Clock className="w-5 h-5 text-[#B49A64]" />
                     </div>
-                    <div>
-                      <span className="text-xs font-bold text-[#7E5E1E] uppercase tracking-wider block font-editorial-meta">
-                        Chambers Consultation Hours
-                      </span>
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+                        <span className="text-xs font-bold text-[#7E5E1E] uppercase tracking-wider block font-editorial-meta">
+                          Chambers Consultation Hours
+                        </span>
+                        <ChambersStatusIndicator variant="compact" theme="light" showDetail={false} />
+                      </div>
                       <div className="text-xs text-[#35271F] space-y-1.5 mt-2">
                         <div className="flex justify-between border-b border-[#D8D0BE]/60 pb-1">
                           <span className="font-medium">Monday – Friday:</span>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { SkipToContent } from './SkipToContent';
-import { ScrollProgress } from './ScrollProgress';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { MobileDrawer } from './MobileDrawer';
@@ -19,7 +18,6 @@ export const PublicLayout: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#F1EBDD] text-[#35271F] font-sans selection:bg-[#294B39] selection:text-[#F1EBDD] relative overflow-x-hidden w-full max-w-full pb-16 md:pb-0">
       <SkipToContent />
-      <ScrollProgress />
       <Navbar onOpenMobileDrawer={() => setMobileDrawerOpen(true)} />
       <main id="main-content" tabIndex={-1} className="flex-grow outline-none focus:outline-none">
         <ErrorBoundary>

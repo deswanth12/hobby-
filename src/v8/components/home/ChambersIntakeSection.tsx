@@ -4,6 +4,7 @@ import { useFirmProfile } from '../../adapters/backendAdapter';
 import { ContactForm } from '../forms/ContactForm';
 import { DotGrid, ArchitecturalLines, DecorativeLayer } from '../decorative';
 import { Reveal } from '../animation';
+import { ChambersStatusIndicator } from '../common/ChambersStatusIndicator';
 
 export const ChambersIntakeSection: React.FC = () => {
   const firmProfile = useFirmProfile();
@@ -35,9 +36,12 @@ export const ChambersIntakeSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-5">
             <Reveal direction="left" delay={60} duration={650}>
               <div>
-                <span className="text-xs font-semibold text-[#B49A64] block mb-2 font-mono uppercase tracking-wider">
-                  Connect With CA Kavitha &amp; Associates
-                </span>
+                <div className="flex items-center gap-3 flex-wrap mb-2.5">
+                  <span className="text-xs font-semibold text-[#B49A64] font-mono uppercase tracking-wider">
+                    Connect With CA Kavitha &amp; Associates
+                  </span>
+                  <ChambersStatusIndicator variant="pill" theme="dark" showDetail={true} />
+                </div>
                 <h2 className="font-editorial-h2 text-2xl sm:text-3xl lg:text-4xl text-[#F1EBDD] font-serif font-bold tracking-tight">
                   Let's Discuss Your Financial &amp; Compliance Priorities
                 </h2>
@@ -145,10 +149,13 @@ export const ChambersIntakeSection: React.FC = () => {
 
                 {/* Working Hours & Ethics Guarantee */}
                 <div className="p-4 rounded-2xl border border-[#B49A64]/20 bg-[#0B241C] flex items-center justify-between text-xs text-[#AAB4A0] flex-wrap gap-2">
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#B49A64]" />
-                    <span>Mon–Fri: 09:30–18:30 | Sat: 10:00–14:00</span>
-                  </span>
+                  <div className="flex items-center gap-2.5 flex-wrap">
+                    <span className="flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-[#B49A64]" />
+                      <span>Mon–Fri: 09:30–18:30 | Sat: 10:00–14:00</span>
+                    </span>
+                    <ChambersStatusIndicator variant="compact" theme="dark" showDetail={false} />
+                  </div>
                   <span className="flex items-center gap-1.5 text-[#B49A64] font-medium">
                     <ShieldCheck className="w-4 h-4" />
                     <span>ICAI Code of Ethics Adherence</span>

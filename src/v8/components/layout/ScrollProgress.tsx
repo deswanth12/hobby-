@@ -1,7 +1,23 @@
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
+/**
+ * Slender Antique Gold Page Reading Indicator (Requirement R2 & R4)
+ * Pinned directly underneath the sticky navigation header in Navbar.tsx.
+ * 
+ * - Slender 2px height
+ * - Luxury antique gold gradient: #9E7B35 -> #C3A66B -> #F4E2BB
+ * - Ambient gold glow: shadow-[0_0_8px_rgba(195,166,107,0.5)]
+ * - Inline style fallbacks to guarantee immunity against CSS specificity overrides
+ * - Hardware-accelerated with requestAnimationFrame, scaleX transform, and origin-left
+ * - Route change awareness via useLocation() to recalculate / reset on navigation
+ * - Passive scroll and resize listeners with symmetric cleanup and cancelAnimationFrame
+ * - Uses w-full (100% of header) to guarantee zero horizontal overflow across all viewports
+ */
 export const ScrollProgress: React.FC = () => {
   const barRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     let ticking = false;
@@ -16,12 +32,13 @@ export const ScrollProgress: React.FC = () => {
         barRef.current.style.transform = `scaleX(${clamped})`;
       }
       ticking = false;
+      rafRef.current = null;
     };
 
     const handleScroll = () => {
       if (!ticking) {
-        window.requestAnimationFrame(updateProgress);
         ticking = true;
+        rafRef.current = window.requestAnimationFrame(updateProgress);
       }
     };
 
@@ -32,8 +49,12 @@ export const ScrollProgress: React.FC = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleScroll);
+      if (rafRef.current !== null) {
+        window.cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div
@@ -42,7 +63,12 @@ export const ScrollProgress: React.FC = () => {
       role="progressbar"
       aria-hidden="true"
       aria-label="Reading progress"
-      className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#183529] via-[#B49A64] to-[#C8B282] z-[100] origin-left pointer-events-none transform scale-x-0 transition-transform duration-75"
+      className="w-full h-[2px] bg-gradient-to-r from-[#9E7B35] via-[#C3A66B] to-[#F4E2BB] shadow-[0_0_8px_rgba(195,166,107,0.5)] origin-left pointer-events-none transform scale-x-0 transition-transform duration-75"
+      style={{
+        height: '2px',
+        background: 'linear-gradient(to right, #9E7B35, #C3A66B, #F4E2BB)',
+        boxShadow: '0 0 8px rgba(195, 166, 107, 0.5)',
+      }}
     />
   );
 };

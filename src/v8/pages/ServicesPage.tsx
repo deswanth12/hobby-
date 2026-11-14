@@ -5,16 +5,58 @@ import {
   CheckCircle2, 
   Phone,
   MessageSquare,
-  CheckSquare
+  CheckSquare,
+  Search,
+  X
 } from 'lucide-react';
 import { SEOHead } from '../../components/SEOHead';
-import { getAllServices, getAuditSpotlightServices } from '../adapters/contentAdapter';
+import { 
+  getAllServices, 
+  getAuditSpotlightServices,
+  getProjectFinanceService,
+  getStrategicAdvisoryService 
+} from '../adapters/contentAdapter';
 import { useFirmProfile, getRouteWhatsAppUrl } from '../adapters/backendAdapter';
 import { Button } from '../components/common/Button';
 import { SectionAccent, DotGrid, ArchitecturalLines, DecorativeLayer } from '../components/decorative';
 import { Badge } from '../components/common/Badge';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
 import { StatutoryChecklistModal } from '../components/common/StatutoryChecklistModal';
+import { FIRM_DATA } from '../../data/firmData';
+
+export type DisciplineFilterId = 'all' | 'audit' | 'direct-tax' | 'indirect-tax' | 'corporate' | 'advisory';
+
+export interface DisciplineTab {
+  id: DisciplineFilterId;
+  label: string;
+  count: number;
+}
+
+export const DISCIPLINE_TABS: DisciplineTab[] = [
+  { id: 'all', label: 'All Disciplines (8)', count: 8 },
+  { id: 'audit', label: 'Audit & Assurance', count: 1 },
+  { id: 'direct-tax', label: 'Direct Tax & Litigation', count: 1 },
+  { id: 'indirect-tax', label: 'GST & Indirect Tax', count: 1 },
+  { id: 'corporate', label: 'Corporate Secretarial & Startups', count: 2 },
+  { id: 'advisory', label: 'Advisory & Banking Syndication', count: 3 },
+];
+
+export interface PracticeCardData {
+  id: string;
+  disciplineId: DisciplineFilterId;
+  disciplineNumber: string;
+  code: string;
+  title: string;
+  statutoryFramework?: string;
+  fullDescription: string;
+  targetClients?: string;
+  typicalScenarios?: string[];
+  services: string[];
+  route?: string;
+  routeLabel?: string;
+  isDark?: boolean;
+  aliases?: string[];
+}
 
 const DEDICATED_PRACTICE_PAGES: Record<string, { path: string; label: string }> = {
   'income-tax': { path: '/services/income-tax-consultant-tirupati', label: 'Explore Dedicated Income Tax Practice' },
@@ -28,9 +70,189 @@ const DEDICATED_PRACTICE_PAGES: Record<string, { path: string; label: string }> 
 
 export const ServicesPage: React.FC = () => {
   const firmProfile = useFirmProfile();
-  const services = getAllServices();
+  const baseServices = getAllServices();
   const auditServices = getAuditSpotlightServices();
+  const projectFinance = getProjectFinanceService();
+  const strategicAdvisory = getStrategicAdvisoryService();
+
+  const [activeDiscipline, setActiveDiscipline] = useState<DisciplineFilterId>('all');
+  const [searchQuery, setSearchQuery] = useState('');
   const [checklistOpen, setChecklistOpen] = useState(false);
+
+  const incomeTax = baseServices.find(s => s.id === 'income-tax') || FIRM_DATA.serviceCategories.find(s => s.id === 'income-tax')!;
+  const gst = baseServices.find(s => s.id === 'gst') || FIRM_DATA.serviceCategories.find(s => s.id === 'gst')!;
+  const corporate = baseServices.find(s => s.id === 'corporate-business') || FIRM_DATA.serviceCategories.find(s => s.id === 'corporate-business')!;
+  const rera = baseServices.find(s => s.id === 'rera-compliance') || FIRM_DATA.serviceCategories.find(s => s.id === 'rera-compliance')!;
+
+  const allPractices: PracticeCardData[] = [
+    // 1. Audit & Assurance (PRAC-01)
+    {
+      id: 'audit-assurance',
+      disciplineId: 'audit',
+      disciplineNumber: 'Discipline 01',
+      code: 'PRAC-01',
+      title: 'Statutory Audit & Assurance Practice',
+      statutoryFramework: 'Companies Act, 2013 | Income Tax Act, 1961 | ICAI Standards on Auditing (SAs)',
+      fullDescription: 'Comprehensive independent audit and assurance portfolio covering statutory company audits under the Companies Act 2013, tax audits under Section 44AB of the Income Tax Act, internal financial controls (IFC), CARO 2020 reporting, and concurrent audits.',
+      targetClients: 'Private & Public Limited Companies, LLPs, Financial Institutions, Funded Startups & Manufacturing MSMEs',
+      typicalScenarios: [
+        'Mandatory annual statutory audit for incorporated entities under Companies Act 2013',
+        'Tax audit under Section 44AB for business turnover exceeding statutory thresholds',
+        'Internal financial control (IFC) and CARO 2020 compliance reporting',
+        'Stock and inventory audits for bank working capital drawing power certifications'
+      ],
+      services: auditServices.map(s => `${s.name}: ${s.scope}`),
+      route: '/services/audit-assurance',
+      routeLabel: 'Explore All 9 Audit Streams',
+      isDark: false
+    },
+    // 2. Direct Tax & Litigation (PRAC-02)
+    {
+      id: 'income-tax',
+      disciplineId: 'direct-tax',
+      disciplineNumber: 'Discipline 02',
+      code: 'PRAC-02',
+      title: incomeTax.title,
+      statutoryFramework: incomeTax.statutoryFramework,
+      fullDescription: incomeTax.fullDescription,
+      targetClients: incomeTax.targetClients,
+      typicalScenarios: incomeTax.typicalScenarios,
+      services: incomeTax.services,
+      route: DEDICATED_PRACTICE_PAGES['income-tax']?.path,
+      routeLabel: DEDICATED_PRACTICE_PAGES['income-tax']?.label,
+      isDark: false
+    },
+    // 3. GST & Indirect Tax (PRAC-03)
+    {
+      id: 'gst',
+      disciplineId: 'indirect-tax',
+      disciplineNumber: 'Discipline 03',
+      code: 'PRAC-03',
+      title: gst.title,
+      statutoryFramework: gst.statutoryFramework,
+      fullDescription: gst.fullDescription,
+      targetClients: gst.targetClients,
+      typicalScenarios: gst.typicalScenarios,
+      services: gst.services,
+      route: DEDICATED_PRACTICE_PAGES['gst']?.path,
+      routeLabel: DEDICATED_PRACTICE_PAGES['gst']?.label,
+      isDark: false
+    },
+    // 4. Corporate Secretarial & Startups (PRAC-04)
+    {
+      id: 'corporate-business',
+      disciplineId: 'corporate',
+      disciplineNumber: 'Discipline 04',
+      code: 'PRAC-04',
+      title: corporate.title,
+      statutoryFramework: corporate.statutoryFramework,
+      fullDescription: corporate.fullDescription,
+      targetClients: corporate.targetClients,
+      typicalScenarios: corporate.typicalScenarios,
+      services: corporate.services,
+      route: DEDICATED_PRACTICE_PAGES['corporate-business']?.path,
+      routeLabel: DEDICATED_PRACTICE_PAGES['corporate-business']?.label,
+      isDark: false
+    },
+    // 5. Corporate Secretarial & Startups: RERA (PRAC-05)
+    {
+      id: 'rera-compliance',
+      disciplineId: 'corporate',
+      disciplineNumber: 'Discipline 05',
+      code: 'PRAC-05',
+      title: rera.title,
+      statutoryFramework: rera.statutoryFramework,
+      fullDescription: rera.fullDescription,
+      targetClients: rera.targetClients,
+      typicalScenarios: rera.typicalScenarios,
+      services: rera.services,
+      route: DEDICATED_PRACTICE_PAGES['rera-compliance']?.path,
+      routeLabel: DEDICATED_PRACTICE_PAGES['rera-compliance']?.label,
+      isDark: false
+    },
+    // 6. Advisory & Banking Syndication: Virtual CFO (PRAC-06)
+    {
+      id: 'virtual-cfo',
+      aliases: ['advisory-consulting'],
+      disciplineId: 'advisory',
+      disciplineNumber: 'Discipline 06',
+      code: 'PRAC-06',
+      title: 'Virtual CFO & Retainership Practice',
+      statutoryFramework: 'Multi-Statute Strategic Retainer (CMA + CA Supervision)',
+      fullDescription: 'Outsourced financial leadership, strategic cash flow governance, and consolidated compliance retainers designed for startups, MSMEs, and expanding enterprises that need high-level CFO expertise without the overhead of an in-house executive.',
+      targetClients: 'Funded Startups, Manufacturing MSMEs, Commercial Real Estate Developers & Mid-Market Enterprises',
+      typicalScenarios: [
+        'Auditing internal financial controls (IFC) and operating SOPs to prevent leakage',
+        'Budgeting, variance reporting, and margin analysis by a qualified CMA',
+        'Pre-investment transaction financial due diligence for investors and founders',
+        'Forensic accounting reviews and fraud prevention safeguards'
+      ],
+      services: [
+        'Monthly MIS, Operating Variance & Unit Cost Modeling',
+        'Continuous Advance Tax & Quarterly TDS Structuring',
+        'Bank Credit Facility CMA Data & Project Reports',
+        'Multi-Branch GST Health Checks & ITC Maximization',
+        'Annual MCA & ROC Secretarial Governance Oversight',
+        'Board-Level Strategic Counsel with CA Kavitha Vijay'
+      ],
+      route: '/services/virtual-cfo-tirupati',
+      routeLabel: 'Explore Virtual CFO Corridors',
+      isDark: true
+    },
+    // 7. Advisory & Banking Syndication: Project Finance (PRAC-07)
+    {
+      id: 'project-finance',
+      disciplineId: 'advisory',
+      disciplineNumber: 'Discipline 07',
+      code: 'PRAC-07',
+      title: projectFinance.title,
+      statutoryFramework: projectFinance.statutoryFramework,
+      fullDescription: projectFinance.fullDescription,
+      targetClients: projectFinance.targetClients,
+      typicalScenarios: projectFinance.typicalScenarios,
+      services: projectFinance.services,
+      route: '/services/project-finance',
+      routeLabel: 'Explore Project Finance & Banking Practice',
+      isDark: false
+    },
+    // 8. Advisory & Banking Syndication: Strategic Advisory (PRAC-08)
+    {
+      id: 'strategic-advisory',
+      disciplineId: 'advisory',
+      disciplineNumber: 'Discipline 08',
+      code: 'PRAC-08',
+      title: strategicAdvisory.title,
+      statutoryFramework: strategicAdvisory.statutoryFramework,
+      fullDescription: strategicAdvisory.fullDescription,
+      targetClients: strategicAdvisory.targetClients,
+      typicalScenarios: strategicAdvisory.typicalScenarios,
+      services: strategicAdvisory.services,
+      route: '/services/strategic-advisory',
+      routeLabel: 'Explore Strategic Corporate Advisory',
+      isDark: false
+    }
+  ];
+
+  const filteredPractices = allPractices.filter(card => {
+    const matchesDiscipline = activeDiscipline === 'all' || card.disciplineId === activeDiscipline;
+    if (!matchesDiscipline) return false;
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase().trim();
+    return (
+      card.title.toLowerCase().includes(q) ||
+      card.code.toLowerCase().includes(q) ||
+      card.fullDescription.toLowerCase().includes(q) ||
+      (card.statutoryFramework ? card.statutoryFramework.toLowerCase().includes(q) : false) ||
+      (card.targetClients ? card.targetClients.toLowerCase().includes(q) : false) ||
+      card.services.some(s => s.toLowerCase().includes(q)) ||
+      (card.typicalScenarios ? card.typicalScenarios.some(t => t.toLowerCase().includes(q)) : false)
+    );
+  });
+
+  const handleReset = () => {
+    setActiveDiscipline('all');
+    setSearchQuery('');
+  };
 
   return (
     <div className="bg-[#F1EBDD] text-[#071B14] min-h-screen page-reveal">
@@ -120,22 +342,46 @@ export const ServicesPage: React.FC = () => {
               <span>Jump to Area:</span>
             </span>
             <div className="flex items-center gap-2 shrink-0">
-              <a href="#audit-spotlight-banner" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#audit-spotlight-banner" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile"
+              >
                 Audit &amp; Assurance ({auditServices.length} Streams)
               </a>
-              <a href="#income-tax" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#income-tax" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile"
+              >
                 Income Tax
               </a>
-              <a href="#gst" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#gst" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile"
+              >
                 GST Compliance
               </a>
-              <a href="#corporate-business" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#corporate-business" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile"
+              >
                 ROC &amp; Corporate
               </a>
-              <a href="#rera-compliance" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#rera-compliance" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#F1EBDD] border border-[#D8D0BE] text-xs font-semibold text-[#183529] hover:border-[#B49A64] hover:text-[#071B14] transition-colors btn-tactile"
+              >
                 RERA Practice
               </a>
-              <a href="#virtual-cfo" className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#183529] text-[#F1EBDD] border border-[#B49A64]/40 text-xs font-semibold hover:bg-[#071B14] transition-colors btn-tactile">
+              <a 
+                href="#virtual-cfo" 
+                onClick={() => { setActiveDiscipline('all'); setSearchQuery(''); }}
+                className="min-h-[44px] inline-flex items-center px-3.5 py-2 rounded-full bg-[#183529] text-[#F1EBDD] border border-[#B49A64]/40 text-xs font-semibold hover:bg-[#071B14] transition-colors btn-tactile"
+              >
                 Virtual CFO
               </a>
             </div>
@@ -178,55 +424,195 @@ export const ServicesPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. The Practice Disciplines (5:7 Grid Ledgers with 34 Sub-Service Scopes) */}
+      {/* 4. The Practice Disciplines (5:7 Grid Ledgers with 8 Practice Cards) */}
       <section className="py-12 sm:py-16 md:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          {services.map((category, idx) => (
-            <Reveal key={category.id} delay={60 + idx * 30} duration={650}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          {/* Section Kicker & Title */}
+          <div className="text-center max-w-3xl mx-auto space-y-3">
+            <Badge variant="gold">STATUTORY PRACTICE SPECTRUM</Badge>
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#183529]">
+              Explore Our Specialized CA Disciplines
+            </h2>
+            <p className="font-editorial-body text-xs sm:text-sm text-[#525954] max-w-xl mx-auto leading-relaxed">
+              Filter our 8 core statutory practice areas or search across disciplines, regulatory frameworks, and sub-service engagement scopes.
+            </p>
+          </div>
+
+          {/* Interactive Discipline Filter Bar & Search */}
+          <div className="space-y-6">
+            {/* Filter Tabs Pill Bar */}
+            <div 
+              role="tablist" 
+              aria-label="Practice disciplines"
+              className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
+            >
+              {DISCIPLINE_TABS.map((tab) => {
+                const isActive = activeDiscipline === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    role="tab"
+                    aria-selected={isActive}
+                    type="button"
+                    onClick={() => setActiveDiscipline(tab.id)}
+                    className={`min-h-[44px] inline-flex items-center justify-center px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 btn-tactile ${
+                      isActive
+                        ? 'bg-[#0B241C] border border-[#B49A64] text-[#F1EBDD] shadow-sm'
+                        : 'bg-[#FAF7F0] border border-[#D8D0BE] text-[#183529] hover:border-[#B49A64] hover:text-[#071B14]'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Search & Results Indicator */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 max-w-4xl mx-auto px-2">
+              <div className="relative w-full sm:max-w-md">
+                <Search className="w-4 h-4 text-[#7E5E1E] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search practices, statutes, or sub-service scopes..."
+                  aria-label="Search practice areas"
+                  className="w-full pl-10 pr-12 py-2.5 rounded-full bg-[#FFFFFF] border border-[#D8D0BE] text-xs text-[#071B14] placeholder-[#8C827A] focus:outline-none focus:border-[#B49A64] focus:ring-1 focus:ring-[#B49A64] transition-all min-h-[44px]"
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search"
+                    className="absolute right-1 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full flex items-center justify-center text-[#7E5E1E] hover:text-[#071B14] hover:bg-[#F1EBDD]/60 transition-colors min-h-[44px]"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 text-xs text-[#7E5E1E] font-mono shrink-0">
+                <span>Showing {filteredPractices.length} of 8 Practices</span>
+                {(activeDiscipline !== 'all' || searchQuery.trim() !== '') && (
+                  <button
+                    type="button"
+                    onClick={handleReset}
+                    className="min-h-[44px] underline hover:text-[#071B14] font-semibold text-xs ml-2 inline-flex items-center"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Empty State */}
+          {filteredPractices.length === 0 && (
+            <div className="max-w-xl mx-auto my-12 p-8 sm:p-10 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] text-center shadow-card space-y-4">
+              <div className="w-12 h-12 rounded-full bg-[#183529]/10 text-[#183529] flex items-center justify-center mx-auto border border-[#183529]/20">
+                <Search className="w-5 h-5 text-[#7E5E1E]" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#183529]">
+                  No Practice Disciplines Found
+                </h3>
+                <p className="font-editorial-body text-xs sm:text-sm text-[#525954] max-w-md mx-auto leading-relaxed">
+                  {searchQuery 
+                    ? `No practice areas or statutory scopes matched "${searchQuery}". Try searching by statute name, client type, or practice code.`
+                    : 'No practice areas found for the selected discipline filter.'}
+                </p>
+              </div>
+              <div className="pt-2">
+                <button
+                  type="button"
+                  onClick={handleReset}
+                  className="min-h-[44px] inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-[#0B241C] text-[#F1EBDD] border border-[#B49A64] text-xs font-semibold shadow-sm hover:bg-[#153F32] transition-all duration-300 btn-tactile"
+                >
+                  Reset Filters &amp; View All (8)
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Practice Cards List */}
+          {filteredPractices.map((card, idx) => (
+            <Reveal key={card.id} delay={60 + (idx % 4) * 30} duration={650}>
               <div
-                id={category.id}
-                className="scroll-mt-32 p-6 sm:p-10 lg:p-12 rounded-2xl border border-[#D8D0BE] bg-[#FAF7F0] shadow-card relative transition-all duration-300 hover:border-[#B49A64]/60"
+                id={card.id}
+                className={`scroll-mt-32 p-6 sm:p-10 lg:p-12 rounded-2xl border transition-all duration-300 ${
+                  card.isDark
+                    ? 'border-[#B49A64]/40 bg-[#071B14] text-[#F1EBDD] shadow-2xl hover:border-[#B49A64]/80'
+                    : 'border-[#D8D0BE] bg-[#FAF7F0] shadow-card hover:border-[#B49A64]/60'
+                }`}
               >
+                {/* Anchor alias if applicable */}
+                {card.aliases?.map(alias => (
+                  <span key={alias} id={alias} className="scroll-mt-32" />
+                ))}
+
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                   {/* Left 5 Cols: Discipline Overview */}
                   <div className="lg:col-span-5 space-y-5">
                     <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#183529]/10 text-[#183529] font-mono text-xs font-semibold border border-[#183529]/20">
-                        Discipline 0{idx + 1}
+                      <span className={`px-2.5 py-0.5 rounded-full font-mono text-xs font-semibold ${
+                        card.isDark
+                          ? 'bg-[#183529] text-[#B49A64] border border-[#B49A64]/40'
+                          : 'bg-[#183529]/10 text-[#183529] border border-[#183529]/20'
+                      }`}>
+                        {card.disciplineNumber}
                       </span>
-                      {category.statutoryFramework && (
-                        <span className="font-mono text-[11px] text-[#7E5E1E] bg-[#F1EBDD] px-2.5 py-0.5 rounded-full border border-[#D8D0BE]">
-                          {category.statutoryFramework}
+                      {card.statutoryFramework && (
+                        <span className={`font-mono text-[11px] px-2.5 py-0.5 rounded-full border ${
+                          card.isDark
+                            ? 'text-[#AAB4A0] bg-[#0B241C] border-white/10'
+                            : 'text-[#7E5E1E] bg-[#F1EBDD] border-[#D8D0BE]'
+                        }`}>
+                          {card.statutoryFramework}
                         </span>
                       )}
                     </div>
 
-                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#183529]">
-                      {category.title}
+                    <h2 className={`font-serif font-bold ${
+                      card.isDark
+                        ? 'font-editorial-h2 text-2xl sm:text-3xl lg:text-4xl text-[#F1EBDD]'
+                        : 'text-2xl sm:text-3xl text-[#183529]'
+                    }`}>
+                      {card.title}
                     </h2>
 
-                    <p className="font-editorial-body text-xs sm:text-sm text-[#525954] leading-relaxed">
-                      {category.fullDescription}
+                    <p className={`font-editorial-body text-xs sm:text-sm leading-relaxed ${
+                      card.isDark ? 'text-[#F1EBDD]/80' : 'text-[#525954]'
+                    }`}>
+                      {card.fullDescription}
                     </p>
 
-                    {category.targetClients && (
-                      <div className="p-4 rounded-xl bg-[#F1EBDD] border border-[#D8D0BE] text-xs">
-                        <strong className="block font-mono text-[11px] font-bold text-[#7E5E1E] uppercase tracking-wider mb-1">
+                    {card.targetClients && (
+                      <div className={`p-4 rounded-xl border text-xs ${
+                        card.isDark
+                          ? 'bg-[#183529]/60 border-[#B49A64]/25 text-[#F1EBDD]/90'
+                          : 'bg-[#F1EBDD] border-[#D8D0BE] text-[#35271F]'
+                      }`}>
+                        <strong className={`block font-mono text-[11px] uppercase tracking-wider mb-1 ${
+                          card.isDark ? 'text-[#B49A64]' : 'text-[#7E5E1E] font-bold'
+                        }`}>
                           Applicable Entities:
                         </strong>
-                        <span className="font-editorial-body text-[#35271F] leading-relaxed">
-                          {category.targetClients}
+                        <span className="font-editorial-body leading-relaxed">
+                          {card.targetClients}
                         </span>
                       </div>
                     )}
 
-                    {category.typicalScenarios && (
+                    {card.typicalScenarios && card.typicalScenarios.length > 0 && (
                       <div className="pt-2">
-                        <strong className="block font-serif text-xs font-bold text-[#183529] mb-2 uppercase tracking-wider">
+                        <strong className={`block font-serif text-xs font-bold mb-2 uppercase tracking-wider ${
+                          card.isDark ? 'text-[#B49A64]' : 'text-[#183529]'
+                        }`}>
                           Common Practice Triggers:
                         </strong>
-                        <ul className="space-y-1.5 text-xs text-[#525954]">
-                          {category.typicalScenarios.map((scen, sIdx) => (
+                        <ul className={`space-y-1.5 text-xs ${card.isDark ? 'text-[#F1EBDD]/80' : 'text-[#525954]'}`}>
+                          {card.typicalScenarios.map((scen, sIdx) => (
                             <li key={sIdx} className="flex items-start gap-2">
                               <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0 mt-1.5" />
                               <span>{scen}</span>
@@ -236,57 +622,108 @@ export const ServicesPage: React.FC = () => {
                       </div>
                     )}
 
-                    <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-[#D8D0BE]">
-                      {DEDICATED_PRACTICE_PAGES[category.id] && (
-                        <Button
-                          to={DEDICATED_PRACTICE_PAGES[category.id].path}
-                          variant="secondary"
-                          size="sm"
-                          dualArrow
-                        >
-                          {DEDICATED_PRACTICE_PAGES[category.id].label}
-                        </Button>
+                    <div className={`pt-4 flex flex-wrap items-center gap-3 border-t ${
+                      card.isDark ? 'border-white/10' : 'border-[#D8D0BE]'
+                    }`}>
+                      {card.isDark ? (
+                        <>
+                          <Button
+                            to="/services/virtual-cfo-tirupati"
+                            variant="primary"
+                            size="md"
+                            dualArrow
+                          >
+                            Explore Virtual CFO Corridors
+                          </Button>
+                          <Button
+                            to="/contact"
+                            variant="secondary-outline"
+                            size="md"
+                          >
+                            Discuss Retainer Scope
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          {card.route && (
+                            <Button
+                              to={card.route}
+                              variant="secondary"
+                              size="sm"
+                              dualArrow
+                            >
+                              {card.routeLabel || `Explore ${card.title}`}
+                            </Button>
+                          )}
+                          <Button
+                            to="/contact"
+                            variant="primary"
+                            size="sm"
+                          >
+                            Inquire Regarding {card.title}
+                          </Button>
+                        </>
                       )}
-                      <Button
-                        to="/contact"
-                        variant="primary"
-                        size="sm"
-                      >
-                        Inquire Regarding {category.title}
-                      </Button>
                     </div>
                   </div>
 
                   {/* Right 7 Cols: Ruled Service Scope Ledger */}
-                  <div className="lg:col-span-7 bg-[#FFFFFF] rounded-2xl p-6 sm:p-8 border border-[#D8D0BE] shadow-xs">
-                    <div className="flex items-center justify-between border-b border-[#D8D0BE] pb-3 mb-5">
-                      <h3 className="font-serif text-sm font-bold text-[#183529] uppercase tracking-wider">
-                        Statutory Scope &amp; Engagements Included ({category.services.length} Scopes)
+                  <div className={`lg:col-span-7 rounded-2xl p-6 sm:p-8 border ${
+                    card.isDark
+                      ? 'bg-[#183529]/70 border-[#B49A64]/25'
+                      : 'bg-[#FFFFFF] border-[#D8D0BE] shadow-xs'
+                  }`}>
+                    <div className={`flex items-center justify-between border-b pb-3 mb-5 ${
+                      card.isDark ? 'border-white/10' : 'border-[#D8D0BE]'
+                    }`}>
+                      <h3 className={`font-serif text-sm font-bold uppercase tracking-wider ${
+                        card.isDark ? 'text-[#F1EBDD]' : 'text-[#183529]'
+                      }`}>
+                        Statutory Scope &amp; Engagements Included ({card.services.length} Scopes)
                       </h3>
-                      <Badge variant="statutory">Partner Supervision</Badge>
+                      <Badge variant={card.isDark ? 'kicker' : 'statutory'}>
+                        {card.isDark ? 'CMA + CA Supervision' : 'Partner Supervision'}
+                      </Badge>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                      {category.services.map((scopeItem, i) => (
-                        <div key={i} className="flex items-start gap-2.5 p-3 rounded-xl bg-[#FAF7F0] border border-[#D8D0BE]/70 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#B49A64]/40">
-                          <CheckCircle2 className="w-4 h-4 text-[#183529] shrink-0 mt-0.5" />
-                          <span className="font-editorial-body text-xs text-[#35271F] font-medium leading-relaxed">
+                      {card.services.map((scopeItem, i) => (
+                        <div 
+                          key={i} 
+                          className={`flex items-start gap-2.5 p-3 rounded-xl border transition-all duration-200 hover:-translate-y-0.5 ${
+                            card.isDark
+                              ? 'bg-[#071B14]/80 border-[#B49A64]/20 hover:border-[#B49A64]/50'
+                              : 'bg-[#FAF7F0] border-[#D8D0BE]/70 hover:border-[#B49A64]/40'
+                          }`}
+                        >
+                          <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${card.isDark ? 'text-[#B49A64]' : 'text-[#183529]'}`} />
+                          <span className={`font-editorial-body text-xs font-medium leading-relaxed ${
+                            card.isDark ? 'text-[#F1EBDD]/90' : 'text-[#35271F]'
+                          }`}>
                             {scopeItem}
                           </span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-[#D8D0BE]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#525954]">
-                      <span>Compliant with prevailing Indian statutory frameworks</span>
+                    <div className={`mt-6 pt-4 border-t flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs ${
+                      card.isDark ? 'border-white/10 text-[#AAB4A0]' : 'border-[#D8D0BE]/70 text-[#525954]'
+                    }`}>
+                      <span>
+                        {card.isDark 
+                          ? 'Structured annual or quarterly engagement retainers' 
+                          : 'Compliant with prevailing Indian statutory frameworks'}
+                      </span>
                       <a
                         href={firmProfile.contact.whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#183529] hover:text-[#071B14] font-semibold inline-flex items-center gap-1 min-h-[44px]"
+                        className={`font-semibold inline-flex items-center gap-1 min-h-[44px] ${
+                          card.isDark ? 'text-[#B49A64] hover:text-[#F1EBDD]' : 'text-[#183529] hover:text-[#071B14]'
+                        }`}
                       >
-                        <span>Quick WhatsApp Query</span>
-                        <span>&rarr;</span>
+                        <span>{card.isDark ? 'Direct WhatsApp Query \u2192' : 'Quick WhatsApp Query'}</span>
+                        {!card.isDark && <span>&rarr;</span>}
                       </a>
                     </div>
                   </div>
@@ -294,101 +731,6 @@ export const ServicesPage: React.FC = () => {
               </div>
             </Reveal>
           ))}
-
-          {/* Discipline 06: Deep Evergreen Virtual CFO Showcase */}
-          <Reveal delay={120} duration={650}>
-            <div
-              id="virtual-cfo"
-              className="scroll-mt-32 p-7 sm:p-10 lg:p-12 rounded-2xl border border-[#B49A64]/40 bg-[#071B14] text-[#F1EBDD] shadow-2xl transition-all duration-300 hover:border-[#B49A64]/80"
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-                <div className="lg:col-span-5 space-y-5">
-                  <div className="flex items-center gap-2.5 flex-wrap">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#183529] text-[#B49A64] font-mono text-xs font-semibold border border-[#B49A64]/40">
-                      Discipline 06
-                    </span>
-                    <span className="font-mono text-[11px] text-[#AAB4A0] bg-[#0B241C] px-2.5 py-0.5 rounded-full border border-white/10">
-                      Multi-Statute Strategic Retainer
-                    </span>
-                  </div>
-
-                  <h2 className="font-editorial-h2 text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#F1EBDD]">
-                    Virtual CFO &amp; Retainership Practice
-                  </h2>
-
-                  <p className="font-editorial-body text-xs sm:text-sm text-[#F1EBDD]/80 leading-relaxed">
-                    Outsourced financial leadership, strategic cash flow governance, and consolidated compliance retainers designed for startups, MSMEs, and expanding enterprises that need high-level CFO expertise without the overhead of an in-house executive.
-                  </p>
-
-                  <div className="p-4 rounded-xl bg-[#183529]/60 border border-[#B49A64]/25 text-xs">
-                    <strong className="block font-mono text-[11px] text-[#B49A64] uppercase tracking-wider mb-1">
-                      Applicable Entities:
-                    </strong>
-                    <span className="text-[#F1EBDD]/90 leading-relaxed">
-                      Funded Startups, Manufacturing MSMEs, Commercial Real Estate Developers &amp; Mid-Market Enterprises
-                    </span>
-                  </div>
-
-                  <div className="pt-4 flex flex-wrap items-center gap-3 border-t border-white/10">
-                    <Button
-                      to="/services/virtual-cfo-tirupati"
-                      variant="primary"
-                      size="md"
-                      dualArrow
-                    >
-                      Explore Virtual CFO Corridors
-                    </Button>
-                    <Button
-                      to="/contact"
-                      variant="secondary-outline"
-                      size="md"
-                    >
-                      Discuss Retainer Scope
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="lg:col-span-7 bg-[#183529]/70 rounded-2xl p-6 sm:p-8 border border-[#B49A64]/25">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-5">
-                    <h3 className="font-serif text-sm font-bold text-[#F1EBDD] uppercase tracking-wider">
-                      Virtual CFO Mandate &amp; Deliverables
-                    </h3>
-                    <Badge variant="kicker">CMA + CA Supervision</Badge>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    {[
-                      'Monthly MIS, Operating Variance & Unit Cost Modeling',
-                      'Continuous Advance Tax & Quarterly TDS Structuring',
-                      'Bank Credit Facility CMA Data & Project Reports',
-                      'Multi-Branch GST Health Checks & ITC Maximization',
-                      'Annual MCA & ROC Secretarial Governance Oversight',
-                      'Board-Level Strategic Counsel with CA Kavitha Vijay'
-                    ].map((item, idx) => (
-                      <div key={idx} className="flex items-start gap-2.5 p-3 rounded-xl bg-[#071B14]/80 border border-[#B49A64]/20 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#B49A64]/50">
-                        <CheckCircle2 className="w-4 h-4 text-[#B49A64] shrink-0 mt-0.5" />
-                        <span className="text-xs text-[#F1EBDD]/90 font-medium leading-relaxed">
-                          {item}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-[#AAB4A0]">
-                    <span>Structured annual or quarterly engagement retainers</span>
-                    <a
-                      href={firmProfile.contact.whatsappLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#B49A64] hover:text-[#F1EBDD] font-semibold inline-flex items-center gap-1 min-h-[44px]"
-                    >
-                      <span>Direct WhatsApp Query &rarr;</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
