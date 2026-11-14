@@ -121,32 +121,32 @@ export const AdminOverviewPage: React.FC = () => {
         )}
 
         {/* =========================================================================
-            1. KPI SUMMARY CARDS (Genuine Data Only)
+            1. KPI SUMMARY CARDS (Botanical Ledger Chambers Theme)
             ========================================================================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
           {/* Total Enquiries */}
-          <div className="bg-white p-5 rounded-xl border border-[#EAEAEA] flex items-center justify-between">
+          <div className="bg-[#FAF7F0] p-5 rounded-2xl border border-[#D8D0BE] shadow-xs flex items-center justify-between hover:border-[#B49A64]/60 transition-all">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
+              <div className="text-xs font-bold uppercase tracking-wider text-[#7E5E1E]">
                 Total Enquiries
               </div>
-              <div className="text-3xl font-serif font-bold text-brand-darkgreen mt-1">
+              <div className="text-3xl font-serif font-bold text-[#071B14] mt-1">
                 {totalEnquiries}
               </div>
-              <div className="text-[11px] text-gray-500 mt-0.5">
+              <div className="text-[11px] text-[#525954] mt-0.5">
                 Logged in practice register
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-brand-darkgreen flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-[#0B241C] text-[#B49A64] border border-[#B49A64]/30 flex items-center justify-center shrink-0 shadow-xs">
               <Inbox className="w-6 h-6" />
             </div>
           </div>
 
           {/* New / Action Required */}
-          <div className="bg-white p-5 rounded-2xl border border-amber-200/80 shadow-sm flex items-center justify-between">
+          <div className="bg-[#FAF7F0] p-5 rounded-2xl border border-amber-300/80 shadow-xs flex items-center justify-between hover:border-amber-400 transition-all">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
+              <div className="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1.5">
                 <span>New Action Required</span>
                 {urgentEnquiries > 0 && (
                   <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 border border-red-200 text-[10px] font-bold px-1.5 py-0.5 rounded-full">
@@ -154,50 +154,50 @@ export const AdminOverviewPage: React.FC = () => {
                   </span>
                 )}
               </div>
-              <div className="text-3xl font-serif font-bold text-amber-700 mt-1">
+              <div className="text-3xl font-serif font-bold text-amber-800 mt-1">
                 {newEnquiries}
               </div>
-              <div className="text-[11px] text-amber-600 mt-0.5">
+              <div className="text-[11px] text-amber-700 mt-0.5">
                 Pending partner review
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center shrink-0 shadow-xs">
               <AlertCircle className="w-6 h-6" />
             </div>
           </div>
 
           {/* Under Review & Active Consultations */}
-          <div className="bg-white p-5 rounded-2xl border border-blue-200/80 shadow-sm flex items-center justify-between">
+          <div className="bg-[#FAF7F0] p-5 rounded-2xl border border-blue-200/80 shadow-xs flex items-center justify-between hover:border-blue-300 transition-all">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-blue-700">
+              <div className="text-xs font-bold uppercase tracking-wider text-blue-900">
                 Active Follow-up
               </div>
-              <div className="text-3xl font-serif font-bold text-blue-700 mt-1">
+              <div className="text-3xl font-serif font-bold text-blue-900 mt-1">
                 {inReviewEnquiries + contactedEnquiries}
               </div>
-              <div className="text-[11px] text-blue-600 mt-0.5">
+              <div className="text-[11px] text-blue-700 mt-0.5">
                 {contactedEnquiries} contacted • {inReviewEnquiries} in review
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-800 border border-blue-200 flex items-center justify-center shrink-0 shadow-xs">
               <Clock className="w-6 h-6" />
             </div>
           </div>
 
           {/* Converted Clients (Deduplicated Closed Engagements) */}
-          <div className="bg-white p-5 rounded-2xl border border-emerald-200/80 shadow-sm flex items-center justify-between">
+          <div className="bg-[#FAF7F0] p-5 rounded-2xl border border-emerald-300/80 shadow-xs flex items-center justify-between hover:border-emerald-400 transition-all">
             <div>
-              <div className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+              <div className="text-xs font-bold uppercase tracking-wider text-emerald-900">
                 Converted Clients
               </div>
-              <div className="text-3xl font-serif font-bold text-emerald-700 mt-1">
+              <div className="text-3xl font-serif font-bold text-emerald-900 mt-1">
                 {convertedClients}
               </div>
-              <div className="text-[11px] text-emerald-600 mt-0.5">
+              <div className="text-[11px] text-emerald-700 mt-0.5">
                 Closed client engagements
               </div>
             </div>
-            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-[#0B241C] text-[#B49A64] border border-[#B49A64]/30 flex items-center justify-center shrink-0 shadow-xs">
               <CheckCircle2 className="w-6 h-6" />
             </div>
           </div>
@@ -209,153 +209,151 @@ export const AdminOverviewPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Quick Shortcuts */}
-          <div className="lg:col-span-2 bg-white p-6 rounded-xl border border-[#EAEAEA]">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-brand-darkgreen mb-4 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-gold" />
-              Practice Operations & Navigation
+          <div className="lg:col-span-2 bg-[#FAF7F0] p-6 rounded-2xl border border-[#D8D0BE] shadow-xs">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-[#071B14] mb-4 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-[#B49A64]" />
+              Chambers Operations & Quick Navigation
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               <Link
                 to={ADMIN_ROUTES.enquiries}
-                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-[#D8D0BE] bg-white hover:border-[#B49A64] hover:bg-[#F1EBDD]/40 transition-all duration-200 text-left flex flex-col justify-between group shadow-xs min-h-[140px]"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#0B241C] text-[#B49A64] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                     <Inbox className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
+                  <div className="text-xs font-bold text-[#071B14] group-hover:text-[#183529]">
                     Client Enquiries
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">
+                  <div className="text-[11px] text-[#525954] mt-0.5">
                     Filter, reply, and add follow-up notes
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
+                <div className="flex items-center text-[11px] font-bold text-[#7E5E1E] group-hover:text-[#071B14] mt-3">
                   Open Register <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
 
               <Link
                 to={ADMIN_ROUTES.content}
-                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-[#D8D0BE] bg-white hover:border-[#B49A64] hover:bg-[#F1EBDD]/40 transition-all duration-200 text-left flex flex-col justify-between group shadow-xs min-h-[140px]"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#0B241C] text-[#B49A64] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                     <FileEdit className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
+                  <div className="text-xs font-bold text-[#071B14] group-hover:text-[#183529]">
                     Content Editor
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">
+                  <div className="text-[11px] text-[#525954] mt-0.5">
                     Update services, statutory FAQs & copy
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
+                <div className="flex items-center text-[11px] font-bold text-[#7E5E1E] group-hover:text-[#071B14] mt-3">
                   Edit Content <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
 
-                            <Link
+              <Link
                 to={ADMIN_ROUTES.articles}
-                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-[#D8D0BE] bg-white hover:border-[#B49A64] hover:bg-[#F1EBDD]/40 transition-all duration-200 text-left flex flex-col justify-between group shadow-xs min-h-[140px]"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#0B241C] text-[#B49A64] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                     <BookOpen className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
+                  <div className="text-xs font-bold text-[#071B14] group-hover:text-[#183529]">
                     Articles & Insights
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">
+                  <div className="text-[11px] text-[#525954] mt-0.5">
                     Write, edit, and publish statutory commentary
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
+                <div className="flex items-center text-[11px] font-bold text-[#7E5E1E] group-hover:text-[#071B14] mt-3">
                   Write / Edit Articles <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
 
-<Link
+              <Link
                 to={ADMIN_ROUTES.settings}
-                className="p-4 rounded-xl border border-gray-200 hover:border-brand-darkgreen hover:bg-emerald-50/40 transition-colors duration-200 text-left flex flex-col justify-between group"
+                className="p-4 rounded-xl border border-[#D8D0BE] bg-white hover:border-[#B49A64] hover:bg-[#F1EBDD]/40 transition-all duration-200 text-left flex flex-col justify-between group shadow-xs min-h-[140px]"
               >
                 <div>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100/60 text-brand-darkgreen flex items-center justify-center mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-[#0B241C] text-[#B49A64] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
                     <Sliders className="w-4 h-4" />
                   </div>
-                  <div className="text-xs font-bold text-gray-900 group-hover:text-brand-darkgreen">
+                  <div className="text-xs font-bold text-[#071B14] group-hover:text-[#183529]">
                     Practice Settings
                   </div>
-                  <div className="text-[11px] text-gray-500 mt-0.5">
+                  <div className="text-[11px] text-[#525954] mt-0.5">
                     Chambers phone, email, and location
                   </div>
                 </div>
-                <div className="flex items-center text-[11px] font-bold text-brand-darkgreen mt-3">
+                <div className="flex items-center text-[11px] font-bold text-[#7E5E1E] group-hover:text-[#071B14] mt-3">
                   Manage Settings <ArrowRight className="w-3 h-3 ml-1" />
                 </div>
               </Link>
             </div>
 
-            <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3">
+            <div className="mt-4 pt-4 border-t border-[#D8D0BE]/60 flex flex-wrap items-center justify-between gap-3">
               <button
                 type="button"
                 onClick={handleExportCSV}
-                className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-brand-darkgreen bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+                className="inline-flex items-center px-4 py-2 text-xs font-bold text-[#F1EBDD] bg-[#0B241C] hover:bg-[#183529] border border-[#B49A64]/40 hover:border-[#B49A64] rounded-xl transition-all shadow-xs min-h-[44px]"
               >
-                <Download className="w-3.5 h-3.5 mr-1.5" />
+                <Download className="w-3.5 h-3.5 mr-1.5 text-[#B49A64]" />
                 Export Enquiries Register (CSV)
               </button>
-
-              
             </div>
           </div>
 
           {/* Active Chambers Configuration */}
-          <div className="bg-neutral-900 text-white p-6 rounded-xl border border-neutral-800 flex flex-col justify-between">
+          <div className="bg-[#071B14] text-[#F1EBDD] p-6 rounded-2xl border border-[#B49A64]/30 shadow-md flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[10px] font-bold uppercase tracking-wider text-gold">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#B49A64]">
                   Live Public Configuration
                 </span>
                 {isModified ? (
-                  <span className="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full font-semibold">
+                  <span className="text-[10px] bg-amber-400/20 text-amber-300 px-2 py-0.5 rounded-full font-semibold border border-amber-400/30">
                     Custom Overrides Active
                   </span>
                 ) : (
-                  <span className="text-[10px] bg-emerald-400/20 text-emerald-300 px-2 py-0.5 rounded-full font-semibold">
+                  <span className="text-[10px] bg-[#183529] text-[#B49A64] px-2 py-0.5 rounded-full font-semibold border border-[#B49A64]/30">
                     Standard Baseline
                   </span>
                 )}
               </div>
-              <h3 className="font-serif text-lg font-bold text-white leading-snug">
+              <h3 className="font-serif text-lg font-bold text-[#F1EBDD] leading-snug">
                 {firmData.name}
               </h3>
-              <p className="text-xs text-emerald-200/80 mt-1">
+              <p className="text-xs text-[#AAB4A0] mt-1 font-sans">
                 Chartered Accountants • Tirupati Chambers
               </p>
 
-              <div className="mt-4 space-y-2 text-xs text-gray-200">
+              <div className="mt-4 space-y-2 text-xs text-[#D8D0BE]">
                 <div className="flex items-center gap-2">
-                  <PhoneCall className="w-3.5 h-3.5 text-gold shrink-0" />
+                  <PhoneCall className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
                   <span>{firmData.contact.primaryPhone}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-3.5 h-3.5 text-gold shrink-0" />
+                  <Building2 className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
                   <span className="truncate">{firmData.contact.primaryLocation}</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-emerald-800/60 flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-[#B49A64]/20 flex items-center justify-between">
               <a
                 href="/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center text-xs font-bold text-gold hover:text-white transition-colors"
+                className="inline-flex items-center text-xs font-bold text-[#B49A64] hover:text-[#F1EBDD] transition-colors min-h-[44px]"
               >
                 Visit Public Website <ExternalLink className="w-3 h-3 ml-1" />
               </a>
-              <span className="text-[10px] text-emerald-300/60 font-mono">
+              <span className="text-[10px] text-[#AAB4A0] font-mono">
                 Reactive Sync: Active
               </span>
             </div>
@@ -365,17 +363,17 @@ export const AdminOverviewPage: React.FC = () => {
         {/* =========================================================================
             3. RECENT CLIENT ENQUIRIES TABLE
             ========================================================================= */}
-        <div className="bg-white rounded-xl border border-[#EAEAEA] overflow-hidden">
-          <div className="p-6 border-b border-gray-100 flex items-center justify-between flex-wrap gap-4">
+        <div className="bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-xs overflow-hidden">
+          <div className="p-6 border-b border-[#D8D0BE] bg-white/70 flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h2 className="text-base font-bold text-brand-darkgreen">Recent Inquiries</h2>
-              <p className="text-xs text-gray-500 mt-0.5">
+              <h2 className="text-base font-serif font-bold text-[#071B14]">Recent Inquiries</h2>
+              <p className="text-xs text-[#525954] mt-0.5">
                 Latest client consultation submissions from the public website contact form
               </p>
             </div>
             <Link
               to={ADMIN_ROUTES.enquiries}
-              className="inline-flex items-center text-xs font-bold text-brand-darkgreen hover:text-brand-brightgold transition-colors"
+              className="inline-flex items-center text-xs font-bold text-[#7E5E1E] hover:text-[#071B14] transition-colors min-h-[44px]"
             >
               View All {totalEnquiries} Enquiries <ArrowRight className="w-3.5 h-3.5 ml-1" />
             </Link>
@@ -461,7 +459,7 @@ export const AdminOverviewPage: React.FC = () => {
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider">
+                    <tr className="bg-[#F1EBDD]/70 border-b border-[#D8D0BE] text-[#7E5E1E] font-bold uppercase tracking-wider font-mono">
                       <th className="py-3 px-4">Ref ID</th>
                       <th className="py-3 px-4">Date / Time</th>
                       <th className="py-3 px-4">Client / Entity</th>
@@ -472,13 +470,13 @@ export const AdminOverviewPage: React.FC = () => {
                       <th className="py-3 px-4 text-right">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-[#EAE5D9]">
                     {recentEnquiries.map((enquiry) => (
-                      <tr key={enquiry.id} className="hover:bg-gray-50/60 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
+                      <tr key={enquiry.id} className="hover:bg-[#F1EBDD]/40 transition-colors">
+                        <td className="py-3.5 px-4 font-mono font-bold text-[#071B14]">
                           {enquiry.id}
                         </td>
-                        <td className="py-3.5 px-4 text-gray-600">
+                        <td className="py-3.5 px-4 text-[#525954]">
                           {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
                             day: 'numeric',
                             month: 'short',
@@ -486,18 +484,18 @@ export const AdminOverviewPage: React.FC = () => {
                           })}
                         </td>
                         <td className="py-3.5 px-4">
-                          <div className="font-bold text-gray-900">{enquiry.fullName}</div>
+                          <div className="font-bold text-[#071B14]">{enquiry.fullName}</div>
                           {enquiry.organization && (
-                            <div className="text-[11px] text-gray-500">{enquiry.organization}</div>
+                            <div className="text-[11px] text-[#525954]">{enquiry.organization}</div>
                           )}
                         </td>
                         <td className="py-3.5 px-4">
-                          <div className="text-gray-900 font-medium">{enquiry.phone}</div>
+                          <div className="text-[#071B14] font-medium">{enquiry.phone}</div>
                           {enquiry.email && (
-                            <div className="text-[11px] text-gray-500">{enquiry.email}</div>
+                            <div className="text-[11px] text-[#525954]">{enquiry.email}</div>
                           )}
                         </td>
-                        <td className="py-3.5 px-4 text-gray-700 font-medium">
+                        <td className="py-3.5 px-4 text-[#183529] font-medium">
                           {enquiry.serviceCategory}
                         </td>
                         <td className="py-3.5 px-4">
@@ -521,7 +519,7 @@ export const AdminOverviewPage: React.FC = () => {
                         <td className="py-3.5 px-4 text-right">
                           <Link
                             to={`${ADMIN_ROUTES.enquiries}?id=${enquiry.id}`}
-                            className="inline-flex items-center font-bold text-brand-darkgreen hover:text-gold transition-colors"
+                            className="inline-flex items-center font-bold text-[#7E5E1E] hover:text-[#071B14] transition-colors min-h-[44px]"
                           >
                             Review →
                           </Link>

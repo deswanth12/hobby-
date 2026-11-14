@@ -366,13 +366,13 @@ export const AdminEnquiriesPage: React.FC = () => {
         )}
 
         {/* =========================================================================
-            1. FILTER & SEARCH TOOLBAR
+            1. FILTER & SEARCH TOOLBAR (Botanical Ledger Theme)
             ========================================================================= */}
-        <div className="bg-white p-5 rounded-xl border border-[#EAEAEA] flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+        <div className="bg-[#FAF7F0] p-5 rounded-2xl border border-[#D8D0BE] shadow-xs flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
           
           {/* Search Input */}
           <div className="relative flex-1 max-w-md">
-            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#7E5E1E]">
               <Search className="w-4 h-4" />
             </div>
             <input
@@ -380,7 +380,7 @@ export const AdminEnquiriesPage: React.FC = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by client, firm, phone, ID or town..."
-              className="w-full pl-10 pr-4 py-2 text-xs rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen bg-gray-50/50"
+              className="w-full pl-10 pr-4 py-2.5 text-xs rounded-xl border border-[#D8D0BE] focus:outline-none focus:ring-2 focus:ring-[#B49A64]/20 focus:border-[#B49A64] bg-white text-[#071B14] placeholder-[#525954]"
             />
             {searchQuery && (
               <button
@@ -396,12 +396,12 @@ export const AdminEnquiriesPage: React.FC = () => {
           {/* Filters & Actions */}
           <div className="flex flex-wrap items-center gap-3">
             {/* Status Filter */}
-            <div className="flex items-center gap-1.5 text-xs text-gray-600">
-              <Filter className="w-3.5 h-3.5 text-gray-400 shrink-0" />
+            <div className="flex items-center gap-1.5 text-xs text-[#525954]">
+              <Filter className="w-3.5 h-3.5 text-[#7E5E1E] shrink-0" />
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white"
+                className="min-h-[44px] py-2 px-3 rounded-lg border border-[#D8D0BE] text-xs font-semibold focus:outline-none focus:border-[#B49A64] bg-white text-[#071B14]"
               >
                 <option value="all">All Statuses ({enquiries.length})</option>
                 <option value="new">New ({enquiries.filter(e => e.status === 'new').length})</option>
@@ -418,7 +418,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 setUrgencyFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="min-h-[44px] py-2 px-3 rounded-lg border border-gray-300 text-xs font-semibold focus:outline-none focus:border-brand-darkgreen bg-white text-gray-700"
+              className="min-h-[44px] py-2 px-3 rounded-lg border border-[#D8D0BE] text-xs font-semibold focus:outline-none focus:border-[#B49A64] bg-white text-[#071B14]"
             >
               <option value="all">All Urgencies ({enquiries.length})</option>
               <option value="urgent">⚡ Urgent / Deadline ({enquiries.filter(e => getUrgencyTier(e.urgency) === 'urgent' || getUrgencyTier(e.urgency) === 'priority').length})</option>
@@ -434,8 +434,8 @@ export const AdminEnquiriesPage: React.FC = () => {
               }}
               className={`min-h-[44px] px-3.5 rounded-lg border text-xs font-bold transition-all inline-flex items-center gap-1.5 ${
                 sortByUrgency 
-                  ? 'bg-amber-100/90 text-amber-900 border-amber-300 shadow-xs' 
-                  : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                  ? 'bg-amber-100 text-amber-900 border-amber-300 shadow-xs' 
+                  : 'bg-white text-[#071B14] border-[#D8D0BE] hover:bg-[#F1EBDD]/40'
               }`}
               title="Toggle priority sorting: brings urgent notices to the top"
             >
@@ -446,25 +446,25 @@ export const AdminEnquiriesPage: React.FC = () => {
             <button
               type="button"
               onClick={handleExportCSV}
-              className="inline-flex items-center px-3.5 py-1.5 text-xs font-bold text-brand-darkgreen bg-emerald-50 border border-emerald-200 hover:bg-emerald-100/70 rounded-lg transition-colors min-h-[44px]"
+              className="inline-flex items-center px-4 py-2 text-xs font-bold text-[#F1EBDD] bg-[#0B241C] border border-[#B49A64]/40 hover:bg-[#183529] hover:border-[#B49A64] rounded-xl transition-all min-h-[44px] shadow-xs"
             >
-              <Download className="w-3.5 h-3.5 mr-1.5" />
+              <Download className="w-3.5 h-3.5 mr-1.5 text-[#B49A64]" />
               Export CSV
             </button>
           </div>
         </div>
 
         {/* =========================================================================
-            2. ENQUIRIES TABLE WITH PAGINATION
+            2. ENQUIRIES TABLE WITH PAGINATION (Botanical Ledger Theme)
             ========================================================================= */}
-        <div className="bg-white rounded-xl border border-[#EAEAEA] overflow-hidden">
+        <div className="bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-xs overflow-hidden">
           {filtered.length === 0 ? (
             <div className="p-12 text-center">
-              <div className="w-12 h-12 rounded-2xl bg-gray-100 text-gray-400 flex items-center justify-center mx-auto mb-3">
+              <div className="w-12 h-12 rounded-2xl bg-[#F1EBDD] text-[#7E5E1E] flex items-center justify-center mx-auto mb-3">
                 <Inbox className="w-6 h-6" />
               </div>
-              <h3 className="text-sm font-bold text-gray-700">No Enquiries Found</h3>
-              <p className="text-xs text-gray-500 max-w-sm mx-auto mt-1">
+              <h3 className="text-sm font-bold text-[#071B14]">No Enquiries Found</h3>
+              <p className="text-xs text-[#525954] max-w-sm mx-auto mt-1">
                 {enquiries.length === 0 
                   ? 'No consultation requests logged yet. Submissions from the public contact form will appear here in real time.' 
                   : 'Try adjusting your search query or status filter.'}
@@ -473,7 +473,7 @@ export const AdminEnquiriesPage: React.FC = () => {
           ) : (
             <>
               {/* Mobile Responsive Cards (< md) */}
-              <div className="md:hidden divide-y divide-gray-100">
+              <div className="md:hidden divide-y divide-[#EAE5D9]">
                 {paginatedEnquiries.map((enquiry) => {
                   const tier = getUrgencyTier(enquiry.urgency);
                   const isUrgent = tier === 'urgent';
@@ -483,12 +483,12 @@ export const AdminEnquiriesPage: React.FC = () => {
                       key={enquiry.id}
                       onClick={() => openEnquiryDrawer(enquiry)}
                       className={`p-4 space-y-2.5 transition-colors cursor-pointer ${
-                        selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60' : 'hover:bg-gray-50/60'
+                        selectedEnquiry?.id === enquiry.id ? 'bg-[#F1EBDD]/60' : 'hover:bg-[#F1EBDD]/40'
                       } ${isUrgent ? 'border-l-4 border-l-red-500 bg-red-50/20' : isPriority ? 'border-l-4 border-l-amber-400 bg-amber-50/15' : ''}`}
                     >
                       <div className="flex items-center justify-between gap-2 flex-wrap">
                         <div className="flex items-center gap-2">
-                          <span className="font-mono font-bold text-xs text-brand-darkgreen">
+                          <span className="font-mono font-bold text-xs text-[#071B14]">
                             {enquiry.id}
                           </span>
                           {getUrgencyBadge(enquiry.urgency)}
@@ -496,20 +496,20 @@ export const AdminEnquiriesPage: React.FC = () => {
                         {getStatusBadge(enquiry.status)}
                       </div>
                       <div>
-                        <h4 className="font-bold text-sm text-gray-900">{enquiry.fullName}</h4>
+                        <h4 className="font-bold text-sm text-[#071B14]">{enquiry.fullName}</h4>
                         {enquiry.organization && (
-                          <p className="text-xs text-gray-500">{enquiry.organization}</p>
+                          <p className="text-xs text-[#525954]">{enquiry.organization}</p>
                         )}
                       </div>
-                      <div className="text-xs text-gray-600 flex flex-wrap gap-x-3 gap-y-1">
+                      <div className="text-xs text-[#525954] flex flex-wrap gap-x-3 gap-y-1">
                         <span>{enquiry.phone}</span>
                         <span>•</span>
                         <span>{enquiry.city}</span>
                         <span>•</span>
                         <span>{enquiry.serviceCategory}</span>
                       </div>
-                      <div className="pt-2 flex items-center justify-between border-t border-gray-100 text-xs">
-                        <span className="text-[11px] text-gray-400">
+                      <div className="pt-2 flex items-center justify-between border-t border-[#EAE5D9] text-xs">
+                        <span className="text-[11px] text-[#7E5E1E]">
                           {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
                             day: 'numeric',
                             month: 'short',
@@ -522,7 +522,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                             e.stopPropagation();
                             openEnquiryDrawer(enquiry);
                           }}
-                          className="min-h-[44px] inline-flex items-center font-bold text-brand-darkgreen hover:text-brand-brightgold"
+                          className="min-h-[44px] inline-flex items-center font-bold text-[#071B14] hover:text-[#7E5E1E]"
                         >
                           Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                         </button>
@@ -536,7 +536,7 @@ export const AdminEnquiriesPage: React.FC = () => {
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-bold uppercase tracking-wider">
+                    <tr className="bg-[#F1EBDD]/70 border-b border-[#D8D0BE] text-[#7E5E1E] font-bold uppercase tracking-wider font-mono">
                       <th className="py-3 px-4">Ref ID</th>
                       <th className="py-3 px-4">Received</th>
                       <th className="py-3 px-4">Client / Entity</th>
@@ -548,7 +548,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                       <th className="py-3 px-4 text-right">Actions</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-[#EAE5D9]">
                     {paginatedEnquiries.map((enquiry) => {
                       const tier = getUrgencyTier(enquiry.urgency);
                       const isUrgent = tier === 'urgent';
@@ -556,20 +556,20 @@ export const AdminEnquiriesPage: React.FC = () => {
                       return (
                         <tr 
                           key={enquiry.id} 
-                          className={`hover:bg-emerald-50/30 transition-colors cursor-pointer ${
-                            selectedEnquiry?.id === enquiry.id ? 'bg-emerald-50/60 font-semibold' : ''
+                          className={`hover:bg-[#F1EBDD]/30 transition-colors cursor-pointer ${
+                            selectedEnquiry?.id === enquiry.id ? 'bg-[#F1EBDD]/60 font-semibold' : ''
                           } ${isUrgent ? 'border-l-4 border-l-red-500 bg-red-50/25' : isPriority ? 'border-l-4 border-l-amber-400 bg-amber-50/15' : ''}`}
                           onClick={() => openEnquiryDrawer(enquiry)}
                         >
-                          <td className="py-3.5 px-4 font-mono font-bold text-brand-darkgreen">
+                          <td className="py-3.5 px-4 font-mono font-bold text-[#071B14]">
                             {enquiry.id}
                           </td>
-                          <td className="py-3.5 px-4 text-gray-600 whitespace-nowrap">
+                          <td className="py-3.5 px-4 text-[#525954] whitespace-nowrap">
                             {new Date(enquiry.createdAt).toLocaleDateString('en-IN', {
                               day: 'numeric',
                               month: 'short',
                             })}{' '}
-                            <span className="text-[10px] text-gray-400">
+                            <span className="text-[10px] text-[#7E5E1E]">
                               {new Date(enquiry.createdAt).toLocaleTimeString('en-IN', {
                                 hour: '2-digit',
                                 minute: '2-digit'
@@ -577,25 +577,25 @@ export const AdminEnquiriesPage: React.FC = () => {
                             </span>
                           </td>
                           <td className="py-3.5 px-4">
-                            <div className="font-bold text-gray-900">{enquiry.fullName}</div>
+                            <div className="font-bold text-[#071B14]">{enquiry.fullName}</div>
                             {enquiry.organization && (
-                              <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
+                              <div className="text-[11px] text-[#525954] truncate max-w-[160px]">
                                 {enquiry.organization}
                               </div>
                             )}
                           </td>
                           <td className="py-3.5 px-4 whitespace-nowrap">
-                            <div className="text-gray-900 font-medium">{enquiry.phone}</div>
+                            <div className="text-[#071B14] font-medium">{enquiry.phone}</div>
                             {enquiry.email && (
-                              <div className="text-[11px] text-gray-500 truncate max-w-[160px]">
+                              <div className="text-[11px] text-[#525954] truncate max-w-[160px]">
                                 {enquiry.email}
                               </div>
                             )}
                           </td>
-                          <td className="py-3.5 px-4 text-gray-700 font-medium max-w-[160px] truncate">
+                          <td className="py-3.5 px-4 text-[#071B14] font-medium max-w-[160px] truncate">
                             {enquiry.serviceCategory}
                           </td>
-                          <td className="py-3.5 px-4 text-gray-600">
+                          <td className="py-3.5 px-4 text-[#525954]">
                             {enquiry.city}
                           </td>
                           <td className="py-3.5 px-4">
@@ -611,7 +611,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                                 e.stopPropagation();
                                 openEnquiryDrawer(enquiry);
                               }}
-                              className="text-brand-darkgreen hover:text-brand-brightgold font-bold inline-flex items-center min-h-[44px]"
+                              className="text-[#071B14] hover:text-[#7E5E1E] font-bold inline-flex items-center min-h-[44px]"
                             >
                               Details <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                             </button>
@@ -624,11 +624,11 @@ export const AdminEnquiriesPage: React.FC = () => {
               </div>
 
               {/* Pagination Controls */}
-              <div className="p-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-600">
+              <div className="p-4 border-t border-[#D8D0BE] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#525954]">
                 <div>
-                  Showing <span className="font-bold">{startIndex + 1}</span> to{' '}
-                  <span className="font-bold">{Math.min(startIndex + pageSize, filtered.length)}</span> of{' '}
-                  <span className="font-bold">{filtered.length}</span> enquiries
+                  Showing <span className="font-bold text-[#071B14]">{startIndex + 1}</span> to{' '}
+                  <span className="font-bold text-[#071B14]">{Math.min(startIndex + pageSize, filtered.length)}</span> of{' '}
+                  <span className="font-bold text-[#071B14]">{filtered.length}</span> enquiries
                 </div>
 
                 <div className="flex items-center gap-1.5">
@@ -636,7 +636,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                     type="button"
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                    className="p-1.5 rounded-lg border border-gray-300 disabled:opacity-40 hover:bg-gray-50 transition-colors"
+                    className="p-1.5 rounded-lg border border-[#D8D0BE] text-[#525954] disabled:opacity-40 hover:bg-[#F1EBDD] transition-colors"
                     aria-label="Previous page"
                   >
                     <ChevronLeft className="w-4 h-4" />
@@ -650,8 +650,8 @@ export const AdminEnquiriesPage: React.FC = () => {
                         onClick={() => setCurrentPage(p)}
                         className={`w-7 h-7 rounded-lg text-xs font-bold transition-colors ${
                           p === currentPage
-                            ? 'bg-brand-darkgreen text-white'
-                            : 'border border-gray-200 text-gray-700 hover:bg-gray-50'
+                            ? 'bg-[#0B241C] text-[#F1EBDD] border border-[#B49A64]/40'
+                            : 'border border-[#D8D0BE] text-[#525954] hover:bg-[#F1EBDD]'
                         }`}
                       >
                         {p}
@@ -663,7 +663,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                     type="button"
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                    className="p-1.5 rounded-lg border border-gray-300 disabled:opacity-40 hover:bg-gray-50 transition-colors"
+                    className="p-1.5 rounded-lg border border-[#D8D0BE] text-[#525954] disabled:opacity-40 hover:bg-[#F1EBDD] transition-colors"
                     aria-label="Next page"
                   >
                     <ChevronRight className="w-4 h-4" />
@@ -683,26 +683,26 @@ export const AdminEnquiriesPage: React.FC = () => {
             onClick={closeEnquiryDrawer}
           >
             <div 
-              className="bg-white w-full max-w-xl min-h-screen p-6 sm:p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
+              className="bg-[#FAF7F0] border-l border-[#D8D0BE] w-full max-w-xl min-h-screen p-6 sm:p-8 flex flex-col justify-between shadow-2xl overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div>
                 {/* Header */}
-                <div className="flex items-start justify-between pb-4 border-b border-gray-100">
+                <div className="flex items-start justify-between pb-4 border-b border-[#D8D0BE]">
                   <div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-bold text-brand-darkgreen">
+                      <span className="font-mono text-sm font-bold text-[#071B14]">
                         {selectedEnquiry.id}
                       </span>
                       {getStatusBadge(selectedEnquiry.status)}
                     </div>
-                    <div className="text-xs text-gray-500 mt-1 flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
+                    <div className="text-xs text-[#525954] mt-1 flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5 text-[#B49A64]" />
                       Received on {new Date(selectedEnquiry.createdAt).toLocaleString('en-IN')}
                     </div>
                     {selectedEnquiry.updatedAt && (
-                      <div className="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
+                      <div className="text-[11px] text-[#7E5E1E] mt-0.5 flex items-center gap-1">
+                        <Clock className="w-3 h-3 text-[#B49A64]" />
                         Last Updated: {new Date(selectedEnquiry.updatedAt).toLocaleString('en-IN')}
                       </div>
                     )}
@@ -710,7 +710,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                   <button
                     type="button"
                     onClick={closeEnquiryDrawer}
-                    className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg text-[#525954] hover:text-[#071B14] hover:bg-[#F1EBDD] transition-colors"
                     aria-label="Close details"
                   >
                     <X className="w-5 h-5" />
@@ -718,44 +718,44 @@ export const AdminEnquiriesPage: React.FC = () => {
                 </div>
 
                 {/* Client Profile Card */}
-                <div className="mt-6 p-4 rounded-xl bg-gray-50 border border-gray-200/80 space-y-3">
+                <div className="mt-6 p-4 rounded-xl bg-[#F1EBDD]/60 border border-[#D8D0BE] space-y-3">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#7E5E1E] block">
                       Client Contact & Entity
                     </span>
-                    <h3 className="text-base font-bold text-gray-900 mt-0.5">
+                    <h3 className="text-base font-bold text-[#071B14] mt-0.5">
                       {selectedEnquiry.fullName}
                     </h3>
                     {selectedEnquiry.organization && (
-                      <div className="text-xs text-gray-700 flex items-center gap-1.5 mt-0.5">
-                        <Building2 className="w-3.5 h-3.5 text-gray-400" />
+                      <div className="text-xs text-[#071B14] flex items-center gap-1.5 mt-0.5">
+                        <Building2 className="w-3.5 h-3.5 text-[#B49A64]" />
                         <span className="font-semibold">{selectedEnquiry.organization}</span>
                         {selectedEnquiry.entityType && (
-                          <span className="text-gray-500">({selectedEnquiry.entityType})</span>
+                          <span className="text-[#525954]">({selectedEnquiry.entityType})</span>
                         )}
                       </div>
                     )}
-                    <div className="text-xs text-gray-600 flex items-center gap-1.5 mt-1">
-                      <MapPin className="w-3.5 h-3.5 text-gray-400" />
+                    <div className="text-xs text-[#525954] flex items-center gap-1.5 mt-1">
+                      <MapPin className="w-3.5 h-3.5 text-[#B49A64]" />
                       <span>{selectedEnquiry.city}</span>
                     </div>
                   </div>
 
                   {/* Direct Contact Links */}
-                  <div className="pt-2 border-t border-gray-200/60 flex flex-wrap gap-2 text-xs">
+                  <div className="pt-2 border-t border-[#D8D0BE] flex flex-wrap gap-2 text-xs">
                     <a
                       href={`tel:${selectedEnquiry.phone.replace(/[^0-9+]/g, '')}`}
-                      className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-emerald-50 text-brand-darkgreen font-bold hover:bg-emerald-100 transition-colors"
+                      className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-[#0B241C] text-[#F1EBDD] font-bold border border-[#B49A64]/40 hover:bg-[#183529] transition-colors"
                     >
-                      <Phone className="w-3.5 h-3.5 mr-1.5" />
+                      <Phone className="w-3.5 h-3.5 mr-1.5 text-[#B49A64]" />
                       Call {selectedEnquiry.phone}
                     </a>
                     {selectedEnquiry.email && (
                       <a
                         href={`mailto:${selectedEnquiry.email}?subject=Consultation%20Inquiry%20—%20Kavitha%20%26%20Associates%20[${selectedEnquiry.id}]`}
-                        className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-blue-50 text-blue-700 font-bold hover:bg-blue-100 transition-colors"
+                        className="min-h-[44px] inline-flex items-center px-3.5 py-2.5 rounded-lg bg-[#F1EBDD] text-[#071B14] font-bold border border-[#D8D0BE] hover:bg-[#EAE5D9] transition-colors"
                       >
-                        <Mail className="w-3.5 h-3.5 mr-1.5" />
+                        <Mail className="w-3.5 h-3.5 mr-1.5 text-[#7E5E1E]" />
                         Email Client
                       </a>
                     )}
@@ -772,16 +772,16 @@ export const AdminEnquiriesPage: React.FC = () => {
                 </div>
 
                 {/* Engagement Urgency & Statutory SLA Card */}
-                <div className="mt-4 p-3.5 rounded-xl bg-gray-50 border border-gray-200/80 space-y-2">
+                <div className="mt-4 p-3.5 rounded-xl bg-[#F1EBDD]/40 border border-[#D8D0BE] space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#7E5E1E]">
                       Statutory Urgency & SLA
                     </span>
                     {getUrgencyBadge(selectedEnquiry.urgency, 'sm')}
                   </div>
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-700 font-medium">
-                      Declared by Assessee: <strong className="text-gray-900">{selectedEnquiry.urgency || 'Routine Statutory Cycle'}</strong>
+                    <span className="text-[#525954] font-medium">
+                      Declared by Assessee: <strong className="text-[#071B14]">{selectedEnquiry.urgency || 'Routine Statutory Cycle'}</strong>
                     </span>
                     {getUrgencyTier(selectedEnquiry.urgency) === 'urgent' ? (
                       <span className="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded border border-red-200">
@@ -792,7 +792,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                         ⏱️ 48h Follow-up SLA
                       </span>
                     ) : (
-                      <span className="text-[10px] text-gray-500 font-medium">
+                      <span className="text-[10px] text-[#525954] font-medium">
                         Routine Turnaround
                       </span>
                     )}
@@ -802,28 +802,28 @@ export const AdminEnquiriesPage: React.FC = () => {
                 {/* Inquiry Service & Message */}
                 <div className="mt-6 space-y-4">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#7E5E1E] block mb-1">
                       Requested Service Domain
                     </span>
-                    <div className="text-xs font-bold text-brand-darkgreen bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
+                    <div className="text-xs font-bold text-[#071B14] bg-[#F1EBDD] p-2.5 rounded-lg border border-[#D8D0BE]">
                       {selectedEnquiry.serviceCategory}
                     </div>
                   </div>
 
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500 block mb-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#7E5E1E] block mb-1">
                       Client Brief / Statutory Query
                     </span>
-                    <div className="text-xs text-gray-800 bg-white p-3.5 rounded-xl border border-gray-200 leading-relaxed whitespace-pre-wrap">
+                    <div className="text-xs text-[#071B14] bg-white p-3.5 rounded-xl border border-[#D8D0BE] leading-relaxed whitespace-pre-wrap">
                       {selectedEnquiry.message}
                     </div>
                   </div>
                 </div>
 
                 {/* Update Status & Practice Follow-Up Notes */}
-                <form onSubmit={handleSaveStatusAndNotes} className="mt-6 space-y-4 pt-4 border-t border-gray-100">
+                <form onSubmit={handleSaveStatusAndNotes} className="mt-6 space-y-4 pt-4 border-t border-[#D8D0BE]">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-brand-darkgreen">
+                    <span className="text-xs font-bold uppercase tracking-wider text-[#071B14]">
                       Practice Follow-Up & Action Log
                     </span>
                     {saveSuccess && (
@@ -834,13 +834,13 @@ export const AdminEnquiriesPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1">
+                    <label className="block text-xs font-bold text-[#071B14] mb-1">
                       Enquiry Stage / Status:
                     </label>
                     <select
                       value={editStatus}
                       onChange={(e) => setEditStatus(e.target.value as EnquiryStatus)}
-                      className="w-full text-xs p-2.5 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-darkgreen bg-white font-semibold"
+                      className="w-full text-xs p-2.5 rounded-xl border border-[#D8D0BE] focus:outline-none focus:border-[#B49A64] bg-white font-semibold text-[#071B14]"
                     >
                       <option value="new">New (Pending Action)</option>
                       <option value="contacted">Contacted (Meeting / Call Completed)</option>
@@ -850,7 +850,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-gray-700 mb-1">
+                    <label className="block text-xs font-bold text-[#071B14] mb-1">
                       Internal Practice Notes (Private to Firm):
                     </label>
                     <textarea
@@ -858,13 +858,13 @@ export const AdminEnquiriesPage: React.FC = () => {
                       value={editNotes}
                       onChange={(e) => setEditNotes(e.target.value)}
                       placeholder="e.g. Discussed with managing partner; requested audited financials for FY 25-26."
-                      className="w-full text-xs p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-darkgreen/20 focus:border-brand-darkgreen leading-relaxed"
+                      className="w-full text-xs p-3 rounded-xl border border-[#D8D0BE] focus:outline-none focus:ring-2 focus:ring-[#B49A64]/20 focus:border-[#B49A64] leading-relaxed text-[#071B14] bg-white"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full min-h-[44px] inline-flex items-center justify-center py-3 px-4 bg-brand-darkgreen hover:bg-brand-chambers text-white text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
+                    className="w-full min-h-[44px] inline-flex items-center justify-center py-3 px-4 bg-[#0B241C] hover:bg-[#183529] text-[#F1EBDD] border border-[#B49A64]/40 hover:border-[#B49A64] text-xs font-bold rounded-xl transition-colors duration-200 shadow-sm"
                   >
                     <Save className="w-3.5 h-3.5 mr-1.5" />
                     Save Status & Practice Notes
@@ -873,7 +873,7 @@ export const AdminEnquiriesPage: React.FC = () => {
               </div>
 
               {/* Bottom Actions */}
-              <div className="pt-6 border-t border-gray-200 mt-6 flex items-center justify-between">
+              <div className="pt-6 border-t border-[#D8D0BE] mt-6 flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => handleDeleteEnquiry(selectedEnquiry.id)}
@@ -885,7 +885,7 @@ export const AdminEnquiriesPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={closeEnquiryDrawer}
-                  className="min-h-[44px] px-5 py-2.5 text-xs font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors inline-flex items-center justify-center"
+                  className="min-h-[44px] px-5 py-2.5 text-xs font-bold text-[#525954] bg-[#F1EBDD] hover:bg-[#EAE5D9] rounded-xl transition-colors inline-flex items-center justify-center"
                 >
                   Close
                 </button>

@@ -13,6 +13,7 @@ import {
   BookOpen,
   PenTool,
   KeyRound,
+  ShieldCheck,
 } from 'lucide-react';
 import { adminStorage, FIRM_DATA_UPDATE_EVENT } from '../../services/adminStorage';
 import { ADMIN_ROUTES } from '../../config/adminConfig';
@@ -67,26 +68,26 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
   ];
 
   return (
-    <div className="min-h-screen bg-[#FBFBFA] text-[#191919] flex flex-col md:flex-row font-sans selection:bg-neutral-200">
+    <div className="min-h-screen bg-[#F6F3EC] text-[#191919] flex flex-col md:flex-row font-sans selection:bg-[#071B14] selection:text-[#F1EBDD]">
       <SEOHead title={`Admin — ${title}`} description="Practice Management Console" noIndex={true} />
 
       {/* =========================================================================
-          1. MINIMALIST DESKTOP SIDEBAR
+          1. BOTANICAL LEDGER CHAMBERS DESKTOP SIDEBAR
           ========================================================================= */}
-      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-white text-neutral-800 shrink-0 border-r border-[#EAEAEA]">
+      <aside className="hidden md:flex flex-col w-64 lg:w-72 bg-[#071B14] text-[#F1EBDD] shrink-0 border-r border-[#B49A64]/20 shadow-xl">
         
         {/* Brand Header */}
-        <div className="p-5 border-b border-[#F0F0F0]">
+        <div className="p-5 border-b border-[#B49A64]/20 bg-[#04100C]/70">
           <Link to={ADMIN_ROUTES.root} className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-lg bg-white border border-[#EAEAEA] flex items-center justify-center p-0.5 shrink-0 shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-[#FAF7F0] border border-[#B49A64]/40 flex items-center justify-center p-1 shrink-0 shadow-sm transition-transform group-hover:scale-105">
               <img src="/brand/ca-india-logo.png" alt="CA India" className="w-full h-full object-contain" />
             </div>
             <div className="min-w-0">
-              <span className="font-serif text-sm font-bold text-neutral-900 block leading-tight truncate group-hover:text-neutral-700 transition-colors">
+              <span className="font-serif text-sm font-bold text-[#F1EBDD] block leading-tight truncate group-hover:text-[#B49A64] transition-colors">
                 Kavitha & Associates
               </span>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 mt-0.5 block truncate">
-                Admin Console
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[#B49A64] mt-0.5 block truncate">
+                Chambers Console
               </span>
             </div>
           </Link>
@@ -94,8 +95,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
 
         {/* Navigation Items */}
         <nav className="flex-1 p-3.5 space-y-1" aria-label="Admin Navigation">
-          <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 px-3 py-1.5 mb-1">
-            Navigation
+          <div className="text-[10px] font-mono uppercase tracking-widest text-[#B49A64]/80 px-3 py-1.5 mb-1 font-semibold flex items-center justify-between">
+            <span>Chambers Navigation</span>
+            <ShieldCheck className="w-3 h-3 text-[#B49A64]/60" />
           </div>
 
           {navItems.map((item) => {
@@ -108,79 +110,80 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
               <NavLink
                 key={item.path}
                 to={item.path}
-                className={`flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-150 ${
+                className={`flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-medium transition-all duration-200 border-l-2 min-h-[44px] ${
                   isActive
-                    ? 'bg-neutral-100 text-neutral-900 font-semibold'
-                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
+                    ? 'bg-[#0B241C] text-[#F1EBDD] font-semibold border-[#B49A64] shadow-[inset_0_1px_0_0_rgba(180,154,100,0.15)]'
+                    : 'text-[#AAB4A0] hover:text-[#F1EBDD] hover:bg-[#0B241C]/60 border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-neutral-900' : 'text-neutral-400'}`} />
+                  <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-[#B49A64]' : 'text-[#AAB4A0]'}`} />
                   <span>{item.name}</span>
                 </div>
                 {item.badge !== undefined && (
-                  <span className="px-1.5 py-0.2 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#B49A64]/20 text-[#F1EBDD] border border-[#B49A64]/40 animate-pulse">
                     {item.badge}
                   </span>
                 )}
               </NavLink>
             );
           })}
-          <div className="pt-3 px-1 mt-2 border-t border-[#F0F0F0]">
+          
+          <div className="pt-3 px-1 mt-2 border-t border-[#B49A64]/20">
             <Link
               to={`${ADMIN_ROUTES.articles}?action=new`}
-              className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-semibold shadow-xs transition-colors group"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-[#183529] hover:bg-[#0B241C] border border-[#B49A64]/40 hover:border-[#B49A64] text-[#F1EBDD] text-xs font-semibold shadow-xs transition-all duration-200 group min-h-[44px]"
             >
-              <PenTool className="w-3.5 h-3.5 text-amber-300 group-hover:rotate-12 transition-transform" />
+              <PenTool className="w-3.5 h-3.5 text-[#B49A64] group-hover:rotate-12 transition-transform" />
               <span>+ Write New Article</span>
             </Link>
           </div>
         </nav>
 
         {/* User Profile & Actions Footer */}
-        <div className="p-3.5 border-t border-[#F0F0F0] space-y-2 bg-[#FAFAFA]">
+        <div className="p-3.5 border-t border-[#B49A64]/20 space-y-2.5 bg-[#04100C]/70">
           
           <div className="flex items-center justify-between px-2 py-1">
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-7 h-7 rounded-full bg-neutral-200 border border-neutral-300 flex items-center justify-center text-neutral-700 font-serif font-bold text-[10px] shrink-0">
+              <div className="w-8 h-8 rounded-full bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] font-serif font-bold text-xs shrink-0 shadow-xs">
                 {session?.user.displayName.substring(0, 2).toUpperCase() || 'CA'}
               </div>
               <div className="truncate">
-                <span className="text-xs font-semibold text-neutral-900 block truncate leading-tight">
+                <span className="text-xs font-semibold text-[#F1EBDD] block truncate leading-tight">
                   {session?.user.displayName || 'Authorized Admin'}
                 </span>
-                <span className="text-[10px] text-neutral-500 font-mono block truncate">
+                <span className="text-[10px] text-[#B49A64] font-mono block truncate">
                   {session?.user.role || 'Managing Partner'}
                 </span>
               </div>
             </div>
             <Link
               to={`${ADMIN_ROUTES.settings}?tab=security`}
-              className="p-1.5 rounded-md hover:bg-neutral-200 text-neutral-500 hover:text-neutral-900 transition-colors shrink-0"
+              className="p-2 rounded-lg hover:bg-[#0B241C] text-[#AAB4A0] hover:text-[#B49A64] border border-transparent hover:border-[#B49A64]/30 transition-colors shrink-0 min-h-[36px] min-w-[36px] flex items-center justify-center"
               title="Account Security & Password"
               aria-label="Account Security & Password"
             >
-              <KeyRound className="w-3.5 h-3.5" />
+              <KeyRound className="w-4 h-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 gap-1.5 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-1">
             <Link
               to="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white hover:bg-neutral-100 text-neutral-600 hover:text-neutral-900 text-[11px] font-medium border border-neutral-200 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#0B241C] hover:bg-[#183529] text-[#D8D0BE] hover:text-[#F1EBDD] text-[11px] font-medium border border-[#B49A64]/30 hover:border-[#B49A64]/60 transition-all min-h-[44px]"
             >
-              <Globe className="w-3 h-3 text-neutral-400" />
+              <Globe className="w-3.5 h-3.5 text-[#B49A64]" />
               <span>Live Site</span>
             </Link>
 
             <button
               type="button"
               onClick={handleLogout}
-              className="flex items-center justify-center gap-1.5 px-2.5 py-1.5 rounded-md bg-white hover:bg-red-50 text-neutral-600 hover:text-red-700 text-[11px] font-medium border border-neutral-200 hover:border-red-200 transition-colors"
+              className="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#0B241C] hover:bg-red-950/40 text-[#D8D0BE] hover:text-red-300 text-[11px] font-medium border border-[#B49A64]/30 hover:border-red-500/40 transition-all min-h-[44px]"
             >
-              <LogOut className="w-3 h-3" />
+              <LogOut className="w-3.5 h-3.5" />
               <span>Sign Out</span>
             </button>
           </div>
@@ -189,31 +192,36 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
       </aside>
 
       {/* =========================================================================
-          2. MINIMALIST MOBILE HEADER
+          2. BOTANICAL LEDGER MOBILE HEADER
           ========================================================================= */}
-      <div className="md:hidden bg-white text-neutral-900 p-3.5 flex items-center justify-between border-b border-[#EAEAEA]">
+      <div className="md:hidden bg-[#071B14] text-[#F1EBDD] p-3.5 flex items-center justify-between border-b border-[#B49A64]/20 shadow-md">
         <div className="flex items-center gap-2.5 min-w-0">
-          <div className="w-7 h-7 rounded-lg bg-white border border-[#EAEAEA] flex items-center justify-center p-0.5 shrink-0">
+          <div className="w-8 h-8 rounded-lg bg-[#FAF7F0] border border-[#B49A64]/40 flex items-center justify-center p-1 shrink-0">
             <img src="/brand/ca-india-logo.png" alt="CA India" className="w-full h-full object-contain" />
           </div>
-          <span className="font-serif text-sm font-bold text-neutral-900 truncate">
-            Kavitha & Associates
-          </span>
+          <div className="min-w-0">
+            <span className="font-serif text-sm font-bold text-[#F1EBDD] truncate block">
+              Kavitha & Associates
+            </span>
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#B49A64] block">
+              Chambers Admin
+            </span>
+          </div>
         </div>
         <button
           type="button"
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="min-w-[40px] min-h-[40px] flex items-center justify-center rounded-lg text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 focus:outline-none transition-colors"
+          className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl text-[#F1EBDD] hover:bg-[#0B241C] border border-[#B49A64]/30 focus:outline-none transition-colors"
           aria-expanded={mobileOpen}
           aria-label="Toggle navigation menu"
         >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileOpen ? <X className="w-5 h-5 text-[#B49A64]" /> : <Menu className="w-5 h-5 text-[#B49A64]" />}
         </button>
       </div>
 
       {/* Mobile Drawer */}
       {mobileOpen && (
-        <div className="md:hidden bg-white border-b border-[#EAEAEA] p-3 space-y-1 animate-in fade-in">
+        <div className="md:hidden bg-[#071B14] border-b border-[#B49A64]/20 p-4 space-y-1.5 animate-in fade-in">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = item.exact 
@@ -225,16 +233,18 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
                 key={item.path}
                 to={item.path}
                 onClick={() => setMobileOpen(false)}
-                className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
-                  isActive ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:bg-neutral-50'
+                className={`flex items-center justify-between px-3.5 py-3 rounded-xl text-xs font-medium transition-colors border-l-2 min-h-[44px] ${
+                  isActive 
+                    ? 'bg-[#0B241C] text-[#F1EBDD] font-semibold border-[#B49A64]' 
+                    : 'text-[#AAB4A0] hover:text-[#F1EBDD] hover:bg-[#0B241C]/60 border-transparent'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <Icon className="w-4 h-4 text-neutral-500" />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-[#B49A64]' : 'text-[#AAB4A0]'}`} />
                   <span>{item.name}</span>
                 </div>
                 {item.badge !== undefined && (
-                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-100 text-amber-800">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-[#B49A64]/20 text-[#F1EBDD] border border-[#B49A64]/40">
                     {item.badge}
                   </span>
                 )}
@@ -242,100 +252,86 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, title, subti
             );
           })}
           
-          <div className="pt-2 mt-2 border-t border-[#F0F0F0] space-y-1">
-            <div className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 px-3 py-1">
-              Articles & Publications
-            </div>
-            <Link
-              to={ADMIN_ROUTES.articles}
-              onClick={() => setMobileOpen(false)}
-              className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium transition-colors ${
-                location.pathname.startsWith(ADMIN_ROUTES.articles) ? 'bg-neutral-100 text-neutral-900 font-semibold' : 'text-neutral-600 hover:bg-neutral-50'
-              }`}
-            >
-              <div className="flex items-center gap-2.5">
-                <BookOpen className="w-4 h-4 text-neutral-500" />
-                <span>Articles & Insights</span>
-              </div>
-            </Link>
+          <div className="pt-2 mt-2 border-t border-[#B49A64]/20 space-y-2">
             <Link
               to={`${ADMIN_ROUTES.articles}?action=new`}
               onClick={() => setMobileOpen(false)}
-              className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium shadow-xs"
+              className="w-full flex items-center justify-center gap-2 px-3 py-3 rounded-xl bg-[#183529] hover:bg-[#0B241C] border border-[#B49A64]/40 text-[#F1EBDD] text-xs font-semibold shadow-xs min-h-[44px]"
             >
-              <PenTool className="w-3.5 h-3.5 text-amber-300" />
+              <PenTool className="w-3.5 h-3.5 text-[#B49A64]" />
               <span>+ Write New Article</span>
             </Link>
-          </div>
-<div className="pt-2 mt-2 border-t border-[#F0F0F0] flex items-center justify-between text-xs px-2">
-            <Link
-              to="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileOpen(false)}
-              className="text-neutral-600 hover:text-neutral-900 py-1.5 flex items-center gap-1.5 font-medium"
-            >
-              <Globe className="w-3.5 h-3.5 text-neutral-400" />
-              <span>Live Site</span>
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileOpen(false);
-                handleLogout();
-              }}
-              className="text-red-600 hover:text-red-700 py-1.5 flex items-center gap-1.5 font-medium"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              <span>Sign Out</span>
-            </button>
+
+            <div className="grid grid-cols-2 gap-2 pt-1">
+              <Link
+                to="/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#0B241C] text-[#D8D0BE] hover:text-[#F1EBDD] text-xs font-medium border border-[#B49A64]/30 min-h-[44px]"
+              >
+                <Globe className="w-3.5 h-3.5 text-[#B49A64]" />
+                <span>Live Site</span>
+              </Link>
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileOpen(false);
+                  handleLogout();
+                }}
+                className="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-xl bg-[#0B241C] text-red-300 hover:text-red-200 text-xs font-medium border border-red-500/30 min-h-[44px]"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Sign Out</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
 
       {/* =========================================================================
-          3. MAIN CONTENT CONTAINER (MINIMALIST)
+          3. MAIN CONTENT CONTAINER (BOTANICAL LEDGER)
           ========================================================================= */}
       <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
         
-        {/* Minimalist Top Header */}
-        <header className="bg-white border-b border-[#EAEAEA] px-6 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-0 z-20">
+        {/* Architectural Warm Ledger Header */}
+        <header className="bg-[#FAF7F0] border-b border-[#D8D0BE] px-6 sm:px-8 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sticky top-0 z-20 shadow-[0_1px_3px_rgba(0,0,0,0.03)] backdrop-blur-xs">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-0.5">
-              Practice / {title}
+            <div className="text-[11px] font-mono uppercase tracking-widest text-[#7E5E1E] font-semibold mb-0.5">
+              Chambers Practice / {title}
             </div>
-            <h1 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 tracking-tight">
+            <h1 className="font-serif text-xl sm:text-2xl font-bold text-[#071B14] tracking-tight">
               {title}
             </h1>
             {subtitle && (
-              <p className="text-xs text-neutral-500 mt-0.5">
+              <p className="text-xs text-[#525954] mt-0.5 font-sans">
                 {subtitle}
               </p>
             )}
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 flex-wrap">
             <Link
               to={`${ADMIN_ROUTES.articles}?action=new`}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-medium shadow-xs transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#183529] hover:bg-[#071B14] border border-[#B49A64]/40 hover:border-[#B49A64] text-[#F1EBDD] text-xs font-semibold shadow-xs transition-all min-h-[44px]"
             >
-              <PenTool className="w-3 h-3 text-amber-300" />
+              <PenTool className="w-3.5 h-3.5 text-[#B49A64]" />
               <span>+ Write Article</span>
             </Link>
 
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-medium border border-emerald-100">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Encrypted Session</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#071B14] text-[#F1EBDD] text-[11px] font-medium border border-[#B49A64]/30 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] animate-pulse"></span>
+              <span className="font-mono">Encrypted Session</span>
             </div>
 
             <Link
               to="/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-3 py-1 rounded-lg border border-neutral-200 bg-white hover:bg-neutral-50 text-neutral-700 text-xs font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border border-[#D8D0BE] bg-white hover:bg-[#F1EBDD] text-[#071B14] text-xs font-semibold transition-all min-h-[44px] hover:border-[#B49A64] shadow-xs"
             >
               <span>View Site</span>
-              <ExternalLink className="w-3 h-3 text-neutral-400" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#7E5E1E]" />
             </Link>
           </div>
         </header>
