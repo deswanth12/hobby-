@@ -22,6 +22,7 @@ import { getPublishedFaqs } from '../../adapters/contentAdapter';
 import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { StatutoryAuditScreener } from '../../components/tools';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const AuditAssurancePage: React.FC = () => {
@@ -386,6 +387,13 @@ export const AuditAssurancePage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 4.5. Interactive Statutory Audit & Tax Applicability Screener */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#FAF7F0] border-b border-[#D8D0BE] scroll-mt-28" id="audit-screener">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StatutoryAuditScreener />
         </div>
       </section>
 

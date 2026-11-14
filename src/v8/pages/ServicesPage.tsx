@@ -22,6 +22,7 @@ import { SectionAccent, DotGrid, ArchitecturalLines, DecorativeLayer } from '../
 import { Badge } from '../components/common/Badge';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
 import { StatutoryChecklistModal } from '../components/common/StatutoryChecklistModal';
+import { StatutoryAuditScreener } from '../components/tools';
 import { FIRM_DATA } from '../../data/firmData';
 
 export type DisciplineFilterId = 'all' | 'audit' | 'direct-tax' | 'indirect-tax' | 'corporate' | 'advisory';
@@ -384,6 +385,12 @@ export const ServicesPage: React.FC = () => {
               >
                 Virtual CFO
               </a>
+              <a 
+                href="#statutory-audit-screener" 
+                className="min-h-[44px] inline-flex items-center gap-1 px-3.5 py-2 rounded-full bg-[#B49A64] text-[#071B14] font-bold text-xs hover:bg-[#F1EBDD] transition-colors btn-tactile shadow-xs"
+              >
+                <span>⚡ Audit Screener</span>
+              </a>
             </div>
           </div>
         </div>
@@ -731,6 +738,13 @@ export const ServicesPage: React.FC = () => {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* 4.5. Interactive Statutory Audit & Tax Screener */}
+      <section className="py-12 sm:py-16 md:py-20 bg-[#FAF7F0] border-b border-[#D8D0BE] scroll-mt-28" id="statutory-audit-screener">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StatutoryAuditScreener />
         </div>
       </section>
 
