@@ -209,7 +209,7 @@ export const StatutoryAuditScreener: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#071B14] text-[#F1EBDD] rounded-3xl border border-[#B49A64]/40 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden texture-architectural-lines">
+    <div className="w-full bg-[#071B14] text-[#F1EBDD] rounded-3xl border border-[#B49A64]/40 p-4 sm:p-7 lg:p-10 shadow-2xl relative overflow-hidden texture-architectural-lines">
       {/* Corner Brass Accents */}
       <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#B49A64]/60 rounded-tl-sm pointer-events-none" aria-hidden="true" />
       <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#B49A64]/60 rounded-tr-sm pointer-events-none" aria-hidden="true" />

@@ -41,41 +41,42 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top Utility Desk (Desktop / Tablet) */}
       <div className="hidden md:block bg-[#04100C] text-[#AAB4A0] border-b border-[#B49A64]/20 text-[11px] py-1.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           {/* Credentials attribution */}
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1.5 text-[#F1EBDD] font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64]" />
-              <span>Chartered Accountants (ICAI) &amp; Cost Accountants (ICMAI)</span>
+          <div className="flex items-center gap-2 lg:gap-3 shrink-0">
+            <span className="flex items-center gap-1.5 text-[#F1EBDD] font-medium whitespace-nowrap">
+              <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
+              <span className="hidden xl:inline">Chartered Accountants (ICAI) &amp; Cost Accountants (ICMAI)</span>
+              <span className="xl:hidden">ICAI &amp; ICMAI Dual Practice</span>
             </span>
             <span className="text-[#B49A64]/40" aria-hidden="true">•</span>
-            <span className="text-[#B49A64] font-semibold">CA Kavitha Vijay, CMA AIR 49</span>
+            <span className="text-[#B49A64] font-semibold whitespace-nowrap">CA Kavitha Vijay, CMA AIR 49</span>
           </div>
 
           {/* Direct channels & location */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 lg:gap-4 shrink-0">
             <a
               href={`tel:${FIRM_DATA.contact.primaryPhone.replace(/\s+/g, '')}`}
-              className="flex items-center gap-1 hover:text-[#F1EBDD] transition-colors"
+              className="flex items-center gap-1 hover:text-[#F1EBDD] transition-colors whitespace-nowrap"
             >
-              <Phone className="w-3 h-3 text-[#B49A64]" />
+              <Phone className="w-3 h-3 text-[#B49A64] shrink-0" />
               <span>{FIRM_DATA.contact.primaryPhone}</span>
             </a>
 
-            <span className="text-[#B49A64]/40" aria-hidden="true">|</span>
+            <span className="hidden lg:inline text-[#B49A64]/40" aria-hidden="true">|</span>
 
             <a
               href={`mailto:${FIRM_DATA.contact.email}`}
-              className="flex items-center gap-1 hover:text-[#F1EBDD] transition-colors"
+              className="hidden lg:flex items-center gap-1 hover:text-[#F1EBDD] transition-colors whitespace-nowrap"
             >
-              <Mail className="w-3 h-3 text-[#B49A64]" />
+              <Mail className="w-3 h-3 text-[#B49A64] shrink-0" />
               <span>{FIRM_DATA.contact.email}</span>
             </a>
 
-            <span className="text-[#B49A64]/40" aria-hidden="true">|</span>
+            <span className="hidden xl:inline text-[#B49A64]/40" aria-hidden="true">|</span>
 
-            <span className="flex items-center gap-1">
-              <MapPin className="w-3 h-3 text-[#B49A64]" />
+            <span className="hidden xl:flex items-center gap-1 whitespace-nowrap">
+              <MapPin className="w-3 h-3 text-[#B49A64] shrink-0" />
               <span>Tirupati Chambers</span>
             </span>
 

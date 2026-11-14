@@ -259,6 +259,15 @@
     letter-spacing: 0.16em;
   }
 
+  /* Cross-browser scrollbar hiding for horizontal tabs/chips */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
   .font-editorial-body {
     font-family: var(--font-sans);
     font-size: clamp(1rem, 3.5vw, 1.125rem);
