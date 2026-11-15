@@ -164,6 +164,21 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
 
 export const HeroSection: React.FC = () => {
   const firmProfile = useFirmProfile();
+  const [mousePos, setMousePos] = useState<{ x: number; y: number } | null>(null);
+  const heroRef = React.useRef<HTMLElement | null>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
+    if (!heroRef.current) return;
+    const rect = heroRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setMousePos(null);
+  };
 
   const TICKER_ITEMS = [
     'Statutory Audit & Assurance',
@@ -180,10 +195,24 @@ export const HeroSection: React.FC = () => {
 
   return (
     <section
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       id="hero"
       className="bg-[#071B14] text-[#F1EBDD] pt-10 sm:pt-14 lg:pt-16 pb-8 sm:pb-10 border-b border-[#B49A64]/20 relative overflow-hidden texture-architectural-lines scroll-mt-28"
     >
       <div id="hero-section" className="scroll-mt-28" />
+
+      {/* Interactive Linear / Stripe Style Cursor Spotlight (Quiet Luxury Antique Bronze Aura) */}
+      {mousePos && (
+        <div
+          className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-300 ease-out hidden md:block"
+          style={{
+            background: `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(180, 154, 100, 0.12), transparent 70%)`,
+          }}
+          aria-hidden="true"
+        />
+      )}
 
       {/* Editorial Luxury Atmosphere Lighting with Subtle Organic Breathing */}
       <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#183529]/60 rounded-full blur-3xl pointer-events-none animate-pulse-slow" aria-hidden="true" />
