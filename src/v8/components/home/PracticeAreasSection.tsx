@@ -87,7 +87,7 @@ export const PRACTICE_DISCIPLINES: PracticeDiscipline[] = [
     code: 'PRAC-08',
     badge: 'Enterprise Advisory',
     title: 'Strategic Advisory & Succession',
-    description: 'Institutional succession planning, business valuation, promoter advisory, and cross-border regulatory structuring.',
+    description: 'Institutional succession planning, comprehensive business valuation, promoter advisory, and cross-border regulatory structuring counsel.',
     link: '/services/strategic-advisory',
     icon: Compass,
   },

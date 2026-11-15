@@ -379,7 +379,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] group"
+          className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] font-semibold text-xs uppercase tracking-wider transition-all duration-200 shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 disabled:opacity-50 disabled:cursor-not-allowed min-h-[44px] group btn-shimmer"
         >
           {isSubmitting ? (
             <>

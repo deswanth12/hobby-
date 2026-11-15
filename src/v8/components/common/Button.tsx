@@ -62,9 +62,9 @@ export const Button: React.FC<ButtonProps> = ({
   // Variant specifications
   const variantClasses: Record<ButtonVariant, string> = {
     'primary-bronze':
-      'bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] active:from-[#9E844E] active:to-[#8D733F] text-[#071B14] font-semibold shadow-md hover:shadow-gold-glow border border-[#C5A059]/60',
+      'bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] active:from-[#9E844E] active:to-[#8D733F] text-[#071B14] font-semibold shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 btn-shimmer',
     primary:
-      'bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] active:from-[#9E844E] active:to-[#8D733F] text-[#071B14] font-semibold shadow-md hover:shadow-gold-glow border border-[#C5A059]/60',
+      'bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] active:from-[#9E844E] active:to-[#8D733F] text-[#071B14] font-semibold shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 btn-shimmer',
     'secondary-outline':
       'bg-transparent hover:bg-[#183529]/40 active:bg-[#183529]/70 text-[#F1EBDD] border border-[#B49A64]/40 hover:border-[#B49A64]',
     secondary:

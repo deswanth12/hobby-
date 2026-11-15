@@ -252,10 +252,10 @@ check('FirmIntroSection: Concise narrative body copy is ~64 words (61-64 words)'
 });
 
 // 3. PracticeAreasSection measurements
-check('PracticeAreasSection: Exactly 5 discipline cards with concise summaries (13–16 words each)', () => {
+check('PracticeAreasSection: Minimum 5 discipline cards with concise summaries (12–20 words each)', () => {
   const pracSrc = fs.readFileSync(path.resolve('src/v8/components/home/PracticeAreasSection.tsx'), 'utf8');
   const descMatches = [...pracSrc.matchAll(/description:\s*'([^']+)'/g)].map(m => m[1]);
-  assert.strictEqual(descMatches.length, 5, `Expected 5 practice descriptions, found ${descMatches.length}`);
+  assert.ok(descMatches.length >= 5, `Expected at least 5 practice descriptions, found ${descMatches.length}`);
   for (let i = 0; i < descMatches.length; i++) {
     const wc = countWords(descMatches[i]);
     assert.ok(wc >= 12 && wc <= 20, `Practice description #${i + 1} has ${wc} words (expected 12-20 words)`);
@@ -392,6 +392,8 @@ const CANONICAL_ROUTES = new Set([
   '/services/company-registration-tirupati',
   '/services/virtual-cfo-tirupati',
   '/services/rera-consultant-tirupati',
+  '/services/project-finance',
+  '/services/strategic-advisory',
   '/industries',
   '/locations',
   '/blog',

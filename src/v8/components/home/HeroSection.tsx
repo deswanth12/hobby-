@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Authoritative Supporting Copy: Exactly 20 words */}
-            <p className="v8-hero-cascade font-editorial-body text-[#D8D0BE] max-w-xl font-normal leading-relaxed text-sm sm:text-base border-l-2 border-[#B49A64]/40 pl-3.5 sm:pl-4" style={{ animationDelay: '240ms' }}>
+            <p className="font-editorial-body v8-hero-cascade text-[#D8D0BE] max-w-xl font-normal leading-relaxed text-sm sm:text-base border-l-2 border-[#B49A64]/40 pl-3.5 sm:pl-4" style={{ animationDelay: '240ms' }}>
               Partner-led Chartered Accountancy and statutory counsel in Tirupati, advising growth enterprises and established businesses across India.
             </p>
 
@@ -186,8 +186,8 @@ export const HeroSection: React.FC = () => {
               <div className="rounded-2xl p-2 sm:p-2.5 bg-[#0B241C] border border-[#B49A64]/30 shadow-2xl relative overflow-hidden group">
                 
                 {/* Architectural Corner Brass Brackets */}
-                <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B49A64]/60 rounded-tl-sm pointer-events-none z-20" aria-hidden="true" />
-                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#B49A64]/60 rounded-br-sm pointer-events-none z-20" aria-hidden="true" />
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/60 group-hover:border-[#B49A64] rounded-tl-sm pointer-events-none z-20 transition-all duration-300" aria-hidden="true" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/60 group-hover:border-[#B49A64] rounded-br-sm pointer-events-none z-20 transition-all duration-300" aria-hidden="true" />
 
                 {/* Primary Consultation Photograph */}
                 <div className="relative rounded-xl overflow-hidden border border-[#B49A64]/30 bg-[#071B14] aspect-[16/9] w-full">
@@ -198,7 +198,7 @@ export const HeroSection: React.FC = () => {
                     height="768"
                     loading="eager"
                     {...({ fetchpriority: 'high' } as any)}
-                    className="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   
                   {/* Top Floating Official Practice Seal Badge */}
