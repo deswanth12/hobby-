@@ -40,21 +40,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top Utility Desk (Desktop / Tablet) */}
-      <div className="hidden md:block bg-[#04100C] text-[#AAB4A0] border-b border-[#B49A64]/20 text-[11px] py-1.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      <div className="hidden md:block bg-[#04100C] text-[#AAB4A0] border-b border-[#B49A64]/20 text-[11px] py-1.5 px-4 sm:px-6 lg:px-6 xl:px-8">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 lg:gap-3 min-w-0">
           {/* Credentials attribution */}
-          <div className="flex items-center gap-2 lg:gap-3 shrink-0">
+          <div className="flex items-center gap-2 lg:gap-2.5 shrink-0 min-w-0">
             <span className="flex items-center gap-1.5 text-[#F1EBDD] font-medium whitespace-nowrap">
               <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
-              <span className="hidden xl:inline">Chartered Accountants (ICAI) &amp; Cost Accountants (ICMAI)</span>
-              <span className="xl:hidden">ICAI &amp; ICMAI Dual Practice</span>
+              <span className="hidden 2xl:inline">Chartered Accountants (ICAI) &amp; Cost Accountants (ICMAI)</span>
+              <span className="2xl:hidden">ICAI &amp; ICMAI Dual Practice</span>
             </span>
             <span className="text-[#B49A64]/40" aria-hidden="true">•</span>
             <span className="text-[#B49A64] font-semibold whitespace-nowrap">CA Kavitha Vijay, CMA AIR 49</span>
           </div>
 
           {/* Direct channels & location */}
-          <div className="flex items-center gap-3 lg:gap-4 shrink-0">
+          <div className="flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 shrink-0">
             <a
               href={`tel:${FIRM_DATA.contact.primaryPhone.replace(/\s+/g, '')}`}
               className="flex items-center gap-1 hover:text-[#F1EBDD] transition-colors whitespace-nowrap"
@@ -63,26 +63,28 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
               <span>{FIRM_DATA.contact.primaryPhone}</span>
             </a>
 
-            <span className="hidden lg:inline text-[#B49A64]/40" aria-hidden="true">|</span>
+            <span className="hidden xl:inline text-[#B49A64]/40" aria-hidden="true">|</span>
 
             <a
               href={`mailto:${FIRM_DATA.contact.email}`}
-              className="hidden lg:flex items-center gap-1 hover:text-[#F1EBDD] transition-colors whitespace-nowrap"
+              className="hidden xl:flex items-center gap-1 hover:text-[#F1EBDD] transition-colors whitespace-nowrap"
             >
               <Mail className="w-3 h-3 text-[#B49A64] shrink-0" />
               <span>{FIRM_DATA.contact.email}</span>
             </a>
 
-            <span className="hidden xl:inline text-[#B49A64]/40" aria-hidden="true">|</span>
+            <span className="hidden 2xl:inline text-[#B49A64]/40" aria-hidden="true">|</span>
 
-            <span className="hidden xl:flex items-center gap-1 whitespace-nowrap">
+            <span className="hidden 2xl:flex items-center gap-1 whitespace-nowrap">
               <MapPin className="w-3 h-3 text-[#B49A64] shrink-0" />
               <span>Tirupati Chambers</span>
             </span>
 
             <span className="text-[#B49A64]/40" aria-hidden="true">|</span>
 
-            <ChambersStatusIndicator variant="compact" theme="dark" showDetail={true} />
+            <div className="shrink-0 min-w-0">
+              <ChambersStatusIndicator variant="compact" theme="dark" showDetail={true} />
+            </div>
           </div>
         </div>
       </div>
@@ -96,25 +98,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
         }`}
         aria-label="Main Navigation"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6 xl:px-8 flex items-center justify-between gap-2 lg:gap-3 xl:gap-6 min-w-0">
           {/* Brand Mark with CrestMonogram */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0" aria-label="Kavitha & Associates Homepage">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0 min-w-0" aria-label="Kavitha & Associates Homepage">
             <CrestMonogram variant="compact" size="md" />
-            <div>
-              <span className="block font-serif font-bold text-lg sm:text-xl tracking-tight text-[#F1EBDD] group-hover:text-[#B49A64] transition-colors">
+            <div className="shrink-0">
+              <span className="block font-serif font-bold text-base sm:text-lg xl:text-xl tracking-tight text-[#F1EBDD] group-hover:text-[#B49A64] transition-colors whitespace-nowrap">
                 Kavitha &amp; Associates
               </span>
-              <span className="block text-[10px] sm:text-[11px] font-semibold text-[#B49A64] uppercase tracking-[0.16em]">
+              <span className="block text-[9px] sm:text-[10px] xl:text-[11px] font-semibold text-[#B49A64] uppercase tracking-[0.14em] xl:tracking-[0.16em] whitespace-nowrap">
                 Chartered Accountants
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1 2xl:gap-2 shrink-0">
             <Link
               to="/"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname === '/' ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -123,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
 
             <Link
               to="/about"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname === '/about' ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -132,7 +134,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
 
             <Link
               to="/leadership"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname === '/leadership' ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -147,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
             >
               <Link
                 to="/services"
-                className={`inline-flex items-center gap-1 px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+                className={`inline-flex items-center gap-1 px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                   location.pathname.startsWith('/services')
                     ? 'text-[#B49A64] bg-[#183529]'
                     : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
@@ -156,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
               >
                 <span>Services</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`}
+                  className={`w-3 h-3 xl:w-3.5 xl:h-3.5 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`}
                 />
               </Link>
 
@@ -191,7 +193,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
 
             <Link
               to="/industries"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname === '/industries' ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -201,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
             {/* Articles & Insights Link (Strictly to="/blog" per Test 13.2) */}
             <Link
               to="/blog"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname.startsWith('/blog') ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -210,7 +212,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
 
             <Link
               to="/contact"
-              className={`px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors ${
+              className={`px-2 py-1.5 xl:px-2.5 2xl:px-3 xl:py-2 rounded-lg text-[11px] xl:text-xs font-semibold uppercase tracking-wider whitespace-nowrap transition-colors ${
                 location.pathname === '/contact' ? 'text-[#B49A64] bg-[#183529]' : 'text-[#F1EBDD] hover:text-[#B49A64] hover:bg-[#183529]/40'
               }`}
             >
@@ -224,23 +226,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
           </div>
 
           {/* Desktop Right CTAs */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
             <a
               href={getRouteWhatsAppUrl(location.pathname)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#F1EBDD] border border-emerald-500/40 text-xs font-medium transition-colors min-h-[44px]"
+              className="inline-flex items-center justify-center gap-1.5 px-2.5 py-2 xl:px-3 xl:py-2 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#F1EBDD] border border-emerald-500/40 text-[11px] xl:text-xs font-medium transition-colors min-h-[40px] xl:min-h-[44px] shrink-0"
+              aria-label="Direct WhatsApp consultation"
+              title="Direct WhatsApp consultation"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
-              <span>WhatsApp</span>
+              <MessageSquare className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span className="hidden xl:inline">WhatsApp</span>
             </a>
 
             <Link
               to="/contact"
-              className="consultation-cta inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] text-xs font-semibold uppercase tracking-wider transition-all shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 min-h-[44px] group btn-shimmer"
+              className="consultation-cta inline-flex items-center gap-1.5 px-3 py-2 xl:px-4 2xl:px-5 xl:py-2.5 rounded-full bg-gradient-to-br from-[#C5A059] via-[#B49A64] to-[#9E844E] hover:from-[#D4AF37] hover:via-[#C5A059] hover:to-[#B49A64] text-[#071B14] text-[11px] xl:text-xs font-semibold uppercase tracking-wider transition-all shadow-md hover:shadow-gold-glow border border-[#C5A059]/60 min-h-[40px] xl:min-h-[44px] shrink-0 btn-shimmer whitespace-nowrap group"
             >
-              <span>Request Consultation</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 text-[#071B14]" />
+              <span className="hidden xl:inline">Request Consultation</span>
+              <span className="xl:hidden">Consultation</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 text-[#071B14] shrink-0" />
             </Link>
           </div>
 
@@ -248,7 +253,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
           <button
             type="button"
             onClick={onOpenMobileDrawer}
-            className="lg:hidden w-11 h-11 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#B49A64] border border-[#B49A64]/40 flex items-center justify-center transition-colors min-h-[44px] min-w-[44px]"
+            className="lg:hidden w-11 h-11 rounded-full bg-[#183529] hover:bg-[#294B39] text-[#B49A64] border border-[#B49A64]/40 flex items-center justify-center transition-colors min-h-[44px] min-w-[44px] shrink-0"
             aria-label="Open mobile navigation menu"
           >
             <Menu className="w-5 h-5" />

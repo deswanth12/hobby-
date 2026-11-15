@@ -11,6 +11,8 @@ const BRAIN_DIR = 'C:\\Users\\k deswanth\\.gemini\\antigravity\\brain\\12a17cde-
 const VIEWPORTS = [
   { name: 'mobile_390px', width: 390, height: 844, isMobile: true },
   { name: 'tablet_768px', width: 768, height: 1024, isMobile: false },
+  { name: 'laptop_1024px', width: 1024, height: 768, isMobile: false },
+  { name: 'laptop_1280px', width: 1280, height: 800, isMobile: false },
   { name: 'desktop_1440px', width: 1440, height: 900, isMobile: false },
 ];
 
