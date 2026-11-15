@@ -20,6 +20,7 @@ import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
 import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { StartupStampDutyEstimator } from '../../components/tools';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const CompanyRegistrationPage: React.FC = () => {
@@ -254,6 +255,13 @@ export const CompanyRegistrationPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 2.5. Interactive Startup Capital & AP ROC Stamp Duty Estimator */}
+      <section className="py-10 sm:py-14 bg-[#0B241C] border-b border-[#B49A64]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <StartupStampDutyEstimator />
         </div>
       </section>
 
