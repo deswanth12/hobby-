@@ -1,6 +1,14 @@
 import React from 'react';
 import { SourceCitation, CitationItem } from './SourceCitation';
-import { ShieldCheck, User, MessageSquare } from 'lucide-react';
+import { ShieldCheck, User, MessageSquare, Phone } from 'lucide-react';
+
+export interface AssistantHandoffInfo {
+  available: boolean;
+  label: string;
+  whatsappUrl?: string;
+  phoneUrl?: string;
+  phoneDisplay?: string;
+}
 
 export interface AssistantMessageProps {
   role: 'user' | 'assistant';
@@ -8,11 +16,9 @@ export interface AssistantMessageProps {
   citations?: CitationItem[];
   timestamp?: string;
   onNavigate?: () => void;
-  handoff?: {
-    available: boolean;
-    label: string;
-  };
+  handoff?: AssistantHandoffInfo;
   onHandoffClick?: () => void;
+  onPhoneClick?: () => void;
 }
 
 export const AssistantMessage: React.FC<AssistantMessageProps> = ({
@@ -22,25 +28,26 @@ export const AssistantMessage: React.FC<AssistantMessageProps> = ({
   timestamp,
   onNavigate,
   handoff,
-  onHandoffClick
+  onHandoffClick,
+  onPhoneClick
 }) => {
   const isUser = role === 'user';
 
   return (
     <div className={`flex gap-2.5 my-2.5 ${isUser ? 'justify-end' : 'justify-start'}`}>
       {!isUser && (
-        <div className="w-7 h-7 rounded-full bg-[#071B14] border border-[#B49A64]/50 flex items-center justify-center shrink-0 mt-0.5">
+        <div className="w-7 h-7 rounded-full bg-[#071B14] border border-[#B49A64]/50 flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
           <ShieldCheck className="w-4 h-4 text-[#B49A64]" />
         </div>
       )}
 
-      <div className={`max-w-[85%] rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed shadow-xs ${
+      <div className={`max-w-[85%] sm:max-w-[80%] rounded-2xl p-3.5 text-xs sm:text-sm leading-relaxed shadow-xs ${
         isUser
           ? 'bg-[#183529] text-[#F1EBDD] rounded-tr-xs border border-[#B49A64]/30'
           : 'bg-white text-[#35271F] rounded-tl-xs border border-[#D8D0BE]'
       }`}>
         {/* Message Content */}
-        <div className="whitespace-pre-wrap font-sans">
+        <div className="whitespace-pre-wrap font-sans text-xs sm:text-[13px] leading-relaxed">
           {content}
         </div>
 
@@ -49,17 +56,71 @@ export const AssistantMessage: React.FC<AssistantMessageProps> = ({
           <SourceCitation citations={citations} onNavigate={onNavigate} />
         )}
 
-        {/* Human Handoff Action (Assistant Only) */}
-        {!isUser && handoff && handoff.available && onHandoffClick && (
-          <div className="mt-2.5 pt-2 border-t border-[#D8D0BE]/40 flex justify-end">
-            <button
-              type="button"
-              onClick={onHandoffClick}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#071B14] hover:bg-[#183529] text-[#B49A64] text-[11px] font-semibold tracking-wider uppercase border border-[#B49A64]/40 hover:border-[#B49A64] transition-all"
-            >
-              <MessageSquare className="w-3 h-3 text-[#B49A64]" />
-              <span>{handoff.label}</span>
-            </button>
+        {/* Human Handoff Consultation Desk (Assistant Only) */}
+        {!isUser && handoff && handoff.available && (
+          <div className="mt-3 pt-2.5 border-t border-[#D8D0BE]/60 space-y-2">
+            <div className="flex items-center justify-between text-[10px] font-semibold text-[#7E5E1E] uppercase tracking-wider">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64]" />
+                <span>Chambers Consultation:</span>
+              </span>
+              <span className="text-[9px] text-[#AAB4A0] font-normal lowercase tracking-normal">
+                ICAI ethics compliant
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              {/* WhatsApp Action Button / Link */}
+              {handoff.whatsappUrl ? (
+                <a
+                  href={handoff.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={onHandoffClick}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-lg bg-[#071B14] hover:bg-[#183529] text-[#B49A64] hover:text-[#F1EBDD] text-xs font-medium border border-[#B49A64]/40 hover:border-[#B49A64] transition-all shadow-2xs active:scale-95"
+                  title="Connect via Encrypted WhatsApp Consultation"
+                  aria-label={handoff.label || 'WhatsApp Consultation'}
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>{handoff.label || 'WhatsApp Chambers'}</span>
+                </a>
+              ) : onHandoffClick ? (
+                <button
+                  type="button"
+                  onClick={onHandoffClick}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] rounded-lg bg-[#071B14] hover:bg-[#183529] text-[#B49A64] hover:text-[#F1EBDD] text-xs font-medium border border-[#B49A64]/40 hover:border-[#B49A64] transition-all shadow-2xs active:scale-95"
+                  title="Connect via Encrypted WhatsApp Consultation"
+                  aria-label={handoff.label || 'WhatsApp Consultation'}
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <span>{handoff.label || 'WhatsApp Chambers'}</span>
+                </button>
+              ) : null}
+
+              {/* Phone Action Button / Link */}
+              {handoff.phoneUrl ? (
+                <a
+                  href={handoff.phoneUrl}
+                  onClick={onPhoneClick}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[36px] rounded-lg bg-white hover:bg-[#FAF7F0] text-[#183529] hover:text-[#071B14] text-xs font-medium border border-[#B49A64]/40 hover:border-[#183529] transition-all shadow-2xs active:scale-95"
+                  title={`Call Chambers Desk at ${handoff.phoneDisplay || '+91 96263 50900'}`}
+                  aria-label={`Call Chambers Desk at ${handoff.phoneDisplay || '+91 96263 50900'}`}
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#7E5E1E] shrink-0" />
+                  <span>Call: {handoff.phoneDisplay || '+91 96263 50900'}</span>
+                </a>
+              ) : onPhoneClick ? (
+                <button
+                  type="button"
+                  onClick={onPhoneClick}
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[36px] rounded-lg bg-white hover:bg-[#FAF7F0] text-[#183529] hover:text-[#071B14] text-xs font-medium border border-[#B49A64]/40 hover:border-[#183529] transition-all shadow-2xs active:scale-95"
+                  title={`Call Chambers Desk at ${handoff.phoneDisplay || '+91 96263 50900'}`}
+                  aria-label={`Call Chambers Desk at ${handoff.phoneDisplay || '+91 96263 50900'}`}
+                >
+                  <Phone className="w-3.5 h-3.5 text-[#7E5E1E] shrink-0" />
+                  <span>Call: {handoff.phoneDisplay || '+91 96263 50900'}</span>
+                </button>
+              ) : null}
+            </div>
           </div>
         )}
 
@@ -72,7 +133,7 @@ export const AssistantMessage: React.FC<AssistantMessageProps> = ({
       </div>
 
       {isUser && (
-        <div className="w-7 h-7 rounded-full bg-[#B49A64] flex items-center justify-center shrink-0 mt-0.5">
+        <div className="w-7 h-7 rounded-full bg-[#B49A64] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
           <User className="w-4 h-4 text-[#071B14]" />
         </div>
       )}

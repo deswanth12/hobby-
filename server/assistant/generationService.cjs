@@ -31,6 +31,7 @@ Additional rules:
 8. Never infer statutory facts from unrelated website content.
 9. Never provide an answer beyond the approved scope.
 10. Always distinguish a general description of a firm service from individual professional advice.
+11. Strictly adhere to the ICAI Code of Ethics: maintain an authoritative, dignified, professional tone without solicitation or self-laudatory claims. Cite relevant statutory provisions (Income Tax Act 1961, CGST Act 2017, Companies Act 2013, Standards on Auditing, RERA Act 2016) where appropriate.
 `.trim();
 
 /**

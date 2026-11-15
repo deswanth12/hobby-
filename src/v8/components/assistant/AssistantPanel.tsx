@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { X, RotateCcw, ShieldCheck } from 'lucide-react';
-import { AssistantMessage } from './AssistantMessage';
+import { AssistantMessage, AssistantHandoffInfo } from './AssistantMessage';
 import { AssistantInput } from './AssistantInput';
 import { SuggestedQuestions } from './SuggestedQuestions';
 import { AssistantDisclaimer } from './AssistantDisclaimer';
@@ -13,7 +13,7 @@ export interface ChatMessage {
   content: string;
   citations?: { title: string; url: string }[];
   timestamp: string;
-  handoff?: { available: boolean; label: string };
+  handoff?: AssistantHandoffInfo;
 }
 
 export interface AssistantPanelProps {
@@ -79,7 +79,7 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({
             </h2>
             <div className="flex items-center gap-1.5 text-[10px] text-[#B49A64] font-medium tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Kavitha &amp; Associates  Tirupati</span>
+              <span>Kavitha &amp; Associates • Tirupati Chambers</span>
             </div>
           </div>
         </div>
@@ -108,18 +108,69 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({
 
       {/* 2. Scrollable Conversation Workspace */}
       <div className="flex-1 p-3.5 sm:p-4 overflow-y-auto space-y-3 bg-[#FAF7F0] overscroll-contain">
-        {/* Welcome Plaque */}
-        <div className="p-3.5 rounded-xl bg-white border border-[#D8D0BE] text-xs leading-relaxed space-y-2 shadow-2xs">
-          <div className="flex items-center gap-1.5 font-serif font-bold text-sm text-[#071B14]">
-            <ShieldCheck className="w-4 h-4 text-[#B49A64]" />
-            <span>Welcome to Kavitha &amp; Associates</span>
+        {/* Welcome Plaque: Authoritative CA Chambers Standards */}
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white border border-[#D8D0BE] text-xs leading-relaxed space-y-2.5 shadow-2xs">
+          <div className="flex items-center justify-between border-b border-[#D8D0BE]/60 pb-2">
+            <div className="flex items-center gap-1.5 font-serif font-bold text-sm text-[#071B14]">
+              <ShieldCheck className="w-4 h-4 text-[#B49A64]" />
+              <span>Kavitha &amp; Associates</span>
+            </div>
+            <span className="text-[10px] font-mono tracking-wide px-2 py-0.5 rounded-full bg-[#FAF7F0] text-[#7E5E1E] border border-[#B49A64]/30 font-semibold">
+              Tirupati Chambers
+            </span>
           </div>
+
           <p className="text-[#35271F]">
-            I am the firm&apos;s source-grounded information assistant. I can help you explore our approved practice areas, verified credentials of Managing Partner CA Kavitha Vijay, chambers coordinates, and published statutory insights.
+            Welcome to the firm&apos;s source-grounded information assistant, operating in strict adherence to the <strong className="font-semibold text-[#071B14]">ICAI Code of Ethics</strong>. I can assist you with verified statutory details across our primary practice areas:
           </p>
-          <p className="text-[11px] text-[#7E5E1E] font-medium">
-            What would you like to know about our practice?
-          </p>
+
+          <div className="grid grid-cols-2 gap-1.5 text-[11px] text-[#183529] font-medium py-0.5">
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>Direct Tax (IT Act 1961)</span>
+            </div>
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>GST Compliance &amp; Audit</span>
+            </div>
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>Companies Act 2013 &amp; MCA</span>
+            </div>
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>Statutory Audit &amp; 44AB</span>
+            </div>
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>RERA Form 3 Certifications</span>
+            </div>
+            <div className="flex items-center gap-1.5 p-1.5 rounded-md bg-[#FAF7F0] border border-[#D8D0BE]/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64] shrink-0" />
+              <span>Virtual CFO Advisory</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-1 border-t border-[#D8D0BE]/60 text-[10px] text-[#7E5E1E]">
+            <span>Need direct consultation?</span>
+            <div className="flex items-center gap-2">
+              <a
+                href={FIRM_DATA.contact.whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-semibold text-emerald-700 hover:text-emerald-800 underline underline-offset-2"
+              >
+                <span>WhatsApp</span>
+              </a>
+              <span className="text-[#AAB4A0]">•</span>
+              <a
+                href={`tel:${FIRM_DATA.contact.primaryPhoneClean || '919626350900'}`}
+                className="inline-flex items-center gap-1 font-semibold text-[#183529] hover:text-[#071B14] underline underline-offset-2"
+              >
+                <span>Call Chambers</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Suggested Quick Question Chips */}
@@ -141,7 +192,16 @@ export const AssistantPanel: React.FC<AssistantPanelProps> = ({
             handoff={msg.handoff}
             onNavigate={onNavigateToCitation}
             onHandoffClick={() => {
-              window.open(FIRM_DATA.contact.whatsappLink, '_blank', 'noopener,noreferrer');
+              if (!msg.handoff?.whatsappUrl) {
+                const url = FIRM_DATA.contact.whatsappLink;
+                window.open(url, '_blank', 'noopener,noreferrer');
+              }
+            }}
+            onPhoneClick={() => {
+              if (!msg.handoff?.phoneUrl) {
+                const phoneHref = `tel:${FIRM_DATA.contact.primaryPhoneClean || '919626350900'}`;
+                window.location.href = phoneHref;
+              }
             }}
           />
         ))}

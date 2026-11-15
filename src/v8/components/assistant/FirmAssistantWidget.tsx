@@ -54,10 +54,16 @@ export const FirmAssistantWidget: React.FC = () => {
       const errorMsg: ChatMessage = {
         id: 'err_' + Date.now(),
         role: 'assistant',
-        content: 'Unable to connect to the firm information service. Please verify your connection or contact our chambers directly.',
-        citations: [{ title: 'Contact Desk', url: '/contact' }],
+        content: 'Unable to connect to the firm information service. Please verify your connection or connect directly with our chambers desk via WhatsApp or phone.',
+        citations: [{ title: 'Chambers Contact Desk', url: '/contact' }],
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        handoff: { available: true, label: 'Contact Chambers' }
+        handoff: {
+          available: true,
+          label: 'WhatsApp Chambers',
+          whatsappUrl: 'https://wa.me/919626350900?text=' + encodeURIComponent('Hello CA Kavitha Vijay (Kavitha & Associates), I would like to schedule a statutory consultation.'),
+          phoneUrl: 'tel:+919626350900',
+          phoneDisplay: '+91 96263 50900'
+        }
       };
       setMessages((prev) => [...prev, errorMsg]);
     } finally {
