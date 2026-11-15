@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { 
   HelpCircle, 
@@ -19,10 +19,21 @@ import {
   AlertTriangle,
   X,
   RefreshCw,
-  Archive
+  Archive,
+  Bold,
+  Italic,
+  Heading2,
+  Heading3,
+  List,
+  ListOrdered,
+  Quote,
+  Table,
+  Link,
+  Minus
 } from 'lucide-react';
 import { AdminLayout } from '../../components/admin/AdminLayout';
 import { adminStorage } from '../../services/adminStorage';
+import { formatMarkdown, MarkdownFormatAction } from '../../utils/markdownToolbar';
 import { useFirmData } from '../../context/FirmDataContext';
 import { BlogService, BlogPost } from '../../services/blogService';
 import { MarkdownRenderer } from '../../components/MarkdownRenderer';
@@ -155,6 +166,7 @@ export const AdminContentPage: React.FC<AdminContentPageProps> = ({ initialTab }
   const [postCoverImageAlt, setPostCoverImageAlt] = useState<string>('');
   const [postStatus, setPostStatus] = useState<'published' | 'draft'>('published');
   const [postContent, setPostContent] = useState<string>('');
+  const markdownEditorRef = useRef<HTMLTextAreaElement>(null);
 
   // Initial Sync from Remote Server API
   useEffect(() => {
@@ -673,6 +685,62 @@ export const AdminContentPage: React.FC<AdminContentPageProps> = ({ initialTab }
       }
       setSaveMessage(`Article "${slug}" removed.`);
       setTimeout(() => setSaveMessage(null), 3500);
+    }
+  };
+
+  // -------------------------------------------------------------------------
+  // 1-CLICK VISUAL MARKDOWN FORMATTING TOOLBAR HANDLERS
+  // -------------------------------------------------------------------------
+  const handleMarkdownFormat = (action: MarkdownFormatAction) => {
+    const textarea = markdownEditorRef.current;
+    if (!textarea) return;
+
+    const start = textarea.selectionStart ?? 0;
+    const end = textarea.selectionEnd ?? 0;
+    const original = textarea.value;
+
+    const { updated, replacement, selStart, selEnd } = formatMarkdown(original, start, end, action);
+
+    // Focus textarea and attempt native execCommand to preserve browser undo/redo history (Ctrl+Z)
+    textarea.focus();
+    let appliedViaExec = false;
+    try {
+      if (document.queryCommandSupported && document.queryCommandSupported('insertText')) {
+        textarea.setSelectionRange(start, end);
+        appliedViaExec = document.execCommand('insertText', false, replacement);
+      }
+    } catch {
+      appliedViaExec = false;
+    }
+
+    if (!appliedViaExec) {
+      textarea.value = updated;
+    }
+
+    setPostContent(textarea.value);
+    textarea.setSelectionRange(selStart, selEnd);
+
+    // Re-assert selection range after React synthetic event re-render tick
+    setTimeout(() => {
+      if (markdownEditorRef.current) {
+        markdownEditorRef.current.focus();
+        markdownEditorRef.current.setSelectionRange(selStart, selEnd);
+      }
+    }, 0);
+  };
+
+  const handleEditorKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey) {
+      if (e.key === 'b' || e.key === 'B') {
+        e.preventDefault();
+        handleMarkdownFormat('bold');
+      } else if (e.key === 'i' || e.key === 'I') {
+        e.preventDefault();
+        handleMarkdownFormat('italic');
+      } else if (e.key === 'k' || e.key === 'K') {
+        e.preventDefault();
+        handleMarkdownFormat('link');
+      }
     }
   };
 
@@ -1935,21 +2003,181 @@ export const AdminContentPage: React.FC<AdminContentPageProps> = ({ initialTab }
                   </div>
 
                   <div>
-                    <div className="flex items-center justify-between mb-1">
-                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-500">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <label htmlFor="post-markdown-editor" className="block text-[11px] font-mono uppercase tracking-wider text-[#525954]">
                         Markdown Body
                       </label>
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        # Heading · **bold** · *italic* · | table | · - list
+                      <span className="text-[10px] font-mono text-[#525954] hidden sm:inline">
+                        1-Click Visual Toolbar · Preserves Cursor Selection
                       </span>
                     </div>
+
+                    {/* 1-Click Visual Formatting Toolbar */}
+                    <div 
+                      role="toolbar" 
+                      aria-label="Article formatting toolbar"
+                      onMouseDown={(e) => e.preventDefault()}
+                      className="flex flex-wrap items-center gap-1.5 px-3 py-2 bg-[#F1EBDD]/80 border border-[#D8D0BE] border-b-0 rounded-t-xl select-none"
+                    >
+                      {/* Text Emphasis Group */}
+                      <div className="flex items-center gap-1 bg-white/90 p-1 rounded-lg border border-[#D8D0BE]/80 shadow-subtle">
+                        <button
+                          type="button"
+                          data-action="bold"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('bold')}
+                          title="Bold (**text**) · Ctrl+B"
+                          aria-label="Format Bold"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Bold className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          data-action="italic"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('italic')}
+                          title="Italic (*text*) · Ctrl+I"
+                          aria-label="Format Italic"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Italic className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      <div className="h-4 w-px bg-[#D8D0BE] mx-0.5" />
+
+                      {/* Headings Group */}
+                      <div className="flex items-center gap-1 bg-white/90 p-1 rounded-lg border border-[#D8D0BE]/80 shadow-subtle">
+                        <button
+                          type="button"
+                          data-action="h2"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('h2')}
+                          title="Heading 2 (## Heading)"
+                          aria-label="Format Heading 2"
+                          className="flex items-center gap-1 px-2 py-1 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors font-mono text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Heading2 className="w-3.5 h-3.5" />
+                          <span className="text-[10px] font-bold">H2</span>
+                        </button>
+                        <button
+                          type="button"
+                          data-action="h3"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('h3')}
+                          title="Heading 3 (### Subheading)"
+                          aria-label="Format Heading 3"
+                          className="flex items-center gap-1 px-2 py-1 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors font-mono text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Heading3 className="w-3.5 h-3.5" />
+                          <span className="text-[10px] font-bold">H3</span>
+                        </button>
+                      </div>
+
+                      <div className="h-4 w-px bg-[#D8D0BE] mx-0.5" />
+
+                      {/* Lists Group */}
+                      <div className="flex items-center gap-1 bg-white/90 p-1 rounded-lg border border-[#D8D0BE]/80 shadow-subtle">
+                        <button
+                          type="button"
+                          data-action="bullet-list"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('bullet-list')}
+                          title="Bullet List (- Item)"
+                          aria-label="Format Bullet List"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <List className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          data-action="numbered-list"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('numbered-list')}
+                          title="Numbered List (1. Item)"
+                          aria-label="Format Numbered List"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <ListOrdered className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      <div className="h-4 w-px bg-[#D8D0BE] mx-0.5" />
+
+                      {/* Professional Statutory & Data Elements */}
+                      <div className="flex items-center gap-1 bg-white/90 p-1 rounded-lg border border-[#D8D0BE]/80 shadow-subtle">
+                        <button
+                          type="button"
+                          data-action="statutory-note"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('statutory-note')}
+                          title="Statutory / Callout Note (> **Statutory Note**: )"
+                          aria-label="Insert Statutory Callout Note"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Quote className="w-3.5 h-3.5 text-[#B49A64]" />
+                          <span className="text-[11px] font-sans">Statutory Note</span>
+                        </button>
+                        <button
+                          type="button"
+                          data-action="tax-table"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('tax-table')}
+                          title="Tax / Data Table (| Category | Old Regime | New Regime |)"
+                          aria-label="Insert Tax or Data Table"
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Table className="w-3.5 h-3.5 text-[#183529]" />
+                          <span className="text-[11px] font-sans">Tax Table</span>
+                        </button>
+                      </div>
+
+                      <div className="h-4 w-px bg-[#D8D0BE] mx-0.5" />
+
+                      {/* Links & Dividers */}
+                      <div className="flex items-center gap-1 bg-white/90 p-1 rounded-lg border border-[#D8D0BE]/80 shadow-subtle">
+                        <button
+                          type="button"
+                          data-action="link"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('link')}
+                          title="Link ([Link Text](https://)) · Ctrl+K"
+                          aria-label="Insert Hyperlink"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Link className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          data-action="divider"
+                          onMouseDown={(e) => e.preventDefault()}
+                          onClick={() => handleMarkdownFormat('divider')}
+                          title="Divider (---)"
+                          aria-label="Insert Horizontal Divider"
+                          className="p-1.5 rounded-md text-[#183529] hover:bg-[#F1EBDD] hover:text-[#0B241C] transition-colors focus:outline-none focus:ring-1 focus:ring-[#B49A64]"
+                        >
+                          <Minus className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      {/* Hint pill */}
+                      <div className="ml-auto hidden 2xl:flex items-center gap-1.5 text-[10px] font-mono text-[#525954] pr-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64]" />
+                        <span>1-Click Format or Wrap</span>
+                      </div>
+                    </div>
+
                     <textarea
-                      rows={11}
+                      id="post-markdown-editor"
+                      ref={markdownEditorRef}
+                      rows={12}
                       required
                       value={postContent}
                       onChange={(e) => setPostContent(e.target.value)}
+                      onKeyDown={handleEditorKeyDown}
                       placeholder="# Main Title&#10;&#10;Section 1: Statutory Framework...&#10;&#10;| Year | Slab | Rate |&#10;| --- | --- | --- |"
-                      className="w-full text-xs p-3 rounded-lg border border-neutral-200 focus:outline-none focus:border-neutral-900 font-mono leading-relaxed text-neutral-800 bg-[#FAFAFA]"
+                      className="w-full text-xs p-3.5 rounded-b-xl rounded-t-none border border-[#D8D0BE] focus:outline-none focus:border-[#183529] focus:ring-1 focus:ring-[#183529] font-mono leading-relaxed text-neutral-800 bg-[#FAFAFA] transition-all"
                     />
                   </div>
 
