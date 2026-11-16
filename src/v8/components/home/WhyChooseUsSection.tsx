@@ -90,6 +90,23 @@ export const WhyChooseUsSection: React.FC = () => {
                 <div
                   className="w-full p-5 sm:p-6 rounded-2xl bg-[#0B241C] border border-[#B49A64]/30 shadow-card hover:border-[#C5A059] hover:shadow-[0_12px_28px_rgba(180,154,100,0.22)] hover:-translate-y-1.5 transition-all duration-300 relative group flex flex-col justify-between overflow-hidden"
                 >
+                  {/* Ambient Card Radial Highlight */}
+                  <div 
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" 
+                    style={{
+                      background: 'radial-gradient(220px circle at 50% 0%, rgba(180, 154, 100, 0.16), transparent 75%)',
+                    }}
+                    aria-hidden="true" 
+                  />
+
+                  {/* Watermark Numeral (Cormorant Garamond) */}
+                  <div 
+                    className="absolute -bottom-3 -right-1 font-serif text-6xl font-bold text-[#B49A64]/[0.05] group-hover:text-[#B49A64]/[0.15] group-hover:scale-105 group-hover:-translate-x-1 group-hover:-translate-y-1 transition-all duration-500 pointer-events-none select-none"
+                    aria-hidden="true"
+                  >
+                    {item.num}
+                  </div>
+
                   {/* Top Metallic Hairline Accent */}
                   <div className="absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/60 transition-colors" aria-hidden="true" />
 
@@ -97,26 +114,34 @@ export const WhyChooseUsSection: React.FC = () => {
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                   <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                   
-                  <div>
-                    {/* Top Meta: Number & Icon */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#183529] text-[#B49A64] border border-[#B49A64]/30 group-hover:bg-[#B49A64] group-hover:text-[#071B14] transition-all duration-300">
-                        {item.num}
-                      </span>
-                      <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.3)] transition-all duration-300">
-                        <IconComponent className="w-5 h-5 text-[#B49A64] transition-transform duration-200" aria-hidden="true" />
+                  <div className="relative z-10 flex flex-col justify-between h-full">
+                    <div>
+                      {/* Top Meta: Number & Icon */}
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded bg-[#183529] text-[#B49A64] border border-[#B49A64]/30 group-hover:bg-[#B49A64] group-hover:text-[#071B14] transition-all duration-300">
+                          {item.num}
+                        </span>
+                        <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_18px_rgba(180,154,100,0.35)] transition-all duration-300">
+                          <IconComponent className="w-5 h-5 text-[#B49A64] group-hover:text-[#F1EBDD] transition-colors duration-200" aria-hidden="true" />
+                        </div>
                       </div>
+
+                      {/* Heading */}
+                      <h3 className="font-serif text-base sm:text-lg font-bold text-[#F1EBDD] group-hover:text-white transition-colors leading-snug mb-2.5">
+                        {item.title}
+                      </h3>
+
+                      {/* Concise Description (~16–19 words) */}
+                      <p className="font-editorial-body text-xs sm:text-[13px] text-[#D8D0BE] leading-relaxed">
+                        {item.description}
+                      </p>
                     </div>
 
-                    {/* Heading */}
-                    <h3 className="font-serif text-base sm:text-lg font-bold text-[#F1EBDD] group-hover:text-white transition-colors leading-snug mb-2.5">
-                      {item.title}
-                    </h3>
-
-                    {/* Concise Description (~16–19 words) */}
-                    <p className="font-editorial-body text-xs sm:text-[13px] text-[#D8D0BE] leading-relaxed">
-                      {item.description}
-                    </p>
+                    {/* Bottom Verification Accent */}
+                    <div className="mt-4 pt-3 border-t border-[#B49A64]/15 flex items-center justify-between text-[11px] font-mono text-[#B49A64]/70 group-hover:text-[#B49A64] transition-colors">
+                      <span className="tracking-wider uppercase text-[10px]">Institutional Standard</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#B49A64]/40 group-hover:bg-[#B49A64] group-hover:scale-125 transition-all duration-300" />
+                    </div>
                   </div>
                 </div>
               </StaggerItem>

@@ -151,44 +151,50 @@ export const PracticeAreasSection: React.FC = () => {
         <StaggerContainer staggerMs={70} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
           {PRACTICE_DISCIPLINES.map((cat, idx) => {
             const Icon = cat.icon;
+            const stepNum = cat.code.replace('PRAC-', '');
 
             return (
               <StaggerItem key={cat.code} index={idx} distance={18} durationMs={550} className="h-full flex">
                 <div
                   id={cat.anchorId}
-                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel overflow-hidden flex flex-col justify-between group hover:border-[#C5A059] hover:shadow-[0_16px_36px_rgba(180,154,100,0.22)] hover:-translate-y-2 transition-all duration-300 relative"
+                  className="w-full bg-[#FAF7F0] hover:bg-[#0A261C] rounded-2xl border border-[#D8D0BE] hover:border-[#B49A64] shadow-card hover:shadow-[0_20px_48px_rgba(7,27,20,0.35)] hover:-translate-y-2.5 transition-all duration-500 relative flex flex-col justify-between group overflow-hidden"
                 >
                   {/* Top Metallic Hairline Accent */}
-                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/80 transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+
+                  {/* Watermark Numeral in Background (Refined Cormorant Serif) */}
+                  <div className="absolute right-4 bottom-14 font-serif text-5xl font-bold text-[#B49A64]/10 group-hover:text-[#B49A64]/25 pointer-events-none select-none transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1" aria-hidden="true">
+                    {stepNum}
+                  </div>
 
                   {/* Dynamic Corner Brass Brackets (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                   <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
-                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between">
+                  <div className="p-5 sm:p-6 flex flex-col h-full justify-between relative z-10">
                     <div>
                       {/* Top Meta Line: Discipline Code & Badge */}
                       <div className="flex items-center justify-between mb-3.5 flex-wrap gap-2">
-                        <span className="font-mono text-xs font-bold text-[#7E5E1E] tracking-wider">
+                        <span className="font-mono text-xs font-bold text-[#7E5E1E] group-hover:text-[#B49A64] tracking-wider transition-colors duration-300">
                           {cat.code}
                         </span>
-                        <span className="text-[10px] font-semibold text-[#7E5E1E] bg-[#FFF6E8] border border-[#D8D0BE] px-2 py-0.5 rounded-md truncate max-w-[150px]">
+                        <span className="text-[10px] font-semibold text-[#7E5E1E] bg-[#FFF6E8] group-hover:bg-[#12382A] group-hover:text-[#E8D5B5] group-hover:border-[#B49A64]/40 border border-[#D8D0BE] px-2 py-0.5 rounded-md truncate max-w-[150px] transition-all duration-300">
                           {cat.badge}
                         </span>
                       </div>
 
                       {/* Icon and Title */}
                       <div className="flex items-start gap-3 mb-2.5">
-                        <div className="w-9 h-9 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/40 shadow-xs group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.3)] transition-all duration-300">
-                          <Icon className="w-4.5 h-4.5 text-[#B49A64]" aria-hidden="true" />
+                        <div className="w-9 h-9 rounded-xl bg-[#183529] group-hover:bg-[#B49A64] text-[#B49A64] group-hover:text-[#071B14] flex items-center justify-center shrink-0 border border-[#B49A64]/40 shadow-xs group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.4)] transition-all duration-300">
+                          <Icon className="w-5 h-5" aria-hidden="true" />
                         </div>
-                        <h3 className="font-serif text-base sm:text-lg font-bold text-[#35271F] group-hover:text-[#183529] transition-colors leading-snug pt-0.5">
+                        <h3 className="font-serif text-base sm:text-lg font-bold text-[#35271F] group-hover:text-[#F1EBDD] transition-colors duration-300 leading-snug pt-0.5">
                           {cat.title}
                         </h3>
                       </div>
 
                       {/* Concise Editorial Description (~15–20 words) */}
-                      <p className="font-editorial-body text-xs text-[#525954] leading-relaxed">
+                      <p className="font-editorial-body text-xs text-[#525954] group-hover:text-[#D8D0BE] transition-colors duration-300 leading-relaxed">
                         {cat.description}
                       </p>
                     </div>
@@ -197,13 +203,13 @@ export const PracticeAreasSection: React.FC = () => {
                     <div className="h-[2px] w-6 bg-[#B49A64]/40 rounded-full group-hover:w-14 group-hover:bg-[#B49A64] transition-all duration-300 mt-3" />
 
                     {/* Direct Dedicated Page Link with Circular Antique Gold Medallion */}
-                    <div className="mt-3 pt-3 border-t border-[#D8D0BE]/70 flex items-center justify-between">
+                    <div className="mt-3 pt-3 border-t border-[#D8D0BE]/70 group-hover:border-[#B49A64]/30 flex items-center justify-between transition-colors duration-300">
                       <Link
                         to={cat.link}
-                        className="min-h-[44px] w-full flex items-center justify-between font-editorial-meta text-xs font-semibold text-[#35271F] hover:text-[#7E5E1E] transition-colors group/link"
+                        className="min-h-[44px] w-full flex items-center justify-between font-editorial-meta text-xs font-semibold text-[#35271F] group-hover:text-[#F1EBDD] transition-colors duration-300 group/link"
                       >
                         <span className="group-hover/link:translate-x-0.5 transition-transform">Explore Practice Details</span>
-                        <div className="w-8 h-8 rounded-full bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:bg-[#B49A64] group-hover:text-[#071B14] group-hover:rotate-45 group-hover:scale-110 shadow-xs transition-all duration-300 shrink-0">
+                        <div className="w-8 h-8 rounded-full bg-[#183529] group-hover:bg-[#B49A64] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:text-[#071B14] group-hover:rotate-45 group-hover:scale-110 shadow-xs transition-all duration-300 shrink-0">
                           <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
                         </div>
                       </Link>

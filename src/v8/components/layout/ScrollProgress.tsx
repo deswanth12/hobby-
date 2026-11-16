@@ -20,6 +20,19 @@ export const ScrollProgress: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // If browser natively supports scroll-driven animation timeline, CSS executes on compositor thread
+    if (typeof window !== 'undefined' && 'CSS' in window && CSS.supports && CSS.supports('animation-timeline', 'scroll()')) {
+      return;
+    }
+
+    // Per Modern Web Guidance, fallback only runs when user has no reduced-motion preference
+    if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (barRef.current) {
+        barRef.current.style.transform = 'scaleX(0)';
+      }
+      return;
+    }
+
     let ticking = false;
 
     const updateProgress = () => {

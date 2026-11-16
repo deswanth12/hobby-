@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Award, Users } from 'lucide-react';
 import { useFirmProfile } from '../../adapters/backendAdapter';
 import { Button } from '../common/Button';
 import { DotGrid, ArchitecturalLines, SectionAccent, DecorativeLayer } from '../decorative';
@@ -67,6 +67,69 @@ export const FirmIntroSection: React.FC = () => {
       </DecorativeLayer>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* 3-Pillar Institutional Conduit (Bridging Hero Horizon & Firm Intro) */}
+        <Reveal delay={40} duration={600}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-14">
+            {/* Pillar 01 */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-sm hover:border-[#B49A64] hover:shadow-[0_12px_28px_rgba(180,154,100,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-3.5 group relative overflow-hidden">
+              <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+              <div className="w-11 h-11 rounded-xl bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:bg-[#071B14] group-hover:scale-105 group-hover:rotate-6 group-hover:border-[#C5A059] transition-all duration-300 shrink-0 shadow-xs">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7E5E1E] block">
+                  Assurance Rigor
+                </span>
+                <p className="font-serif text-sm sm:text-base font-bold text-[#35271F] group-hover:text-[#183529] transition-colors leading-tight truncate">
+                  Deloitte Big 4 Pedigree
+                </p>
+                <p className="font-editorial-body text-[11px] text-[#525954] mt-0.5 truncate">
+                  Senior statutory audit working paper discipline
+                </p>
+              </div>
+            </div>
+
+            {/* Pillar 02 */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-sm hover:border-[#B49A64] hover:shadow-[0_12px_28px_rgba(180,154,100,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-3.5 group relative overflow-hidden">
+              <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+              <div className="w-11 h-11 rounded-xl bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:bg-[#071B14] group-hover:scale-105 group-hover:rotate-6 group-hover:border-[#C5A059] transition-all duration-300 shrink-0 shadow-xs">
+                <Award className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7E5E1E] block">
+                  Dual Credentials
+                </span>
+                <p className="font-serif text-sm sm:text-base font-bold text-[#35271F] group-hover:text-[#183529] transition-colors leading-tight truncate">
+                  CA + CMA (AIR 49 ICMAI)
+                </p>
+                <p className="font-editorial-body text-[11px] text-[#525954] mt-0.5 truncate">
+                  Tax compliance fused with industrial cost modeling
+                </p>
+              </div>
+            </div>
+
+            {/* Pillar 03 */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-sm hover:border-[#B49A64] hover:shadow-[0_12px_28px_rgba(180,154,100,0.18)] hover:-translate-y-1.5 transition-all duration-300 flex items-center gap-3.5 group relative overflow-hidden">
+              <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+              <div className="w-11 h-11 rounded-xl bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:bg-[#071B14] group-hover:scale-105 group-hover:rotate-6 group-hover:border-[#C5A059] transition-all duration-300 shrink-0 shadow-xs">
+                <Users className="w-5 h-5" />
+              </div>
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#7E5E1E] block">
+                  Direct Supervision
+                </span>
+                <p className="font-serif text-sm sm:text-base font-bold text-[#35271F] group-hover:text-[#183529] transition-colors leading-tight truncate">
+                  100% Partner Lead
+                </p>
+                <p className="font-editorial-body text-[11px] text-[#525954] mt-0.5 truncate">
+                  Zero delegation of critical opinions to juniors
+                </p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* Left 6 Columns: Consultation Photo & Floating Credential Plaque */}
@@ -202,8 +265,8 @@ export const FirmIntroSection: React.FC = () => {
                   })}
                 </div>
 
-                {/* Active Pillar Hallmarks */}
-                <div className="mt-3 bg-[#FAF7F0] border border-[#D8D0BE]/80 rounded-xl p-3 sm:p-3.5">
+                {/* Active Pillar Hallmarks with smooth fade transition */}
+                <div key={selectedPillar.id} className="mt-3 bg-[#FAF7F0] border border-[#D8D0BE]/80 rounded-xl p-3 sm:p-3.5 animate-fadeIn">
                   <div className="space-y-1.5">
                     {selectedPillar.hallmarks.map((hallmark, hIdx) => (
                       <div key={hIdx} className="flex items-center gap-2 text-xs text-[#35271F]">

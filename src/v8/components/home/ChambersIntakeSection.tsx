@@ -59,16 +59,20 @@ export const ChambersIntakeSection: React.FC = () => {
                 {/* Telephone Desk */}
                 <a
                   href={`tel:${firmProfile.contact.primaryPhoneClean}`}
-                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:-translate-y-0.5 transition-all duration-300 btn-tactile min-h-[44px]"
+                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:shadow-[0_8px_24px_rgba(180,154,100,0.18)] hover:-translate-y-1 transition-all duration-300 btn-tactile min-h-[44px] relative overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors">
-                    <Phone className="w-5 h-5 text-[#B49A64]" />
+                  <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute top-2 left-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+
+                  <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.35)] transition-all duration-300">
+                    <Phone className="w-5 h-5 text-[#B49A64] group-hover:text-[#F1EBDD] transition-colors" />
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-[#B49A64] block">
                       Direct Telephone Desk
                     </span>
-                    <span className="font-editorial-body text-sm font-bold text-[#F1EBDD] group-hover:text-white">
+                    <span className="font-editorial-body text-sm font-bold text-[#F1EBDD] group-hover:text-white transition-colors">
                       {firmProfile.contact.primaryPhone}
                     </span>
                     <span className="block font-editorial-body text-xs text-[#D8D0BE] mt-0.5">
@@ -80,16 +84,20 @@ export const ChambersIntakeSection: React.FC = () => {
                 {/* Confidential Email Desk */}
                 <a
                   href={`mailto:${firmProfile.contact.email}`}
-                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:-translate-y-0.5 transition-all duration-300 btn-tactile min-h-[44px]"
+                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:shadow-[0_8px_24px_rgba(180,154,100,0.18)] hover:-translate-y-1 transition-all duration-300 btn-tactile min-h-[44px] relative overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors">
-                    <Mail className="w-5 h-5 text-[#B49A64]" />
+                  <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute top-2 left-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+
+                  <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.35)] transition-all duration-300">
+                    <Mail className="w-5 h-5 text-[#B49A64] group-hover:text-[#F1EBDD] transition-colors" />
                   </div>
                   <div className="min-w-0">
                     <span className="text-xs font-semibold text-[#B49A64] block">
                       Confidential Practice Email
                     </span>
-                    <span className="font-editorial-body text-sm font-bold text-[#F1EBDD] group-hover:text-white truncate block">
+                    <span className="font-editorial-body text-sm font-bold text-[#F1EBDD] group-hover:text-white truncate block transition-colors">
                       {firmProfile.contact.email}
                     </span>
                     <span className="block font-editorial-body text-xs text-[#D8D0BE] mt-0.5">
@@ -103,19 +111,23 @@ export const ChambersIntakeSection: React.FC = () => {
                   href={firmProfile.contact.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:-translate-y-0.5 transition-all duration-300 btn-tactile min-h-[44px]"
+                  className="flex items-start gap-3.5 p-4 rounded-2xl border border-[#B49A64]/30 bg-[#0B241C] group hover:border-[#B49A64] hover:shadow-[0_8px_24px_rgba(180,154,100,0.18)] hover:-translate-y-1 transition-all duration-300 btn-tactile min-h-[44px] relative overflow-hidden"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors">
-                    <MapPin className="w-5 h-5 text-[#B49A64]" />
+                  <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute top-2 left-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+
+                  <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.35)] transition-all duration-300">
+                    <MapPin className="w-5 h-5 text-[#B49A64] group-hover:text-[#F1EBDD] transition-colors" />
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-[#B49A64] block">
                       Principal Chambers
                     </span>
-                    <span className="font-editorial-body text-xs sm:text-sm font-medium text-[#F1EBDD] group-hover:text-white leading-snug block">
+                    <span className="font-editorial-body text-xs sm:text-sm font-medium text-[#F1EBDD] group-hover:text-white leading-snug block transition-colors">
                       {firmProfile.contact.streetAddress}, {firmProfile.contact.locality}, Andhra Pradesh {firmProfile.contact.postalCode}
                     </span>
-                    <span className="block font-editorial-body text-xs text-[#B49A64] mt-1 font-semibold">
+                    <span className="block font-editorial-body text-xs text-[#B49A64] mt-1 font-semibold group-hover:translate-x-0.5 transition-transform">
                       View on Google Maps →
                     </span>
                   </div>
@@ -126,23 +138,27 @@ export const ChambersIntakeSection: React.FC = () => {
                   href={firmProfile.contact.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-4 rounded-2xl border border-[#B49A64]/40 bg-[#0B241C] group hover:border-[#B49A64] hover:-translate-y-0.5 transition-all duration-300 btn-tactile min-h-[44px]"
+                  className="flex items-center justify-between p-4 rounded-2xl border border-[#B49A64]/40 bg-[#0B241C] group hover:border-[#B49A64] hover:shadow-[0_8px_24px_rgba(180,154,100,0.18)] hover:-translate-y-1 transition-all duration-300 btn-tactile min-h-[44px] relative overflow-hidden"
                 >
+                  <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute top-2 left-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                  <div className="absolute bottom-2 right-2 w-3 h-3 group-hover:w-4 group-hover:h-4 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors font-serif font-black text-lg">
-                      <MapPin className="w-5 h-5 text-[#B49A64]" />
+                    <div className="w-10 h-10 rounded-xl bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 border border-[#B49A64]/30 group-hover:bg-[#071B14] group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#C5A059] group-hover:shadow-[0_0_16px_rgba(180,154,100,0.35)] transition-all duration-300 font-serif font-black text-lg">
+                      <MapPin className="w-5 h-5 text-[#B49A64] group-hover:text-[#F1EBDD] transition-colors" />
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="font-editorial-body text-xs font-bold text-[#F1EBDD]">Verified Chambers Coordinates</span>
-                        <span className="font-mono text-[10px] font-bold text-[#B49A64] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">Google Maps</span>
+                        <span className="font-editorial-body text-xs font-bold text-[#F1EBDD] group-hover:text-white transition-colors">Verified Chambers Coordinates</span>
+                        <span className="font-mono text-[10px] font-bold text-[#B49A64] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30 group-hover:bg-[#B49A64] group-hover:text-[#071B14] transition-colors">Google Maps</span>
                       </div>
                       <span className="text-xs text-[#D8D0BE] mt-0.5 block">
                         Principal Chambers • Bairagi Patteda, Tirupati
                       </span>
                     </div>
                   </div>
-                  <span className="text-xs text-[#B49A64] font-semibold flex items-center gap-1 shrink-0 group-hover:translate-x-0.5 transition-transform">
+                  <span className="text-xs text-[#B49A64] font-semibold flex items-center gap-1 shrink-0 group-hover:translate-x-1 group-hover:text-[#F1EBDD] transition-all">
                     View Directions →
                   </span>
                 </a>
@@ -168,10 +184,12 @@ export const ChambersIntakeSection: React.FC = () => {
           {/* Right 7 Columns: Embedded Consultation Intake Form */}
           <div className="lg:col-span-7">
             <Reveal direction="right" delay={120} duration={650}>
-              <div className="bg-[#0B241C] p-6 sm:p-8 rounded-2xl border border-[#B49A64]/30 shadow-2xl relative group hover:border-[#B49A64]/60 transition-colors">
-                {/* Corner Brass Accents */}
-                <div className="absolute top-2 left-2 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B49A64]/50 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
-                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 border-b-2 border-r-2 border-[#B49A64]/50 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-colors" aria-hidden="true" />
+              <div className="bg-[#0B241C] p-6 sm:p-8 rounded-2xl border border-[#B49A64]/30 shadow-2xl relative group hover:border-[#B49A64]/60 hover:shadow-[0_24px_56px_rgba(7,27,20,0.5)] transition-all duration-500 overflow-hidden">
+                {/* Top Metallic Hairline */}
+                <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/40 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+                {/* Dynamic Corner Brass Accents (Expand on Hover) */}
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/50 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/50 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
 
                 <div className="mb-6">
                   <span className="text-xs font-mono font-bold text-[#B49A64] uppercase tracking-wider block mb-1">

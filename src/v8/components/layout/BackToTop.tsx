@@ -29,13 +29,13 @@ export const BackToTop: React.FC = () => {
     });
   };
 
-  if (!visible) return null;
-
   return (
     <button
       type="button"
       onClick={scrollToTop}
-      className="fixed bottom-6 left-6 z-30 w-11 h-11 rounded-full bg-[#071B14] hover:bg-[#183529] text-[#B49A64] border border-[#B49A64]/40 shadow-editorial flex items-center justify-center transition-all duration-200 hover:-translate-y-1 active:scale-95 focus-visible:outline-2 focus-visible:outline-[#B49A64]"
+      className={`fixed bottom-6 left-6 z-30 w-11 h-11 rounded-full bg-[#071B14] hover:bg-[#183529] text-[#B49A64] border border-[#B49A64]/40 shadow-editorial flex items-center justify-center transition-all duration-300 hover:-translate-y-1 active:scale-95 focus-visible:outline-2 focus-visible:outline-[#B49A64] ${
+        visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-3 pointer-events-none'
+      }`}
       aria-label="Scroll back to top of page"
       title="Return to top"
     >

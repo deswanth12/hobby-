@@ -137,9 +137,9 @@ export const FeaturedInsightsSection: React.FC = () => {
                 <span className="text-[11px] font-mono font-semibold text-[#7E5E1E] uppercase tracking-wider">
                   ICAI Technical Commentary
                 </span>
-                <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#183529] text-white font-editorial-meta text-xs font-semibold group-hover:bg-[#071B14] transition-colors shadow-xs">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#183529] text-white font-editorial-meta text-xs font-semibold group-hover:bg-[#B49A64] group-hover:text-[#071B14] transition-all duration-300 shadow-md">
                   <span>Read Full Analysis</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-[#B49A64] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
+                  <ArrowUpRight className="w-4 h-4 text-[#B49A64] group-hover:text-[#071B14] group-hover:rotate-45 group-hover:scale-110 transition-all duration-300" />
                 </div>
               </div>
             </article>
@@ -150,8 +150,15 @@ export const FeaturedInsightsSection: React.FC = () => {
             {companionArticles.map((article, idx) => (
               <article
                 key={article.slug}
-                className="bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group p-5 sm:p-6 flex flex-col justify-between flex-1"
+                className="bg-[#FAF7F0] hover:bg-[#FAF5EA] rounded-2xl border border-[#D8D0BE] hover:border-[#B49A64] shadow-card hover:shadow-[0_12px_28px_rgba(180,154,100,0.18)] hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden group p-5 sm:p-6 flex flex-col justify-between flex-1"
               >
+                {/* Top Metallic Hairline Accent */}
+                <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+
+                {/* Dynamic Corner Brass Brackets */}
+                <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+                <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
+
                 {/* Full-Surface Stretched Overlay Link */}
                 <Link
                   to={`/blog/${article.slug}`}
@@ -168,7 +175,7 @@ export const FeaturedInsightsSection: React.FC = () => {
                       width="400"
                       height="250"
                       loading="eager"
-                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     
                     <div className="absolute top-2 left-2 z-20 pointer-events-none">
@@ -202,15 +209,17 @@ export const FeaturedInsightsSection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Sub-footer Link */}
+                {/* Sub-footer Link with Circular Medallion */}
                 <div className="pt-3 mt-3 border-t border-[#D8D0BE]/40 flex items-center justify-between text-xs pointer-events-none">
                   <span className="text-[11px] text-[#7E5E1E] font-medium">
                     CA Kavitha Vijay
                   </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#183529] group-hover:text-[#B49A64] transition-colors">
+                  <div className="inline-flex items-center gap-2 text-[11px] font-semibold text-[#183529] group-hover:text-[#7E5E1E] transition-colors">
                     <span>Read Analysis</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200" />
-                  </span>
+                    <div className="w-7 h-7 rounded-full bg-[#183529] group-hover:bg-[#B49A64] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:text-[#071B14] group-hover:rotate-45 group-hover:scale-110 shadow-xs transition-all duration-300">
+                      <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </div>
+                  </div>
                 </div>
               </article>
             ))}

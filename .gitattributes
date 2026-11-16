@@ -1,0 +1,5 @@
+# Auto-detect text files and normalize newlines
+* text=auto
+
+# Enforce LF for animation components to preserve strict lifecycle test invariants
+src/v8/components/animation/* text eol=lf

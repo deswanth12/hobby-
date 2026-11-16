@@ -394,8 +394,11 @@ export const HeroSection: React.FC = () => {
 
             <div className="v8-hero-cascade w-full relative z-10" style={{ animationDelay: '200ms' }}>
               {/* Double-Bezel Architectural Photographic Frame (using rounded-2xl) */}
-              <div className="rounded-2xl p-2 sm:p-2.5 bg-[#0B241C] border border-[#B49A64]/30 shadow-2xl relative overflow-hidden group">
+              <div className="rounded-2xl p-2 sm:p-2.5 bg-[#0B241C] border border-[#B49A64]/30 shadow-2xl relative overflow-hidden group hover:border-[#B49A64]/60 hover:shadow-[0_20px_50px_rgba(180,154,100,0.22)] transition-all duration-500">
                 
+                {/* Top Metallic Hairline */}
+                <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/40 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+
                 {/* Architectural Corner Brass Brackets */}
                 <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/60 group-hover:border-[#B49A64] rounded-tl-sm pointer-events-none z-20 transition-all duration-300" aria-hidden="true" />
                 <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/60 group-hover:border-[#B49A64] rounded-br-sm pointer-events-none z-20 transition-all duration-300" aria-hidden="true" />
@@ -428,7 +431,7 @@ export const HeroSection: React.FC = () => {
                 </div>
 
                 {/* Compact Partner Credential Strip */}
-                <div className="mt-2.5 bg-[#071B14]/95 backdrop-blur-xs rounded-xl p-3 text-white border border-[#B49A64]/30 flex items-center justify-between shadow-md hover:-translate-y-0.5 hover:border-[#B49A64] transition-all duration-200 cursor-default">
+                <div className="mt-2.5 bg-[#071B14]/95 backdrop-blur-xs rounded-xl p-3 text-white border border-[#B49A64]/30 flex items-center justify-between shadow-md hover:-translate-y-1 hover:border-[#B49A64] hover:shadow-[0_8px_20px_rgba(180,154,100,0.2)] transition-all duration-300 cursor-default">
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 motion-safe:animate-pulse shrink-0" />
                     <div className="min-w-0">

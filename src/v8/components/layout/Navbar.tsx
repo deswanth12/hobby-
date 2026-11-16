@@ -146,6 +146,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
               className="relative"
               onMouseEnter={() => setServicesDropdownOpen(true)}
               onMouseLeave={() => setServicesDropdownOpen(false)}
+              onFocus={() => setServicesDropdownOpen(true)}
+              onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+                  setServicesDropdownOpen(false);
+                }
+              }}
             >
               <Link
                 to="/services"
@@ -163,11 +169,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
               </Link>
 
               {servicesDropdownOpen && (
-                <div className="absolute top-full left-0 w-80 pt-2 z-50">
-                  <div className="p-3 rounded-2xl bg-[#0B241C] border border-[#B49A64]/40 shadow-2xl space-y-1">
+                <div className="absolute top-full left-0 w-80 pt-2 z-50 animate-fadeIn">
+                  <div className="p-3 rounded-2xl bg-[#0B241C] border border-[#B49A64]/40 shadow-2xl space-y-1 relative overflow-hidden">
+                    <div className="absolute inset-x-3 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64] to-transparent" aria-hidden="true" />
                     <Link
                       to="/services"
-                      className="block p-2.5 rounded-xl bg-[#183529] hover:bg-[#294B39] text-[#B49A64] text-xs font-bold transition-colors border border-[#B49A64]/20"
+                      className="block p-2.5 rounded-xl bg-[#183529] hover:bg-[#B49A64] text-[#B49A64] hover:text-[#071B14] text-xs font-bold transition-all duration-200 border border-[#B49A64]/20"
                     >
                       All Practice Disciplines Overview →
                     </Link>
@@ -176,9 +183,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenMobileDrawer }) => {
                       <Link
                         key={c.path}
                         to={c.path}
-                        className="block p-2 rounded-xl hover:bg-[#183529]/70 transition-colors group"
+                        className="block p-2 rounded-xl hover:bg-[#183529]/80 transition-all duration-200 group/item"
                       >
-                        <div className="font-serif font-bold text-xs text-[#F1EBDD] group-hover:text-[#B49A64] transition-colors">
+                        <div className="font-serif font-bold text-xs text-[#F1EBDD] group-hover/item:text-[#B49A64] group-hover/item:translate-x-0.5 transition-all">
                           {c.label}
                         </div>
                         <div className="text-[10px] text-[#AAB4A0] leading-tight mt-0.5">

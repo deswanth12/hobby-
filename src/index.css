@@ -1149,7 +1149,7 @@
     }
   }
 
-  @supports (animation-timeline: view()) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
     .scroll-view-reveal {
       animation: viewReveal linear both;
       animation-timeline: view();
@@ -1157,7 +1157,7 @@
     }
     @keyframes viewReveal {
       from {
-        opacity: 1;
+        opacity: 0;
         transform: translateY(24px);
       }
       to {
@@ -2147,23 +2147,31 @@
 }
 
 /* =========================================================================
-   Architectural Scrollbar
+   Architectural Scrollbar (Botanical Ledger Luxury Edition)
    ========================================================================= */
+html {
+  scrollbar-color: #294B39 #071B14;
+  scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-ivory);
+  background: #071B14;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-scrollbar-thumb);
+  background: #183529;
+  border: 1px solid rgba(180, 154, 100, 0.25);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-scrollbar-hover);
+  background: #B49A64;
+  border-color: #C5A059;
 }
 
 /* Prevent automatic zoom on iOS Safari when focusing form inputs */

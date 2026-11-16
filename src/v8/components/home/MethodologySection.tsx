@@ -98,26 +98,30 @@ export const MethodologySection: React.FC = () => {
           <div className="grid grid-cols-3 gap-6 sm:gap-8 relative z-10">
             {/* Step 01 Node & Track Line to Step 02 */}
             <div className="relative flex flex-col items-center">
-              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[1.5px] bg-gradient-to-r from-[#B49A64] via-[#B49A64] to-[#B49A64]/70 z-0" />
-              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[2px] bg-gradient-to-r from-[#B49A64]/40 via-[#B49A64] to-[#B49A64]/40 z-0 overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-r from-transparent via-[#FAF7F0] to-transparent motion-safe:animate-pulse opacity-75" />
+              </div>
+              <span className="relative z-10 w-6 h-6 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
               </span>
               <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
             </div>
 
             {/* Step 02 Node & Track Line to Step 03 */}
             <div className="relative flex flex-col items-center">
-              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[1.5px] bg-gradient-to-r from-[#B49A64]/70 via-[#B49A64] to-[#B49A64] z-0" />
-              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              <div className="absolute top-2.5 left-1/2 w-[calc(100%+2rem)] -translate-y-1/2 h-[2px] bg-gradient-to-r from-[#B49A64]/40 via-[#B49A64] to-[#B49A64]/40 z-0 overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-r from-transparent via-[#FAF7F0] to-transparent motion-safe:animate-pulse opacity-75" />
+              </div>
+              <span className="relative z-10 w-6 h-6 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
               </span>
               <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
             </div>
 
             {/* Step 03 Node (Terminal Step) */}
             <div className="relative flex flex-col items-center">
-              <span className="relative z-10 w-5 h-5 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
-                <span className="w-2 h-2 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
+              <span className="relative z-10 w-6 h-6 rounded-full bg-[#FAF7F0] border-2 border-[#B49A64] ring-4 ring-[#B49A64]/20 shadow-xs flex items-center justify-center">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#B49A64] motion-safe:animate-pulse" />
               </span>
               <span className="block h-[17px] -mb-px w-px bg-gradient-to-b from-[#B49A64] to-[#B49A64]/40" />
             </div>
@@ -132,10 +136,15 @@ export const MethodologySection: React.FC = () => {
             return (
               <StaggerItem key={item.step} index={idx} distance={20} durationMs={600} className="h-full flex">
                 <div 
-                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-[0_16px_36px_rgba(180,154,100,0.18)] md:hover:-translate-y-2 transition-all duration-300 relative flex flex-col justify-between group overflow-hidden"
+                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-[0_20px_48px_rgba(180,154,100,0.22)] md:hover:-translate-y-2.5 transition-all duration-300 relative flex flex-col justify-between group overflow-hidden"
                 >
                   {/* Top Metallic Hairline Accent */}
-                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/70 transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64] transition-all duration-500" aria-hidden="true" />
+
+                  {/* Watermark Numeral in Background */}
+                  <div className="absolute right-4 bottom-2 font-serif text-6xl font-bold text-[#B49A64]/10 group-hover:text-[#B49A64]/20 pointer-events-none select-none transition-all duration-500 group-hover:scale-110" aria-hidden="true">
+                    {item.step}
+                  </div>
 
                   {/* Dynamic Corner Brass Accents (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
