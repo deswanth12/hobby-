@@ -23,3 +23,6 @@ export { LocationsPage, default as DefaultLocationsPage } from './LocationsPage'
 // Milestone 4: Blog Engine
 export { BlogPage, default as DefaultBlogPage } from './BlogPage';
 export { BlogArticlePage, default as DefaultBlogArticlePage } from './BlogArticlePage';
+
+// Milestone 1: Knowledge Bank Hub
+export { KnowledgeBankPage, default as DefaultKnowledgeBankPage } from './KnowledgeBankPage';

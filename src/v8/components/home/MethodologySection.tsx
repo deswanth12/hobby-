@@ -132,8 +132,11 @@ export const MethodologySection: React.FC = () => {
             return (
               <StaggerItem key={item.step} index={idx} distance={20} durationMs={600} className="h-full flex">
                 <div 
-                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-card-hover md:hover:-translate-y-1.5 transition-all duration-300 relative flex flex-col justify-between group"
+                  className="w-full bg-[#FAF7F0] rounded-2xl p-5 sm:p-6 border border-[#D8D0BE] shadow-card card-parchment-bevel hover:border-[#B49A64] hover:shadow-[0_16px_36px_rgba(180,154,100,0.18)] md:hover:-translate-y-2 transition-all duration-300 relative flex flex-col justify-between group overflow-hidden"
                 >
+                  {/* Top Metallic Hairline Accent */}
+                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/70 transition-all duration-500" aria-hidden="true" />
+
                   {/* Dynamic Corner Brass Accents (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                   <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/40 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
@@ -152,12 +155,17 @@ export const MethodologySection: React.FC = () => {
                   )}
 
                   <div>
-                    {/* Badge & Partner Supervised Tag */}
+                    {/* Step Medallion, Badge & Partner Supervised Tag */}
                     <div className="flex items-center justify-between gap-2 mb-4">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs group-hover:bg-[#7E5E1E] group-hover:text-white transition-colors duration-300 shrink-0">
-                        <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E] group-hover:text-white transition-colors shrink-0" />
-                        <span>{item.badge}</span>
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <div className="w-7 h-7 rounded-lg bg-[#183529] text-[#B49A64] font-mono font-bold text-xs flex items-center justify-center border border-[#B49A64]/40 shadow-xs group-hover:bg-[#071B14] group-hover:scale-105 group-hover:border-[#C5A059] transition-all duration-300 shrink-0">
+                          {item.step}
+                        </div>
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#7E5E1E] bg-[#E8D5B5] px-2.5 py-0.5 rounded-full border border-[#B49A64]/50 shadow-xs group-hover:bg-[#7E5E1E] group-hover:text-white transition-colors duration-300 shrink-0">
+                          <IconComponent className="w-3.5 h-3.5 text-[#7E5E1E] group-hover:text-white transition-colors shrink-0" />
+                          <span>{item.badge}</span>
+                        </span>
+                      </div>
                       <span className="text-[11px] font-semibold text-[#35271F] flex items-center gap-1 shrink-0">
                         <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64] shrink-0" />
                         <span>Partner-Supervised</span>

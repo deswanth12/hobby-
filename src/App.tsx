@@ -25,6 +25,7 @@ import {
   BlogArticlePage,
   NotFoundPage,
   ContactPage,
+  KnowledgeBankPage,
 } from './v8/pages';
 
 // Admin Pages (Code-split for optimized initial page load)
@@ -78,6 +79,7 @@ export const App: React.FC = () => {
               <Route path="/locations" element={<LocationsPage />} />
               <Route path="/blog" element={<BlogPage />} />
               <Route path="/blog/:slug" element={<BlogArticlePage />} />
+              <Route path="/knowledge-bank" element={<KnowledgeBankPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Route>

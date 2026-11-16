@@ -10,7 +10,8 @@ import {
   ArrowRight,
   ChevronRight,
   Home,
-  MessageSquare
+  MessageSquare,
+  Printer
 } from 'lucide-react';
 
 const LinkedInIcon: React.FC = () => (
@@ -228,6 +229,17 @@ export const BlogArticlePage: React.FC = () => {
                 aria-label="Share on Twitter / X"
               >
                 <TwitterIcon />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-border bg-white hover:bg-brand-pale text-charcoal text-xs font-semibold transition-colors btn-tactile min-h-[44px]"
+                title="Print or Save PDF Brief"
+                aria-label="Print or Save PDF Brief"
+              >
+                <Printer className="w-4 h-4 text-gold-dark" />
+                <span className="hidden sm:inline">Print / PDF</span>
               </button>
             </div>
           </div>

@@ -10,3 +10,4 @@ export * from './NotFoundPage';
 export * from './StatutoryChecklistModal';
 export * from './CorridorConversionPlaque';
 export * from './ChambersStatusIndicator';
+export * from './KnowledgeBankCard';

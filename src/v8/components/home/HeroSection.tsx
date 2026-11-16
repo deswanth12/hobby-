@@ -26,12 +26,14 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
   const isReduced = useReducedMotion();
   const [displayValue, setDisplayValue] = useState<number>(() => (isReduced ? value : 0));
   const [hasStarted, setHasStarted] = useState<boolean>(false);
+  const [isComplete, setIsComplete] = useState<boolean>(isReduced);
   const cardRef = React.useRef<HTMLDivElement | null>(null);
 
   // Trigger when element enters viewport
   useEffect(() => {
     if (isReduced) {
       setDisplayValue(value);
+      setIsComplete(true);
       return;
     }
 
@@ -57,13 +59,15 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
     return () => observer.disconnect();
   }, [isReduced, value]);
 
-  // Execute smooth rolling counter animation
+  // Execute smooth mechanical odometer-style rolling counter animation
   const runAnimation = React.useCallback((customDuration?: number) => {
     if (isReduced) {
       setDisplayValue(value);
+      setIsComplete(true);
       return;
     }
 
+    setIsComplete(false);
     const duration = customDuration || durationMs;
     let startTime: number | null = null;
     let rafId: number | null = null;
@@ -72,8 +76,8 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
       if (startTime === null) startTime = timestamp;
       const progress = timestamp - startTime;
       const progressRatio = Math.min(progress / duration, 1);
-      // easeOutCubic: 1 - (1 - t)^3
-      const easeOut = 1 - Math.pow(1 - progressRatio, 3);
+      // easeOutQuart: 1 - (1 - t)^4 (silky mechanical deceleration)
+      const easeOut = 1 - Math.pow(1 - progressRatio, 4);
       const current = Math.round(value * easeOut);
       setDisplayValue(current);
 
@@ -81,6 +85,7 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
         rafId = requestAnimationFrame(step);
       } else {
         setDisplayValue(value);
+        setIsComplete(true);
       }
     };
 
@@ -100,7 +105,7 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
 
   const handleMouseEnter = () => {
     if (!isReduced) {
-      runAnimation(750); // Snappy re-roll on hover
+      runAnimation(700); // Snappy mechanical re-roll on card hover
     }
   };
 
@@ -111,40 +116,49 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
     <div
       ref={cardRef}
       onMouseEnter={handleMouseEnter}
-      className="relative bg-gradient-to-b from-[#0E271F] via-[#0B241C] to-[#061510] border border-[#B49A64]/30 rounded-xl px-1.5 py-2.5 sm:px-2 sm:py-3.5 text-center group hover:border-[#C5A059] hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(180,154,100,0.22)] transition-all duration-300 overflow-hidden cursor-default select-none"
+      className="relative bg-gradient-to-b from-[#143226]/95 via-[#0B241C] to-[#061510] border border-[#B49A64]/35 rounded-xl px-2 py-3 sm:px-2.5 sm:py-4 text-center group hover:border-[#C5A059] hover:-translate-y-1.5 hover:shadow-[0_12px_32px_rgba(180,154,100,0.25)] transition-all duration-300 overflow-hidden cursor-default select-none shadow-[0_8px_24px_rgba(7,27,20,0.6)]"
       role="group"
       aria-label={fullLabel}
     >
       {/* Top Metallic Hairline Accent */}
       <div 
-        className="absolute inset-x-3 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#B49A64]/60 to-transparent group-hover:via-[#D4AF37] transition-colors" 
+        className="absolute inset-x-2 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/60 to-transparent group-hover:via-[#D4AF37] transition-all duration-300" 
         aria-hidden="true" 
       />
 
-      {/* Subtle Corner Brackets (Quiet Luxury Architectural Accent) */}
+      {/* Subtle Radial Atmosphere Bloom on Hover */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: 'radial-gradient(140px circle at 50% 25%, rgba(180, 154, 100, 0.18), transparent 75%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Dynamic Corner Brass Brackets (Quiet Luxury Architectural Accent) */}
       <span 
-        className="absolute top-1.5 left-1.5 w-1.5 h-1.5 border-t border-l border-[#B49A64]/40 group-hover:border-[#C5A059] group-hover:w-2 group-hover:h-2 transition-all duration-200 pointer-events-none" 
+        className="absolute top-1.5 left-1.5 w-1.5 h-1.5 border-t border-l border-[#B49A64]/50 group-hover:border-[#C5A059] group-hover:w-2.5 group-hover:h-2.5 transition-all duration-300 pointer-events-none" 
         aria-hidden="true" 
       />
       <span 
-        className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 border-b border-r border-[#B49A64]/40 group-hover:border-[#C5A059] group-hover:w-2 group-hover:h-2 transition-all duration-200 pointer-events-none" 
+        className="absolute bottom-1.5 right-1.5 w-1.5 h-1.5 border-b border-r border-[#B49A64]/50 group-hover:border-[#C5A059] group-hover:w-2.5 group-hover:h-2.5 transition-all duration-300 pointer-events-none" 
         aria-hidden="true" 
       />
 
-      {/* Animated Numeric Value */}
-      <div className="flex items-baseline justify-center font-serif text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#F1EBDD] tabular-nums tracking-tight leading-none group-hover:text-white transition-colors">
+      {/* Animated Numeric Value with Precision Tabular Alignment */}
+      <div className="relative z-10 flex items-baseline justify-center font-serif text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#F1EBDD] tabular-nums tracking-tight leading-none group-hover:text-white transition-colors">
         {badgePrefix ? (
           <div className="flex items-center justify-center gap-1.5">
-            <span className="text-[10px] sm:text-xs font-sans font-bold tracking-wider text-[#B49A64] uppercase px-1.5 py-0.5 rounded bg-[#183529] border border-[#B49A64]/40 group-hover:border-[#C5A059] group-hover:text-[#F1EBDD] transition-colors">
+            <span className="text-[9px] sm:text-[10px] font-mono font-bold tracking-widest text-[#B49A64] uppercase px-1.5 py-0.5 rounded-sm bg-[#183529] border border-[#B49A64]/60 group-hover:border-[#C5A059] group-hover:text-[#F1EBDD] transition-colors shadow-xs">
               {badgePrefix}
             </span>
-            <span className="font-serif text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#F1EBDD]">
+            <span className="font-serif text-2xl sm:text-3xl lg:text-[32px] font-bold text-[#F1EBDD] drop-shadow-[0_2px_8px_rgba(180,154,100,0.18)]">
               {displayValue}
             </span>
           </div>
         ) : (
           <>
-            <span>{formattedNumber}</span>
+            <span className="drop-shadow-[0_2px_8px_rgba(180,154,100,0.18)]">{formattedNumber}</span>
             {suffix && (
               <span className="font-serif text-lg sm:text-xl font-normal text-[#B49A64] ml-0.5 group-hover:text-[#D4AF37] transition-colors">
                 {suffix}
@@ -155,9 +169,17 @@ const HeroMetricCard: React.FC<HeroMetricCardProps> = ({
       </div>
 
       {/* Descriptive Kicker Label */}
-      <div className="text-[8px] sm:text-[9px] xl:text-[10px] font-sans font-semibold text-[#B49A64] tracking-[0.03em] sm:tracking-[0.04em] xl:tracking-[0.06em] uppercase mt-1.5 group-hover:text-[#F1EBDD] transition-colors leading-tight whitespace-nowrap">
+      <div className="relative z-10 text-[8px] sm:text-[9px] xl:text-[10px] font-sans font-semibold text-[#B49A64] tracking-[0.04em] sm:tracking-[0.05em] xl:tracking-[0.07em] uppercase mt-1.5 group-hover:text-[#F1EBDD] transition-colors leading-tight whitespace-nowrap">
         {label}
       </div>
+
+      {/* Bottom Kinetic Precision Hairline Indicator */}
+      <div 
+        className={`absolute inset-x-4 bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/50 to-transparent transition-all duration-700 ${
+          isComplete ? 'opacity-80 scale-x-100' : 'opacity-20 scale-x-50'
+        } group-hover:via-[#D4AF37] group-hover:opacity-100`}
+        aria-hidden="true"
+      />
     </div>
   );
 };
@@ -437,7 +459,11 @@ export const HeroSection: React.FC = () => {
         aria-label="Practice Disciplines Ticker"
       >
         <div className="marquee-mask relative w-full overflow-hidden">
-          <div className="animate-marquee-track flex items-center gap-6 py-1 whitespace-nowrap text-[11px] sm:text-xs font-mono tracking-widest text-[#B49A64]/85 uppercase font-semibold">
+          {/* Edge Fade Gradients for Seamless Editorial Horizon */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-r from-[#071B14] to-transparent z-10 pointer-events-none" aria-hidden="true" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 bg-gradient-to-l from-[#071B14] to-transparent z-10 pointer-events-none" aria-hidden="true" />
+
+          <div className="animate-marquee-track hover:[animation-play-state:paused] flex items-center gap-6 py-1 whitespace-nowrap text-[11px] sm:text-xs font-mono tracking-widest text-[#B49A64]/85 uppercase font-semibold">
             {repeatedTicker.map((item, idx) => (
               <span key={idx} className="inline-flex items-center gap-4 shrink-0 hover:text-[#F1EBDD] transition-colors cursor-default">
                 <span>{item}</span>

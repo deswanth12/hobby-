@@ -201,7 +201,7 @@ export const Footer: React.FC = () => {
                 </a>
               </div>
 
-              {/* Google Review Strip */}
+              {/* Verified Chambers Coordinates & Directions on Google Maps */}
               <div className="pt-1">
                 <a
                   href={FIRM_DATA.contact.googleMapsUrl}
@@ -210,11 +210,11 @@ export const Footer: React.FC = () => {
                   className="flex items-center justify-between p-2.5 rounded-lg bg-[#0B241C] border border-[#B49A64]/30 text-xs hover:border-[#B49A64]/60 transition-colors"
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-amber-400 font-bold text-xs">★★★★★</span>
-                    <span className="font-semibold text-[#F1EBDD] text-[11px]">5.0 / 5.0 Rating</span>
+                    <MapPin className="w-3.5 h-3.5 text-[#B49A64]" />
+                    <span className="font-semibold text-[#F1EBDD] text-[11px]">Verified Chambers Coordinates</span>
                   </div>
                   <span className="text-[#B49A64] text-[10px] font-semibold">
-                    Five-Star Rated on Google →
+                    Directions on Google Maps →
                   </span>
                 </a>
               </div>

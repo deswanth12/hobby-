@@ -1,12 +1,51 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { useFirmProfile } from '../../adapters/backendAdapter';
 import { Button } from '../common/Button';
 import { DotGrid, ArchitecturalLines, SectionAccent, DecorativeLayer } from '../decorative';
 import { Reveal } from '../animation';
 
+interface AssurancePillar {
+  id: string;
+  label: string;
+  hallmarks: string[];
+}
+
+const ASSURANCE_PILLARS: AssurancePillar[] = [
+  {
+    id: 'partner-oversight',
+    label: 'Direct Partner Oversight',
+    hallmarks: [
+      '100% audits supervised personally by CA Kavitha Vijay',
+      'Direct partner review of working papers & reconciliations',
+      'Zero delegation of critical opinions to unqualified staff',
+    ],
+  },
+  {
+    id: 'dual-credentials',
+    label: 'Dual CA + CMA Mastery',
+    hallmarks: [
+      'Statutory compliance integrated with cost controllership',
+      'All-India Rank 49 (ICMAI) analytical cost rigor',
+      'Ex-Deloitte Haskins & Sells statutory audit standards',
+    ],
+  },
+  {
+    id: 'independence',
+    label: 'Zero-Conflict Independence',
+    hallmarks: [
+      'Strict adherence to ICAI Code of Ethics & Independence',
+      'Objective advisory with transparent statutory boundaries',
+      'Sole registered practice in Tirupati with pan-India reach',
+    ],
+  },
+];
+
 export const FirmIntroSection: React.FC = () => {
   const firmProfile = useFirmProfile();
+  const [activePillar, setActivePillar] = useState<string>('partner-oversight');
+
+  const selectedPillar = ASSURANCE_PILLARS.find(p => p.id === activePillar) || ASSURANCE_PILLARS[0];
 
   return (
     <section 
@@ -39,7 +78,13 @@ export const FirmIntroSection: React.FC = () => {
                 aria-hidden="true" 
               />
 
-              <div className="relative p-2 sm:p-2.5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-card group">
+              <div className="relative p-2 sm:p-2.5 rounded-2xl bg-[#FAF7F0] border border-[#D8D0BE] shadow-[0_16px_40px_rgba(24,53,41,0.12)] group hover:shadow-[0_20px_48px_rgba(180,154,100,0.22)] transition-shadow duration-500 overflow-visible">
+                {/* Top Metallic Hairline Accent */}
+                <div 
+                  className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/40 to-transparent group-hover:via-[#B49A64] transition-all duration-500" 
+                  aria-hidden="true" 
+                />
+
                 {/* Dynamic Corner Brass Accents (Expand on Hover) */}
                 <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/50 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
                 <div className="absolute bottom-2 right-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-b-2 border-r-2 border-[#B49A64]/50 rounded-br-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
@@ -62,7 +107,7 @@ export const FirmIntroSection: React.FC = () => {
                 </div>
 
                 {/* Floating Partner Credential Plaque */}
-                <div className="absolute -bottom-5 right-2 sm:right-6 z-20 bg-[#183529] rounded-2xl p-3.5 sm:p-4 text-white border border-[#B49A64]/50 shadow-2xl max-w-[290px] sm:max-w-sm hover:-translate-y-1.5 hover:scale-[1.02] hover:border-[#B49A64] hover:shadow-[0_16px_36px_rgba(11,36,28,0.45)] transition-all duration-300">
+                <div className="absolute -bottom-5 right-2 sm:right-6 z-20 bg-gradient-to-b from-[#183529] to-[#0E271F] rounded-2xl p-3.5 sm:p-4 text-white border border-[#B49A64]/60 shadow-[0_16px_36px_rgba(7,27,20,0.45)] max-w-[320px] sm:max-w-md hover:-translate-y-1.5 hover:scale-[1.02] hover:border-[#D4AF37] hover:shadow-[0_20px_48px_rgba(7,27,20,0.6)] transition-all duration-300">
                   <div className="flex items-center gap-3">
                     <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#0B241C] border-2 border-[#B49A64] flex items-center justify-center shadow-md shrink-0">
                       <img 
@@ -87,7 +132,7 @@ export const FirmIntroSection: React.FC = () => {
                         {firmProfile.partner.name}
                       </p>
                       <p className="font-editorial-body text-[10px] sm:text-[11px] text-[#AAB4A0] mt-0.5 truncate">
-                        {firmProfile.partner.qualifications} (ICMAI AIR 49) • 10+ Years Experience
+                        B.Com, CA, CMA (ICMAI AIR 49) • 10+ Years Experience
                       </p>
                     </div>
                   </div>
@@ -135,8 +180,43 @@ export const FirmIntroSection: React.FC = () => {
                 Founded by CA Kavitha Vijay (B.Com, CA, CMA AIR 49 (ICMAI)), Kavitha &amp; Associates is an independent Chartered Accountancy firm in Tirupati, advising growth enterprises and established businesses across India. With senior statutory audit tenure at Deloitte Haskins &amp; Sells and multinational internal audit experience at Ford Motor Company, our practice delivers partner-led assurance, corporate taxation, and financial governance with uncompromising regulatory rigor.
               </p>
 
+              {/* Interactive Statutory Assurance Tabs (Elevated Botanical Ledger Feature) */}
+              <div className="pt-2">
+                <div className="flex items-center gap-1.5 p-1 rounded-xl bg-[#FAF7F0] border border-[#D8D0BE] overflow-x-auto select-none">
+                  {ASSURANCE_PILLARS.map((pillar) => {
+                    const isActive = activePillar === pillar.id;
+                    return (
+                      <button
+                        key={pillar.id}
+                        type="button"
+                        onClick={() => setActivePillar(pillar.id)}
+                        className={`text-[11px] sm:text-xs font-semibold px-3 py-1.5 rounded-lg transition-all duration-200 whitespace-nowrap focus:outline-none ${
+                          isActive
+                            ? 'bg-[#183529] text-[#F1EBDD] shadow-xs'
+                            : 'text-[#525954] hover:text-[#183529] hover:bg-[#F1EBDD]/70'
+                        }`}
+                      >
+                        {pillar.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Active Pillar Hallmarks */}
+                <div className="mt-3 bg-[#FAF7F0] border border-[#D8D0BE]/80 rounded-xl p-3 sm:p-3.5">
+                  <div className="space-y-1.5">
+                    {selectedPillar.hallmarks.map((hallmark, hIdx) => (
+                      <div key={hIdx} className="flex items-center gap-2 text-xs text-[#35271F]">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-[#183529] shrink-0" />
+                        <span className="leading-tight">{hallmark}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Single Clean Call-to-Action to Dedicated About Page */}
-              <div className="pt-4">
+              <div className="pt-3">
                 <Button
                   to="/about"
                   variant="dark"

@@ -21,6 +21,8 @@ import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
 import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { KnowledgeBankCard } from '../../components/common/KnowledgeBankCard';
+import { GSTLateFeeCalculator } from '../../components/tools/GSTLateFeeCalculator';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const GSTServicesPage: React.FC = () => {
@@ -324,6 +326,11 @@ export const GSTServicesPage: React.FC = () => {
             </div>
           </div>
 
+          {/* Interactive Botanical Ledger GST Late Fee & Interest Calculator */}
+          <div className="pt-2">
+            <GSTLateFeeCalculator />
+          </div>
+
           {/* Statutory 4-Way Reconciliation Matrix Table */}
           <div className="bg-[#FAF7F0] p-6 sm:p-8 rounded-2xl border border-[#D8D0BE] shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[#D8D0BE] pb-3">
@@ -370,6 +377,15 @@ export const GSTServicesPage: React.FC = () => {
                 </tbody>
               </table>
             </div>
+          </div>
+
+          {/* Contextual Knowledge Bank & GST Portals Callout */}
+          <div className="pt-2">
+            <KnowledgeBankCard 
+              variant="forest" 
+              context="gst" 
+              to="/knowledge-bank"
+            />
           </div>
         </div>
       </section>

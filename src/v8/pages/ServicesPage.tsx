@@ -22,6 +22,7 @@ import { SectionAccent, DotGrid, ArchitecturalLines, DecorativeLayer } from '../
 import { Badge } from '../components/common/Badge';
 import { Reveal, StaggerContainer, StaggerItem } from '../components/animation';
 import { StatutoryChecklistModal } from '../components/common/StatutoryChecklistModal';
+import { KnowledgeBankCard } from '../components/common/KnowledgeBankCard';
 import { StatutoryAuditScreener } from '../components/tools';
 import { FIRM_DATA } from '../../data/firmData';
 
@@ -745,6 +746,17 @@ export const ServicesPage: React.FC = () => {
       <section className="py-12 sm:py-16 md:py-20 bg-[#FAF7F0] border-b border-[#D8D0BE] scroll-mt-28" id="statutory-audit-screener">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <StatutoryAuditScreener />
+        </div>
+      </section>
+
+      {/* 4.6. Central Knowledge Bank & Statutory Directory Showcase */}
+      <section className="py-12 sm:py-16 bg-[#071B14] border-b border-[#B49A64]/30 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <KnowledgeBankCard 
+            variant="dark" 
+            context="general" 
+            to="/knowledge-bank"
+          />
         </div>
       </section>
 

@@ -189,7 +189,7 @@ export const StatutoryAuditScreener: React.FC = () => {
       'Critical Compliance Deadlines:',
       ...result.keyDeadlines.map(d => `  • ${d.date}: ${d.label}`),
       '-------------------------------------------------------',
-      `Lead Partner: CA Kavitha Vijay (B.Com, CA, CMA AIR 49)`,
+      `Lead Partner: CA Kavitha Vijay (B.Com, CA, CMA AIR 49 (ICMAI))`,
       `Chambers: Bairagi Patteda, Tirupati · +91 96263 50900`,
       '======================================================='
     ].join('\n');

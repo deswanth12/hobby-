@@ -2584,5 +2584,62 @@ a:hover .dual-arrow-badge .arrow-secondary {
   }
 }
 
+/* =========================================================================
+   V8.3 MOBILE TACTILE HAPTIC TOUCH FEEDBACK (ITEM 5)
+   ========================================================================= */
+@media (hover: none) and (pointer: coarse) {
+  button:active,
+  a[role="button"]:active,
+  .card-parchment-bevel:active,
+  .btn-tactile:active,
+  .btn-shimmer:active {
+    transform: scale(0.985) !important;
+    transition: transform 90ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .group:active .group-hover\:rotate-45 {
+    transform: rotate(45deg) scale(1.08) !important;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+}
+
+/* =========================================================================
+   EXECUTIVE LEGAL BRIEF PRINT & PDF STYLESHEET (ITEM 4)
+   ========================================================================= */
+@media print {
+  @page {
+    margin: 18mm 15mm 18mm 15mm;
+    size: A4 portrait;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+    font-size: 11pt !important;
+    line-height: 1.6 !important;
+  }
+
+  nav,
+  header,
+  footer,
+  aside,
+  .fixed,
+  .marquee-container,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    color: #071b14 !important;
+    text-decoration: underline !important;
+  }
+
+  a::after {
+    content: none !important;
+  }
+}
+
+
 
 

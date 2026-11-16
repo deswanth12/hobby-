@@ -19,6 +19,8 @@ import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
 import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { KnowledgeBankCard } from '../../components/common/KnowledgeBankCard';
+import { VirtualCFOReadinessTool } from '../../components/tools/VirtualCFOReadinessTool';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const VirtualCFOPage: React.FC = () => {
@@ -349,6 +351,20 @@ export const VirtualCFOPage: React.FC = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Botanical Ledger Virtual CFO Readiness & Working Capital Diagnostic Tool */}
+      <section className="py-12 sm:py-16 bg-[#0B241C] border-b border-[#B49A64]/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <VirtualCFOReadinessTool />
+
+          {/* Contextual Knowledge Bank & Corporate Portals Callout */}
+          <KnowledgeBankCard 
+            variant="dark" 
+            context="cfo" 
+            to="/knowledge-bank"
+          />
         </div>
       </section>
 

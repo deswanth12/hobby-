@@ -395,11 +395,18 @@ export const ContactForm: React.FC<ContactFormProps> = ({
         </button>
       </div>
 
-      <div className="text-center pt-1">
-        <p className="text-[10px] text-[#AAB4A0] flex items-center justify-center gap-1.5">
-          <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64]" />
-          <span>Strict Confidentiality Guaranteed • ICAI Code of Ethics Compliant</span>
+      {/* Ethical Pull-Model Notice & Non-Engagement Legal Disclaimer */}
+      <div className="pt-3 border-t border-[#B49A64]/20 space-y-2">
+        <p className="text-[10px] text-[#AAB4A0] leading-relaxed text-justify sm:text-left">
+          <strong className="text-[#B49A64]">Ethical Notice &amp; Scope of Communication:</strong> Submission of this consultation intake form is initiated on a voluntary pull basis and does not establish a formal Chartered Accountant-Client fiduciary relationship. All engagements are subject to professional conflict checks, know-your-customer (KYC) compliance, and formal issuance of an engagement letter in accordance with the regulations of the Institute of Chartered Accountants of India (ICAI).
         </p>
+        <div className="flex items-center justify-between text-[10px] text-[#AAB4A0] pt-1">
+          <span className="flex items-center gap-1.5 text-emerald-400 font-medium">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#B49A64]" />
+            <span>Confidentiality Protected under ICAI Code of Ethics</span>
+          </span>
+          <span className="font-mono text-[10px] text-[#B49A64]">AES-256 Encrypted</span>
+        </div>
       </div>
     </form>
   );

@@ -121,7 +121,7 @@ export const ChambersIntakeSection: React.FC = () => {
                   </div>
                 </a>
 
-                {/* Google Verified Reviews Trust Card */}
+                {/* Verified Chambers Coordinates & Directions on Google Maps */}
                 <a
                   href={firmProfile.contact.googleMapsUrl}
                   target="_blank"
@@ -130,20 +130,20 @@ export const ChambersIntakeSection: React.FC = () => {
                 >
                   <div className="flex items-center gap-3.5">
                     <div className="w-10 h-10 rounded-lg bg-[#183529] text-[#B49A64] flex items-center justify-center shrink-0 group-hover:bg-[#071B14] transition-colors font-serif font-black text-lg">
-                      G
+                      <MapPin className="w-5 h-5 text-[#B49A64]" />
                     </div>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <span className="text-amber-400 text-sm tracking-wider font-bold">★★★★★</span>
-                        <span className="font-mono text-xs font-bold text-[#F1EBDD] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">5.0 / 5.0</span>
+                        <span className="font-editorial-body text-xs font-bold text-[#F1EBDD]">Verified Chambers Coordinates</span>
+                        <span className="font-mono text-[10px] font-bold text-[#B49A64] bg-[#183529] px-2 py-0.5 rounded border border-[#B49A64]/30">Google Maps</span>
                       </div>
                       <span className="text-xs text-[#D8D0BE] mt-0.5 block">
-                        Five-Star Rated Practice on Google • Tirupati Chambers
+                        Principal Chambers • Bairagi Patteda, Tirupati
                       </span>
                     </div>
                   </div>
                   <span className="text-xs text-[#B49A64] font-semibold flex items-center gap-1 shrink-0 group-hover:translate-x-0.5 transition-transform">
-                    Google Reviews →
+                    View Directions →
                   </span>
                 </a>
 

@@ -9,7 +9,7 @@ import {
   Landmark,
   TrendingUp,
   Compass,
-  ArrowRight 
+  ArrowUpRight
 } from 'lucide-react';
 import { Button } from '../common/Button';
 import { DotGrid, SectionAccent, ArchitecturalLines, DecorativeLayer } from '../decorative';
@@ -156,10 +156,10 @@ export const PracticeAreasSection: React.FC = () => {
               <StaggerItem key={cat.code} index={idx} distance={18} durationMs={550} className="h-full flex">
                 <div
                   id={cat.anchorId}
-                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel overflow-hidden flex flex-col justify-between group hover:border-[#C5A059] hover:shadow-[0_12px_32px_rgba(180,154,100,0.18)] hover:-translate-y-1.5 transition-all duration-300 relative"
+                  className="w-full bg-[#FAF7F0] rounded-2xl border border-[#D8D0BE] shadow-card card-parchment-bevel overflow-hidden flex flex-col justify-between group hover:border-[#C5A059] hover:shadow-[0_16px_36px_rgba(180,154,100,0.22)] hover:-translate-y-2 transition-all duration-300 relative"
                 >
                   {/* Top Metallic Hairline Accent */}
-                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/60 transition-all duration-500" aria-hidden="true" />
+                  <div className="absolute inset-x-4 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#B49A64]/0 to-transparent group-hover:via-[#B49A64]/80 transition-all duration-500" aria-hidden="true" />
 
                   {/* Dynamic Corner Brass Brackets (Expand on Hover) */}
                   <div className="absolute top-2 left-2 w-3.5 h-3.5 group-hover:w-5 group-hover:h-5 border-t-2 border-l-2 border-[#B49A64]/40 rounded-tl-sm pointer-events-none group-hover:border-[#B49A64] transition-all duration-300" aria-hidden="true" />
@@ -196,14 +196,16 @@ export const PracticeAreasSection: React.FC = () => {
                     {/* Smooth Kinetic Bronze Endpoint Accent */}
                     <div className="h-[2px] w-6 bg-[#B49A64]/40 rounded-full group-hover:w-14 group-hover:bg-[#B49A64] transition-all duration-300 mt-3" />
 
-                    {/* Direct Dedicated Page Link */}
-                    <div className="mt-2 pt-2.5 border-t border-[#D8D0BE]/60 flex items-center justify-between">
+                    {/* Direct Dedicated Page Link with Circular Antique Gold Medallion */}
+                    <div className="mt-3 pt-3 border-t border-[#D8D0BE]/70 flex items-center justify-between">
                       <Link
                         to={cat.link}
-                        className="min-h-[44px] inline-flex items-center gap-1.5 font-editorial-meta text-xs font-semibold text-[#35271F] hover:text-[#7E5E1E] transition-colors group/link"
+                        className="min-h-[44px] w-full flex items-center justify-between font-editorial-meta text-xs font-semibold text-[#35271F] hover:text-[#7E5E1E] transition-colors group/link"
                       >
-                        <span>Explore Practice Details</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#B49A64] group-hover/link:translate-x-1 transition-transform" />
+                        <span className="group-hover/link:translate-x-0.5 transition-transform">Explore Practice Details</span>
+                        <div className="w-8 h-8 rounded-full bg-[#183529] border border-[#B49A64]/40 flex items-center justify-center text-[#B49A64] group-hover:bg-[#B49A64] group-hover:text-[#071B14] group-hover:rotate-45 group-hover:scale-110 shadow-xs transition-all duration-300 shrink-0">
+                          <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
+                        </div>
                       </Link>
                     </div>
                   </div>

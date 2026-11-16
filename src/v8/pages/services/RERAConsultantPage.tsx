@@ -19,6 +19,8 @@ import { Button } from '../../components/common/Button';
 import { Badge } from '../../components/common/Badge';
 import { Accordion, AccordionItem } from '../../components/common/Accordion';
 import { StatutoryChecklistModal } from '../../components/common/StatutoryChecklistModal';
+import { KnowledgeBankCard } from '../../components/common/KnowledgeBankCard';
+import { RERAWithdrawalEstimator } from '../../components/tools/RERAWithdrawalEstimator';
 import { getRouteWhatsAppUrl } from '../../adapters/backendAdapter';
 
 export const RERAConsultantPage: React.FC = () => {
@@ -300,6 +302,20 @@ export const RERAConsultantPage: React.FC = () => {
                 <p className="text-[11px] text-[#AAB4A0]">Partner-issued certificate with mandatory UDIN.</p>
               </div>
             </div>
+          </div>
+
+          {/* Interactive Botanical Ledger AP RERA 70% Escrow Withdrawal Estimator */}
+          <div className="pt-2">
+            <RERAWithdrawalEstimator />
+          </div>
+
+          {/* Contextual Knowledge Bank & AP RERA Portals Callout */}
+          <div className="pt-4">
+            <KnowledgeBankCard 
+              variant="forest" 
+              context="rera" 
+              to="/knowledge-bank"
+            />
           </div>
         </div>
       </section>
